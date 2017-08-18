@@ -1,0 +1,13 @@
+[2017-08-10 05:51:32.605] [INFO] resLogger - 
+*************** response log start ***************
+request method: HEAD
+request originalUrl:  /wallet.dat
+request client ip:  ::ffff:54.202.34.123
+request body: 
+{}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+

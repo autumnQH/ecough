@@ -1,0 +1,14 @@
+[2017-08-10 08:14:16.854] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /components/swiper/dist/js/swiper.js
+request client ip:  ::ffff:223.71.156.38
+request query:  {}
+response time: undefined
+err name: Error
+err message: write EPIPE
+err stack: Error: write EPIPE
+    at exports._errnoException (util.js:1016:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:850:14)
+*************** error log end ***************
+

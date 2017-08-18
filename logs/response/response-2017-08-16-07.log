@@ -1,0 +1,12 @@
+[2017-08-16 07:11:59.203] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /muieblackcat
+request client ip:  ::ffff:221.204.19.123
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+

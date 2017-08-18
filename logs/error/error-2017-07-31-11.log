@@ -1,0 +1,70 @@
+[2017-07-31 11:28:08.846] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /images/14997402965602.jpg
+request client ip:  ::ffff:121.79.134.37
+request query:  {}
+response time: undefined
+err name: Error
+err message: write EPIPE
+err stack: Error: write EPIPE
+    at exports._errnoException (util.js:1016:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:850:14)
+*************** error log end ***************
+
+[2017-07-31 11:50:14.199] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /images/15003684727311.jpg
+request client ip:  ::ffff:61.148.243.65
+request query:  {}
+response time: undefined
+err name: Error
+err message: write EPIPE
+err stack: Error: write EPIPE
+    at exports._errnoException (util.js:1016:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:850:14)
+*************** error log end ***************
+
+[2017-07-31 11:50:14.219] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /images/14951862453097.jpg
+request client ip:  ::ffff:61.148.243.65
+request query:  {}
+response time: undefined
+err name: Error
+err message: write EPIPE
+err stack: Error: write EPIPE
+    at exports._errnoException (util.js:1016:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:850:14)
+*************** error log end ***************
+
+[2017-07-31 11:50:14.349] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /images/14997402965602.jpg
+request client ip:  ::ffff:61.148.243.65
+request query:  {}
+response time: undefined
+err name: Error
+err message: write EPIPE
+err stack: Error: write EPIPE
+    at exports._errnoException (util.js:1016:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:850:14)
+*************** error log end ***************
+
+[2017-07-31 11:50:14.419] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /images/14998319849732.jpg
+request client ip:  ::ffff:61.148.243.65
+request query:  {}
+response time: undefined
+err name: Error
+err message: write EPIPE
+err stack: Error: write EPIPE
+    at exports._errnoException (util.js:1016:11)
+    at WriteWrap.afterWrite [as oncomplete] (net.js:850:14)
+*************** error log end ***************
+

@@ -1,0 +1,498 @@
+html,
+body {
+  height: 100%;
+}
+body,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+th,
+td,
+dl,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 14px;
+  font-family: "microsoft yahei";
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+em {
+  font-style: normal;
+}
+li {
+  list-style: none;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+p {
+  word-wrap: break-word;
+}
+input:-ms-input-placeholder {
+  color: #555;
+  opacity: 0.5;
+}
+input::-webkit-input-placeholder {
+  color: #555;
+  opacity: 0.5;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+}
+input:focus {
+  border: 0;
+  outline: none;
+}
+.main {
+  max-width: 640px;
+  margin: 0 auto;
+  /*订单*/
+  /*售后*/
+  /*物流*/
+  /*产品*/
+}
+.main .order .order-title {
+  overflow: hidden;
+  height: 50px;
+  padding: 0 15px;
+  border-bottom: 2px solid #e3e3e3;
+}
+.main .order .order-title span {
+  display: block;
+  float: left;
+  color: #000;
+  line-height: 50px;
+  font-size: 16px;
+}
+.main .order .order-title label {
+  display: block;
+  float: right;
+  color: #333;
+  line-height: 50px;
+}
+.main .order .order-address {
+  padding: 20px 15px 30px 15px;
+  border-bottom: 6px solid #e3e3e3;
+}
+.main .order .order-address ul {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.main .order .order-address ul li {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.main .order .order-address ul li span {
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 100%;
+  margin: 0 auto;
+  color: #333;
+  background: #e5e5e5;
+  margin-bottom: 6px;
+}
+.main .order .order-address ul li p {
+  color: #555;
+}
+.main .order .order-address .userinfo {
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.main .order .order-address .userinfo label {
+  margin-left: 8px;
+}
+.main .order .order-address .useraddress {
+  color: #333;
+  font-size: 15px;
+}
+.main .order .order-item {
+  border-bottom: 6px solid #E5E5E5;
+}
+.main .order .order-item .order-top {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #e3e3e3;
+}
+.main .order .order-item .order-center {
+  padding: 0 15px;
+}
+.main .order .order-item .order-center a {
+  display: block;
+  padding: 15px 0;
+  overflow: hidden;
+}
+.main .order .order-item .order-center a img {
+  display: block;
+  float: left;
+  width: 60px;
+  height: 60px;
+}
+.main .order .order-item .order-center a .order-shoplist_right {
+  padding-left: 90px;
+}
+.main .order .order-item .order-center a .order-shoplist_right .shoplist_title {
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.main .order .order-item .order-center a .order-shoplist_right .shoplist_title span {
+  display: block;
+  float: left;
+  color: #333;
+  font-size: 15px;
+}
+.main .order .order-item .order-center a .order-shoplist_right .shoplist_title label {
+  display: block;
+  float: right;
+  color: #000;
+  font-size: 16px;
+}
+.main .order .order-item .order-center a .order-shoplist_right .shoplist_ms {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  color: #555;
+}
+.main .order .order-item .order-center a .order-shoplist_right .shoplist_ms i {
+  font-style: normal;
+}
+.main .order .order-item .order-center .order-number {
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+}
+.main .order .order-item .order-center .order-number span {
+  display: block;
+  float: left;
+  color: #333;
+}
+.main .order .order-item .order-center .order-number label {
+  display: block;
+  float: right;
+  color: #333;
+}
+.main .order .order-item .order-center ul {
+  padding: 15px 0;
+}
+.main .order .order-item .order-center ul li {
+  height: 35px;
+  line-height: 35px;
+  overflow: hidden;
+}
+.main .order .order-item .order-center ul li span {
+  display: block;
+  float: left;
+  color: #333;
+  font-size: 15px;
+}
+.main .order .order-item .order-center ul li label {
+  display: block;
+  float: right;
+  color: #333;
+  font-size: 15px;
+}
+.main .order .sum-btn {
+  overflow: hidden;
+  padding: 0 2%;
+}
+.main .order .sum-btn .btnlist {
+  width: 50%;
+  text-align: center;
+  float: left;
+  padding: 20px 0;
+}
+.main .order .sum-btn .btnlist a {
+  display: block;
+  margin: 0 2%;
+  border-radius: 6px;
+  border: 1px solid #E5E5E5;
+  color: #000;
+  height: 45px;
+  line-height: 45px;
+}
+.main .order .sum-btn .btnlist .active {
+  border-color: #e25b84;
+  color: #e25b84;
+}
+.main .sales .form-box {
+  background: #fff;
+  padding: 0 15px;
+}
+.main .sales .form-box .form-group {
+  overflow: hidden;
+  padding: 8px 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+.main .sales .form-box .form-group label {
+  display: block;
+  width: 90px;
+  text-align: left;
+  float: left;
+  color: #999;
+  margin-top: 9px;
+}
+.main .sales .form-box .form-group .group-item {
+  padding-left: 90px;
+}
+.main .sales .form-box .form-group .group-item input {
+  height: 35px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.main .sales .form-box .form-group .group-item select {
+  height: 35px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.main .sales .sales-other {
+  background: #fff;
+  padding: 15px;
+  margin-top: 12px;
+}
+.main .sales .sales-other textarea {
+  width: 100%;
+  font-size: 12px;
+  color: #999999;
+  border: 1px solid #E5E5E5;
+  padding: 10px 0 30px 0;
+  min-height: 150px;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  resize: none;
+  position: relative;
+}
+.main .sales .sales-other .file-upload p {
+  padding: 10px 2px 0;
+  font-size: 12px;
+  color: #999999;
+}
+.main .sales .sales-other .file-upload .show_image .choose_image {
+  width: 80px;
+  height: 80px;
+  border: 1px dashed #c0c0c0;
+  border-radius: 6px;
+  float: left;
+  color: #d0d0d0;
+  margin-top: 8px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.main .sales .sales-other .file-upload .show_image .choose_image img {
+  width: 20px;
+  height: 20px;
+  margin-left: 28px;
+  margin-top: 18px;
+}
+.main .sales .sales-other .file-upload .show_image .choose_image .choose_font {
+  margin-top: 8px;
+  text-align: center;
+}
+.main .sales-bt {
+  background: #FF6E8E;
+  border-radius: 2px;
+  width: 90%;
+  margin: 25px auto;
+  font-size: 14px;
+  line-height: 40px;
+  border: none;
+  display: block;
+  color: #fff;
+  text-align: center;
+}
+.main .online {
+  background: #fff;
+  color: #FF6E8E;
+}
+.main .logistics ul .logis-detail-date {
+  width: 40px;
+  padding: 10px 0 10px 4px;
+  text-align: right;
+  font-size: 14px;
+}
+.main .logistics ul li {
+  border-left: 2px solid #bdbdbd;
+  padding: 10px 0 10px 35px;
+  margin-left: 25px;
+  margin-right: 25px;
+  position: relative;
+}
+.main .logistics ul li .logis-detail-content {
+  display: -webkit-box;
+  position: relative;
+  background: #ddd;
+  padding: 5px 10px;
+  -webkit-border-radius: 2px;
+  font-size: 14px;
+}
+.main .logistics ul li .logis-detail-content .logis-detail-content-time {
+  width: 50px;
+  line-height: 25px;
+}
+.main .logistics ul li .logis-detail-content .logis-detail-content-detail {
+  -webkit-box-flex: 1;
+  line-height: 25px;
+}
+.main .logistics ul li .logis-detail-content:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: -10px;
+  top: 18px;
+  border-left: 10px solid #fff;
+  border-bottom: 10px solid #ddd;
+}
+.main .logistics ul li:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  left: -6px;
+  top: 30px;
+  width: 6px;
+  height: 6px;
+  -webkit-border-radius: 10px;
+  background: #BDBDBD;
+  border: 2px solid #EEE;
+}
+.main .logistics ul .logis-detail-first {
+  border-left: 2px solid #F40;
+}
+.main .logistics ul .logis-detail-first .logis-detail-content {
+  background: #F40;
+  color: #fff;
+}
+.main .logistics ul .logis-detail-first .logis-detail-content:after {
+  border-bottom-color: #F40;
+}
+.main .logistics ul .logis-detail-first:after {
+  background: #F40;
+  border: 2px solid #EEE;
+}
+.main .product{
+	padding-bottom: 60px;
+}
+.main .product .swiper-slide a {
+  display: block;
+}
+.main .product .swiper-slide a img {
+  display: block;
+  width: 100%;
+}
+.main .product .detail{
+	padding: 0 15px;
+	margin-bottom: 20px;
+}
+.main .product .detail .detail-div {
+  margin-top: 10px;
+  background: #FFF;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px #DDD solid;
+}
+.main .product .detail .detail-div .detail-group {
+  overflow: hidden;
+}
+.main .product .detail .detail-div .detail-group .text-danger {
+  color: #a94442;
+}
+.main .product .detail .detail-div .detail-group .input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+.main .product .detail .detail-div .detail-group .yjia{
+	color: #c5c3c3;
+}
+.main .product .detail .detail-div .detail-group .input-group input{
+	border: 1px solid #a2a1a1;
+}
+.main .product .detail .detail-div .detail-group .input-group .input-group-btn {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap;
+  display: table-cell;
+  vertical-align: middle;
+}
+.main .product .detail .detail-div .detail-group .input-group .input-group-btn button {
+  width: 25px;
+  height: 25px;
+}
+.main .product .detail .detail-div .text-center {
+  text-align: center;
+}
+.main .product .img-rounded {
+  border-radius: 6px;
+}
+.main .product .product-js{
+	height: 35px;
+	line-height: 35px;
+	color: #333;
+	margin-bottom: 25px;
+	background: #ececec;
+	padding: 0 15px;
+	box-shadow: 1px 1px 3px #d6c8c8;
+}
+.main .product .product-item{
+	padding: 0 15px;
+	margin-bottom: 30px;
+}
+.main .product .product-item img{
+	display: block;
+	width: 100%;
+	margin-bottom: 12px;
+}
+.main .product .product-item p{
+	color: #555;
+	line-height: 25px;
+	margin-bottom: 10px;
+}
+.main .footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: #F73F65;
+	z-index: 9999;
+}
+.main .footer a{
+	display: block;
+	color: #FFF;
+}

@@ -1,0 +1,250 @@
+[2017-08-08 15:54:13.094] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.169] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"root","pma_password":"","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.222] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.298] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"root","pma_password":"root","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.351] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 1
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.426] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"root","pma_password":"12345","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.477] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.552] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"root","pma_password":"123456","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.604] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.679] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"root","pma_password":"test123","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.731] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.805] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"test","pma_password":"","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.857] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.931] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"test","pma_password":"root","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:13.982] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:14.058] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"test","pma_password":"12345","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:14.110] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:14.185] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"test","pma_password":"123456","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:14.238] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-08 15:54:14.313] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /phpmyadmin/
+request client ip:  ::ffff:140.205.225.197
+request body: 
+{"pma_username":"test","pma_password":"test123","server":"1","lang":"zh_CN"}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+

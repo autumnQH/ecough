@@ -1,0 +1,13 @@
+[2017-07-02 11:07:42.881] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=aa5d243c8dd54c8da121e9f5524682db7e697571&timestamp=1498964862&nonce=742033343&openid=oDC9Z0m2JskBlYZ0_5Ga0Vu_DW0w
+request client ip:  ::ffff:140.207.54.79
+request body: 
+{"xml":{"ToUserName":["gh_3b35ec5a2616"],"FromUserName":["oDC9Z0m2JskBlYZ0_5Ga0Vu_DW0w"],"CreateTime":["1498964862"],"MsgType":["event"],"Event":["VIEW"],"EventKey":["http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzUyOTA2MDEwOA==&shelf_id=1&showwxpaytitle=1#wechat_redirect"],"MenuId":["422893408"]}}
+response time: 24
+response status: 200
+response body: 
+"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<xml>\n  <ToUserName>oDC9Z0m2JskBlYZ0_5Ga0Vu_DW0w</ToUserName>\n  <FromUserName>gh_3b35ec5a2616</FromUserName>\n  <CreateTime>1498964862860</CreateTime>\n  <MsgType>event</MsgType>\n  <Content>冥冥之中自有缘分！</Content>\n</xml>"
+*************** response log end ***************
+

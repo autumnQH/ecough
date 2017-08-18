@@ -1,0 +1,210 @@
+/*body, div, li, ol, p, td, th, ul {*/
+    /*margin: 0;*/
+    /*padding: 0*/
+/*}*/
+
+/*li {*/
+    /*list-style: none*/
+/*}*/
+
+/*img {*/
+    /*border: 0;*/
+    /*-webkit-user-select: none;*/
+    /*user-select: none;*/
+    /*-webkit-touch-callout: none;*/
+    /*touch-callout: none*/
+/*}*/
+
+/*table {*/
+    /*border-spacing: 0;*/
+    /*border-collapse: collapse*/
+/*}*/
+
+/*html {*/
+    /*font-family: sans-serif;*/
+    /*-webkit-user-select: none;*/
+    /*user-select: none;*/
+    /*-webkit-text-size-adjust: 100%;*/
+    /*-ms-text-size-adjust: 100%*/
+/*}*/
+
+/*:focus {*/
+    /*outline: 0*/
+/*}*/
+
+/*:link, :visited {*/
+    /*text-decoration: none*/
+/*}*/
+
+/*a:active, a:hover {*/
+    /*outline: 0*/
+/*}*/
+
+/*.clearfix:after {*/
+    /*display: block;*/
+    /*clear: both;*/
+    /*height: 0;*/
+    /*font-size: 0;*/
+    /*content: ''*/
+/*}*/
+
+/*.pull-left {*/
+    /*float: left*/
+/*}*/
+
+/*.pull-right {*/
+    /*float: right*/
+/*}*/
+
+/*.show {*/
+    /*display: block !important*/
+/*}*/
+
+/*.hide {*/
+    /*display: none !important*/
+/*}*/
+
+/*.visible {*/
+    /*visibility: visible*/
+/*}*/
+
+/*.invisible {*/
+    /*visibility: hidden*/
+/*}*/
+
+/*.text-left {*/
+    /*text-align: left*/
+/*}*/
+
+/*.text-center {*/
+    /*text-align: center*/
+/*}*/
+
+/*.text-right {*/
+    /*text-align: right*/
+/*}*/
+
+/*.dv {*/
+    /*display: inline-block;*/
+    /*vertical-align: middle*/
+/*}*/
+
+/*.di {*/
+    /*display: inline-block*/
+/*}*/
+
+/*.text-hide {*/
+    /*border: 0;*/
+    /*background-color: transparent;*/
+    /*font: 0/0 a;*/
+    /*color: transparent;*/
+    /*text-shadow: none*/
+/*}*/
+
+/*.text-ellipsis {*/
+    /*overflow: hidden;*/
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis*/
+/*}*/
+
+/*.btn {*/
+    /*display: inline-block;*/
+    /*cursor: pointer;*/
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+    /*text-align: center;*/
+    /*vertical-align: middle;*/
+    /*white-space: nowrap;*/
+    /*-webkit-tap-highlight-color: transparent*/
+/*}*/
+
+/*.btn:hover {*/
+    /*text-decoration: none*/
+/*}*/
+
+/** {*/
+    /*-webkit-box-sizing: border-box;*/
+    /*box-sizing: border-box*/
+/*}*/
+
+@charset "utf-8";
+/* CSS Reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{ margin:0; padding:0; font-family:  "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+/*Helvetica,STHeiti,sans-serif;Helvetica Neue*/
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;}
+a,input{ border:none; text-decoration:none;}
+::-webkit-input-placeholder{color:#999;}
+input{-webkit-appearance:none;appearance:none;outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);border-radius:0;}
+::-webkit-scrollbar{width:0px}
+/*定位*/
+.tl{text-align:left;}
+.tc{text-align:center;}
+.tr{text-align:right;}
+.bc{margin-left:auto; margin-right:auto;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.cb{clear:both;}
+.cl{clear:left;}
+.cr{clear:right;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{display:inline-block;}
+/**html .clearfix{height:1%;}*/
+.Clearfix{display:block;}
+.vm{vertical-align:middle;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.abs-right{position:absolute;right:0;}
+.zoom{zoom:1;}
+.hidden{visibility:hidden;}
+.none{display:none;}
+/*body,html{*/
+/*font-size:20px!important;*/
+/*height:100%;*/
+/*}*/
+/*长按选中浏览器禁用*/
+*{
+    /*-webkit-touch-callout:none;*/
+    /*-webkit-user-select:none;*/
+    /*-khtml-user-select:none;*/
+    /*-moz-user-select:none;*/
+    /*-ms-user-select:none;*/
+    user-select:none;
+
+}
+
+button{
+    outline: none;
+}
+/*切换背景颜色*/
+.you {
+    background-color: #22ac35 !important
+}
+
+.liang {
+    background-color: #e2b70d !important
+}
+
+.qingdu {
+    background-color: #f80 !important
+}
+
+.zhongdu {
+    background-color: #f40 !important
+}
+
+.gravity {
+    background-color: #7b47d2 !important
+}
+
+.serious {
+    background-color: #550096 !important
+}

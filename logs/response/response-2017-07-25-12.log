@@ -1,0 +1,24 @@
+[2017-07-25 12:04:46.860] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /hwi/
+request client ip:  ::ffff:140.205.201.46
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-07-25 12:07:40.336] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /my/order
+request client ip:  ::ffff:180.97.35.217
+request query:  {}
+response time: 1
+response status: 200
+response body: 
+"<!doctype html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\"\r\n          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <meta content=\"yes\" name=\"apple-mobile-web-app-capable\">\r\n    <meta content=\"black\" name=\"apple-mobile-web-app-status-bar-style\">\r\n    <meta content=\"telephone=no\" name=\"format-detection\">\r\n    <meta content=\"email=no\" name=\"format-detection\">\r\n    <title>订单</title>\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/style.css\"/>\r\n    <script src=\"/js/jquery-1.9.1.js\"></script>\r\n</head>\r\n<body>\r\n\t<div class=\"main\">\r\n\t\t<div class=\"order\">\r\n\t\t\t<div class=\"order-title\">\r\n\t\t\t\t<span>交易完成</span>\r\n\t\t\t\t<label>下单时间：2017-07-20  10:56:05</label>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"order-address\">\r\n\t\t\t\t<ul>\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<span>1</span>\r\n\t\t\t\t\t\t<p>12-10</p>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<span>2</span>\r\n\t\t\t\t\t\t<p>12-17</p>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<span>3</span>\r\n\t\t\t\t\t\t<p>12-24</p>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<span>4</span>\r\n\t\t\t\t\t\t<p>12-31</p>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<p class=\"userinfo\">赵美女<label>13811908888</label></p>\r\n\t\t\t\t<span class=\"useraddress\">北京市北京市昌平区龙域东一路融泽嘉园东20号院18号楼20单元8001</span>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"order-item\">\r\n\t\t\t\t<div class=\"order-top\">订单信息</div>\r\n\t\t\t\t<div class=\"order-center\">\r\n\t\t\t\t\t<a href=\"javascript:\" class=\"order-shoplist\">\r\n\t\t\t\t\t\t<img src=\"/images/26659155088350080_03.jpg\" alt=\"\" />\r\n\t\t\t\t\t\t<div class=\"order-shoplist_right\">\r\n\t\t\t\t\t\t\t<div class=\"shoplist_title\">\r\n\t\t\t\t\t\t\t\t<span>繁华混合鲜花月套餐</span>\r\n\t\t\t\t\t\t\t\t<label>￥169.00</label>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<span class=\"shoplist_ms\">\r\n\t\t\t\t\t\t\t\t<i>订几个月：1个月</i>\r\n\t\t\t\t\t\t\t\t<i>送达日期：周六送达</i>\r\n\t\t\t\t\t\t\t</span>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div class=\"order-number\">\r\n\t\t\t\t\t\t<span>订单号：</span>\r\n\t\t\t\t\t\t<label>W121231564541321</label>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"order-item\">\r\n\t\t\t\t<div class=\"order-top\">订单费用</div>\r\n\t\t\t\t<div class=\"order-center\">\r\n\t\t\t\t\t<ul>\r\n\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t<span>商品总额：</span>\r\n\t\t\t\t\t\t\t<label>￥169.00</label>\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t<span>运费：</span>\r\n\t\t\t\t\t\t\t<label>￥0.00</label>\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t<span>付款金额：</span>\r\n\t\t\t\t\t\t\t<label style=\"color: #ff4141;\">￥169.00</label>\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li>\r\n\t\t\t\t\t\t\t<span>付款方式：</span>\r\n\t\t\t\t\t\t\t<label>微信支付</label>\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"sum-btn\">\r\n\t\t\t\t<div class=\"btnlist\">\r\n\t\t\t\t\t<a href=\"javascript:\" class=\"active\">隐藏订单</a>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"btnlist\">\r\n\t\t\t\t\t<a href=\"javascript:\">再次购买</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</body>\r\n</html>\r\n"
+*************** response log end ***************
+
