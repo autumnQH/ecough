@@ -64,6 +64,17 @@ CREATE TABLE IF NOT EXISTS T_ORDER_PRODUCT(
   FOREIGN KEY (product_id) REFERENCES T_PRODUCT(id)
 );
 
+CREATE TABLE IF NOT EXISTS T_WECHAT_TOKEN_AUTH (
+  id int NOT NULL AUTO_INCREMENT,
+  access_token varchar(255) NOT NULL,
+  expires_in int(32) NOT NULL,
+  refresh_token varchar(255) NOT NULL,
+  openid varchar(255) NOT NULL,
+  scope varchar(255) NOT NULL,
+  unionid varchar(255) NOT NULL,
+  create_time datetime  DEFAULT NULL,
+  PRIMARY KEY (id)
+) ;
 
 INSERT INTO T_USER set email='1@example.com', passwd='123456';
 

@@ -2,36 +2,18 @@
   "button":[  
     {  
       "type":"view",  
-      "name":"产品订购",
-      "key":"V1001_TODAY_MUSIC",
-      "url":"http://www.e-cough.com/product/100001"
+      "name":"产品订购23",
+      "url":"https://auhdaoajzk.localtunnel.me/play"
     },
     {  
-      "type":"view",
-      "name":"团购",
-      "key":"V1001_TODAY_SINGER",
-      "url":"http://www.e-cough.com/product/100001"
+      "type":"view",  
+      "name":"产品订购-确认授权",
+      "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc25f48089fba29f3&redirect_uri=https://auhdaoajzk.localtunnel.me/my/order&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
     },
     {  
-      "name":"菜单",  
-      "sub_button":[  
-        {  
-          "type":"view",  
-          "name":"我的订单",
-          "url":"http://www.e-cough.com/my/order"
-        },
-        {  
-          "type":"view",  
-          "name":"查询物流",
-          "url":"http://www.e-cough.com/my/logistics"
-        },
-        {  
-          "type":"view",
-          "name":"联系客服",
-          "key":"V1001_GOOD",
-          "url":"http://www.e-cough.com/my/problem"
-        }
-      ]  
-    }  
+      "type":"view",  
+      "name":"产品订购-静默授权",
+      "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc25f48089fba29f3&redirect_uri=https://auhdaoajzk.localtunnel.me/my/order&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
+    } 
   ]  
 }

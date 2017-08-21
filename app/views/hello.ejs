@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试支付</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<div>
+	<ul>
+		<li>基础接口</li>
+	</ul>
+</div>
+<div>
+	<h1>判断当前用户客户端是否支持js接口</h1>
+	<button id="checkjsAPI">checkjsAPI</button>
+	<h1>立即购买</h1>
+	<button id="chooseWXPay">chooseWXPay</button>
+</div>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+	wx.config({
+		debug: true,
+		appId: '<%= appId %>',
+		timestamp: '<%= timestamp %>',
+		nonceStr: '<%= nonceStr %>',
+		signature: '<%= signature %>',
+		jsApiList: ['chooseWXPay']
+
+	});
+	wx.ready(function() {
+		document.querySelector('#checkjsAPI').onclick = function() {
+			wx.checkJsApi({
+				jsApiList: ['chooseCard', 'openCard'],
+				success: function(res) {
+					console.log(typeof res);
+					console.log(res);
+					console.log(res.checkResult);
+				}
+			});
+		};
+
+		document.querySelector('#chooseWXPay').onclick = function() {
+			wx.chooseWXPay({
+				appId: '<%= appId%>',
+				timestamp: ''+ (new Date().getTime() / 1000),
+				nonceStr: random,
+				package: '',
+				signType: '',
+				paySign: '',
+				success: function(res) {
+					console.log(typeof res);
+					console.log(res);
+				}
+			});
+		};
+	});
+</script>
+</body>
+</html>

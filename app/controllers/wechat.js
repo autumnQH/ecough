@@ -3,7 +3,6 @@ const config = require('../config/config');
 
 var checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);
- 
     if (result) {
         ctx.body = ctx.query.echostr
     } else {

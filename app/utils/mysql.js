@@ -26,6 +26,7 @@ function execQuery(sql, values, callback) {
         if (err) {
             errinfo = 'DB-获取数据库连接异常！';
             console.log(errinfo);
+            console.log(err);
             throw errinfo;
         } else {
             var querys = connection.query(sql, values, function(err, rows) {

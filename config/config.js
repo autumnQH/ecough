@@ -5,23 +5,23 @@ const config = {
   },
   
   server: {
-    port: 80
+    port: 3000
   },
 
   ecough: {
     wx: {
-      appid: 'wxff24c10734aed1ef',
-      appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d',
-      token: 'ecough',
-      encodingAESKey: 'FWLsqciavqqVROWeWHsyt5p10z76b0ovIs6oEevXuL2'
+      appid: 'wxc25f48089fba29f3',
+      appSecret: '328f39d113a5e31d58b0fb20cdccb4c7',
+      token: 'ecough'
+      //,encodingAESKey: 'FWLsqciavqqVROWeWHsyt5p10z76b0ovIs6oEevXuL2'
     },
 
     db: {
       host: 'localhost',
-      port:  '3306',
+      //port:  '3306',
       name: 'ecough',
       user: 'root',
-      passwd: 'root',
+      passwd: '450450',
       conn_limit: 5
     },
   }

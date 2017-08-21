@@ -2,6 +2,9 @@ const crypto = require('crypto');
 const config = require('../config/config');
 const request = require('request');
 const xml = require("./xml");
+const tools = require('./tools');
+const mysql = require('./mysql');
+const moment = require('moment');
 
 exports.auth = async (ctx) => {
     let token = config.wx.token;
@@ -41,7 +44,7 @@ exports.createMenu = async (menu, token) => {
 
     request.post(options, function (err, res, body) {
         if (err) {
-          console.log(err)
+          console.log(err);
         }else {
           console.log(body);
         }
@@ -61,7 +64,6 @@ exports.getTextMessage = (msg, content) => {
             }
         })
 }
-
  
 exports.getDefaultMessage = (msg, content) => {
         return xml.jsonToXml({
@@ -75,3 +77,51 @@ exports.getDefaultMessage = (msg, content) => {
         })
 }
 
+//js-sdk签名
+exports.signature = async (jsapi_ticket, url) => {
+    var ret = {
+        jsapi_ticket: jsapi_ticket,
+        nonceStr: tools.createNonceStr(),
+        timestamp: tools.createTimestamp(),
+        url: url
+    };
+    var str = tools.raw(ret);
+
+    var resStr = crypto.createHash('sha1').update(str).digest('hex');
+    console.log( 'resStr: ', resStr);
+    return {signature:resStr, nonceStr: ret.nonceStr, timestamp: ret.timestamp};
+}
+
+//网页授权token
+exports.getAuthToken = async function(code, cb) {
+    console.log(typeof code);
+    let options = {
+        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.wx.appid +'&secret='+ config.wx.appid +'&code='+ code +'&grant_type=authorization_code'
+    };
+
+    request.get(options, function(err, res, body) {
+        if(err){
+            console.error(err);
+        }
+       if(res && res.statusCode === 200){
+        var data = JSON.parse(body);;
+        data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+        mysql.add('T_WECHAT_TOKEN_AUTH', data);
+        cb(data.openid);
+       }
+    });
+}
+
+exports.paySign = async function(key) {
+    var ret = {
+        appid: config.wx.appid,
+        mch_id: config.wx.mchid,
+        device_info: 'WEB',
+        body: 'Test',
+        nonce_str: tools.createRandom()
+    };
+    var str1 = tools.raw(ret);
+    str1 += '&key='+ key;
+    var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
+    return sign;
+}
