@@ -49,15 +49,15 @@ var getPlay = async (ctx, next)=>{
 
 var getOrder = async (ctx, next) => {
     let code =  ctx.query.code;//获取网页授权code
-    let sign = await wechat.paySign(config.wx.key);
+    let data = await wechat.paySign(config.wx.key);
     await wechat.getAuthToken(code, function(openid) {
         let formData = xml.jsonToXml({
             xml: {
                 appid: config.weixin.appid, //appId
                 mch_id: config.wx.mchid, //商户号id
                 attach: '支付测试',
-                nonce_str: tools.createRandom(),
-                sign: sign,//签名
+                nonce_str: data.nonceStr,
+                sign: data.sign,//签名
                 body: 'JSAPI支付测试', //商品描述
                 out_trade_no: tools.trade(),//商户订单号
                 total_fee: '1',//标价金额
@@ -67,6 +67,7 @@ var getOrder = async (ctx, next) => {
                 openid: openid
             }
         });
+        console.log(formData);
         let options = {
             url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
             method: 'POST',  

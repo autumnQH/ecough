@@ -125,5 +125,5 @@ exports.paySign = async function(key) {
     console.log(str1);
     var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
     console.log('sign',sign);
-    return sign;
+    return {sign: sign, nonceStr: ret.nonce_str};
 }
