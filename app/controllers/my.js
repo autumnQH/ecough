@@ -97,7 +97,7 @@ var getOrder = async (ctx, next) => {
         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
         console.log(r_url);
-        ctx.redirect(r_url);
+        ctx.redirect(url);
     }else{
         ctx.render('order',{
 
