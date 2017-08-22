@@ -51,9 +51,8 @@ exports.getToken = function (code) {
     console.log(url);
     return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
-            if(res){
-                console.log(JSON.parse(body));
-                resolve(JSON.parse(body));
+            if(body){
+                resolve(body);
             }else{
                 reject(err);
             }
