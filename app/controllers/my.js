@@ -136,11 +136,13 @@ var getOrder = async (ctx, next) => {
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
+        console.log(code);
         var ep = new eventproxy();
         ep.all('getToken', 'getUserInfo', function(getToken, getUserInfo) {
             console.log(getToken,'getToken');
             console.log(getUserInfo, 'getUserInfo');
         });      
+        console.log('没路了');
     }
 
 };
