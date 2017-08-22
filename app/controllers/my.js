@@ -87,7 +87,7 @@ var getPlay = async (ctx, next)=>{
 var getOrder = async (ctx, next) => {
     console.log('进来啦');
     let code =  ctx.query.code;//获取网页授权code
-    wechat.getAuthToken(code, function(openid) {
+    await wechat.getAuthToken(code, function(openid) {
         await ctx.render('order',{
             code: openid
         });
