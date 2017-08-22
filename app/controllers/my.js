@@ -104,7 +104,7 @@ var getUserInfo = async (ctx, next) => {
                 data = JSON.parse(data);
                 ctx.body = data;
                 console.log(ctx.body,'body,ctx');
-                return await ctx.render('user', {data: ctx.body});
+                return ctx.render('user', {data: ctx.body});
         }); 
         console.log(ctx.body,'啦啦啦啦啦');
 
