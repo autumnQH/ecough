@@ -20,8 +20,8 @@ const config = {
       //port:  '3306',
       name: 'ecough',
       user: 'root',
-      //passwd: 'root',
-      passwd: '450450', 
+      passwd: 'root',
+      //passwd: '450450', 
       conn_limit: 5
     },
 }
