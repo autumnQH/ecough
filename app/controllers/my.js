@@ -96,6 +96,9 @@ var getUserInfo = async (ctx, next) => {
     if(ctx.query.code){
         //ctx.redirect('/my/order');
     }else{
+    ctx.state = {
+        title: 'hello koa2'
+    };
         //let code = ctx.query.code;
         //var data = await tools.getToken(code);
 
