@@ -93,9 +93,15 @@ var getPay = async (ctx, next)=>{
 var getUserInfo = async (ctx, next) => {
     console.log('userinfo');
     //var code = ctx.params.code;
-    if(ctx.query.code){
-        console.log(ctx.query.code);   
+    if(!ctx.query.code){
+        ctx.redirect('/my/order');
     }else{
+        let code = ctx.query.code;
+        console.log(code);
+        var token = await tools.getToken(code);
+        token.then(function(data) {
+            console.log(data)
+        });
         await ctx.render('user', {});     
     }
 };
