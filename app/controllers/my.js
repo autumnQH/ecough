@@ -85,7 +85,7 @@ var getOrder = async (ctx, next) => {
     //         }
     //     });
     // });
-    ctx.render('order',{
+    await ctx.render('order',{
         code: code
     });
 };
