@@ -48,7 +48,13 @@ exports.trade = function() {
 exports.getToken = async function (code) {
     let options = {
         method: 'get',
-        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
+        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code',
+        headers: [
+          {
+            name: 'content-type',
+            value: 'application/x-www-form-urlencoded'
+          }
+        ],        
     };
     console.log(options.url);
     return new Promise(function (resolve, reject){
@@ -65,7 +71,13 @@ exports.getToken = async function (code) {
 exports.getUserInfo = function (AccessToken, openid) {
     let options ={
         method: 'get',
-        url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN'
+        url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN',
+        headers: [
+          {
+            name: 'content-type',
+            value: 'application/x-www-form-urlencoded'
+          }
+        ],
     };
     console.log(options.url);
     return new Promise((resolve, reject)=>{
