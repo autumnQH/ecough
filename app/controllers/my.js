@@ -117,6 +117,7 @@ var getOrder = async (ctx, next) => {
         console.log(r_url);
         ctx.redirect(url);
     }else{
+        console.log('code存在');
         let code = ctx.query.code;
         tools.getToken(code).then(function(data) {
             console.log(data);

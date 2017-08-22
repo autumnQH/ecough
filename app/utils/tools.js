@@ -43,7 +43,7 @@ exports.trade = function() {
   return moment().format('YYYY-MM-DD HH:mm:ss').replace(/\D/g,'')+ Math.floor(Math.random()*100);
 }
 
-exports.getToken = function () {
+exports.getToken = function (code) {
     let options = {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
