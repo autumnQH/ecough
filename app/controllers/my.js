@@ -105,7 +105,7 @@ var getUserInfo = async (ctx, next) => {
                 data = JSON.parse(data);
             });
         }); 
-        return await ctx.render('user', {
+        return ctx.render('user', {
         });            
     }
 };
