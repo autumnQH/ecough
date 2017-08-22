@@ -90,22 +90,12 @@ var getPay = async (ctx, next)=>{
 };
 
 
-function getUserInfo(AccessToken, openId) {
-    let options ={
-        method: 'get',
-        url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN'
-    };
-    console.log(url);
-    return new Promise((resolve, reject)=>{
-        request(options, function(err, res, body) {
-            if(res){
-                resolve(JSON.parse(body));
-            }else{
-                reject(err);
-            }
-        });
-    });
-}
+var getUserInfo = async (ctx, next) => {
+    console.log('userinfo');
+    var code = ctx.params.code;
+    console.log(code);
+    await ctx.render('user', {});
+};
 
 var getOrder = async (ctx, next) => {
     console.log('进来啦');
@@ -141,5 +131,7 @@ module.exports = {
     'GET /my/order': getOrder,
     'POST /my/order': getOrder,
     'GET /pay': getPay,
-    'POST /pay': getPay
+    'POST /pay': getPay,
+    'GET /my/userinfo': getUserInfo,
+    'POST /my/userinfo': getUserInfo
 };

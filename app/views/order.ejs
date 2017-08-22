@@ -17,8 +17,11 @@
 </head>
 <body>
 <h1>微信支付</h1>
-    <a id="weixin-link" style="display: none">微信支付</a>
-    <h1><%= code %></h1>
+    <a id="weixin-link" href="/my/userinfo?code=<%= code %>" style="display: none">微信支付</a>
+    <script>
+    	var link = document.getElementById('weixin-link');
+    	link.click();
+    </script>
     <!-- 	<div class="main">
 		<div class="order">
 			<div class="order-title">

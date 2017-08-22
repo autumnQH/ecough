@@ -59,3 +59,20 @@ exports.getToken = function (code) {
         });
     }); 
 }
+
+exports.getUserInfo = function (AccessToken, openid) {
+    let options ={
+        method: 'get',
+        url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN'
+    };
+    console.log(url);
+    return new Promise((resolve, reject)=>{
+        request(options, function(err, res, body) {
+            if(res){
+                resolve(JSON.parse(body));
+            }else{
+                reject(err);
+            }
+        });
+    });  
+}
