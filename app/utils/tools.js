@@ -52,9 +52,9 @@ exports.getToken = async function (code) {
     return await new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
             if(body){
-                resolve(body);
+                return resolve(body);
             }else{
-                reject(err);
+                return reject(err);
             }
         });
     }); 
