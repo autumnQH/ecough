@@ -101,11 +101,14 @@ var getUserInfo = async (ctx, next) => {
         console.log('data');
         data.then(function(data) {
             data = JSON.parse(data);
-            tools.getUserInfo(data.access_token, data.openid);
-        }).then(function(data) {
-            console.log(data);
-        });
-        await ctx.render('user', {});     
+            tools.getUserInfo(data.access_token, data.openid).then(function(data) {
+                data = JSON.parse(data);
+                console.log(data, 'userinfo-=-=-=-=-=-=');
+                await ctx.render('user', {
+                    data: data
+                });
+            });
+        });     
     }
 };
 
