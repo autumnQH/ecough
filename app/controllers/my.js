@@ -4,6 +4,7 @@ const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
 const config = require('../config/config');
 const tools = require('../utils/tools');
+const urlencode = require('urlencode');
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
