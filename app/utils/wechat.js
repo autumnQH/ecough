@@ -96,7 +96,7 @@ exports.signature = async (jsapi_ticket, url) => {
 exports.getAuthToken = async function(code, cb) {
     console.log(typeof code);
     let options = {
-        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appid +'&code='+ code +'&grant_type=authorization_code'
+        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
     };
 
     request.get(options, function(err, res, body) {
