@@ -49,7 +49,7 @@ exports.getToken = async function (code) {
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
     };
     console.log(url);
-    return await new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
             if(body){
                 return resolve(body);
