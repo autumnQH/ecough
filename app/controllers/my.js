@@ -97,7 +97,9 @@ var getUserInfo = async (ctx, next) => {
     }else{
         let code = ctx.query.code;
         ctx.userinfo = await tools.getToken(code);
+        console.log(typeof ctx.userinfo);
         var data = JSON.parse(ctx.userinfo);
+        console.log(typeof data);
         console.log(data);
         ctx.userinfo = await tools.getUserInfo(data.body.access_token, data.body.openid);
         console.log(ctx.userinfo,'ctx.userinfo');
@@ -112,7 +114,7 @@ var getUserInfo = async (ctx, next) => {
         //     });    
         // }); 
         // console.log(ctx.body,'啦啦啦啦啦');
-    }
+   }
 };
 
 var getOrder = async (ctx, next) => {
@@ -122,7 +124,6 @@ var getOrder = async (ctx, next) => {
         var r_url = 'http://'+ config.server.host +'/my/order';
         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
-        console.log(r_url);
         ctx.redirect(url);
     }else{
         console.log('code存在');
