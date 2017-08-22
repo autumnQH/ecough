@@ -97,6 +97,9 @@ var getUserInfo = async (ctx, next) => {
         ctx.redirect('/my/order');
     }else{
         let code = ctx.query.code;
+        var data = await tools.getToken(code);
+        console.log('data');
+        console.log(data.toString());
         await ctx.render('user', {});     
     }
 };
@@ -113,9 +116,6 @@ var getOrder = async (ctx, next) => {
     }else{
         console.log('code存在');
         let code = ctx.query.code;
-        console.log(code);
-        tools.getToken(code);
-        //console.log(token.toString(),'token---------');
         await ctx.render('order',{
             code: code
         });
