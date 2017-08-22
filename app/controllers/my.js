@@ -99,12 +99,12 @@ var getUserInfo = async (ctx, next) => {
         let code = ctx.query.code;
         var data = tools.getToken(code);
 
-       await data.then(function(data) {
+        data.then(function(data) {
             data = JSON.parse(data);
             tools.getUserInfo(data.access_token, data.openid).then(function(data) {
                 data = JSON.parse(data);
                 console.log(data, 'userinfo-=-=-=-=-=-=');
-                return ctx.render('user', {
+                ctx.render('user', {
                     data: data
                 });
             });
