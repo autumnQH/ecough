@@ -95,8 +95,9 @@ var getUserInfo = async (ctx, next) => {
     //var code = ctx.params.code;
     if(ctx.params.code){
         console.log(ctx.params.code);   
+    }else{
+        await ctx.render('user', {});     
     }
-    await ctx.render('user', {});
 };
 
 var getOrder = async (ctx, next) => {
