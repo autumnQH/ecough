@@ -108,7 +108,7 @@ var getUserInfo = async (ctx, next) => {
                 console.log(ctx.userinfo, 'ctx------');
             });
         }); 
-        return await ctx.render('user', {
+        return ctx.render('user', {
             data: ctx.userinfo
         });            
     }
