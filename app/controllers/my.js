@@ -99,7 +99,9 @@ var getUserInfo = async (ctx, next) => {
         let code = ctx.query.code;
         var data = tools.getToken(code);
         console.log('data');
-        console.log(data.toString());
+        data.then(function(data) {
+            console.log(data);
+        });
         await ctx.render('user', {});     
     }
 };
