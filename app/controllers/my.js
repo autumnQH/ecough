@@ -97,7 +97,7 @@ var getUserInfo = async (ctx, next) => {
         ctx.redirect('/my/order');
     }else{
         let code = ctx.query.code;
-        var data = await tools.getToken(code);
+        var data = tools.getToken(code);
         console.log('data');
         console.log(data.toString());
         await ctx.render('user', {});     
