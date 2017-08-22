@@ -1,4 +1,5 @@
 const moment = require('moment');
+const config = require('../config/config');
 
 //随机串
 exports.createNonceStr = function() {
@@ -48,11 +49,11 @@ exports.getToken = async function (code) {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
     };
-    console.log(url);
-    return new Promise((resolve, reject)=>{
+    console.log(options.url);
+    return new Promise(function (resolve, reject){
         request(options, function(err, res, body) {
             if(body){
-                return resolve(body);
+                resolve(body);
             }else{
                 return reject(err);
             }
