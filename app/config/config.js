@@ -11,7 +11,10 @@ const config = {
         default: "冥冥之中自有缘分！" 
       }
     },
-
+    weixin: {
+      appid: 'wxff24c10734aed1ef',
+      appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d'
+    },
     db: {
       host: 'localhost',
       //port:  '3306',

@@ -49,11 +49,11 @@ var getPlay = async (ctx, next)=>{
 
 var getOrder = async (ctx, next) => {
     let code =  ctx.query.code;//获取网页授权code
-    let sign = await wechat.paySign(config.wx.key)
+    let sign = await wechat.paySign(config.wx.key);
     await wechat.getAuthToken(code, function(openid) {
         let formData = xml.jsonToXml({
             xml: {
-                appid: config.wx.appid, //appId
+                appid: config.weixin.appid, //appId
                 mch_id: config.wx.mchid, //商户号id
                 attach: '支付测试',
                 nonce_str: tools.createRandom(),
