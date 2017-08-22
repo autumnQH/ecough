@@ -25,7 +25,7 @@ const config = {
       conn_limit: 5
     },
     server: {
-      host: 'www.e-cough.com'
+      host: 'www.e-cough.com',
       port: 80
     },
     app: {
