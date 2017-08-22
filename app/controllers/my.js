@@ -96,18 +96,20 @@ var getUserInfo = async (ctx, next) => {
         ctx.redirect('/my/order');
     }else{
         let code = ctx.query.code;
-        var data = tools.getToken(code);
-
-        await data.then(function(data) {
-            data = JSON.parse(data);
-            tools.getUserInfo(data.access_token, data.openid).then(function(data) {
-                data = JSON.parse(data);
-                ctx.body = data;
-                console.log(ctx.body,'body,ctx');
-                return ctx.render('user', {data: ctx.body});
-            });    
-        }); 
-        console.log(ctx.body,'啦啦啦啦啦');
+        ctx.body = await tools.getToken(code);
+        ctx.body = await tools.getUserInfo(ctx.body.access_token, ctx.body.openid);
+        console.log(ctx.body,'ctx.body');
+        await ctx.render('user',{});
+        // data.then(function(data) {
+        //     data = JSON.parse(data);
+        //     tools.getUserInfo(data.access_token, data.openid).then(function(data) {
+        //         data = JSON.parse(data);
+        //         ctx.body = data;
+        //         console.log(ctx.body,'body,ctx');
+        //         return ctx.render('user', {data: ctx.body});
+        //     });    
+        // }); 
+        // console.log(ctx.body,'啦啦啦啦啦');
     }
 };
 

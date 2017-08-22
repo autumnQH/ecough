@@ -26,7 +26,8 @@ const config = {
     },
     server: {
       host: 'www.e-cough.com',
-      port: 80
+//      host: '127.0.0.1',
+      port: 8080
     },
     app: {
       name: "ecough",
