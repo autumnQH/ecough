@@ -90,18 +90,16 @@ var getPay = async (ctx, next)=>{
 
 var getOrder = async (ctx, next) => {
     console.log('进来啦');
-    let code =  ctx.query.code;//获取网页授权code
-    await ctx.render('order',{
-        code: openid
-    });
+    if(ctx.query.code){
+        let code = ctx.query.code;
+        console.log(code,'code');
+    }
+    await ctx.render('order');
 };
 
 
 var postOrder = async(ctx, next) => {
-    console.log('codeode');
-    let code = ctx.params['code'];
-    console.log(code);
-    console.log(msg,'页面授权！！');
+    
 };
 
 module.exports = {

@@ -5,7 +5,7 @@ const config = {
   },
   
   server: {
-    port: 80
+    port: 3000
   },
 
   ecough: {
