@@ -106,9 +106,9 @@ var getUserInfo = async (ctx, next) => {
                 ctx.userinfo = data;
             });
         });             
-
+        console.log(ctx.userinfo,'ctx.userinfo=====');
         return ctx.render('user', {
-            data: ctx.userinfo.data
+            data: ctx.userinfo
         });        
     }
 };
