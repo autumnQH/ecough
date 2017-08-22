@@ -96,11 +96,11 @@ var getUserInfo = async (ctx, next) => {
         ctx.redirect('/my/order');
     }else{
         let code = ctx.query.code;
-        ctx.body = await tools.getToken(code);
-        var data = JSON.parse(ctx.body);
+        ctx.userinfo = await tools.getToken(code);
+        var data = JSON.parse(ctx.userinfo);
         console.log(data);
-        ctx.body = await tools.getUserInfo(data.body.access_token, data.body.openid);
-        console.log(ctx.body,'ctx.body');
+        ctx.userinfo = await tools.getUserInfo(data.body.access_token, data.body.openid);
+        console.log(ctx.userinfo,'ctx.userinfo');
         await ctx.render('user',{});
         // data.then(function(data) {
         //     data = JSON.parse(data);

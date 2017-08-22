@@ -21,7 +21,7 @@ const config = {
       name: 'ecough',
       user: 'root',
       passwd: 'root',
-      //passwd: '450450', 
+//      passwd: '450450', 
       conn_limit: 5
     },
     server: {
