@@ -139,7 +139,7 @@ var getOrder = async (ctx, next) => {
             return data
         }).then(function(data) {
             getUserInfo(data['access_token'], data['openid']).then(function() {
-            await ctx.render('order',{
+            ctx.render('order',{
 
             }); 
             });
