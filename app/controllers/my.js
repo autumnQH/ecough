@@ -100,6 +100,7 @@ function getToken(code) {
     return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
             if(res){
+                console.log(JSON.parse(body));
                 resolve(JSON.parse(body));
             }else{
                 reject(err);
@@ -137,13 +138,7 @@ var getOrder = async (ctx, next) => {
     }else{
         let code = ctx.query.code;
         console.log(code);
-        var ep = new eventproxy();
-        console.log('done');
-        ep.all('getToken', 'getUserInfo', function(getToken, getUserInfo) {
-            console.log(getToken,'getToken');
-            console.log(getUserInfo, 'getUserInfo');
-        });      
-        console.log('没路了');
+        getToken(code);
     }
 
 };
