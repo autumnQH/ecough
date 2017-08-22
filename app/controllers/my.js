@@ -118,7 +118,7 @@ var getOrder = async (ctx, next) => {
             console.log(data);
         });
         //console.log(token.toString(),'token---------');
-        await ctx.render('order',{
+        ctx.render('order',{
             code: code
         });
     }
