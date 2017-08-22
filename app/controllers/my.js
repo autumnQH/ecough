@@ -65,7 +65,7 @@ var getOrder = async (ctx, next) => {
             trade_type: 'JSAPI',
             openid: openid           
         }
-        var sign = await wechat.paySign(xml, config.wx.key);
+        var sign = wechat.paySign(xml, config.wx.key);
         xml.sign = sign;
         console.log(xml);
         var formData = xml.jsonToXml({
