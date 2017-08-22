@@ -53,7 +53,7 @@ exports.getToken = async function (code) {
     return new Promise(function (resolve, reject){
         request(options, function(err, res, body) {
             if(body){
-                resolve(body);
+                return resolve(body);
             }else{
                 return reject(err);
             }
