@@ -91,10 +91,23 @@ var getPay = async (ctx, next)=>{
 
 
 var getUserInfo = async (ctx, next) => {
-    console.log('userinfo'); 
+    console.log('userinfo');
+    if(!ctx.query.code){
+        ctx.redirect('/my/order');
+    }else{
+        let code = ctx.query.code;
+        var data = tools.getToken(code);
+
+        await data.then(function(data) {
+            data = JSON.parse(data);
+            tools.getUserInfo(data.access_token, data.openid).then(function(data) {
+                data = JSON.parse(data);
+                console.log(data);
+            });
+        }); 
         await ctx.render('user', {});
             
-    
+    }
 };
 
 var getOrder = async (ctx, next) => {
