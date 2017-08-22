@@ -90,11 +90,18 @@ var getPay = async (ctx, next)=>{
 
 var getOrder = async (ctx, next) => {
     console.log('进来啦');
-    if(ctx.query.code){
-        let code = ctx.query.code;
-        console.log(code,'code');
+    if(!ctx.query.code){
+        var r_url = 'http://www.e-cough.com/my/order';
+        var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
+        '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+        console.log(r_url);
+        ctx.redirect(r_url);
+    }else{
+        await ctx.render('order',{
+
+        });      
     }
-    await ctx.render('order',{});
+
 };
 
 
