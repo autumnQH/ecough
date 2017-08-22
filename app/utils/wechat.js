@@ -112,17 +112,11 @@ exports.getAuthToken = async function(code, cb) {
     });
 }
 
-exports.paySign = async function(key) {
-    var ret = {
-        appid: config.weixin.appid,
-        mch_id: config.wx.mchid,
-        body: 'Test',
-        nonce_str: tools.createRandom()
-    };
-    var str1 = tools.raw(ret);
+exports.paySign = async function(xml, key) {
+    var str1 = tools.raw(xml);
     str1 += '&key='+ key;
     console.log(str1);
     var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
     console.log('sign',sign);
-    return {sign: sign, nonceStr: ret.nonce_str};
+    return sign
 }

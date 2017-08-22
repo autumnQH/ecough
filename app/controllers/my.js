@@ -49,23 +49,27 @@ var getPlay = async (ctx, next)=>{
 
 var getOrder = async (ctx, next) => {
     let code =  ctx.query.code;//获取网页授权code
-    let data = await wechat.paySign(config.wx.key);
+    console.log(ctx);
     await wechat.getAuthToken(code, function(openid) {
-        let formData = xml.jsonToXml({
-            xml: {
-                appid: config.weixin.appid, //appId
-                body: 'Test', //商品描述
-                mch_id: config.wx.mchid, //商户号id
-                nonce_str: data.nonceStr,
-                sign: data.sign,//签名
-                out_trade_no: tools.trade(),//商户订单号
-                total_fee: '1',//标价金额
-                attach: '支付测试',
-                spbill_create_ip: ctx.header['x-real-ip'],//终端IP
-                notify_url: '/getOrder',
-                trade_type: 'JSAPI',
-                openid: openid
-            }
+        var xml = {
+            appid: config.weixin.appid, //appId
+            mch_id: config.wx.mchid, //商户号id
+            body: 'Test', //商品描述
+            nonce_str: tools.createRandom(),
+            //sign: data.sign,//签名
+            out_trade_no: tools.trade(),//商户订单号
+            total_fee: '1',//标价金额
+            attach: '支付测试',
+            spbill_create_ip: ctx.header['x-real-ip'],//终端IP
+            notify_url: '/getOrder',
+            trade_type: 'JSAPI',
+            openid: openid           
+        }
+        var sign = await wechat.paySign(xml, config.wx.key);
+        xml.sign = sign;
+        console.log(xml);
+        var formData = xml.jsonToXml({
+            xml: xml
         });
         console.log(formData);
         let options = {
