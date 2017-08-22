@@ -51,7 +51,7 @@ var getOrder = async (ctx, next) => {
     let code =  ctx.query.code;//获取网页授权code
     console.log(ctx);
     await wechat.getAuthToken(code, function(openid) {
-        var xml = {
+        var data = {
             appid: config.weixin.appid, //appId
             mch_id: config.wx.mchid, //商户号id
             body: 'Test', //商品描述
@@ -60,16 +60,16 @@ var getOrder = async (ctx, next) => {
             out_trade_no: tools.trade(),//商户订单号
             total_fee: '1',//标价金额
             attach: '支付测试',
-            spbill_create_ip: ctx.header['x-real-ip'],//终端IP
+            spbill_create_ip: ctx.header['x-forwarded-for'],//终端IP
             notify_url: '/getOrder',
             trade_type: 'JSAPI',
             openid: openid           
         }
-        var sign = wechat.paySign(xml, config.wx.key);
-        xml.sign = sign;
-        console.log(xml);
+        var sign = wechat.paySign(data, config.wx.key);
+        data.sign = sign;
+        console.log(data);
         var formData = xml.jsonToXml({
-            xml: xml
+            xml: data
         });
         console.log(formData);
         let options = {
