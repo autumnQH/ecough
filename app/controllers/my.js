@@ -99,7 +99,7 @@ var getOrder = async (ctx, next) => {
         console.log(r_url);
         ctx.redirect(url);
     }else{
-        ctx.render('order',{
+        await ctx.render('order',{
 
         });      
     }
