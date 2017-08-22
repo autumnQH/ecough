@@ -112,6 +112,6 @@ module.exports = {
     'POST /product/100001': getProduct,
     'GET /my/order': getOrder,
     'POST /my/order': postOrder,
-    'GET /pay': getPlay,
-    'POST /pay': getPlay
+    'GET /pay': getPay,
+    'POST /pay': getPay
 };
