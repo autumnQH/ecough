@@ -120,10 +120,8 @@ var getOrder = async (ctx, next) => {
         console.log('code存在');
         let code = ctx.query.code;
         console.log(code);
-        var a = tools.getToken(code);
-        console.log(a);
-        a.then(function(data) {
-            console.log(data);
+        ctx.render('order',{
+            code: code
         });
     }
 
