@@ -100,7 +100,7 @@ var getUserInfo = async (ctx, next) => {
         var data = tools.getToken(code);
         console.log('data');
         data.then(function(data) {
-            console.log(typeof data);
+            data = JSON.parse(data);
             tools.getUserInfo(data.access_token, data.openid);
         }).then(function(data) {
             console.log(data);

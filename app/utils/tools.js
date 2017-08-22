@@ -67,13 +67,13 @@ exports.getUserInfo = function (AccessToken, openid) {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN'
     };
-    console.log(url);
+    console.log(options.url);
     return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
             if(res){
-                resolve(JSON.parse(body));
+                return resolve(body);
             }else{
-                reject(err);
+                return reject(err);
             }
         });
     });  
