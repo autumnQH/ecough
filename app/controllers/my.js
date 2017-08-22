@@ -135,11 +135,16 @@ var getOrder = async (ctx, next) => {
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
-        var user = getToken(code);
-        console.log(user);
-        await ctx.render('order',{
+        getToken(code).then(function(data) {
+            return data
+        }).then(function(data) {
+            getUserInfo(data['access_token'], data['openid']).then(function() {
+            await ctx.render('order',{
 
-        });      
+            }); 
+            });
+        });
+      
     }
 
 };
