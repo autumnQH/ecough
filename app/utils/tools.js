@@ -56,7 +56,7 @@ exports.getToken = async function (code) {
           }
         ],        
     };
-    console.log(options.url);
+
     return new Promise(function (resolve, reject){
         request(options, function(err, res, body) {
             if(body){
@@ -79,7 +79,7 @@ exports.getUserInfo = function (AccessToken, openid) {
           }
         ],
     };
-    console.log(options.url);
+
     return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
             if(res){
