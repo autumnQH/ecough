@@ -106,7 +106,7 @@ exports.getAuthToken = async function(code, cb) {
        if(res && res.statusCode === 200){
         var data = JSON.parse(body);;
         data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-        mysql.add('T_WECHAT_TOKEN_AUTH', data);
+        //mysql.add('T_WECHAT_TOKEN_AUTH', data);
         cb(data.openid);
        }
     });
