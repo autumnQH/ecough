@@ -91,27 +91,10 @@ var getPay = async (ctx, next)=>{
 
 
 var getUserInfo = async (ctx, next) => {
-    console.log('userinfo');
-    //var code = ctx.params.code;
-    if(ctx.query.code){
-        //ctx.redirect('/my/order');
-    }else{
-    ctx.state = {
-        title: 'hello koa2'
-    };
-        //let code = ctx.query.code;
-        //var data = await tools.getToken(code);
-
-        // await data.then(function(data) {
-        //     data = JSON.parse(data);
-        //     tools.getUserInfo(data.access_token, data.openid).then(function(data) {
-        //         data = JSON.parse(data);
-        //         console.log(data);
-        //     });
-        // }); 
+    console.log('userinfo'); 
         await ctx.render('user', {});
             
-    }
+    
 };
 
 var getOrder = async (ctx, next) => {
