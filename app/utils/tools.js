@@ -1,5 +1,6 @@
 const moment = require('moment');
 const config = require('../config/config');
+const request = require('request');
 
 //随机串
 exports.createNonceStr = function() {
