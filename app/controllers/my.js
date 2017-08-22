@@ -92,8 +92,10 @@ var getPay = async (ctx, next)=>{
 
 var getUserInfo = async (ctx, next) => {
     console.log('userinfo');
-    var code = ctx.params.code;
-    console.log(code);
+    //var code = ctx.params.code;
+    if(ctx.params.code){
+        console.log(ctx.params.code);   
+    }
     await ctx.render('user', {});
 };
 
