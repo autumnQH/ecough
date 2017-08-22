@@ -114,7 +114,7 @@ var getOrder = async (ctx, next) => {
         console.log('code存在');
         let code = ctx.query.code;
         console.log(code);
-        await tools.getToken(code);
+        tools.getToken(code);
         //console.log(token.toString(),'token---------');
         await ctx.render('order',{
             code: code
