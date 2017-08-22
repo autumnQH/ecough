@@ -94,7 +94,7 @@ var getOrder = async (ctx, next) => {
         let code = ctx.query.code;
         console.log(code,'code');
     }
-    await ctx.render('order');
+    await ctx.render('order',{});
 };
 
 
