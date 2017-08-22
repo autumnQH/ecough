@@ -49,8 +49,6 @@ var getPlay = async (ctx, next)=>{
 
 var getOrder = async (ctx, next) => {
     let code =  ctx.query.code;//获取网页授权code
-    console.log(ctx);
-    await wechat.getAuthToken(code, function(openid) {
         var data = {
             appid: config.weixin.appid, //appId
             mch_id: config.wx.mchid, //商户号id
@@ -66,9 +64,9 @@ var getOrder = async (ctx, next) => {
             openid: openid           
         };
         var sign = wechat.paySign(data, config.wx.key);
-        console.log( typeof sign);
         data.sign = sign.sign;
         console.log(data);
+    await wechat.getAuthToken(code, function(openid) {
         var formData = xml.jsonToXml({
             xml: data
         });
