@@ -138,6 +138,7 @@ var getOrder = async (ctx, next) => {
         let code = ctx.query.code;
         console.log(code);
         var ep = new eventproxy();
+        console.log('done');
         ep.all('getToken', 'getUserInfo', function(getToken, getUserInfo) {
             console.log(getToken,'getToken');
             console.log(getUserInfo, 'getUserInfo');
