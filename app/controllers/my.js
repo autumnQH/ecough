@@ -67,7 +67,7 @@ var getOrder = async (ctx, next) => {
         };
         var sign = wechat.paySign(data, config.wx.key);
         console.log( typeof sign);
-        data.sign = sign;
+        data.sign = sign.sign;
         console.log(data);
         var formData = xml.jsonToXml({
             xml: data
