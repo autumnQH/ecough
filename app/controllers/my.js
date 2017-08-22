@@ -105,10 +105,9 @@ var getUserInfo = async (ctx, next) => {
                 ctx.body = data;
                 console.log(ctx.body,'body,ctx');
                 return ctx.render('user', {data: ctx.body});
+            });    
         }); 
         console.log(ctx.body,'啦啦啦啦啦');
-
-            
     }
 };
 
