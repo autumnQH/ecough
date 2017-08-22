@@ -5,7 +5,6 @@ const dao = require('../dao/wechat');
 const config = require('../config/config');
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
-const https  = require('https');
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
@@ -137,25 +136,8 @@ var getOrder = async (ctx, next) => {
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
-        let options = {
-            method: 'get',
-            url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
-        };
-        var req = https.get(options, function(res) {
-            console.log("statusCode: ", res.statusCode);
-            //console.log("headers: ", res.headers);
-            var bodyChunks = '';
-            res.on('data', function (chunk) {
-                bodyChunks += chunk;
-            }).on('end', function () {
-                var body = JSON.parse(bodyChunks);
-                if (body) {
-                    console.log(body);
-                } else {
-                    console.dir(body);
-                }
-            });
-        });
+        console.log(typeof getToken(code));
+        getToken(code);
     }
 
 };
