@@ -104,12 +104,10 @@ var getUserInfo = async (ctx, next) => {
                 data = JSON.parse(data);
                 ctx.body = data;
                 console.log(ctx.body,'body,ctx');
-            });
+                return await ctx.render('user', {data: ctx.body});
         }); 
         console.log(ctx.body,'啦啦啦啦啦');
-        await ctx.render('user', {
-            data: ctx.body
-        });
+
             
     }
 };
@@ -118,7 +116,7 @@ var getOrder = async (ctx, next) => {
     console.log('进来啦');
     if(!ctx.query.code){
         console.log('code不存在');
-        var r_url = 'http://www.e-cough.com/my/order';
+        var r_url = 'http://'+ config.server.host +'/my/order';
         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
         console.log(r_url);

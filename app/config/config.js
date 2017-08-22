@@ -24,6 +24,14 @@ const config = {
       //passwd: '450450', 
       conn_limit: 5
     },
+    server: {
+      host: 'www.e-cough.com'
+      port: 80
+    },
+    app: {
+      name: "ecough",
+      version: "1.0",
+    },
 }
 
 module.exports = Object.assign({}, config);
