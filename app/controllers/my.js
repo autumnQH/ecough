@@ -135,6 +135,6 @@ module.exports = {
     'POST /my/order': getOrder,
     'GET /pay': getPay,
     'POST /pay': getPay,
-    'GET /my/userinfo/:code': getUserInfo,
-    'POST /my/userinfo/:code': getUserInfo
+    'GET /my/userinfo': getUserInfo,
+    'POST /my/userinfo': getUserInfo
 };
