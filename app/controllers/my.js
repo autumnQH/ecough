@@ -97,7 +97,9 @@ var getUserInfo = async (ctx, next) => {
     }else{
         let code = ctx.query.code;
         ctx.body = await tools.getToken(code);
-        ctx.body = await tools.getUserInfo(ctx.body.access_token, ctx.body.openid);
+        var data = JSON.parse(ctx.body);
+        console.log(data);
+        ctx.body = await tools.getUserInfo(data.body.access_token, data.body.openid);
         console.log(ctx.body,'ctx.body');
         await ctx.render('user',{});
         // data.then(function(data) {
