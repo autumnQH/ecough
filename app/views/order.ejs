@@ -18,13 +18,9 @@
 </head>
 </head>
 <body>
-    <a id="weixin-link" href="/artist/weixinpay2?orderId=<%= orderId%>&selectSum=<%= selectSum%>&token=<%= token%>&openid=<%= openid%>" style="display: none">微信支付</a>
-
-<script>
-    var link = document.getElementById('weixin-link');
-    link.click();
-</script>
-<!-- 	<div class="main">
+    <a id="weixin-link" href="/apy?orderId=<%= orderId%>&selectSum=<%= selectSum%>&token=<%= token%>&openid=<%= openid%>" style="display: none">微信支付</a>
+    <h1><%= code %></h1>
+    <!-- 	<div class="main">
 		<div class="order">
 			<div class="order-title">
 				<span>交易完成</span>

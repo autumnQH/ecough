@@ -68,31 +68,32 @@ var getProblem= async (ctx, next) => {
     await ctx.render('problem', {});
 };
 
-var getPlay = async (ctx, next)=>{
-    var token = await dao.getActiveAccessToken();
-    var jsapi_ticket =  await dao.getJsapiTicket();
-    var url = ctx.header['x-forwarded-proto']+'://' +ctx.host+ctx.url;
-    var data = await wechat.signature(jsapi_ticket, url);
-    var signature = data.signature;
-
-    await ctx.render('hello',{
-        appId: config.wx.appid,
-        timestamp: data.timestamp,
-        nonceStr: data.nonceStr,
-        signature: signature,
-        random: tools.createRandom(32)
-    });
+var getPay = async (ctx, next)=>{   
+    var order = ctx.params.orderId;
+    var selectSum = ctx.params.selectSum;
+    var token = ctx.params.token;
+    var code = ctx.query.code;
+    if(!code){
+        var r_url = 'http://www.e-cough.com/pay/'+orderId+'/'+selectSum+'/'+token;
+        var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
+        '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+        console.log(r_url);
+        ctx.redirect(r_url); 
+    }else{
+        var code = code;
+        var state = req.query.state;
+        ctx.render('order', {
+            code: code
+        });
+    }
 };
 
 var getOrder = async (ctx, next) => {
     console.log('进来啦');
     let code =  ctx.query.code;//获取网页授权code
-    await wechat.getAuthToken(code, function(openid) {
-        ctx.render('order',{
-            code: openid
-        });
+    ctx.render('order',{
+        code: openid
     });
-
 };
 
 
@@ -111,6 +112,6 @@ module.exports = {
     'POST /product/100001': getProduct,
     'GET /my/order': getOrder,
     'POST /my/order': postOrder,
-    'GET /play': getPlay,
-    'POST /play': getPlay
+    'GET /pay': getPlay,
+    'POST /pay': getPlay
 };
