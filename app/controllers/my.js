@@ -89,6 +89,41 @@ var getPay = async (ctx, next)=>{
     }
 };
 
+//用code 换取token
+function getToken(code) {
+    let options = {
+        method: 'get',
+        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
+    };
+    console.log(url);
+    return new Promise((resolve, reject)=>{
+        request(options, function(err, res, body) {
+            if(res){
+                resolve(JSON.parse(body));
+            }else{
+                reject(err);
+            }
+        });
+    });
+}
+
+function getUserInfo(AccessToken, openId) {
+    let options ={
+        method: 'get',
+        url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN'
+    };
+    console.log(url);
+    return new Promise((resolve, reject)=>{
+        request(options, function(err, res, body) {
+            if(res){
+                resolve(JSON.parse(body));
+            }else{
+                reject(err);
+            }
+        });
+    });
+}
+
 var getOrder = async (ctx, next) => {
     console.log('进来啦');
     if(!ctx.query.code){
@@ -99,6 +134,9 @@ var getOrder = async (ctx, next) => {
         console.log(r_url);
         ctx.redirect(url);
     }else{
+        let code = ctx.query.code;
+        var user = getToken(code);
+        console.log(user);
         await ctx.render('order',{
 
         });      
