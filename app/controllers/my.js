@@ -5,6 +5,7 @@ const dao = require('../dao/wechat');
 const config = require('../config/config');
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
+const ep = require('eventproxy');
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
@@ -135,16 +136,11 @@ var getOrder = async (ctx, next) => {
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
-        getToken(code).then(function(data) {
-            return data
-        }).then(function(data) {
-            getUserInfo(data['access_token'], data['openid']).then(function() {
-            ctx.render('order',{
-
-            }); 
-            });
-        });
-      
+        var ep = new eventproxy();
+        ep.all('getToken', 'getUserInfo', function(getToken, getUserInfo) {
+            console.log(getToken,'getToken');
+            console.log(getUserInfo, 'getUserInfo');
+        });      
     }
 
 };
