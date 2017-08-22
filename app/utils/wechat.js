@@ -116,7 +116,6 @@ exports.paySign = async function(key) {
     var ret = {
         appid: config.weixin.appid,
         mch_id: config.wx.mchid,
-        device_info: 'WEB',
         body: 'Test',
         nonce_str: tools.createRandom()
     };

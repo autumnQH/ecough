@@ -54,13 +54,13 @@ var getOrder = async (ctx, next) => {
         let formData = xml.jsonToXml({
             xml: {
                 appid: config.weixin.appid, //appId
+                body: 'Test', //商品描述
                 mch_id: config.wx.mchid, //商户号id
-                attach: '支付测试',
                 nonce_str: data.nonceStr,
                 sign: data.sign,//签名
-                body: 'JSAPI支付测试', //商品描述
                 out_trade_no: tools.trade(),//商户订单号
                 total_fee: '1',//标价金额
+                attach: '支付测试',
                 spbill_create_ip: ctx.header['x-real-ip'],//终端IP
                 notify_url: '/getOrder',
                 trade_type: 'JSAPI',
