@@ -5,13 +5,13 @@
     <meta charset="utf-8">
 </head>
 <body>
- 		
-    <h1>用户名:</h1>
-    <h1>openid:</h1>
-    <h1>性别:</h1>
-    <h1>国家:</h1>
-    <h1>省: </h1>
-    <h1>城市:</h1>
-    <h1>语言:</h1>
+ 		<img src="<%= userinfo.headimgurl %>" style="width: 100px;height: 100px">
+    <h1>用户名:<%= userinfo.nickname %></h1>
+    <h1>openid:<%= userinfo.openid %></h1>
+    <h1>性别:<%= userinfo.sex %></h1>
+    <h1>国家:<%= userinfo.country %></h1>
+    <h1>省: <%= userinfo.province %></h1>
+    <h1>城市:<%= userinfo.city %></h1>
+    <h1>语言:<%= userinfo.language %></h1>
 </body>
 </html>
