@@ -13,7 +13,8 @@
 <div>
 	<h1>判断当前用户客户端是否支持js接口</h1>
 	<button id="checkjsAPI">checkjsAPI</button>
-	<h1>立即购买</h1>
+
+	<h1>立即支付0.1元</h1>
 	<button id="chooseWXPay">chooseWXPay</button>
 </div>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -30,7 +31,7 @@
 	wx.ready(function() {
 		document.querySelector('#checkjsAPI').onclick = function() {
 			wx.checkJsApi({
-				jsApiList: ['chooseCard', 'openCard'],
+				jsApiList: ['chooseWXPay'],
 				success: function(res) {
 					console.log(typeof res);
 					console.log(res);
@@ -41,12 +42,12 @@
 
 		document.querySelector('#chooseWXPay').onclick = function() {
 			wx.chooseWXPay({
-				appId: '<%= appId%>',
-				timestamp: ''+ (new Date().getTime() / 1000),
-				nonceStr: random,
-				package: '',
-				signType: '',
-				paySign: '',
+				appId: <%= data.appid %>,
+				timeStamp: <%= data.timestamp %>,
+				nonceStr: <%= data.nonceStr %>,
+				package: <%= data.package %>,
+				signType: <%= data.signType %>,
+				paySign: <%= data.paySign %>,
 				success: function(res) {
 					console.log(typeof res);
 					console.log(res);

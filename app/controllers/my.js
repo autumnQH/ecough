@@ -22,43 +22,6 @@ var get_logistics = async (ctx, next) => {
 
 
 var getProduct= async (ctx, next) => {
-    //     var data = {
-    //     appid: config.weixin.appid, //appId
-    //     mch_id: config.wx.mchid, //商户号id
-    //     body: 'Test', //商品描述
-    //     nonce_str: tools.createRandom(),
-    //     //sign: data.sign,//签名
-    //     out_trade_no: tools.trade(),//商户订单号
-    //     total_fee: '1',//标价金额
-    //     attach: '支付测试',
-    //     spbill_create_ip: ctx.header['x-forwarded-for'],//终端IP
-    //     notify_url: '/getOrder',
-    //     trade_type: 'JSAPI',
-    //     openid: openid           
-    // };
-
-    // var sign = wechat.paySign(data, config.wx.key);
-    //     data.sign = sign.sign;
-    // console.log(data);
-    
-    // await wechat.getAuthToken(code, function(openid) {
-    //     var formData = xml.jsonToXml({
-    //         xml: data
-    //     });
-    //     console.log(formData);
-    //     let options = {
-    //         url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-    //         method: 'POST',  
-    //         body: formData
-    //     };
-    //     request.post(options, function(err, res, body) {
-    //         if(err){
-    //             console.log(err, 'err========');
-    //         }else{
-    //             console.log(body, 'body======支付啊日你吗');
-    //         }
-    //     });
-    // });
     await ctx.render('product', {});
 };
 
@@ -70,23 +33,11 @@ var getProblem= async (ctx, next) => {
 };
 
 var getPay = async (ctx, next)=>{   
-    var order = ctx.params.orderId;
-    var selectSum = ctx.params.selectSum;
-    var token = ctx.params.token;
-    var code = ctx.query.code;
-    if(!code){
-        var r_url = 'http://www.e-cough.com/pay/'+orderId+'/'+selectSum+'/'+token;
-        var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
-        '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
-        console.log(r_url);
-        ctx.redirect(r_url); 
-    }else{
-        var code = code;
-        var state = req.query.state;
-        ctx.render('order', {
-            code: code
+
+       await ctx.render('hello', {
+           
         });
-    }
+
 };
 
 
@@ -107,16 +58,6 @@ var getUserInfo = async (ctx, next) => {
         await ctx.render('user',{
             userinfo: userinfo
         });
-        // data.then(function(data) {
-        //     data = JSON.parse(data);
-        //     tools.getUserInfo(data.access_token, data.openid).then(function(data) {
-        //         data = JSON.parse(data);
-        //         ctx.body = data;
-        //         console.log(ctx.body,'body,ctx');
-        //         return ctx.render('user', {data: ctx.body});
-        //     });    
-        // }); 
-        // console.log(ctx.body,'啦啦啦啦啦');
    }
 };
 
@@ -138,9 +79,83 @@ var getOrder = async (ctx, next) => {
 
 };
 
+//统一下单-生成预付单-获取package
+var jsapiPay = async(ctx, next) => {
+    var data = {
+        appid: config.weixin.appid, //appId
+        attach: '支付测试',
+        body: 'Test', //商品描述
+        mch_id: config.wx.mchid, //商户号id
+        nonce_str: tools.createRandom(),
+        out_trade_no: tools.trade(),//商户订单号
+        total_fee: '1',//标价金额
+        spbill_create_ip: '123.12.12.123',//终端IP
+        notify_url: '/notify',
+        trade_type: 'JSAPI',
+        openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4'           
+        //sign: data.sign,//签名
+    };   
+    var key = config.wx.key;
+    var str1 = tools.raw(data);
+    str1 += '&key='+ key;
+    var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();//签名
 
-var postOrder = async(ctx, next) => {
-    
+    data.sign = sign;
+    data = xml.jsonToXml(data);
+
+    var res = await tools.getPackge(data);//发起统一下单
+    var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
+
+    if(result.xml.prepay_id[0]){
+        var prepayid = result.xml.prepay_id[0];
+        //生成支付请求签名
+        var data = {
+            appid: config.weixin.id,
+            timeStamp: tools.createTimestamp(),
+            nonceStr: tools.createRandom(),
+            package: prepayid,
+            signType: 'MD5'
+        };
+
+        var str1 = tools.raw(data);
+        //支付签名
+        var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
+        data.paySign = sign;
+        console.log(data);
+
+        console.log(ctx);
+        //获取js-ticket才能调用微信支付请求
+        //获取js-cicket
+        var jsapi_ticket = dao.getJsApiTicket();
+        var wxfig = {
+            appid: config.weixin.appid,
+            timestamp: tools.createTimestamp(),
+            nonceStr: tools.createRandom()
+        };
+        var str2 = tools.rwa({
+            noncestr: wxfig.nonceStr,
+            jsapi_ticket: jsapi_ticket,
+            timestamp: wxfig.timestamp,
+            url: ''
+        });
+        //JS-SDK使用权限签名
+        var signature = crypto.createHash('sha1').update(shr2, 'utf8').digest('hex').toLowerCase();
+        wxfig.signature = signature;
+
+        await ctx.render('hello', {
+            config: wxcfg,
+            data: data
+        });         
+    }else{
+        await ctx.render('user',{
+            err: '稍后再试'
+        });
+    }
+
+};
+
+var notify = async function(ctx, next) {
+
 };
 
 module.exports = {
@@ -149,10 +164,10 @@ module.exports = {
     'GET /my/logistics': get_logistics,
     'GET /product/100001': getProduct,
     'POST /product/100001': getProduct,
-    'GET /my/order': getOrder,
-    'POST /my/order': getOrder,
     'GET /pay': getPay,
-    'POST /pay': getPay,
+    'POST /notify': notify,
+    'GET /my/order': getOrder,
     'GET /my/userinfo': getUserInfo,
-    'POST /my/userinfo': getUserInfo
+    'GET /my/pay': jsapiPay,
+
 };

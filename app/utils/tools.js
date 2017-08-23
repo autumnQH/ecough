@@ -45,16 +45,14 @@ exports.trade = function() {
   return moment().format('YYYY-MM-DD HH:mm:ss').replace(/\D/g,'')+ Math.floor(Math.random()*100);
 }
 
+//网页授权
 exports.getToken = async function (code) {
     let options = {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code',
-        headers: [
-          {
-            name: 'content-type',
-            value: 'application/x-www-form-urlencoded'
-          }
-        ],        
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }       
     };
 
     return new Promise(function (resolve, reject){
@@ -68,25 +66,45 @@ exports.getToken = async function (code) {
     }); 
 }
 
+//拉取用户信息
 exports.getUserInfo = function (AccessToken, openid) {
     let options ={
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/userinfo?access_token='+ AccessToken+'&openid='+ openid+'&lang=zh_CN',
-        headers: [
-          {
-            name: 'content-type',
-            value: 'application/x-www-form-urlencoded'
-          }
-        ],
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
     };
 
     return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
-            if(res){
+            if(bod){
                 return resolve(body);
             }else{
                 return reject(err);
             }
         });
     });  
+}
+
+//统一下单
+exports.getPackge = function (xml) {
+  let options = {
+    url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    form: xml
+  };
+
+  return new Promise(function(resolve, reject) {
+    request(options, function(err, res, body) {
+      if(body){
+        return resolve(body);
+      }else{
+        return reject(err);
+      }
+    });
+  });
 }

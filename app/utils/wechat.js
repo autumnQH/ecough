@@ -5,6 +5,7 @@ const xml = require("./xml");
 const tools = require('./tools');
 const mysql = require('./mysql');
 const moment = require('moment');
+const dao = require('../dao/wechat');
 
 exports.auth = async (ctx) => {
     let token = config.wx.token;
@@ -77,46 +78,7 @@ exports.getDefaultMessage = (msg, content) => {
         })
 }
 
-//js-sdk签名
-exports.signature = async (jsapi_ticket, url) => {
-    var ret = {
-        jsapi_ticket: jsapi_ticket,
-        nonceStr: tools.createNonceStr(),
-        timestamp: tools.createTimestamp(),
-        url: url
-    };
-    var str = tools.raw(ret);
-
-    var resStr = crypto.createHash('sha1').update(str).digest('hex');
-    console.log( 'resStr: ', resStr);
-    return {signature:resStr, nonceStr: ret.nonceStr, timestamp: ret.timestamp};
-}
-
-//网页授权token
-exports.getAuthToken = async function(code, cb) {
-    console.log(typeof code);
-    let options = {
-        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code'
-    };
-
-    request.get(options, function(err, res, body) {
-        if(err){
-            console.error(err);
-        }
-       if(res && res.statusCode === 200){
-        var data = JSON.parse(body);;
-        data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-        //mysql.add('T_WECHAT_TOKEN_AUTH', data);
-        cb(data.openid);
-       }
-    });
-}
-
-exports.paySign = async function(xml, key) {
-    var str1 = tools.raw(xml);
-    str1 += '&key='+ key;
-    console.log(str1);
-    var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
-    console.log('sign',sign);
-    return {sign: sign}
+exports.getJsApiTicket = () => {
+    console.log(dao.getJsapiTicket(),'wechat获取jsapi');
+    return dao.getJsapiTicket();
 }

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 </head>
 <body>
- 		<img src="<%= userinfo.headimgurl %>" style="width: 100px;height: 100px">
+ 	<img src="<%= userinfo.headimgurl %>" style="width: 100px;height: 100px">
     <h1>用户名:<%= userinfo.nickname %></h1>
     <h1>openid:<%= userinfo.openid %></h1>
     <h1>性别:<%= userinfo.sex %></h1>
@@ -13,5 +13,9 @@
     <h1>省: <%= userinfo.province %></h1>
     <h1>城市:<%= userinfo.city %></h1>
     <h1>语言:<%= userinfo.language %></h1>
+    <% if(err){ %>
+    <h1><%= err %></h1>
+    <% } %>
+    <a href="/my/pay" id="jspay">购买</a>
 </body>
 </html>
