@@ -138,7 +138,7 @@ var jsapiPay = async(ctx, next) => {
             nonceStr: tools.createRandom()
         };
         console.log('url差点错误');
-        var str2 = tools.rwa({
+        var str2 = tools.raw({
             noncestr: wxfig.nonceStr,
             jsapi_ticket: jsapi_ticket,
             timestamp: wxfig.timestamp,
