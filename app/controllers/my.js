@@ -130,7 +130,7 @@ var jsapiPay = async(ctx, next) => {
         var str1 = tools.raw(data2);
             str1 += '&key=' + config.wx.key;
         //支付签名
-        var paySign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
+        var paySign = await crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
         //data2.paySign = sign;
         console.log(data2,'支付签名');
