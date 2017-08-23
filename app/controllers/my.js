@@ -83,6 +83,7 @@ var getOrder = async (ctx, next) => {
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
     console.log('adasdasd');
+    console.log(ctx);
     var data = {
         appid: config.weixin.appid, //appId
         attach: '支付测试',
@@ -103,7 +104,7 @@ var jsapiPay = async(ctx, next) => {
     var str1 = tools.raw(data);
     console.log('这都能卡？');
     str1 += '&key='+ key;
-    var sign = await crypto.createHash('md5').update(str1,'utf8').digest('hex');
+    var sign = await crypto.createHash('md5').update(str1,'utf8').digest('hex').toUpperCase();//签名
     console.log('死那里去了？');
     data.sign = sign;
     data = xml.jsonToXml(data);
@@ -129,7 +130,7 @@ var jsapiPay = async(ctx, next) => {
         var str1 = tools.raw(data2);
             str1 += '&key=' + config.wx.key;
         //支付签名
-        var paySign = crypto.createHash('md5').update(str1, 'utf8').digest('hex');
+        var paySign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
         //data2.paySign = sign;
         console.log(data2,'支付签名');
