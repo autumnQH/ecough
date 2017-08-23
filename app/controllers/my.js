@@ -85,8 +85,9 @@ var jsapiPay = async(ctx, next) => {
 
     var ip = ctx.header['x-forwarded-for'];
     var nonceStr = tools.createRandom();
+    console.log(typeof nonceStr);
     var timeStamp = tools.createTimestamp();
-
+    console.log(typeof timeStamp);
 
     var data = {
         appid: config.weixin.appid, //appId
@@ -106,13 +107,12 @@ var jsapiPay = async(ctx, next) => {
     var key = config.wx.key;
     var str = tools.raw(data);
     str += '&key='+ key;
-    console.log(str);
+
     var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
     data.sign = sign;
     data = xml.jsonToXml(data);
     console.log(data,'统一下单');
     var res = await tools.getPackge(data);//发起统一下单
-    console.log(res,'res');
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log(result,'result');
     if(result.xml.prepay_id[0]){
