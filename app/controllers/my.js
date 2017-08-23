@@ -147,7 +147,7 @@ var jsapiPay = async(ctx, next) => {
         });
 
         //JS-SDK使用权限签名
-        var signature = crypto.createHash('sha1').update(shr2, 'utf8').digest('hex').toLowerCase();
+        var signature = crypto.createHash('sha1').update(str2).digest('hex').toLowerCase();
         wxcfg.signature = signature;
         console.log(wxcfg,'wxcfg');
         await ctx.render('hello', {
