@@ -140,12 +140,12 @@ var jsapiPay = async(ctx, next) => {
 
         var url = 'http://' + ctx.header.host + ctx.url;
         var str2 = tools.raw({
-            noncestr: wxcfg.nonceStr,
+            nonceStr: wxcfg.nonceStr,
             jsapi_ticket: jsapi_ticket,
             timestamp: wxcfg.timestamp,
             url: url
         });
-
+        console.log(str2);
         //JS-SDK使用权限签名
         var signature = crypto.createHash('sha1').update(str2).digest('hex').toLowerCase();
         wxcfg.signature = signature;
