@@ -71,6 +71,11 @@ alert(location.href.split('#')[0]);
 		};
 
 		document.querySelector('#chooseWXPay').onclick = function() {
+			alert('<%= data.timeStamp %>');
+			alert('<%= data.nonceStr %>');
+			alert('<%= data.package %>');
+			alert('<%= data.signType %>');
+			alert('<%= data.paySign %>');
 			wx.chooseWXPay({
 				timeStamp: '<%= data.timeStamp %>',
 				nonceStr: '<%= data.nonceStr %>',
