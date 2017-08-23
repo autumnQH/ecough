@@ -96,8 +96,11 @@ var jsapiPay = async(ctx, next) => {
         openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4'           
         //sign: data.sign,//签名
     };   
+    console.log('什么鬼');
     var key = config.wx.key;
+    console.log('日你');
     var str1 = tools.raw(data);
+    console.log('这都能卡？');
     str1 += '&key='+ key;
     var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();//签名
 
