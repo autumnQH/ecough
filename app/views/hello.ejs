@@ -50,13 +50,16 @@ alert(location.href.split('#')[0]);
 				signType: '<%= data.signType %>',
 				paySign: '<%= data.paySign %>',
 				success: function(res) {
-					alert(res);
+					alert('1');
+					alert(res.toString());
 				},
 				fail: function(res) {
-					alert(res);
+					alert('2');
+					alert(res.toString());
 				},
 				cancel: function(res) {
-					alert(res);
+					alert('3');					
+					alert(res.toString());
 				}
 			});
 		};
