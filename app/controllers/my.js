@@ -111,6 +111,7 @@ var jsapiPay = async(ctx, next) => {
     var res = await tools.getPackge(data);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log('操操操');
+    console.log(result,'统一下单');
     if(result.xml.prepay_id[0]){
         console.log('打桩1');
         var prepayid = result.xml.prepay_id[0];
@@ -149,7 +150,7 @@ var jsapiPay = async(ctx, next) => {
         //JS-SDK使用权限签名
         var signature = crypto.createHash('sha1').update(str2).digest('hex').toLowerCase();
         wxcfg.signature = signature;
-        console.log(wxcfg,'wxcfg');
+        console.log(wxcfg,'支付签名');
         await ctx.render('hello', {
             config: wxcfg,
             data: data

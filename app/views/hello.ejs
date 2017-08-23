@@ -43,7 +43,7 @@ alert(location.href.split('#')[0]);
 
 		document.querySelector('#chooseWXPay').onclick = function() {
 			wx.chooseWXPay({
-				appId: '<%= data.appid %>',
+				appId: '<%= data.appId %>',
 				timeStamp: '<%= data.timestamp %>',
 				nonceStr: '<%= data.nonceStr %>',
 				package: '<%= data.package %>',
