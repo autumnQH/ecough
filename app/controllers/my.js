@@ -131,7 +131,6 @@ var jsapiPay = async(ctx, next) => {
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
-        var jsapi_ticket = await dao.getJsapiTicket();
         var wxcfg = {
             appid: config.weixin.appid,
             timestamp: tools.createTimestamp(),
@@ -162,7 +161,7 @@ var jsapiPay = async(ctx, next) => {
 };
 
 var notify = async function(ctx, next) {
-
+    console.log('通知!');
 };
 
 module.exports = {
@@ -172,6 +171,7 @@ module.exports = {
     'GET /product/100001': getProduct,
     'POST /product/100001': getProduct,
     'GET /pay': getPay,
+    'GET /notify', notify,
     'POST /notify': notify,
     'GET /my/order': getOrder,
     'GET /my/userinfo': getUserInfo,
