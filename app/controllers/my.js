@@ -93,7 +93,7 @@ var jsapiPay = async(ctx, next) => {
         attach: '支付测试',
         body: 'Test', //商品描述
         mch_id: config.wx.mchid, //商户号id
-        nonce_str: nonceStr
+        nonce_str: nonceStr,
         out_trade_no: tools.trade(),//商户订单号
         total_fee: '1',//标价金额
         spbill_create_ip: ip,//终端IP
