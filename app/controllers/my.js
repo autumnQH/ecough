@@ -132,7 +132,7 @@ var jsapiPay = async(ctx, next) => {
         var paySign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
         //data2.paySign = sign;
-        console.log(data,'支付签名');
+        console.log(data2,'支付签名');
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
