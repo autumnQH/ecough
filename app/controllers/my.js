@@ -142,8 +142,10 @@ var jsapiPay = async(ctx, next) => {
             noncestr: wxfig.nonceStr,
             jsapi_ticket: jsapi_ticket,
             timestamp: wxfig.timestamp,
-            url: ''
+            url: ctx.req.path
         });
+        console.log(str2.url);
+        console.log(typeof str2.url);
         //JS-SDK使用权限签名
         var signature = crypto.createHash('sha1').update(shr2, 'utf8').digest('hex').toLowerCase();
         wxfig.signature = signature;
