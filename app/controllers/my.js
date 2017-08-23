@@ -103,7 +103,7 @@ var jsapiPay = async(ctx, next) => {
     console.log('这都能卡？');
     str1 += '&key='+ key;
     var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();//签名
-
+    console.log('死那里去了？');
     data.sign = sign;
     data = xml.jsonToXml(data);
     console.log('日日啊啊');
