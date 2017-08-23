@@ -127,6 +127,7 @@ var jsapiPay = async(ctx, next) => {
         };
 
         var str1 = tools.raw(data);
+            str1 += '&key=' + config.wx.key;
         //支付签名
         var sign = crypto.createHash('md5').update(str1).digest('hex').toUpperCase();
         data.paySign = sign;
