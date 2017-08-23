@@ -118,7 +118,7 @@ var jsapiPay = async(ctx, next) => {
         console.log('打桩1');
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
-        var data = {
+        var data2 = {
             appId: config.weixin.appid,
             timeStamp: tools.createTimestamp(),
             nonceStr: tools.createRandom(),
@@ -126,11 +126,12 @@ var jsapiPay = async(ctx, next) => {
             signType: 'MD5'
         };
 
-        var str1 = tools.raw(data);
+        var str1 = tools.raw(data2);
             str1 += '&key=' + config.wx.key;
         //支付签名
-        var sign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
-        data.paySign = sign;
+        var paySign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
+        //data2.paySign = paySign;
+        data2.paySign = sign;
         console.log(data,'支付签名');
 
         //获取js-ticket才能调用微信支付请求
@@ -151,9 +152,8 @@ var jsapiPay = async(ctx, next) => {
         });
 
         //JS-SDK使用权限签名
-        var signature = crypto.createHash('sha1').update(str2).digest('hex').toLowerCase();
-        //wxcfg.signature = signature;
-        wxcfg.signature = sign;
+        var signature = crypto.createHash('sha1').update(str2, 'utf8').digest('hex').toLowerCase();
+        wxcfg.signature = signature;
 
         await ctx.render('hello', {
             config: wxcfg,
