@@ -82,8 +82,7 @@ var getOrder = async (ctx, next) => {
 
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
-    console.log('adasdasd');
-    console.log(typeof ctx.header['x-forwarded-for']);
+
     var ip = ctx.header['x-forwarded-for'];
     var data = {
         appid: config.weixin.appid, //appId
@@ -99,26 +98,18 @@ var jsapiPay = async(ctx, next) => {
         openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4'           
         //sign: data.sign,//签名
     };   
-    console.log('什么鬼');
+
     var key = config.wx.key;
-    console.log('日你');
     var str = tools.raw(data);
-    console.log('这都能卡？');
     str += '&key='+ key;
-    console.log(str);
     var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
-    console.log('死那里去了？');
     data.sign = sign;
     data = xml.jsonToXml(data);
     console.log(data,'统一下单');
-    console.log('日日啊啊');
     var res = await tools.getPackge(data);//发起统一下单
-
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    console.log('操操操');
 
     if(result.xml.prepay_id[0]){
-        console.log('打桩1');
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
         var data2 = {
@@ -149,7 +140,7 @@ var jsapiPay = async(ctx, next) => {
 
         var url = 'http://' + ctx.header.host + ctx.url;
         var str2 = tools.raw({
-            nonceStr: wxcfg.nonceStr,
+            noncestr: wxcfg.nonceStr,
             jsapi_ticket: jsapi_ticket,
             timestamp: wxcfg.timestamp,
             url: url
