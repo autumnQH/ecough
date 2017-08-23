@@ -122,7 +122,7 @@ var jsapiPay = async(ctx, next) => {
             appId: config.weixin.appid,
             timeStamp: tools.createTimestamp(),
             nonceStr: tools.createRandom(),
-            package: prepayid,
+            package: 'prepay_id='+prepayid,
             signType: 'MD5'
         };
 
@@ -130,8 +130,8 @@ var jsapiPay = async(ctx, next) => {
             str1 += '&key=' + config.wx.key;
         //支付签名
         var paySign = crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
-        //data2.paySign = paySign;
-        data2.paySign = sign;
+        data2.paySign = paySign;
+        //data2.paySign = sign;
         console.log(data,'支付签名');
 
         //获取js-ticket才能调用微信支付请求
