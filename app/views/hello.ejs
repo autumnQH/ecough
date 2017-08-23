@@ -19,50 +19,79 @@
 </div>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
-alert(location.href.split('#')[0]);
-	wx.config({
-		debug: false,
-		appId: '<%= config.appid %>',
-		timestamp: '<%= config.timestamp %>',
-		nonceStr: '<%= config.nonceStr %>',
-		signature: '<%= config.signature %>',
-		jsApiList: ['chooseWXPay']
-
-	});
-	wx.ready(function() {
-		document.querySelector('#checkjsAPI').onclick = function() {
-			wx.checkJsApi({
-				jsApiList: ['chooseWXPay'],
-				success: function(res) {
-					console.log(typeof res);
-					console.log(res);
-					console.log(res.checkResult);
-				}
+	function jsApiCall() {
+		WeixinJSBridge.invoke(
+			'getBrandWCPayRequest',{
+				"appId": "<%= config.appid %>",
+				"timeStamp": "<%= config.timestamp %>",
+				"nonceStr": "<%= config.nonceStr %>",
+				"package": "<%= data.package %>",
+				"signType": "<%= data.signType %>",
+				"paySign": "<%= data.paySign %>"
+			},function(res) {
+				WeixinJSBridge.log(res.err_msg);
+				alert(res.err_code);
 			});
-		};
+	}
 
-		document.querySelector('#chooseWXPay').onclick = function() {
-			wx.chooseWXPay({
-				timeStamp: '<%= data.timestamp %>',
-				nonceStr: '<%= data.nonceStr %>',
-				package: '<%= data.package %>',
-				signType: '<%= data.signType %>',
-				paySign: '<%= data.paySign %>',
-				success: function(res) {
-					alert('1');
-					alert(res.toString());
-				},
-				fail: function(res) {
-					alert('2');
-					alert(res.errMsg);
-				},
-				cancel: function(res) {
-					alert('3');					
-					alert(res.toString());
-				}
-			});
-		};
-	});
+	function callpay() {
+		if(typeof WeixinJSBridge == 'undefined'){
+			if(document.addEventListener){
+				document.addEventListener('WeixinJSBridge', jsApiCall, false);
+			}else if(document.attachEvent) {
+				document.attachEvent('WeixinJSBridge', jsApiCall);
+				document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+			}else{
+				jsApiCall();
+			}
+		}
+	}
+</script>
+<script>
+// alert(location.href.split('#')[0]);
+// 	wx.config({
+// 		debug: false,
+// 		appId: '<%= config.appid %>',
+// 		timestamp: '<%= config.timestamp %>',
+// 		nonceStr: '<%= config.nonceStr %>',
+// 		signature: '<%= config.signature %>',
+// 		jsApiList: ['chooseWXPay']
+
+// 	});
+// 	wx.ready(function() {
+// 		document.querySelector('#checkjsAPI').onclick = function() {
+// 			wx.checkJsApi({
+// 				jsApiList: ['chooseWXPay'],
+// 				success: function(res) {
+// 					console.log(typeof res);
+// 					console.log(res);
+// 					console.log(res.checkResult);
+// 				}
+// 			});
+// 		};
+
+// 		document.querySelector('#chooseWXPay').onclick = function() {
+// 			wx.chooseWXPay({
+// 				timeStamp: '<%= data.timestamp %>',
+// 				nonceStr: '<%= data.nonceStr %>',
+// 				package: '<%= data.package %>',
+// 				signType: '<%= data.signType %>',
+// 				paySign: '<%= data.paySign %>',
+// 				success: function(res) {
+// 					alert('1');
+// 					alert(res.toString());
+// 				},
+// 				fail: function(res) {
+// 					alert('2');
+// 					alert(res.errMsg);
+// 				},
+// 				cancel: function(res) {
+// 					alert('3');					
+// 					alert(res.toString());
+// 				}
+// 			});
+// 		};
+// 	});
 </script>
 </body>
 </html>

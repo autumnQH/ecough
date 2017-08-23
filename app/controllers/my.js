@@ -138,8 +138,8 @@ var jsapiPay = async(ctx, next) => {
         var jsapi_ticket = await dao.getJsapiTicket();
         var wxcfg = {
             appid: config.weixin.appid,
-            timestamp: tools.createTimestamp(),
-            nonceStr: tools.createRandom()
+            timestamp: timeStamp,
+            nonceStr: nonceStr
         };
 
         var url = 'http://' + ctx.header.host + ctx.url;
@@ -156,7 +156,7 @@ var jsapiPay = async(ctx, next) => {
 
         await ctx.render('hello', {
             config: wxcfg,
-            data: data
+            data: data2
         });         
     }else{
         console.log('打桩2');
