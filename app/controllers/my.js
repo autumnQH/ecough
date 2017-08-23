@@ -107,9 +107,10 @@ var jsapiPay = async(ctx, next) => {
     console.log('死那里去了？');
     data.sign = sign;
     data = xml.jsonToXml(data);
+    console.log(data,'统一下单');
     console.log('日日啊啊');
     var res = await tools.getPackge(data);//发起统一下单
-    console.log(res,'统一下单');
+
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log('操操操');
 
