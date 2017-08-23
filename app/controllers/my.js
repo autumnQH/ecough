@@ -116,7 +116,7 @@ var jsapiPay = async(ctx, next) => {
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
         var data = {
-            appid: config.weixin.appid,
+            appId: config.weixin.appid,
             timeStamp: tools.createTimestamp(),
             nonceStr: tools.createRandom(),
             package: prepayid,
