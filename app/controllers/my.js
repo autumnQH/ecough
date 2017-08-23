@@ -92,7 +92,7 @@ var jsapiPay = async(ctx, next) => {
         nonce_str: tools.createRandom(),
         out_trade_no: tools.trade(),//商户订单号
         total_fee: '1',//标价金额
-        spbill_create_ip: ctx.header['x-forwarded-for'],//终端IP
+        spbill_create_ip: '47.93.245.51',//终端IP
         notify_url: '/notify',
         trade_type: 'JSAPI',
         openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4'           
