@@ -103,11 +103,12 @@ var jsapiPay = async(ctx, next) => {
 
     data.sign = sign;
     data = xml.jsonToXml(data);
-
+    console.log('日日啊啊');
     var res = await tools.getPackge(data);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-
+    console.log('操操操');
     if(result.xml.prepay_id[0]){
+        console.log('打桩1');
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
         var data = {
@@ -148,6 +149,7 @@ var jsapiPay = async(ctx, next) => {
             data: data
         });         
     }else{
+        console.log('打桩2');
         await ctx.redirect('back');
     }
 
