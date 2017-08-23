@@ -111,8 +111,9 @@ var jsapiPay = async(ctx, next) => {
     data = xml.jsonToXml(data);
     console.log(data,'统一下单');
     var res = await tools.getPackge(data);//发起统一下单
+    console.log(res,'res');
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    config.log(result,'result');
+    console.log(result,'result');
     if(result.xml.prepay_id[0]){
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
@@ -160,7 +161,7 @@ var jsapiPay = async(ctx, next) => {
         });         
     }else{
         console.log('打桩2');
-        await ctx.redirect('back');
+        await ctx.redirect('/my/order');
     }
 
 };
