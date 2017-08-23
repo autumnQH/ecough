@@ -116,7 +116,7 @@ var jsapiPay = async(ctx, next) => {
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
         var data = {
-            appid: config.weixin.id,
+            appid: config.weixin.appid,
             timeStamp: tools.createTimestamp(),
             nonceStr: tools.createRandom(),
             package: prepayid,
@@ -131,7 +131,7 @@ var jsapiPay = async(ctx, next) => {
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
-        var jsapi_ticket = dao.getJsApiTicket();
+        var jsapi_ticket = dao.getJsapiTicket();
         var wxfig = {
             appid: config.weixin.appid,
             timestamp: tools.createTimestamp(),
