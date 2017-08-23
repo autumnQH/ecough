@@ -132,23 +132,26 @@ var jsapiPay = async(ctx, next) => {
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
         var jsapi_ticket = dao.getJsapiTicket();
-        var wxfig = {
+        var wxcfg = {
             appid: config.weixin.appid,
             timestamp: tools.createTimestamp(),
             nonceStr: tools.createRandom()
         };
+
         console.log('url差点错误');
+        var url = 'http://' + ctx.header.host + ctx.url;
+        console.log(url);
+        console.log(typeof url);
         var str2 = tools.raw({
-            noncestr: wxfig.nonceStr,
+            noncestr: wxcfg.nonceStr,
             jsapi_ticket: jsapi_ticket,
-            timestamp: wxfig.timestamp,
-            url: 'http://' + ctx.header.host + ctx.url
+            timestamp: wxcfg.timestamp,
+            url: url
         });
-        console.log(str2.url);
-        console.log(typeof str2.url);
+
         //JS-SDK使用权限签名
         var signature = crypto.createHash('sha1').update(shr2, 'utf8').digest('hex').toLowerCase();
-        wxfig.signature = signature;
+        wxcfg.signature = signature;
 
         await ctx.render('hello', {
             config: wxcfg,
