@@ -171,7 +171,7 @@ module.exports = {
     'GET /product/100001': getProduct,
     'POST /product/100001': getProduct,
     'GET /pay': getPay,
-    'GET /notify', notify,
+    'GET /notify': notify,
     'POST /notify': notify,
     'GET /my/order': getOrder,
     'GET /my/userinfo': getUserInfo,
