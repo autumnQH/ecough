@@ -106,6 +106,7 @@ var jsapiPay = async(ctx, next) => {
     var key = config.wx.key;
     var str = tools.raw(data);
     str += '&key='+ key;
+    console.log(str);
     var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
     data.sign = sign;
     data = xml.jsonToXml(data);
@@ -161,7 +162,7 @@ var jsapiPay = async(ctx, next) => {
         });         
     }else{
         console.log('打桩2');
-        await ctx.redirect('/my/order');
+        ctx.redirect('/my/order');
     }
 
 };
