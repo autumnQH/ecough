@@ -78,7 +78,7 @@ exports.getUserInfo = function (AccessToken, openid) {
 
     return new Promise((resolve, reject)=>{
         request(options, function(err, res, body) {
-            if(bod){
+            if(body){
                 return resolve(body);
             }else{
                 return reject(err);
