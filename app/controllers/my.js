@@ -106,7 +106,7 @@ var jsapiPay = async(ctx, next) => {
     var key = config.wx.key;
     var str = tools.raw(data);
     str += '&key='+ key;
-    var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex');//签名
+    var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
     data.sign = sign;
     data = xml.jsonToXml(data);
     console.log(data,'统一下单');
@@ -128,7 +128,7 @@ var jsapiPay = async(ctx, next) => {
             str1 += '&key=' + config.wx.key;
         //支付签名
         console.log(str1);
-        var paySign = await crypto.createHash('md5').update(str1, 'utf8').digest('hex');
+        var paySign = await crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
         //data2.paySign = sign;
         console.log(data2,'支付签名');
