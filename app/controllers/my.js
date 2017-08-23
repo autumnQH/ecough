@@ -142,7 +142,7 @@ var jsapiPay = async(ctx, next) => {
             noncestr: wxfig.nonceStr,
             jsapi_ticket: jsapi_ticket,
             timestamp: wxfig.timestamp,
-            url: ctx.path
+            url: 'http://' + ctx.header.host + ctx.url
         });
         console.log(str2.url);
         console.log(typeof str2.url);
