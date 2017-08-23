@@ -21,10 +21,10 @@
 <script>
 	wx.config({
 		debug: true,
-		appId: '<%= appId %>',
-		timestamp: '<%= timestamp %>',
-		nonceStr: '<%= nonceStr %>',
-		signature: '<%= signature %>',
+		appId: '<%= config.appid %>',
+		timestamp: '<%= config.timestamp %>',
+		nonceStr: '<%= config.nonceStr %>',
+		signature: '<%= config.signature %>',
 		jsApiList: ['chooseWXPay']
 
 	});
@@ -42,12 +42,12 @@
 
 		document.querySelector('#chooseWXPay').onclick = function() {
 			wx.chooseWXPay({
-				appId: <%= data.appid %>,
-				timeStamp: <%= data.timestamp %>,
-				nonceStr: <%= data.nonceStr %>,
-				package: <%= data.package %>,
-				signType: <%= data.signType %>,
-				paySign: <%= data.paySign %>,
+				appId: '<%= data.appid %>',
+				timeStamp: '<%= data.timestamp %>',
+				nonceStr: '<%= data.nonceStr %>',
+				package: '<%= data.package %>',
+				signType: '<%= data.signType %>',
+				paySign: '<%= data.paySign %>',
 				success: function(res) {
 					console.log(typeof res);
 					console.log(res);

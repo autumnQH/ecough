@@ -138,10 +138,7 @@ var jsapiPay = async(ctx, next) => {
             nonceStr: tools.createRandom()
         };
 
-        console.log('url差点错误');
         var url = 'http://' + ctx.header.host + ctx.url;
-        console.log(url);
-        console.log(typeof url);
         var str2 = tools.raw({
             noncestr: wxcfg.nonceStr,
             jsapi_ticket: jsapi_ticket,
@@ -152,7 +149,7 @@ var jsapiPay = async(ctx, next) => {
         //JS-SDK使用权限签名
         var signature = crypto.createHash('sha1').update(shr2, 'utf8').digest('hex').toLowerCase();
         wxcfg.signature = signature;
-
+        console.log(wxcfg,'wxcfg');
         await ctx.render('hello', {
             config: wxcfg,
             data: data
