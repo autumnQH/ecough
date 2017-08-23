@@ -83,7 +83,7 @@ var getOrder = async (ctx, next) => {
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
     console.log('adasdasd');
-    console.log(ctx);
+    console.log(ctx.header['x-forwarded-for']);
     var data = {
         appid: config.weixin.appid, //appId
         attach: '支付测试',
