@@ -129,7 +129,6 @@ var jsapiPay = async(ctx, next) => {
         data.paySign = sign;
         console.log(data);
 
-        console.log(ctx);
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
         var jsapi_ticket = dao.getJsApiTicket();
@@ -138,11 +137,12 @@ var jsapiPay = async(ctx, next) => {
             timestamp: tools.createTimestamp(),
             nonceStr: tools.createRandom()
         };
+        console.log('url差点错误');
         var str2 = tools.rwa({
             noncestr: wxfig.nonceStr,
             jsapi_ticket: jsapi_ticket,
             timestamp: wxfig.timestamp,
-            url: ctx.req.path
+            url: ctx.path
         });
         console.log(str2.url);
         console.log(typeof str2.url);
