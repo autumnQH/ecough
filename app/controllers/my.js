@@ -109,9 +109,10 @@ var jsapiPay = async(ctx, next) => {
     data = xml.jsonToXml(data);
     console.log('日日啊啊');
     var res = await tools.getPackge(data);//发起统一下单
+    console.log(res,'统一下单');
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log('操操操');
-    console.log(result,'统一下单');
+
     if(result.xml.prepay_id[0]){
         console.log('打桩1');
         var prepayid = result.xml.prepay_id[0];
