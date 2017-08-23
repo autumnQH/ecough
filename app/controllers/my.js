@@ -81,6 +81,7 @@ var getOrder = async (ctx, next) => {
 
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
+    console.log('adasdasd');
     var data = {
         appid: config.weixin.appid, //appId
         attach: '支付测试',
@@ -147,9 +148,7 @@ var jsapiPay = async(ctx, next) => {
             data: data
         });         
     }else{
-        await ctx.render('user',{
-            err: '稍后再试'
-        });
+        await ctx.redirect('back');
     }
 
 };
