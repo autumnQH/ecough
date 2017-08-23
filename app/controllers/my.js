@@ -128,7 +128,7 @@ var jsapiPay = async(ctx, next) => {
         //支付签名
         var sign = crypto.createHash('md5').update(str1).digest('hex').toUpperCase();
         data.paySign = sign;
-        console.log(data);
+        console.log(data,'支付签名');
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
@@ -146,11 +146,12 @@ var jsapiPay = async(ctx, next) => {
             timestamp: wxcfg.timestamp,
             url: url
         });
-        console.log(str2);
+
         //JS-SDK使用权限签名
         var signature = crypto.createHash('sha1').update(str2).digest('hex').toLowerCase();
         wxcfg.signature = signature;
-        console.log(wxcfg,'支付签名');
+
+
         await ctx.render('hello', {
             config: wxcfg,
             data: data
