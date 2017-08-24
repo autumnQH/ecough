@@ -44,6 +44,9 @@ var getPay = async (ctx, next)=>{
 
 var getUserInfo = async (ctx, next) => {
     console.log('userinfo');
+    if(ctx.userinfo){
+        console.log(ctx.userinfo);        
+    }
     if(!ctx.query.code && !ctx.userinfo.openid){
         ctx.redirect('/my/order');
     }else{
