@@ -154,6 +154,12 @@ var notify = async function(ctx, next) {
     console.log('通知哦');
 };
 
+var getOrder = async function(ctx, next) {
+    await ctx.render('order', {
+        
+    });
+}
+
 module.exports = {
 	'GET /my/address': getAddress,
     'GET /my/problem': getProblem,
@@ -164,5 +170,6 @@ module.exports = {
     'POST /notify': notify,
     'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay,
+    'GET /my/order': getOrder
 
 };

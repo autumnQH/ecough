@@ -2,18 +2,13 @@
   "button":[  
     {  
       "type":"view",  
-      "name":"产品订购",
+      "name":"我的信息",
       "url":"http://www.e-cough.com/my/userinfo"
     },
     {  
       "type":"view",  
-      "name":"产品订购-确认授权",
-      "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxff24c10734aed1ef&redirect_uri=http://www.e-cough.com/my/userinfo&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
-    },
-    {  
-      "type":"view",  
-      "name":"产品订购-静默授权",
-      "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxff24c10734aed1ef&redirect_uri=http://www.e-cough.com/my/userinfo&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
+      "name":"产品订购",
+      "url":"http://www.e-cough.com/product/100001"
     } 
   ]  
 }
