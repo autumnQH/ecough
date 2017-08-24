@@ -1,6 +1,4 @@
 const db = require("../utils/mysql");
-const request = require('request');
-const config = require('../config/config');
 
 var getActiveAccessToken = async () => {    
 	var result = await db.findOne("SELECT * FROM wechat ORDER BY CREATE_TIME DESC LIMIT 1");

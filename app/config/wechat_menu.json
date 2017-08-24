@@ -2,12 +2,12 @@
   "button":[  
     {  
       "type":"view",  
-      "name":"我的信息",
+      "name":"我的信息1",
       "url":"http://www.e-cough.com/my/userinfo"
     },
     {  
       "type":"view",  
-      "name":"产品订购",
+      "name":"产品订购1",
       "url":"http://www.e-cough.com/product/100001"
     } 
   ]  

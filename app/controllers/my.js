@@ -37,7 +37,8 @@ var getProblem= async (ctx, next) => {
 var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
     var r_url = 'http://'+ config.server.host +'/my/userinfo';
-    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
+
+    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
     if(!ctx.query.code && !ctx.userinfo){
         console.log('code不存在');
@@ -75,7 +76,7 @@ var jsapiPay = async(ctx, next) => {
 
 
     var data = {
-        appid: config.weixin.appid, //appId
+        appid: config.wx.appid, //appId
         attach: '支付测试',
         body: 'Test', //商品描述
         mch_id: config.wx.mchid, //商户号id
@@ -104,7 +105,7 @@ var jsapiPay = async(ctx, next) => {
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名
         var data2 = {
-            appId: config.weixin.appid,
+            appId: config.wx.appid,
             timeStamp: timeStamp,
             nonceStr: nonceStr,
             package: 'prepay_id='+prepayid,
@@ -123,7 +124,7 @@ var jsapiPay = async(ctx, next) => {
         //获取js-cicket
         var jsapi_ticket = await dao.getJsapiTicket();
         var wxcfg = {
-            appid: config.weixin.appid,
+            appid: config.wx.appid,
             timestamp: timeStamp,
             nonceStr: nonceStr
         };
@@ -156,7 +157,7 @@ var notify = async function(ctx, next) {
 
 var getOrder = async function(ctx, next) {
     await ctx.render('order', {
-        
+
     });
 }
 
