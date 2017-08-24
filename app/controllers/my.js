@@ -42,29 +42,29 @@ var getPay = async (ctx, next)=>{
 };
 
 
-var getUserInfo = async (ctx, next) => {
-    console.log('userinfo');
-    if(ctx.userinfo){
-        console.log(ctx.userinfo);        
-    }
-    if(!ctx.query.code && !ctx.userinfo.openid){
-        ctx.redirect('/my/order');
-    }else{
-        let code = ctx.query.code;
-        ctx.userinfo = await tools.getToken(code);
-        var data = JSON.parse(ctx.userinfo);
+// var getUserInfo = async (ctx, next) => {
+//     console.log('userinfo');
+//     if(ctx.userinfo){
+//         console.log(ctx.userinfo);        
+//     }
+//     if(!ctx.query.code && !ctx.userinfo.openid){
+//         ctx.redirect('/my/order');
+//     }else{
+//         let code = ctx.query.code;
+//         ctx.userinfo = await tools.getToken(code);
+//         var data = JSON.parse(ctx.userinfo);
         
-        console.log(data,'data=====');
-        ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
-        var userinfo = JSON.parse(ctx.userinfo);
-        console.log(ctx.userinfo,'ctx.userinfo');
-        await ctx.render('user',{
-            userinfo: userinfo
-        });
-   }
-};
+//         console.log(data,'data=====');
+//         ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
+//         var userinfo = JSON.parse(ctx.userinfo);
+//         console.log(ctx.userinfo,'ctx.userinfo');
+//         await ctx.render('user',{
+//             userinfo: userinfo
+//         });
+//    }
+// };
 
-var getOrder = async (ctx, next) => {
+var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
     if(!ctx.query.code){
         console.log('code不存在');
