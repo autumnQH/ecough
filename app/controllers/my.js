@@ -68,15 +68,25 @@ var getOrder = async (ctx, next) => {
     console.log('进来啦');
     if(!ctx.query.code){
         console.log('code不存在');
-        var r_url = 'http://'+ config.server.host +'/my/order';
+        var r_url = 'http://'+ config.server.host +'/my/userinfo';
         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
         ctx.redirect(url);
-    }else{
+    }else if(!ctx.userinfo){
         console.log('code存在');
         let code = ctx.query.code;
-        await ctx.render('order',{
-            code: code
+        ctx.userinfo = await tools.getToken(code);
+        var data = JSON.parse(ctx.userinfo);
+        console.log(data,':::data');
+
+        ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
+        ctx.userinfo = JSON.parse(ctx.userinfo);
+        await ctx.render('user',{
+            userinfo: ctx.userinfo
+        });
+    }else{
+        await ctx.render('user', {
+            userinfo: ctx.userinfo
         });
     }
 
