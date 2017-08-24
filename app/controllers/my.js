@@ -44,14 +44,13 @@ var getPay = async (ctx, next)=>{
 
 var getUserInfo = async (ctx, next) => {
     console.log('userinfo');
-    if(!ctx.query.code && ctx.userinfo){
+    if(!ctx.query.code && !ctx.userinfo.openid){
         ctx.redirect('/my/order');
     }else{
         let code = ctx.query.code;
         ctx.userinfo = await tools.getToken(code);
-        console.log(ctx.session.userinfo);
         var data = JSON.parse(ctx.userinfo);
-        console.log(typeof data,'data22');
+        
         console.log(data,'data=====');
         ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
         var userinfo = JSON.parse(ctx.userinfo);
