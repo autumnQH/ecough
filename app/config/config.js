@@ -2,7 +2,7 @@ const config = {
     wx: {
 //正式
       appid: 'wxff24c10734aed1ef',
-      appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d'
+      appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d',
 //测试
 //      appid: 'wxc25f48089fba29f3',
 //      appSecret: '328f39d113a5e31d58b0fb20cdccb4c7',
