@@ -85,6 +85,7 @@ var getOrder = async (ctx, next) => {
             userinfo: ctx.userinfo
         });
     }else{
+        console.log(ctx.userinfo,'else===');
         await ctx.render('user', {
             userinfo: ctx.userinfo
         });
