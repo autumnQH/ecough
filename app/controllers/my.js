@@ -33,36 +33,6 @@ var getProblem= async (ctx, next) => {
     await ctx.render('problem', {});
 };
 
-var getPay = async (ctx, next)=>{   
-
-       await ctx.render('hello', {
-           
-        });
-
-};
-
-
-// var getUserInfo = async (ctx, next) => {
-//     console.log('userinfo');
-//     if(ctx.userinfo){
-//         console.log(ctx.userinfo);        
-//     }
-//     if(!ctx.query.code && !ctx.userinfo.openid){
-//         ctx.redirect('/my/order');
-//     }else{
-//         let code = ctx.query.code;
-//         ctx.userinfo = await tools.getToken(code);
-//         var data = JSON.parse(ctx.userinfo);
-        
-//         console.log(data,'data=====');
-//         ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
-//         var userinfo = JSON.parse(ctx.userinfo);
-//         console.log(ctx.userinfo,'ctx.userinfo');
-//         await ctx.render('user',{
-//             userinfo: userinfo
-//         });
-//    }
-// };
 
 var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
@@ -190,7 +160,6 @@ module.exports = {
     'GET /my/logistics': get_logistics,
     'GET /product/100001': getProduct,
     'POST /product/100001': getProduct,
-    'GET /pay': getPay,
     'GET /notify': notify,
     'POST /notify': notify,
     'GET /my/userinfo': getUserInfo,
