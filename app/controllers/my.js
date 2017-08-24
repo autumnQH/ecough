@@ -141,7 +141,7 @@ var jsapiPay = async(ctx, next) => {
         var signature = crypto.createHash('sha1').update(str2, 'utf8').digest('hex').toLowerCase();
         wxcfg.signature = signature;
 
-        await ctx.render('hello', {
+        await ctx.render('order', {
             config: wxcfg,
             data: data2
         });         

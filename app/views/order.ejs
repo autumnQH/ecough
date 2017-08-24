@@ -15,36 +15,44 @@
     <meta charset="UTF-8">
     <title>微信支付</title>
 </head>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+	wx.config({
+		debug: true,
+		appId: '<%= config.appid %>',
+		timeStamp: '<%= config.timestamp %>',
+		nonceStr: '<%= config.nonceStr %>',
+		signature: '<%= config.signature %>',
+		jsApiList: ['chooseWXPay']
+
+	});
+	wx.ready(function() {
+		document.querySelector('#chooseWXPay').onclick = function() {
+			wx.chooseWXPay({
+				timestamp: '<%= data.timeStamp %>',
+				nonceStr: '<%= data.nonceStr %>',
+				package: '<%= data.package %>',
+				signType: '<%= data.signType %>',
+				paySign: '<%= data.paySign %>',
+				success: function(res) {
+					alert('支付成功');
+				},
+				fail: function(res) {
+					alert('支付失败');
+				}
+			});
+		};
+	});	
+</script>
 <body>
 <h1>微信支付</h1>
     	<div class="main">
 		<div class="order">
-			<div class="order-title">
-				<span>交易完成</span>
-				<label>下单时间：2017-07-20  10:56:05</label>
-			</div>
 			<div class="order-address">
-				<ul>
-					<li>
-						<span>1</span>
-						<p>12-10</p>
-					</li>
-					<li>
-						<span>2</span>
-						<p>12-17</p>
-					</li>
-					<li>
-						<span>3</span>
-						<p>12-24</p>
-					</li>
-					<li>
-						<span>4</span>
-						<p>12-31</p>
-					</li>
-				</ul>
 				<p class="userinfo">赵美女<label>13811908888</label></p>
 				<span class="useraddress">北京市北京市昌平区龙域东一路融泽嘉园东20号院18号楼20单元8001</span>
 			</div>
+
 			<div class="order-item">
 				<div class="order-top">订单信息</div>
 				<div class="order-center">
@@ -83,19 +91,12 @@
 							<span>付款金额：</span>
 							<label style="color: #ff4141;">￥169.00</label>
 						</li>
-						<li>
-							<span>付款方式：</span>
-							<label>微信支付</label>
-						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="sum-btn">
 				<div class="btnlist">
-					<a href="javascript:" class="active">隐藏订单</a>
-				</div>
-				<div class="btnlist">
-					<a href="javascript:">再次购买</a>
+					<a href="javascript:" id="chooseWXPay">提交订单</a>
 				</div>
 			</div>
 		</div>
