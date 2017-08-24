@@ -69,7 +69,7 @@ var getUserInfo = async (ctx, next) => {
 
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
-
+    console.log(ctx);
     var ip = ctx.header['x-forwarded-for'];
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
@@ -146,6 +146,7 @@ var jsapiPay = async(ctx, next) => {
             data: data2
         });         
     }else{
+        console.log('errcode');
         ctx.redirect('/my/order');
     }
 

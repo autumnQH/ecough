@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <script src="/js/jquery-1.9.1.js"></script>
     <meta charset="UTF-8">
-    <title>微信支付</title>
 </head>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
@@ -45,9 +44,18 @@
 	});	
 </script>
 <body>
-<h1>微信支付</h1>
     	<div class="main">
 		<div class="order">
+		<div>设置收货地址</div>
+		<form>
+      <label for="name" required="required">昵　称</label>
+      <input id="name" type="text"/>
+      <label for="phone" required="required">电子邮件</label>
+      <input id="phone" type="text"/>
+      <label for="address">地址</label>
+      <input id="address" type="text" required="required"/>
+      <button type="button">完成</button>			
+		</form>
 			<div class="order-address">
 				<p class="userinfo">赵美女<label>13811908888</label></p>
 				<span class="useraddress">北京市北京市昌平区龙域东一路融泽嘉园东20号院18号楼20单元8001</span>
@@ -96,7 +104,7 @@
 			</div>
 			<div class="sum-btn">
 				<div class="btnlist">
-					<a href="javascript:" id="chooseWXPay">提交订单</a>
+					<a href="javascript:" id="chooseWXPay">再次购买</a>
 				</div>
 			</div>
 		</div>
