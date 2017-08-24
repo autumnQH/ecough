@@ -66,7 +66,7 @@ var getPay = async (ctx, next)=>{
 
 var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
-    if(!ctx.query.code){
+    if(!ctx.query.code && !ctx.userinfo){
         console.log('code不存在');
         var r_url = 'http://'+ config.server.host +'/my/userinfo';
         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
