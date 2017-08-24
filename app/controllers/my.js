@@ -85,9 +85,8 @@ var jsapiPay = async(ctx, next) => {
 
     var ip = ctx.header['x-forwarded-for'];
     var nonceStr = tools.createRandom();
-    console.log(typeof nonceStr);
     var timeStamp = tools.createTimestamp();
-    console.log(typeof timeStamp);
+
 
     var data = {
         appid: config.weixin.appid, //appId
@@ -129,7 +128,6 @@ var jsapiPay = async(ctx, next) => {
         var str1 = tools.raw(data2);
             str1 += '&key=' + config.wx.key;
         //支付签名
-        console.log(str1);
         var paySign = await crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
         //data2.paySign = sign;
@@ -161,7 +159,6 @@ var jsapiPay = async(ctx, next) => {
             data: data2
         });         
     }else{
-        console.log('打桩2');
         ctx.redirect('/my/order');
     }
 

@@ -18,35 +18,6 @@
 	<button id="chooseWXPay">chooseWXPay</button>
 </div>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-<!-- <script>
-	function jsApiCall() {
-		WeixinJSBridge.invoke(
-			'getBrandWCPayRequest',{
-				"appId": "<%= config.appid %>",
-				"timeStamp": "<%= config.timestamp %>",
-				"nonceStr": "<%= config.nonceStr %>",
-				"package": "<%= data.package %>",
-				"signType": "<%= data.signType %>",
-				"paySign": "<%= data.paySign %>"
-			},function(res) {
-				WeixinJSBridge.log(res.err_msg);
-				alert(res.err_code);
-			});
-	}
-
-	function callpay() {
-		if(typeof WeixinJSBridge == 'undefined'){
-			if(document.addEventListener){
-				document.addEventListener('WeixinJSBridge', jsApiCall, false);
-			}else if(document.attachEvent) {
-				document.attachEvent('WeixinJSBridge', jsApiCall);
-				document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
-			}else{
-				jsApiCall();
-			}
-		}
-	}
-</script> -->
 <script>
 alert(location.href.split('#')[0]);
 	wx.config({
@@ -63,19 +34,12 @@ alert(location.href.split('#')[0]);
 			wx.checkJsApi({
 				jsApiList: ['chooseWXPay'],
 				success: function(res) {
-					console.log(typeof res);
-					console.log(res);
-					console.log(res.checkResult);
+
 				}
 			});
 		};
 
 		document.querySelector('#chooseWXPay').onclick = function() {
-			alert('<%= data.timeStamp %>');
-			alert('<%= data.nonceStr %>');
-			alert('<%= data.package %>');
-			alert('<%= data.signType %>');
-			alert('<%= data.paySign %>');
 			wx.chooseWXPay({
 				timestamp: '<%= data.timeStamp %>',
 				nonceStr: '<%= data.nonceStr %>',
@@ -83,16 +47,10 @@ alert(location.href.split('#')[0]);
 				signType: '<%= data.signType %>',
 				paySign: '<%= data.paySign %>',
 				success: function(res) {
-					alert('1');
-					alert(res.toString());
+					alert('支付成功');
 				},
 				fail: function(res) {
-					alert('2');
-					alert(res.errMsg);
-				},
-				cancel: function(res) {
-					alert('3');					
-					alert(res.toString());
+					alert('支付失败');
 				}
 			});
 		};
