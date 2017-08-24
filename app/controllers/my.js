@@ -190,7 +190,6 @@ module.exports = {
     'GET /pay': getPay,
     'GET /notify': notify,
     'POST /notify': notify,
-    'GET /my/order': getOrder,
     'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay,
 
