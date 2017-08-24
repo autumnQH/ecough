@@ -66,11 +66,11 @@ var getPay = async (ctx, next)=>{
 
 var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
+    var r_url = 'http://'+ config.server.host +'/my/userinfo';
+    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
+        '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
     if(!ctx.query.code && !ctx.userinfo){
         console.log('code不存在');
-        var r_url = 'http://'+ config.server.host +'/my/userinfo';
-        var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.weixin.appid + 
-        '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
         ctx.redirect(url);
     }else if(!ctx.userinfo){
         console.log('code存在');
@@ -78,12 +78,15 @@ var getUserInfo = async (ctx, next) => {
         ctx.userinfo = await tools.getToken(code);
         var data = JSON.parse(ctx.userinfo);
         console.log(data,':::data');
-
-        ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
-        ctx.userinfo = JSON.parse(ctx.userinfo);
-        await ctx.render('user',{
-            userinfo: ctx.userinfo
-        });
+        if(data.errcode){
+            ctx.redirect(url);
+        }else{
+            ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
+            ctx.userinfo = JSON.parse(ctx.userinfo);
+            await ctx.render('user',{
+                userinfo: ctx.userinfo
+            });            
+        }
     }else{
         console.log(ctx.userinfo,'else===');
         await ctx.render('user', {
