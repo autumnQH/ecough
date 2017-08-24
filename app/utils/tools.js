@@ -49,7 +49,7 @@ exports.trade = function() {
 exports.getToken = async function (code) {
     let options = {
         method: 'get',
-        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.weixin.appid +'&secret='+ config.weixin.appSecret +'&code='+ code +'&grant_type=authorization_code',
+        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.wx.appid +'&secret='+ config.wx.appSecret +'&code='+ code +'&grant_type=authorization_code',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }       
