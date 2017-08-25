@@ -54,13 +54,19 @@ var getUserInfo = async (ctx, next) => {
         }else{
             ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
             ctx.userinfo = JSON.parse(ctx.userinfo);
-            await ctx.render('user',{
-                userinfo: ctx.userinfo
+            // await ctx.render('user',{
+            //     userinfo: ctx.userinfo
+            // });
+            await.ctx.render('product', {
+                userinfo: ctx.userinfo.openid
             });            
         }
     }else{
         console.log(ctx.userinfo,'else===');
-        await ctx.render('user', {
+        // await ctx.render('user', {
+        //     userinfo: ctx.userinfo
+        // });
+        await ctx.render('order', {
             userinfo: ctx.userinfo
         });
     }
@@ -70,6 +76,8 @@ var getUserInfo = async (ctx, next) => {
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
     console.log(ctx);
+    var openid = ctx.query.openid;
+    console.log(openid);
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
 
@@ -85,7 +93,7 @@ var jsapiPay = async(ctx, next) => {
         spbill_create_ip: '47.93.245.51',//终端IP
         notify_url: '/notify',
         trade_type: 'JSAPI',
-        openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4'           
+        openid: openid          
         //sign: data.sign,//签名
     };   
 
@@ -165,7 +173,8 @@ module.exports = {
 	'GET /my/address': getAddress,
     'GET /my/problem': getProblem,
     'GET /my/logistics': get_logistics,
-    'GET /product/100001': getProduct,
+    //'GET /product/100001': getProduct,
+    'GET /product/100001': getUserInfo,
     'POST /product/100001': getProduct,
     'GET /notify': notify,
     'POST /notify': notify,
