@@ -54,11 +54,12 @@ var getUserInfo = async (ctx, next) => {
         }else{
             ctx.userinfo = await tools.getUserInfo(data.access_token, data.openid);
             ctx.userinfo = JSON.parse(ctx.userinfo);
+            console.log(ctx.userinfo);
             // await ctx.render('user',{
             //     userinfo: ctx.userinfo
             // });
             await ctx.render('product', {
-                userinfo: ctx.userinfo.openid
+                userinfo: ctx.userinfo
             });            
         }
     }else{
@@ -77,7 +78,8 @@ var getUserInfo = async (ctx, next) => {
 var jsapiPay = async(ctx, next) => {
     console.log(ctx);
     var openid = ctx.query.openid;
-    console.log(openid);
+    console.log(openid,'query');
+    console.log(ctx.params.openid,'params');
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
 
