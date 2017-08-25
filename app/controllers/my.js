@@ -57,7 +57,7 @@ var getUserInfo = async (ctx, next) => {
             // await ctx.render('user',{
             //     userinfo: ctx.userinfo
             // });
-            await.ctx.render('product', {
+            await ctx.render('product', {
                 userinfo: ctx.userinfo.openid
             });            
         }
