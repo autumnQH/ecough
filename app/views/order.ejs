@@ -13,9 +13,34 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <script src="/js/jquery-1.9.1.js"></script>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
+	function isPhoneNo(phone) { 
+	 var pattern = /^1[34578]\d{9}$/; 
+	 return pattern.test(phone); 
+	};
+  function add_info(){
+	  $('#err_phone').hide();	
+	  var form_phone = $('#form_phone').val();
+	  var phone = isPhoneNo(form_phone);
+	  if(phone){
+	  	var name = $('#name').html('<label id="phone"></label>');
+	  	var address = $('#address').html('');
+
+		  var name = $('#name').prepend($('#form_name').val());
+		  var phone = $('#phone').append(phone);
+		  var address = $('#address').append($('#form_address').val());
+			$('#close').click();
+	  }else{
+	  	$('#err_phone').show();
+	  	return false;
+	  }
+  };
+  
 	wx.config({
 		debug: true,
 		appId: '<%= config.appid %>',
@@ -44,21 +69,49 @@
 	});	
 </script>
 <body>
-    	<div class="main">
-		<div class="order">
-		<div>设置收货地址</div>
-		<form>
-      <label for="name" required="required">昵　称</label>
-      <input id="name" type="text"/>
-      <label for="phone" required="required">电子邮件</label>
-      <input id="phone" type="text"/>
-      <label for="address">地址</label>
-      <input id="address" type="text" required="required"/>
-      <button type="button">完成</button>			
-		</form>
+   <div class="main">
+	<div class="order">
+
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    新建收获地址
+</button>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    设置收获地址
+                </h4>
+            </div>
+            <form id="form_data">
+            <div class="modal-body">
+                名字: <input type="text" id="form_name" name="name"><br>
+                电话: <input type="text" id="form_phone" name="phone">
+                <label id="err_phone" style="color: red;">请输入正确手机号码</label><br>
+                <script>$('#err_phone').hide();</script>
+                地址: <input type="text" id="form_address" name="address"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭
+                </button>
+                <button type="button" onclick="add_info()" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
 			<div class="order-address">
-				<p class="userinfo">赵美女<label>13811908888</label></p>
-				<span class="useraddress">北京市北京市昌平区龙域东一路融泽嘉园东20号院18号楼20单元8001</span>
+				<p class="userinfo" id="name"><label id="phone"></label></p>
+				<span class="useraddress" id="address"></span>
 			</div>
 
 			<div class="order-item">
