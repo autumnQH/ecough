@@ -106,10 +106,14 @@ var jsapiPay = async(ctx, next) => {
     var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
     data.sign = sign;
     data = xml.jsonToXml(data);
-    console.log(data,'统一下单');
+
+    //console.log(data,'统一下单');
+
     var res = await tools.getPackge(data);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    console.log(result,'result');
+
+    //console.log(result,'result');
+    
     if(result.xml.prepay_id[0]){
         var prepayid = result.xml.prepay_id[0];
         //生成支付请求签名

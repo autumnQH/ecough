@@ -23,21 +23,47 @@
 	 var pattern = /^1[34578]\d{9}$/; 
 	 return pattern.test(phone); 
 	};
+	function isChinaName(name) {
+ 		var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+ 		return pattern.test(name);
+	};
+	function isAddress(address) {
+		if(address.length > 0) {
+			return true;
+		}else{
+			return false;	
+		}
+	};
   function add_info(){
-	  $('#err_phone').hide();	
-	  var form_phone = $('#form_phone').val();
+	  $('#err_phone').hide();
+	  $('#err_name').hide();
+	  $('#err_address').hide();	
+
+		var form_name = $.trim($('#form_name').val());
+	  var form_phone = $.trim($('#form_phone').val());
+		var form_address = $.trim($('#form_address').val());
+
 	  var phone = isPhoneNo(form_phone);
-	  if(phone){
+	  var name = isChinaName(form_name);
+	  var address = isAddress(form_address);
+
+		if(!phone){
+	  	$('#err_phone').show();
+	  	return false;
+	  }else if (!name){
+	  	$('#err_name').show();
+	  	return false;
+	  }else if (!address){
+	  	$('#err_address').show();
+	  	return false;
+	  }else{
 	  	var name = $('#name').html('<label id="phone"></label>');
 	  	var address = $('#address').html('');
 
-		  var name = $('#name').prepend($('#form_name').val());
+		  var name = $('#name').prepend(form_name);
 		  var phone = $('#phone').append(form_phone);
-		  var address = $('#address').append($('#form_address').val());
+		  var address = $('#address').append(form_address);
 			$('#close').click();
-	  }else{
-	  	$('#err_phone').show();
-	  	return false;
 	  }
   };
 
@@ -62,7 +88,7 @@
 					alert('支付成功');
 				},
 				fail: function(res) {
-					alert('支付失败');
+					alert('网络繁忙，请稍后再试！');
 				}
 			});
 		};
@@ -91,12 +117,14 @@
             </div>
             <form id="form_data">
             <div class="modal-body">
-                名字: <input type="text" id="form_name" name="name"><br>
+                名字: <input type="text" id="form_name" name="name">
+                <label id="err_name" style="color: red;">请输出中文名称</label><br>
                 电话: <input type="text" id="form_phone" name="phone">
                 <label id="err_phone" style="color: red;">请输入正确手机号码</label><br>
-                <script>$('#err_phone').hide();</script>
-                地址: <input type="text" id="form_address" name="address"><br>
+                地址: <input type="text" id="form_address" name="address">
+                <label id="err_address" style="color: red;">请输入地址</label><br>
             </div>
+                <script>$('#err_phone').hide();</script>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭
                 </button>
