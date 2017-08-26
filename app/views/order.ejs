@@ -95,9 +95,6 @@
 	});	
 </script>
 <body>
-   <div class="main">
-	<div class="order">
-
 <!-- 按钮触发模态框 -->
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     新建收获地址
@@ -118,7 +115,7 @@
             <form id="form_data">
             <div class="modal-body">
                 名字: <input type="text" id="form_name" name="name">
-                <label id="err_name" style="color: red;">请输出中文名称</label><br>
+                <label id="err_name" style="color: red;">请输入中文名称</label><br>
                 电话: <input type="text" id="form_phone" name="phone">
                 <label id="err_phone" style="color: red;">请输入正确手机号码</label><br>
                 地址: <input type="text" id="form_address" name="address">
@@ -136,7 +133,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-
+  <div class="main">
+		<div class="order">
 			<div class="order-address">
 				<p class="userinfo" id="name"><label id="phone"></label></p>
 				<span class="useraddress" id="address"></span>
