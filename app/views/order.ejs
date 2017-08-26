@@ -32,7 +32,7 @@
 	  	var address = $('#address').html('');
 
 		  var name = $('#name').prepend($('#form_name').val());
-		  var phone = $('#phone').append(phone);
+		  var phone = $('#phone').append(form_phone);
 		  var address = $('#address').append($('#form_address').val());
 			$('#close').click();
 	  }else{
@@ -40,7 +40,7 @@
 	  	return false;
 	  }
   };
-  
+
 	wx.config({
 		debug: true,
 		appId: '<%= config.appid %>',
