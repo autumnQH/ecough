@@ -215,6 +215,7 @@ var admin_setQrcode = async function(ctx, next) {
     data.name = req.name +'';
     data.scene_str = req.name + '';
     data.action_name = 'QR_LIMIT_SCENE';
+    data.ticket = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='+ data.ticket;
 
     var a = await wechat.setQRCode(data);
 
