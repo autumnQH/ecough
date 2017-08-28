@@ -130,8 +130,7 @@ var jsapiPay = async(ctx, next) => {
         //支付签名
         var paySign = await crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
-        //data2.paySign = sign;
-        console.log(data2,'支付签名');
+        data2.out_trade_no = data.out_trade_no;
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
@@ -179,16 +178,28 @@ var admin = async function (ctx, next) {
     await ctx.render('admin', {
 
     });
-};
+}
 
 var admin_order = async function(ctx, next) {
     await ctx.render('admin_order', {
 
     });
-};
+}
+
+var admin_setOrder = async function () {
+    var req = ctx.request.body;
+    var name = req.name;
+    var address = req.address;
+    var phone = req.phone;
+    var product = req.product;//产品
+    var specifications = req.specifications;//规格
+    var money = req.money;//金额
+    var out_trade_no = req.out_trade_no;//订单号
+
+
+}
 
 var admin_qrcode = async function(ctx, next) {
-    console.log('get');
     var data = await wechat.getQRCode();
     await ctx.render('admin_spread', {
         datas: data
@@ -235,6 +246,7 @@ module.exports = {
     'GET /my/order': getOrder,
     'GET /admin': admin,
     'GET /admin/order': admin_order,
+    'POST /admin/setOrder': admin_setOrder,
     'GET /admin/qrcode': admin_qrcode,
     'POST /admin/setQrcode': admin_setQrcode
 

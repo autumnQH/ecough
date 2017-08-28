@@ -86,6 +86,8 @@
 				paySign: '<%= data.paySign %>',
 				success: function(res) {
 					alert('支付成功');
+					var name = $('#name').html();
+					alert(name);
 				},
 				fail: function(res) {
 					alert('网络繁忙，请稍后再试！');
@@ -161,7 +163,7 @@
 					</a>
 					<div class="order-number">
 						<span>订单号：</span>
-						<label>W121231564541321</label>
+						<label><%= data2.out_trade_no %></label>
 					</div>
 				</div>
 			</div>
