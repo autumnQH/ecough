@@ -104,10 +104,14 @@
 					};
 					$.ajax({
 						type: 'POST',
-						url: '/admin/setOrder',
+						url: 'www.e-cough.com/admin/setOrder',
 						data: data,
 						success: function() {
 							alert('success');
+						},
+						error: function(e) {
+							alert('err');
+							alert(e);
 						}
 					});
 				},
