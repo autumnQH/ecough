@@ -100,3 +100,11 @@ exports.getOneSpread = (userName, ticket, eventKey) => {
 exports.setSpread = (data) => {
     return dao.setSpread(data);
 }
+
+exports.getOrder = () => {
+    return dao.getOrder();
+}
+
+exports.setOrder = (data) => {
+    return dao.setOrder(data);
+}

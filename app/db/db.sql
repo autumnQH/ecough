@@ -96,6 +96,19 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_SPREAD (
   PRIMARY KEY (id)
 ) ;
 
+CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  address varchar(255) NOT NULL,
+  phone varchar(255) NOT NULL,
+  product varchar(255) NOT NULL,
+  specifications varchar(255) NOT NULL,
+  pay_money varchar(255) NOT NULL,
+  out_trade_no varchar(255) NOT NULL,
+  create_time datetime  DEFAULT NULL,
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 ;
+
 INSERT INTO T_USER set email='1@example.com', passwd='123456';
 
 INSERT INTO T_USER set email='2@example.com', passwd='123456';

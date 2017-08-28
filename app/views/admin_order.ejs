@@ -34,27 +34,24 @@
       <th>规格</th>
       <th>金额</th>
       <th>订单号</th>
+      <th>下单时间</th>
     </tr>
   </thead>
   <tbody>
+  <% if(data) { %>
+    <% for(var i =0; i<data.length; i++){ %>  
     <tr>
-      <td>覃海</td>
-      <td>广西南宁市心圩江东路盛天尚都8A302</td>
-      <td>110</td>
-      <td>小咳嗽</td>
-      <td>1件</td>
-      <td>0.01</td>
-      <td>201708270001</td>
+      <td><%= data[i].name %></td>
+      <td><%= data[i].address %></td>
+      <td><%= data[i].phone %></td>
+      <td><%= data[i].product %></td>
+      <td><%= data[i].specifications %></td>
+      <td><%= data[i].pay_money %></td>
+      <td><%= data[i].out_trade_no %></td>
+      <td><%= data[i].create_time %></td>
     </tr>
-    <tr>
-      <td>丽丽</td>
-      <td>广西南宁市秀灵路西西湾1A101</td>
-      <td>110</td>
-      <td>小咳嗽</td>
-      <td>1件</td>
-      <td>0.01</td>
-      <td>201708270002</td>
-    </tr>
+    <% } %>
+  <% } %>
   </tbody>
 </table>
 </div>

@@ -30,7 +30,16 @@ var getSpread = async () => {
 	return result;
 }
 var setSpread = async (data) => {
-	var result = db.add("T_WECHAT_SPREAD",data);
+	var result = db.add("T_WECHAT_SPREAD", data);
+	return result;
+}
+
+var getOrder = async () => {
+	var result = await db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME");
+	return result;
+}
+var setOrder = async(data) => {
+	var resutl = db.add("T_WECHAT_ORDER", data);
 	return result;
 }
 module.exports = {    
@@ -40,5 +49,7 @@ module.exports = {
 	setQRCode: setQRCode,
 	getOneSpread: getOneSpread,
 	getSpread: getSpread,
-	setSpread: setSpread
+	setSpread: setSpread,
+	getOrder: getOrder,
+	setOrder: setOrder
 };

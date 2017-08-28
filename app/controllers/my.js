@@ -180,28 +180,17 @@ var admin = async function (ctx, next) {
 }
 
 var admin_order = async function(ctx, next) {
+    var data = await wechat.getOrder();
     await ctx.render('admin_order', {
-
+        data: data
     });
 }
 
 var admin_setOrder = async function (ctx, next) {
     var req = ctx.request.body;
-    var name = req.name;
-    var address = req.address;
-    var phone = req.phone;
-    var product = req.product;//产品
-    var specifications = req.specifications;//规格
-    var money = req.money;//金额
-    var out_trade_no = req.out_trade_no;//订单号
-    console.log(req)
-    console.log(name);
-    console.log(address);
-    console.log(phone);
-    console.log(product);
-    console.log(specifications);
-    console.log(money);
-    console.log(out_trade_no);
+    req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+    wechat.setOrder(req);
+    await ctx.redirect('/product/100001');
 
 
 }
