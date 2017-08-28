@@ -194,6 +194,14 @@ var admin_setOrder = async function () {
     var specifications = req.specifications;//规格
     var money = req.money;//金额
     var out_trade_no = req.out_trade_no;//订单号
+    console.log(req)
+    console.log(name);
+    console.log(address);
+    console.log(phone);
+    console.log(product);
+    console.log(specifications);
+    console.log(money);
+    console.log(out_trade_no);
 
 
 }
