@@ -57,12 +57,12 @@
 	  	$('#err_address').show();
 	  	return false;
 	  }else{
-	  	var name = $('#name').html('<label id="phone"></label>');
+	  	var name = $('#name').html('<label id="name1"></label><label id="phone"></label>');
 	  	var address = $('#address').html('');
 
-		  var name = $('#name').prepend(form_name);
-		  var phone = $('#phone').append(form_phone);
-		  var address = $('#address').append(form_address);
+		  $('#name1').append(form_name);
+		  $('#phone').append(form_phone);
+		  $('#address').append(form_address);
 			$('#close').click();
 	  }
   };
@@ -86,8 +86,8 @@
 				paySign: '<%= data.paySign %>',
 				success: function(res) {
 					alert('支付成功');
-					var name = $('#name').text();
-					alert(name,'name');
+					var name = $('#name1').text();
+					alert(name,'name1');
 					var address = $('#address').text();
 					alert(address,'address');
 					var phone = $('#phone').text();
