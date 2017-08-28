@@ -86,8 +86,14 @@
 				paySign: '<%= data.paySign %>',
 				success: function(res) {
 					alert('支付成功');
-					var name = $('#name').html();
-					alert(name);
+					var name = $('#name').text();
+					var address = $('#address').text();
+					var phone = $('#phone').text();
+					var product = $('#product').text();
+					var specifications = '1件';
+					var money = '0.01';
+					var out_trade_no = "<%= data.out_trade_no %>";
+					alert(name,address,phone,product,specifications,money,out_trade_no);
 				},
 				fail: function(res) {
 					alert('网络繁忙，请稍后再试！');
@@ -152,7 +158,7 @@
 						<img src="/images/26659155088350080_03.jpg" alt="" />
 						<div class="order-shoplist_right">
 							<div class="shoplist_title">
-								<span>繁华混合鲜花月套餐</span>
+								<span id="product">繁华混合鲜花月套餐</span>
 								<label>￥169.00</label>
 							</div>
 							<span class="shoplist_ms">
