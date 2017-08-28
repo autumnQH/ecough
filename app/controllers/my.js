@@ -185,7 +185,7 @@ var admin_order = async function(ctx, next) {
     });
 }
 
-var admin_setOrder = async function (ctx.next) {
+var admin_setOrder = async function (ctx, next) {
     var req = ctx.request.body;
     var name = req.name;
     var address = req.address;
