@@ -196,9 +196,8 @@ var admin_qrcode = async function(ctx, next) {
 }
 
 var admin_setQrcode = async function(ctx, next) {
-    console.log('post');
     var req = ctx.request.body;
-    console.log(req.name,'name----=-=');
+   
     var token = await dao.getActiveAccessToken();
     var json = JSON.stringify({
         'action_name': 'QR_LIMIT_SCENE',
@@ -208,7 +207,7 @@ var admin_setQrcode = async function(ctx, next) {
             }
         }
     });
-
+    console.log(json,'json--------');
     var data = await tools.getQRCode(token, json);
     data = JSON.parse(data);
     data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
