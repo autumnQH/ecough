@@ -78,6 +78,7 @@
 	});
 	wx.ready(function() {
 		document.querySelector('#chooseWXPay').onclick = function() {
+
 			wx.chooseWXPay({
 				timestamp: '<%= data.timeStamp %>',
 				nonceStr: '<%= data.nonceStr %>',
@@ -93,27 +94,16 @@
 					var specifications = '1件';
 					var money = '0.01';
 					var out_trade_no = "<%= data.out_trade_no %>";
-					var data = {
-						name: name,
-						phone: phone,
-						address: address,
-						product: product,
-						specifications: specifications,
-						money: money,
-						out_trade_no: out_trade_no
-					};
-					$.ajax({
-						type: 'POST',
-						url: 'www.e-cough.com/admin/setOrder',
-						data: data,
-						success: function() {
-							alert('success');
-						},
-						error: function(e) {
-							alert('err');
-							alert(e.message);
-						}
-					});
+
+					$('#order_name').val(name);
+					$('#order_address').val(address);
+					$('#order_phone').val(phone);
+					$('#order_product').val(product);
+					$('#order_specifications').val(specifications);
+					$('#order_money').val(money);
+					$('#order_out_trade_no').val(out_trade_no);
+					$('#sub').click();
+
 				},
 				fail: function(res) {
 					alert('网络繁忙，请稍后再试！');
@@ -122,6 +112,17 @@
 		};
 	});	
 </script>
+<form action="/admin/setOrder" method="post" style="visibility: hidden;">
+	<input type="text" name="name" id="order_name">
+	<input type="text" name="address" id="order_address">
+	<input type="text" name="phone" id="order_phone">
+	<input type="text" name="product" id="order_product">
+	<input type="text" name="specifications" id="order_specifications">
+	<input type="text" name="money" id="order_money">
+	<input type="text" name="out_trade_no" id="order_out_trade_no">
+	<input type="submit" id="sub">
+</form>
+
 <body>
 <!-- 按钮触发模态框 -->
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
