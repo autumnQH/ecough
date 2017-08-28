@@ -77,10 +77,9 @@ var getUserInfo = async (ctx, next) => {
 
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
-    console.log(ctx);
+    
     var openid = ctx.query.openid;
-    console.log(openid,'query');
-    console.log(ctx.params.openid,'params');
+
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
 
