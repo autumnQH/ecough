@@ -82,7 +82,7 @@ var jsapiPay = async(ctx, next) => {
 
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
-
+    var out_trade_no = tools.trade();
 
     var data = {
         appid: config.wx.appid, //appId
@@ -90,7 +90,7 @@ var jsapiPay = async(ctx, next) => {
         body: 'Test', //商品描述
         mch_id: config.wx.mchid, //商户号id
         nonce_str: nonceStr,
-        out_trade_no: tools.trade(),//商户订单号
+        out_trade_no: out_trade_no,//商户订单号
         total_fee: '1',//标价金额
         spbill_create_ip: '47.93.245.51',//终端IP
         notify_url: '/notify',
@@ -129,7 +129,7 @@ var jsapiPay = async(ctx, next) => {
         //支付签名
         var paySign = await crypto.createHash('md5').update(str1, 'utf8').digest('hex').toUpperCase();
         data2.paySign = paySign;
-        data2.out_trade_no = data.out_trade_no;
+        data2.out_trade_no = out_trade_no;
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
