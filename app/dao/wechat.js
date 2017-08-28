@@ -39,7 +39,7 @@ var getOrder = async () => {
 	return result;
 }
 var setOrder = async(data) => {
-	var resutl = db.add("T_WECHAT_ORDER", data);
+	var result = db.add("T_WECHAT_ORDER", data);
 	return result;
 }
 module.exports = {    

@@ -78,37 +78,46 @@
 	});
 	wx.ready(function() {
 		document.querySelector('#chooseWXPay').onclick = function() {
+			var name = $('#name1').text();
+		  var phone = $('#phone').text();
+		  var address = $('#address').text();
+		  if(name && phone && address){
+		  	alert(name+phone+address);
+				wx.chooseWXPay({
+					timestamp: '<%= data.timeStamp %>',
+					nonceStr: '<%= data.nonceStr %>',
+					package: '<%= data.package %>',
+					signType: '<%= data.signType %>',
+					paySign: '<%= data.paySign %>',
+					success: function(res) {
+						alert('支付成功');
+						var name = $('#name1').text();
+						var address = $('#address').text();
+						var phone = $('#phone').text();
+						var product = $('#product').text();
+						var specifications = '1件';
+						var money = '0.01';
+						var out_trade_no = "<%= data.out_trade_no %>";
 
-			wx.chooseWXPay({
-				timestamp: '<%= data.timeStamp %>',
-				nonceStr: '<%= data.nonceStr %>',
-				package: '<%= data.package %>',
-				signType: '<%= data.signType %>',
-				paySign: '<%= data.paySign %>',
-				success: function(res) {
-					alert('支付成功');
-					var name = $('#name1').text();
-					var address = $('#address').text();
-					var phone = $('#phone').text();
-					var product = $('#product').text();
-					var specifications = '1件';
-					var money = '0.01';
-					var out_trade_no = "<%= data.out_trade_no %>";
+						$('#order_name').val(name);
+						$('#order_address').val(address);
+						$('#order_phone').val(phone);
+						$('#order_product').val(product);
+						$('#order_specifications').val(specifications);
+						$('#order_money').val(money);
+						$('#order_out_trade_no').val(out_trade_no);
+						$('#sub').click();
 
-					$('#order_name').val(name);
-					$('#order_address').val(address);
-					$('#order_phone').val(phone);
-					$('#order_product').val(product);
-					$('#order_specifications').val(specifications);
-					$('#order_money').val(money);
-					$('#order_out_trade_no').val(out_trade_no);
-					$('#sub').click();
+					},
+					fail: function(res) {
+						alert('网络繁忙，请稍后再试！');
+					}
+				});
 
-				},
-				fail: function(res) {
-					alert('网络繁忙，请稍后再试！');
-				}
-			});
+		  }else{
+		  	alert('请输入收获地址');
+		  }
+
 		};
 	});	
 </script>
