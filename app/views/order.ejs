@@ -87,13 +87,20 @@
 				success: function(res) {
 					alert('支付成功');
 					var name = $('#name').text();
+					alert(name,'name');
 					var address = $('#address').text();
+					alert(address,'address');
 					var phone = $('#phone').text();
+					alert(phone, 'phone');
 					var product = $('#product').text();
+					alert(product,'product');
 					var specifications = '1件';
+					alert(specifications, 'specifications');
 					var money = '0.01';
+					alert(money, 'money');
 					var out_trade_no = "<%= data.out_trade_no %>";
-					alert(name,address,phone,product,specifications,money,out_trade_no);
+					alert(out_trade_no, 'out_trade_no');
+
 				},
 				fail: function(res) {
 					alert('网络繁忙，请稍后再试！');
