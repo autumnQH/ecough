@@ -68,7 +68,7 @@
   };
 
 	wx.config({
-		debug: true,
+		debug: false,
 		appId: '<%= config.appid %>',
 		timeStamp: '<%= config.timestamp %>',
 		nonceStr: '<%= config.nonceStr %>',
@@ -82,7 +82,6 @@
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
 		  if(name && phone && address){
-		  	alert(name+phone+address);
 				wx.chooseWXPay({
 					timestamp: '<%= data.timeStamp %>',
 					nonceStr: '<%= data.nonceStr %>',
