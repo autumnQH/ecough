@@ -200,7 +200,7 @@ var admin_setQrcode = async function(ctx, next) {
    
     var token = await dao.getActiveAccessToken();
     var json = JSON.stringify({
-        'action_name': 'QR_LIMIT_SCENE',
+        'action_name': 'QR_LIMIT_STR_SCENE',
         'action_info': {
             'scene': {
                 'scene_str':req.name
