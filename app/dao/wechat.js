@@ -10,7 +10,35 @@ var getJsapiTicket = async () => {
 	return result.jsapi_ticket;
 }
 
+var getQRCode = async () => {
+	var result = await db.find("SELECT * FROM T_WECHAT_QRCODE");
+	return result;
+}
+
+var setQRCode = async (data) => {	
+	var result = db.add("T_WECHAT_QRCODE", data);
+	return result;
+}
+
+var getOneSpread = async (userName, ticket, eventKey) => {
+	var result = await db.findOne("SELECT * FROM T_WECHAT_SPREAD  WHERE userName='" + userName + "' AND ticket='" + ticket + "' AND eventKey='" + eventKey+ "'");
+	return result;
+}
+
+var getSpread = async () => {
+	var result = await db.find("SELECT * FROM T_WECHAT_SPREAD");
+	return result;
+}
+var setSpread = async (data) => {
+	var result = db.add("T_WECHAT_SPREAD",data);
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
-	getJsapiTicket: getJsapiTicket 
+	getJsapiTicket: getJsapiTicket,
+	getQRCode: getQRCode,
+	setQRCode: setQRCode,
+	getOneSpread: getOneSpread,
+	getSpread: getSpread,
+	setSpread: setSpread
 };

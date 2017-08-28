@@ -46,7 +46,7 @@ exports.trade = function() {
 }
 
 //网页授权
-exports.getToken = async function (code) {
+exports.getOauth2Token = async function (code) {
     let options = {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.wx.appid +'&secret='+ config.wx.appSecret +'&code='+ code +'&grant_type=authorization_code',
@@ -107,4 +107,47 @@ exports.getPackge = function (xml) {
       }
     });
   });
+}
+
+//创建二维码
+exports.getQRCode = function(token, json) {
+  let options = {
+    url: 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=' + token,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+    form: json
+  };
+
+  return new Promise(function(resolve, reject) {
+    request(options, function(err, res, body) {
+      if(body){
+        return resolve(body);
+      }else{
+        return reject(err);
+      }
+    });
+  });
+}
+
+exports.getQRCodeImg = function(ticket) {
+  let options = {
+    url: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket='+ ticket,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: 'get'
+  };
+
+  return new Promise(function(resolve, reject) {
+    request(options, function(err, res, body) {
+      if(body){
+        return resolve(body);
+      }else{
+        return reject(err);
+      }
+    });
+  });
+  
 }

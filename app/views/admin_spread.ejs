@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>申请新风</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      function setQRCode() {
+
+      }
+    </script>
+</head>
+<body>
+<nav style="width: 150px;float: left;">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="/admin">Home</a></li>
+        <li role="presentation"><a href="/admin/order">订单</a></li>
+        <li role="presentation" class="active" ><a href="/admin/qrcode">推广二维码</a></li>
+    </ul>
+</nav>
+
+<div class="panel panel-default" style="float: left;">
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    新建推广员
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新建推广员
+                </h4>
+            </div>
+            <form id="form_data" action="/admin/setQrcode" method="post">
+            <div class="modal-body">
+                名字: <input type="text" id="form_name" name="name"><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭
+                </button>
+                <input type="submit" value="提交">
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<table class="table">
+  <caption>订单</caption>
+  <thead>
+    <tr>
+      <th>推广员姓名</th>
+      <th>场景值</th>
+      <th>二维码有效期</th>
+      <th>二维码地址</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if(datas.length > 0 ) { %> 
+    <% for(var i =0; i<datas.length; i++){ %>  
+      <tr>
+        <td><%= datas[i].name %></td>
+        <td><%= datas[i].scene_str %></td>
+        <td><%= datas[i].action_name %></td>
+        <td><%= datas[i].ticket %></td>
+      </tr>
+    <% } %>
+  <% } %>
+
+  </tbody>
+</table>
+</div>
+
+</body>
+</html>

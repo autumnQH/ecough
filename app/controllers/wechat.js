@@ -1,5 +1,6 @@
 const wechat = require('../utils/wechat');
 const config = require('../config/config');
+const moment = require('moment');
 
 var checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);
@@ -22,6 +23,26 @@ var postHandle = async(ctx, next) => {
     console.log(msg);
 
     let msgType = msg.MsgType[0];
+    if(msg.Ticket[0]){
+        console.log('哈哈');
+        //记录用户扫描带参数的二维码
+        let userName = msg.FromUserName[0];
+        let ticket = msg.Ticket[0];
+        let eventKey = msg.EventKey[0];
+
+        var result = await wechat.getOneSpread(userName, ticket, eventKey);
+       
+        if(result.length == 0){
+            let data = {
+                userName: userName,//openId
+                ticket: ticket,//二维码ticket
+                eventKey: eventKey, //事件key值           
+                create_time: moment().format('YYYY-MM-DD HH:mm:ss')
+            }; 
+            wechat.setSpread(data);            
+        }
+        
+    }
     var reMsg;
 
     console.log(msgType);

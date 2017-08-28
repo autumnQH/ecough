@@ -6,6 +6,7 @@ const config = require('../config/config');
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
 const crypto = require('crypto');
+const moment = require('moment');
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
@@ -46,7 +47,7 @@ var getUserInfo = async (ctx, next) => {
     }else if(!ctx.userinfo){
         console.log('code存在');
         let code = ctx.query.code;
-        ctx.userinfo = await tools.getToken(code);
+        ctx.userinfo = await tools.getOauth2Token(code);
         var data = JSON.parse(ctx.userinfo);
         console.log(data,':::data');
         if(data.errcode){
@@ -102,7 +103,6 @@ var jsapiPay = async(ctx, next) => {
     var key = config.wx.key;
     var str = tools.raw(data);
     str += '&key='+ key;
-
     var sign = await crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
     data.sign = sign;
     data = xml.jsonToXml(data);
@@ -175,10 +175,55 @@ var getOrder = async function(ctx, next) {
     });
 }
 
+var admin = async function (ctx, next) {
+    await ctx.render('admin', {
+
+    });
+};
+
+var admin_order = async function(ctx, next) {
+    await ctx.render('admin_order', {
+
+    });
+};
+
+var admin_qrcode = async function(ctx, next) {
+    console.log('get');
+    var data = await wechat.getQRCode();
+    await ctx.render('admin_spread', {
+        datas: data
+    });    
+}
+
+var admin_setQrcode = async function(ctx, next) {
+    console.log('post');
+    var req = ctx.request.body;
+    console.log(req.name,'name----=-=');
+    var token = await dao.getActiveAccessToken();
+    var json = JSON.stringify({
+        'action_name': 'QR_LIMIT_SCENE',
+        'action_info': {
+            'scene': {
+                'scene_str':req.name
+            }
+        }
+    });
+
+    var data = await tools.getQRCode(token, json);
+    data = JSON.parse(data);
+    data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+    data.name = req.name +'';
+    data.scene_str = req.name + '';
+    data.action_name = 'QR_LIMIT_SCENE';
+
+    var a = await wechat.setQRCode(data);
+
+    await ctx.redirect('/admin/qrcode');
+}
 module.exports = {
-	'GET /my/address': getAddress,
-    'GET /my/problem': getProblem,
-    'GET /my/logistics': get_logistics,
+	//'GET /my/address': getAddress,
+    //'GET /my/problem': getProblem,
+    //'GET /my/logistics': get_logistics,
     //'GET /product/100001': getProduct,
     'GET /product/100001': getUserInfo,
     'POST /product/100001': getProduct,
@@ -186,6 +231,10 @@ module.exports = {
     'POST /notify': notify,
     'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay,
-    'GET /my/order': getOrder
+    'GET /my/order': getOrder,
+    'GET /admin': admin,
+    'GET /admin/order': admin_order,
+    'GET /admin/qrcode': admin_qrcode,
+    'POST /admin/setQrcode': admin_setQrcode
 
 };

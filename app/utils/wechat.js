@@ -4,7 +4,6 @@ const request = require('request');
 const xml = require("./xml");
 const tools = require('./tools');
 const mysql = require('./mysql');
-const moment = require('moment');
 const dao = require('../dao/wechat');
 
 exports.auth = async (ctx) => {
@@ -81,4 +80,23 @@ exports.getDefaultMessage = (msg, content) => {
 exports.getJsApiTicket = () => {
     console.log(dao.getJsapiTicket(),'wechat获取jsapi');
     return dao.getJsapiTicket();
+}
+exports.getQRCode = () => {
+    return dao.getQRCode();
+}
+
+exports.setQRCode = (data) => {
+    return dao.setQRCode(data);
+}
+
+exports.getSpread = () => {
+    return dao.getSpread();
+}
+
+exports.getOneSpread = (userName, ticket, eventKey) => {
+    return dao.getOneSpread(userName, ticket, eventKey);
+}
+
+exports.setSpread = (data) => {
+    return dao.setSpread(data);
 }

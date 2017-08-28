@@ -157,6 +157,7 @@ exports.find = function(sql, values) {
 
 //添加一条记录
 exports.add = function(tablename, values) {
+    console.log('add-------');
     var sql = 'INSERT INTO ?? SET ?';
     return execUpdate(sql, [tablename, values]);
 }

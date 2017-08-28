@@ -76,6 +76,26 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_TOKEN_AUTH (
   PRIMARY KEY (id)
 ) ;
 
+CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
+  id int NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  scene_str varchar(255) NOT NULL,
+  action_name varchar(255) NOT NULL,
+  ticket varchar(255) NOT NULL,
+  url varchar(255) NOT NULL,
+  create_time datetime  DEFAULT NULL,
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS T_WECHAT_SPREAD (
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(255) NOT NULL,
+  ticket varchar(255) NOT NULL,
+  eventKey varchar(255) NOT NULL,
+  create_time datetime  DEFAULT NULL,
+  PRIMARY KEY (id)
+) ;
+
 INSERT INTO T_USER set email='1@example.com', passwd='123456';
 
 INSERT INTO T_USER set email='2@example.com', passwd='123456';
