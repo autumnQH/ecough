@@ -37,21 +37,21 @@ var getProblem= async (ctx, next) => {
 
 
 var getUserInfo = async (ctx, next) => {
-    console.log('进来啦');
+    //console.log('进来啦');
     var r_url = config.server.host + ctx.url;
     console.log(r_url);
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
     if(ctx.session.openid){
-        console.log('session存在');
-        console.log(ctx.session);
+        //console.log('session存在');
+        //console.log(ctx.session);
         await ctx.render('product', {
             userinfo: ctx.session
         });       
     }else{
-        if(!ctx.query.code && ctx.url == '/product/100001'){
-            console.log('code不存在');
+        if(!ctx.query.code){
+            //console.log('code不存在');
             ctx.redirect(url);
         }else{
             let code = ctx.query.code;
