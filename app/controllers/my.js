@@ -42,9 +42,9 @@ var getUserInfo = async (ctx, next) => {
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
-    if(ctx.session){
+    if(ctx.session.openid){
         console.log('session存在');
-        console.log(ctx.session.openid);
+        console.log(ctx.session);
         await ctx.render('product', {
             userinfo: ctx.session
         });       
