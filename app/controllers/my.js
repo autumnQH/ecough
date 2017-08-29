@@ -44,7 +44,7 @@ var getUserInfo = async (ctx, next) => {
 
     if(ctx.session){
         console.log('session存在');
-        console.log(ctx.session);
+        console.log(ctx.session.openid);
         await ctx.render('product', {
             userinfo: ctx.session
         });       
