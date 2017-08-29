@@ -44,6 +44,7 @@ var getUserInfo = async (ctx, next) => {
 
     if(ctx.session){
         console.log('session存在');
+        console.log(ctx.session);
         await ctx.render('product', {
             userinfo: ctx.session
         });       
@@ -92,7 +93,7 @@ var jsapiPay = async(ctx, next) => {
         var jsapi_ticket = await dao.getJsapiTicket();
         var url = 'http://' + ctx.header.host + ctx.url;
         var wxcfg = pay.setWXConfig(jsapi_ticket, url);
-        
+
         await ctx.render('order', {
             config: wxcfg,
             data: data2
