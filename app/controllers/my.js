@@ -38,7 +38,8 @@ var getProblem= async (ctx, next) => {
 
 var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
-    var r_url = config.server.host +'/my/userinfo';
+    var r_url = config.server.host + ctx.url;
+    console.log(r_url);
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -57,7 +58,6 @@ var getUserInfo = async (ctx, next) => {
             var user = await tools.getOauth2Token(code);
                 user = JSON.parse(user);
                 console.log(user,'user');
-                console.log(user.errcode);
             if(user.errcode){
                 ctx.redirect(url);
             }else{
@@ -180,7 +180,7 @@ module.exports = {
     'POST /product/100001': getProduct,
     'GET /notify': notify,
     'POST /notify': notify,
-    'GET /my/userinfo': getUserInfo,
+    //'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay,
     'GET /my/order': getOrder,
     'GET /admin': admin,
