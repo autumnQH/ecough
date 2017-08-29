@@ -39,6 +39,7 @@ var getProblem= async (ctx, next) => {
 var getUserInfo = async (ctx, next) => {
     console.log('进来啦');
     var r_url = config.server.host +'/my/userinfo';
+    console.log(r_url);
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
