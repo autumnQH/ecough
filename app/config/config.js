@@ -23,7 +23,7 @@ const config = {
       conn_limit: 5
     },
     server: {
-      host: 'www.e-cough.com',
+      host: 'http://www.e-cough.com',
 //     host: 'https://pnedhaouvq.localtunnel.me',
       port: 80
     },
