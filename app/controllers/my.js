@@ -50,7 +50,7 @@ var getUserInfo = async (ctx, next) => {
             userinfo: ctx.session
         });       
     }else{
-        if(!ctx.query.code){
+        if(!ctx.query.code && ctx.url == '/product/100001'){
             console.log('code不存在');
             ctx.redirect(url);
         }else{
