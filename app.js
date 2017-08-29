@@ -16,6 +16,14 @@ const controller = require('./controller');
 const config = require('./app/config/config');
 const logUtil = require('./utils/log');
 
+//session
+const session = require('koa-session2');
+const Store = require('./Store.js');
+
+app.use(session({
+  store: new Store()
+}));
+
 //模板
 app.use(views(path.join(__dirname, './app/views'), {
   extension: 'ejs'
@@ -41,7 +49,7 @@ app.use(require('koa-static')(__dirname + '/app/public'));
 //     flush: require('zlib').Z_SYNC_FLUSH
 // }))
 
-//logger
+logger
 app.use(async (ctx, next) => {
   //响应开始时间
   const start = new Date();

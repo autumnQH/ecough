@@ -13,11 +13,6 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      function setQRCode() {
-
-      }
-    </script>
 </head>
 <body>
 <nav style="width: 150px;float: left;">
@@ -59,7 +54,6 @@
 </div>
 
 <table class="table">
-  <caption>订单</caption>
   <thead>
     <tr>
       <th>推广员姓名</th>
@@ -75,7 +69,7 @@
         <td><%= datas[i].name %></td>
         <td><%= datas[i].scene_str %></td>
         <td>永久</td>
-        <td><%= datas[i].ticket %></td>
+        <td style="width: 300px;"><%= datas[i].ticket %></td>
       </tr>
     <% } %>
   <% } %>

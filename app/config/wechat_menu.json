@@ -3,12 +3,12 @@
     {  
       "type":"view",  
       "name":"我的信息",
-      "url":"http://www.e-cough.com/my/userinfo"
+      "url":"https://zcwlxxxwzx.localtunnel.me/my/userinfo"
     },
     {  
       "type":"view",  
-      "name":"产品订购",
-      "url":"http://www.e-cough.com/product/100001"
+      "name":"产品订购测试",
+      "url":"https://zcwlxxxwzx.localtunnel.me/product/100001"
     } 
   ]  
 }
