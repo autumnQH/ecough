@@ -65,7 +65,7 @@ var myOrder = async(ctx, next) => {
             ctx.session = userinfo;
 
             var result =  await userService.getUserOrder(ctx.session.openid);
-            console.log(result,'my order result');
+            console.log(result,'my order result', result.length);
             await ctx.render('myOrder', {
                 data: result
             })
