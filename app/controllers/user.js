@@ -76,7 +76,8 @@ var CustomerService = async (ctx, next) => {
   	console.log(ctx.session.openid,'session 存在 serivce');
 		var result =  await userService.getUserOrderNumber(ctx.session.openid);
   	await ctx.render('service', {
-  		data: result
+  		data: result,
+  		openid: ctx.session.openid
   	});
   }else{
     if(!ctx.query.code){
@@ -96,11 +97,16 @@ var CustomerService = async (ctx, next) => {
             var result =  await userService.getUserOrderNumber(ctx.session.openid);
             console.log(result,'service', result.length);
             await ctx.render('service', {
-                data: result
+                data: result,
+                openid: ctx.session.openid
             })
         }    
     }
   }
+
+}
+
+var setUserService = (data) => {
 
 }
 
@@ -109,7 +115,8 @@ module.exports = {
     'GET /users/delUserAddress': delUserAddress,
     'GET /users/getUserAddress': getUserAddress,
     'GET /users/my/order': myOrder,
-    'GET /users/service': CustomerService
+    'GET /users/service': CustomerService,
+    'POST /users/service/issue': setUserService
 /*
     'POST /users': addUser,
     'PUT /users/id': updateUser,

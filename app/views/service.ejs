@@ -24,7 +24,7 @@
 					<div class="form-group">
 						<label>选择订单</label>
 						<div class="group-item">
-							<select name="">
+							<select id="select">
 								<% for(var i = 0; i< data.length; i++) { %>
 								<option value="<%= data[i].out_trade_no %>"><%= data[i].out_trade_no %></option>
 								<% } %>
@@ -35,16 +35,45 @@
 					<div class="form-group" style="border-bottom: none;">
 						<label>问题详情</label>
 						<div class="group-item">
-							<input type="text" value="" placeholder="请输入问题详情"/>
+							<input id="title" type="text" value="" placeholder="请输入问题详情" >
 						</div>
 					</div>
 				</div>
 				<div class="sales-other">
-					<textarea placeholder="问题描述(非必填)"></textarea>
+					<textarea id="issue" placeholder="问题描述(非必填)"></textarea>
 				</div>
 			</form>
 		</div>
-		<button type="button" class="sales-bt">提交问题</button>
+		<button onclick="add();" type="button" class="sales-bt">提交问题</button>
+
+		<script>
+		function add() {
+			var openid = "<%= openid %>";
+			var out_trade_no = $('#select').val();
+			var title = $('#title').val();
+			var issue = $('#issue').val();
+			alert(openid);
+			alert(out_trade_no);
+			alert(title);
+			alert(issue);
+
+			$.ajax({
+				url: '/users/service/issue',
+				type: 'post',
+				data:{
+					openid: openid,
+					out_trade_no: out_trade_no,
+					title: title,
+					issue: issue
+				}
+			}).done(function(msg) {
+				alert('🙏谢谢反馈');
+				window.location.href = "http://www.e-cough.com/product/100001";
+			}).fail(function() {
+				alert('网络繁忙，请稍后再试！');
+			});
+		}	
+		</script>
 	</div>
 </body>
 </html>
