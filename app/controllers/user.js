@@ -25,8 +25,9 @@ var setUserAddress = async (ctx, next) => {
 }
 
 var getUserAddress = async (ctx, next) => {
-	let openid = ctx.query.openid;
-	console.log(openid);
+	let openid = {
+		openid: ctx.query.openid
+	};
 	var result = await userService.getUserAddress(openid);
 	console.log(result);
 	return ctx.body = result;
