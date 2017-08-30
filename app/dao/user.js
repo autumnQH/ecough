@@ -21,7 +21,7 @@ var getUserAddress = (openid) => {
 }
 
 var getUserOrder = (openid) => {
-	var result = db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME WHERE openid='" + openid + "'");
+	var result = db.find("SELECT * FROM T_WECHAT_ORDER WHERE openid='" + openid + "' ORDER BY CREATE_TIME");
 	return result;
 }
 
