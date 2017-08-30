@@ -103,6 +103,12 @@ var jsapiPay = async(ctx, next) => {
     var res = await tools.getPackge(data);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log(result,'result');
+    if(result.err_code){
+        if(result.err_code[0] == 'ORDERPAID'){
+            console.log('该订单已经支付');
+            await ctx.redirect('back');
+        }
+    }
     if(result.xml.prepay_id){
         var prepayid = result.xml.prepay_id[0];
         var data2 = pay.setPaySign(prepayid);
