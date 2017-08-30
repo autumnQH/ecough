@@ -106,7 +106,7 @@ var CustomerService = async (ctx, next) => {
 
 }
 
-var setUserService = (data) => {
+var setUserService = (ctx, next) => {
 		let data = ctx.body;
 		console.log(data);
 		var result = await userService.setUserService(data);
