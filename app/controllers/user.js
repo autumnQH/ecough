@@ -13,7 +13,6 @@ var delUserAddress = async (ctx, next) => {
 	let id = {
 		id: ctx.query.id
 	};
-	console.log(id);
 	return ctx.body = await userService.delUserAddress(id);
 
 }
@@ -27,22 +26,17 @@ var setUserAddress = async (ctx, next) => {
 var getUserAddress = async (ctx, next) => {
 	let openid = ctx.query.openid;
 	var result = await userService.getUserAddress(openid);
-	console.log(result);
 	return ctx.body = result;
 
 }
 
 var myOrder = async(ctx, next) => {
-	console.log('my order result');
   var r_url = config.server.host + ctx.url;
-  console.log(r_url,'myOrder');
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
-  	console.log(ctx.session.openid,'session 存在 myOrder');
 		var result =  await userService.getUserOrder(ctx.session.openid);
-		console.log(result,'my order result', result.length);
   	await ctx.render('myOrder', {
   		data: result
   	});
@@ -54,18 +48,16 @@ var myOrder = async(ctx, next) => {
         let code = ctx.query.code;
         var user = await tools.getOauth2Token(code);
             user = JSON.parse(user);
-            console.log(user,'user');
         if(user.errcode){
             ctx.redirect(url);
         }else{
-            console.log('ok');
             //拉取用户信息
             var userinfo = await tools.getUserInfo(user.access_token, user.openid);
                 userinfo = JSON.parse(userinfo);
             ctx.session = userinfo;
 
             var result =  await userService.getUserOrder(ctx.session.openid);
-            console.log(result,'my order result', result.length);
+
             await ctx.render('myOrder', {
                 data: result
             })
@@ -75,7 +67,41 @@ var myOrder = async(ctx, next) => {
 
 }
 var CustomerService = async (ctx, next) => {
-	await ctx.render('problem', {});
+	console.log('serive ');
+  var r_url = config.server.host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
+  if(ctx.session.openid){
+  	console.log(ctx.session.openid,'session 存在 serive');
+		var result =  await userService.getUserOrderNumber(ctx.session.openid);
+  	await ctx.render('serive', {
+  		data: result
+  	});
+  }else{
+    if(!ctx.query.code){
+        ctx.redirect(url);
+    }else{
+        let code = ctx.query.code;
+        var user = await tools.getOauth2Token(code);
+            user = JSON.parse(user);
+        if(user.errcode){
+            ctx.redirect(url);
+        }else{
+            //拉取用户信息
+            var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+                userinfo = JSON.parse(userinfo);
+            ctx.session = userinfo;
+
+            var result =  await userService.getUserOrderNumber(ctx.session.openid);
+            console.log(result,'service', result.length);
+            await ctx.render('service', {
+                data: result
+            })
+        }    
+    }
+  }
+
 }
 
 module.exports = {

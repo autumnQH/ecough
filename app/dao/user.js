@@ -25,10 +25,16 @@ var getUserOrder = (openid) => {
 	return result;
 }
 
+var getUserOrderNumber = (openid) =>{
+	var result = db.find("SELECT out_trade_no FROM T_WECHAT_ORDER WHERE openid='" + openid +"'");
+	return result;
+}
+
 module.exports = {    
 	getUserById : getUserById,
 	setUserAddress: setUserAddress,
 	delUserAddress: delUserAddress,
 	getUserAddress: getUserAddress,
-	getUserOrder: getUserOrder
+	getUserOrder: getUserOrder,
+	getUserOrderNumber: getUserOrderNumber
 };

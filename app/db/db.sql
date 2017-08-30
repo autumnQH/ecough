@@ -49,3 +49,14 @@ CREATE TABLE IF NOT EXISTS USER_ADDRESS (
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
+
+
+CREATE TABLE IF NOT EXISTS USER_SERVICE (
+  id int NOT NULL AUTO_INCREMENT,
+  openid varchar(255) NOT NULL,
+  out_trade_no varchar(255) NOT NULL,
+  title varchar(255) NOT NULL,
+  issue TEXT NOT NULL,
+  PRIMARY KEY (id),
+  INDEX openid (openid)
+)DEFAULT CHARSET=utf8 ;
