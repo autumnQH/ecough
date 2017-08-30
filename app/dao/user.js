@@ -6,8 +6,8 @@ var getUserById = (userId) => {
 }
 
 var setUserAddress = (data) => {
-	var user = db.add("USER_ADDRESS", data);
-	return user
+	var result = db.add("USER_ADDRESS", data);
+	return result;
 }
 
 var delUserAddress = (id) => {
@@ -30,11 +30,16 @@ var getUserOrderNumber = (openid) =>{
 	return result;
 }
 
+var setUserService = (data) => {
+	var result = db.add("USER_SERVICE", data);
+	return result;
+}
 module.exports = {    
 	getUserById : getUserById,
 	setUserAddress: setUserAddress,
 	delUserAddress: delUserAddress,
 	getUserAddress: getUserAddress,
 	getUserOrder: getUserOrder,
-	getUserOrderNumber: getUserOrderNumber
+	getUserOrderNumber: getUserOrderNumber,
+	setUserService: setUserService
 };

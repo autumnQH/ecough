@@ -30,11 +30,16 @@ var getUserOrderNumber = async(openid) => {
 	return result;
 }
 
+var setUserService = async (data) => {
+	var result = await userDao.setUserService(data);
+	return result;
+}
 module.exports = {    
 	getUserById : getUserById,
 	setUserAddress: setUserAddress,
 	delUserAddress: delUserAddress,
 	getUserAddress: getUserAddress,
 	getUserOrder: getUserOrder,
-	getUserOrderNumber: getUserOrderNumber
+	getUserOrderNumber: getUserOrderNumber,
+	setUserService: setUserService
 };

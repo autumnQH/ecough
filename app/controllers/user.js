@@ -107,7 +107,10 @@ var CustomerService = async (ctx, next) => {
 }
 
 var setUserService = (data) => {
-
+		let data = ctx.body;
+		console.log(data);
+		var result = await userService.setUserService(data);
+		return ctx.body = result;
 }
 
 module.exports = {
