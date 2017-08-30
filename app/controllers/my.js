@@ -39,7 +39,6 @@ var getProblem= async (ctx, next) => {
 var getUserInfo = async (ctx, next) => {
     //console.log('进来啦');
     var r_url = config.server.host + ctx.url;
-    console.log(r_url);
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -103,8 +102,8 @@ var jsapiPay = async(ctx, next) => {
 
     var res = await tools.getPackge(data);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-
-    if(result.xml.prepay_id[0]){
+    console.log(result,'result');
+    if(result.xml.prepay_id){
         var prepayid = result.xml.prepay_id[0];
         var data2 = pay.setPaySign(prepayid);
 
