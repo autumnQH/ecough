@@ -66,7 +66,7 @@ var admin_setQrcode = async function(ctx, next) {
     await ctx.redirect('/admin/qrcode');
 }
 
-var userService = async (ctx, next) => {
+var admin_userService = async (ctx, next) => {
     var result =  await userService.getUserService();
     await ctx.render('admin_user_service', {
         data: result
@@ -78,6 +78,6 @@ module.exports = {
     'POST /admin/setOrder': admin_setOrder,
     'GET /admin/qrcode': admin_qrcode,
     'POST /admin/setQrcode': admin_setQrcode,
-    'GET /admin/user/service': userService
+    'GET /admin/user/service': admin_userService
 
 };
