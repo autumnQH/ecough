@@ -25,7 +25,9 @@
 						<label>选择订单</label>
 						<div class="group-item">
 							<select name="">
-								<option value="">111</option>
+								<% for(var i = 0; i< data.length; i++) { %>
+								<option value="<%= data[i].out_trade_no %>"><%= data[i].out_trade_no %></option>
+								<% } %>
 							</select>
 						</div>
 					</div>
