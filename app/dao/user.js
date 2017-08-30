@@ -34,6 +34,11 @@ var setUserService = (data) => {
 	var result = db.add("USER_SERVICE", data);
 	return result;
 }
+
+var getUserService = () => {
+	var result = db.find("SELECT * FROM USER_SERVICE");
+	return result;
+}
 module.exports = {    
 	getUserById : getUserById,
 	setUserAddress: setUserAddress,
@@ -41,5 +46,6 @@ module.exports = {
 	getUserAddress: getUserAddress,
 	getUserOrder: getUserOrder,
 	getUserOrderNumber: getUserOrderNumber,
-	setUserService: setUserService
+	setUserService: setUserService,
+	getUserService: getUserService
 };

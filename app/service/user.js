@@ -34,6 +34,11 @@ var setUserService = async (data) => {
 	var result = await userDao.setUserService(data);
 	return result;
 }
+
+var getUserService = async () => {
+	var result = await userDao.setUserService();
+	return result;
+}
 module.exports = {    
 	getUserById : getUserById,
 	setUserAddress: setUserAddress,
@@ -41,5 +46,6 @@ module.exports = {
 	getUserAddress: getUserAddress,
 	getUserOrder: getUserOrder,
 	getUserOrderNumber: getUserOrderNumber,
-	setUserService: setUserService
+	setUserService: setUserService,
+	getUserService: getUserService
 };

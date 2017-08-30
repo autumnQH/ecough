@@ -1,3 +1,14 @@
+const request = require('request');
+const xml = require('../utils/xml');
+const wechat = require('../utils/wechat');
+const dao = require('../dao/wechat');
+const config = require('../config/config');
+const tools = require('../utils/tools');
+const urlencode = require('urlencode');
+const crypto = require('crypto');
+const moment = require('moment');
+const userService = require('../service/user');
+
 
 var admin = async function (ctx, next) {
     await ctx.render('admin', {
@@ -55,11 +66,18 @@ var admin_setQrcode = async function(ctx, next) {
     await ctx.redirect('/admin/qrcode');
 }
 
+var userService = async (ctx, next) => {
+    var result =  await userService.getUserService();
+    await ctx.render('admin_user_service', {
+        data: result
+    });
+}
 module.exports = {
     'GET /admin': admin,
     'GET /admin/order': admin_order,
     'POST /admin/setOrder': admin_setOrder,
     'GET /admin/qrcode': admin_qrcode,
-    'POST /admin/setQrcode': admin_setQrcode
+    'POST /admin/setQrcode': admin_setQrcode,
+    'GET /admin/user/service': userService
 
 };
