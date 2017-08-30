@@ -23,7 +23,7 @@ var postHandle = async(ctx, next) => {
     console.log(msg);
 
     let msgType = msg.MsgType[0];
-    if(msg.Ticket[0]){
+    if(msg.Ticket[0] !== 'undefalut'){
         //记录用户扫描带参数的二维码
         let userName = msg.FromUserName[0];
         let ticket = msg.Ticket[0];
