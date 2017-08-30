@@ -106,7 +106,7 @@ var jsapiPay = async(ctx, next) => {
     if(result.err_code){
         if(result.err_code[0] == 'ORDERPAID'){
             console.log('该订单已经支付');
-            await ctx.redirect('back');
+            await ctx.redirect('/product/100001');
         }
     }
     if(result.xml.prepay_id){
