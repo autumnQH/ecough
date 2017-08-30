@@ -74,12 +74,16 @@ var myOrder = async(ctx, next) => {
   }
 
 }
+var CustomerService = async (ctx, next) => {
+	await ctx.render('problem', {});
+}
 
 module.exports = {
     'POST /users/setUserAddress': setUserAddress,
     'GET /users/delUserAddress': delUserAddress,
     'GET /users/getUserAddress': getUserAddress,
-    'GET /users/my/order': myOrder
+    'GET /users/my/order': myOrder,
+    'GET /users/service': CustomerService
 /*
     'POST /users': addUser,
     'PUT /users/id': updateUser,

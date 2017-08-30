@@ -9,6 +9,11 @@
       "type":"view",  
       "name":"产品订购",
       "url":"http://www.e-cough.com/product/100001"
+    },
+    {  
+      "type":"view",  
+      "name":"售后服务",
+      "url":"http://www.e-cough.com/users/service"
     } 
   ]  
 }
