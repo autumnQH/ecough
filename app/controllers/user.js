@@ -42,7 +42,7 @@ var myOrder = async(ctx, next) => {
   if(ctx.session.openid){
   	console.log(ctx.session.openid,'session 存在 myOrder');
 		var result =  await userService.getUserOrder(ctx.session.openid);
-		console.log(result,'my order result');
+		console.log(result,'my order result', result.length);
   	await ctx.render('myOrder', {
   		data: result
   	});
@@ -65,7 +65,7 @@ var myOrder = async(ctx, next) => {
             ctx.session = userinfo;
 
             var result =  await userService.getUserOrder(ctx.session.openid);
-            console.log(result,'my order result', result.length == 0);
+            console.log(result,'my order result', result.length);
             await ctx.render('myOrder', {
                 data: result
             })
