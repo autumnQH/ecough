@@ -46,7 +46,7 @@ exports.setPaySign = function (prepayid, value) {
     //支付签名
     var paySign = crypto.createHash('md5').update(str, 'utf8').digest('hex').toUpperCase();
         data.paySign = paySign;
-        data.out_trade_no = out_trade_no;
+        data.out_trade_no = value.out_trade_no;
     return data;    
 }
 
