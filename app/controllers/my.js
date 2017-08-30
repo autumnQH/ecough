@@ -121,13 +121,13 @@ var jsapiPay = async(ctx, next) => {
     }
     if(result.xml.prepay_id){
         var prepayid = result.xml.prepay_id[0];
-        var data2 = pay.setPaySign(prepayid);
+        var data2 = pay.setPaySign(prepayid, value);
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket
         var jsapi_ticket = await dao.getJsapiTicket();
         var url = 'http://' + ctx.header.host + ctx.url;
-        var wxcfg = pay.setWXConfig(jsapi_ticket, url);
+        var wxcfg = pay.setWXConfig(jsapi_ticket, url, value);
 
         await ctx.render('order', {
             config: wxcfg,
