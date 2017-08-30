@@ -96,6 +96,7 @@ var jsapiPay = async(ctx, next) => {
     // });
 
     var openid = ctx.query.openid;
+
     var data = pay.setPackageData(openid);
     
     console.log(data,'统一下单');
@@ -126,7 +127,7 @@ var jsapiPay = async(ctx, next) => {
         });         
     }else{
         console.log('errcode');
-        await ctx.redirect('/my/order');
+        await ctx.redirect('/product/100001');
     }
 
 };
