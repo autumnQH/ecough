@@ -61,9 +61,9 @@
 	  	var phone = $('#phone').html('');
 	  	var address = $('#address').html('');
 
-		  $('#name').text(form_name);
-		  $('#phone').text(form_phone);
-		  $('#address').text(form_address);
+		  $('#name').html(form_name);
+		  $('#phone').html(form_phone);
+		  $('#address').html(form_address);
 
 
 			$('#close').click();
@@ -96,7 +96,7 @@
 	});
 	wx.ready(function() {
 		document.querySelector('#chooseWXPay').onclick = function() {
-			var name = $('#name1').text();
+			var name = $('#name').text();
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
 		  if(name && phone && address){
@@ -108,7 +108,7 @@
 					paySign: '<%= data.paySign %>',
 					success: function(res) {
 						alert('支付成功');
-						var name = $('#name1').text();
+						var name = $('#name').text();
 						var address = $('#address').text();
 						var phone = $('#phone').text();
 						var product = $('#product').text();
