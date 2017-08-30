@@ -97,11 +97,20 @@ var jsapiPay = async(ctx, next) => {
 
     var openid = ctx.query.openid;
 
-    var data = pay.setPackageData(openid);
-    
-    console.log(data,'统一下单');
+    var nonceStr = tools.createRandom();
+    var timeStamp = tools.createTimestamp();
+    var out_trade_no = tools.trade();
 
-    var res = await tools.getPackge(data);//发起统一下单
+    var value = {
+        nonceStr: nonceStr,
+        timeStamp: timeStamp,
+        out_trade_no: out_trade_no
+    };
+    var page = pay.setPackageData(openid, value);
+    
+    console.log(page,'统一下单');
+
+    var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log(result,'result');
     if(result.xml.err_code){

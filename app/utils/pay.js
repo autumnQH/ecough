@@ -4,19 +4,15 @@ const crypto = require('crypto');
 const xml = require('./xml');
 
 
-var nonceStr = tools.createRandom();
-var timeStamp = tools.createTimestamp();
-var out_trade_no = tools.trade();
-
 //统一下单
-exports.setPackageData = function (openid) {	
+exports.setPackageData = function (openid, value) {	
     var data = {
         appid: config.wx.appid, //appId
         attach: '支付测试',
         body: 'Test', //商品描述
         mch_id: config.wx.mchid, //商户号id
-        nonce_str: nonceStr,
-        out_trade_no: out_trade_no,//商户订单号
+        nonce_str: value.nonceStr,
+        out_trade_no: value.out_trade_no,//商户订单号
         total_fee: '1',//标价金额
         spbill_create_ip: '47.93.245.51',//终端IP
         notify_url: '/notify',
@@ -36,11 +32,11 @@ exports.setPackageData = function (openid) {
 }
 
 //生成支付请求签名
-exports.setPaySign = function (prepayid) {
+exports.setPaySign = function (prepayid, value) {
 		var data = {
 		    appId: config.wx.appid,
-		    timeStamp: timeStamp,
-		    nonceStr: nonceStr,
+		    timeStamp: value.timeStamp,
+		    nonceStr: value.nonceStr,
 		    package: 'prepay_id='+prepayid,
 		    signType: 'MD5'
 		};
@@ -54,11 +50,11 @@ exports.setPaySign = function (prepayid) {
     return data;    
 }
 
-exports.setWXConfig = function(jsapi_ticket, url) {
+exports.setWXConfig = function(jsapi_ticket, url, value) {
     var wxcfg = {
         appid: config.wx.appid,
-        timestamp: timeStamp,
-        nonceStr: nonceStr
+        timestamp: value.timeStamp,
+        nonceStr: value.nonceStr
     };
     var str = tools.raw({
         noncestr: wxcfg.nonceStr,
