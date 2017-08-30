@@ -51,9 +51,7 @@ var admin_setQrcode = async function(ctx, next) {
             }
         }
     });
-    console.log(json,'json--------');
     var data = await tools.getQRCode(token, json);
-    console.log(data,'data------');
     data = JSON.parse(data);
     data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
     data.name = req.name +'';

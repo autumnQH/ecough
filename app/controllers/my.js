@@ -108,11 +108,10 @@ var jsapiPay = async(ctx, next) => {
     };
     var page = pay.setPackageData(openid, value);
     
-    console.log(page,'统一下单');
+    //console.log(page,'统一下单');
 
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    console.log(result,'result');
     if(result.xml.err_code){
         if(result.xml.err_code[0] == 'ORDERPAID'){
             console.log('该订单已经支付');
@@ -135,7 +134,6 @@ var jsapiPay = async(ctx, next) => {
             openid: openid
         });         
     }else{
-        console.log('errcode');
         await ctx.redirect('/product/100001');
     }
 

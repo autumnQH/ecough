@@ -67,13 +67,11 @@ var myOrder = async(ctx, next) => {
 
 }
 var CustomerService = async (ctx, next) => {
-	console.log('serivce ');
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
-  	console.log(ctx.session.openid,'session 存在 serivce');
 		var result =  await userService.getUserOrderNumber(ctx.session.openid);
   	await ctx.render('service', {
   		data: result,
@@ -95,7 +93,6 @@ var CustomerService = async (ctx, next) => {
             ctx.session = userinfo;
 
             var result =  await userService.getUserOrderNumber(ctx.session.openid);
-            console.log(result,'service', result.length);
             await ctx.render('service', {
                 data: result,
                 openid: ctx.session.openid

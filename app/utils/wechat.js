@@ -12,7 +12,7 @@ exports.auth = async (ctx) => {
     let timestamp = ctx.query.timestamp;
     let nonce = ctx.query.nonce;
 
-    console.log("token: %s, timestamp: %s, nonce: %s", signature, timestamp, nonce);   
+    //console.log("token: %s, timestamp: %s, nonce: %s", signature, timestamp, nonce);   
     
     // 字典排序
     const arr = [token, timestamp, nonce].sort()
@@ -22,7 +22,7 @@ exports.auth = async (ctx) => {
     var sha1 = crypto.createHash('sha1');
     sha1.update(tmpStr);
     var resStr = sha1.digest('hex');
-    console.log(signature, 'resStr: ', resStr);
+    //console.log(signature, 'resStr: ', resStr);
 
     // 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信,
     // 如果匹配,返回echoster , 不匹配则返回error

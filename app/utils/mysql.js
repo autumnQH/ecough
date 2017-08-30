@@ -40,7 +40,7 @@ function execQuery(sql, values, callback) {
                     callback(null, rows);
                 }
             });
-            console.log(querys.sql);
+            //console.log(querys.sql);
         }
     });
 }
