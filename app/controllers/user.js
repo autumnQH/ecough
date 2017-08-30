@@ -43,6 +43,8 @@ var myOrder = async(ctx, next) => {
   	console.log(ctx.session.openid,'session 存在 myOrder');
 		var result =  await userService.getUserOrder(ctx.session.openid);
 		console.log(result,'my order result', result.length);
+		var date = moment(result[0].create_time, ["YYYY-MM-DD", moment.ISO_8601]);
+		console.log(date, 'date');
 		console.log(typeof result[0].create_time);
   	await ctx.render('myOrder', {
   		data: result
