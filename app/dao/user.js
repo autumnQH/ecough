@@ -16,7 +16,7 @@ var delUserAddress = (id) => {
 } 
 
 var getUserAddress = (openid) => {
-	var result  = db.find("SELECT * FROM USER_ADDRESS", openid);
+	var result  = db.find("SELECT * FROM USER_ADDRESS WHERE openid = '"+ openid +"'");
 	return result;
 }
 
