@@ -79,8 +79,8 @@ app.on('error', function(err, ctx){
 });
 
 //创建微信菜单
-//const wechatService = require('./app/service/wechat');
-//wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
+const wechatService = require('./app/service/wechat');
+wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
 
 app.listen(config.server.port);
 console.log(config.app.name + "(" + config.app.version + ")" + 

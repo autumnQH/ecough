@@ -36,7 +36,8 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   pay_money varchar(255) NOT NULL,
   out_trade_no varchar(255) NOT NULL,
   create_time datetime  DEFAULT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
 
 CREATE TABLE IF NOT EXISTS USER_ADDRESS (
@@ -45,5 +46,6 @@ CREATE TABLE IF NOT EXISTS USER_ADDRESS (
   name varchar(255) NOT NULL,
   address varchar(255) NOT NULL,
   phone varchar(255) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
