@@ -208,6 +208,8 @@
 						<div id="addressList"></div>
 
 <script>
+$(function() {
+	alert('<%= openid %>');
  function getUserAddress() {
 		$.ajax({
 			type: 'get',
@@ -226,6 +228,8 @@
 		});	
  }
 getUserAddress();
+	
+});
 </script>
 
 
