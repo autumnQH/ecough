@@ -104,7 +104,7 @@ var jsapiPay = async(ctx, next) => {
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
     console.log(result,'result');
     if(result.xml.err_code){
-        if(result.err_code[0] == 'ORDERPAID'){
+        if(result.xml.err_code[0] == 'ORDERPAID'){
             console.log('该订单已经支付');
             await ctx.redirect('/product/100001');
         }
