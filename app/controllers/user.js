@@ -1,6 +1,7 @@
 const userService = require('../service/user.js');;
 const tools = require('../utils/tools');
 const config  =require('../config/config');
+const urlencode = require('urlencode');
 
 // var getUser = async (ctx, next) => {
 //     let userId = ctx.params.id;
