@@ -40,6 +40,7 @@ var myOrder = async(ctx, next) => {
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
+  	console.log(ctx.session.openid,'session 存在 myOrder');
 		var result =  await userService.getUserOrder(ctx.session.openid);
 		console.log(result,'my order result');
   	await ctx.render('myOrder', {
