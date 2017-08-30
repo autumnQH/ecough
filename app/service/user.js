@@ -36,7 +36,7 @@ var setUserService = async (data) => {
 }
 
 var getUserService = async () => {
-	var result = await userDao.setUserService();
+	var result = await userDao.getUserService();
 	return result;
 }
 module.exports = {    
