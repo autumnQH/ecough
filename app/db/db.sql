@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_SPREAD (
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   id int NOT NULL AUTO_INCREMENT,
+  openid varchar(255) NOT NULL,
   name varchar(255) NOT NULL,
   address varchar(255) NOT NULL,
   phone varchar(255) NOT NULL,
@@ -35,5 +36,14 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   pay_money varchar(255) NOT NULL,
   out_trade_no varchar(255) NOT NULL,
   create_time datetime  DEFAULT NULL,
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS USER_ADDRESS (
+  id int NOT NULL AUTO_INCREMENT,
+  openid varchar(255) NOT NULL,
+  name varchar(255) NOT NULL,
+  address varchar(255) NOT NULL,
+  phone varchar(255) NOT NULL,
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 ;

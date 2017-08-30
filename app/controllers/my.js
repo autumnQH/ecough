@@ -77,6 +77,25 @@ var getUserInfo = async (ctx, next) => {
 
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
+    // var wxcfg = {
+    //     appid: '',
+    //     timestamp: '',
+    //     nonceStr: '',
+    //     signature: ''
+    // };
+    // var data2 = {
+    //     timeStamp: '',
+    //     nonceStr: '',
+    //     package: '',
+    //     signType: '',
+    //     paySign: ''
+    // };
+    // await ctx.render('order',{
+    //     config: wxcfg,
+    //     data: data2,
+    //     openid: ''
+    // });
+
     var openid = ctx.query.openid;
     var data = pay.setPackageData(openid);
     
@@ -97,7 +116,8 @@ var jsapiPay = async(ctx, next) => {
 
         await ctx.render('order', {
             config: wxcfg,
-            data: data2
+            data: data2,
+            openid: openid
         });         
     }else{
         console.log('errcode');
@@ -182,7 +202,7 @@ module.exports = {
     'POST /notify': notify,
     //'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay,
-    'GET /my/order': getOrder,
+    //'GET /my/order': getOrder,
     'GET /admin': admin,
     'GET /admin/order': admin_order,
     'POST /admin/setOrder': admin_setOrder,

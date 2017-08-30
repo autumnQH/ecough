@@ -22,10 +22,16 @@ const config = {
 //      passwd: '450450', 
       conn_limit: 5
     },
+    sms: {
+      accessKeyId: 'LTAI8ttec2BYuOMC',
+      secretAccessKey: '3sDGHGwyQWpNwCdSYoomAWFGj9wSUj',
+      TemplateCode: 'SMS_91000028',
+      SignName: '刘鹏'
+    },
     server: {
       host: 'http://www.e-cough.com',
-//     host: 'https://pnedhaouvq.localtunnel.me',
-      port: 80
+//      host: 'https://pnedhaouvq.localtunnel.me',
+       port: 80
     },
     app: {
       name: "ecough",

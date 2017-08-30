@@ -49,26 +49,26 @@ app.use(require('koa-static')(__dirname + '/app/public'));
 //     flush: require('zlib').Z_SYNC_FLUSH
 // }))
 
-logger
-app.use(async (ctx, next) => {
-  //响应开始时间
-  const start = new Date();
-  //响应间隔时间
-  var ms;
-  try {
-    //开始进入到下一个中间件
-    await next();
+//logger
+// app.use(async (ctx, next) => {
+//   //响应开始时间
+//   const start = new Date();
+//   //响应间隔时间
+//   var ms;
+//   try {
+//     //开始进入到下一个中间件
+//     await next();
 
-    ms = new Date() - start;
-    //记录响应日志
-    logUtil.logResponse(ctx, ms);
+//     ms = new Date() - start;
+//     //记录响应日志
+//     logUtil.logResponse(ctx, ms);
 
-  } catch (error) {    
-    ms = new Date() - start;
-    //记录异常日志
-    logUtil.logError(ctx, error, ms);
-  }
-});
+//   } catch (error) {    
+//     ms = new Date() - start;
+//     //记录异常日志
+//     logUtil.logError(ctx, error, ms);
+//   }
+// });
 
 //控制器
 app.use(controller(path.join(__dirname, './app/controllers')));
@@ -79,8 +79,8 @@ app.on('error', function(err, ctx){
 });
 
 //创建微信菜单
-const wechatService = require('./app/service/wechat');
-wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
+//const wechatService = require('./app/service/wechat');
+//wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
 
 app.listen(config.server.port);
 console.log(config.app.name + "(" + config.app.version + ")" + 

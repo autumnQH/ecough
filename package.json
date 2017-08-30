@@ -9,6 +9,7 @@
     "test": "tests"
   },
   "dependencies": {
+    "@alicloud/sms-sdk": "^1.0.2",
     "crypto": "0.0.3",
     "ejs": "^2.5.6",
     "ioredis": "^3.1.4",

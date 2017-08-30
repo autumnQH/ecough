@@ -57,16 +57,34 @@
 	  	$('#err_address').show();
 	  	return false;
 	  }else{
-	  	var name = $('#name').html('<label id="name1"></label><label id="phone"></label>');
+	  	var name = $('#name').html('');
+	  	var phone = $('#phone').html('');
 	  	var address = $('#address').html('');
 
-		  $('#name1').append(form_name);
-		  $('#phone').append(form_phone);
-		  $('#address').append(form_address);
+		  $('#name').text(form_name);
+		  $('#phone').text(form_phone);
+		  $('#address').text(form_address);
+
+
 			$('#close').click();
+			//ajax
+		  $.ajax({
+		  	url: '/users/setUserAddress',
+		  	type: 'post',
+		  	data:{
+		  		openid: '<%= openid %>',
+		  		name: form_name,
+		  		phone: form_phone,
+		  		address: form_address
+		  	}
+		  }).done(function(msg) {
+		  }).fail(function(jqXHR, textStatus) {
+  			alert( "网络繁忙，请稍后再试！");
+			});
+			//end ajax
 	  }
   };
-
+//end add_info()
 	wx.config({
 		debug: false,
 		appId: '<%= config.appid %>',
@@ -98,6 +116,7 @@
 						var money = '0.01';
 						var out_trade_no = "<%= data.out_trade_no %>";
 
+						$('#order_openid').val('<%= openid %>');
 						$('#order_name').val(name);
 						$('#order_address').val(address);
 						$('#order_phone').val(phone);
@@ -116,11 +135,11 @@
 		  }else{
 		  	alert('请输入收获地址');
 		  }
-
 		};
 	});	
 </script>
 <form action="/admin/setOrder" method="post" style="visibility: hidden;margin-top: -100px;">
+	<input type="text" name="openid" id="order_openid">
 	<input type="text" name="name" id="order_name">
 	<input type="text" name="address" id="order_address">
 	<input type="text" name="phone" id="order_phone">
@@ -133,12 +152,14 @@
 
 <body>
 <!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-    新建收获地址
+<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newAddress">
+	新建收货地址
 </button>
-
+<button onclick="getUserAddress();" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myAddress">
+	我的收货地址
+</button>
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="newAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -171,14 +192,98 @@
     </div><!-- /.modal -->
 </div>
 
+
+
+<div class="modal fade" id="myAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                   	我的收获地址
+                </h4>
+            </div>
+						<div id="addressList"></div>
+
+<script>
+ function getUserAddress() {
+		$.ajax({
+			type: 'get',
+			url: '/users/getUserAddress',
+			data:{
+				openid: '<%= openid %>'
+			}
+		}).done(function(msg) {
+			$('#addressList').html('');
+			for(var i = 0; i< msg.length; i++) {
+				var list = $('<div class="radio"><label><input type="radio" name="radio" id='+ msg[i].id+'>' +
+					'<p><label>'+ msg[i].name +'</label><label>'+ msg[i].phone+'</label></p>'+
+					'<p>'+msg[i].address +'</p></label> <div>');
+				$('#addressList').append(list);
+			}
+		});	
+ }
+getUserAddress();
+</script>
+
+
+            <div class="modal-footer">
+								<button type="button" class="btn btn-danger pull-left" onclick="deleteAddress();">删除</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="myAddress-close">关闭
+                </button>
+                <button type="button" onclick="defaultAddress();" class="btn btn-primary">
+                    提交更改
+                </button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
   <div class="main">
 		<div class="order">
 			<div class="order-address">
-			<div>
-				<p class="userinfo" id="name"><label id="phone"></label></p>
-				<span class="useraddress" id="address"></span>
-			</div>	
+				<address id="order-address">
+ 					<p><label id="name"></label><label id="phone"></label></p>
+					<p id="address"></p>
+				</address>	
 			</div>
+
+
+
+<script>
+
+function deleteAddress() {
+
+	var id = $('input:radio[name="radio"]:checked').attr('id');
+	$.ajax({
+		url: '/users/delUserAddress',
+		type: 'get',
+		data: {
+			id: id
+		}
+	}).done(function(msg) {
+		$('input:radio[name="radio"]:checked').parent().parent().remove();
+	}).fail(function(jqXHR, textStatus) {
+		alert("网络繁忙，请稍后再试！");
+	});
+}
+
+
+function defaultAddress() {
+		var name = $('input:radio[name="radio"]:checked').parent().find('p').eq(0).find('label').eq(0).text();
+		var phone = $('input:radio[name="radio"]:checked').parent().find('p').eq(0).find('label').eq(1).text();
+		var address = $('input:radio[name="radio"]:checked').parent().find('p').eq(1).text();
+		$('#name').text(name);
+		$('#phone').text(phone);
+		$('#address').text(address);
+		$('#myAddress-close').click();
+}
+defaultAddress();
+</script>
+
 
 			<div class="order-item">
 				<div class="order-top">订单信息</div>
@@ -222,9 +327,7 @@
 				</div>
 			</div>
 			<div class="sum-btn">
-				<div class="btnlist">
-					<a href="javascript:" id="chooseWXPay">购买</a>
-				</div>
+				<a class="btn btn-danger btn-block active" id="chooseWXPay">购买</a>
 			</div>
 		</div>
 	</div>
