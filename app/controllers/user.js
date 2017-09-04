@@ -23,13 +23,21 @@ var setUserAddress = async (ctx, next) => {
 	return ctx.body = result;
 }
 
+var getUserAddressByOrder = async (ctx, next) =>{
+  let openid = ctx.query.openid;
+  var result = await userService.getUserAddress(openid);
+  return ctx.body = result;
+}
+
 var getUserAddress = async (ctx, next) => {
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
   if(ctx.session.openid){
     var result = await userService.getUserAddress(ctx.session.openid);
-    return ctx.body = result;    
+        await ctx.render('user_address', {
+          data: result
+        });   
   }else{
     if(!ctx.query.code){
       ctx.redirect(url);
@@ -145,7 +153,8 @@ module.exports = {
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,
     'POST /users/service/issue': setUserService,
-    'GET /users/my/express': getUserExpress
+    'GET /users/my/express': getUserExpress,
+    'GET /user/order/address': getUserAddressByOrder
 /*
     'POST /users': addUser,
     'PUT /users/id': updateUser,
