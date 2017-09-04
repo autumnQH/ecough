@@ -135,13 +135,17 @@ var setUserService = async (ctx, next) => {
 	return ctx.body = result;
 }
 
+var getUserExpress = async (ctx, next) => {
+  return ctx.body = ""
+}
 module.exports = {
     'POST /users/setUserAddress': setUserAddress,
     'GET /users/delUserAddress': delUserAddress,
     'GET /users/getUserAddress': getUserAddress,
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,
-    'POST /users/service/issue': setUserService
+    'POST /users/service/issue': setUserService,
+    'GET /users/my/express': getUserExpress
 /*
     'POST /users': addUser,
     'PUT /users/id': updateUser,
