@@ -23,7 +23,7 @@
         },{
           "type":"view",
           "name":"我的地址",
-          "url": "http://www.e-cough/users/getUserAddress"
+          "url": "http://www.e-cough.com/users/getUserAddress"
         }      
       ]
     }
