@@ -96,8 +96,8 @@
     <li class="list-group-item" id="<%= data[i].id %>">
     <p><%= data[i].name %><%= data[i].phone %></p><p><%= data[i].address %></p></li>	
 <% } %>
-<a id="setAddress" href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#newAddress">新增收货地址</a>
-<a id="delAddress" href="" class="btn btn-danger btn-sm">删除收货地址</a>
+<a id="setAddress"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#newAddress">新增收货地址</a>
+<a id="delAddress"  class="btn btn-danger btn-sm">删除收货地址</a>
 </ul>
 <% } %>
 
@@ -145,7 +145,19 @@
 
 		$('#delAddress').on('click', function(event) {
 			var id = $('.active').attr('id');
-			alert(id);
+			$.ajax({
+				url: '/users/delUserAddress',
+				type: 'get',
+				data: {
+					id: id
+				}
+			}).done(function(msg) {
+				location.reload(true); 
+			}).fail(function(jqXHR, textStatus) {
+				alert("网络繁忙，请稍后再试！");
+			});
+
+
 		});
 
 	});
