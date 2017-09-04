@@ -25,12 +25,13 @@
 	</div>
 <% }else{ %>
 
-<select id="select">
+<ul class="list-group">
 <% for(var i = 0; i< data.length; i++){ %>
-	<option value=""><%= data[i].name %><%= data[i].phone %><%= data[i].address %></option>	
+    <li class="list-group-item"><p><%= data[i].name %><%= data[i].phone %></p><p><%= data[i].address %></p></li>	
 <% } %>
-</select>
+</ul>
 <% } %>
+
 
 </body>
 </html>
