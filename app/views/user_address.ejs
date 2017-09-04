@@ -27,8 +27,10 @@
 
 <ul class="list-group">
 <% for(var i = 0; i< data.length; i++){ %>
-    <li class="list-group-item"><p><%= data[i].name %><%= data[i].phone %></p><p><%= data[i].address %></p></li>	
+    <li class="list-group-item"><div><p><%= data[i].name %><%= data[i].phone %></p><p><%= data[i].address %></p></div>
+    <div><a href="" class="btn btn-danger btn-sm active">删除</a></div></li>	
 <% } %>
+<a href="" class="btn btn-info btn-sm active">新增收货地址</a>
 </ul>
 <% } %>
 
