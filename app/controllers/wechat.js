@@ -43,7 +43,8 @@ var postHandle = async(ctx, next) => {
         
     }
 
-    if(msg.Event === 'merchant_order'){
+    if(msg.Event[0] === 'merchant_order'){
+        console.log('进来了');
         let data = {
             openid : msg.FromUserName[0],
             order_id: msg.OrderId[0],
@@ -67,7 +68,7 @@ var postHandle = async(ctx, next) => {
           case 'voice':
             break;
           case 'event':
-            reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
+            //reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
 
             // switch (msg.Event) {
             //   case 'subscribe':
@@ -79,7 +80,7 @@ var postHandle = async(ctx, next) => {
             // }
             break;
           default:
-            reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
+            //  reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
             break;
     }
 
