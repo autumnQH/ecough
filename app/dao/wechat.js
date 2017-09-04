@@ -42,6 +42,10 @@ var setOrder = async(data) => {
 	var result = db.add("T_WECHAT_ORDER", data);
 	return result;
 }
+var setStoreOrder = async (data) => {
+	var result = db.add("STORE_ORDER", data);
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -51,5 +55,6 @@ module.exports = {
 	getSpread: getSpread,
 	setSpread: setSpread,
 	getOrder: getOrder,
-	setOrder: setOrder
+	setOrder: setOrder,
+	setStoreOrder: setStoreOrder
 };

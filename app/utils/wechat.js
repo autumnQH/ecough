@@ -108,3 +108,7 @@ exports.getOrder = () => {
 exports.setOrder = (data) => {
     return dao.setOrder(data);
 }
+
+exports.setStoreOrder = (data) => {
+    return dao.setStoreOrder(data);
+}

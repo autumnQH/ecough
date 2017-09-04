@@ -36,11 +36,23 @@ var postHandle = async(ctx, next) => {
                 userName: userName,//openId
                 ticket: ticket,//二维码ticket
                 eventKey: eventKey, //事件key值           
-                create_time: moment().format('YYYY-MM-DD HH:mm:ss')
+                create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
             }; 
             wechat.setSpread(data);            
         }
         
+    }
+
+    if(msg.Event === 'merchant_order'){
+        let data = {
+            openid : msg.FromUserName[0],
+            order_id: msg.OrderId[0],
+            order_status: msg.OrderStatus[0],
+            product_id: msg.ProductId[0],
+            sku_info: msg.SkuInfo[0],
+            create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+        };
+        wechat.setStoreOrder(data);
     }
     var reMsg;
 

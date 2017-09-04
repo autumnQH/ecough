@@ -60,3 +60,15 @@ CREATE TABLE IF NOT EXISTS USER_SERVICE (
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS STORE_ORDER (
+  id int NOT NULL AUTO_INCREMENT,
+  openid varchar(255) NOT NULL,
+  order_id varchar(255) NOT NULL,
+  order_status varchar(255) NOT NULL,
+  product_id varchar(255) NOT NULL,
+  sku_info varchar(255) NOT NULL,
+  create_time datetime DEFAULT NULL,
+  PRIMARY KEY (id),
+  INDEX openid (openid)
+)DEFAULT CHARSET=utf8 ;
