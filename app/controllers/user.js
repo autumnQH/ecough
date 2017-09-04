@@ -146,7 +146,9 @@ var setUserService = async (ctx, next) => {
 }
 
 var getUserExpress = async (ctx, next) => {
-  return ctx.body = ""
+  return ctx.render('express', {
+    data: []
+  });
 }
 module.exports = {
     'POST /users/setUserAddress': setUserAddress,
