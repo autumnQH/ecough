@@ -68,7 +68,7 @@ var postHandle = async(ctx, next) => {
           case 'voice':
             break;
           case 'event':
-            //reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
+            reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
 
             // switch (msg.Event) {
             //   case 'subscribe':
@@ -80,7 +80,7 @@ var postHandle = async(ctx, next) => {
             // }
             break;
           default:
-            //  reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
+              reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
             break;
     }
 
