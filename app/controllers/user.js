@@ -24,9 +24,35 @@ var setUserAddress = async (ctx, next) => {
 }
 
 var getUserAddress = async (ctx, next) => {
-	let openid = ctx.query.openid;
-	var result = await userService.getUserAddress(openid);
-	return ctx.body = result;
+  var r_url = config.server.host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+  if(ctx.session.openid){
+    var result = await userService.getUserAddress(ctx.session.openid);
+    return ctx.body = result;    
+  }else{
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+        ctx.redirect(url);
+      }else{
+        //拉取用户信息
+        var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+            userinfo = JSON.parse(userinfo);
+        ctx.session = userinfo;   
+
+        var result = await userService.getUserAddress(ctx.session.openid);
+        await ctx.render('user_address', {
+          data: result
+        });     
+      }      
+    }
+  }  
+
 
 }
 

@@ -2,18 +2,30 @@
   "button":[  
     {  
       "type":"view",  
-      "name":"我的订单",
-      "url":"http://www.e-cough.com/users/my/order"
-    },
-    {  
-      "type":"view",  
       "name":"产品订购",
       "url":"http://www.e-cough.com/product/100001"
     },
-    {  
-      "type":"view",  
-      "name":"售后服务",
-      "url":"http://www.e-cough.com/users/service"
-    } 
+    {
+      "name":"自助服务",
+      "sub_button": [
+        {  
+          "type":"view",  
+          "name":"我的订单",
+          "url":"http://www.e-cough.com/users/my/order"
+        },{
+          "type":"view",
+          "name":"物流查询",
+          "url":""
+        },{  
+          "type":"view",  
+          "name":"联系客服",
+          "url":"http://www.e-cough.com/users/service"
+        },{
+          "type":"view",
+          "name":"我的地址",
+          "url": "http://www.e-cough/users/getUserAddress"
+        }      
+      ]
+    }
   ]  
 }
