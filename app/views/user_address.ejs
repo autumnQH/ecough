@@ -39,7 +39,7 @@
 	$(function() {
 		$('ul li').on('click', function(event) {
 			$(this).addClass('active').siblings().removeClass('active');
-			alert(this).attr('id');
+			alert($(this).attr('id'));
 		});
 	});
 </script>
