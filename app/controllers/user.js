@@ -36,7 +36,8 @@ var getUserAddress = async (ctx, next) => {
   if(ctx.session.openid){
     var result = await userService.getUserAddress(ctx.session.openid);
         await ctx.render('user_address', {
-          data: result
+          data: result,
+          openid: ctx.session.openid
         });   
   }else{
     if(!ctx.query.code){
@@ -55,7 +56,8 @@ var getUserAddress = async (ctx, next) => {
 
         var result = await userService.getUserAddress(ctx.session.openid);
         await ctx.render('user_address', {
-          data: result
+          data: result,
+          openid: ctx.session.openid
         });     
       }      
     }
