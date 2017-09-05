@@ -109,6 +109,7 @@
 
 				},
 				fail: function(res) {
+					alert(res);
 					alert('网络繁忙，请稍后再试！');
 				}	
 			});	
@@ -172,7 +173,7 @@
 <body>
 <!-- 按钮触发模态框 -->
 <!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newAddress">新建收货地址</button> -->
-<button id="openAddress" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myAddress">
+<button id="openAddress" class="btn btn-primary btn-sm">
 	我的收货地址
 </button>
 <!-- 模态框（Modal） -->
