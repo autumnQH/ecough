@@ -20,7 +20,7 @@
 <body>
 <script>
 	wx.config({
-		debug: true,
+		debug: false,
 		appId: '<%= wxcfg.appid %>',
 		timestamp: '<%= wxcfg.timestamp %>',
 		nonceStr: '<%= wxcfg.nonceStr %>',
@@ -31,7 +31,6 @@
 	wx.ready(function() {
 			wx.openAddress({
 				success: function(res) {
-					alert(res);
 				},
 				fail: function(res) {
 					alert('网络繁忙，请稍后再试！');
