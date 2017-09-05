@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>订单</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+<script>
+	wx.config({
+		debug: true,
+		appId: wxcfg.appid,
+		timestamp: wxcfg.timestamp,
+		nonceStr: wxcfg.nonceStr,
+		signature: wxcfg.signature,
+		jsApiList:['openAddress']
+	});
+
+	wx.ready(function() {
+		wx.openAddress({
+			success: function(res) {
+				alert(res);
+			},
+			fail: function(res) {
+				alert('网络繁忙，请稍后再试！');
+			}	
+		});
+	});
+</script>
+</body>
+</html>

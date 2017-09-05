@@ -3,6 +3,9 @@ const tools = require('../utils/tools');
 const config  =require('../config/config');
 const urlencode = require('urlencode');
 const moment = require('moment');
+const dao = require('../dao/wechat');
+const pay = require('../utils/pay');
+
 // var getUser = async (ctx, next) => {
 //     let userId = ctx.params.id;
 //     let user = await userService.getUserById(userId);
@@ -150,10 +153,55 @@ var getUserExpress = async (ctx, next) => {
     data: []
   });
 }
+
+var getOpenAddress = async (ctx, next) => {
+  var r_url = config.server.host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
+  let jssdk = await dao.getJsapiTicket();
+  var url = 'http://' + ctx.header.host + ctx.url;
+  var value = {
+      nonceStr: tools.createRandom(),
+      timeStamp: tools.createTimestamp()
+  };
+  var wxcfg = await pay.setWXConfig(jssdk, url, value);
+  console.log(wxcfg);
+
+  if(ctx.session.openid){
+    await ctx.render('store_open_address', {
+      wxcfg: wxcfg,
+      openid: ctx.session.openid
+    });
+  }else{
+    if(!ctx.query.code){
+      return redirect(url);
+    }else{
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+          ctx.redirect(url);
+      }else{
+          //拉取用户信息
+          var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+              userinfo = JSON.parse(userinfo);
+          ctx.session = userinfo;
+
+          var result =  await userService.getUserOrderNumber(ctx.session.openid);
+
+          await ctx.render('store_open_address', {
+            wxcfg: wxcfg,
+            openid: ctx.session.openid
+          });
+    }
+  }
+}
+
 module.exports = {
     'POST /users/setUserAddress': setUserAddress,
     'GET /users/delUserAddress': delUserAddress,
-    'GET /users/getUserAddress': getUserAddress,
+    //'GET /users/getUserAddress': getUserAddress,
+    'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,
     'POST /users/service/issue': setUserService,

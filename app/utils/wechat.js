@@ -78,7 +78,6 @@ exports.getDefaultMessage = (msg, content) => {
 }
 
 exports.getJsApiTicket = () => {
-    console.log(dao.getJsapiTicket(),'wechat获取jsapi');
     return dao.getJsapiTicket();
 }
 exports.getQRCode = () => {
