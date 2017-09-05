@@ -168,25 +168,29 @@ var getOpenAddress = async (ctx, next) => {
   console.log(wxcfg);
 
   if(ctx.session.openid){
+    console.log(1);
     await ctx.render('store_open_address', {
       wxcfg: wxcfg,
       openid: ctx.session.openid
     });
   }else{
     if(!ctx.query.code){
+      console.log('5');
       ctx.redirect(url);
     }else{
+      console.log('3');
       let code = ctx.query.code;
       var user = await tools.getOauth2Token(code);
           user = JSON.parse(user);
       if(user.errcode){
+        console.log('4');
           ctx.redirect(url);
       }else{
           //拉取用户信息
           var userinfo = await tools.getUserInfo(user.access_token, user.openid);
               userinfo = JSON.parse(userinfo);
           ctx.session = userinfo;
-
+          console.log('2');
           await ctx.render('store_open_address', {
             wxcfg: wxcfg,
             openid: ctx.session.openid
