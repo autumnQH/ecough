@@ -135,7 +135,7 @@ var CustomerService = async (ctx, next) => {
             await ctx.render('service', {
                 data: result,
                 openid: ctx.session.openid
-            })
+            });
         }    
     }
   }
@@ -158,7 +158,7 @@ var getOpenAddress = async (ctx, next) => {
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
-  let jssdk = await dao.getJsapiTicket();
+  var jssdk = await dao.getJsapiTicket();
   var url = 'http://' + ctx.header.host + ctx.url;
   var value = {
       nonceStr: tools.createRandom(),
@@ -174,7 +174,7 @@ var getOpenAddress = async (ctx, next) => {
     });
   }else{
     if(!ctx.query.code){
-      return redirect(url);
+      ctx.redirect(url);
     }else{
       let code = ctx.query.code;
       var user = await tools.getOauth2Token(code);
@@ -187,12 +187,11 @@ var getOpenAddress = async (ctx, next) => {
               userinfo = JSON.parse(userinfo);
           ctx.session = userinfo;
 
-          var result =  await userService.getUserOrderNumber(ctx.session.openid);
-
           await ctx.render('store_open_address', {
             wxcfg: wxcfg,
             openid: ctx.session.openid
           });
+      }    
     }
   }
 }
