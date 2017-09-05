@@ -29,15 +29,13 @@
 	});
 
 	wx.ready(function() {
-			document.querySelector('#openAddress').onclick = function() {
-				wx.openAddress({
-					success: function(res) {
-					},
-					fail: function(res) {
-						alert('网络繁忙，请稍后再试！');
-					}	
-				});
-			}			
+		wx.openAddress({
+			success: function(res) {
+			},
+			fail: function(res) {
+				alert('网络繁忙，请稍后再试！');
+			}	
+		});	
 	});
 </script>
 	<div class="text-center">
@@ -46,7 +44,15 @@
 	</div>
 	<script>
 $(function() {
-	$('#openAddress').click();
+		$('#openAddress').onclick = function() {
+		wx.openAddress({
+			success: function(res) {
+			},
+			fail: function(res) {
+				alert('网络繁忙，请稍后再试！');
+			}	
+		});
+	}
 });
 	</script>
 </body>
