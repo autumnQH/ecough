@@ -158,17 +158,15 @@ var getOpenAddress = async (ctx, next) => {
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
-  var jssdk = await dao.getJsapiTicket();
+  if(ctx.session.openid){
+    console.log(1);
+      var jssdk = await dao.getJsapiTicket();
   var url = 'http://' + ctx.header.host + ctx.url;
   var value = {
       nonceStr: tools.createRandom(),
       timeStamp: tools.createTimestamp()
   };
   var wxcfg = await pay.setWXConfig(jssdk, url, value);
-  console.log(wxcfg);
-
-  if(ctx.session.openid){
-    console.log(1);
     await ctx.render('store_open_address', {
       wxcfg: wxcfg,
       openid: ctx.session.openid
@@ -191,6 +189,14 @@ var getOpenAddress = async (ctx, next) => {
               userinfo = JSON.parse(userinfo);
           ctx.session = userinfo;
           console.log('2');
+
+            var jssdk = await dao.getJsapiTicket();
+  var url = 'http://' + ctx.header.host + ctx.url;
+  var value = {
+      nonceStr: tools.createRandom(),
+      timeStamp: tools.createTimestamp()
+  };
+  var wxcfg = await pay.setWXConfig(jssdk, url, value);
           await ctx.render('store_open_address', {
             wxcfg: wxcfg,
             openid: ctx.session.openid
