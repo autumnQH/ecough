@@ -20,7 +20,7 @@
 <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
 	wx.config({
-		debug: true,
+		debug: false,
 		appId: '<%= config.appid %>',
 		timestamp: '<%= config.timestamp %>',
 		nonceStr: '<%= config.nonceStr %>',
@@ -32,7 +32,6 @@
 		document.querySelector('#openAddress').onclick = function() {
 			wx.openAddress({
 				success: function(res) {
-					alert(res);	
 					var name = $('#name').html('');
 			  	var phone = $('#phone').html('');
 			  	var address = $('#address').html('');
@@ -43,7 +42,6 @@
 
 				},
 				fail: function(res) {
-					alert(res);
 					alert('网络繁忙，请稍后再试！');
 				}	
 			});	
