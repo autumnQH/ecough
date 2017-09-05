@@ -29,16 +29,18 @@
 	});
 
 	wx.ready(function() {
-		wx.openAddress({
-			success: function(res) {
-				alert(res);
-			},
-			fail: function(res) {
-				alert('网络繁忙，请稍后再试！');
-			}	
-		});
+		document.querySelector('#openAddress').onclick = function() {
+			wx.openAddress({
+				success: function(res) {
+					alert(res);
+				},
+				fail: function(res) {
+					alert('网络繁忙，请稍后再试！');
+				}	
+			});			
+		}
 	});
 </script>
-<h1>哈哈</h1>
+<h1 id="openAddress">哈哈</h1>
 </body>
 </html>

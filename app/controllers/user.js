@@ -159,44 +159,43 @@ var getOpenAddress = async (ctx, next) => {
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
   if(ctx.session.openid){
-    console.log(1);
-      var jssdk = await dao.getJsapiTicket();
-  var url = 'http://' + ctx.header.host + ctx.url;
-  var value = {
+    var jssdk = await dao.getJsapiTicket();
+    var url = 'http://' + ctx.header.host + ctx.url;
+    var value = {
       nonceStr: tools.createRandom(),
       timeStamp: tools.createTimestamp()
-  };
-  var wxcfg = await pay.setWXConfig(jssdk, url, value);
+    };
+    var wxcfg = await pay.setWXConfig(jssdk, url, value);
+
     await ctx.render('store_open_address', {
       wxcfg: wxcfg,
       openid: ctx.session.openid
     });
+
   }else{
     if(!ctx.query.code){
-      console.log('5');
       ctx.redirect(url);
     }else{
-      console.log('3');
+
       let code = ctx.query.code;
       var user = await tools.getOauth2Token(code);
           user = JSON.parse(user);
       if(user.errcode){
-        console.log('4');
           ctx.redirect(url);
       }else{
           //拉取用户信息
           var userinfo = await tools.getUserInfo(user.access_token, user.openid);
               userinfo = JSON.parse(userinfo);
           ctx.session = userinfo;
-          console.log('2');
 
-            var jssdk = await dao.getJsapiTicket();
-  var url = 'http://' + ctx.header.host + ctx.url;
-  var value = {
-      nonceStr: tools.createRandom(),
-      timeStamp: tools.createTimestamp()
-  };
-  var wxcfg = await pay.setWXConfig(jssdk, url, value);
+          var jssdk = await dao.getJsapiTicket();
+          var url = 'http://' + ctx.header.host + ctx.url;
+          var value = {
+              nonceStr: tools.createRandom(),
+              timeStamp: tools.createTimestamp()
+          };
+          var wxcfg = await pay.setWXConfig(jssdk, url, value);
+          
           await ctx.render('store_open_address', {
             wxcfg: wxcfg,
             openid: ctx.session.openid
