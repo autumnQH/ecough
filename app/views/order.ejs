@@ -91,10 +91,29 @@
 		timeStamp: '<%= config.timestamp %>',
 		nonceStr: '<%= config.nonceStr %>',
 		signature: '<%= config.signature %>',
-		jsApiList: ['chooseWXPay']
+		jsApiList: ['chooseWXPay','openAddress']
 
 	});
 	wx.ready(function() {
+		document.querySelector('#openAddress').onclick = function() {
+			wx.openAddress({
+				success: function(res) {
+					alert(res);	
+					var name = $('#name').html('');
+			  	var phone = $('#phone').html('');
+			  	var address = $('#address').html('');
+
+				  $('#name').html(res.userName);
+				  $('#phone').html(res.telNumber);
+				  $('#address').html(res.provinceName+res.cityName+res.countryName+res.detailInfo);
+
+				},
+				fail: function(res) {
+					alert('网络繁忙，请稍后再试！');
+				}	
+			});	
+
+		};
 		document.querySelector('#chooseWXPay').onclick = function() {
 			var name = $('#name').text();
 		  var phone = $('#phone').text();
@@ -152,10 +171,8 @@
 
 <body>
 <!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newAddress">
-	新建收货地址
-</button>
-<button onclick="getUserAddress();" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myAddress">
+<!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newAddress">新建收货地址</button> -->
+<button id="openAddress" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myAddress">
 	我的收货地址
 </button>
 <!-- 模态框（Modal） -->
@@ -208,23 +225,24 @@
 						<div id="addressList"></div>
 
 <script>
- function getUserAddress() {
-		$.ajax({
-			type: 'get',
-			url: '/user/order/address',
-			data:{
-				openid: '<%= openid %>'
-			}
-		}).done(function(msg) {
-			$('#addressList').html('');
-			for(var i = 0; i< msg.length; i++) {
-				var list = $('<div class="radio"><label><input type="radio" name="radio" id='+ msg[i].id+'>' +
-					'<p><label>'+ msg[i].name +'</label><label>'+ msg[i].phone+'</label></p>'+
-					'<p>'+msg[i].address +'</p></label> <div>');
-				$('#addressList').append(list);
-			}
-		});	
- }
+ // function getUserAddress() {
+	// 	$.ajax({
+	// 		type: 'get',
+	// 		url: '/user/order/address',
+	// 		data:{
+	// 			openid: '<%= openid %>'
+	// 		}
+	// 	}).done(function(msg) {
+	// 		$('#addressList').html('');
+	// 		for(var i = 0; i< msg.length; i++) {
+	// 			var list = $('<div class="radio"><label><input type="radio" name="radio" id='+ msg[i].id+'>' +
+	// 				'<p><label>'+ msg[i].name +'</label><label>'+ msg[i].phone+'</label></p>'+
+	// 				'<p>'+msg[i].address +'</p></label> <div>');
+	// 			$('#addressList').append(list);
+	// 		}
+	// 	});	
+ // }
+
 </script>
 
 
