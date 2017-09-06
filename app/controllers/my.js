@@ -37,8 +37,6 @@ var getProblem= async (ctx, next) => {
 
 
 var getUserInfo = async (ctx, next) => {
-    
-    config = await config.config();
     //console.log('进来啦');
     var r_url = config.server.host + ctx.url;
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
