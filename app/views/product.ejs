@@ -108,7 +108,7 @@
 
 			$('.footer a').on('click', function(event) {
 				var total = $('#total').val();
-				$('.footer a').attr("href", "/my/pay?openid=<%= userinfo.openid %>&total="+ total);	
+				window.location="/my/pay?openid=<%= userinfo.openid %>&total="+ total;	
 			});
 		});
     </script>
