@@ -106,10 +106,10 @@
 		        loop:true
 		    });
 
-			var total = $('#total').val();
-			alert(total);
-			$('.footer a').attr("href", "/my/pay?openid=<%= userinfo.openid %>&total="+ total);
-			alert($('.footer a').attr("href"));
+			$('.footer a').on('click', function(event) {
+				var total = $('#total').val();
+				$('.footer a').attr("href", "/my/pay?openid=<%= userinfo.openid %>&total="+ total);	
+			});
 		});
     </script>
 </body>
