@@ -1,5 +1,5 @@
 const wechat = require('../utils/wechat');
-const config = require('../config/config');
+const config = require('../config/config').config();
 const moment = require('moment');
 
 var checkToken = async (ctx, next) => {
