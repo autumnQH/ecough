@@ -203,8 +203,9 @@ input:focus {
 }
 .order-number a {
   display: block;
-  float: right;
+  float: left;
   color: #333;
+  margin-bottom: 10px;
 }
 .main .order .order-item .order-center ul {
   padding: 15px 0;
