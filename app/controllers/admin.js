@@ -94,7 +94,6 @@ var adminSetDeliver = async(ctx, next) => {
 
 var getConfig = async (ctx, next) => {
     var data = await dao.getConfig();
-    console.log(data);
     await ctx.render('admin_config', {
         config: data
     });
