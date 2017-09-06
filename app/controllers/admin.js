@@ -80,7 +80,7 @@ var adminSetDeliver = async(ctx, next) => {
     var id = await dao.getOutTradeNo(req.out_trade_no);
     console.log(id.id);
     if(id.id){
-        let a = {id: id};
+        let a = {id: id.id};
         req.status = 3;
         var result = await dao.adminSetDeliver(req,a);
         await ctx.redirect('/admin/order');
