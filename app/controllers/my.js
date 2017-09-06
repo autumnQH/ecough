@@ -109,7 +109,8 @@ var jsapiPay = async(ctx, next) => {
         out_trade_no: out_trade_no
     };
 
-    var pay_money = total * 0.1 - 0.01 ;
+    var pay_money = total * 10 - 1 ;
+    console.log(pay_money);
     var page = pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
