@@ -97,7 +97,8 @@ var jsapiPay = async(ctx, next) => {
 
     var openid = ctx.query.openid;
     var total = ctx.query.total;
-
+    console.log(total);
+    
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
     var out_trade_no = tools.trade();
