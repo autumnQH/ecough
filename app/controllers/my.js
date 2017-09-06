@@ -97,7 +97,7 @@ var jsapiPay = async(ctx, next) => {
 
     var openid = ctx.query.openid;
     var total = ctx.query.total;
-    
+
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
     var out_trade_no = tools.trade();
@@ -107,7 +107,9 @@ var jsapiPay = async(ctx, next) => {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
-    var page = pay.setPackageData(openid, pay.money, value);
+
+    var pay_money = total * 0.1 - 0.01 ;
+    var page = pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
 
