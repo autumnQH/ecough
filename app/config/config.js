@@ -46,7 +46,7 @@ var config = {
       appSecret: cfg.appSecret,
       token: cfg.token,
       mchid: cfg.store_mchid,
-      key: cfg.store_key,
+      key: cfg.store_key
       ,encodingAESKey: cfg.encodingAESKey
       ,message: {
         text: cfg.message.text,
