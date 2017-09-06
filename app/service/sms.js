@@ -1,5 +1,5 @@
 const SMSClient = require('../utils/sms');
-const config = require('../config/config');
+const config = require('../config/config').config();
 
 // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
 const accessKeyId = config.sms.accessKeyId;

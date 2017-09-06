@@ -1,7 +1,7 @@
 var config = function () {
   const dao = require('../dao/wechat');
   var cfg =  dao.getConfig();
-  console.log(cfg);
+  console.log(cfg,'dao----config===');
 
 var config = {
     wx: {

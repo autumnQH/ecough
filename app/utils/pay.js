@@ -1,5 +1,5 @@
 const tools = require('./tools');
-const config = require('../config/config');
+const config = require('../config/config').config();
 const crypto = require('crypto');
 const xml = require('./xml');
 const dao = require('../dao/wechat');

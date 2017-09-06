@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const config = require('../config/config');
+const config = require('../config/config').config();
 const request = require('request');
 const xml = require("./xml");
 const tools = require('./tools');

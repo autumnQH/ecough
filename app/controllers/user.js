@@ -1,6 +1,6 @@
 const userService = require('../service/user.js');;
 const tools = require('../utils/tools');
-const config  =require('../config/config');
+const config  =require('../config/config').config();
 const urlencode = require('urlencode');
 const moment = require('moment');
 const dao = require('../dao/wechat');
