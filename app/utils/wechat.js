@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-var config = require('../config/config');
 const request = require('request');
 const xml = require("./xml");
 const tools = require('./tools');
@@ -7,8 +6,8 @@ const mysql = require('./mysql');
 const dao = require('../dao/wechat');
 
 exports.auth = async (ctx) => {
-    config = await config.config();
-    let token = config.wx.token;
+    const config = await dao.getConfig();
+    let token = config.token;
     let signature = ctx.query.signature;
     let timestamp = ctx.query.timestamp;
     let nonce = ctx.query.nonce;

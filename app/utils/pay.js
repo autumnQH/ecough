@@ -1,17 +1,17 @@
 const tools = require('./tools');
-const config = require('../config/config').config();
 const crypto = require('crypto');
 const xml = require('./xml');
 const dao = require('../dao/wechat');
 
 
 //统一下单
-exports.setPackageData = function (openid, pay_money, value) {	
+exports.setPackageData = function (openid, pay_money, value) {
+    const config = await dao.getConfig();	
     var data = {
-        appid: config.wx.appid, //appId
+        appid: config.appid, //appId
         attach: '支付测试',
         body: 'Test', //商品描述
-        mch_id: config.wx.mchid, //商户号id
+        mch_id: config.store_mchid, //商户号id
         nonce_str: value.nonceStr,
         out_trade_no: value.out_trade_no,//商户订单号
         total_fee: pay_money,//标价金额
@@ -21,7 +21,7 @@ exports.setPackageData = function (openid, pay_money, value) {
         openid: openid          
         //sign: data.sign,//签名
     }; 
-    var key = config.wx.key;
+    var key = config.store_key;
     var str = tools.raw(data);
     		str += '&key='+ key;
 
@@ -34,15 +34,16 @@ exports.setPackageData = function (openid, pay_money, value) {
 
 //生成支付请求签名
 exports.setPaySign = function (prepayid, value) {
-		var data = {
-		    appId: config.wx.appid,
-		    timeStamp: value.timeStamp,
-		    nonceStr: value.nonceStr,
-		    package: 'prepay_id='+prepayid,
-		    signType: 'MD5'
-		};
+    const config = await dao.getConfig();
+	var data = {
+	    appId: config.appid,
+	    timeStamp: value.timeStamp,
+	    nonceStr: value.nonceStr,
+	    package: 'prepay_id='+prepayid,
+	    signType: 'MD5'
+	};
     var str = tools.raw(data);
-        str += '&key=' + config.wx.key;
+        str += '&key=' + config.store_key;
     
     //支付签名
     var paySign = crypto.createHash('md5').update(str, 'utf8').digest('hex').toUpperCase();
@@ -52,8 +53,9 @@ exports.setPaySign = function (prepayid, value) {
 }
 
 exports.setWXConfig = function(jsapi_ticket, url, value) {
+    const config = await dao.getConfig();
     var wxcfg = {
-        appid: config.wx.appid,
+        appid: config.appid,
         timestamp: value.timeStamp,
         nonceStr: value.nonceStr
     };

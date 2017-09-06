@@ -1,5 +1,5 @@
 const moment = require('moment');
-var config = require('../config/config');
+const dao = require('../dao/wechat');
 const request = require('request');
 
 //随机串
@@ -47,10 +47,10 @@ exports.trade = function() {
 
 //网页授权
 exports.getOauth2Token = async function (code) {
-  config = await config.config();
+    const config = await dao.getConfig();
     let options = {
         method: 'get',
-        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.wx.appid +'&secret='+ config.wx.appSecret +'&code='+ code +'&grant_type=authorization_code',
+        url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.appid +'&secret='+ config.appSecret +'&code='+ code +'&grant_type=authorization_code',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }       

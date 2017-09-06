@@ -7,7 +7,7 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
-const config = dao.getConfig();
+
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
@@ -37,9 +37,8 @@ var getProblem= async (ctx, next) => {
 
 
 var getUserInfo = async (ctx, next) => {
-    console.log(config);
-    //console.log('进来啦');
-    var r_url = config.server.host + ctx.url;
+    const config = await dao.getConfig();
+    var r_url = config.server_host + ctx.url;
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -95,6 +94,8 @@ var jsapiPay = async(ctx, next) => {
     //     data: data2,
     //     openid: ''
     // });
+
+    const config = await dao.getConfig();
     var openid = ctx.query.openid;
     var total = ctx.query.total;
 
@@ -108,8 +109,8 @@ var jsapiPay = async(ctx, next) => {
         out_trade_no: out_trade_no
     };
 
-    var original_money = config.store.original_money//原价
-    var derate_money = config.store.derate_money//减免
+    var original_money = config.original_money//原价
+    var derate_money = config.derate_money//减免
     console.log(original_money,'原价');
     console.log(derate_money, '减免');
 

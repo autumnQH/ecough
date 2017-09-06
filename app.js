@@ -73,7 +73,7 @@ app.use(require('koa-static')(__dirname + '/app/public'));
 app.use(controller(path.join(__dirname, './app/controllers')));
 
 app.on('error', function(err, ctx){
-    console.log(err)
+    console.log(err,'error')
     logUtil.logError(ctx, err);
 });
 
