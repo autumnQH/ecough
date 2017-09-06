@@ -113,10 +113,9 @@ var jsapiPay = async(ctx, next) => {
     var derate_money = 0;//减免
 
     var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
-        console.log(todaySubscribe.create_time);
-        console.log(moment().format('YYYY-MM-DD'));
+    var today = moment(new Date(todaySubscribe.create_time)).format('YYYY-MM-DD');
 
-    if(todaySubscribe.create_time == moment().format('YYYY-MM-DD')){
+    if(today == moment().format('YYYY-MM-DD')){
         derate_money = config.derate_money
     }
 
