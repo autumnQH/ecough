@@ -1,5 +1,5 @@
 const wechat = require('../utils/wechat');
-var config = require('../config/config');
+const dao = require('../dao/wechat');
 const moment = require('moment');
 
 var checkToken = async (ctx, next) => {
@@ -71,18 +71,18 @@ var postHandle = async(ctx, next) => {
     var reMsg;
 
     console.log(msgType);
-    config = await config.config();
+    var config = await dao.getConfig();
 
     switch (msgType) {
           case 'text':
-            reMsg = wechat.getTextMessage(msg, config.wx.message.text);
+            reMsg = wechat.getTextMessage(msg, config.message_text);
             break;
           case 'image':
             break;
           case 'voice':
             break;
           case 'event':
-            reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
+            reMsg = wechat.getDefaultMessage(msg, config.message_default);
 
             // switch (msg.Event) {
             //   case 'subscribe':
@@ -94,7 +94,7 @@ var postHandle = async(ctx, next) => {
             // }
             break;
           default:
-              reMsg = wechat.getDefaultMessage(msg, config.wx.message.default);
+              reMsg = wechat.getDefaultMessage(msg, config.message_default);
             break;
     }
 

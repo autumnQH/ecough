@@ -39,7 +39,7 @@ var getProblem= async (ctx, next) => {
 var getUserInfo = async (ctx, next) => {
     const config = await dao.getConfig();
     var r_url = config.server_host + ctx.url;
-    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+    var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
     if(ctx.session.openid){
