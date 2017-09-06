@@ -1,7 +1,6 @@
 var config = async function () {
   const dao = require('../dao/wechat');
   var cfg =  await dao.getConfig();
-
 // var config = {
 //     wx: {
 //       appid: 'wxff24c10734aed1ef',appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d',
@@ -79,6 +78,7 @@ var config = {
       derate_money: cfg.derate_money
     }
 };
+console.log(config);
   return config;
 };
 
