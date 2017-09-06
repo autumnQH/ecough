@@ -1,6 +1,6 @@
-exports.config = function () {
+var config = async function () {
   const dao = require('../dao/wechat');
-  var cfg = dao.getConfig();
+  var cfg = await dao.getConfig();
   console.log(cfg);
 
 const config = {
@@ -42,6 +42,10 @@ const config = {
       name: "ecough",
       version: "1.0",
     },
-}  
+};
   return JSON.parse(config);
+};
+
+module.exports {
+  config: config
 };
