@@ -144,8 +144,11 @@
 $(function() {
   $("form").submit(function(e){
     var $true = $('input[name="submit"]:checked').val();
-    alert($true);
-    e.preventDefault();
+    if($true) {
+      return true;
+    }else{
+      return false;
+    }
   });
 });
 
