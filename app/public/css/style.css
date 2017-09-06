@@ -164,6 +164,7 @@ input:focus {
 }
 .main .order .order-item .order-center a .order-shoplist_right .shoplist_title {
   margin-bottom: 12px;
+  overflow: hidden;
 }
 .main .order .order-item .order-center a .order-shoplist_right .shoplist_title span {
   display: block;
