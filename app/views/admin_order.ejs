@@ -115,7 +115,7 @@
     var delivery_track_no = $('#delivery_track_no').val();
 
     $.ajax({
-      url: '',
+      url: '/admin/order/deliver',
       type: 'post',
       data: {
         out_trade_no: out_trade_no,
