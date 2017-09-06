@@ -2,7 +2,7 @@ const request = require('request');
 const xml = require('../utils/xml');
 const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
-var config = require('../config/config');
+var config = require('../config/config').config();
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
 const crypto = require('crypto');
@@ -37,6 +37,7 @@ var getProblem= async (ctx, next) => {
 
 
 var getUserInfo = async (ctx, next) => {
+    console.log(config);
     //console.log('进来啦');
     var r_url = config.server.host + ctx.url;
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
@@ -94,7 +95,6 @@ var jsapiPay = async(ctx, next) => {
     //     data: data2,
     //     openid: ''
     // });
-    config = await config.config();
     var openid = ctx.query.openid;
     var total = ctx.query.total;
 
