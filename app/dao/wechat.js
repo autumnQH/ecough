@@ -48,7 +48,7 @@ var setStoreOrder = async (data) => {
 }
 
 var getOutTradeNo = async (out_trade_no) => {
-	var result = db.findOne("SELECT id FROM T_WECHAT_ORDER WHERE out_trade_no='" +  out_trade_no +"'");
+	var result = db.findOne("SELECT id FROM T_WECHAT_ORDER WHERE out_trade_no=" +  out_trade_no );
 	return result;
 }
 
