@@ -179,9 +179,7 @@ input:focus {
   font-size: 16px;
 }
 .main .order .order-item .order-center a .order-shoplist_right .shoplist_ms {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
   width: 100%;
   color: #555;
 }
