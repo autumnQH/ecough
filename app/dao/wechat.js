@@ -56,6 +56,17 @@ var adminSetDeliver = async (data, id) => {
 	var result = db.update("T_WECHAT_ORDER", data, id)
 	return result;
 }
+
+var getOpenIdForSubscribe = async (openid) => {
+	var result = db.findOne("SELECT * FROM T_WECHAT_SUBSCRIBE WHERE openid='" + openid+ "'");
+	return result;
+}
+
+var setOpenIdForSubscribe = async (data) => {
+	var result = db.add("T_WECHAT_SUBSCRIBE", data);
+	return result;
+}
+
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -68,5 +79,7 @@ module.exports = {
 	setOrder: setOrder,
 	setStoreOrder: setStoreOrder,
 	getOutTradeNo:getOutTradeNo,
-	adminSetDeliver: adminSetDeliver
+	adminSetDeliver: adminSetDeliver,
+	getOpenIdForSubscribe: getOpenIdForSubscribe,
+	setOpenIdForSubscribe: setOpenIdForSubscribe
 };

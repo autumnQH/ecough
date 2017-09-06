@@ -76,3 +76,11 @@ CREATE TABLE IF NOT EXISTS STORE_ORDER (
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS T_WECHAT_SUBSCRIBE (
+  id int NOT NULL AUTO_INCREMENT,
+  openid varchar(255) NOT NULL,
+  create_time datetime DEFAULT NULL,
+  PRIMARY KEY (id),
+  INDEX openid (openid)
+)DEFAULT CHARSET=utf8 ;

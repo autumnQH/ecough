@@ -111,3 +111,11 @@ exports.setOrder = (data) => {
 exports.setStoreOrder = (data) => {
     return dao.setStoreOrder(data);
 }
+
+exports.getOpenIdForSubscribe = (openid) =>{
+    return dao.getOpenIdForSubscribe(openid);
+}
+
+exports.setOpenIdForSubscribe = (data) => {
+    return dao.setOpenIdForSubscribe(data);
+}

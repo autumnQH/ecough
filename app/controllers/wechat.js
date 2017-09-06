@@ -23,28 +23,39 @@ var postHandle = async(ctx, next) => {
     console.log(msg);
 
     let msgType = msg.MsgType[0];
-    if(msg.Ticket){
-        //记录用户扫描带参数的二维码
-        let userName = msg.FromUserName[0];
-        let ticket = msg.Ticket[0];
-        let eventKey = msg.EventKey[0];
+    if(msg.Event[0] === 'subscribe'){//用户关注
+        let openid = msg.FromUserName[0];
+        if(msg.Ticket){
+            //记录用户扫描带参数的二维码
+            let userName = openid;
+            let ticket = msg.Ticket[0];
+            let eventKey = msg.EventKey[0];
 
-        var result = await wechat.getOneSpread(userName, ticket, eventKey);
-       
+            var result = await wechat.getOneSpread(userName, ticket, eventKey);
+           
+            if(result.length == 0){
+                let data = {
+                    userName: userName,//openId
+                    ticket: ticket,//二维码ticket
+                    eventKey: eventKey, //事件key值           
+                    create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+                }; 
+                wechat.setSpread(data);            
+            }
+            
+        }
+        var result =  await wechat.getOpenIdForSubscribe(openid);
         if(result.length == 0){
             let data = {
-                userName: userName,//openId
-                ticket: ticket,//二维码ticket
-                eventKey: eventKey, //事件key值           
+                openid: openid,
                 create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
-            }; 
-            wechat.setSpread(data);            
+            }
+            wechat.setOpenIdForSubscribe(data);
         }
-        
-    }
 
+    }
     if(msg.Event[0] === 'merchant_order'){
-        console.log('进来了');
+        //console.log('进来了');
         let data = {
             openid : msg.FromUserName[0],
             order_id: msg.OrderId[0],
