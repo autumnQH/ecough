@@ -75,10 +75,16 @@ var admin_userService = async (ctx, next) => {
 }
 var adminSetDeliver = async(ctx, next) => {
     var req = ctx.request.body;
-    console.log(req);
-    var result = await dao.adminSetDeliver(req);
-    console.log(result);
-    await ctx.redirect('/admin/order');
+    var id = await dao.getOutTradeNo(req.out_trade_no);
+    if(id){
+        var result = await dao.adminSetDeliver(req,id);
+        await ctx.redirect('/admin/order');
+    }else{
+       return ctx.body = {
+        "err": "没有这个订单"
+       }
+    }
+
 }
 
 module.exports = {

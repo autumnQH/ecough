@@ -47,8 +47,13 @@ var setStoreOrder = async (data) => {
 	return result;
 }
 
-var adminSetDeliver = async (data) => {
-	var result = db.update("T_WECHAT_ORDER", data, data.out_trade_no)
+var getOutTradeNo = async (out_trade_no) => {
+	var result = db.findOne("SELECT id FROM T_WECHAT_ORDER WHERE out_trade_no='" +  out_trade_no +"'");
+	return result;
+}
+
+var adminSetDeliver = async (data, id) => {
+	var result = db.update("T_WECHAT_ORDER", data, id)
 	return result;
 }
 module.exports = {    

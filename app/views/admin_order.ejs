@@ -113,7 +113,7 @@
     var out_trade_no = $('#out_trade_no').val();
     var delivery_company = $('#delivery_company').val();
     var delivery_track_no = $('#delivery_track_no').val();
-
+    $('.close').click();
     $.ajax({
       url: '/admin/order/deliver',
       type: 'post',
