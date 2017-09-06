@@ -86,7 +86,7 @@ var adminSetDeliver = async(ctx, next) => {
         await ctx.redirect('/admin/order');
     }else{
        return ctx.body = {
-        "err": "没有这个订单"
+        "err": "没有这个订单或者已经发货"
        }
     }
 
