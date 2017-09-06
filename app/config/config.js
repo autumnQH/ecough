@@ -46,6 +46,6 @@ const config = {
   return JSON.parse(config);
 };
 
-module.exports {
+module.exports = {
   config: config
 };
