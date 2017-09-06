@@ -37,7 +37,7 @@ var config = {
       version: "1.0",
     },
 };
-  return JSON.parse(config);
+  return config;
 };
 
 module.exports = {
