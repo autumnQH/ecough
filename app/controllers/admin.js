@@ -79,8 +79,8 @@ var adminSetDeliver = async(ctx, next) => {
     console.log(req.out_trade_no);
     var id = await dao.getOutTradeNo(req.out_trade_no);
     console.log(id);
-    if(id){
-        let {id: id}=a;
+    if(id.length == 1 ){
+        let a = {id: id};
         console.log('进来了')
         var result = await dao.adminSetDeliver(req,a);
         await ctx.redirect('/admin/order');
