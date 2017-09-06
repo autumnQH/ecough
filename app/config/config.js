@@ -39,4 +39,4 @@ const config = {
     },
 }
 
-module.exports = Object.assign({}, config);
+module.exports = config;
