@@ -3,7 +3,7 @@ var config = function () {
   var cfg =  dao.getConfig();
   console.log(cfg);
 
-const config = {
+var config = {
     wx: {
 //正式
       appid: 'wxff24c10734aed1ef',appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d',
@@ -43,7 +43,7 @@ const config = {
       version: "1.0",
     },
 };
-  return config;
+  return JSON.parse(config);
 };
 
 module.exports = {
