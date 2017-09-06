@@ -1,7 +1,6 @@
 const wechat = require('../utils/wechat');
-var config = require('../config/config').config();
+var config = require('../config/config');
 const moment = require('moment');
-    console.log(typeof config);
 
 var checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);
@@ -72,6 +71,7 @@ var postHandle = async(ctx, next) => {
     var reMsg;
 
     console.log(msgType);
+    config = await config.config();
 
     switch (msgType) {
           case 'text':
