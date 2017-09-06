@@ -30,7 +30,15 @@
 <% for(var i = 0; i<data.length; i++) { %>
 		<div class="order">
 			<div class="order-title">
+				<% if(data[i].status == 2){ %>
+				<span>待发货</span>
+				<% } %>
+				<% if(data[i].status == 3){ %>
+				<span>已发货</span>
+				<% } %>
+				<% if(data[i].status == 5){ %>
 				<span>交易完成</span>
+				<% } %>								
 			</div>
 
 			<div class="order-item">
@@ -50,7 +58,9 @@
 					</a>
 					<div class="order-number">
 						<span>订单号：</span>
-						<label><%= data[i].out_trade_no %></label>
+						<label><%= data[i].out_trade_no %><% if(data[i].status == 3 ) { %>
+ <% <a href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= delivery_track_no %>">查看物流</a> } %>
+						</label>
 					</div>
 				</div>
 			</div>	

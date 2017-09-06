@@ -34,10 +34,14 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   product varchar(255) NOT NULL,
   specifications varchar(255) NOT NULL,
   pay_money varchar(255) NOT NULL,
-  out_trade_no varchar(255) NOT NULL,
+  out_trade_no varchar(255) NOT NULL,#订单号
   create_time datetime  DEFAULT NULL,
+  delivery_company varchar(255) DEFAULT NULL,#物流公司id (申通快递-shentong )
+  delivery_track_no varchar(255) DEFAULT NULL,
+  status int(4) NOT NULL,# 订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 )
   PRIMARY KEY (id),
-  INDEX openid (openid)
+  INDEX openid (openid),
+  INDEX out_trade_no (out_trade_no)
 )DEFAULT CHARSET=utf8 ;
 
 CREATE TABLE IF NOT EXISTS USER_ADDRESS (
