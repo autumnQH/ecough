@@ -1,6 +1,6 @@
-var config = async function () {
+var config = function () {
   const dao = require('../dao/wechat');
-  var cfg = await dao.getConfig();
+  var cfg =  dao.getConfig();
   console.log(cfg);
 
 const config = {
