@@ -137,7 +137,7 @@ var jsapiPay = async(ctx, next) => {
         //获取js-cicket
         var jsapi_ticket = await dao.getJsapiTicket();
         var url = 'http://' + ctx.header.host + ctx.url;
-        var wxcfg = pay.setWXConfig(jsapi_ticket, url, value);
+        var wxcfg = await pay.setWXConfig(jsapi_ticket, url, value);
 
         await ctx.render('order', {
             config: wxcfg,

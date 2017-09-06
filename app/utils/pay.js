@@ -52,7 +52,7 @@ exports.setPaySign = function (prepayid, value) {
     return data;    
 }
 
-exports.setWXConfig = function(jsapi_ticket, url, value) {
+exports.setWXConfig = async function(jsapi_ticket, url, value) {
     const config = await dao.getConfig();
     var wxcfg = {
         appid: config.appid,
