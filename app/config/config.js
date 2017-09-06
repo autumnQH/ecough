@@ -1,6 +1,4 @@
 const dao = require('../dao/wechat');
-const cfg =  await dao.getConfig();
-console.log(cfg, '----cfg');
 const config = {
     wx: {
 //正式
@@ -41,5 +39,7 @@ const config = {
       version: "1.0",
     },
 }
+const cfg =  dao.getConfig();
+console.log(cfg, '----cfg');
 
 module.exports = Object.assign({}, config);
