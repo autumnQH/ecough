@@ -75,10 +75,7 @@ var admin_userService = async (ctx, next) => {
 }
 var adminSetDeliver = async(ctx, next) => {
     var req = ctx.request.body;
-    console.log(req);
-    console.log(req.out_trade_no);
     var id = await dao.getOutTradeNo(req.out_trade_no);
-    console.log(id.id);
     if(id.id){
         let a = {id: id.id};
         req.status = 3;
@@ -101,7 +98,6 @@ var getConfig = async (ctx, next) => {
 
 var setConfig = async (ctx, next) => {
     var data = ctx.request.body;
-    console.log(data, 'data');
     await dao.setConfig(data);
     await ctx.redirect('/admin/getconfig');
 }
