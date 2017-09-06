@@ -119,8 +119,8 @@
 <script>
   $('#modal').on('click', function(event) {
     $this = $(this);
-    alert($this.text());
-    alert($this.html());
+    var name = $this.parent();
+    alert(name);
   });
 </script>
 </body>
