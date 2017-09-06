@@ -36,6 +36,9 @@
       <th>金额</th>
       <th>订单号</th>
       <th>下单时间</th>
+      <th>订单状态</th>
+      <th>物流公司</th>
+      <th>物流号</th>
     </tr>
   </thead>
   <tbody>
@@ -50,6 +53,20 @@
       <td><%= data[i].pay_money %></td>
       <td><%= data[i].out_trade_no %></td>
       <td><%= data[i].create_time %></td>
+      <% if(data[i].status == 2) { %>
+        <td>待发货</td>
+      <% }else if(data[i].status == 3){ %>
+        <td>已发货</td>
+      <% }else if(data[i].status == 5){ %>
+        <td>已完成</td>
+      <% } %>
+    
+      <% if(data[i].delivery_company == 'shentong'){ %>
+        <td>申通快递</td>
+      <% }else{ %> 
+        <td><%= data[i].delivery_company %></td>>
+      <% } %>
+      <td><%= data[i].delivery_track_no %></td>
     </tr>
     <% } %>
   <% } %>
