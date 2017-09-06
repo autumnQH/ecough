@@ -73,7 +73,7 @@ var getConfig = async () => {
 }
 
 var setConfig = async (data) => {
-	var result = db.update("CONFIG", data, 1);
+	var result = db.update("CONFIG", data, {id: 1});
 	return result;
 }
 module.exports = {    
