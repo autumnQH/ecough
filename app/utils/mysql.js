@@ -3,11 +3,11 @@ const mysql = require('mysql2');
 
 //数据库连接配置选项
 var options = {
-    'host': config.db.host,
-    'port': config.db.port,
-    'database': config.db.name,
-    'user': config.db.user,
-    'password': config.db.passwd,
+    'host': 'localhost',//config.db.host,
+    //'port': config.db.port,
+    'database': 'ecough',
+    'user': 'root',
+    'password': 'root'
  /*
     'charset': config.db.charset,
     'connectionLimit': config.db.conn_limit,
