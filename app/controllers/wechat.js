@@ -13,7 +13,6 @@ var checkToken = async (ctx, next) => {
 };
 
 var postHandle = async(ctx, next) => {
-    console.log(config,'config');
     let msg = ctx.request.body ? ctx.request.body.xml : '';
  
     if (!msg) {
