@@ -81,7 +81,7 @@ var adminSetDeliver = async(ctx, next) => {
     console.log(id.id);
     if(id.id){
         let a = {id: id};
-        console.log('进来了')
+        req.status = 3;
         var result = await dao.adminSetDeliver(req,a);
         await ctx.redirect('/admin/order');
     }else{
