@@ -75,6 +75,8 @@ var admin_userService = async (ctx, next) => {
 }
 var adminSetDeliver = async(ctx, next) => {
     var req = ctx.request.body;
+    console.log(req);
+    console.log(req.out_trade_no);
     var id = await dao.getOutTradeNo(req.out_trade_no);
     if(id){
         var result = await dao.adminSetDeliver(req,id);
