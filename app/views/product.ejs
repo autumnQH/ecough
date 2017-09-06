@@ -111,7 +111,6 @@
 			$('#pay').on('click', function(event) {
 				var total = $('#total').val();
 				$('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total);
-				$('#pay').click();
 			});
 		});
     </script>
