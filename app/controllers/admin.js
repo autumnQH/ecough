@@ -73,12 +73,21 @@ var admin_userService = async (ctx, next) => {
         data: result
     });
 }
+var adminSetDeliver = async(ctx, next) => {
+    var req = ctx.request.body;
+    console.log(req);
+    var result = await dao.adminSetDeliver(req);
+    console.log(result);
+    await ctx.redirect('/admin/order');
+}
+
 module.exports = {
     'GET /admin': admin,
     'GET /admin/order': admin_order,
     'POST /admin/setOrder': admin_setOrder,
     'GET /admin/qrcode': admin_qrcode,
     'POST /admin/setQrcode': admin_setQrcode,
-    'GET /admin/user/service': admin_userService
+    'GET /admin/user/service': admin_userService,
+    'POST /admin/order/deliver': adminSetDeliver
 
 };

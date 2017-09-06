@@ -113,7 +113,20 @@
     var out_trade_no = $('#out_trade_no').val();
     var delivery_company = $('#delivery_company').val();
     var delivery_track_no = $('#delivery_track_no').val();
-    alert(out_trade_no+delivery_company+delivery_track_no);
+
+    $.ajax({
+      url: '',
+      type: 'post',
+      data: {
+        out_trade_no: out_trade_no,
+        delivery_company: delivery_company,
+        delivery_track_no: delivery_track_no
+      }
+    }).done(function(msg) {
+      alert(msg);
+    }).fail(function() {
+      alert('网络繁忙，请稍后再试！');
+    });
   });
 </script>
 </body>

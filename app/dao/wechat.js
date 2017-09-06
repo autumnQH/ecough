@@ -46,6 +46,11 @@ var setStoreOrder = async (data) => {
 	var result = db.add("STORE_ORDER", data);
 	return result;
 }
+
+var adminSetDeliver = async (data) => {
+	var result = db.update("T_WECHAT_ORDER", data, data.out_trade_no)
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -56,5 +61,6 @@ module.exports = {
 	setSpread: setSpread,
 	getOrder: getOrder,
 	setOrder: setOrder,
-	setStoreOrder: setStoreOrder
+	setStoreOrder: setStoreOrder,
+	adminSetDeliver: adminSetDeliver
 };
