@@ -1,4 +1,3 @@
-const config = require('../config/config');
 const mysql = require('mysql2');
 
 //数据库连接配置选项

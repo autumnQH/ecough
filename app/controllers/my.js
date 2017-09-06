@@ -109,13 +109,18 @@ var jsapiPay = async(ctx, next) => {
         out_trade_no: out_trade_no
     };
 
-    var original_money = config.original_money//原价
-    var derate_money = config.derate_money//减免
-    console.log(original_money,'原价');
-    console.log(derate_money, '减免');
+    var original_money = config.original_money;//原价
+    var derate_money = 0;//减免
 
-    var pay_money = total * 10 - 1 ;
-    console.log(pay_money);
+    var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
+        console.log(todaySubscribe.create_time);
+        console.log(moment().formart('YYYY-MM-DD'));
+
+    if(todaySubscribe.create_time == moment().formart('YYYY-MM-DD')){
+        derate_money = config.derate_money
+    }
+
+    var pay_money = total * original_money - derate_money ;
     var page = await pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
