@@ -56,7 +56,7 @@ var getUserInfo = async (ctx, next) => {
             let code = ctx.query.code;
             var user = await tools.getOauth2Token(code);
                 user = JSON.parse(user);
-                console.log(user,'user');
+                //console.log(user,'user');
             if(user.errcode){
                 ctx.redirect(url);
             }else{

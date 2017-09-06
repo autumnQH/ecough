@@ -17,9 +17,12 @@ var admin = async function (ctx, next) {
 }
 
 var admin_order = async function(ctx, next) {
-    var data = await wechat.getOrder();
+    var datas = await wechat.getOrder();
+    datas.forEach(function(data) {
+        data.create_time = tools.formatDate(data.create_time);
+    });
     await ctx.render('admin_order', {
-        data: data
+        data: datas
     });
 }
 

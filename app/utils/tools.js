@@ -151,3 +151,7 @@ exports.getQRCodeImg = function(ticket) {
   });
   
 }
+
+exports.formatDate = (date)=> {
+  return moment(new Date(date)).format('YYYY-MM-DD HH:mm:ss')
+}
