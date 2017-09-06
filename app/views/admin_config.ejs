@@ -127,7 +127,7 @@
     <div class="col-sm-offset-2 col-sm-10">
       <div class="radio">
         <label>
-          <input type="radio" name="submit" value="true">我要修改
+          <input type="radio" value="true">我要修改
         </label>
       </div>
     </div>
@@ -143,7 +143,7 @@
 <script>
 $(function() {
   $("form").submit(function(e){
-    var $true = $('input[name="submit"]:checked').val();
+    var $true = $('input:checked').val();
     if($true) {
       return true;
     }else{
