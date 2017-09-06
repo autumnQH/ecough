@@ -1,5 +1,5 @@
 const dao = require('../dao/wechat');
-const cfg = dao.getConfig();
+const cfg =  await dao.getConfig();
 console.log(cfg, '----cfg');
 const config = {
     wx: {
