@@ -2,12 +2,12 @@ const request = require('request');
 const xml = require('../utils/xml');
 const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
-var config = require('../config/config').config();
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
+const config = dao.getConfig();
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
