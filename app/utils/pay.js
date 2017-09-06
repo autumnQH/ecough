@@ -5,7 +5,7 @@ const xml = require('./xml');
 
 
 //统一下单
-exports.setPackageData = function (openid, value) {	
+exports.setPackageData = function (openid, pay.money, value) {	
     var data = {
         appid: config.wx.appid, //appId
         attach: '支付测试',
@@ -13,7 +13,7 @@ exports.setPackageData = function (openid, value) {
         mch_id: config.wx.mchid, //商户号id
         nonce_str: value.nonceStr,
         out_trade_no: value.out_trade_no,//商户订单号
-        total_fee: '1',//标价金额
+        total_fee: pay.money,//标价金额
         spbill_create_ip: '47.93.245.51',//终端IP
         notify_url: '/notify',
         trade_type: 'JSAPI',

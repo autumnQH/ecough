@@ -44,6 +44,7 @@ var postHandle = async(ctx, next) => {
             }
             
         }
+        //记录用户首次关注时间
         var result =  await wechat.getOpenIdForSubscribe(openid);
         if(result.length == 0){
             let data = {
@@ -54,6 +55,7 @@ var postHandle = async(ctx, next) => {
         }
 
     }
+    //记录微信小店用户购买产品
     if(msg.Event[0] === 'merchant_order'){
         //console.log('进来了');
         let data = {

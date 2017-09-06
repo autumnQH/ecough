@@ -39,16 +39,16 @@
 			        <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
 			        <div class="detail-group" style="margin-top:10px;">
 						<span class="col-xs-8" style="width:100%;">
-											现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">0.01</span> 元&nbsp;/ 件
-											<label class="yjia" style="text-decoration:line-through;">原价：0.1</label>
+											现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">0.1</span> 元&nbsp;/ 件
+											<label class="yjia" style="text-decoration:line-through;">原价：0.2</label>
 						</span>
 			        </div>
 			        <div class="detail-group" style="margin-top:10px;">
 			            <span style="float:left;margin-top:5px;">数量 :</span>
 			            <div class="input-group" style="width:100px;float:left;margin-left:8px;">
-<!-- <span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span> -->
-			                <input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
-<!-- <span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span> -->
+<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
+	<input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
+<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
 			            </div>
 			            <span id="stockcontainer" style="float:left;margin-left:5px;">( 剩余 <span id="stock"> 9940 </span> ) </span>
 			        </div>
@@ -75,7 +75,7 @@
 				<p>（更新说明：雾霾较严重季节，本产品使用3个月，因吸附大量雾霾（PM2.5颗粒），防雾霾窗贴会由白色变为灰黑色，为了您和家人呼吸新鲜空气，建议3个月内更换一张新的窗贴。）</p>
 			</div>
 			<div class="footer">
-				<a href="/my/pay?openid=<%= userinfo.openid %>">立即订购</a>
+				<a>立即订购</a>
 			</div>
 		</div>
 	</div>
@@ -105,6 +105,11 @@
 		        paginationClickable: true,
 		        loop:true
 		    });
+
+			var total = $('#total').val();
+			alert(total);
+			$('.footer a').attr("href", "/my/pay?openid=<%= userinfo.openid %>&total="+ total);
+			alert($('.footer a').attr("href"));
 		});
     </script>
 </body>
