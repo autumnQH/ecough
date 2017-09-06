@@ -137,7 +137,9 @@ var jsapiPay = async(ctx, next) => {
         await ctx.render('order', {
             config: wxcfg,
             data: data2,
-            openid: openid
+            openid: openid,
+            total: total,
+            pay_money: pay_money
         });         
     }else{
         await ctx.redirect('/product/100001');

@@ -64,8 +64,8 @@
 						var address = $('#address').text();
 						var phone = $('#phone').text();
 						var product = $('#product').text();
-						var specifications = '1件';
-						var money = '0.01';
+						var specifications = '<%= total %>件';
+						var money = '<%= pay_money %>';
 						var out_trade_no = "<%= data.out_trade_no %>";
 
 						$('#order_openid').val('<%= openid %>');
@@ -132,11 +132,11 @@
 						<div class="order-shoplist_right">
 							<div class="shoplist_title">
 								<span id="product">繁华混合鲜花月套餐</span>
-								<label>￥0.01</label>
+								<label><%= pay_money %></label>
 							</div>
 							<span class="shoplist_ms">
-								<i>订几个月：1个月</i>
-								<i>送达日期：周六送达</i>
+								<i>数量：<%= total %>件</i>
+								<!-- <i>送达日期：周六送达</i> -->
 							</span>
 						</div>
 					</a>
@@ -152,7 +152,7 @@
 					<ul>
 						<li>
 							<span>商品总额：</span>
-							<label>￥0.01</label>
+							<label>￥<%= pay_money %></label>
 						</li>
 						<li>
 							<span>运费：</span>
@@ -160,7 +160,7 @@
 						</li>
 						<li>
 							<span>付款金额：</span>
-							<label style="color: #ff4141;">￥0.01</label>
+							<label style="color: #ff4141;">￥<%= pay_money %></label>
 						</li>
 					</ul>
 				</div>
