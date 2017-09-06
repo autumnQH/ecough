@@ -23,7 +23,7 @@
         <li role="presentation"><a href="/admin/user/service">售后服务</a></li>
     </ul>
 </nav>
-<table class="table table-hover">
+<table id="table" class="table table-hover">
   <caption>订单</caption>
   <thead>
     <tr>
@@ -73,6 +73,14 @@
   <% } %>
   </tbody>
 </table>
-
+<script>
+  $('#table tr').on('click', function(event) {
+    $this = $(this);
+    var text = $this.text();
+    alert(text);
+    var html = $this.html();
+    alert(html);
+  });
+</script>
 </body>
 </html>
