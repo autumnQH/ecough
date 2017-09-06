@@ -60,7 +60,8 @@
 						<span>订单号：</span>
 						<label><%= data[i].out_trade_no %>
 						<% if(data[i].status == 3 ) { %>
- <% <a href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">查看物流</a> } %>
+ <a href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">查看物流</a>
+  <% } %>
 						</label>
 					</div>
 				</div>
