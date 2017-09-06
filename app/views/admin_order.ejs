@@ -119,7 +119,7 @@
 <script>
   $('#modal').on('click', function(event) {
     $this = $(this);
-    var name = $this.parent().length;
+    var name = $this.parents().length;
     alert(name);
   });
 </script>
