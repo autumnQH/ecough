@@ -1,3 +1,5 @@
+const dao = require('../dao/wechat');
+var cfg = await dao.getConfig();
 const config = {
     wx: {
 //正式
