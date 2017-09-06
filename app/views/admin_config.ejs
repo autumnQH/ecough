@@ -24,6 +24,7 @@
         <li role="presentation" class="active" ><a href="/admin/getconfig">基本配置</a></li>
     </ul>
 </nav>
+<div class="panel panel-default" style="float: left;">
 <form class="form-horizontal" action="/admin/setconfig" method="post">
   <div class="form-group">
     <label for="appid" class="col-sm-2 control-label">微信Id</label>
@@ -138,7 +139,7 @@
     </div>
   </div>
 </form>
-
+</div>
 <script>
   var $true = $('input:checked').val();
   alert($true);

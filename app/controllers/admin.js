@@ -102,7 +102,7 @@ var getConfig = async (ctx, next) => {
 
 var setConfig = async (ctx, next) => {
     var data = ctx.request.body;
-    console.log(data);
+    console.log(data, 'data');
     await setConfig(data);
     await ctx.redirect('/admin/getconfig');
 }
