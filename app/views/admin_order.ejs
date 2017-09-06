@@ -38,6 +38,7 @@
       <th>订单状态</th>
       <th>物流公司</th>
       <th>物流号</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -66,16 +67,12 @@
         <td><%= data[i].delivery_company %></td>>
       <% } %>
       <td style="width: 100px;"><%= data[i].delivery_track_no %></td>
+      <td><a class="btn btn-sm">发货</a></td>
     </tr>
     <% } %>
   <% } %>
   </tbody>
 </table>
-<script>
-  $('tr').on('click', function(event) {
-    alert('ad');
-    alert(this).html();
-  });
-</script>
+
 </body>
 </html>
