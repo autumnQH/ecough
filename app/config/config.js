@@ -39,7 +39,5 @@ const config = {
       version: "1.0",
     },
 }
-const cfg =  dao.getConfig();
-console.log(cfg, '----cfg');
 
 module.exports = Object.assign({}, config);
