@@ -116,7 +116,7 @@ var jsapiPay = async(ctx, next) => {
 
     var pay_money = total * 10 - 1 ;
     console.log(pay_money);
-    var page = pay.setPackageData(openid, pay_money, value);
+    var page = await pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
 
@@ -131,7 +131,7 @@ var jsapiPay = async(ctx, next) => {
     }
     if(result.xml.prepay_id){
         var prepayid = result.xml.prepay_id[0];
-        var data2 = pay.setPaySign(prepayid, value);
+        var data2 = await pay.setPaySign(prepayid, value);
 
         //获取js-ticket才能调用微信支付请求
         //获取js-cicket

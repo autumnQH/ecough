@@ -5,7 +5,7 @@ const dao = require('../dao/wechat');
 
 
 //统一下单
-exports.setPackageData = function (openid, pay_money, value) {
+exports.setPackageData = async function (openid, pay_money, value) {
     const config = await dao.getConfig();	
     var data = {
         appid: config.appid, //appId
@@ -33,7 +33,7 @@ exports.setPackageData = function (openid, pay_money, value) {
 }
 
 //生成支付请求签名
-exports.setPaySign = function (prepayid, value) {
+exports.setPaySign = async function (prepayid, value) {
     const config = await dao.getConfig();
 	var data = {
 	    appId: config.appid,
