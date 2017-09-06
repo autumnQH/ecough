@@ -84,3 +84,24 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_SUBSCRIBE (
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS CONFIG (
+  id int NOT NULL AUTO_INCREMENT,
+  appid varchar(255) DEFAULT 'wxff24c10734aed1ef',#appid
+  appSecret varchar(255) DEFAULT 'e4f2067a90f7aed463e6bc51ba02f51d',#appSecret
+  token varchar(255) DEFAULT 'ecough',
+  store_mchid varchar(255) DEFAULT '1470073502', #商户id
+  store_key varchar(255) DEFAULT 'qwertyuiopasdfghjklzxcvbnm123456',#商户支付key
+  encodingAESKey varchar(255) DEFAULT '9dq7tO5Gi7iP6tIiCUBUXM55eVG8CGCWuRS2zyk5CPS',
+  message_text varchar(255) DEFAULT '终于等到您，还好没放弃！',
+  message_default varchar(255) DEFAULT '冥冥之中自有缘分！',
+  sms_accessKeyId varchar(255) DEFAULT 'LTAI8ttec2BYuOMC',
+  sms_secretAccessKey varchar(255) DEFAULT '3sDGHGwyQWpNwCdSYoomAWFGj9wSUj',
+  sms_TemplateCode varchar(255) DEFAULT 'SMS_91000028',
+  sms_SignName varchar(255) DEFAULT '刘鹏',
+  server_host varchar(255) DEFAULT 'http://www.e-cough.com',
+  server_port int(20) DEFAULT 80,
+  original_money int(36) DEFAULT 1,#原价
+  derate_money int(36) DEFAULT 0,#减免
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 ;

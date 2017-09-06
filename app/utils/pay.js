@@ -2,6 +2,7 @@ const tools = require('./tools');
 const config = require('../config/config');
 const crypto = require('crypto');
 const xml = require('./xml');
+const dao = require('../dao/wechat');
 
 
 //统一下单
@@ -66,4 +67,8 @@ exports.setWXConfig = function(jsapi_ticket, url, value) {
     var signature = crypto.createHash('sha1').update(str, 'utf8').digest('hex').toLowerCase();
     wxcfg.signature = signature; 
     return wxcfg; 
+}
+
+exports.getConfig = function () {
+    return dao.getConfig();
 }

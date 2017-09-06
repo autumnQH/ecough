@@ -1,3 +1,4 @@
+
 const config = {
     wx: {
 //正式

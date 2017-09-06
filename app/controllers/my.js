@@ -97,7 +97,6 @@ var jsapiPay = async(ctx, next) => {
 
     var openid = ctx.query.openid;
     var total = ctx.query.total;
-    console.log(total);
 
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
@@ -108,6 +107,12 @@ var jsapiPay = async(ctx, next) => {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
+
+    var cfg = await pay.GetConfig();
+    var original_money = cfg.original_money//原价
+    var derate_money = cfg.derate_money//减免
+    console.log(original_money,'原价');
+    console.log(derate_money, '减免');
 
     var pay_money = total * 10 - 1 ;
     console.log(pay_money);
@@ -139,7 +144,7 @@ var jsapiPay = async(ctx, next) => {
             data: data2,
             openid: openid,
             total: total,
-            pay_money: pay_money
+            pay_money: pay_money * 0.01
         });         
     }else{
         await ctx.redirect('/product/100001');

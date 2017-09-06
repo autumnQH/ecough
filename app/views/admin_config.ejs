@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>基本配置</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav style="width: 150px;float: left;">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="/admin">Home</a></li>
+        <li role="presentation"><a href="/admin/order">订单</a></li>
+        <li role="presentation"><a href="/admin/qrcode">推广二维码</a></li>
+        <li role="presentation"><a href="/admin/user/service">售后服务</a></li>
+        <li role="presentation" class="active" ><a href="/admin/getconfig">基本配置</a></li>
+    </ul>
+</nav>
+
+<div class="panel panel-default" style="float: left;">
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="appid" class="col-sm-2 control-label">微信Id</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="appid" value="<%= config.appid %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="appSecret" class="col-sm-2 control-label">微信Secret</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="appSecret" value="<%= config.appSecret %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="token" class="col-sm-2 control-label">微信token</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="token" value="<%= config.token %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="store_mchid" class="col-sm-2 control-label">商户Id</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="store_mchid" value="<%= config.store_mchid %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="store_key" class="col-sm-2 control-label">商户key</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="store_key" value="<%= config.store_key %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="encodingAESKey" class="col-sm-2 control-label">消息加密</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="encodingAESKey" value="<%= config.encodingAESKey %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="message_text" class="col-sm-2 control-label">消息回复内容</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="message_text" value="<%= config.message_text %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="message_default" class="col-sm-2 control-label">消息默认回复内容</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="message_default" value="<%= config.message_default %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="sms_accessKeyId" class="col-sm-2 control-label">短信accessKeyId</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="sms_accessKeyId" value="<%= config.sms_accessKeyId %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="sms_secretAccessKey" class="col-sm-2 control-label">短信secretAccessKey</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="sms_secretAccessKey" value="<%= config.sms_secretAccessKey %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="sms_TemplateCode" class="col-sm-2 control-label">短信模版</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="sms_TemplateCode" value="<%= config.sms_TemplateCode %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="sms_SignName" class="col-sm-2 control-label">短信签名</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="sms_SignName" value="<%= config.sms_SignName %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="server_host" class="col-sm-2 control-label">网址</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="server_host" value="<%= config.server_host %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="server_port" class="col-sm-2 control-label">网址端口</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="server_port" value="<%= config.server_port %>">
+    </div>
+  </div> 
+  <div class="form-group">
+    <label for="original_money" class="col-sm-2 control-label">产品原价</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="original_money" value="<%= config.original_money %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="derate_money" class="col-sm-2 control-label">产品减免价格</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="derate_money" value="<%= config.derate_money %>">
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox">我要修改
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">修改</button>
+    </div>
+  </div>
+</form>
+</div>
+
+</body>
+</html>

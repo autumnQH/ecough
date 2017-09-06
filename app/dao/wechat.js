@@ -67,6 +67,15 @@ var setOpenIdForSubscribe = async (data) => {
 	return result;
 }
 
+var getConfig = async () => {
+	var result = db.findOne("SELECT * FROM CONFIG WHERE id = 1");
+	return result;
+}
+
+var setConfig = async (data) => {
+	var result = db.update("CONFIG", data, 1);
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -81,5 +90,7 @@ module.exports = {
 	getOutTradeNo:getOutTradeNo,
 	adminSetDeliver: adminSetDeliver,
 	getOpenIdForSubscribe: getOpenIdForSubscribe,
-	setOpenIdForSubscribe: setOpenIdForSubscribe
+	setOpenIdForSubscribe: setOpenIdForSubscribe,
+	getConfig: getConfig,
+	setConfig: setConfig
 };

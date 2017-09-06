@@ -92,6 +92,21 @@ var adminSetDeliver = async(ctx, next) => {
 
 }
 
+var getConfig = async (ctx, next) => {
+    var data = await dao.getConfig();
+    console.log(data);
+    await ctx.render('admin_config', {
+        config: data
+    });
+}
+
+var setConfig = async (ctx, next) => {
+    var data = ctx.ctx.request.body;
+    console.log(data);
+    await setConfig(data);
+    await ctx.redirect('/admin/getconfig');
+}
+
 module.exports = {
     'GET /admin': admin,
     'GET /admin/order': admin_order,
@@ -99,6 +114,8 @@ module.exports = {
     'GET /admin/qrcode': admin_qrcode,
     'POST /admin/setQrcode': admin_setQrcode,
     'GET /admin/user/service': admin_userService,
-    'POST /admin/order/deliver': adminSetDeliver
+    'POST /admin/order/deliver': adminSetDeliver,
+    'GET /admin/getconfig': getConfig,
+    'POST /admin/setconfig' : setConfig,
 
 };
