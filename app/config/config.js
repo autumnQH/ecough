@@ -41,4 +41,6 @@ const config = {
     },
 }
 
-module.exports = config;
+module.exports = function() {
+  return config; 
+}
