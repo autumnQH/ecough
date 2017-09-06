@@ -108,9 +108,8 @@ var jsapiPay = async(ctx, next) => {
         out_trade_no: out_trade_no
     };
 
-    var cfg = await pay.GetConfig();
-    var original_money = cfg.original_money//原价
-    var derate_money = cfg.derate_money//减免
+    var original_money = config.store.original_money//原价
+    var derate_money = config.store.derate_money//减免
     console.log(original_money,'原价');
     console.log(derate_money, '减免');
 

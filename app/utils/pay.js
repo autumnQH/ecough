@@ -68,7 +68,3 @@ exports.setWXConfig = function(jsapi_ticket, url, value) {
     wxcfg.signature = signature; 
     return wxcfg; 
 }
-
-exports.getConfig = function () {
-    return dao.getConfig();
-}

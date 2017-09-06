@@ -36,6 +36,10 @@ var config = {
       name: "ecough",
       version: "1.0",
     },
+    store: {
+      original_money: 10.
+      derate_money: 1
+    }
 };
   return config;
 };
