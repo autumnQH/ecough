@@ -5,10 +5,7 @@ var config = function () {
 
 var config = {
     wx: {
-//正式
       appid: 'wxff24c10734aed1ef',appSecret: 'e4f2067a90f7aed463e6bc51ba02f51d',
-//测试
-//     appid: 'wxc25f48089fba29f3',appSecret: '328f39d113a5e31d58b0fb20cdccb4c7',
       token: 'ecough',
       mchid: '1470073502',
       key: 'qwertyuiopasdfghjklzxcvbnm123456'
@@ -20,11 +17,9 @@ var config = {
     },
     db: {
       host: 'localhost',
-      //port:  '3306',
       name: 'ecough',
       user: 'root',
-      passwd: 'root',
-//      passwd: '450450', 
+      passwd: 'root', 
       conn_limit: 5
     },
     sms: {
@@ -35,7 +30,6 @@ var config = {
     },
     server: {
       host: 'http://www.e-cough.com',
-//      host: 'https://pnedhaouvq.localtunnel.me',
        port: 80
     },
     app: {
