@@ -16,7 +16,6 @@
 </head>
 <body>
 <%include nav.ejs %>
-<div class="panel panel-default" style="float: left;">
 <form class="form-horizontal" action="/admin/setconfig" method="post">
   <div class="form-group">
     <label for="appid" class="col-sm-2 control-label">微信Id</label>
@@ -125,7 +124,6 @@
     </div>
   </div>
 </form>
-</div>
 <script>
 $(function() {
   $("form").submit(function(e){
