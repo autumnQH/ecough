@@ -68,7 +68,7 @@ var setOpenIdForSubscribe = async (data) => {
 }
 
 var getConfig = async () => {
-	var result = db.findOne("SELECT * FROM CONFIG WHERE id = 1");
+	var result = await db.findOne("SELECT * FROM CONFIG WHERE id = 1");
 	return result;
 }
 
