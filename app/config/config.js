@@ -49,8 +49,8 @@ var config = {
       key: cfg.store_key
       ,encodingAESKey: cfg.encodingAESKey
       ,message: {
-        text: cfg.message.text,
-        default: cfg.message.default 
+        text: cfg.message_text,
+        default: cfg.message_default 
       }
     },
     db: {
