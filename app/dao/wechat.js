@@ -67,5 +67,6 @@ module.exports = {
 	getOrder: getOrder,
 	setOrder: setOrder,
 	setStoreOrder: setStoreOrder,
+	getOutTradeNo:getOutTradeNo,
 	adminSetDeliver: adminSetDeliver
 };
