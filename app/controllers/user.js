@@ -33,6 +33,7 @@ var getUserAddressByOrder = async (ctx, next) =>{
 }
 
 var getUserAddress = async (ctx, next) => {
+  config = await config.config();
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
@@ -70,6 +71,7 @@ var getUserAddress = async (ctx, next) => {
 }
 
 var myOrder = async(ctx, next) => {
+  config = await config.config();
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
@@ -106,6 +108,7 @@ var myOrder = async(ctx, next) => {
 
 }
 var CustomerService = async (ctx, next) => {
+  config = await config.config();
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
@@ -155,6 +158,7 @@ var getUserExpress = async (ctx, next) => {
 }
 
 var getOpenAddress = async (ctx, next) => {
+  config = await config.config();
   var r_url = config.server.host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   

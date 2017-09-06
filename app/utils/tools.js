@@ -1,5 +1,5 @@
 const moment = require('moment');
-const config = require('../config/config').config();
+var config = require('../config/config');
 const request = require('request');
 
 //随机串
@@ -47,6 +47,7 @@ exports.trade = function() {
 
 //网页授权
 exports.getOauth2Token = async function (code) {
+  config = await config.config();
     let options = {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.wx.appid +'&secret='+ config.wx.appSecret +'&code='+ code +'&grant_type=authorization_code',

@@ -13,7 +13,6 @@ const DYBASEAPI_ENDPOINT = 'http://dybaseapi.aliyuncs.com'
 
 class SMSClient {
     constructor(options) {
-        console.log('进来了');
         let {accessKeyId, secretAccessKey}=options
         if (!accessKeyId) {
             throw new TypeError('parameter "accessKeyId" is required');

@@ -13,7 +13,6 @@ const compress = require('koa-compress')
 //const json = require('koa-json');
 
 const controller = require('./controller');
-const config = require('./app/config/config');
 const logUtil = require('./utils/log');
 
 //session
