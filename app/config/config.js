@@ -43,5 +43,5 @@ const config = {
       version: "1.0",
     },
 }  
-  return config;
+  return JSON.parse(config);
 };
