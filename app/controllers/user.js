@@ -1,6 +1,5 @@
 const userService = require('../service/user.js');;
 const tools = require('../utils/tools');
-const config  =require('../config/config');
 const urlencode = require('urlencode');
 const moment = require('moment');
 const dao = require('../dao/wechat');
@@ -33,9 +32,9 @@ var getUserAddressByOrder = async (ctx, next) =>{
 }
 
 var getUserAddress = async (ctx, next) => {
-  config = await config.config();
-  var r_url = config.server.host + ctx.url;
-  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
   if(ctx.session.openid){
     var result = await userService.getUserAddress(ctx.session.openid);
@@ -71,9 +70,9 @@ var getUserAddress = async (ctx, next) => {
 }
 
 var myOrder = async(ctx, next) => {
-  config = await config.config();
-  var r_url = config.server.host + ctx.url;
-  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
@@ -108,9 +107,9 @@ var myOrder = async(ctx, next) => {
 
 }
 var CustomerService = async (ctx, next) => {
-  config = await config.config();
-  var r_url = config.server.host + ctx.url;
-  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
@@ -158,9 +157,9 @@ var getUserExpress = async (ctx, next) => {
 }
 
 var getOpenAddress = async (ctx, next) => {
-  config = await config.config();
-  var r_url = config.server.host + ctx.url;
-  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.wx.appid + 
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
   if(ctx.session.openid){
     var jssdk = await dao.getJsapiTicket();
