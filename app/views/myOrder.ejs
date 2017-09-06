@@ -60,7 +60,8 @@
 					<div class="order-number">
 						<span>订单号：</span>
 						<span><%= data[i].out_trade_no %></span>
-						<a href="https://m.kuaidi100.com/index_all.html?type=tiantian&postid=667639416219">查询物流</a>
+						<span>
+						<a href="https://m.kuaidi100.com/index_all.html?type=tiantian&postid=667639416219">查询物流</a></span>
 						<% if(data[i].status == 3 ) { %>
  <a href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">查看物流</a>
   <% } %>
