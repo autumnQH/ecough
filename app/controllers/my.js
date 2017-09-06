@@ -60,7 +60,7 @@ var getUserInfo = async (ctx, next) => {
             if(user.errcode){
                 ctx.redirect(url);
             }else{
-                console.log('ok');
+                //console.log('ok');
                 //拉取用户信息
                 var userinfo = await tools.getUserInfo(user.access_token, user.openid);
                     userinfo = JSON.parse(userinfo);
@@ -98,7 +98,7 @@ var jsapiPay = async(ctx, next) => {
     var openid = ctx.query.openid;
     var total = ctx.query.total;
     console.log(total);
-    
+
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
     var out_trade_no = tools.trade();
