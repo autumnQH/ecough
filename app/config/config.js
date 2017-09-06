@@ -39,7 +39,7 @@ const config = {
     },
 }
 
-module.exports = function () {
+exports = module.exports = function () {
   const dao = require('../dao/wechat');
   var cfg = dao.getConfig();
   console.log(cfg);
