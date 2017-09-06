@@ -1,6 +1,3 @@
-const dao = require('../dao/wechat');
-var cfg = dao.getConfig();
-console.log(cfg);
 const config = {
     wx: {
 //正式
@@ -42,4 +39,9 @@ const config = {
     },
 }
 
-module.exports = config;
+module.exports = function () {
+  const dao = require('../dao/wechat');
+  var cfg = dao.getConfig();
+  console.log(cfg);
+  return config;
+};
