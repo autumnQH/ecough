@@ -112,7 +112,7 @@ var jsapiPay = async(ctx, next) => {
         out_trade_no: out_trade_no
     };
 
-    var original_money = config.original_money;//原价
+    var current_money = config.current_money;//现价
     var derate_money = 0;//减免
 
     var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
@@ -121,7 +121,7 @@ var jsapiPay = async(ctx, next) => {
         derate_money = config.derate_money
     }
 
-    var pay_money = total * original_money - derate_money ;
+    var pay_money = total * current_money - derate_money ;
     var page = await pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
