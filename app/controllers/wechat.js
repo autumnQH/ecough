@@ -25,7 +25,6 @@ var postHandle = async(ctx, next) => {
     let msgType = msg.MsgType[0];
     if(msg.Event){//用户关注
         if(msg.Event[0] == 'subscribe'){
-            console.log('用户关注');
             let openid = msg.FromUserName[0];
             if(msg.Ticket){
                 //记录用户扫描带参数的二维码
@@ -75,7 +74,6 @@ var postHandle = async(ctx, next) => {
 
     console.log(msgType);
     var config = await dao.getConfig();
-    console.log(config,'adad');
     switch (msgType) {
           case 'text':
             reMsg = wechat.getTextMessage(msg, config.message_text);
@@ -85,16 +83,15 @@ var postHandle = async(ctx, next) => {
           case 'voice':
             break;
           case 'event':
-            reMsg = wechat.getDefaultMessage(msg, config.message_default);
-
-            // switch (msg.Event) {
-            //   case 'subscribe':
-            //     yield weixin.default(msg)
-            //     break;
-            //   default:
-            //     yield weixin.default(msg)
-            //     break;
-            // }
+            //reMsg = wechat.getDefaultMessage(msg, config.message_default);
+            switch (msg.Event) {
+              case 'subscribe':
+                reMsg = wechat.getTextMessage(msg, config.message_text);
+                break;
+              default:
+                reMsg = wechat.getDefaultMessage(msg, config.message_default);
+                break;
+            }
             break;
           default:
               reMsg = wechat.getDefaultMessage(msg, config.message_default);
