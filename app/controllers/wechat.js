@@ -59,6 +59,7 @@ var postHandle = async(ctx, next) => {
             }
             //记录用户首次关注时间
             var result =  await wechat.getOpenIdForSubscribe(openid);
+            console.log(result,'asdasdasdasd');
             if(result.length == 0){
                 var data = {
                     openid: openid,
