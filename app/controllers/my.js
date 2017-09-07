@@ -183,7 +183,7 @@ var notify = async function(ctx, next) {
             var result = await wechat.getOneSpread(data.openid);
             var ticket = result.ticket;
             console.log(ticket,'二维码参数');
-            dao.setOpenIdForSubscribe({ticket: ticket},{openid: data.openid});//关闭首单
+            dao.setOpenIdForSubscribe({ticket: ticket, flag: false},{openid: data.openid});//关闭首单
         }
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
