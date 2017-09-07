@@ -25,13 +25,13 @@ var postHandle = async(ctx, next) => {
     let msgType = msg.MsgType[0];
     if(msg.Event){//用户关注
         if(msg.Event[0] == 'subscribe'){
-            let openid = msg.FromUserName[0];
+            var openid = msg.FromUserName[0];
 
             if(msg.Ticket){
                 //记录用户扫描带参数的二维码
-                let openid = openid;
-                let ticket = msg.Ticket[0];
-                let eventKey = msg.EventKey[0];
+                var openid = openid;
+                var ticket = msg.Ticket[0];
+                var eventKey = msg.EventKey[0];
 
                 //var result = await wechat.getOneSpread(openid, ticket, eventKey);
                 var result = await wechat.getOneSpread(openid);
@@ -39,7 +39,7 @@ var postHandle = async(ctx, next) => {
 
                 //如果未关注，则记录
                 if(result.length == 0){
-                    let data = {
+                    var data = {
                         openid: openid,//openId
                         ticket: ticket,//二维码ticket
                         eventKey: eventKey, //事件key值           
@@ -48,7 +48,7 @@ var postHandle = async(ctx, next) => {
                     wechat.setSpread(data); 
                 //如果之前关注。又扫描二维码。            
                 }else{
-                    let data = {
+                    var data = {
                         ticket: ticket,
                         eventKey: eventKey,
                         create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
@@ -60,7 +60,7 @@ var postHandle = async(ctx, next) => {
             //记录用户首次关注时间
             var result =  await wechat.getOpenIdForSubscribe(openid);
             if(result.length == 0){
-                let data = {
+                var data = {
                     openid: openid,
                     flag: '1',
                     create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD')
@@ -69,11 +69,11 @@ var postHandle = async(ctx, next) => {
             }
         //如果已经关注，但是扫描了其他人的二维码
         }else if(msg.Event[0] == 'SCAN') {
-            let openid = msg.FromUserName[0];
-            let ticket = msg.Ticket[0];
-            let eventKey = msg.EventKey[0];
-            let create_time = moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss');
-            let data = {
+            var openid = msg.FromUserName[0];
+            var ticket = msg.Ticket[0];
+            var eventKey = msg.EventKey[0];
+            var create_time = moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss');
+            var data = {
                 ticket: ticket,
                 eventKey: eventKey,
                 create_time: create_time
