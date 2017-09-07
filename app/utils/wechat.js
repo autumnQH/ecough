@@ -118,6 +118,10 @@ exports.getOpenIdForSubscribe = (openid) =>{
     return dao.getOpenIdForSubscribe(openid);
 }
 
-exports.setOpenIdForSubscribe = (data) => {
-    return dao.setOpenIdForSubscribe(data);
+exports.setOpenIdForSubscribe = (data, value) => {
+    return dao.setOpenIdForSubscribe(data, value);
 }
+
+exports.addOpenIdForSubscribe = (data) => {
+    return dao.addOpenIdForSubscribe(data);
+}  
