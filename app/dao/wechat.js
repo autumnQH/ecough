@@ -79,7 +79,7 @@ var setOpenIdForSubscribe = async (data, value) => {
 }
 
 var addOpenIdForSubscribe = async (data) => {
-	var result = db.add(data);
+	var result = db.add("T_WECHAT_SUBSCRIBE",data);
 	return result;
 }
 
