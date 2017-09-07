@@ -46,7 +46,7 @@ var updateSpread = async (data, value)=>{
 }
 
 var getOrder = async () => {
-	var result = await db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME");
+	var result = await db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME DESC");
 	return result;
 }
 var setOrder = async(data) => {
