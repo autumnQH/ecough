@@ -7,7 +7,9 @@ const dao = require('../dao/wechat');
 
 exports.auth = async (ctx) => {
     const config = await dao.getConfig();
+    console.log(config,'auth--=-=');
     let token = config.token;
+    console.log(token);
     let signature = ctx.query.signature;
     let timestamp = ctx.query.timestamp;
     let nonce = ctx.query.nonce;

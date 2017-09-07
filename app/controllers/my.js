@@ -176,7 +176,7 @@ module.exports = {
     //'GET /product/100001': getProduct,
     'GET /product/100001': getUserInfo,
     'POST /product/100001': getProduct,
-    'POST /notify': notify,
+    //'POST /notify': notify,
     'POST /my/pay/notify': notify,
     //'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay

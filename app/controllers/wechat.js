@@ -24,6 +24,7 @@ var postHandle = async(ctx, next) => {
 
     let msgType = msg.MsgType[0];
     if(msg.Event[0] === 'subscribe'){//用户关注
+        console.log(用户关注);
         let openid = msg.FromUserName[0];
         if(msg.Ticket){
             //记录用户扫描带参数的二维码
@@ -73,7 +74,7 @@ var postHandle = async(ctx, next) => {
 
     console.log(msgType);
     var config = await dao.getConfig();
-
+    console.log(config,'adad');
     switch (msgType) {
           case 'text':
             reMsg = wechat.getTextMessage(msg, config.message_text);
