@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS STORE_ORDER (
 CREATE TABLE IF NOT EXISTS T_WECHAT_SUBSCRIBE (
   id int NOT NULL AUTO_INCREMENT,
   openid varchar(255) NOT NULL,
+  flag tinyint(1) DEFAULT '1',#0-false 1-true
   create_time datetime DEFAULT NULL,
   PRIMARY KEY (id),
   INDEX openid (openid)

@@ -49,6 +49,7 @@ var postHandle = async(ctx, next) => {
         if(result.length == 0){
             let data = {
                 openid: openid,
+                flag: '1',
                 create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD')
             }
             wechat.setOpenIdForSubscribe(data);

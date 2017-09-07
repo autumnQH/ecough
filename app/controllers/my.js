@@ -115,7 +115,7 @@ var jsapiPay = async(ctx, next) => {
     var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
     var today = moment(new Date(todaySubscribe.create_time)).format('YYYY-MM-DD');
 
-    if(today == moment().format('YYYY-MM-DD')){
+    if(today == moment().format('YYYY-MM-DD') && todaySubscribe.flag == '1'){
         derate_money = config.derate_money
     }
 
@@ -158,6 +158,10 @@ var jsapiPay = async(ctx, next) => {
 
 var notify = async function(ctx, next) {
     console.log('通知哦');
+    let msg = ctx.request.body ? ctx.request.body.xml : '';
+    console.log(msg,'回答');
+    
+
 };
 
 var getOrder = async function(ctx, next) {
@@ -173,7 +177,6 @@ module.exports = {
     //'GET /product/100001': getProduct,
     'GET /product/100001': getUserInfo,
     'POST /product/100001': getProduct,
-    'GET /notify': notify,
     'POST /notify': notify,
     //'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay
