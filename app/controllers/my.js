@@ -178,14 +178,15 @@ var notify = async function(ctx, next) {
         }
         //console.log(data,'数据');
         dao.setNOTIFY(data);
+        dao.setOpenIdForSubscribe({openid: data.openid});
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
-            return_msg: msg.return_msg[0]
+            return_msg: msg.return_code[0]
         });        
     }else{
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
-            return_msg: msg.return_msg[0]
+            return_msg: msg.return_code[0]
         });
     }
 
