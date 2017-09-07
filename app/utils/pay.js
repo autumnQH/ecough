@@ -16,7 +16,7 @@ exports.setPackageData = async function (openid, pay_money, value) {
         out_trade_no: value.out_trade_no,//商户订单号
         total_fee: pay_money,//标价金额
         spbill_create_ip: '47.93.245.51',//终端IP
-        notify_url: '/notify',
+        notify_url: '/wechat',
         trade_type: 'JSAPI',
         openid: openid          
         //sign: data.sign,//签名
