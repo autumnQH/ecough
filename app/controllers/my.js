@@ -156,9 +156,13 @@ var jsapiPay = async(ctx, next) => {
 };
 
 var notify = async function(ctx, next) {
-    console.log('通知哦');
     let msg = ctx.request.body ? ctx.request.body.xml : '';
     console.log(msg,'回答');
+    if(msg.result_code == 'SUCCESS' && msg.return_code == 'SUCCESS'){
+        return ctx.body = true;        
+    }else{
+        return ctx.body = false;
+    }
 
 
 };
