@@ -100,7 +100,7 @@ var postHandle = async(ctx, next) => {
     }
 
     console.log("reply message: " + reMsg); 
-    ctx.body = reMsg;
+    await ctx.body = reMsg;
      
 };
 
