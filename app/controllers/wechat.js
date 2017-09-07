@@ -66,7 +66,7 @@ var postHandle = async(ctx, next) => {
                     flag: '1',
                     create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD')
                 }
-                wechat.setOpenIdForSubscribe(data);
+                wechat.addOpenIdForSubscribe(data);
             }
         //如果已经关注，但是扫描了其他人的二维码
         }else if(msg.Event[0] == 'SCAN') {

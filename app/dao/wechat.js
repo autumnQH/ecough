@@ -78,6 +78,11 @@ var setOpenIdForSubscribe = async (data, value) => {
 	return result;
 }
 
+var addOpenIdForSubscribe = async (data) => {
+	var result = db.add(data);
+	return result;
+}
+
 var getConfig = async () => {
 	var result = db.findOne("SELECT * FROM CONFIG WHERE id = 1");
 	return result;
@@ -108,6 +113,7 @@ module.exports = {
 	adminSetDeliver: adminSetDeliver,
 	getOpenIdForSubscribe: getOpenIdForSubscribe,
 	setOpenIdForSubscribe: setOpenIdForSubscribe,
+	addOpenIdForSubscribe, addOpenIdForSubscribe
 	getConfig: getConfig,
 	setConfig: setConfig,
 	setNOTIFY: setNOTIFY
