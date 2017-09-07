@@ -46,6 +46,8 @@ var getUserInfo = async (ctx, next) => {
         //console.log(ctx.session);
         await ctx.render('product', {
             userinfo: ctx.session
+            current_money: config.current_money * 0.01,
+            original_money: config.original_money * 0.01
         });       
     }else{
         if(!ctx.query.code){
@@ -64,7 +66,6 @@ var getUserInfo = async (ctx, next) => {
                 var userinfo = await tools.getUserInfo(user.access_token, user.openid);
                     userinfo = JSON.parse(userinfo);
                 ctx.session = userinfo;
-                console.log(config);
                 await ctx.render('product', {
                     userinfo: userinfo,
                     current_money: config.current_money * 0.01,
