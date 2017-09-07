@@ -6,7 +6,7 @@ var getIndex = async (ctx, next) => {
 	await ctx.render('index', {});
 };
 
-module.exports = {
-	'GET /': getIndex,
-	'GET /index': getIndex
-};
+// module.exports = {
+// 	'GET /': getIndex,
+// 	'GET /index': getIndex
+// };

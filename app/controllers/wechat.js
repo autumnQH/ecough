@@ -84,7 +84,7 @@ var postHandle = async(ctx, next) => {
             break;
           case 'event':
             //reMsg = wechat.getDefaultMessage(msg, config.message_default);
-            switch (msg.Event) {
+            switch (msg.Event[0]) {
               case 'subscribe':
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
