@@ -7,8 +7,6 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
-const fs = require('fs');
-const path = require('path');
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
@@ -158,10 +156,6 @@ var jsapiPay = async(ctx, next) => {
 
 var notify = async function(ctx, next) {
     let msg = ctx.request.body ? ctx.request.body.xml : '';
-    //console.log(msg,'回答');
-    fs.appendFile(__dirname + '/notify.txt', msg, function() {
-
-    });
     if(msg.result_code[0] == 'SUCCESS' && msg.return_code[0] == 'SUCCESS'){
         var data = {
             appid: msg.appid[0],
@@ -184,9 +178,15 @@ var notify = async function(ctx, next) {
         }
         //console.log(data,'数据');
         dao.setNOTIFY(data);
-        return ctx.body = true;        
+        return ctx.body =  xml.jsonToXml({
+            return_code: msg.result_code[0],
+            return_msg: msg.return_msg[0]
+        });        
     }else{
-        return ctx.body = false;
+        return ctx.body =  xml.jsonToXml({
+            return_code: msg.result_code[0],
+            return_msg: msg.return_msg[0]
+        });
     }
 
 
