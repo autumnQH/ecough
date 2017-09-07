@@ -159,8 +159,7 @@ var jsapiPay = async(ctx, next) => {
 var notify = async function(ctx, next) {
     let msg = ctx.request.body ? ctx.request.body.xml : '';
     //console.log(msg,'回答');
-    var buffer = new Buffer(msg);
-    fs.appendFile(__dirname + '/notify.txt', buffer, function() {
+    fs.appendFile(__dirname + '/notify.txt', msg, function() {
 
     });
     if(msg.result_code[0] == 'SUCCESS' && msg.return_code[0] == 'SUCCESS'){
