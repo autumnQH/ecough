@@ -7,7 +7,8 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
-
+const fs = reuqire('fs');
+const path = require('path');
 
 var getAddress = async (ctx, next) => {
 	ctx.state = {
@@ -157,8 +158,33 @@ var jsapiPay = async(ctx, next) => {
 
 var notify = async function(ctx, next) {
     let msg = ctx.request.body ? ctx.request.body.xml : '';
-    console.log(msg,'回答');
-    if(msg.result_code == 'SUCCESS' && msg.return_code == 'SUCCESS'){
+    //console.log(msg,'回答');
+    var buffer = new Buffer(msg);
+    fs.appendFile(__dirname + '/notify.txt', buffer, function() {
+
+    });
+    if(msg.result_code[0] == 'SUCCESS' && msg.return_code[0] == 'SUCCESS'){
+        var data = {
+            appid: msg.appid[0],
+            attach: msg.attach[0],
+            bank_type: msg.bank_type[0],
+            cash_fee: msg.cash_fee[0],
+            fee_type: msg.fee_type[0],
+            is_subscribe: msg.is_subscribe[0],
+            mch_id: msg.mch_id[0],
+            nonce_str: msg.nonce_str[0],
+            openid: msg.openid[0],
+            out_trade_no: msg.out_trade_no[0],
+            result_code: msg.result_code[0],
+            return_code: msg.return_code[0],
+            sign: msg.sign[0],
+            time_end: msg.time_end[0],
+            total_fee: msg.total_fee[0],
+            trade_type: msg.trade_type[0],
+            transaction_id: msg.transaction_id[0] 
+        }
+        //console.log(data,'数据');
+        dao.setNOTIFY(data);
         return ctx.body = true;        
     }else{
         return ctx.body = false;

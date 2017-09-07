@@ -106,3 +106,26 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   derate_money int(36) DEFAULT 0,#减免
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE IF NOT EXISTS NOTIFY (
+  id int NOT NULL AUTO_INCREMENT,
+  appid varchar(255) DEFAULT NULL,
+  attach varchar(255) DEFAULT NULL,
+  bank_type varchar(255) DEFAULT NULL,
+  cash_fee varchar(255) DEFAULT NULL, 
+  fee_type varchar(255) DEFAULT NULL,
+  is_subscribe varchar(255) DEFAULT NULL,
+  mch_id varchar(255) DEFAULT NULL,
+  nonce_str varchar(255) DEFAULT NULL,
+  openid varchar(255) DEFAULT NULL,
+  out_trade_no varchar(255) DEFAULT NULL,
+  result_code varchar(255) DEFAULT NULL,
+  return_code varchar(255) DEFAULT NULL,
+  sign varchar(255) DEFAULT NULL,
+  time_end varchar(255) DEFAULT NULL,
+  total_fee varchar(255) DEFAULT NULL,
+  trade_type varchar(255) DEFAULT NULL,
+  transaction_id varchar(255) DEFAULT NULL,
+  PRIMARY KEY (id),
+  INDEX openid (openid)
+)DEFAULT CHARSET=utf8 ;

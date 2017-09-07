@@ -76,6 +76,11 @@ var setConfig = async (data) => {
 	var result = db.update("CONFIG", data, {id: 1});
 	return result;
 }
+
+var setNOTIFY = async (data)=>{
+	var result = db.add("NOTIFY", data);
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -92,5 +97,6 @@ module.exports = {
 	getOpenIdForSubscribe: getOpenIdForSubscribe,
 	setOpenIdForSubscribe: setOpenIdForSubscribe,
 	getConfig: getConfig,
-	setConfig: setConfig
+	setConfig: setConfig,
+	setNOTIFY: setNOTIFY
 };
