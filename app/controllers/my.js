@@ -45,7 +45,7 @@ var getUserInfo = async (ctx, next) => {
         //console.log('session存在');
         //console.log(ctx.session);
         await ctx.render('product', {
-            userinfo: ctx.session
+            userinfo: ctx.session,
             current_money: config.current_money * 0.01,
             original_money: config.original_money * 0.01
         });       
