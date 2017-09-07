@@ -86,14 +86,17 @@ var postHandle = async(ctx, next) => {
             //reMsg = wechat.getDefaultMessage(msg, config.message_default);
             switch (msg.Event[0]) {
               case 'subscribe':
+              console.log('关注');
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
               default:
+              console.log('关注1');
                 reMsg = wechat.getDefaultMessage(msg, config.message_default);
                 break;
             }
             break;
           default:
+          console.log('大 sad');
               reMsg = wechat.getDefaultMessage(msg, config.message_default);
             break;
     }
