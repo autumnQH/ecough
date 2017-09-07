@@ -113,9 +113,8 @@ var jsapiPay = async(ctx, next) => {
     var derate_money = 0;//减免
 
     var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
-    var today = moment(new Date(todaySubscribe.create_time)).format('YYYY-MM-DD');
-
-    if(today == moment().format('YYYY-MM-DD') && todaySubscribe.flag == '1'){
+    
+    if(todaySubscribe.flag == '1'){//首单
         derate_money = config.derate_money
     }
 
@@ -160,7 +159,7 @@ var notify = async function(ctx, next) {
     console.log('通知哦');
     let msg = ctx.request.body ? ctx.request.body.xml : '';
     console.log(msg,'回答');
-    
+
 
 };
 
