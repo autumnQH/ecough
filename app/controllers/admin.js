@@ -29,7 +29,7 @@ var admin_setOrder = async function (ctx, next) {
     var req = ctx.request.body;
     req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
     wechat.setOrder(req);
-    await ctx.redirect('/product/100001');
+    await ctx.redirect('/users/my/order');
 
 
 }

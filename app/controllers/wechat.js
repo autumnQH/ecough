@@ -26,22 +26,34 @@ var postHandle = async(ctx, next) => {
     if(msg.Event){//用户关注
         if(msg.Event[0] == 'subscribe'){
             let openid = msg.FromUserName[0];
+
             if(msg.Ticket){
                 //记录用户扫描带参数的二维码
-                let userName = openid;
+                let openid = openid;
                 let ticket = msg.Ticket[0];
                 let eventKey = msg.EventKey[0];
 
-                var result = await wechat.getOneSpread(userName, ticket, eventKey);
-               
+                //var result = await wechat.getOneSpread(openid, ticket, eventKey);
+                var result = await wechat.getOneSpread(openid);
+                
+
+                //如果未关注，则记录
                 if(result.length == 0){
                     let data = {
-                        userName: userName,//openId
+                        openid: openid,//openId
                         ticket: ticket,//二维码ticket
                         eventKey: eventKey, //事件key值           
                         create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
                     }; 
-                    wechat.setSpread(data);            
+                    wechat.setSpread(data); 
+                //如果之前关注。又扫描二维码。            
+                }else{
+                    let data = {
+                        ticket: ticket,
+                        eventKey: eventKey,
+                        create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+                    };
+                    dao.updateSpread(data, {openid: openid});
                 }
                 
             }
@@ -55,6 +67,19 @@ var postHandle = async(ctx, next) => {
                 }
                 wechat.setOpenIdForSubscribe(data);
             }
+        //如果已经关注，但是扫描了其他人的二维码
+        }else if(msg.Event[0] == 'SCAN') {
+            let openid = msg.FromUserName[0];
+            let ticket = msg.Ticket[0];
+            let eventKey = msg.EventKey[0];
+            let create_time = moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss');
+            let data = {
+                ticket: ticket,
+                eventKey: eventKey,
+                create_time: create_time
+            };
+            dao.updateSpread(data, {openid: openid});
+
         }else if(msg.Event[0] == 'merchant_order') {
             //记录微信小店用户购买产品
             //console.log('进来了');

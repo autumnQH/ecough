@@ -94,8 +94,8 @@ exports.getSpread = () => {
     return dao.getSpread();
 }
 
-exports.getOneSpread = (userName, ticket, eventKey) => {
-    return dao.getOneSpread(userName, ticket, eventKey);
+exports.getOneSpread = (openid, ticket, eventKey) => {
+    return dao.getOneSpread(openid, ticket, eventKey);
 }
 
 exports.setSpread = (data) => {

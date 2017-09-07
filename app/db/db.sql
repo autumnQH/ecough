@@ -18,12 +18,12 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_SPREAD (
   id int NOT NULL AUTO_INCREMENT,
-  userName varchar(255) NOT NULL,
+  openid varchar(255) NOT NULL,
   ticket varchar(255) NOT NULL,
-  eventKey varchar(255) NOT NULL,
-  create_time datetime  DEFAULT NULL,
+  eventKey varchar(255) NOT NULL,#场景值
+  create_time datetime  DEFAULT NULL
   PRIMARY KEY (id)
-) ;
+)DEFAULT CHARSET=utf8 ;
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   id int NOT NULL AUTO_INCREMENT,
@@ -43,17 +43,6 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   INDEX openid (openid),
   INDEX out_trade_no (out_trade_no)
 )DEFAULT CHARSET=utf8 ;
-
-CREATE TABLE IF NOT EXISTS USER_ADDRESS (
-  id int NOT NULL AUTO_INCREMENT,
-  openid varchar(255) NOT NULL,
-  name varchar(255) NOT NULL,
-  address varchar(255) NOT NULL,
-  phone varchar(255) NOT NULL,
-  PRIMARY KEY (id),
-  INDEX openid (openid)
-)DEFAULT CHARSET=utf8 ;
-
 
 CREATE TABLE IF NOT EXISTS USER_SERVICE (
   id int NOT NULL AUTO_INCREMENT,
@@ -81,7 +70,8 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_SUBSCRIBE (
   id int NOT NULL AUTO_INCREMENT,
   openid varchar(255) NOT NULL,
   flag tinyint(1) DEFAULT '1',#0-false 1-true
-  create_time datetime DEFAULT NULL,
+  create_time datetime DEFAULT NULL, 
+  ticket varchar(255) DEFAULT NULL,#业绩人员二维码
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;

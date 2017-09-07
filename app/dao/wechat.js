@@ -20,10 +20,16 @@ var setQRCode = async (data) => {
 	return result;
 }
 
-var getOneSpread = async (userName, ticket, eventKey) => {
-	var result = await db.findOne("SELECT * FROM T_WECHAT_SPREAD  WHERE userName='" + userName + "' AND ticket='" + ticket + "' AND eventKey='" + eventKey+ "'");
+// var getOneSpread = async (openid, ticket, eventKey) => {
+// 	var result = await db.findOne("SELECT * FROM T_WECHAT_SPREAD  WHERE openid='" + openid + "' AND ticket='" + ticket + "' AND eventKey='" + eventKey+ "'");
+// 	return result;
+// }
+
+var getOneSpread = async (openid) => {
+	var result = await db.findOne("SELECT * FROM T_WECHAT_SPREAD  WHERE openid='" + openid + "'");
 	return result;
 }
+
 
 var getSpread = async () => {
 	var result = await db.find("SELECT * FROM T_WECHAT_SPREAD");
@@ -31,6 +37,11 @@ var getSpread = async () => {
 }
 var setSpread = async (data) => {
 	var result = db.add("T_WECHAT_SPREAD", data);
+	return result;
+}
+
+var updateSpread = async (data, value)=>{
+	var result = db.update("T_WECHAT_SPREAD", data, value);
 	return result;
 }
 
@@ -62,8 +73,8 @@ var getOpenIdForSubscribe = async (openid) => {
 	return result;
 }
 
-var setOpenIdForSubscribe = async (data) => {
-	var result = db.update("T_WECHAT_SUBSCRIBE",{flag: false}, data);
+var setOpenIdForSubscribe = async (data, value) => {
+	var result = db.update("T_WECHAT_SUBSCRIBE", data, value);
 	return result;
 }
 
@@ -89,6 +100,7 @@ module.exports = {
 	getOneSpread: getOneSpread,
 	getSpread: getSpread,
 	setSpread: setSpread,
+	updateSpread: updateSpread,
 	getOrder: getOrder,
 	setOrder: setOrder,
 	setStoreOrder: setStoreOrder,
