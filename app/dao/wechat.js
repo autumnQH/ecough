@@ -113,7 +113,7 @@ module.exports = {
 	adminSetDeliver: adminSetDeliver,
 	getOpenIdForSubscribe: getOpenIdForSubscribe,
 	setOpenIdForSubscribe: setOpenIdForSubscribe,
-	addOpenIdForSubscribe, addOpenIdForSubscribe
+	addOpenIdForSubscribe, addOpenIdForSubscribe,
 	getConfig: getConfig,
 	setConfig: setConfig,
 	setNOTIFY: setNOTIFY
