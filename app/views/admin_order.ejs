@@ -56,8 +56,10 @@
     
       <% if(data[i].delivery_company == 'shentong'){ %>
         <td>申通快递</td>
-      <% }else{ %> 
-        <td><%= data[i].delivery_company %></td>>
+      <% }else if(data[i].delivery_company == 'huitongkuaidi'){ %> 
+        <td>百世汇通</td>
+      <% }else{ %>
+        <td><%= data[i].delivery_company %></td>
       <% } %>
       <td style="width: 100px;"><%= data[i].delivery_track_no %></td>
     </tr>
@@ -85,6 +87,7 @@
             <label for="delivery_company">物流公司</label>
             <select name="delivery_company" id="delivery_company" class="form-control">
               <option value="shentong">申通</option>
+              <option value="huitongkuaidi">百世汇通</option>
             </select>
           </div>
           <div class="form-group">
