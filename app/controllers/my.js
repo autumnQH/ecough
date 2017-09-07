@@ -7,7 +7,7 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
-const fs = reuqire('fs');
+const fs = require('fs');
 const path = require('path');
 
 var getAddress = async (ctx, next) => {
