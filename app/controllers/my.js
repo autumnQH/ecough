@@ -66,8 +66,8 @@ var getUserInfo = async (ctx, next) => {
                 ctx.session = userinfo;
                 await ctx.render('product', {
                     userinfo: userinfo,
-                    current_money: config.current_money,
-                    original_money: config.original_money
+                    current_money: config.current_money * 0.01,
+                    original_money: config.original_money * 0.01
                 })
             }    
         }
