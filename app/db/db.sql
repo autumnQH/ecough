@@ -93,6 +93,7 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   server_host varchar(255) DEFAULT 'http://www.e-cough.com',
   server_port int(20) DEFAULT 80,
   original_money int(36) DEFAULT 1,#原价
+  current_money int(36) DEFAULT 1,#现价
   derate_money int(36) DEFAULT 0,#减免
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 ;

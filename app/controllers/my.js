@@ -65,7 +65,9 @@ var getUserInfo = async (ctx, next) => {
                     userinfo = JSON.parse(userinfo);
                 ctx.session = userinfo;
                 await ctx.render('product', {
-                    userinfo: userinfo
+                    userinfo: userinfo,
+                    current_money: config.current_money,
+                    original_money: config.original_money
                 })
             }    
         }

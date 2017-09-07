@@ -75,6 +75,7 @@ var config = {
     },
     store: {
       original_money: cfg.original_money,
+      current_money: cfg.current_money,
       derate_money: cfg.derate_money
     }
 };
