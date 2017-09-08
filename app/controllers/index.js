@@ -3,10 +3,10 @@ var getIndex = async (ctx, next) => {
 	    title: 'hello koa2'
   	};
 
-	await ctx.render('index', {});
+	await ctx.render('home', {});
 };
 
-// module.exports = {
-// 	'GET /': getIndex,
-// 	'GET /index': getIndex
-// };
+module.exports = {
+	'GET /': getIndex,
+	'GET /index': getIndex
+};
