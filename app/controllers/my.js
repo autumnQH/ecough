@@ -102,9 +102,7 @@ var jsapiPay = async(ctx, next) => {
     if(todaySubscribe.flag == '1'){//首单
         derate_money = config.derate_money
     }
-    console.log(derate_money,'derate_money');
     var pay_money = total * current_money - derate_money ;
-    console.log(pay_money);
     var page = await pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
@@ -134,8 +132,10 @@ var jsapiPay = async(ctx, next) => {
             openid: openid,
             total: total,
             specifications: specifications,
-            derate_money: derate_money,
-            pay_money: pay_money * 0.01
+            total_money: (pay_money + derate_money) * 0.01,
+            derate_money: derate_money * 0.01,
+            pay_money: pay_money * 0.01,
+
         });         
     }else{
         await ctx.redirect('/product/100001');

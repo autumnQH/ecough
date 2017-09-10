@@ -68,6 +68,9 @@
 						var specifications = '<%= specifications %>';
 						var money = '<%= pay_money %>';
 						var out_trade_no = "<%= data.out_trade_no %>";
+						var derate_money = "<%= derate_money %>";
+						var total_money = "<%= total_money >";
+
 
 						$('#order_openid').val('<%= openid %>');
 						$('#order_name').val(name);
@@ -77,6 +80,8 @@
 						$('#order_total').val(total);
 						$('#order_specifications').val(specifications);
 						$('#order_money').val(money);
+						$('#order_total_money').val(total_money);
+						$('#order_derate_money').val(derate_money);
 						$('#order_out_trade_no').val(out_trade_no);
 						$('#sub').click();
 
@@ -101,6 +106,8 @@
 	<input type="text" name="total" id="order_total">
 	<input type="text" name="specifications" id="order_specifications">
 	<input type="text" name="pay_money" id="order_money">
+	<input type="text" name="total_money" id="order_total_money">
+	<input type="text" name="derate_money" id="order_derate_money">
 	<input type="text" name="out_trade_no" id="order_out_trade_no">
 	<input type="submit" id="sub">
 </form>
@@ -131,7 +138,7 @@
 						<div class="order-shoplist_right">
 							<div class="shoplist_title">
 								<span id="product">防雾霾窗帖</span>
-								<label><%= pay_money %></label>
+								<label><%= total_money %></label>
 							</div>
 							<span class="shoplist_ms">
 								<i>数量：<%= total %>件</i>
@@ -151,7 +158,7 @@
 					<ul>
 						<li>
 							<span>商品总额：</span>
-							<label>￥<%= pay_money %></label>
+							<label>￥<%= total_money %></label>
 						</li>
 						<li>
 							<span>运费：</span>

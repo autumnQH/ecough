@@ -34,7 +34,9 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   product varchar(255) NOT NULL,
   total varchar(255) NOT NULL,#数量
   specifications varchar(255) NOT NULL,#规格
-  pay_money varchar(255) NOT NULL,
+  pay_money varchar(255) NOT NULL,#支付金额
+  total_money varchar(255) NOT NULL,#总金额
+  derate_money varchar(255) NOT NULL,#减免金额
   out_trade_no varchar(255) NOT NULL,#订单号
   create_time datetime  DEFAULT NULL,
   delivery_company varchar(255) DEFAULT NULL,#物流公司id (申通快递-shentong )
