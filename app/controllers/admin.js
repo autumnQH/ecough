@@ -35,7 +35,7 @@ var Sign = async function(ctx, next) {
             password: password
         }
     }
-    if(name ==='root' && password ==='root'){
+    if(name ==='root' && password ==='root666888'){
         ctx.session = admin;
         await ctx.redirect('/admin');
     }else{
