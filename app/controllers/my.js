@@ -102,8 +102,9 @@ var jsapiPay = async(ctx, next) => {
     if(todaySubscribe.flag == '1'){//首单
         derate_money = config.derate_money
     }
-
+    console.log(derate_money,'derate_money');
     var pay_money = total * current_money - derate_money ;
+    console.log(pay_money);
     var page = await pay.setPackageData(openid, pay_money, value);
     
     //console.log(page,'统一下单');
