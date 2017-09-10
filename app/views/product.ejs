@@ -60,14 +60,14 @@
 
                   <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
                     <span style="float:left;margin-top:5px;">规格 :</span>
-                    <a  class="btn btn-default btn-xs active">1米</a>
-                    <a  class="btn btn-default btn-xs">1.3米</a>
+                    <button class="btn btn-default btn-xs active">1米</button>
+                    <button class="btn btn-default btn-xs">1.3米</button>
                   </div>
 <script>
 $(function() {
 
-$('#menu_specifications a').on('click',function() {
-    $("#menu_specifications a").removeClass("active");  
+$('#menu_specifications button').on('click',function() {
+    $("#menu_specifications button").removeClass("active");  
     $(this).addClass("active");
 });
 });
