@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>登录</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+<div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+ 
+        <form  class="form-horizontal" action="/sign" method="post">
+          <div class="form-group">
+            <label for="">用户名</label>
+            <input type="text" class="form-control" name="name">
+          </div>          
+          <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control"  name="password">
+          </div>
+		      <div class="modal-footer">
+		        <button type="submit" class="btn btn-primary">登录</button>
+		      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	  $("form").submit(function(e){
+	return true;
+  });
+</script>
+</body>
+</html>
