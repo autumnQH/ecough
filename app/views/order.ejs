@@ -64,7 +64,8 @@
 						var address = $('#address').text();
 						var phone = $('#phone').text();
 						var product = $('#product').text();
-						var specifications = '<%= total %>件';
+						var total = '<%= total %>件';
+						var specifications = '<%= specifications %>';
 						var money = '<%= pay_money %>';
 						var out_trade_no = "<%= data.out_trade_no %>";
 
@@ -73,6 +74,7 @@
 						$('#order_address').val(address);
 						$('#order_phone').val(phone);
 						$('#order_product').val(product);
+						$('#order_total').val(total);
 						$('#order_specifications').val(specifications);
 						$('#order_money').val(money);
 						$('#order_out_trade_no').val(out_trade_no);
@@ -96,6 +98,7 @@
 	<input type="text" name="address" id="order_address">
 	<input type="text" name="phone" id="order_phone">
 	<input type="text" name="product" id="order_product">
+	<input type="text" name="total" id="order_total">
 	<input type="text" name="specifications" id="order_specifications">
 	<input type="text" name="pay_money" id="order_money">
 	<input type="text" name="out_trade_no" id="order_out_trade_no">
@@ -136,7 +139,7 @@
 							</div>
 							<span class="shoplist_ms">
 								<i>数量：<%= total %>件</i>
-								<!-- <i>送达日期：周六送达</i> -->
+								<i>规格:<%= specifications %></i>
 							</span>
 						</div>
 					</a>
@@ -158,6 +161,10 @@
 							<span>运费：</span>
 							<label>￥0.00</label>
 						</li>
+						<li>
+							<span>首单优惠减免:</span>
+							<label>￥<%= derate_money %></label>
+						</li>						
 						<li>
 							<span>付款金额：</span>
 							<label style="color: #ff4141;">￥<%= pay_money %></label>

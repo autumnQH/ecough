@@ -79,28 +79,10 @@ var getUserInfo = async (ctx, next) => {
 
 //统一下单-生成预付单-获取package
 var jsapiPay = async(ctx, next) => {
-    // var wxcfg = {
-    //     appid: '',
-    //     timestamp: '',
-    //     nonceStr: '',
-    //     signature: ''
-    // };
-    // var data2 = {
-    //     timeStamp: '',
-    //     nonceStr: '',
-    //     package: '',
-    //     signType: '',
-    //     paySign: ''
-    // };
-    // await ctx.render('order',{
-    //     config: wxcfg,
-    //     data: data2,
-    //     openid: ''
-    // });
-
     const config = await dao.getConfig();
     var openid = ctx.query.openid;
-    var total = ctx.query.total;
+    var total = ctx.query.total;//数量
+    var specifications = ctx.query.specifications;//规格
 
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
@@ -140,7 +122,7 @@ var jsapiPay = async(ctx, next) => {
         var data2 = await pay.setPaySign(prepayid, value);
 
         //获取js-ticket才能调用微信支付请求
-        //获取js-cicket
+        //获取js-ticket
         var jsapi_ticket = await dao.getJsapiTicket();
         var url = 'http://' + ctx.header.host + ctx.url;
         var wxcfg = await pay.setWXConfig(jsapi_ticket, url, value);
@@ -150,6 +132,8 @@ var jsapiPay = async(ctx, next) => {
             data: data2,
             openid: openid,
             total: total,
+            specifications: specifications,
+            derate_money: derate_money,
             pay_money: pay_money * 0.01
         });         
     }else{
