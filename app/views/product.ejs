@@ -36,23 +36,42 @@
 		    </div>
 		    <div class="detail">
 			    <div class="detail-div img-rounded">
-			        <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
-			        <div class="detail-group" style="margin-top:10px;">
-						<span class="col-xs-8" style="width:100%;">
-											现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
-											<%= current_money %></span> 元&nbsp;/ 件
-											<label class="yjia" style="text-decoration:line-through;">原价：<%= original_money %></label>
-						</span>
-			        </div>
-			        <div class="detail-group" style="margin-top:10px;">
-			            <span style="float:left;margin-top:5px;">数量 :</span>
+			      <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
+
+
+			      <div class="detail-group" style="margin-top:10px;">
+							<span class="col-xs-8" style="width:100%;">
+												现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
+												<%= current_money %></span> 元&nbsp;/ 件
+												<label class="yjia" style="text-decoration:line-through;">原价：<%= original_money %></label>
+							</span>
+			      </div>
+
+			      <div class="detail-group" style="margin-top:10px;">
+			        <span style="float:left;margin-top:5px;">数量 :</span>
 			            <div class="input-group" style="width:100px;float:left;margin-left:8px;">
 <span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
 	<input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
 <span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
 			            </div>
-			            <span id="stockcontainer" style="float:left;margin-left:5px;">( 剩余 <span id="stock"> 9940 </span> ) </span>
-			        </div>
+			        <span id="stockcontainer" style="float:left;margin-left:5px;">( 剩余 <span id="stock"> 9940 </span> ) </span>
+			      </div>
+
+
+                  <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
+                    <span style="float:left;margin-top:5px;">规格 :</span>
+                    <a  class="btn btn-default btn-xs active">1米</a>
+                    <a  class="btn btn-default btn-xs">1.3米</a>
+                  </div>
+<script>
+$(function() {
+
+$('#menu_specifications a').on('click',function() {
+    $("#menu_specifications a").removeClass("active");  
+    $(this).addClass("active");
+});
+});
+</script>
 			    </div>
 			</div>
 			<div class="product-js">
@@ -109,10 +128,11 @@
 		});
 
 		$(function() {		
-			$('#pay').on('click', function(event) {
-				var total = $('#total').val();
-				$('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total);
-			});
+      $('#pay').on('click', function(event) {
+          var total = $('#total').val();
+          var specifications = $('.active').text();
+      $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+      });
 		});
     </script>
 </body>
