@@ -17,11 +17,11 @@ const logUtil = require('./utils/log');
 
 //session
 const session = require('koa-session2');
-// const Store = require('./Store.js');
+const Store = require('./Store.js');
 
-// app.use(session({
-//   store: new Store()
-// }));
+app.use(session({
+  store: new Store()
+}));
 
 //模板
 app.use(views(path.join(__dirname, './app/views'), {
