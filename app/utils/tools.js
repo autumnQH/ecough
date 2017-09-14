@@ -1,7 +1,11 @@
 const moment = require('moment');
 const dao = require('../dao/wechat');
 const request = require('request');
-
+const fs = require('fs');
+var qr_image = require('qr-image');  
+var images = require('images');
+var xml = require('./xml');
+var qr = require('./qr');
 //随机串
 exports.createNonceStr = function() {
 	return Math.random().toString(36).substr(2, 15);
@@ -45,7 +49,7 @@ exports.trade = function() {
   return moment().format('YYYY-MM-DD HH:mm:ss').replace(/\D/g,'')+ Math.floor(Math.random()*100);
 }
 
-//网页授权
+//网页授权获取access_token
 exports.getOauth2Token = async function (code) {
     const config = await dao.getConfig();
     let options = {
@@ -67,6 +71,24 @@ exports.getOauth2Token = async function (code) {
     }); 
 }
 
+exports.getUserInfo2 = function(token, openid) {
+    let options ={
+        method: 'get',
+        url: 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='+token+'&openid='+openid+'&lang=zh_CN',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+    return new Promise((resolve, reject)=> {
+      request(options, function(err, res, body) {
+        if(body){
+          return resolve(JSON.parse(body));
+        }else{
+          return reject(JSON.parse(err));
+        }
+      });
+    });
+}
 //拉取用户信息
 exports.getUserInfo = function (AccessToken, openid) {
     let options ={
@@ -76,8 +98,7 @@ exports.getUserInfo = function (AccessToken, openid) {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
     };
-
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject)=> {
         request(options, function(err, res, body) {
             if(body){
                 return resolve(body);
@@ -124,9 +145,9 @@ exports.getQRCode = function(token, json) {
   return new Promise(function(resolve, reject) {
     request(options, function(err, res, body) {
       if(body){
-        return resolve(body);
+        return resolve(JSON.parse(body));
       }else{
-        return reject(err);
+        return reject(JSON.parse(err));
       }
     });
   });
@@ -152,6 +173,32 @@ exports.getQRCodeImg = function(ticket) {
   });
   
 }
+
+exports.uploadFile = async function(userinfo,token, qrurl){
+  var q=  await qr.qr(userinfo);
+  console.log(q);
+  var logo = await qr.qr_logo(userinfo, qrurl);
+  console.log(logo);
+  let formData = {
+    custom_file: {
+      value:  fs.createReadStream(__dirname+'/'+ userinfo.openid+'.jpeg'),
+      options: {
+        contentType: 'image/jpeg'
+      }
+    }
+  }; 
+  return new Promise(function(resolve, reject) {
+    request.post({url:'http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token='+ token +'&type=image', formData: formData}, function optionalCallback(err, httpResponse, body) {
+      if (body) {
+        fs.unlinkSync(__dirname+'/'+userinfo.openid+ '.jpeg');
+        fs.unlinkSync(__dirname+'/'+userinfo.openid+ 'logo.jpeg');
+        return resolve(JSON.parse(body))
+      }else{        
+        return reject(JSON.parse(err));
+      }
+    });
+  });
+};
 
 exports.formatDate = (date)=> {
   return moment(new Date(date)).format('YYYY-MM-DD HH:mm:ss')

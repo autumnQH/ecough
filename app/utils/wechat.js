@@ -1,15 +1,17 @@
 const crypto = require('crypto');
 const request = require('request');
-const xml = require("./xml");
 const tools = require('./tools');
 const mysql = require('./mysql');
 const dao = require('../dao/wechat');
+const fs = require('fs');
+const qr_image = require('qr-image');  
+const images = require('images');
+const xml = require('./xml');
+const _ = require('lodash');
 
 exports.auth = async (ctx) => {
     const config = await dao.getConfig();
-    console.log(config,'auth--=-=');
     let token = config.token;
-    console.log(token);
     let signature = ctx.query.signature;
     let timestamp = ctx.query.timestamp;
     let nonce = ctx.query.nonce;
@@ -78,6 +80,38 @@ exports.getDefaultMessage = (msg, content) => {
             }
         })
 }
+
+
+exports.getImageMessage = async (msg) => {
+    const token = await dao.getActiveAccessToken();
+    let json = JSON.stringify({
+        "expire_seconds": 60480, 
+        "action_name": "QR_STR_SCENE", 
+        "action_info": {
+            "scene": {
+                "scene_str": msg.FromUserName[0]
+            }
+        }
+    });
+    var qrurl =  await tools.getQRCode(token, json);
+    // console.log(qrurl,'qrurl');
+    // dao.setQRCode(_.assign(qrurl, JSON.parse(json)));
+    // console.log(_.assign(qrurl, JSON.parse(json)),'assign');
+    var userinfo =  await tools.getUserInfo2(token, msg.FromUserName[0]);
+    var data =  await tools.uploadFile(userinfo, token, qrurl);
+    return xml.jsonToXml({
+        xml: {
+            ToUserName: msg.FromUserName,
+            FromUserName: msg.ToUserName,
+            CreateTime: Date.now(),
+            MsgType: 'image',
+            Image: {
+                MediaId: data.media_id
+            }
+        }
+    });
+}
+
 
 exports.getJsApiTicket = () => {
     return dao.getJsapiTicket();

@@ -12,10 +12,10 @@ const userService = require('../service/user');
 
 var a = async function(ctx, next) {
     if(ctx.session.admin){
-         next();
+        console.log('呵呵');
+        next();
     }else{
         return ctx.redirect('/sign');
-        next();
     }
 }
 
@@ -80,7 +80,6 @@ var admin_qrcode = async function(ctx, next) {
 }
 
 var admin_setQrcode = async function(ctx, next) {
-    a(ctx, next);
     var req = ctx.request.body;
    
     var token = await dao.getActiveAccessToken();
@@ -93,7 +92,6 @@ var admin_setQrcode = async function(ctx, next) {
         }
     });
     var data = await tools.getQRCode(token, json);
-    data = JSON.parse(data);
     data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
     data.name = req.name +'';
     data.scene_str = req.name + '';

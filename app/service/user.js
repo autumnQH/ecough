@@ -1,7 +1,7 @@
 const userDao = require('../dao/user.js');
 
-var getUserById = async (userId) => {    
-	var user = await userDao.getUserById(userId);    
+var getUserById = async (openid) => {    
+	var user = await userDao.getUserById(openid);    
 	return user; 
 }
 

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="" >
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/my.css?_t=20170810">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/new_2017/bindTell.css?_t=1.0">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body ontouchstart="">
+    <div class="page">
+
+<div class="my-banner">
+    <a href="/my/myinfo" class="banner-link-panel">
+        <div class="top-avatar" style="background:url('//wx.qlogo.cn/mmopen/PiajxSqBRaEKAlibZVIB9FuUxLvfVyLf5PYOrcdLsTyKqN5qmwGyhuGMdLUYbIbotHvBicliaiaCSd1CicCJheNh0lGQ/0') no-repeat center; background-size:cover;"></div>
+        <div class="userInfo">
+            <div class="userName">
+                <span>藏在面具下的灵魂</span>
+            </div> 
+            <div class="subTips">点击编辑个人资料</div>
+            <p class="telphone" style="display:none">15977477245</p>
+        </div>
+    </a>
+</div>
+
+<div class="orders-panel">
+    <a href="/my/orders" class="orderRow">
+        <p class="my-order my-order-ar borderBottom">
+            全部订单
+            <span class="p_span" style="top:15px;"></span>
+        </p>
+    </a>
+    <div class="orders-status-b">
+        <a href="/my/orders/?status=1">
+            <u>
+                                <img src="//static2.flowerplus.cn/Static/img/my/dai.svg" alt="">
+            </u>
+            <p>待付款</p>
+        </a>
+        <a href="/my/orders/?status=2">
+            <u> 
+                                <img src="//static2.flowerplus.cn/Static/img/my/Group 3.svg" alt="">
+            </u>
+            <p>服务中</p>
+        </a>
+        <a style="border:0 none" href="/my/orders/?status=3">
+            <u>
+                <!-- <span>0</span> -->
+                <img src="//static2.flowerplus.cn/Static/img/my/Group 2.svg" alt="">
+            </u>
+            <p>已完成</p>
+        </a>
+        <a  href="/my/ships_judge">
+            <u >    
+                                <img src="//static2.flowerplus.cn/Static/img/my/Combined Shape.svg" alt="">
+            </u>
+            <p>待评价</p>
+        </a>
+        <a class="serviceItem"  href="/front_ticket/ticket_list">
+            <u >    
+                <img src="//static2.flowerplus.cn/Static/img/my/contact.svg" alt="">
+            </u>
+            <p>售后服务</p>
+        </a>
+    </div>
+</div>
+<div class="orders-panel orders-panel2">
+    <p class="my-order borderBottom">我的服务</p>
+    <div class="serviceBox first clear">
+                <a href="/my/mygroup" class="item tg">
+            <div class="iconImg"></div>
+            我的团购
+        </a>
+        <a href="/my/coupons" class="item yhq">
+            <div class="iconImg"></div>
+            我的优惠券
+        </a>
+        <a href="/my/jifen" class="item jf">
+            <div class="iconImg"></div>
+            我的积分
+        </a>
+        <a href="/my/redpacket" class="item hb">
+            <div class="iconImg"></div>
+            我的红包
+        </a>
+        <a href="/dh" class="item xhkdh">
+            <div class="iconImg"></div>
+            鲜花卡兑换
+        </a>
+        <a href="/my/orders/?status=100" class="item cx">
+            <div class="iconImg"></div>
+            第三方查询
+        </a>
+        <a href="/wx_cs/serverce_index" class="item help">
+            <div class="iconImg"></div>
+            帮助中心
+        </a>
+        <a href="/help/feedback" class="item tcjy">
+            <div class="iconImg"></div>
+            吐槽&建议
+        </a>
+        <div class="flagLine"></div>
+            </div>
+</div>
+<!-- 绑定手机号码弹框-->
+<div class="poupVerifyBox hide">
+    <div class="bgMask"></div>
+    <div class="firstStep">
+        <div class="phoneNum">
+            <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
+            <div class="phoneBox">
+                <img class="iconPhone" src="//static2.flowerplus.cn/Static/images/icon_phone.svg">
+                <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11" >
+            </div>
+        </div>
+        <!-- <button class="confirmBind" id="confirmBind">确认绑定</button> -->
+        <button class="confirmBind" id="SendCode" disabled>下一步</button>
+    </div>
+    
+    <div class="secStep hide">
+        <div class="writeCode">
+            <div class="goBack"></div>
+            <p class="secTitle">输入验证码</p>
+            <p class="secP">验证码发送至&nbsp;<span id="phoneHolder"></span></p>
+            <button class="send_agin" id="sendAgin">重新发送</button>
+            <div class="inputBox">
+                <div class="number border1px borderRadiu2px"></div>
+                <div class="number border1px borderRadiu2px"></div>
+                <div class="number border1px borderRadiu2px"></div>
+                <div class="number border1px borderRadiu2px"></div>
+                <input type="tel" id="hiddenInput">
+            </div>
+        </div>
+        <button class="confirmBind disabled" id="submit">确认绑定</button>
+    </div>
+
+    <div class="lastStep hide">
+        <img class="closeImg" src="//static2.flowerplus.cn/Static/images/icon_close.svg">
+        <p class="secTitle">绑定成功！</p>
+        <img class="sucImg" src="//static2.flowerplus.cn/Static/images/icon_success.svg">
+        <p class="secP">当前绑定的手机号</p>
+        <p id="hasBindPhonetel">12345678908</p>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

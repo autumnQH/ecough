@@ -1,46 +1,20 @@
-const userService = require('../service/user.js');;
+const userService = require('../service/user.js');
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
 const moment = require('moment');
 const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 
-// var getUser = async (ctx, next) => {
-//     let userId = ctx.params.id;
-//     let user = await userService.getUserById(userId);
-// 	await ctx.render('user', {user: user});
-// };
-
-var delUserAddress = async (ctx, next) => {
-	let id = {
-		id: ctx.query.id
-	};
-	return ctx.body = await userService.delUserAddress(id);
-
-}
-
-var setUserAddress = async (ctx, next) => {
-	let data = ctx.request.body;
-	var result = await userService.setUserAddress(data);
-	return ctx.body = result;
-}
-
-var getUserAddressByOrder = async (ctx, next) =>{
-  let openid = ctx.query.openid;
-  var result = await userService.getUserAddress(openid);
-  return ctx.body = result;
-}
-
-var getUserAddress = async (ctx, next) => {
+var User = async (ctx, next) => {
+  console.log('进来了');
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
   if(ctx.session.openid){
-    var result = await userService.getUserAddress(ctx.session.openid);
-        await ctx.render('user_address', {
-          data: result,
-          openid: ctx.session.openid
+        await ctx.render('user', {
+
         });   
   }else{
     if(!ctx.query.code){
@@ -56,18 +30,15 @@ var getUserAddress = async (ctx, next) => {
         var userinfo = await tools.getUserInfo(user.access_token, user.openid);
             userinfo = JSON.parse(userinfo);
         ctx.session = userinfo;   
+        await ctx.render('user', {
 
-        var result = await userService.getUserAddress(ctx.session.openid);
-        await ctx.render('user_address', {
-          data: result,
-          openid: ctx.session.openid
         });     
       }      
     }
-  }  
-
+  }         
 
 }
+
 
 var myOrder = async(ctx, next) => {
   var config = await dao.getConfig();
@@ -150,12 +121,6 @@ var setUserService = async (ctx, next) => {
 	return ctx.body = result;
 }
 
-var getUserExpress = async (ctx, next) => {
-  return ctx.render('user_express', {
-    data: []
-  });
-}
-
 var getOpenAddress = async (ctx, next) => {
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
@@ -208,19 +173,12 @@ var getOpenAddress = async (ctx, next) => {
   }
 }
 
+
 module.exports = {
-    'POST /users/setUserAddress': setUserAddress,
-    'GET /users/delUserAddress': delUserAddress,
-    //'GET /users/getUserAddress': getUserAddress,
+    'GET /users/user': User,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,
     'POST /users/service/issue': setUserService,
-    'GET /users/my/express': getUserExpress,
-    'GET /user/order/address': getUserAddressByOrder
-/*
-    'POST /users': addUser,
-    'PUT /users/id': updateUser,
-    'DELETE /users/:id': deleteUser
-*/
+
 };

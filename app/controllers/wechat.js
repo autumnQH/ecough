@@ -1,7 +1,8 @@
 const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
 const moment = require('moment');
-
+const urlencode = require('urlencode');
+const tools = require('../utils/tools');
 var checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);
     if (result) {
@@ -115,6 +116,13 @@ var postHandle = async(ctx, next) => {
                 msg.MsgType = 'text';
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
+              case 'CLICK':
+                switch (msg.EventKey[0]) {
+                    case 'GOOD':                         
+                    reMsg = await wechat.getImageMessage(msg);
+                    break;
+                } 
+                break;  
               default:
                 reMsg = wechat.getDefaultMessage(msg, config.message_default);
                 break;

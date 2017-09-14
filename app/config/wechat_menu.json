@@ -20,6 +20,10 @@
           "type":"view",
           "name":"我的地址",
           "url": "http://www.e-cough.com/users/getUserAddress"
+        },{
+          "type":"click",
+          "name":"我要推广",
+          "key":"GOOD"
         }      
       ]
     }

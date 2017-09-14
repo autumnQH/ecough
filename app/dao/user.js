@@ -1,7 +1,7 @@
 var db = require("../utils/mysql");
 
-var getUserById = (userId) => {    
-	var user = db.getById("t_user", userId); 
+var getUserById = (openid) => {    
+	var user = db.getById("T_UESR", openid); 
 	return user; 
 }
 
