@@ -25,23 +25,28 @@ var setQRCode = async (data) => {
 // 	return result;
 // }
 
-var getOneSpread = async (openid) => {
-	var result = await db.findOne("SELECT * FROM T_WECHAT_SPREAD  WHERE openid='" + openid + "'");
+var getOneUser = async (openid) => {
+	var result = await db.findOne("SELECT * FROM T_WECHAT_USER  WHERE openid='" + openid + "'");
 	return result;
 }
 
 
-var getSpread = async () => {
-	var result = await db.find("SELECT * FROM T_WECHAT_SPREAD");
-	return result;
-}
-var setSpread = async (data) => {
-	var result = db.add("T_WECHAT_SPREAD", data);
+var getUser = async () => {
+	var result = await db.find("SELECT * FROM T_WECHAT_USER");
 	return result;
 }
 
-var updateSpread = async (data, value)=>{
-	var result = db.update("T_WECHAT_SPREAD", data, value);
+var customUpdateUser = (openid) => {
+	return db.find("update T_WECHAT_USER set order_count = IFNULL(order_count, 0) +1 where openid = '"+ openid +"'");
+}
+
+var setUser = async (data) => {
+	var result = db.add("T_WECHAT_USER", data);
+	return result;
+}
+
+var updateUser = async (data, value)=>{
+	var result = db.update("T_WECHAT_USER", data, value);
 	return result;
 }
 
@@ -68,20 +73,7 @@ var adminSetDeliver = async (data, id) => {
 	return result;
 }
 
-var getOpenIdForSubscribe = async (openid) => {
-	var result = db.findOne("SELECT * FROM T_WECHAT_SUBSCRIBE WHERE openid='" + openid+ "'");
-	return result;
-}
 
-var setOpenIdForSubscribe = async (data, value) => {
-	var result = db.update("T_WECHAT_SUBSCRIBE", data, value);
-	return result;
-}
-
-var addOpenIdForSubscribe = async (data) => {
-	var result = db.add("T_WECHAT_SUBSCRIBE",data);
-	return result;
-}
 
 var getConfig = async () => {
 	var result = db.findOne("SELECT * FROM CONFIG WHERE id = 1");
@@ -102,18 +94,16 @@ module.exports = {
 	getJsapiTicket: getJsapiTicket,
 	getQRCode: getQRCode,
 	setQRCode: setQRCode,
-	getOneSpread: getOneSpread,
-	getSpread: getSpread,
-	setSpread: setSpread,
-	updateSpread: updateSpread,
+	getOneUser: getOneUser,
+	customUpdateUser: customUpdateUser,
+	getUser: getUser,
+	setUser: setUser,
+	updateUser: updateUser,
 	getOrder: getOrder,
 	setOrder: setOrder,
 	setStoreOrder: setStoreOrder,
 	getOutTradeNo:getOutTradeNo,
 	adminSetDeliver: adminSetDeliver,
-	getOpenIdForSubscribe: getOpenIdForSubscribe,
-	setOpenIdForSubscribe: setOpenIdForSubscribe,
-	addOpenIdForSubscribe, addOpenIdForSubscribe,
 	getConfig: getConfig,
 	setConfig: setConfig,
 	setNOTIFY: setNOTIFY

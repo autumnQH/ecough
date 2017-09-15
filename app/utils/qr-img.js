@@ -1,25 +1,34 @@
-var qr_image = require('qr-image');  
-var images = require('images');
-var request = require('request');
-var fs = require('fs');
-var qr = require('./qr');
+const db = require("../utils/mysql");
 
-  var userinfo = {};
-  userinfo.headimgurl = 'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKqqa31ybC79PqVmErpI2QiapLA5yxT9ampXSa1WrDxcTc6AokhZpBBoOvDYFwTJ5aP6Gvtarcib70w/0';
-  userinfo.openid = '123';
-async function a() {
-	var r = await qr.qr(userinfo);
-	console.log(r);
-	var logo = await qr.qr_logo(userinfo);
-	console.log(logo);
-	return {'asda': 'asd'};
-}
-async function b() {
-	var i = await a();
-	console.log(i);
+try{
+db.find("update T_WECHAT_USER set order_count = IFNULL(order_count, 0) +1 where openid = 'o5Yi9wOfXWopOc232MYiujWBZmwBH0Q'");
+}catch(e){
+	console.log(e.message);
 }
 
-b()
+
+// var qr_image = require('qr-image');  
+// var images = require('images');
+// var request = require('request');
+// var fs = require('fs');
+// var qr = require('./qr');
+
+//   var userinfo = {};
+//   userinfo.headimgurl = 'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKqqa31ybC79PqVmErpI2QiapLA5yxT9ampXSa1WrDxcTc6AokhZpBBoOvDYFwTJ5aP6Gvtarcib70w/0';
+//   userinfo.openid = '123';
+// async function a() {
+// 	var r = await qr.qr(userinfo);
+// 	console.log(r);
+// 	var logo = await qr.qr_logo(userinfo);
+// 	console.log(logo);
+// 	return {'asda': 'asd'};
+// }
+// async function b() {
+// 	var i = await a();
+// 	console.log(i);
+// }
+
+// b()
 
 // var logo = 'http://wx.qlogo.cn/mmopen/PiajxSqBRaEKqqa31ybC79PqVmErpI2QiapLA5yxT9ampXSa1WrDxcTc6AokhZpBBoOvDYFwTJ5aP6Gvtarcib70w/0'.replace(/\/0/,'/64');
 // console.log(logo);

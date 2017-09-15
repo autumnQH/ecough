@@ -167,11 +167,12 @@ var notify = async function(ctx, next) {
         }
         //console.log(data,'数据');
         dao.setNOTIFY(data);
+        wechat.customUpdateUser(data.appid); //记录用户购买一次           
+        
         var flag = await dao.getOpenIdForSubscribe(data.openid);//查询用户首单
         if(flag.flag == '1'){
             var result = await wechat.getOneSpread(data.openid);
             var ticket = result.ticket;
-            console.log(ticket,'二维码参数');
             dao.setOpenIdForSubscribe({ticket: ticket, flag: false},{openid: data.openid});//关闭首单
         }
         return ctx.body =  xml.jsonToXml({

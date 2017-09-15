@@ -7,8 +7,13 @@ const pay = require('../utils/pay');
 
 var User = async (ctx, next) => {
   console.log('进来了');
+          return await ctx.render('user', {
+
+        }); 
+          console.log('白痴吗');
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
+  console.log(r_url);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -173,9 +178,13 @@ var getOpenAddress = async (ctx, next) => {
   }
 }
 
+var my_code = async function(ctx, next) {
+  return await ctx.render('user_code');
+}
 
 module.exports = {
     'GET /users/user': User,
+    'GET /users/my_code': my_code,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,

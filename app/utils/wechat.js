@@ -112,6 +112,17 @@ exports.getImageMessage = async (msg) => {
     });
 }
 
+exports.getIntegral = async(msg) => {
+    return xml.jsonToXml({
+        xml: {
+            ToUserName: msg.FromUserName,
+            FromUserName: msg.ToUserName,
+            CreateTime: Date.now(),
+            MsgType: 'text',
+            Content: '2'
+        }
+    })
+}
 
 exports.getJsApiTicket = () => {
     return dao.getJsapiTicket();
@@ -124,16 +135,24 @@ exports.setQRCode = (data) => {
     return dao.setQRCode(data);
 }
 
-exports.getSpread = () => {
-    return dao.getSpread();
+exports.customUpdateUser = (openid)=> {
+    return dao.customUpdateUser(openid);
 }
 
-exports.getOneSpread = (openid, ticket, eventKey) => {
-    return dao.getOneSpread(openid, ticket, eventKey);
+exports.getUser = () => {
+    return dao.getUser();
 }
 
-exports.setSpread = (data) => {
-    return dao.setSpread(data);
+exports.updateUser = (data, value)=> {
+    return dao.updateUser(data, value);
+}
+
+exports.getOneUser = (openid) => {
+    return dao.getOneUser(openid);
+}
+
+exports.setUser = (data) => {
+    return dao.setUser(data);
 }
 
 exports.getOrder = () => {
@@ -148,14 +167,4 @@ exports.setStoreOrder = (data) => {
     return dao.setStoreOrder(data);
 }
 
-exports.getOpenIdForSubscribe = (openid) =>{
-    return dao.getOpenIdForSubscribe(openid);
-}
 
-exports.setOpenIdForSubscribe = (data, value) => {
-    return dao.setOpenIdForSubscribe(data, value);
-}
-
-exports.addOpenIdForSubscribe = (data) => {
-    return dao.addOpenIdForSubscribe(data);
-}  

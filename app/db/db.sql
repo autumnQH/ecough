@@ -18,14 +18,21 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (#生成带参数二维码
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE IF NOT EXISTS T_WECHAT_SPREAD (#记录用户通过谁的二维码关注
-  id int NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS T_WECHAT_USER (#记录用户扫描推广码
+  id int(11) NOT NULL AUTO_INCREMENT,
   openid varchar(255) NOT NULL,
-  ticket varchar(255) NOT NULL,#获取的二维码ticket
-  eventKey varchar(255) NOT NULL,#场景值
-  create_time datetime  DEFAULT NULL,
-  PRIMARY KEY (id)
-)DEFAULT CHARSET=utf8 ;
+  headimgurl varchar(64) DEFAULT NULL,#用户头像
+  nick varchar(20) DEFAULT NULL,#用户昵称
+  ticket varchar(255) DEFAULT NULL,#二维码的ticke值
+  eventKey varchar(255) DEFAULT NULL,#二维码的场景值
+  integral int(16) DEFAULT 0, #积分
+  create_time datetime DEFAULT NULL,
+  flag tinyint(1) DEFAULT '1',#是否是首单
+  order_count int(12) DEFAULT 0,#下单次数
+  PRIMARY KEY (id),
+  Index openid (openid),
+  Index eventKey (eventKey)
+) DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   id int NOT NULL AUTO_INCREMENT,

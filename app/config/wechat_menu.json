@@ -24,6 +24,10 @@
           "type":"click",
           "name":"我要推广",
           "key":"GOOD"
+        },{
+          "type": "view",
+          "name": "我的积分",
+          "key": "integral"
         }      
       ]
     }
