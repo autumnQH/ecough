@@ -112,18 +112,6 @@ exports.getImageMessage = async (msg) => {
     });
 }
 
-exports.getIntegral = async(msg) => {
-    return xml.jsonToXml({
-        xml: {
-            ToUserName: msg.FromUserName,
-            FromUserName: msg.ToUserName,
-            CreateTime: Date.now(),
-            MsgType: 'text',
-            Content: '2'
-        }
-    })
-}
-
 exports.getJsApiTicket = () => {
     return dao.getJsapiTicket();
 }

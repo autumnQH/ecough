@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="" >
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <title>已下单的人</title>
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+<body ontouchstart="">
+    <div class="page" style="min-height: 50px;">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m_web.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/code.css?_t=20170502">
+        <ul class="header-top">
+            <li class=""><a href="/users/customer">已下单的人</a></li>
+            <li class="current"><a href="/users/voucher">我的代金劵</a></li>
+            <li class=""><a href="/users/integral">我的积分</a></li>
+        </ul> 
+    </div>
+ 
+    <div id="voucher">
+
+        <% if(data.length >0 || flag.flag == '1'){ %>
+        <ul>
+            <li style="height: 60px; background: #fff; margin-top: 10px;" >
+                <h1 class="text-center" style="padding-top: 12px;">
+                    <label style="width: 60%;" >首单代金券</label>
+                    <label style="color: #cb3837;">¥20.00</label>
+                </h1>
+            </li>        
+            <% for(var i = 0; i<data.length; i++) { %>
+            <li style="height: 60px; background: #fff; margin-top: 10px;" >
+                <h1 class="text-center" style="padding-top: 12px;">
+                    <label style="width: 60%;" ><%= data[i].voucher_type %></label>
+                    <label style="color: #cb3837;">¥<%= data[i].voucher_denomination %></label>
+                </h1>
+            </li>                
+            <% } %>
+        </ul>
+        <% }else{ %>
+            <p class="text-center">无可用代金券</p>
+        <% } %>
+    </div>
+    
+</body>
+
+</html>

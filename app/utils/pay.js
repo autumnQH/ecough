@@ -2,7 +2,9 @@ const tools = require('./tools');
 const crypto = require('crypto');
 const xml = require('./xml');
 const dao = require('../dao/wechat');
-
+const fs = require('fs');
+const request = require('request');
+const _ = require('lodash');
 
 //统一下单
 exports.setPackageData = async function (openid, pay_money, value) {
@@ -69,4 +71,40 @@ exports.setWXConfig = async function(jsapi_ticket, url, value) {
     var signature = crypto.createHash('sha1').update(str, 'utf8').digest('hex').toLowerCase();
     wxcfg.signature = signature; 
     return wxcfg; 
+}
+
+//退款
+exports.refund = async function(json) {
+    var config = await dao.getConfig();
+    const nonce_str = tools.createRandom();
+    const mch_id = json.mch_id;
+        json.nonce_str = nonce_str;
+
+    var str = tools.raw(json);
+        str += '&key=' + config.store_key;
+
+    var sign = crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();
+
+        json.sign = sign;        
+        json = xml.jsonToXml(json);
+
+    let options = {
+        url: 'https://api.mch.weixin.qq.com/secapi/pay/refund',
+        method: 'post',
+        body: json,
+        agentOptions: {
+            pfx: fs.readFileSync(__dirname+ '/apiclient_cert.p12'),
+            passphrase: mch_id
+        }
+    };
+
+    return new Promise(function(resolve, reject) {
+        request(options, function(err, res, body) {
+            if(body){
+                return resolve(xml.xmlToJson(body));
+            }else{
+                return reject(xml.xmlToJson(err));
+            }
+        });
+    });    
 }

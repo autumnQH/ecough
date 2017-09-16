@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="" >
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <title>已下单的人</title>
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+<body ontouchstart="">
+    <div class="page" style="min-height: 50px;">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m_web.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/code.css?_t=20170502">
+        <ul class="header-top">
+            <li class="current"><a href="/users/customer">已下单的人</a></li>
+            <li class=""><a href="/users/voucher">我的代金劵</a></li>
+            <li class=""><a href="/users/integral">我的积分</a></li>
+        </ul> 
+    </div>   
+    <div id="customer">
+        <ul>
+        <% if(data.length ==0 ){ %>
+            <li><div style="height: 60px; background: #fff ;">
+                <img src="/images/logo.png" class="img-circle" style="width: 60px; height: 60px; margin-left: 30px;">
+                <label style="padding-left: 30px; width: 52%;">还没有人下过单～</label></div>
+            </li>
+        <% }else{ %>
+            <% for(var i = 0 ;i<data.length; i++) { %>           
+                <li><div style="height: 60px; background: #fff;">
+                    <img src="<%= data[i].headimgurl %>" class="img-circle" style="width: 60px; height: 60px; margin-left: 30px;">
+                    <label style="padding-left: 30px; width: 52%;"><%= data[i].nick %></label>
+                    <label class="">(<%= data[i].order_count %>单)</label></div>
+                </li>
+            <% } %>
+        <% } %>
+        </ul>
+    </div>
+
+</body>
+
+
+</html>

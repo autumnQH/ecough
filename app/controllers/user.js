@@ -4,16 +4,12 @@ const urlencode = require('urlencode');
 const moment = require('moment');
 const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
+const USER = require('../utils/user');
 
 var User = async (ctx, next) => {
-  console.log('进来了');
-          return await ctx.render('user', {
 
-        }); 
-          console.log('白痴吗');
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
-  console.log(r_url);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -43,7 +39,6 @@ var User = async (ctx, next) => {
   }         
 
 }
-
 
 var myOrder = async(ctx, next) => {
   var config = await dao.getConfig();
@@ -178,13 +173,153 @@ var getOpenAddress = async (ctx, next) => {
   }
 }
 
-var my_code = async function(ctx, next) {
-  return await ctx.render('user_code');
+var UserCustomer = async function(ctx, next) {
+
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
+  if(ctx.session.openid){
+    var data = await USER.getUserByEnentKey(ctx.session.openid);
+    return await ctx.render('user_customer',{
+      data: data
+    });
+  }else{
+
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+
+      if(user.errcode){
+        ctx.redirect(url);
+      }else{
+        var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+            userinfo = JSON.parse(userinfo);
+        ctx.session = userinfo; 
+
+        var data = await USER.getUserByEnentKey(ctx.session.openid);
+        await ctx.render('user_customer',{
+          data: data
+        });        
+      }  
+
+    }
+
+  }
+};
+
+var UserVoucher =async function(ctx, next) {
+
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
+  if(ctx.session.openid){
+    var data = await USER.getUserVoucherByOpenId(ctx.session.openid);
+    var flag = await USER.getUserFlagByOpenId(ctx.session.openid);
+    
+    return await ctx.render('user_voucher', {
+      data: data,
+      flag: flag
+    });
+  }else{
+
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+        ctx.redirect(url);
+      }else{
+        var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+            userinfo = JSON.parse(userinfo);
+        ctx.session = userinfo; 
+
+        var data = await USER.getUserVoucherByOpenId(ctx.session.openid);
+        var flag = await USER.getUserFlagByOpenId(ctx.session.openid);
+        
+        return await ctx.render('user_voucher', {
+          data: data,
+          flag: flag
+        });
+      }    
+    }
+
+  }
+};
+
+var UserIntegral =async function(ctx, next) {
+
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url;
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
+  if(ctx.session.openid){
+    var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
+    return await ctx.render('user_integral', {
+      data: data
+    });
+  }else{
+
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+        ctx.redirect(url);
+      }else{
+        var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+            userinfo = JSON.parse(userinfo);
+        ctx.session = userinfo; 
+
+        var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
+        return await ctx.render('user_integral', {
+          data: data
+        });
+      } 
+
+    }
+
+  }  
+}
+
+var setUserVoucher = async function(ctx, next) {
+  var req = ctx.request.body;
+      req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+
+  var integral = await USER.getUserForIntegralByOpenId(req.openid);
+
+  if(integral.integral >=req.voucher_denomination ){
+    var number = integral.integral - req.voucher_denomination;
+    
+    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
+    USER.setUserVoucher(req);
+    return ctx.body = {
+      success: '兑换成功'
+    }; 
+  }else{
+    return ctx.body = {
+      success: '积分不够'
+    }
+  }
 }
 
 module.exports = {
     'GET /users/user': User,
-    'GET /users/my_code': my_code,
+    'GET /users/customer':  UserCustomer ,
+    'GET /users/voucher': UserVoucher,
+    'POST /user/setvoucher': setUserVoucher,
+    'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,

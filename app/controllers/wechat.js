@@ -20,23 +20,28 @@ var postHandle = async(ctx, next) => {
         return;
     }
 
-    
+    var config = await dao.getConfig();
+    var token = await dao.getActiveAccessToken();
     console.log(msg);
 
     let msgType = msg.MsgType[0];
-    if(msg.Event){//用户关注
-        if(msg.Event[0] == 'subscribe'){
+    if(msg.Event){
+        if(msg.Event[0] == 'subscribe'){//用户关注
             var openid = msg.FromUserName[0];
 
             //记录用户关注信息
             var result =  await wechat.getOneUser(openid);
-            console.log(result,'asdasdasdasd');
             if(result.length == 0){
                 var data = {
                     openid: openid,
                     flag: '1',
-                    create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD')
+                    create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
                 }
+
+                var userinfo = await tools.getUserInfo2(token,openid);
+                console.log(userinfo);
+                data.headimgurl = userinfo.headimgurl;
+                data.nick = userinfo.nickname;
                 wechat.setUser(data);
             }
 
@@ -112,8 +117,7 @@ var postHandle = async(ctx, next) => {
 
     var reMsg;
 
-    console.log(msgType);
-    var config = await dao.getConfig();
+
     switch (msgType) {
           case 'text':
             reMsg = wechat.getTextMessage(msg, config.message_text);
@@ -134,9 +138,6 @@ var postHandle = async(ctx, next) => {
                     case 'GOOD':                         
                     reMsg = await wechat.getImageMessage(msg);
                     break;
-                    case 'integral':
-                    reMsg = await wechat.getIntegral(msg) ;
-                    break
                 } 
                 break;  
               default:

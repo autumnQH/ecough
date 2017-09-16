@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="" >
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <title>已下单的人</title>
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+          .active2 {
+            border: 2px solid #f00;
+          }  
+        </style>
+    </head>
+<body ontouchstart="">
+    <div class="page" style="min-height: 50px;">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m_web.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/code.css?_t=20170502">
+        <ul class="header-top">
+            <li class=""><a href="/users/customer">已下单的人</a></li>
+            <li class=""><a href="/users/voucher">我的代金劵</a></li>
+            <li class="current"><a href="/users/integral">我的积分</a></li>
+        </ul> 
+    </div>
+
+    <div id="integral">
+        <p>您现在有：<strong><%= data.integral %></strong>积分</p>
+        <ul>
+            <li style="height: 60px; background: #fff; margin-top: 10px;" >
+                <div >
+                    <h1 class="text-center" style="padding-top: 12px;">
+                        <label style="width: 60%;" >代金券<label style="color: #cb3837;">¥20.00</label></label>
+                        <label><strong>20</strong>积分</label>
+                    </h1>
+                </div>
+            </li>
+            <li  style="height: 60px; background: #fff; margin-top: 10px;" >
+                <div>
+                    <h1 class="text-center" style="padding-top: 12px;">
+                        <label style="width: 60%;" >代金券<label style="color: #cb3837;">¥40.00</label></label>
+                        <label><strong>40</strong>积分</label>
+                    </h1>
+                </div>
+            </li>            
+        </ul>
+
+        <footer>
+            <a id="exchange" class="btn">兑换</a>                    
+        </footer>
+    </div> 
+<script>
+    $('#integral ul').on('click', 'li', function() {
+        $('#integral ul li').removeClass('active2');
+        $(this).addClass('active2');
+    });
+    $('#exchange').on('click', function() {
+        var a = $('.active2 strong').text();
+        if(!a){
+            alert('请选择');
+        }else{
+            var number = $('#integral p strong').text();
+            if(number>=a){
+                let data = {
+                    openid : 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q',
+                    voucher_type: '代金券',
+                    voucher_denomination: a
+                };
+                $.ajax({
+                    url: '/user/setvoucher',
+                    method: 'post',
+                    data: data
+                }).done(function(msg) {
+                    alert(msg.success);
+                    window.location.href = '/users/voucher'
+                }).fail(function(jqXHR, textStatus) {
+
+                });
+            }else{
+                alert('您的积分不够兑换该代金券!');
+            }
+        }
+    });
+</script>        
+</body>
+</html>
