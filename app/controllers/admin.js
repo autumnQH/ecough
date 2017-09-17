@@ -7,7 +7,7 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const userService = require('../service/user');
-
+const USER = require('../utils/user');
 
 
 var a = async function(ctx, next) {
@@ -110,14 +110,25 @@ var admin_userService = async (ctx, next) => {
         data: result
     });
 }
+//设置发货
 var adminSetDeliver = async(ctx, next) => {
     a(ctx, next);
     var req = ctx.request.body;
-    var id = await dao.getOutTradeNo(req.out_trade_no);
-    if(id.id){
-        let a = {id: id.id};
+    var data = await dao.getOutTradeNo(req.out_trade_no);
+    if(data.id){
+        let openid = data.openid;
         req.status = 3;
-        var result = await dao.adminSetDeliver(req,a);
+        await dao.adminSetDeliver(req,{id: data.id});
+
+        var flag = await USER.getUserFlagByOpenId(openid);//是否首单
+        if(flag.flag == '1'){
+            //添加积分
+            var integral = await USER.getUserForIntegralByOpenId(openid);
+            var number = integral.integral + 20; 
+                USER.addUserForIntegralByOpendId({integral: number}, {openid: openid});        
+        }
+            USER.addUserOrderCount(openid);//下单次数+1
+
         await ctx.redirect('/admin/order');
     }else{
        return ctx.body = {

@@ -36,3 +36,8 @@ exports.setUserVoucher = async function (data) {
 exports.getUserFlagByOpenId = async function(openid) {
 	return dao.getUserFlagByOpenId(openid);
 }
+
+//下单次数+1
+exports.addUserOrderCount = async function(openid) {
+	return dao.addUserOrderCount(openid);
+}

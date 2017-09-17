@@ -72,6 +72,10 @@ var getUserFlagByOpenId = (openid)=> {
 	var result = db.findOne("SELECT flag FROM T_WECHAT_USER WHERE openid = '"+openid + "'");
 	return result;
 }
+var addUserOrderCount = (openid)=> {
+	var result = db.find("update T_WECHAT_USER set order_count = order_count+1, flag = false where openid = '"+openid +"'");
+	return result;
+}
 module.exports = {    
 	getUserById : getUserById,
 	setUserAddress: setUserAddress,

@@ -18,11 +18,12 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (#生成带参数二维码
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE IF NOT EXISTS T_WECHAT_USER (#记录用户扫描推广码
+CREATE TABLE IF NOT EXISTS T_WECHAT_USER (#用户表
   id int(11) NOT NULL AUTO_INCREMENT,
   openid varchar(128) NOT NULL,
   headimgurl varchar(255) DEFAULT NULL,#用户头像
   nick varchar(20) DEFAULT NULL,#用户昵称
+  phone varchar(16) DEFAULT NULL,#用户电话
   ticket varchar(255) DEFAULT NULL,#二维码的ticke值
   eventKey varchar(255) DEFAULT NULL,#二维码的场景值
   integral int(16) DEFAULT 0, #积分
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (#记录用户扫描推广码
 ) DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
+CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (#订单表
   id int NOT NULL AUTO_INCREMENT,
   openid varchar(128) NOT NULL,
   name varchar(32) NOT NULL,#姓名
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   INDEX out_trade_no (out_trade_no)
 )DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE IF NOT EXISTS USER_SERVICE (#售后服务
+CREATE TABLE IF NOT EXISTS USER_SERVICE (#用户售后服务
   id int NOT NULL AUTO_INCREMENT,
   openid varchar(128) NOT NULL,
   out_trade_no varchar(32) NOT NULL,#订单号
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS USER_SERVICE (#售后服务
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE IF NOT EXISTS USER_VOUCHER (#记录用户代金券
+CREATE TABLE IF NOT EXISTS USER_VOUCHER (#用户代金券
   id int(11) NOT NULL AUTO_INCREMENT,
   openid varchar(128) NOT NULL,
   voucher_type varchar(36) DEFAULT NULL,#代金券类别
@@ -92,7 +93,7 @@ CREATE TABLE IF NOT EXISTS STORE_ORDER (#微信小店
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE IF NOT EXISTS CONFIG (
+CREATE TABLE IF NOT EXISTS CONFIG (#config
   id int NOT NULL AUTO_INCREMENT,
   appid varchar(128) DEFAULT '',#appid
   appSecret varchar(255) DEFAULT '',#appSecret
