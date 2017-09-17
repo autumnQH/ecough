@@ -6,7 +6,6 @@ const tools = require('../utils/tools');
 const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
-const userService = require('../service/user');
 const USER = require('../utils/user');
 
 
@@ -105,7 +104,7 @@ var admin_setQrcode = async function(ctx, next) {
 
 var admin_userService = async (ctx, next) => {
     a(ctx, next);
-    var result =  await userService.getUserService();
+    var result =  await USER.getUserService();
     await ctx.render('admin_user_service', {
         data: result
     });

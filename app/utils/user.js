@@ -1,4 +1,3 @@
-const tools = require('./tools');
 const dao = require('../dao/user');
 
 //获取用户信息
@@ -46,6 +45,31 @@ exports.addUserOrderCount = async function(openid) {
 	return dao.addUserOrderCount(openid);
 }
 
+//用户绑定手机号
 exports.setUserPhone = async function(data) {
 	return dao.setUserPhone(data);
+}
+
+//获取我的订单
+exports.getUserOrder = async (openid) => {
+	var result = await dao.getUserOrder(openid);
+	return result;
+}
+
+//获取我的订单号
+exports.getUserOrderNumber = async(openid) => {
+	var result = await dao.getUserOrderNumber(openid);
+	return result;
+}
+
+//设置我的客服
+exports.setUserService = async (data) => {
+	var result = await dao.setUserService(data);
+	return result;
+}
+
+//获取我的客服
+exports.getUserService = async () => {
+	var result = await dao.getUserService();
+	return result;
 }

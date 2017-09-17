@@ -8,34 +8,8 @@ const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
 
-var getAddress = async (ctx, next) => {
-	ctx.state = {
-	    title: 'hello koa2'
-  	};
-	await ctx.render('address', {});
-};
-
-var get_logistics = async (ctx, next) => {
-    ctx.state = {
-        title: 'hello koa2'
-    };
-    await ctx.render('logistics', {});
-};
-
-
-var getProduct= async (ctx, next) => {
-    await ctx.render('product', {});
-};
-
-var getProblem= async (ctx, next) => {
-    ctx.state = {
-        title: 'hello koa2'
-    };
-    await ctx.render('problem', {});
-};
-
-
-var getUserInfo = async (ctx, next) => {
+//预购
+var PreOrder = async (ctx, next) => {
     const config = await dao.getConfig();
     var r_url = config.server_host + ctx.url;
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
@@ -184,23 +158,10 @@ var notify = async function(ctx, next) {
 
 };
 
-var getOrder = async function(ctx, next) {
-    await ctx.render('order', {
-
-    });
-}
 
 module.exports = {
-	//'GET /my/address': getAddress,
-    //'GET /my/problem': getProblem,
-    //'GET /my/logistics': get_logistics,
-    //'GET /product/100001': getProduct,
-    'GET /product/100001': getUserInfo,
-    'POST /product/100001': getProduct,
+    'GET /product/100001': PreOrder,
     'POST /notify': notify,
-    //'POST /my/pay/notify': notify,
-    //'GET /my/userinfo': getUserInfo,
     'GET /my/pay': jsapiPay
-    //'GET /my/order': getOrder,
 
 };

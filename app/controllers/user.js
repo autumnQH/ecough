@@ -1,4 +1,3 @@
-const userService = require('../service/user.js');
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
 const moment = require('moment');
@@ -6,6 +5,7 @@ const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 const USER = require('../utils/user');
 
+//个人中心
 var User = async (ctx, next) => {
 
   var config = await dao.getConfig();
@@ -45,6 +45,7 @@ var User = async (ctx, next) => {
 
 }
 
+//用户订单
 var myOrder = async(ctx, next) => {
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
@@ -52,7 +53,7 @@ var myOrder = async(ctx, next) => {
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
-		var result =  await userService.getUserOrder(ctx.session.openid);
+		var result =  await USER.getUserOrder(ctx.session.openid);
   	await ctx.render('myOrder', {
   		data: result
   	});
@@ -72,7 +73,7 @@ var myOrder = async(ctx, next) => {
                 userinfo = JSON.parse(userinfo);
             ctx.session = userinfo;
 
-            var result =  await userService.getUserOrder(ctx.session.openid);
+            var result =  await USER.getUserOrder(ctx.session.openid);
 
             await ctx.render('myOrder', {
                 data: result
@@ -82,6 +83,7 @@ var myOrder = async(ctx, next) => {
   }
 
 }
+//获取订单，设置问题
 var CustomerService = async (ctx, next) => {
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
@@ -89,7 +91,7 @@ var CustomerService = async (ctx, next) => {
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
-		var result =  await userService.getUserOrderNumber(ctx.session.openid);
+		var result =  await USER.getUserOrderNumber(ctx.session.openid);
   	await ctx.render('service', {
   		data: result,
   		openid: ctx.session.openid
@@ -109,7 +111,7 @@ var CustomerService = async (ctx, next) => {
                 userinfo = JSON.parse(userinfo);
             ctx.session = userinfo;
 
-            var result =  await userService.getUserOrderNumber(ctx.session.openid);
+            var result =  await USER.getUserOrderNumber(ctx.session.openid);
             await ctx.render('service', {
                 data: result,
                 openid: ctx.session.openid
@@ -120,12 +122,14 @@ var CustomerService = async (ctx, next) => {
 
 }
 
+//设置我的问题
 var setUserService = async (ctx, next) => {
 	let data = ctx.request.body;
-	var result = await userService.setUserService(data);
+	var result = await USER.setUserService(data);
 	return ctx.body = result;
 }
 
+//获取用户共享地址
 var getOpenAddress = async (ctx, next) => {
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
@@ -178,6 +182,7 @@ var getOpenAddress = async (ctx, next) => {
   }
 }
 
+//已下单的人
 var UserCustomer = async function(ctx, next) {
 
   var config = await dao.getConfig();
@@ -217,6 +222,7 @@ var UserCustomer = async function(ctx, next) {
   }
 };
 
+//获取用户代金券
 var UserVoucher =async function(ctx, next) {
 
   var config = await dao.getConfig();
@@ -260,6 +266,7 @@ var UserVoucher =async function(ctx, next) {
   }
 };
 
+//获取用户积分
 var UserIntegral =async function(ctx, next) {
 
   var config = await dao.getConfig();
@@ -298,27 +305,29 @@ var UserIntegral =async function(ctx, next) {
   }  
 }
 
-var setUserVoucher = async function(ctx, next) {
-  var req = ctx.request.body;
-      req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+//积分兑换代金券
+// var setUserVoucher = async function(ctx, next) {
+//   var req = ctx.request.body;
+//       req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
 
-  var integral = await USER.getUserForIntegralByOpenId(req.openid);
+//   var integral = await USER.getUserForIntegralByOpenId(req.openid);
 
-  if(integral.integral >=req.voucher_denomination ){
-    var number = integral.integral - req.voucher_denomination;
+//   if(integral.integral >=req.voucher_denomination ){
+//     var number = integral.integral - req.voucher_denomination;
     
-    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
-    USER.setUserVoucher(req);
-    return ctx.body = {
-      success: '兑换成功'
-    }; 
-  }else{
-    return ctx.body = {
-      success: '积分不够'
-    }
-  }
-}
+//     USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
+//     USER.setUserVoucher(req);
+//     return ctx.body = {
+//       success: '兑换成功'
+//     }; 
+//   }else{
+//     return ctx.body = {
+//       success: '积分不够'
+//     }
+//   }
+// }
 
+//绑定手机号
 var setUserPhone = async function(ctx, next) {
   var req = ctx.request.body;
   console.log(req);
@@ -332,7 +341,7 @@ module.exports = {
     'GET /users/user': User,
     'GET /users/customer':  UserCustomer ,
     'GET /users/voucher': UserVoucher,
-    'POST /user/setvoucher': setUserVoucher,
+    //'POST /user/setvoucher': setUserVoucher,
     'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,

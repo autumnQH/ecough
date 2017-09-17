@@ -10,26 +10,31 @@ var getUserOrder = (openid) => {
 	return result;
 }
 
+//获取用户订单号
 var getUserOrderNumber = (openid) =>{
 	var result = db.find("SELECT out_trade_no FROM T_WECHAT_ORDER WHERE openid='" + openid +"'");
 	return result;
 }
 
+//设置我的客服
 var setUserService = (data) => {
 	var result = db.add("USER_SERVICE", data);
 	return result;
 }
 
+//获取我的获取
 var getUserService = () => {
 	var result = db.find("SELECT * FROM USER_SERVICE");
 	return result;
 }
 
+//获取用户场景值
 var getUserByEnentKey = (eventKey) => {
 	var result = db.find("SELECT headimgurl, nick , order_count FROM T_WECHAT_USER WHERE order_count > 0 AND eventKey = 'qrscene_"+ eventKey +"' or eventKey = '"+ eventKey+"' AND order_count > 0 ORDER BY order_count DESC");
 	return result;
 }
 
+//获取用户积分
 var getUserForIntegralByOpenId = (openid) => {
 	var result = db.findOne("SELECT integral FROM T_WECHAT_USER WHERE openid = '"+ openid+ "' ORDER BY CREATE_TIME DESC");
 	return result
