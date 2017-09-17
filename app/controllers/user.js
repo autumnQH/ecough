@@ -8,6 +8,9 @@ const USER = require('../utils/user');
 
 var User = async (ctx, next) => {
 
+       return await ctx.render('user', {
+
+        });
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 

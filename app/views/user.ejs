@@ -17,14 +17,14 @@
     <div class="page">
 
 <div class="my-banner">
-    <a href="/my/myinfo" class="banner-link-panel">
+    <a class="banner-link-panel">
         <div class="top-avatar" style="background:url('//wx.qlogo.cn/mmopen/PiajxSqBRaEKAlibZVIB9FuUxLvfVyLf5PYOrcdLsTyKqN5qmwGyhuGMdLUYbIbotHvBicliaiaCSd1CicCJheNh0lGQ/0') no-repeat center; background-size:cover;"></div>
         <div class="userInfo">
             <div class="userName">
                 <span>藏在面具下的灵魂</span>
             </div> 
-            <div class="subTips">点击编辑个人资料</div>
-            <p class="telphone" style="display:none">15977477245</p>
+            <!-- <div class="subTips">点击编辑个人资料</div> -->
+            <p class="telphone"></p>
         </div>
     </a>
 </div>
@@ -111,7 +111,7 @@
 <!-- 绑定手机号码弹框-->
 <div class="poupVerifyBox hide">
     <div class="bgMask"></div>
-    <div class="firstStep">
+    <div class="firstStep hide">
         <div class="phoneNum">
             <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
             <div class="phoneBox">
@@ -134,10 +134,10 @@
                 <div class="number border1px borderRadiu2px"></div>
                 <div class="number border1px borderRadiu2px"></div>
                 <div class="number border1px borderRadiu2px"></div>
-                <input type="tel" id="hiddenInput">
+                <input type="tel" id="hiddenInput" maxlength="4">
             </div>
         </div>
-        <button class="confirmBind disabled" id="submit">确认绑定</button>
+        <button class="confirmBind" id="submit" disabled>确认绑定</button>
     </div>
 
     <div class="lastStep hide">
@@ -148,8 +148,7 @@
         <p id="hasBindPhonetel">12345678908</p>
     </div>
 </div>
-
 </div>
-
+<script src="/js/user.js"></script>
 </body>
 </html>

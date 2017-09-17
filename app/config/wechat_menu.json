@@ -26,8 +26,8 @@
           "key":"GOOD"
         },{
           "type": "view",
-          "name": "我的积分",
-          "key": "integral"
+          "name": "个人中心",
+          "url": "http://fvalogbniw.localtunnel.me/users/user"
         }      
       ]
     }
