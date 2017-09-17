@@ -1,6 +1,10 @@
 const tools = require('./tools');
 const dao = require('../dao/user');
-const _ = require('lodash');
+
+//获取用户信息
+exports.getUserInfoByOpenId = async function(openid) {
+	return dao.getUserInfoByOpenId(openid);
+}
 
 //获取 已经下单的人
 exports.getUserByEnentKey = async function(eventKey) {
@@ -40,4 +44,8 @@ exports.getUserFlagByOpenId = async function(openid) {
 //下单次数+1
 exports.addUserOrderCount = async function(openid) {
 	return dao.addUserOrderCount(openid);
+}
+
+exports.setUserPhone = async function(data) {
+	return dao.setUserPhone(data);
 }

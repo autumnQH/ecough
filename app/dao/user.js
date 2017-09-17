@@ -1,22 +1,7 @@
 var db = require("../utils/mysql");
 
-var getUserById = (openid) => {    
-	var user = db.getById("T_UESR", openid); 
-	return user; 
-}
-
-var setUserAddress = (data) => {
-	var result = db.add("USER_ADDRESS", data);
-	return result;
-}
-
-var delUserAddress = (id) => {
-	var result = db.delete("USER_ADDRESS", id);
-	return result;
-} 
-
-var getUserAddress = (openid) => {
-	var result  = db.find("SELECT * FROM USER_ADDRESS WHERE openid = '"+ openid +"'");
+var getUserInfoByOpenId = (openid) => {
+	var result = db.findOne("SELECT * FROM T_WECHAT_USER WHERE ?", {openid: openid});
 	return result;
 }
 
@@ -76,11 +61,12 @@ var addUserOrderCount = (openid)=> {
 	var result = db.find("update T_WECHAT_USER set order_count = order_count+1, flag = false where openid = '"+openid +"'");
 	return result;
 }
-module.exports = {    
-	getUserById : getUserById,
-	setUserAddress: setUserAddress,
-	delUserAddress: delUserAddress,
-	getUserAddress: getUserAddress,
+var setUserPhone = (data) => {
+	var result = db.update("T_WECHAT_USER",{phone: data.phone}, {openid: data.openid});
+	return result;
+}
+module.exports = { 
+	getUserInfoByOpenId: getUserInfoByOpenId,
 	getUserOrder: getUserOrder,
 	getUserOrderNumber: getUserOrderNumber,
 	setUserService: setUserService,
@@ -91,5 +77,6 @@ module.exports = {
 	addUserForIntegralByOpendId: addUserForIntegralByOpendId,
 	getUserVoucherByOpenId: getUserVoucherByOpenId,
 	setUserVoucher: setUserVoucher,
-	getUserFlagByOpenId: getUserFlagByOpenId
+	getUserFlagByOpenId: getUserFlagByOpenId,
+	setUserPhone: setUserPhone
 };

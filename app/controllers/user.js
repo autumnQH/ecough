@@ -8,18 +8,17 @@ const USER = require('../utils/user');
 
 var User = async (ctx, next) => {
 
-       return await ctx.render('user', {
-
-        });
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
-        await ctx.render('user', {
-
-        });   
+    var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
+    console.log(userinfo,'userinfo');
+    await ctx.render('user', {
+      data: userinfo
+    });   
   }else{
     if(!ctx.query.code){
       ctx.redirect(url);
@@ -33,9 +32,12 @@ var User = async (ctx, next) => {
         //拉取用户信息
         var userinfo = await tools.getUserInfo(user.access_token, user.openid);
             userinfo = JSON.parse(userinfo);
-        ctx.session = userinfo;   
-        await ctx.render('user', {
+            ctx.session = userinfo; 
 
+        var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
+        console.log(userinfo,'userinfo');
+        await ctx.render('user', {
+          data: userinfo
         });     
       }      
     }
@@ -317,6 +319,15 @@ var setUserVoucher = async function(ctx, next) {
   }
 }
 
+var setUserPhone = async function(ctx, next) {
+  var req = ctx.request.body;
+  console.log(req);
+  USER.setUserPhone(req);
+  return ctx.body = {
+    code :1,msg :'绑定成功'  
+  }
+
+}
 module.exports = {
     'GET /users/user': User,
     'GET /users/customer':  UserCustomer ,
@@ -327,5 +338,6 @@ module.exports = {
     'GET /users/my/order': myOrder,
     'GET /users/service': CustomerService,
     'POST /users/service/issue': setUserService,
+    'POST /user/setphone': setUserPhone
 
 };

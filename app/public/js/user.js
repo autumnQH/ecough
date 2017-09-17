@@ -119,10 +119,26 @@
         }
     }); 
 
+    function addphone() {
+        let data = {
+            openid: $('#openid').text(),
+            phone: $('#uclogin_mobile').val()
+        };
+        $.ajax({
+            url: '/user/setphone',
+            method: 'post',
+            data: data
+        }).done(function(msg){
+            console.log(msg);
+        }).fail(function(jqXHR, textStatus){
+
+        });
+    }
     //确定验证码
     $('#submit').on('click', function() {
         var code2 = $('#hiddenInput').val();;
         if(code2 === code){
+            addphone();
             $('.secStep').addClass('hide');
             $('.lastStep').removeClass('hide');
             $('#hasBindPhonetel').text($('#uclogin_mobile').val());
