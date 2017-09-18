@@ -54,6 +54,10 @@ var myOrder = async(ctx, next) => {
 
   if(ctx.session.openid){
 		var result =  await USER.getUserOrder(ctx.session.openid);
+    result.forEach(function(data) {
+      data.create_time = tools.formatDate(data.create_time);
+    });
+    console.log(result[0].create_time);
   	await ctx.render('myOrder', {
   		data: result
   	});
@@ -74,7 +78,10 @@ var myOrder = async(ctx, next) => {
             ctx.session = userinfo;
 
             var result =  await USER.getUserOrder(ctx.session.openid);
-
+    result.forEach(function(data) {
+      data.create_time = tools.formatDate(data.create_time);
+    });
+    console.log(result[0].create_time);
             await ctx.render('myOrder', {
                 data: result
             })
@@ -266,6 +273,7 @@ var UserVoucher =async function(ctx, next) {
   }
 };
 
+
 //获取用户积分
 var UserIntegral =async function(ctx, next) {
 
@@ -277,7 +285,11 @@ var UserIntegral =async function(ctx, next) {
   if(ctx.session.openid){
     var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
     return await ctx.render('user_integral', {
-      data: data
+      data: data,
+      config: {
+        n_integral: config.n_integral,
+        m_voucher: config.m_voucher
+      }
     });
   }else{
 
@@ -296,7 +308,11 @@ var UserIntegral =async function(ctx, next) {
 
         var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
         return await ctx.render('user_integral', {
-          data: data
+          data: data,
+          config: {
+            n_integral: config.n_integral,
+            m_voucher: config.m_voucher
+          }          
         });
       } 
 
@@ -305,31 +321,36 @@ var UserIntegral =async function(ctx, next) {
   }  
 }
 
+
 //积分兑换代金券
-// var setUserVoucher = async function(ctx, next) {
-//   var req = ctx.request.body;
-//       req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+var setUserVoucher = async function(ctx, next) {
+  var req = ctx.request.body;
+      req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
 
-//   var integral = await USER.getUserForIntegralByOpenId(req.openid);
+  var integral = await USER.getUserForIntegralByOpenId(req.openid);
 
-//   if(integral.integral >=req.voucher_denomination ){
-//     var number = integral.integral - req.voucher_denomination;
+  if(integral.integral >=req.voucher_denomination ){
+    var number = integral.integral - req.voucher_denomination;
     
-//     USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
-//     USER.setUserVoucher(req);
-//     return ctx.body = {
-//       success: '兑换成功'
-//     }; 
-//   }else{
-//     return ctx.body = {
-//       success: '积分不够'
-//     }
-//   }
-// }
+    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
+    USER.setUserVoucher(req);
+    return ctx.body = {
+      success: '兑换成功'
+    }; 
+  }else{
+    return ctx.body = {
+      success: '积分不够'
+    }
+  }
+}
 
 //绑定手机号
 var setUserPhone = async function(ctx, next) {
   var req = ctx.request.body;
+  var config = await dao.getConfig();
+  if(config.signup_phone_integral!= null) {
+    req.integral = config.signup_phone_integral;
+  }
   console.log(req);
   USER.setUserPhone(req);
   return ctx.body = {
@@ -341,7 +362,7 @@ module.exports = {
     'GET /users/user': User,
     'GET /users/customer':  UserCustomer ,
     'GET /users/voucher': UserVoucher,
-    //'POST /user/setvoucher': setUserVoucher,
+    'POST /user/setvoucher': setUserVoucher,
     'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,

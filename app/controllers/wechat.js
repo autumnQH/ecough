@@ -3,6 +3,7 @@ const dao = require('../dao/wechat');
 const moment = require('moment');
 const urlencode = require('urlencode');
 const tools = require('../utils/tools');
+
 var checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);
     if (result) {
@@ -39,7 +40,6 @@ var postHandle = async(ctx, next) => {
                 }
 
                 var userinfo = await tools.getUserInfo2(token,openid);
-                console.log(userinfo);
                 data.headimgurl = userinfo.headimgurl;
                 data.nick = userinfo.nickname;
                 wechat.setUser(data);
@@ -51,6 +51,11 @@ var postHandle = async(ctx, next) => {
                 var openid = openid;
                 var ticket = msg.Ticket[0];
                 var eventKey = msg.EventKey[0];
+                    //修改用户备注
+                    tools.updateremark(token, openid, eventKey);
+                
+
+
 
                 // //var result = await wechat.getOneUser(openid, ticket, eventKey);
                 // var result = await wechat.getOneUser(openid);
@@ -67,12 +72,12 @@ var postHandle = async(ctx, next) => {
                 //     wechat.updateUser(data); 
                 // //如果之前关注。又扫描二维码。            
                 // }else{
-                    var data = {
-                        ticket: ticket,
-                        eventKey: eventKey,
-                        create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
-                    };
-                    dao.updateUser(data, {openid: openid});
+                    // var data = {
+                    //     ticket: ticket,
+                    //     eventKey: eventKey,
+                    //     create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+                    // };
+                    // dao.updateUser(data, {openid: openid});
                 // }
                 
             }
@@ -89,16 +94,19 @@ var postHandle = async(ctx, next) => {
             // }
         //如果已经关注，但是扫描了其他人的二维码
         }else if(msg.Event[0] == 'SCAN') {
-            var openid = msg.FromUserName[0];
-            var ticket = msg.Ticket[0];
-            var eventKey = msg.EventKey[0];
-            var create_time = moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss');
-            var data = {
-                ticket: ticket,
-                eventKey: eventKey,
-                create_time: create_time
-            };
-            dao.updateUser(data, {openid: openid});
+             var openid = msg.FromUserName[0];
+             var ticket = msg.Ticket[0];
+             var eventKey = msg.EventKey[0];
+            // var create_time = moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss');
+            // var data = {
+            //     ticket: ticket,
+            //     eventKey: eventKey,
+            //     create_time: create_time
+            // };
+            // dao.updateUser(data, {openid: openid});
+
+                //修改用户备注
+                tools.updateremark(token, openid, eventKey);
 
         }else if(msg.Event[0] == 'merchant_order') {
             //记录微信小店用户购买产品

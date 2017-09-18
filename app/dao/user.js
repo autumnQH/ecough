@@ -67,7 +67,7 @@ var addUserOrderCount = (openid)=> {
 	return result;
 }
 var setUserPhone = (data) => {
-	var result = db.update("T_WECHAT_USER",{phone: data.phone}, {openid: data.openid});
+	var result = db.find("UPDATE T_WECHAT_USER SET integral = integral+"+data.integral+", phone = "+data.phone+" WHERE openid = '"+data.openid +"'");
 	return result;
 }
 module.exports = { 

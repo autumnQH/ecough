@@ -11,7 +11,7 @@ const USER = require('../utils/user');
 
 var a = async function(ctx, next) {
     if(ctx.session.admin){
-        console.log('呵呵');
+        console.log(ctx.session.admin);
         next();
     }else{
         return ctx.redirect('/sign');
@@ -36,9 +36,9 @@ var Sign = async function(ctx, next) {
     }
     if(name ==='root' && password ==='root666888'){
         ctx.session = admin;
-        await ctx.redirect('/admin');
+       return await ctx.redirect('/admin');
     }else{
-        await ctx.redirect('back');
+       return await ctx.redirect('back');
     }
 }
 
@@ -114,17 +114,33 @@ var adminSetDeliver = async(ctx, next) => {
     a(ctx, next);
     var req = ctx.request.body;
     var data = await dao.getOutTradeNo(req.out_trade_no);
+    console.log(data,'订单数据');
+    var config = await dao.getConfig();
+    var token = await dao.getActiveAccessToken();
     if(data.id){
         let openid = data.openid;
         req.status = 3;
         await dao.adminSetDeliver(req,{id: data.id});
-
+        var pay_money = data.pay_money;
         var flag = await USER.getUserFlagByOpenId(openid);//是否首单
         if(flag.flag == '1'){
-            //添加积分
+            console.log(pay_money,'支付金额');
+            //下单送积分
             var integral = await USER.getUserForIntegralByOpenId(openid);
-            var number = integral.integral + 20; 
-                USER.addUserForIntegralByOpendId({integral: number}, {openid: openid});        
+            var number = integral.integral + (pay_money*config.shoping_integral);
+            console.log(number,'number');        
+                USER.addUserForIntegralByOpendId({integral: number}, {openid: openid});
+            // 推广人获得代金券
+            var userinfo = await tools.getUserInfo2(token, openid);
+            console.log(userinfo,'userinfo');
+            let data = {
+                openid: userinfo.remark,
+                voucher_type: '推广代金券',
+                create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+                voucher_denomination: config.spread_voucher
+            };
+            console.log(data,'data');
+            USER.setUserVoucher(data);      
         }
             USER.addUserOrderCount(openid);//下单次数+1
 

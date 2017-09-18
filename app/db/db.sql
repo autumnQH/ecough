@@ -24,8 +24,6 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
   headimgurl varchar(255) DEFAULT NULL COMMENT '用户头像url',
   nick varchar(20) DEFAULT NULL COMMENT '用户昵称',
   phone varchar(16) DEFAULT NULL COMMENT '用户电话',
-  ticket varchar(255) DEFAULT NULL COMMENT '二维码的ticke值',
-  eventKey varchar(255) DEFAULT NULL COMMENT '二维码的场景值',
   integral int(16) DEFAULT 0 COMMENT '积分', 
   create_time datetime DEFAULT NULL COMMENT '',
   flag tinyint(1) DEFAULT '1' COMMENT '是否是首单',
@@ -69,7 +67,7 @@ CREATE TABLE IF NOT EXISTS USER_SERVICE (
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 COMMENT='用户售后服务' ;
 
-CREATE TABLE IF NOT EXISTS USER_VOUCHER (#
+CREATE TABLE IF NOT EXISTS USER_VOUCHER (
   id int(11) NOT NULL AUTO_INCREMENT,
   openid varchar(128) NOT NULL COMMENT 'openid',
   voucher_type varchar(36) DEFAULT NULL COMMENT '代金券类别',
@@ -113,12 +111,12 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   original_money_10 int(36) DEFAULT 1 COMMENT '1.0米规格原价',
   current_money_10 int(36) DEFAULT 1 COMMENT '1.0米规格现价',
   derate_money int(36) DEFAULT 0 COMMENT '首单代金券',
-  spread_voucher int(10) DEFAULT 1 COMMENT '推广获得代金券',
-  signup_phone_integral int(10) DEFAULT NULL COMMENT '注册手机获得x积分',
-  shoping_integral int(10) DEFAULT NULL COMMENT '购买商品获得x积分',
-  n_integral int(10) DEFAULT NULL COMMENT 'n积分换取m面值代金券',
-  m_voucher int(10) DEFAULT NULL COMMENT 'm面值代金券',
-  default_total int(4) DEFAULT NULL COMMENT '默认分页',
+  spread_voucher varchar(10) DEFAULT 1 COMMENT '推广获得m面值代金券',
+  signup_phone_integral varchar(10) DEFAULT '0' COMMENT '注册手机获得x积分',
+  shoping_integral varchar(10) DEFAULT '0' COMMENT '购买商品获得x积分',
+  n_integral varchar(10) DEFAULT '0' COMMENT 'n积分换取m面值代金券',
+  m_voucher varchar(10) DEFAULT '0' COMMENT 'm面值代金券',
+  default_total varchar(4) DEFAULT '10' COMMENT '默认分页',
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 COMMENT='config';
 

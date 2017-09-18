@@ -71,6 +71,7 @@ exports.getOauth2Token = async function (code) {
     }); 
 }
 
+//非网页获取用户信息
 exports.getUserInfo2 = function(token, openid) {
     let options ={
         method: 'get',
@@ -89,7 +90,7 @@ exports.getUserInfo2 = function(token, openid) {
       });
     });
 }
-//拉取用户信息
+//网页获取用户信息
 exports.getUserInfo = function (AccessToken, openid) {
     let options ={
         method: 'get',
@@ -174,11 +175,10 @@ exports.getQRCodeImg = function(ticket) {
   
 }
 
+//上传临时素材
 exports.uploadFile = async function(userinfo,token, qrurl){
   var q=  await qr.qr(userinfo);
-  console.log(q);
   var logo = await qr.qr_logo(userinfo, qrurl);
-  console.log(logo);
   let formData = {
     custom_file: {
       value:  fs.createReadStream(__dirname+'/'+ userinfo.openid+'.jpeg'),
@@ -199,6 +199,26 @@ exports.uploadFile = async function(userinfo,token, qrurl){
     });
   });
 };
+
+//设置用户备注
+exports.updateremark = (token, openid, remark) => {
+  let data = JSON.stringify({
+    'openid': openid,
+    'remark': remark
+  });
+  return new Promise(function(resolve, reject) {
+    request.post({
+      url: 'https://api.weixin.qq.com/cgi-bin/user/info/updateremark?access_token='+ token,
+      form: data
+    }, function(err, res, body) {
+      if(body){
+        return resolve(JSON.parse(body));
+      }else{
+        return reject(JSON.parse(err));
+      }
+    });
+  });
+}
 
 exports.formatDate = (date)=> {
   return moment(new Date(date)).format('YYYY-MM-DD HH:mm:ss')

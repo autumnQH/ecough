@@ -50,41 +50,49 @@ var updateUser = async (data, value)=>{
 	return result;
 }
 
+//获取订单
 var getOrder = async () => {
 	var result = await db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME DESC");
 	return result;
 }
+
+//添加订单
 var setOrder = async(data) => {
 	var result = db.add("T_WECHAT_ORDER", data);
 	return result;
 }
+
+//设置微信小店
 var setStoreOrder = async (data) => {
 	var result = db.add("STORE_ORDER", data);
 	return result;
 }
 
+//根据订单号获取
 var getOutTradeNo = async (out_trade_no) => {
-	var result = db.findOne("SELECT id,openid FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
+	var result = db.findOne("SELECT id,openid,pay_money FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
 	return result;
 }
 
+//设置发货
 var adminSetDeliver = async (data, id) => {
 	var result = db.update("T_WECHAT_ORDER", data, id)
 	return result;
 }
 
-
-
+//获取config
 var getConfig = async () => {
 	var result = db.findOne("SELECT * FROM CONFIG WHERE id = 1");
 	return result;
 }
 
+//设置config
 var setConfig = async (data) => {
 	var result = db.update("CONFIG", data, {id: 1});
 	return result;
 }
 
+//设置支付通知
 var setNOTIFY = async (data)=>{
 	var result = db.add("NOTIFY", data);
 	return result;

@@ -38,7 +38,8 @@
 				<% } %>
 				<% if(data[i].status == 5){ %>
 				<span>交易完成</span>
-				<% } %>								
+				<% } %>
+				<label><%= data[i].create_time %></label>
 			</div>
 
 			<div class="order-item">
@@ -66,8 +67,8 @@
 						<script>
 							var href = $('#kuaidi').attr('href');
 							$('#kuaidi').on('click', function(event) {
-								alert(href);
-								window.location=href? + new Date().getTime();
+								window.location=href;
+
 							});
 						</script>
   				<% } %>
