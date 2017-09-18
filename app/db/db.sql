@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   shoping_integral int(10) DEFAULT NULL COMMENT '购买商品获得x积分',
   n_integral int(10) DEFAULT NULL COMMENT 'n积分换取m面值代金券',
   m_voucher int(10) DEFAULT NULL COMMENT 'm面值代金券',
-
+  default_total int(4) DEFAULT NULL COMMENT '默认分页',
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 COMMENT='config';
 
