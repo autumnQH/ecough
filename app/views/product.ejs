@@ -41,12 +41,12 @@
 			      <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
 
 
-			      <div class="detail-group" style="margin-top:10px;">
-							<span class="col-xs-8" style="width:100%;">
+			      <div class="detail-group" style="margin-top:10px;" id="s_money">
+<!-- 							<span class="col-xs-8" style="width:100%;">
 												现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
-												<%= current_money %></span> 元&nbsp;/ 件
-												<label class="yjia" style="text-decoration:line-through;">原价：<%= original_money %></label>
-							</span>
+												<%= current_money_10 %></span> 元&nbsp;/ 件
+												<label class="yjia" style="text-decoration:line-through;">原价：<%= original_money_10 %></label>
+							</span> -->
 			      </div>
 
 			      <div class="detail-group" style="margin-top:10px;">
@@ -68,9 +68,31 @@
 <script>
 $(function() {
 
+var specifications = $('.active').text();
+var hxml = $('<span class="col-xs-8" style="width:100%;">'+
+'现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">'+
+'<%= current_money_10 %></span> 元&nbsp;/ 件'+
+'<label class="yjia" style="text-decoration:line-through;">原价：<%= original_money_10 %></label>'+
+'</span>');
+var hxml2 = $('<span class="col-xs-8" style="width:100%;">'+
+'现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">'+
+'<%= current_money_13 %></span> 元&nbsp;/ 件'+
+'<label class="yjia" style="text-decoration:line-through;">原价：<%= original_money_13 %></label>'+
+'</span>');
+if(specifications == '1米'){
+	$('#s_money').html(hxml);
+}else{
+	$('#s_money').html(hxml2);
+}
+
 $('#menu_specifications button').on('click',function() {
     $("#menu_specifications button").removeClass("active");  
     $(this).addClass("active");
+		if($(this).text() == '1米'){
+			$('#s_money').html(hxml);
+		}else{
+			$('#s_money').html(hxml2);
+		}
 });
 });
 </script>

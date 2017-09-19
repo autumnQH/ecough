@@ -56,6 +56,12 @@ exports.getUserOrder = async (openid) => {
 	return result;
 }
 
+//条件查询我的订单
+exports.queryUserOrder = async (data)=>{
+	var result = await dao.queryUserOrder(data);
+	return result;
+}
+
 //获取我的订单号
 exports.getUserOrderNumber = async(openid) => {
 	var result = await dao.getUserOrderNumber(openid);

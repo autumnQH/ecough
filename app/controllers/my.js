@@ -16,34 +16,32 @@ var PreOrder = async (ctx, next) => {
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
     if(ctx.session.openid){
-        //console.log('session存在');
-        //console.log(ctx.session);
         await ctx.render('product', {
             userinfo: ctx.session,
-            current_money: config.current_money * 0.01,
-            original_money: config.original_money * 0.01
+            current_money_13: config.current_money_13 * 0.01,
+            original_money_13: config.original_money_13 * 0.01,
+            current_money_10: config.current_money_10 * 0.01,
+            original_money_10: config.original_money_10 * 0.01
         });       
     }else{
         if(!ctx.query.code){
-            //console.log('code不存在');
             ctx.redirect(url);
         }else{
             let code = ctx.query.code;
             var user = await tools.getOauth2Token(code);
                 user = JSON.parse(user);
-                //console.log(user,'user');
             if(user.errcode){
                 ctx.redirect(url);
             }else{
-                //console.log('ok');
-                //拉取用户信息
                 var userinfo = await tools.getUserInfo(user.access_token, user.openid);
                     userinfo = JSON.parse(userinfo);
                 ctx.session = userinfo;
                 await ctx.render('product', {
                     userinfo: userinfo,
-                    current_money: config.current_money * 0.01,
-                    original_money: config.original_money * 0.01
+                    current_money_13: config.current_money_13 * 0.01,
+                    original_money_13: config.original_money_13 * 0.01,
+                    current_money_10: config.current_money_10 * 0.01,
+                    original_money_10: config.original_money_10 * 0.01
                 })
             }    
         }
@@ -68,14 +66,24 @@ var jsapiPay = async(ctx, next) => {
         out_trade_no: out_trade_no
     };
 
-    var current_money = config.current_money;//现价
-    var derate_money = 0;//减免
+    var current_money = 0;//现价
+    var derate_money = 0;//首单减免减免
 
     var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
     
     if(todaySubscribe.flag == '1'){//首单
         derate_money = config.derate_money
     }
+
+    switch(specifications) {
+        case '1.3米':
+        current_money = config.current_money_13;
+        break;
+        case '1米':
+        current_money = config.current_money_10;
+        break;
+    }
+
     var pay_money = total * current_money - derate_money ;
     var page = await pay.setPackageData(openid, pay_money, value);
     

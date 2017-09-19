@@ -90,10 +90,21 @@ var myOrder = async(ctx, next) => {
   }
 
 }
+
+var queryUserOrder = async (ctx, next) => {
+  var req = ctx.request.body;
+  var data = await USER.queryUserOrder(req);
+  data.forEach(function(d){
+    d.create_time = tools.formatDate(d.create_time);
+  });
+  return ctx.body = data;
+
+}
+
 //获取订单，设置问题
 var CustomerService = async (ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + '/users/my/order';
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -243,7 +254,8 @@ var UserVoucher =async function(ctx, next) {
     
     return await ctx.render('user_voucher', {
       data: data,
-      flag: flag
+      flag: flag,
+      derate_money: config.derate_money
     });
   }else{
 
@@ -265,7 +277,8 @@ var UserVoucher =async function(ctx, next) {
         
         return await ctx.render('user_voucher', {
           data: data,
-          flag: flag
+          flag: flag,
+          derate_money: config.derate_money
         });
       }    
     }
@@ -366,6 +379,7 @@ module.exports = {
     'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,
+    'POST /users/my/order/query': queryUserOrder,
     'GET /users/service': CustomerService,
     'POST /users/service/issue': setUserService,
     'POST /user/setphone': setUserPhone

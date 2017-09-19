@@ -5,8 +5,15 @@ var getUserInfoByOpenId = (openid) => {
 	return result;
 }
 
+//获取用户订单
 var getUserOrder = (openid) => {
 	var result = db.find("SELECT * FROM T_WECHAT_ORDER WHERE openid='" + openid + "' ORDER BY CREATE_TIME DESC");
+	return result;
+}
+
+//根据条件查询
+var queryUserOrder = (data) =>{
+	var result = db.find("SELECT * FROM T_WECHAT_ORDER WHERE openid = '"+data.openid+"' and create_time >= '"+data.date+"' ORDER BY CREATE_TIME DESC");
 	return result;
 }
 
@@ -73,6 +80,7 @@ var setUserPhone = (data) => {
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
 	getUserOrder: getUserOrder,
+	queryUserOrder: queryUserOrder,
 	getUserOrderNumber: getUserOrderNumber,
 	setUserService: setUserService,
 	getUserService: getUserService,
