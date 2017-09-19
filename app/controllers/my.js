@@ -11,7 +11,7 @@ const pay = require('../utils/pay');
 //预购
 var PreOrder = async (ctx, next) => {
     const config = await dao.getConfig();
-    var r_url = config.server_host + ctx.url;
+    var r_url = config.server_host + ctx.url.split('?').slice(0,1);
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
         '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -166,10 +166,35 @@ var notify = async function(ctx, next) {
 
 };
 
+//退款
+var refund = async function(ctx, next) {
+    var req = ctx.request.body;
+    var out_trade_no = req.out_trade_no;
+    var config = await dao.getConfig();
+    req.appid = config.appid;
+    req.mch_id = config.store_mchid;
+    req.out_refund_no = req.out_trade_no;//退款号=订单号
+    req.refund_fee = req.total_fee;//退款金额=支付金额
+    var refund = await pay.refund(req);    
+    var xml = refund.xml;  
+    if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){        
+        if(xml.result_code[0] === 'SUCCESS'){        
+            return ctx.body = {
+                msg: xml.result_code[0]
+            }
+        }else{        
+            return ctx.body = {
+                msg: xml.result_code[0],
+                code:xml.err_code +':'+ xml.err_code_des[0]
+            }
+        }
+    }
+} 
 
 module.exports = {
     'GET /product/100001': PreOrder,
     'POST /notify': notify,
-    'GET /my/pay': jsapiPay
+    'GET /my/pay': jsapiPay,
+    'POST /my/refund': refund
 
 };

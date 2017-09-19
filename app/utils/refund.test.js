@@ -1,17 +1,38 @@
-const pay = require('./pay');
-const tools = require('./tools');
-const crypto = require('crypto');
-
-async function a() {
-
-	var b = await pay.refund({
-		appid: 'wxff24c10734aed1ef',
-		mch_id: '1470073502',
-		out_trade_no: '2017091013070220',
-		out_refund_no: '2017091013070220',
-		total_fee: '10',
-		refund_fee: '10'
+const request = require('request');
+const dao = require('../dao/wechat');
+async function a () {
+	var token = await dao.getActiveAccessToken();
+	console.log(token);
+	let json = JSON.stringify({
+		  industry_id1: '1',
+      industry_id2: '1'
 	});
-	console.log(b);
+	let options = {
+		url: 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token='+ token,
+		method : 'post',
+		body: json
+	};
+	request(options, function(err ,res, body) {
+		if(body){
+			console.log(body);
+		}else{
+			console.log(err);
+		}
+	});	
 }
-a();
+async function b() {
+	var token = await dao.getActiveAccessToken();
+	let options = {
+		url: 'https://api.weixin.qq.com/cgi-bin/template/get_industry?access_token='+token,
+		method: 'get'
+	};
+	request(options, function(err, res, body) {
+		if(body){
+			console.log(body)
+		}else{
+			console.log(err)
+		}
+	});
+}
+//a();
+b();

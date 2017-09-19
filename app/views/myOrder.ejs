@@ -50,6 +50,8 @@
 					switch(data.status) {
 						case 2:
 						data.status = '待发货';
+						kuaidi100 = '<a class="btn btn-xs" id="refund" val="'+data.out_trade_no+'" money="'+data.pay_money+'"'+
+						'openid="'+ data.openid+'">申请退款</a>'
 						break;
 						case 3:
 						data.status = '已发货';
@@ -119,7 +121,10 @@
  						href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">
  						查询物流</a>
   				<% } %>
-					
+					<% if(data[i].status == 2) { %>
+					<a class="btn btn-xs" id="refund" val="<%= data[i].out_trade_no %>" money="<%= data[i].pay_money%>"
+						openid="<%= data[i].openid %>">我要退款</a>
+					<% } %>
 					</div>
 				</div>
 			</div>	
@@ -131,7 +136,31 @@
 							$('#kuaidi').on('click', function(event) {
 								window.location=href;
 							});
+							$('#refund').on('click', function() {
+									var out_trade_no = $(this).attr('val');									
+									var total_fee = $(this).attr('money');									
+									var openid = $(this).attr('openid');
+									
+								let data = {
+									out_trade_no: out_trade_no,
+									total_fee: total_fee,
+								};
+								$.ajax({
+									url: '/my/refund',
+									data: data,
+									method: 'post'
+								}).done(function(msg) {
+									console.log(msg);
+									if(msg.msg === 'FAIL'){
+										alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
+									}else{
+										alert('申请成功！');
+										window.location.reload();
+									}
+								});
+							});
 						</script>
+
 
 </div>
 

@@ -54,6 +54,7 @@ exports.setPaySign = async function (prepayid, value) {
     return data;    
 }
 
+//获取js-sdk
 exports.setWXConfig = async function(jsapi_ticket, url, value) {
     const config = await dao.getConfig();
     var wxcfg = {

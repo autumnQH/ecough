@@ -9,7 +9,7 @@ const USER = require('../utils/user');
 var User = async (ctx, next) => {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -48,7 +48,8 @@ var User = async (ctx, next) => {
 //用户订单
 var myOrder = async(ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
+  console.log(r_url,'---=-==');
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -57,7 +58,6 @@ var myOrder = async(ctx, next) => {
     result.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
     });
-    console.log(result[0].create_time);
   	await ctx.render('myOrder', {
   		data: result
   	});
@@ -81,7 +81,6 @@ var myOrder = async(ctx, next) => {
     result.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
     });
-    console.log(result[0].create_time);
             await ctx.render('myOrder', {
                 data: result
             })
@@ -104,7 +103,7 @@ var queryUserOrder = async (ctx, next) => {
 //获取订单，设置问题
 var CustomerService = async (ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + '/users/my/order';
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -150,7 +149,7 @@ var setUserService = async (ctx, next) => {
 //获取用户共享地址
 var getOpenAddress = async (ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
   if(ctx.session.openid){
@@ -204,7 +203,7 @@ var getOpenAddress = async (ctx, next) => {
 var UserCustomer = async function(ctx, next) {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -244,7 +243,7 @@ var UserCustomer = async function(ctx, next) {
 var UserVoucher =async function(ctx, next) {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -291,7 +290,7 @@ var UserVoucher =async function(ctx, next) {
 var UserIntegral =async function(ctx, next) {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 

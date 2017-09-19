@@ -29,7 +29,7 @@ var setUserService = (data) => {
 	return result;
 }
 
-//获取我的获取
+//获取我的客服
 var getUserService = () => {
 	var result = db.find("SELECT * FROM USER_SERVICE");
 	return result;
