@@ -49,9 +49,10 @@ var User = async (ctx, next) => {
 var myOrder = async(ctx, next) => {
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
+  console.log(r_url,'=======');
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
-
+      console.log(url,'url-----');
   if(ctx.session.openid){
 		var result =  await USER.getUserOrder(ctx.session.openid);
     result.forEach(function(data) {
@@ -63,7 +64,7 @@ var myOrder = async(ctx, next) => {
   }else{
 
     if(!ctx.query.code){
-      console.log('错误')；
+      console.log('错误');
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
