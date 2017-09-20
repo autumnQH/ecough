@@ -24,7 +24,11 @@
 		<input type="text" value="2017-09-19" id="datetimepicker">		
 	</div>
 
+<% if (data.length != 0 ){ %>
+	
+
 	<script>
+
 		$(function() {
 		$('#datetimepicker').datetimepicker({ 
 		　minView: "month", //选择日期后，不会再跳转去选择时分秒 
@@ -74,6 +78,7 @@
 		});
 		});
 	</script>
+<% }%>	
 <div class="main">
 <% if(data.length === 0){ %>
 	<div class="text-center">
