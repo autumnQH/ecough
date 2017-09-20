@@ -155,11 +155,11 @@
 									data: data,
 									method: 'post'
 								}).done(function(msg) {									
-									if(msg.msg === 'FAIL'){
-										alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
-									}else{
+									if(msg.msg === 'SUCCESS'){
 										alert('申请成功！');
 										window.location.reload();
+									}else{
+										alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
 									}
 								});
 							});

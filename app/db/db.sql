@@ -4,6 +4,23 @@ CREATE DATABASE ecough;
 
 USE ecough; 
 
+CREATE TABLE IF NOT EXISTS STORE (
+  product_id int(16) NOT NULL COMMENT '商品id',
+  title varchar(36) DEFAULT NULL COMMENT '网页标题',
+  keywords varchar(255) DEFAULT NULL COMMENT '网页关键字',
+  description varchar(255) DEFAULT NULL COMMENT '网页描述',
+  centent TEXT DEFAULT NULL COMMENT '网页内容',
+  name varchar(72) DEFAULT NULL COMMENT '产品名称',
+  sku_attr TEXT(255) DEFAULT NULL COMMENT '产品属性(key,key2,key3)',
+  sku_info TEXT(255) DEFAULT NULL COMMENT '多规格({specifications:price:ori_price:repertory:qr},{specifications:price:ori_price:repertory:qr})',
+  icon_url varchar(255) DEFAULT NULL COMMENT 'icon图片地址',
+  icon_url_opt TEXT DEFAULT NULL COMMENT '其他图片',
+  isPostFree tinyint(1) DEFAULT '1' COMMENT '是否包邮 1-是，0-否',
+  isHasReceipt tinyint(1) DEFAULT '0' COMMENT '是否提供发票 1-是，0-否',
+  isUnderGuaranty tinyint(1) DEFAULT '0' COMMENT '是否保修 1-是，0-否',
+  isSupportReplace tinyint(1) DEFAULT '0' COMMENT '是否支持退换货 1-是，0-否',
+  PRIMARY KEY (product_id)
+)DEFAULT CHARSET=utf8  COMMENT='产品表';
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   id int NOT NULL AUTO_INCREMENT,

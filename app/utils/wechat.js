@@ -1,7 +1,6 @@
 const crypto = require('crypto');
 const request = require('request');
 const tools = require('./tools');
-const mysql = require('./mysql');
 const dao = require('../dao/wechat');
 const fs = require('fs');
 const qr_image = require('qr-image');  
