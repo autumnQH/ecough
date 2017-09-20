@@ -63,12 +63,14 @@ var myOrder = async(ctx, next) => {
   }else{
 
     if(!ctx.query.code){
+      console.log('错误')；
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
         var user = await tools.getOauth2Token(code);
             user = JSON.parse(user);
         if(user.errcode){
+          console.log('await');
             ctx.redirect(url);
         }else{
             //拉取用户信息
