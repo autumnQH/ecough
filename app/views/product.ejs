@@ -46,9 +46,9 @@
 			      	<div specifications="<%= store.sku_info[i].specifications %>" class="hide">
 				      	<span class="col-xs-8" style="width:100%;">
 				      		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
-									<%= store.sku_info[i].price %></span> 元&nbsp;/ 件
+									<%= store.sku_info[i].price * 0.01 %></span> 元&nbsp;/ 件
 								<label class="yjia" style="text-decoration:line-through;">
-									原价：<%= store.sku_info[i].ori_price %></label>
+									原价：<%= store.sku_info[i].ori_price * 0.01 %></label>
 								</span>			      		
 							</div>
 			      	<% } %>
