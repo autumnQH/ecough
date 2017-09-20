@@ -19,13 +19,13 @@
     <script src="/js/bootstrap-datetimepicker.zh-CN.js"></script>
 </head>
 <body>
+
+<% if (data.length != 0 ){ %>
+	
 	<div class="control-group">
 		<label class="control-label">搜索:</label>
 		<input type="text" value="2017-09-19" id="datetimepicker">		
 	</div>
-
-<% if (data.length != 0 ){ %>
-	
 
 	<script>
 
@@ -154,8 +154,7 @@
 									url: '/my/refund',
 									data: data,
 									method: 'post'
-								}).done(function(msg) {
-									console.log(msg);
+								}).done(function(msg) {									
 									if(msg.msg === 'FAIL'){
 										alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
 									}else{
