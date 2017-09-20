@@ -110,7 +110,7 @@ var jssdk = async(ctx, next) => {
     var openid = ctx.query.openid;
     var total = ctx.query.total;//数量
     var specifications = ctx.query.specifications;//规格
-
+    var product_id = ctx.query.product;//商品ID
     var store = await STORE.getStoreById(product_id);
     store.sku_attr = store.sku_attr.split(',');
     store.sku_info = store.sku_info.split(',').map(function(val, index, arr) {
