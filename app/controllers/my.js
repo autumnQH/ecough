@@ -25,6 +25,7 @@ var PreOrder = async (ctx, next) => {
         });       
     }else{
         if(!ctx.query.code){
+            console.log('jin来了');
             ctx.redirect(url);
         }else{
             let code = ctx.query.code;
