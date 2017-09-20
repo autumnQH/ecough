@@ -71,7 +71,6 @@ var admin_setOrder = async function (ctx, next) {
     a(ctx, next);
     var req = ctx.request.body;
     req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-    USER.setUserFlagByOpenId(req.openid);//关闭首单
     tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
     wechat.setOrder(req);
     await ctx.redirect('/users/my/order');
@@ -150,7 +149,6 @@ var adminSetDeliver = async(ctx, next) => {
             USER.setUserVoucher(data);            
 
         }
-            USER.addUserOrderCount(openid);//下单次数+1
 
         await ctx.redirect('/admin/order');
     }else{

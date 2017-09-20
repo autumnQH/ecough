@@ -48,65 +48,29 @@ var postHandle = async(ctx, next) => {
             
             if(msg.Ticket){
                 //记录用户扫描带参数的二维码
-                var openid = openid;
-                var ticket = msg.Ticket[0];
                 var eventKey = msg.EventKey[0];
                     //修改用户备注
-                    tools.updateremark(token, openid, eventKey);
-                
+                tools.updateremark(token, openid, eventKey);
 
-
-
-                // //var result = await wechat.getOneUser(openid, ticket, eventKey);
-                // var result = await wechat.getOneUser(openid);
-                
-
-                // //如果未关注，则记录
-                // if(result.length == 0){
-                //     var data = {
-                //         openid: openid,//openId
-                //         ticket: ticket,//二维码ticket
-                //         eventKey: eventKey, //事件key值           
-                //         create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
-                //     }; 
-                //     wechat.updateUser(data); 
-                // //如果之前关注。又扫描二维码。            
-                // }else{
-                    // var data = {
-                    //     ticket: ticket,
-                    //     eventKey: eventKey,
-                    //     create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
-                    // };
-                    // dao.updateUser(data, {openid: openid});
-                // }
+                var data = {                        
+                    eventKey: eventKey,
+                    create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+                };
+                wechat.updateUser(data, {openid: openid});
                 
             }
-            // //记录用户首次关注时间
-            // var result =  await wechat.getOpenIdForSubscribe(openid);
-            // console.log(result,'asdasdasdasd');
-            // if(result.length == 0){
-            //     var data = {
-            //         openid: openid,
-            //         flag: '1',
-            //         create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD')
-            //     }
-            //     wechat.addOpenIdForSubscribe(data);
-            // }
         //如果已经关注，但是扫描了其他人的二维码
         }else if(msg.Event[0] == 'SCAN') {
-             var openid = msg.FromUserName[0];
-             var ticket = msg.Ticket[0];
-             var eventKey = msg.EventKey[0];
-            // var create_time = moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss');
-            // var data = {
-            //     ticket: ticket,
-            //     eventKey: eventKey,
-            //     create_time: create_time
-            // };
-            // dao.updateUser(data, {openid: openid});
-
+            var eventKey = msg.EventKey[0];
                 //修改用户备注
                 tools.updateremark(token, openid, eventKey);
+            var data = {
+                eventKey: eventKey,
+                create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+            };
+            wechat.updateUser(data, {openid: openid});
+
+                //修改用户备注
 
         }else if(msg.Event[0] == 'merchant_order') {
             //记录微信小店用户购买产品

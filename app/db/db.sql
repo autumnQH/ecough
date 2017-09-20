@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
   openid varchar(128) NOT NULL COMMENT 'openid',
   headimgurl varchar(255) DEFAULT NULL COMMENT '用户头像url',
   nick varchar(20) DEFAULT NULL COMMENT '用户昵称',
+  eventKey varchar(128) DEFAULT NULL COMMENT '推广人',
   phone varchar(16) DEFAULT NULL COMMENT '用户电话',
   integral int(16) DEFAULT 0 COMMENT '积分', 
   create_time datetime DEFAULT NULL COMMENT '',

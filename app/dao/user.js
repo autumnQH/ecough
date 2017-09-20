@@ -69,14 +69,7 @@ var getUserFlagByOpenId = (openid)=> {
 	var result = db.findOne("SELECT flag FROM T_WECHAT_USER WHERE openid = '"+openid + "'");
 	return result;
 }
-var setUserFlagByOpenId = (openid) => {
-	var result = db.update("T_WECHAT_USER", {flag: false}, {openid: openid});
-	return result;
-}
-var addUserOrderCount = (openid)=> {
-	var result = db.find("update T_WECHAT_USER set order_count = order_count+1, flag = false where openid = '"+openid +"'");
-	return result;
-}
+
 var setUserPhone = (data) => {
 	var result = db.find("UPDATE T_WECHAT_USER SET integral = integral+"+data.integral+", phone = "+data.phone+" WHERE openid = '"+data.openid +"'");
 	return result;
@@ -95,6 +88,5 @@ module.exports = {
 	getUserVoucherByOpenId: getUserVoucherByOpenId,
 	setUserVoucher: setUserVoucher,
 	getUserFlagByOpenId: getUserFlagByOpenId,
-	setUserFlagByOpenId: setUserFlagByOpenId,
 	setUserPhone: setUserPhone
 };

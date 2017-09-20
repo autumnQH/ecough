@@ -40,15 +40,6 @@ exports.getUserFlagByOpenId = async function(openid) {
 	return dao.getUserFlagByOpenId(openid);
 }
 
-exports.setUserFlagByOpenId = async function (openid) {
-	return dao.setUserFlagByOpenId(openid);
-}
-
-//下单次数+1
-exports.addUserOrderCount = async function(openid) {
-	return dao.addUserOrderCount(openid);
-}
-
 //用户绑定手机号
 exports.setUserPhone = async function(data) {
 	return dao.setUserPhone(data);
