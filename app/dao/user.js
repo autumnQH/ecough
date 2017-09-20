@@ -52,7 +52,7 @@ var delUserForIntegralByOpendId = (value, openid) => {
 	return result
 }
 
-var addUserForIntegralByOpendId = () => {
+var addUserForIntegralByOpendId = (value, openid) => {
   var result = db.update("T_WECHAT_USER", value, openid);
   return result;
 }
@@ -67,6 +67,10 @@ var setUserVoucher = (data)=> {
 }
 var getUserFlagByOpenId = (openid)=> {
 	var result = db.findOne("SELECT flag FROM T_WECHAT_USER WHERE openid = '"+openid + "'");
+	return result;
+}
+var setUserFlagByOpenId = (openid) => {
+	var result = db.update("T_WECHAT_USER" {flag: true}, {openid: openid});
 	return result;
 }
 var addUserOrderCount = (openid)=> {
@@ -91,5 +95,6 @@ module.exports = {
 	getUserVoucherByOpenId: getUserVoucherByOpenId,
 	setUserVoucher: setUserVoucher,
 	getUserFlagByOpenId: getUserFlagByOpenId,
+	setUserFlagByOpenId: setUserFlagByOpenId,
 	setUserPhone: setUserPhone
 };

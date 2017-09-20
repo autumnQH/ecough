@@ -71,6 +71,7 @@ var admin_setOrder = async function (ctx, next) {
     a(ctx, next);
     var req = ctx.request.body;
     req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+
     wechat.setOrder(req);
     await ctx.redirect('/users/my/order');
 
@@ -121,7 +122,6 @@ var adminSetDeliver = async(ctx, next) => {
     a(ctx, next);
     var req = ctx.request.body;
     var data = await dao.getOutTradeNo(req.out_trade_no);
-    console.log(data,'订单数据');
     var config = await dao.getConfig();
     var token = await dao.getActiveAccessToken();
     if(data.id){
@@ -135,19 +135,20 @@ var adminSetDeliver = async(ctx, next) => {
             //下单送积分
             var integral = await USER.getUserForIntegralByOpenId(openid);
             var number = integral.integral + (pay_money*config.shoping_integral);
-            console.log(number,'number');        
+            
                 USER.addUserForIntegralByOpendId({integral: number}, {openid: openid});
             // 推广人获得代金券
             var userinfo = await tools.getUserInfo2(token, openid);
-            console.log(userinfo,'userinfo');
+            
             let data = {
                 openid: userinfo.remark,
                 voucher_type: '推广代金券',
                 create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
                 voucher_denomination: config.spread_voucher
             };
-            console.log(data,'data');
-            USER.setUserVoucher(data);      
+            USER.setUserVoucher(data);
+            USER.setUserFlagByOpenId(openid);//关闭首单
+
         }
             USER.addUserOrderCount(openid);//下单次数+1
 

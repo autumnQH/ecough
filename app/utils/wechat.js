@@ -94,9 +94,6 @@ exports.getImageMessage = async (msg) => {
         }
     });
     var qrurl =  await tools.getQRCode(token, json);
-    // console.log(qrurl,'qrurl');
-    // dao.setQRCode(_.assign(qrurl, JSON.parse(json)));
-    // console.log(_.assign(qrurl, JSON.parse(json)),'assign');
     var userinfo =  await tools.getUserInfo2(token, msg.FromUserName[0]);
     var data =  await tools.uploadFile(userinfo, token, qrurl);    
     return xml.jsonToXml({
