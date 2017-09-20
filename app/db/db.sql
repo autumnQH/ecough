@@ -125,17 +125,12 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   server_host varchar(255) DEFAULT '' COMMENT '网站',
   template_title TEXT DEFAULT NULL COMMENT '支付成功模版消息标题',
   template_remake TEXT DEFAULT NULL COMMENT '支付成功模版消息备注',
-  original_money_13 int(36) DEFAULT 1 COMMENT '1.3米规格原价',
-  current_money_13 int(36) DEFAULT 1 COMMENT '1.3米规格现价',
-  original_money_10 int(36) DEFAULT 1 COMMENT '1.0米规格原价',
-  current_money_10 int(36) DEFAULT 1 COMMENT '1.0米规格现价',
   derate_money int(36) DEFAULT 0 COMMENT '首单代金券',
   spread_voucher varchar(10) DEFAULT 1 COMMENT '推广获得m面值代金券',
   signup_phone_integral varchar(10) DEFAULT '0' COMMENT '注册手机获得x积分',
   shoping_integral varchar(10) DEFAULT '0' COMMENT '购买商品获得x积分',
   n_integral varchar(10) DEFAULT '0' COMMENT 'n积分换取m面值代金券',
   m_voucher varchar(10) DEFAULT '0' COMMENT 'm面值代金券',
-  default_total varchar(4) DEFAULT '10' COMMENT '默认分页',
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 COMMENT='config';
 
