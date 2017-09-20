@@ -47,13 +47,10 @@ var User = async (ctx, next) => {
 
 //用户订单
 var myOrder = async(ctx, next) => {
-  console.log('进来了');
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
-  console.log(r_url,'=======');
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
-      console.log(url,'url-----');
   if(ctx.session.openid){
 		var result =  await USER.getUserOrder(ctx.session.openid);
     result.forEach(function(data) {
@@ -65,15 +62,13 @@ var myOrder = async(ctx, next) => {
   }else{
 
     if(!ctx.query.code){
-      console.log('错误');
         ctx.redirect(url);
     }else{
         let code = ctx.query.code;
         var user = await tools.getOauth2Token(code);
             user = JSON.parse(user);
-            console.log(user,'user');
+
         if(user.errcode){
-          console.log('await', user.errcode);
             ctx.redirect(url);
         }else{
             //拉取用户信息
@@ -95,7 +90,6 @@ var myOrder = async(ctx, next) => {
 }
 
 var queryUserOrder = async (ctx, next) => {
-  console.log('进来了!!!');
   var req = ctx.request.body;
   var data = await USER.queryUserOrder(req);
   data.forEach(function(d){
