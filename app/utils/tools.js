@@ -243,18 +243,19 @@ exports.sendTemplateMessage = async (server_host, openid) => {
       }
     }
   });  
-  console.log(json);
   let options = {
     url: 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=' + token,
     method: 'post',
     body: json
   };
-  request(options, function(err, res, body) {
-    if(body){
-      return resolve(JSON.parse(body));
-    }else{
-      return reject(JSON.parse(err));
-    }
+  return new Promise(function(resolve, reject) {
+    request(options, function(err, res, body) {
+      if(body){
+        return resolve(JSON.parse(body));
+      }else{
+        return reject(JSON.parse(err));
+      }
+    });   
   });
 }
 

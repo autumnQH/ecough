@@ -53,9 +53,11 @@ var myOrder = async(ctx, next) => {
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
   if(ctx.session.openid){
 		var result =  await USER.getUserOrder(ctx.session.openid);
+    console.log(result);
     result.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
     });
+
   	await ctx.render('myOrder', {
   		data: result
   	});
@@ -77,6 +79,7 @@ var myOrder = async(ctx, next) => {
             ctx.session = userinfo;
 
             var result =  await USER.getUserOrder(ctx.session.openid);
+            console.log(result);
     result.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
     });
