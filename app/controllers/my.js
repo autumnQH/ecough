@@ -180,13 +180,11 @@ var refund = async function(ctx, next) {
     req.out_refund_no = req.out_trade_no;//退款号=订单号
     req.refund_fee = parseInt(req.total_fee* 100);//退款金额=支付金额
     req.total_fee = parseInt(req.total_fee* 100);
-    console.log(req);
     var refund = await pay.refund(req);    
     var xml = refund.xml;  
-    console.log(xml);
     if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
         if(xml.result_code[0] === 'SUCCESS'){
-            wechat.delOrderByOutTradeNo(req.out_trade_no);
+            await wechat.delOrderByOutTradeNo(req.out_trade_no);
             return ctx.body = {
                 msg: xml.result_code[0]
             }
