@@ -153,7 +153,7 @@ var notify = async function(ctx, next) {
         }
         //console.log(data,'数据');
         dao.setNOTIFY(data);
-        wechat.customUpdateUser(data.appid); //记录用户购买一次         
+        wechat.customUpdateUser(data.openid); //记录用户购买一次         
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
             return_msg: msg.return_code[0]
