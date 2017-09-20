@@ -1,0 +1,49 @@
+[2017-09-11 16:20:02.912] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /user/order/address
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: Error
+err message: Table 'ecough.user_address' doesn't exist
+err stack: Error: Table 'ecough.user_address' doesn't exist
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+*************** error log end ***************
+
+[2017-09-11 16:35:14.799] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /admin/setconfig
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"appid":"wxc25f48089fba29f3","appSecret":"328f39d113a5e31d58b0fb20cdccb4c7","token":"ecough","store_mchid":"1470073502","store_key":"qwertyuiopasdfghjklzxcvbnm123456","encodingAESKey":"9dq7tO5Gi7iP6tIiCUBUXM55eVG8CGCWuRS2zyk5CPS","message_text":"终于等到您，还好没放弃！","message_default":"冥冥之中自有缘分！","sms_accessKeyId":"LTAI8ttec2BYuOMC","sms_secretAccessKey":"3sDGHGwyQWpNwCdSYoomAWFGj9wSUj","sms_TemplateCode":"SMS_91000028","sms_SignName":"刘鹏","server_host":"http://www.e-cough.com","original_money":"1","current_money":"","derate_money":"0"}
+response time: undefined
+err name: Error
+err message: Unknown column 'current_money' in 'field list'
+err stack: Error: Unknown column 'current_money' in 'field list'
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+*************** error log end ***************
+

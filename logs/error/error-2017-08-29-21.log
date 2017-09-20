@@ -1,0 +1,15 @@
+[2017-08-29 21:48:15.535] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 488
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+

@@ -1,0 +1,72 @@
+[2017-09-19 17:57:52.729] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /admin/setconfig
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"appid":"wxc25f48089fba29f3","appSecret":"328f39d113a5e31d58b0fb20cdccb4c7","token":"ecough","store_mchid":"","store_key":"","encodingAESKey":"","message_text":"终于等到您，还好没放弃","message_default":"冥冥之中自有缘分","sms_accessKeyId":"LTAINwfFawyv12AY","sms_secretAccessKey":"m0qh5MlwsP8aCE6Uf6UHrAI30H2U1l","sms_TemplateCode":"SMS_91895031","sms_SignName":"覃海","server_host":"http://guonzaofmb.localtunnel.me","original_money":"","current_money":"","derate_money":"0"}
+response time: undefined
+err name: Error
+err message: Unknown column 'original_money' in 'field list'
+err stack: Error: Unknown column 'original_money' in 'field list'
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:189:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+*************** error log end ***************
+
+[2017-09-19 17:58:45.882] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /admin/setconfig
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"appid":"wxc25f48089fba29f3","appSecret":"328f39d113a5e31d58b0fb20cdccb4c7","token":"ecough","store_mchid":"","store_key":"","encodingAESKey":"","message_text":"终于等到您，还好没放弃","message_default":"冥冥之中自有缘分","sms_accessKeyId":"LTAINwfFawyv12AY","sms_secretAccessKey":"m0qh5MlwsP8aCE6Uf6UHrAI30H2U1l","sms_TemplateCode":"SMS_91895031","sms_SignName":"覃海","server_host":"http://guonzaofmb.localtunnel.me","original_money":"","current_money":"","derate_money":"0"}
+response time: undefined
+err name: Error
+err message: Unknown column 'original_money' in 'field list'
+err stack: Error: Unknown column 'original_money' in 'field list'
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:189:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+*************** error log end ***************
+
+[2017-09-19 17:59:29.101] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /admin/setconfig
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"appid":"wxc25f48089fba29f3","appSecret":"328f39d113a5e31d58b0fb20cdccb4c7","token":"ecough","store_mchid":"","store_key":"","encodingAESKey":"","message_text":"终于等到您，还好没放弃","message_default":"冥冥之中自有缘分","sms_accessKeyId":"LTAINwfFawyv12AY","sms_secretAccessKey":"m0qh5MlwsP8aCE6Uf6UHrAI30H2U1l","sms_TemplateCode":"SMS_91895031","sms_SignName":"覃海","server_host":"http://guonzaofmb.localtunnel.me","original_money":"","current_money":"","derate_money":"0"}
+response time: undefined
+err name: Error
+err message: Unknown column 'original_money' in 'field list'
+err stack: Error: Unknown column 'original_money' in 'field list'
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:189:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+*************** error log end ***************
+

@@ -1,0 +1,205 @@
+[2017-09-10 12:28:11.012] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-09-10 12:28:58.597] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:45
+    43|                             <span class="col-xs-8" style="width:100%;">
+    44|                                                 现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
+ >> 45|                                                 <%= current_money %></span> 元&nbsp;/ 件
+    46|                                                 <label class="yjia" style="text-decoration:line-through;">原价：<%= original_money %></label>
+    47|                             </span>
+    48|                   </div>
+
+current_money is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:45
+    43|                             <span class="col-xs-8" style="width:100%;">
+    44|                                                 现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
+ >> 45|                                                 <%= current_money %></span> 元&nbsp;/ 件
+    46|                                                 <label class="yjia" style="text-decoration:line-through;">原价：<%= original_money %></label>
+    47|                             </span>
+    48|                   </div>
+
+current_money is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-09-10 12:29:21.823] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-09-10 12:29:23.782] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-09-10 12:29:30.336] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/home.ejs:139
+    137|                 var total = $('#total').val();
+    138|                 var specifications = $('.active').text();
+ >> 139|             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications);
+    140|             });
+    141|         });
+    142|     </script>
+
+userinfo is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+

@@ -1,0 +1,289 @@
+[2017-09-12 20:00:55.862] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=90df3e20bc5aabe6ddb317b9e9c5aa80d2a61dd8&timestamp=1505217649&nonce=1007705364&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505217648"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:160:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:106:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:01:26.073] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=859d2d3bbc7954d9e7b745075fe9ad6fc4b36891&timestamp=1505217683&nonce=1082131652&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505217683"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:160:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:107:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:01:52.466] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=2ae20d2b7297ba98861383679d8f74ad9b9acb1d&timestamp=1505217710&nonce=938222047&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505217710"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:160:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:107:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:03:30.953] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=71e9545ef8fb94761bd868a164a744ccf1ecce40&timestamp=1505217807&nonce=154900770&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505217807"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:160:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:107:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:04:07.488] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=e95811a8aec23ee58da554dba45739fc877d12ee&timestamp=1505217844&nonce=296763098&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505217844"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:160:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:108:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:06:35.170] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=69392efa40a59c8e89816333b887caea7f87ff8c&timestamp=1505217993&nonce=1975388620&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505217993"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: SyntaxError
+err message: Unexpected token o in JSON at position 1
+err stack: SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:104:17)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:07:25.302] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=f54535ec6b12644c997c904135bfbf877030ccdb&timestamp=1505218042&nonce=1949910333&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505218042"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:160:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:111:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:10:34.297] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=6e6a9eccd6e5a06930cbab445b95cb423e42b839&timestamp=1505218228&nonce=36806740&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505218228"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:161:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:96:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:10:36.355] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=6e6a9eccd6e5a06930cbab445b95cb423e42b839&timestamp=1505218228&nonce=36806740&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505218228"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:161:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:96:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:13:29.121] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=65bd1e12892d95fa6d9e8a14a201481dfa9807ab&timestamp=1505218405&nonce=1610712202&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505218405"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:161:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:96:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:29:18.013] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=51cfb14cf06e38a1a7aa60dabe167f2760b8add7&timestamp=1505219356&nonce=1479224292&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505219356"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: ReferenceError
+err message: ctx is not defined
+err stack: ReferenceError: ctx is not defined
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:83:38)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:30:02.572] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=9c7a10cd0ce0c75a6b2a477df72e51a6fcfcba34&timestamp=1505219399&nonce=17642653&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505219399"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: ReferenceError
+err message: urlencode is not defined
+err stack: ReferenceError: urlencode is not defined
+    at postHandle (/Users/mac/Documents/ecough1/ecough/app/controllers/wechat.js:124:28)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:30:26.746] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=81de5fe9632e2ba0551760c3b815d5d40786ea3a&timestamp=1505219421&nonce=1717904010&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505219421"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: ReferenceError
+err message: tools is not defined
+err stack: ReferenceError: tools is not defined
+    at postHandle (/Users/mac/Documents/ecough1/ecough/app/controllers/wechat.js:127:22)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:30:54.760] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=0f280559167a00f3b91fb0e0374c681cccc309c4&timestamp=1505219448&nonce=1267273934&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505219448"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:161:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:96:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:30:56.096] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=0f280559167a00f3b91fb0e0374c681cccc309c4&timestamp=1505219448&nonce=1267273934&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505219448"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:161:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:96:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-12 20:31:51.289] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=cf3baab4c69a33f49ea835ef305f42690855b309&timestamp=1505219505&nonce=126313230&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505219505"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: Bad data
+err stack: Error: Bad data
+    at encode (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/encode.js:147:15)
+    at QR (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr-base.js:170:19)
+    at Object.qr_image_sync [as imageSync] (/Users/mac/Documents/ecough1/ecough/node_modules/qr-image/lib/qr.js:85:18)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:161:21)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:96:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+

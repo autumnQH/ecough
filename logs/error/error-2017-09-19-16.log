@@ -1,0 +1,27 @@
+[2017-09-19 16:20:00.264] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10"}
+response time: undefined
+err name: ReferenceError
+err message: USER is not defined
+err stack: ReferenceError: USER is not defined
+    at refund (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:175:26)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:345:16
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:350:31)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at serve (/Users/mac/Documents/ecough1/ecough/node_modules/koa-static/index.js:47:14)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at bodyParser (/Users/mac/Documents/ecough1/ecough/node_modules/koa-bodyparser/index.js:86:11)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+

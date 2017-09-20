@@ -1,0 +1,360 @@
+[2017-08-30 09:20:19.140] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 449
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:20:45.775] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 375
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:22:00.260] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 673
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:22:01.673] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 217
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:22:27.196] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 340
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:24:12.333] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 454
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:25:21.740] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 600
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:26:24.212] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 371
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:27:39.224] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 444
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:27:50.683] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 400
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:28:33.556] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 325
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:30:50.244] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 360
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:32:29.293] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 570
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:33:30.204] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 398
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:34:32.398] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 412
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:38:59.531] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 373
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:42:12.405] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 326
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:42:18.968] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 233
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:44:14.895] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 318
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:48:59.434] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 396
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:54:02.583] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 339
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:54:14.175] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 205
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:56:28.632] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 338
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-08-30 09:58:08.799] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 358
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:106:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+

@@ -1,0 +1,172 @@
+[2017-09-19 15:17:15.329] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /users/my/order/query
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"date":"2017-09-01","openid":"o5Yi9wOfXWopOcMYiujWBZmwBH0Q"}
+response time: undefined
+err name: TypeError
+err message: tools.format is not a function
+err stack: TypeError: tools.format is not a function
+    at /Users/mac/Documents/ecough1/ecough/app/controllers/user.js:98:27
+    at Array.forEach (native)
+    at queryUserOrder (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:97:8)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-19 15:45:36.142] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","out_refund_no":"20170918001","refund_fee":"10"}
+response time: undefined
+err name: TypeError
+err message: Cannot read property 'mch_id' of undefined
+err stack: TypeError: Cannot read property 'mch_id' of undefined
+    at Object.exports.refund (/Users/mac/Documents/ecough1/ecough/app/utils/pay.js:81:24)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-19 15:47:19.606] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","out_refund_no":"20170918001","refund_fee":"10"}
+response time: undefined
+err name: TypeError
+err message: Cannot read property 'mch_id' of undefined
+err stack: TypeError: Cannot read property 'mch_id' of undefined
+    at Object.exports.refund (/Users/mac/Documents/ecough1/ecough/app/utils/pay.js:81:24)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-19 15:47:53.856] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","out_refund_no":"20170918001","refund_fee":"10","nonce_str":"2MMMSkX84eJheapryS6X6RDbpPskJ4MM","sign":"397EADE25257BF4CC1494B7470BF2A61"}
+response time: undefined
+err name: Error
+err message: non-error thrown: [object Promise]
+err stack: Error: non-error thrown: [object Promise]
+    at Object.onerror (/Users/mac/Documents/ecough1/ecough/node_modules/koa/lib/context.js:107:40)
+    at onerror (/Users/mac/Documents/ecough1/ecough/node_modules/koa/lib/application.js:133:34)
+    at runMicrotasksCallback (internal/process/next_tick.js:58:5)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+*************** error log end ***************
+
+[2017-09-19 15:49:31.951] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","appid":"wxc25f48089fba29f3","mch_id":"","out_refund_no":"20170918001","refund_fee":"10","nonce_str":"P8wxKtS7DW3wrbyXt8H2DCD3P6xtnzCd","sign":"7249EB833E78D47F936B974CAF675CE8"}
+response time: undefined
+err name: Error
+err message: non-error thrown: [object Promise]
+err stack: Error: non-error thrown: [object Promise]
+    at Object.onerror (/Users/mac/Documents/ecough1/ecough/node_modules/koa/lib/context.js:107:40)
+    at onerror (/Users/mac/Documents/ecough1/ecough/node_modules/koa/lib/application.js:133:34)
+    at runMicrotasksCallback (internal/process/next_tick.js:58:5)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+*************** error log end ***************
+
+[2017-09-19 15:51:27.195] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","appid":"wxc25f48089fba29f3","mch_id":"","out_refund_no":"20170918001","refund_fee":"10","nonce_str":"mjWPSTMwXRBfbzrKGCHEHP3YjrZzHzKH","sign":"8741E040EF3F03CCB9193854F01D743F"}
+response time: undefined
+err name: Error
+err message: non-error thrown: [object Promise]
+err stack: Error: non-error thrown: [object Promise]
+    at Object.onerror (/Users/mac/Documents/ecough1/ecough/node_modules/koa/lib/context.js:107:40)
+    at onerror (/Users/mac/Documents/ecough1/ecough/node_modules/koa/lib/application.js:133:34)
+    at runMicrotasksCallback (internal/process/next_tick.js:58:5)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+*************** error log end ***************
+
+[2017-09-19 15:51:57.590] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","appid":"wxc25f48089fba29f3","mch_id":"","out_refund_no":"20170918001","refund_fee":"10","nonce_str":"KiRjErd833HdibScdtpK5GZGRJ3RKk6j","sign":"68779CA184F58D4C440544EF0A3DF59A"}
+response time: undefined
+err name: Error
+err message: mac verify failure
+err stack: Error: mac verify failure
+    at Object.createSecureContext (_tls_common.js:133:17)
+    at Object.exports.connect (_tls_wrap.js:1022:48)
+    at Agent.createConnection (https.js:83:22)
+    at Agent.createSocket (_http_agent.js:195:26)
+    at Agent.addRequest (_http_agent.js:157:10)
+    at new ClientRequest (_http_client.js:212:16)
+    at Object.request (http.js:26:10)
+    at Object.request (https.js:206:15)
+    at Request.start (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:755:32)
+    at Request.write (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:1511:10)
+    at end (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:552:18)
+    at Immediate.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:581:7)
+    at runCallback (timers.js:651:20)
+    at tryOnImmediate (timers.js:624:5)
+    at processImmediate [as _immediateCallback] (timers.js:596:5)
+*************** error log end ***************
+
+[2017-09-19 15:54:33.717] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","appid":"wxc25f48089fba29f3","mch_id":"1470073502","out_refund_no":"20170918001","refund_fee":"10","nonce_str":"yr5W784P7nSGWEcWAkKfeKB6SjW3WyX5","sign":"92ACDC820B3489F13E398D00A4FB850A"}
+response time: undefined
+err name: Error
+err message: mac verify failure
+err stack: Error: mac verify failure
+    at Object.createSecureContext (_tls_common.js:133:17)
+    at Object.exports.connect (_tls_wrap.js:1022:48)
+    at Agent.createConnection (https.js:83:22)
+    at Agent.createSocket (_http_agent.js:195:26)
+    at Agent.addRequest (_http_agent.js:157:10)
+    at new ClientRequest (_http_client.js:212:16)
+    at Object.request (http.js:26:10)
+    at Object.request (https.js:206:15)
+    at Request.start (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:755:32)
+    at Request.write (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:1511:10)
+    at end (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:552:18)
+    at Immediate.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/request/request.js:581:7)
+    at runCallback (timers.js:651:20)
+    at tryOnImmediate (timers.js:624:5)
+    at processImmediate [as _immediateCallback] (timers.js:596:5)
+*************** error log end ***************
+
+[2017-09-19 15:57:02.157] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /my/refund
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"out_trade_no":"20170918001","total_fee":"10","appid":"wxc25f48089fba29f3","mch_id":"1470073502","out_refund_no":"20170918001","refund_fee":"10","nonce_str":"sAK3ESCYmChDKcR5mWX3jCm6XFBWYKtK","sign":"181D801B6A1D4EB18F271CC84CE30B8F"}
+response time: undefined
+err name: TypeError
+err message: refund.then is not a function
+err stack: TypeError: refund.then is not a function
+    at refund (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:179:24)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+

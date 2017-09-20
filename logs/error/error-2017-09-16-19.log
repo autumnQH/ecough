@@ -1,0 +1,15 @@
+[2017-09-16 19:28:25.361] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/voucher
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: TypeError
+err message: dao.getUserFlagByOpenId is not a function
+err stack: TypeError: dao.getUserFlagByOpenId is not a function
+    at Object.exports.getUserFlagByOpenId (/Users/mac/Documents/ecough1/ecough/app/utils/user.js:37:13)
+    at UserVoucher (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:224:27)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+

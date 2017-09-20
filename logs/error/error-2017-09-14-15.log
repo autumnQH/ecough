@@ -1,0 +1,130 @@
+[2017-09-14 15:11:14.237] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=cf277d56fbc78139a24b5e66b5dd3dad45652ea7&timestamp=1505373066&nonce=391342307&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505373066"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: ../src/Image.cc:341 Unknow format
+err stack: Error: ../src/Image.cc:341 Unknow format
+    at WrappedImage.loadFromBuffer (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:54:22)
+    at WrappedImage.loadFromBuffer (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:142:34)
+    at Function.images.loadFromBuffer (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:214:27)
+    at Function.images.loadFromFile (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:206:19)
+    at images (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:172:24)
+    at /Users/mac/Documents/ecough1/ecough/app/utils/qr.js:27:21
+    at Object.exports.qr_logo (/Users/mac/Documents/ecough1/ecough/app/utils/qr.js:17:10)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:179:12)
+*************** error log end ***************
+
+[2017-09-14 15:14:02.292] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=38fa0bcd8985b7ab75c602495de10b4d35726852&timestamp=1505373239&nonce=918450202&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505373239"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: TypeError
+err message: Cannot read property 'qr' of undefined
+err stack: TypeError: Cannot read property 'qr' of undefined
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:178:20)
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:97:29)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-14 15:17:09.380] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=0a341d9d401126213321af3c69a5fff8876ea335&timestamp=1505373415&nonce=1331111400&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505373415"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: ../src/Image.cc:341 Unknow format
+err stack: Error: ../src/Image.cc:341 Unknow format
+    at WrappedImage.loadFromBuffer (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:54:22)
+    at WrappedImage.loadFromBuffer (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:142:34)
+    at Function.images.loadFromBuffer (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:214:27)
+    at Function.images.loadFromFile (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:206:19)
+    at images (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:172:24)
+    at /Users/mac/Documents/ecough1/ecough/app/utils/qr.js:27:21
+    at Object.exports.qr_logo (/Users/mac/Documents/ecough1/ecough/app/utils/qr.js:17:10)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:180:23)
+*************** error log end ***************
+
+[2017-09-14 15:18:12.255] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=2a9b1cf60a4d68450dd8d516b7e0f4a107b7c0c8&timestamp=1505373487&nonce=1880074562&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505373487"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: ReferenceError
+err message: logg is not defined
+err stack: ReferenceError: logg is not defined
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:181:15)
+*************** error log end ***************
+
+[2017-09-14 15:24:33.565] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=c33fb12888f1ff571c6478b26021c660455e2ecc&timestamp=1505373867&nonce=1320685265&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505373867"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: TypeError
+err message: ../src/Image.cc:390 Invalid arguments
+err stack: TypeError: ../src/Image.cc:390 Invalid arguments
+    at WrappedImage.draw (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:69:22)
+    at WrappedImage.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:142:34)
+    at /Users/mac/Documents/ecough1/ecough/app/utils/qr.js:29:35
+    at Object.exports.qr_logo (/Users/mac/Documents/ecough1/ecough/app/utils/qr.js:18:10)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:180:23)
+*************** error log end ***************
+
+[2017-09-14 15:26:54.596] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=e3ce6937b71550b42a6dbbed7b239fc3f240c0da&timestamp=1505374011&nonce=1865146466&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505374011"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: ENOENT: no such file or directory, open 'backage.jep'
+err stack: Error: ENOENT: no such file or directory, open 'backage.jep'
+    at Object.fs.openSync (fs.js:582:18)
+    at Object.fs.readFileSync (fs.js:489:33)
+    at Function.images.loadFromFile (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:206:37)
+    at images (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:172:24)
+    at /Users/mac/Documents/ecough1/ecough/app/utils/qr.js:29:5
+    at Object.exports.qr_logo (/Users/mac/Documents/ecough1/ecough/app/utils/qr.js:17:10)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:180:23)
+*************** error log end ***************
+
+[2017-09-14 15:27:12.317] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=29870f98186594e1dc7ff905f219d08d7a33fb4a&timestamp=1505374028&nonce=1698562194&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505374028"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: Error
+err message: ENOENT: no such file or directory, open 'backage.jpg'
+err stack: Error: ENOENT: no such file or directory, open 'backage.jpg'
+    at Object.fs.openSync (fs.js:582:18)
+    at Object.fs.readFileSync (fs.js:489:33)
+    at Function.images.loadFromFile (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:206:37)
+    at images (/Users/mac/Documents/ecough1/ecough/node_modules/images/index.js:172:24)
+    at /Users/mac/Documents/ecough1/ecough/app/utils/qr.js:29:5
+    at Object.exports.qr_logo (/Users/mac/Documents/ecough1/ecough/app/utils/qr.js:17:10)
+    at Object.exports.uploadFile (/Users/mac/Documents/ecough1/ecough/app/utils/tools.js:180:23)
+*************** error log end ***************
+

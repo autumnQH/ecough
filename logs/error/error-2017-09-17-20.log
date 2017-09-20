@@ -1,0 +1,240 @@
+[2017-09-17 20:01:07.568] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:01:30.787] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:02:04.494] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:03:42.609] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:04:39.358] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:07:53.604] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:10:01.564] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: ReferenceError
+err message: Message is not defined
+err stack: ReferenceError: Message is not defined
+    at send (/Users/mac/Documents/ecough1/ecough/app/controllers/sms.js:21:37)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:10:56.230] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:11:20.622] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: ReferenceError
+err message: Message is not defined
+err stack: ReferenceError: Message is not defined
+    at send (/Users/mac/Documents/ecough1/ecough/app/controllers/sms.js:21:37)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:16:01.790] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:18:26.415] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:23:16.001] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.SMS_SIGNATURE_ILLEGALError
+err message: 签名不合法(不存在或被拉黑)
+err stack: isv.SMS_SIGNATURE_ILLEGALError: 签名不合法(不存在或被拉黑)
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:23:48.967] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.SMS_SIGNATURE_ILLEGALError
+err message: 签名不合法(不存在或被拉黑)
+err stack: isv.SMS_SIGNATURE_ILLEGALError: 签名不合法(不存在或被拉黑)
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:24:18.648] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:25:02.227] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-17 20:26:11.020] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sms/send
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"phone":"15977477245"}
+response time: undefined
+err name: isv.BUSINESS_LIMIT_CONTROLError
+err message: 触发小时级流控Permits:5
+err stack: isv.BUSINESS_LIMIT_CONTROLError: 触发小时级流控Permits:5
+    at httpx.request.then.then (/Users/mac/Documents/ecough1/ecough/node_modules/@alicloud/pop-core/lib/core.js:149:19)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+

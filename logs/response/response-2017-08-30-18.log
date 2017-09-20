@@ -1,0 +1,156 @@
+[2017-08-30 18:20:05.391] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 118
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:25:55.127] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 416
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:26:25.089] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 306
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:26:46.946] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 328
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:27:39.063] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 278
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:41:57.661] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 129
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:44:23.676] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+
+[2017-08-30 18:44:34.045] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 6
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:46:42.404] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 216
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:49:04.409] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 77
+response status: 200
+response body: 
+[{"id":1,"openid":"123123","name":"覃海","address":"起走","phone":"15977477245"},{"id":2,"openid":"123123","name":"莉莉","address":"起走","phone":"15977477245"}]
+*************** response log end ***************
+
+[2017-08-30 18:49:11.104] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/delUserAddress?id=1
+request client ip:  ::ffff:127.0.0.1
+request query:  {"id":"1"}
+response time: 21
+response status: 200
+response body: 
+1
+*************** response log end ***************
+
+[2017-08-30 18:49:27.751] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/delUserAddress?id=2
+request client ip:  ::ffff:127.0.0.1
+request query:  {"id":"2"}
+response time: 11
+response status: 200
+response body: 
+1
+*************** response log end ***************
+
+[2017-08-30 18:49:35.821] [INFO] resLogger - 
+*************** response log start ***************
+request method: GET
+request originalUrl:  /users/getUserAddress?openid=123123
+request client ip:  ::ffff:127.0.0.1
+request query:  {"openid":"123123"}
+response time: 22
+response status: 200
+response body: 
+[]
+*************** response log end ***************
+

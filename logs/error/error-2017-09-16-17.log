@@ -1,0 +1,119 @@
+[2017-09-16 17:11:45.031] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/customer
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: config is not defined
+err stack: ReferenceError: config is not defined
+    at UserCustomer (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:181:15)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:345:16
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:350:31)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at send.then.done (/Users/mac/Documents/ecough1/ecough/node_modules/koa-static/index.js:43:20)
+*************** error log end ***************
+
+[2017-09-16 17:15:03.056] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/customer?code=011f58dZ1t7vqY0TLhdZ1Ch6dZ1f58dl&state=111
+request client ip:  ::ffff:127.0.0.1
+request query:  {"code":"011f58dZ1t7vqY0TLhdZ1Ch6dZ1f58dl","state":"111"}
+response time: undefined
+err name: TypeError
+err message: user.getUserByEnentKey is not a function
+err stack: TypeError: user.getUserByEnentKey is not a function
+    at UserCustomer (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:206:31)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-16 17:19:14.365] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/customer?code=011CGBNV0XwDRX1TVJLV0hF1OV0CGBNp&state=111
+request client ip:  ::ffff:127.0.0.1
+request query:  {"code":"011CGBNV0XwDRX1TVJLV0hF1OV0CGBNp","state":"111"}
+response time: undefined
+err name: TypeError
+err message: user.getUserByEnentKey is not a function
+err stack: TypeError: user.getUserByEnentKey is not a function
+    at UserCustomer (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:202:31)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-16 17:21:34.149] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/customer?code=06173TQw1QSWAb0PkIQw1IYhRw173TQX&state=111
+request client ip:  ::ffff:127.0.0.1
+request query:  {"code":"06173TQw1QSWAb0PkIQw1IYhRw173TQX","state":"111"}
+response time: undefined
+err name: TypeError
+err message: user.getUserByEnentKey is not a function
+err stack: TypeError: user.getUserByEnentKey is not a function
+    at UserCustomer (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:202:31)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-16 17:22:45.775] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/customer?code=081eNHUP0qltJ72PvBTP0URFUP0eNHUs&state=111
+request client ip:  ::ffff:127.0.0.1
+request query:  {"code":"081eNHUP0qltJ72PvBTP0URFUP0eNHUs","state":"111"}
+response time: undefined
+err name: TypeError
+err message: user.getUserByEnentKey is not a function
+err stack: TypeError: user.getUserByEnentKey is not a function
+    at UserCustomer (/Users/mac/Documents/ecough1/ecough/app/controllers/user.js:203:31)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
+[2017-09-16 17:38:34.407] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/customer
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/user_customer.ejs:27
+    25|     <div id="customer">
+    26|         <ul>
+ >> 27|         <% if(data.length ==0 ){ %>
+    28|             <li><div style="height: 60px; background: #fff ;">
+    29|                 <img src="/images/logo.png" class="img-circle" style="width: 60px; height: 60px; margin-left: 30px;">
+    30|                 <label style="padding-left: 30px; width: 52%;">还没有人下过单～</label></div>
+
+data is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/user_customer.ejs:27
+    25|     <div id="customer">
+    26|         <ul>
+ >> 27|         <% if(data.length ==0 ){ %>
+    28|             <li><div style="height: 60px; background: #fff ;">
+    29|                 <img src="/images/logo.png" class="img-circle" style="width: 60px; height: 60px; margin-left: 30px;">
+    30|                 <label style="padding-left: 30px; width: 52%;">还没有人下过单～</label></div>
+
+data is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:11)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:447:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:434:12)
+*************** error log end ***************
+

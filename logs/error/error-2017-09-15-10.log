@@ -1,0 +1,46 @@
+[2017-09-15 10:56:51.248] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/my_code
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik or eventKey = 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik'' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik or eventKey = 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik'' at line 1
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:189:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+*************** error log end ***************
+
+[2017-09-15 10:56:51.311] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/my_code
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: Error
+err message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik or eventKey = 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik'' at line 1
+err stack: Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik or eventKey = 'o5Yi9wOVAFgVZCy4c7OjZ3Rar0ik'' at line 1
+    at Packet.asError (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packets/packet.js:701:13)
+    at Query.Command.execute (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/commands/command.js:28:22)
+    at PoolConnection.Connection.handlePacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:500:28)
+    at PacketParser.onPacket (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:94:16)
+    at PacketParser.executeStart (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/packet_parser.js:77:14)
+    at Socket.<anonymous> (/Users/mac/Documents/ecough1/ecough/node_modules/mysql2/lib/connection.js:102:29)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:189:7)
+    at readableAddChunk (_stream_readable.js:176:18)
+    at Socket.Readable.push (_stream_readable.js:134:10)
+    at TCP.onread (net.js:551:20)
+*************** error log end ***************
+

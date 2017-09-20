@@ -1,0 +1,13 @@
+[2017-08-30 16:59:45.179] [INFO] resLogger - 
+*************** response log start ***************
+request method: POST
+request originalUrl:  /users/setUserAddress
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{}
+response time: 1
+response status: 404
+response body: 
+undefined
+*************** response log end ***************
+

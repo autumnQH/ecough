@@ -1,0 +1,64 @@
+[2017-09-15 16:54:37.299] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/my_code
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: SyntaxError
+err message: Unexpected token == in /Users/mac/Documents/ecough1/ecough/app/views/user_code.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+err stack: SyntaxError: Unexpected token == in /Users/mac/Documents/ecough1/ecough/app/views/user_code.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+    at new Function (<anonymous>)
+    at Template.compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12)
+    at Object.compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:338:16)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:502:58
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:447:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:434:12)
+*************** error log end ***************
+
+[2017-09-15 16:54:37.317] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /users/my_code
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: SyntaxError
+err message: Unexpected token == in /Users/mac/Documents/ecough1/ecough/app/views/user_code.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+err stack: SyntaxError: Unexpected token == in /Users/mac/Documents/ecough1/ecough/app/views/user_code.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+    at new Function (<anonymous>)
+    at Template.compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12)
+    at Object.compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:338:16)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:502:58
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:447:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:434:12)
+*************** error log end ***************
+

@@ -1,0 +1,84 @@
+[2017-09-10 14:26:13.717] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sign
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"name":"asd","password":"asd"}
+response time: undefined
+err name: ReferenceError
+err message: body is not defined
+err stack: ReferenceError: body is not defined
+    at Sign (/Users/mac/Documents/ecough1/ecough/app/controllers/admin.js:31:17)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:345:16
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:350:31)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at serve (/Users/mac/Documents/ecough1/ecough/node_modules/koa-static/index.js:47:14)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at bodyParser (/Users/mac/Documents/ecough1/ecough/node_modules/koa-bodyparser/index.js:86:11)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-09-10 14:30:58.604] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sign
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"name":"root","password":"root"}
+response time: undefined
+err name: TypeError
+err message: Cannot set property 'admin' of undefined
+err stack: TypeError: Cannot set property 'admin' of undefined
+    at Sign (/Users/mac/Documents/ecough1/ecough/app/controllers/admin.js:34:27)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:345:16
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:350:31)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at serve (/Users/mac/Documents/ecough1/ecough/node_modules/koa-static/index.js:47:14)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at bodyParser (/Users/mac/Documents/ecough1/ecough/node_modules/koa-bodyparser/index.js:86:11)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+
+[2017-09-10 14:38:28.874] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /sign
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"name":"root","password":"root"}
+response time: undefined
+err name: ReferenceError
+err message: req is not defined
+err stack: ReferenceError: req is not defined
+    at Sign (/Users/mac/Documents/ecough1/ecough/app/controllers/admin.js:31:19)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:345:16
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:36:12
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-router/lib/router.js:350:31)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at serve (/Users/mac/Documents/ecough1/ecough/node_modules/koa-static/index.js:47:14)
+    at dispatch (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:44:32)
+    at next (/Users/mac/Documents/ecough1/ecough/node_modules/koa-compose/index.js:45:18)
+    at bodyParser (/Users/mac/Documents/ecough1/ecough/node_modules/koa-bodyparser/index.js:86:11)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+

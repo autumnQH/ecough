@@ -1,0 +1,261 @@
+[2017-08-30 23:06:10.702] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/order
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 33
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:90
+    88| 	wx.config({
+    89| 		debug: false,
+ >> 90| 		appId: '<%= config.appid %>',
+    91| 		timeStamp: '<%= config.timestamp %>',
+    92| 		nonceStr: '<%= config.nonceStr %>',
+    93| 		signature: '<%= config.signature %>',
+
+config is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:90
+    88| 	wx.config({
+    89| 		debug: false,
+ >> 90| 		appId: '<%= config.appid %>',
+    91| 		timeStamp: '<%= config.timestamp %>',
+    92| 		nonceStr: '<%= config.nonceStr %>',
+    93| 		signature: '<%= config.signature %>',
+
+config is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:11:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-08-30 23:07:44.145] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 35
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:41:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-08-30 23:07:49.699] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 5
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:41:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-08-30 23:09:07.223] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 17
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:41:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-08-30 23:09:33.895] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 9
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:41:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-08-30 23:10:33.856] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: ReferenceError
+err message: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+err stack: ReferenceError: /Users/mac/Documents/ecough1/ecough/app/views/order.ejs:119
+    117| 						var out_trade_no = "<%= data.out_trade_no %>";
+    118| 
+ >> 119| 						$('#order_openid').val('<%= openid %>');
+    120| 						$('#order_name').val(name);
+    121| 						$('#order_address').val(address);
+    122| 						$('#order_phone').val(phone);
+
+openid is not defined
+    at eval (eval at compile (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:524:12), <anonymous>:41:26)
+    at returnedFn (/Users/mac/Documents/ecough1/ecough/node_modules/ejs/lib/ejs.js:555:17)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:503:16
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:144:5
+    at Promise._execute (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/debuggability.js:300:9)
+    at Promise._resolveFromExecutor (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:483:18)
+    at new Promise (/Users/mac/Documents/ecough1/ecough/node_modules/bluebird/js/release/promise.js:79:10)
+    at promisify (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:137:10)
+    at Function.exports.ejs.render (/Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:499:10)
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:165:27
+    at /Users/mac/Documents/ecough1/ecough/node_modules/consolidate/lib/consolidate.js:99:5
+    at tryToString (fs.js:499:3)
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:487:12)
+*************** error log end ***************
+
+[2017-08-30 23:10:59.387] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: GET
+request originalUrl:  /my/pay
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: undefined
+err name: TypeError
+err message: Cannot read property '0' of undefined
+err stack: TypeError: Cannot read property '0' of undefined
+    at jsapiPay (/Users/mac/Documents/ecough1/ecough/app/controllers/my.js:107:28)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+*************** error log end ***************
+

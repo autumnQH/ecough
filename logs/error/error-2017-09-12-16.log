@@ -1,0 +1,15 @@
+[2017-09-12 16:51:53.038] [ERROR] errorLogger - 
+*************** error log start ***************
+request method: POST
+request originalUrl:  /wechat?signature=de305a89f14ba88a6cf3f21b15d2f06d8942b221&timestamp=1505206311&nonce=1966679846&openid=o5Yi9wOfXWopOcMYiujWBZmwBH0Q
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"xml":{"ToUserName":["gh_08452f6d090a"],"FromUserName":["o5Yi9wOfXWopOcMYiujWBZmwBH0Q"],"CreateTime":["1505206311"],"MsgType":["event"],"Event":["CLICK"],"EventKey":["GOOD"]}}
+response time: undefined
+err name: ReferenceError
+err message: token is not defined
+err stack: ReferenceError: token is not defined
+    at exports.getImageMessage (/Users/mac/Documents/ecough1/ecough/app/utils/wechat.js:84:40)
+    at process._tickCallback (internal/process/next_tick.js:103:7)
+*************** error log end ***************
+
