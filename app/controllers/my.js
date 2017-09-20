@@ -31,6 +31,7 @@ var PreOrder = async (ctx, next) => {
             var user = await tools.getOauth2Token(code);
                 user = JSON.parse(user);
             if(user.errcode){
+                console.log(user.errcode);
                 ctx.redirect(url);
             }else{
                 var userinfo = await tools.getUserInfo(user.access_token, user.openid);
