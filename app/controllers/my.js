@@ -7,6 +7,7 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const pay = require('../utils/pay');
+const USER = require('../utils/user');
 
 //预购
 var PreOrder = async (ctx, next) => {
@@ -71,7 +72,7 @@ var jsapiPay = async(ctx, next) => {
     var current_money = 0;//现价
     var derate_money = 0;//首单减免减免
 
-    var todaySubscribe = await dao.getOpenIdForSubscribe(openid); 
+    var todaySubscribe = await USER.getUserFlagByOpenId(openid); 
     
     if(todaySubscribe.flag == '1'){//首单
         derate_money = config.derate_money
