@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   action_name varchar(36) DEFAULT NULL COMMENT '二维码类型 QR_SCENE为临时的整型参数值，QR_STR_SCENE为临时的字符串参数值，QR_LIMIT_SCENE为永久的整型参数值，QR_LIMIT_STR_SCENE为永久的字符串参数值',
   ticket varchar(255) NOT NULL COMMENT '获取的二维码ticket，凭借此ticket可以在有效时间内换取二维码',
   url varchar(255) NOT NULL COMMENT '二维码图片解析后的地址',
-  create_time datetime  DEFAULT NULL COMMENT ,
+  create_time datetime  DEFAULT NULL COMMENT '',
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8  COMMENT='生成带参数二维码';
 
@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
   flag tinyint(1) DEFAULT '1' COMMENT '是否是首单',
   order_count int(12) DEFAULT 0 COMMENT '下单次数',
   PRIMARY KEY (id),
-  Index openid (openid),
-  Index eventKey (eventKey)
+  INDEX openid (openid)
 ) DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 
