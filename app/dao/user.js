@@ -70,7 +70,7 @@ var getUserFlagByOpenId = (openid)=> {
 	return result;
 }
 var setUserFlagByOpenId = (openid) => {
-	var result = db.update("T_WECHAT_USER" {flag: true}, {openid: openid});
+	var result = db.update("T_WECHAT_USER", {flag: true}, {openid: openid});
 	return result;
 }
 var addUserOrderCount = (openid)=> {
