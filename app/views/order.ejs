@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 </head>
-<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<body>
 <script>
 	wx.config({
 		debug: false,
@@ -97,26 +98,6 @@
 		};
 	});	
 </script>
-<form action="/admin/setOrder" method="post" style="visibility: hidden;margin-top: -100px;">
-	<input type="text" name="openid" id="order_openid">
-	<input type="text" name="name" id="order_name">
-	<input type="text" name="address" id="order_address">
-	<input type="text" name="phone" id="order_phone">
-	<input type="text" name="product" id="order_product">
-	<input type="text" name="total" id="order_total">
-	<input type="text" name="specifications" id="order_specifications">
-	<input type="text" name="pay_money" id="order_money">
-	<input type="text" name="total_money" id="order_total_money">
-	<input type="text" name="derate_money" id="order_derate_money">
-	<input type="text" name="out_trade_no" id="order_out_trade_no">
-	<input type="text" name="status" value="2">
-	<input type="submit" id="sub">
-</form>
-
-<body>
-<!-- 按钮触发模态框 -->
-<!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newAddress">新建收货地址</button> -->
-
 
 <div class="main">
 <button id="openAddress" class="btn btn-primary btn-sm">
@@ -181,5 +162,22 @@
 			</div>
 		</div>
 	</div>
+
+	<form action="/admin/setOrder" method="post" style="visibility: hidden;margin-top: -100px;">
+	<input type="text" name="openid" id="order_openid">
+	<input type="text" name="name" id="order_name">
+	<input type="text" name="address" id="order_address">
+	<input type="text" name="phone" id="order_phone">
+	<input type="text" name="product" id="order_product">
+	<input type="text" name="total" id="order_total">
+	<input type="text" name="specifications" id="order_specifications">
+	<input type="text" name="pay_money" id="order_money">
+	<input type="text" name="total_money" id="order_total_money">
+	<input type="text" name="derate_money" id="order_derate_money">
+	<input type="text" name="out_trade_no" id="order_out_trade_no">
+	<input type="text" name="status" value="2">
+	<input type="submit" id="sub">
+</form>
+
 </body>
 </html>
