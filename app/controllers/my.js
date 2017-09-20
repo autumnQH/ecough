@@ -129,6 +129,7 @@ var jsapiPay = async(ctx, next) => {
 var notify = async function(ctx, next) {
     let msg = ctx.request.body ? ctx.request.body.xml : '';
     if(msg.result_code[0] == 'SUCCESS' && msg.return_code[0] == 'SUCCESS'){
+        var config = await dao.getConfig();
         var data = {
             appid: msg.appid[0],//公众账号id
             attach: msg.attach[0],//商家数据包
@@ -151,7 +152,7 @@ var notify = async function(ctx, next) {
         //console.log(data,'数据');
         dao.setNOTIFY(data);
         wechat.customUpdateUser(data.appid); //记录用户购买一次 
-        
+        tools.sendTemplateMessage(config.server_host, msg.openid[0]);
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
             return_msg: msg.return_code[0]

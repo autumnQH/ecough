@@ -9,7 +9,7 @@ const moment = require('moment');
 const USER = require('../utils/user');
 
 
-var a = async function(ctx, next) {
+var a = function(ctx, next) {
     if(ctx.session.admin){
         console.log(ctx.session.admin);
         next();
@@ -50,14 +50,21 @@ var admin = async function (ctx, next) {
 }
 
 var admin_order = async function(ctx, next) {
-    a(ctx, next);
     var datas = await wechat.getOrder();
     datas.forEach(function(data) {
         data.create_time = tools.formatDate(data.create_time);
     });
-    await ctx.render('admin_order', {
+    await ctx.render('admin_order.min', {
         data: datas
     });
+}
+
+var getOrder = async function(ctx, next) {
+    var datas = await wechat.getOrder();
+    datas.forEach(function(data) {
+        data.create_time = tools.formatDate(data.create_time);
+    });
+    return ctx.body = datas;    
 }
 
 var admin_setOrder = async function (ctx, next) {
@@ -161,8 +168,16 @@ var getConfig = async (ctx, next) => {
     });
 }
 
-var setConfig = async (ctx, next) => {
+var getStore = async (ctx, next)=> {
     a(ctx, next);
+    var data = await dao.getConfig();
+    await ctx.render('admin_store', {
+        config: data
+    });
+}
+
+var setConfig = async (ctx, next) => {
+    await a(ctx, next);
     var data = ctx.request.body;
     await dao.setConfig(data);
     await ctx.redirect('/admin/getconfig');
@@ -174,6 +189,7 @@ module.exports = {
     'GET /sign': sign,
     'POST /sign': Sign,
     'GET /admin':admin, 
+    'GET /admin/store': getStore,
     'GET /admin/order': admin_order,
     'POST /admin/setOrder': admin_setOrder,
     'GET /admin/qrcode': admin_qrcode,
@@ -182,5 +198,6 @@ module.exports = {
     'POST /admin/order/deliver': adminSetDeliver,
     'GET /admin/getconfig': getConfig,
     'POST /admin/setconfig' : setConfig,
+    'GET /api/admin/order': getOrder
 
 };

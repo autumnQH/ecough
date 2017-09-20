@@ -19,91 +19,114 @@
 </head>
 <body>
 <%include nav.ejs %>
-<nav aria-label="Page navigation">
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+
 <table id="table" class="table table-hover">
-  <caption>订单</caption>
-  <thead>
-    <tr>
-      <th>姓名</th>
-      <th>地址</th>
-      <th>电话</th>
-      <th>产品</th>
-      <th>数量</th>
-      <th>规格</th>
-      <th>金额</th>
-      <th>订单号</th>
-      <th>下单时间</th>
-      <th>订单状态</th>
-      <th>物流公司</th>
-      <th>物流号</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% if(data) { %>
-    <% for(var i =0; i<data.length; i++){ %>  
-    <tr>
-      <td><%= data[i].name %></td>
-      <td style="width: 100px;"><%= data[i].address %></td>
-      <td><%= data[i].phone %></td>
-      <td style="width: 100px;"><%= data[i].product %></td>
-      <td style="width: 100px;"><%= data[i].total %></td>      
-      <td><%= data[i].specifications %></td>
-      <td><%= data[i].pay_money %></td>
-      <td><%= data[i].out_trade_no %></td>
-      <td><%= data[i].create_time %></td>
-      <% if(data[i].status == 2) { %>
-        <td>待发货</td>
-      <% }else if(data[i].status == 3){ %>
-        <td>已发货</td>
-      <% }else if(data[i].status == 5){ %>
-        <td>已完成</td>
-      <% } %>
-    
-      <% if(data[i].delivery_company == 'shentong'){ %>
-        <td>申通快递</td>
-      <% }else if(data[i].delivery_company == 'huitongkuaidi'){ %> 
-        <td>百世汇通</td>
-      <% }else{ %>
-        <td><%= data[i].delivery_company %></td>
-      <% } %>
-      <td style="width: 100px;"><%= data[i].delivery_track_no %></td>
-    </tr>
-    <% } %>
-  <% } %>
-  </tbody>
 </table>
 
-<script type="text/javascript">
+<script>
 $(function() {
-    $("table").on("click","tr",function(e){
+    $('#table').bootstrapTable({
+      url: '/api/admin/order',
+      columns:[{
+        field: 'name',
+        title: '姓名'
+      },{
+        field: 'phone',
+        title: '电话'
+      },{
+        field: 'product',
+        title: '产品'
+      },{
+        field: 'total',
+        title: '数量'
+      },{
+        field: 'specifications',
+        title: '规格'
+      },{
+        field: 'total_mone',
+        title: '总金额'
+      },{
+        field: 'derate_money',
+        title: '减免金额'
+      },{
+        field: 'ypay_money',
+        title: '支付金额'
+      },{
+        field: 'out_trade_no',
+        title: '订单号',
+        sortable: true
+      },{
+        field: 'status',
+        title: '状态',
+        sortable: true
+      },{
+        field: 'delivery_company',
+        title: '物流公司',
+        sortable: true
+      },{
+        field: 'delivery_track_no',
+        title: '物流号',
+        sortable: true
+      },{
+        field: 'create_time',
+        title: '下单时间',
+        sortable: true
+      }],
+      search: true,
+      showPaginationSwitch: true,
+      striped: true,
+      pagination: true,
+      paginationLoop: false,
+      pageList: [10, 20, 30, 40, 50, 100],
+      searchOnEnterKey: true,
+      showColumns: true,
+      showRefresh: true,
+      showPaginationSwitch: true,
+      showToggle: true,
+      showPaginationSwitch: true,
+      responseHandler: function(res) {
+        res.forEach(function(r) {          
+          switch(r.status){
+            case 2:
+            r.status = '待发货';
+            break;
+            case 3:
+            r.status = '已发货';
+            break;
+            case 5:
+            r.status = '已完成';
+            break;
+            case 8:
+            r.status = '维权中';
+            break;
+          }
+          switch(r.delivery_company){
+            case 'shentong':
+            r.delivery_company = '申通';
+            break;
+            case 'huitongkuaidi':
+            r.delivery_company = '百世';
+            break;
+          }          
+        });
+        return res;
+      }
+    });
+
+
+
+    $("table").on("click","td",function(e){
+      var tr = $(this).parent();
+      console.log(tr);
       var arr = []
-      $(this).children().map(function(el){
+      tr.children().map(function(el){
           arr.push($(this)[0].innerText)
       })
       console.log(arr);
       var name = arr[0];
       var address = arr[1];
       var phone = arr[2];
-      var out_trade_no = arr[7];
+      var out_trade_no = arr[8];
       $('#current_name').val(name);
       $('#current_phone').val(phone);
       $('#current_address').val(address);

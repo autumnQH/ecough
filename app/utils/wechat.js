@@ -98,7 +98,7 @@ exports.getImageMessage = async (msg) => {
     // dao.setQRCode(_.assign(qrurl, JSON.parse(json)));
     // console.log(_.assign(qrurl, JSON.parse(json)),'assign');
     var userinfo =  await tools.getUserInfo2(token, msg.FromUserName[0]);
-    var data =  await tools.uploadFile(userinfo, token, qrurl);
+    var data =  await tools.uploadFile(userinfo, token, qrurl);    
     return xml.jsonToXml({
         xml: {
             ToUserName: msg.FromUserName,

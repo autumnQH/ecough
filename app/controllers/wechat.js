@@ -23,12 +23,12 @@ var postHandle = async(ctx, next) => {
 
     var config = await dao.getConfig();
     var token = await dao.getActiveAccessToken();
+    var openid = msg.FromUserName[0];
     console.log(msg);
 
     let msgType = msg.MsgType[0];
     if(msg.Event){
         if(msg.Event[0] == 'subscribe'){//用户关注
-            var openid = msg.FromUserName[0];
 
             //记录用户关注信息
             var result =  await wechat.getOneUser(openid);
@@ -137,17 +137,24 @@ var postHandle = async(ctx, next) => {
           case 'event':
             //reMsg = wechat.getDefaultMessage(msg, config.message_default);
             switch (msg.Event[0]) {
+
               case 'subscribe':
                 msg.MsgType = 'text';
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
+
               case 'CLICK':
                 switch (msg.EventKey[0]) {
                     case 'GOOD':                         
                     reMsg = await wechat.getImageMessage(msg);
                     break;
                 } 
-                break;  
+                break; 
+
+              case 'TEMPLATESENDJOBFINISH':
+                reMsg = await wechat.getImageMessage(msg);
+                break;
+
               default:
                 reMsg = wechat.getDefaultMessage(msg, config.message_default);
                 break;

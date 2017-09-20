@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>基本配置</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<%include nav.ejs %>
+<form class="form-horizontal" action="/admin/setconfig" method="post">
+  <div class="form-group">
+    <label for="derate_money" class="col-sm-2 control-label">首单减免价格(分)</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="derate_money" value="<%= config.derate_money %>">
+    </div>
+  </div>  
+  <div class="form-group">
+    <label for="original_money" class="col-sm-2 control-label">产品原价(分)1.3</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="original_money_13" value="<%= config.original_money_13 %>">
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="current_money" class="col-sm-2 control-label">产品现价(分)1.3</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="current_money_13" value="<%= config.current_money_13 %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="original_money" class="col-sm-2 control-label">产品原价(分)1.0</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="original_money_10" value="<%= config.original_money_10 %>">
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="current_money" class="col-sm-2 control-label">产品现价(分)1.0</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="current_money_10" value="<%= config.current_money_10 %>">
+    </div>
+  </div>  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="radio">
+        <label>
+          <input type="radio" value="true">我要修改
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">修改</button>
+    </div>
+  </div>
+</form>
+<script>
+$(function() {
+  $("form").submit(function(e){
+    var $true = $('input:checked').val();
+    if($true) {
+      return true;
+    }else{
+      return false;
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
