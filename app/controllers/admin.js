@@ -134,7 +134,7 @@ var adminSetDeliver = async(ctx, next) => {
             console.log(pay_money,'支付金额');
             //下单送积分
             var integral = await USER.getUserForIntegralByOpenId(openid);
-            var number = integral.integral + (pay_money*config.shoping_integral);
+            var number = integral.integral + (parseInt(pay_money*config.shoping_integral*0.01));
             
                 USER.addUserForIntegralByOpendId({integral: number}, {openid: openid});
             // 推广人获得代金券
