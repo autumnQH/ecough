@@ -97,6 +97,11 @@ var setNOTIFY = async (data)=>{
 	var result = db.add("NOTIFY", data);
 	return result;
 }
+
+var delOrderByOutTradeNo = async (out_trade_no) => {
+	var result = db.delete("T_WECHAT_ORDER", {out_trade_no: out_trade_no});
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -114,5 +119,6 @@ module.exports = {
 	adminSetDeliver: adminSetDeliver,
 	getConfig: getConfig,
 	setConfig: setConfig,
-	setNOTIFY: setNOTIFY
+	setNOTIFY: setNOTIFY,
+	delOrderByOutTradeNo: delOrderByOutTradeNo
 };

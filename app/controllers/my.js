@@ -178,8 +178,9 @@ var refund = async function(ctx, next) {
     req.refund_fee = req.total_fee;//退款金额=支付金额
     var refund = await pay.refund(req);    
     var xml = refund.xml;  
-    if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){        
-        if(xml.result_code[0] === 'SUCCESS'){        
+    if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
+        if(xml.result_code[0] === 'SUCCESS'){
+            wechat.delOrderByOutTradeNo(req.out_trade_no);
             return ctx.body = {
                 msg: xml.result_code[0]
             }

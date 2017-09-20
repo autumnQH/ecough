@@ -155,4 +155,6 @@ exports.setStoreOrder = (data) => {
     return dao.setStoreOrder(data);
 }
 
-
+exports.delOrderByOutTradeNo = (out_trade_no) => {
+    return dao.delOrderByOutTradeNo(out_trade_no);
+}
