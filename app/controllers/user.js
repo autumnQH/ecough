@@ -71,8 +71,9 @@ var myOrder = async(ctx, next) => {
         let code = ctx.query.code;
         var user = await tools.getOauth2Token(code);
             user = JSON.parse(user);
+            console.log(user,'user');
         if(user.errcode){
-          console.log('await');
+          console.log('await', user.errcode);
             ctx.redirect(url);
         }else{
             //拉取用户信息
