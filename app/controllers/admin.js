@@ -71,7 +71,7 @@ var admin_setOrder = async function (ctx, next) {
     a(ctx, next);
     var req = ctx.request.body;
     req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-
+    tools.sendTemplateMessage(req.openid, req.pay_money, req.product);//发送模版消息
     wechat.setOrder(req);
     await ctx.redirect('/users/my/order');
 

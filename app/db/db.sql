@@ -105,6 +105,8 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   sms_TemplateCode varchar(255) DEFAULT '' COMMENT '阿里短信 TemplateCode',
   sms_SignName varchar(255) DEFAULT '' COMMENT '阿里短信 SignName',
   server_host varchar(255) DEFAULT '' COMMENT '网站',
+  template_title TEXT DEFAULT '' COMMENT '支付成功模版消息标题',
+  template_remake TEXT DEFAULT '' COMMENT '支付成功模版消息备注',
   original_money_13 int(36) DEFAULT 1 COMMENT '1.3米规格原价',
   current_money_13 int(36) DEFAULT 1 COMMENT '1.3米规格现价',
   original_money_10 int(36) DEFAULT 1 COMMENT '1.0米规格原价',
@@ -118,6 +120,7 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   default_total varchar(4) DEFAULT '10' COMMENT '默认分页',
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 COMMENT='config';
+
 
 CREATE TABLE IF NOT EXISTS NOTIFY (
   id int NOT NULL AUTO_INCREMENT,

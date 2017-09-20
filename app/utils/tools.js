@@ -221,25 +221,26 @@ exports.updateremark = (token, openid, remark) => {
 }
 
 //发送模版消息
-exports.sendTemplateMessage = async (server_host, openid) => {
+exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
   var token = await dao.getActiveAccessToken();
+  var config = await dao.getConfig();
   let json = JSON.stringify({
     touser: openid,
     template_id: 'eE2JhSjiUnLB6cQQm23RckRhj57T0HCTBXUERRSeqPs',
-    url: server_host+'/users/my/order',
+    url: config.server_host+'/users/my/order',
     topcolor: "#FF0000",
     data: {
       first :{
-        value: 'hi,感谢小主订购。'
+        value: config.template_title
       },
       orderMoneySum: {
-        value: '¥10.00'
+        value: '¥'+orderMoneySum
       },
       orderProductName: {
-        value: '防雾霾创贴1.3米'
+        value: orderProductName
       },
       Remark: {
-        value: '亲爱的小主，我们将尽快为您安排配送。您还可以通过专属二维码图片赢取大奖！                详细请见【菜单】-> 【我的二维码】'
+        value: config.template_remake
       }
     }
   });  
