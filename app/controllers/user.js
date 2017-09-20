@@ -47,6 +47,7 @@ var User = async (ctx, next) => {
 
 //用户订单
 var myOrder = async(ctx, next) => {
+  console.log('进来了');
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url;
   console.log(r_url,'=======');
@@ -93,6 +94,7 @@ var myOrder = async(ctx, next) => {
 }
 
 var queryUserOrder = async (ctx, next) => {
+  console.log('进来了!!!');
   var req = ctx.request.body;
   var data = await USER.queryUserOrder(req);
   data.forEach(function(d){
