@@ -177,8 +177,8 @@ var refund = async function(ctx, next) {
     var config = await dao.getConfig();
     req.appid = config.appid;
     req.mch_id = config.store_mchid;
-    req.out_refund_no = req.out_trade_no;//退款号=订单号
-    req.refund_fee = req.total_fee;//退款金额=支付金额
+    req.out_refund_no = parseInt(req.out_trade_no*100);//退款号=订单号
+    req.refund_fee = parseInt(req.total_fee*100);//退款金额=支付金额
     console.log(req);
     var refund = await pay.refund(req);    
     var xml = refund.xml;  
