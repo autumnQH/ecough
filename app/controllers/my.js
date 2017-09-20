@@ -9,6 +9,7 @@ const moment = require('moment');
 const pay = require('../utils/pay');
 const USER = require('../utils/user');
 const STORE = require('../utils/store');
+const logUtil = require('../../utils/log');
 
 //预购
 // var PreOrder = async (ctx, next) => {
@@ -311,7 +312,8 @@ var refund = async function(ctx, next) {
     req.refund_fee = parseInt(req.total_fee* 100);//退款金额=支付金额
     req.total_fee = parseInt(req.total_fee* 100);
     var refund = await pay.refund(req);    
-    var xml = refund.xml;  
+    var xml = refund.xml; 
+    logUtil.logError(xml);
     if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
         if(xml.result_code[0] === 'SUCCESS'){
             await wechat.delOrderByOutTradeNo(req.out_trade_no);
