@@ -40,6 +40,7 @@ var postHandle = async(ctx, next) => {
                 }
 
                 var userinfo = await tools.getUserInfo2(token,openid);
+                console.log(userinfo);
                 data.headimgurl = userinfo.headimgurl;
                 data.nick = userinfo.nickname;
                 wechat.setUser(data);
@@ -68,6 +69,8 @@ var postHandle = async(ctx, next) => {
                 eventKey: eventKey,
                 create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
             };
+            var userinfo = await tools.getUserInfo2(token,openid);
+            console.log(userinfo);
             wechat.updateUser(data, {openid: openid});
 
                 //修改用户备注

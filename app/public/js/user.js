@@ -45,9 +45,14 @@
     };        
     
     //是否绑定手机
-    if(phone.length ===0 ){
+    if(phone.length<10){
+        alert('没有');
+        console.log(phone,'长度：',phone.length);
         $('.poupVerifyBox').removeClass('hide');
         $('.firstStep').removeClass('hide');
+    }else{
+        console.log(phone,'长度：',phone.length);
+        alert('绑定了');
     } 
 
     //监听手机正确   

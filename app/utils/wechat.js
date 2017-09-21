@@ -37,9 +37,44 @@ exports.auth = async (ctx) => {
 }
 
 exports.createMenu = async (menu, token) => {
+    const config = await dao.getConfig();
+    let host = config.server_host;
+    var json = {
+        button: [{
+            type: 'view',
+            name: '产品订购',
+            url: host+'/product/100001'
+        },{
+            name: '自助服务',
+            sub_button: [{
+                type: 'view',
+                name: '我的订单',
+                url: host+'/users/my/order'
+
+            },{
+                type: 'view',
+                name: '联系客服',
+                url: host+'/users/service'                
+            },{
+                type: 'view',
+                name: '我的地址',
+                url: host+'/users/getUserAddress'                
+            },{
+                type: 'view',
+                name: '福利二维码',
+                url: host+'/users/code'                
+            },{
+                type: 'view',
+                name: '个人中心',
+                url: host+'/users/user'                
+            }
+            ]
+        }
+        ]
+    };
     let options = {
         url: 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' + token,
-        form: JSON.stringify(require(menu)),
+        form: JSON.stringify(json),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
