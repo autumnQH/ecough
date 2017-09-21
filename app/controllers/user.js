@@ -15,7 +15,7 @@ var User = async (ctx, next) => {
 
   if(ctx.session.openid){
     var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
-    
+    console.log(userinfo);
     await ctx.render('user', {
       data: userinfo
     });   
@@ -35,7 +35,7 @@ var User = async (ctx, next) => {
             ctx.session = userinfo; 
 
         var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
-        
+        console.log(userinfo);
         await ctx.render('user', {
           data: userinfo
         });     
