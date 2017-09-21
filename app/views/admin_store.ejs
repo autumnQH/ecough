@@ -18,6 +18,13 @@
 <%include nav.ejs %>
 <form class="form-horizontal" action="/admin/setconfig" method="post">
   <div class="form-group">
+    <label for="derate_money" class="col-sm-2 control-label">首单减免价格(分)</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="derate_money" value="<%= config.derate_money %>">
+    </div>
+  </div>  
+  
+  <div class="form-group">
     <label for="spread_voucher" class="col-sm-2 control-label">推广获得m面值代金券</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" name="spread_voucher" value="<%= config.spread_voucher %>">
