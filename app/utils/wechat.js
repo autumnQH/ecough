@@ -154,3 +154,7 @@ exports.setStoreOrder = (data) => {
 exports.delOrderByOutTradeNo = (out_trade_no) => {
     return dao.delOrderByOutTradeNo(out_trade_no);
 }
+
+exports.updateOrderStatus = (out_trade_no) => {
+    return dao.updateOrderStatus(out_trade_no);
+}

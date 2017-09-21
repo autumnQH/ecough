@@ -98,9 +98,16 @@ var setNOTIFY = async (data)=>{
 	return result;
 }
 
+//删除订单
 var delOrderByOutTradeNo = async (out_trade_no) => {
 	var result = db.delete("T_WECHAT_ORDER", {out_trade_no: out_trade_no});
 	return result;
+}
+
+//取消订单
+var updateOrderStatus = (out_trade_no) => {
+	var result = db.update("T_WECHAT_ORDER", {status = 0}, {out_trade_no: out_trade_no});
+	return result
 }
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
@@ -120,5 +127,6 @@ module.exports = {
 	getConfig: getConfig,
 	setConfig: setConfig,
 	setNOTIFY: setNOTIFY,
-	delOrderByOutTradeNo: delOrderByOutTradeNo
+	delOrderByOutTradeNo: delOrderByOutTradeNo,
+	updateOrderStatus: updateOrderStatus
 };

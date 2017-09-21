@@ -316,7 +316,8 @@ var refund = async function(ctx, next) {
     console.log(xml);
     if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
         if(xml.result_code[0] === 'SUCCESS'){
-            await wechat.delOrderByOutTradeNo(req.out_trade_no);
+            // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
+            await wechat.updateOrderStatus(req.out_trade_no);
             return ctx.body = {
                 msg: xml.result_code[0]
             }

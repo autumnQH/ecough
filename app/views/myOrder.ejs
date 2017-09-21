@@ -52,6 +52,9 @@
 				$('.main').html('');
 				msg.forEach(function(data) {
 					switch(data.status) {
+						case 0:
+						data.status = '取消交易';
+						break;
 						case 2:
 						data.status = '待发货';
 						kuaidi100 = '<a class="btn btn-xs" id="refund" val="'+data.out_trade_no+'" money="'+data.pay_money+'"'+
@@ -91,6 +94,9 @@
 <% for(var i = 0; i<data.length; i++) { %>
 		<div class="order">
 			<div class="order-title">
+				<% if(data[i].status == 0){ %>
+				<span>取消交易</span>
+				<% } %>				
 				<% if(data[i].status == 2){ %>
 				<span>待发货</span>
 				<% } %>

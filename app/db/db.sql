@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   create_time datetime  DEFAULT NULL COMMENT '',
   delivery_company varchar(32) DEFAULT NULL COMMENT '物流公司id (申通快递-shentong )（百世快递-huitongkuaidi）',
   delivery_track_no varchar(32) DEFAULT NULL COMMENT '物流号',
-  status int(4) NOT NULL COMMENT '订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 )',
+  status int(4) NOT NULL COMMENT '订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消 )',
   PRIMARY KEY (id),
   INDEX openid (openid),
   INDEX out_trade_no (out_trade_no)
