@@ -95,6 +95,9 @@ $(function() {
       responseHandler: function(res) {
         res.forEach(function(r) {          
           switch(r.status){
+            case 0 :
+            r.status = '交易取消';
+            break;
             case 2:
             r.status = '待发货';
             break;
