@@ -9,13 +9,13 @@ const USER = require('../utils/user');
 var User = async (ctx, next) => {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
     var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
-    console.log(userinfo,'userinfo');
+    
     await ctx.render('user', {
       data: userinfo
     });   
@@ -35,7 +35,7 @@ var User = async (ctx, next) => {
             ctx.session = userinfo; 
 
         var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
-        console.log(userinfo,'userinfo');
+        
         await ctx.render('user', {
           data: userinfo
         });     
@@ -45,10 +45,67 @@ var User = async (ctx, next) => {
 
 }
 
+//我要推广
+var UserCode = async(ctx, next) => {
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
+  if(ctx.session.openid){
+    await ctx.render('user_code');   
+  }else{
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+        ctx.redirect(url);
+      }else{
+        //拉取用户信息
+        var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+            
+            ctx.session = userinfo; 
+        await ctx.render('user_code');    
+      } 
+           
+    }
+  }       
+  
+}
+
+var userCode = async (ctx, next) => {
+  if(ctx.session.openid){
+    const token = await dao.getActiveAccessToken();
+    let json = JSON.stringify({
+        "expire_seconds": 2592000, 
+        "action_name": "QR_STR_SCENE", 
+        "action_info": {
+            "scene": {
+                "scene_str": ctx.session.openid
+            }
+        }
+    });
+    var qrurl =  await tools.getQRCode(token, json);
+    var userinfo =  ctx.session;
+    var url = await tools.getQrFile(userinfo, qrurl); 
+    return ctx.body = {
+      url : '/imgs/'+ url + '.jpeg'
+    }
+    
+  }else{
+    return ctx.body = {     
+      url : ''
+    }
+  }
+}
+
 //用户订单
 var myOrder = async(ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
   if(ctx.session.openid){
@@ -105,7 +162,7 @@ var queryUserOrder = async (ctx, next) => {
 //获取订单，设置问题
 var CustomerService = async (ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -151,7 +208,7 @@ var setUserService = async (ctx, next) => {
 //获取用户共享地址
 var getOpenAddress = async (ctx, next) => {
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
   if(ctx.session.openid){
@@ -205,7 +262,7 @@ var getOpenAddress = async (ctx, next) => {
 var UserCustomer = async function(ctx, next) {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -245,7 +302,7 @@ var UserCustomer = async function(ctx, next) {
 var UserVoucher =async function(ctx, next) {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
@@ -292,12 +349,13 @@ var UserVoucher =async function(ctx, next) {
 var UserIntegral =async function(ctx, next) {
 
   var config = await dao.getConfig();
-  var r_url = config.server_host + ctx.url;
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
     var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
+    console.log(data);
     return await ctx.render('user_integral', {
       data: data,
       config: {
@@ -321,6 +379,7 @@ var UserIntegral =async function(ctx, next) {
         ctx.session = userinfo; 
 
         var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
+        console.log(data);
         return await ctx.render('user_integral', {
           data: data,
           config: {
@@ -374,6 +433,8 @@ var setUserPhone = async function(ctx, next) {
 }
 module.exports = {
     'GET /users/user': User,
+    'GET /users/code': UserCode,
+    'POST /user/code': userCode,
     'GET /users/customer':  UserCustomer ,
     'GET /users/voucher': UserVoucher,
     'POST /user/setvoucher': setUserVoucher,

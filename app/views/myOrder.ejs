@@ -53,7 +53,7 @@
 				msg.forEach(function(data) {
 					switch(data.status) {
 						case 0:
-						data.status = '取消交易';
+						data.status = '交易取消';
 						break;
 						case 2:
 						data.status = '待发货';
@@ -95,7 +95,7 @@
 		<div class="order">
 			<div class="order-title">
 				<% if(data[i].status == 0){ %>
-				<span>取消交易</span>
+				<span>交易取消</span>
 				<% } %>				
 				<% if(data[i].status == 2){ %>
 				<span>待发货</span>

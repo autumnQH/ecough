@@ -12,7 +12,17 @@
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
 <body ontouchstart="">
-<%include user_nav.ejs %>   
+    <div class="page" style="min-height: 50px;">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m_web.css">
+        <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/code.css?_t=20170502">
+        <ul class="header-top">
+            <li class=""><a href="/users/code">我要推广</a></li>
+            <li class="current"><a href="/users/customer">已下单的人</a></li>
+            <li class=""><a href="/users/voucher">我的代金劵</a></li>
+        </ul> 
+    </div>
+
     <div id="customer">
         <ul>
         <% if(data.length ==0 ){ %>

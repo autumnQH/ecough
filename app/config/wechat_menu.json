@@ -21,9 +21,9 @@
           "name":"我的地址",
           "url": "http://www.e-cough.com/users/getUserAddress"
         },{
-          "type":"click",
-          "name":"我要推广",
-          "key":"GOOD"
+          "type":"view",
+          "name":"福利二维码",
+          "url":"http://www.e-cough.com/users/code"
         },{
           "type": "view",
           "name": "个人中心",

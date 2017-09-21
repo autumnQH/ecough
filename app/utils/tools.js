@@ -200,6 +200,12 @@ exports.uploadFile = async function(userinfo,token, qrurl){
   });
 };
 
+exports.getQrFile = async function(userinfo, qrurl) {
+  var q=  await qr.qr(userinfo);
+  var logo = await qr.qr_logo(userinfo, qrurl);
+  return userinfo.openid;
+}
+
 //设置用户备注
 exports.updateremark = (token, openid, remark) => {
   let data = JSON.stringify({
