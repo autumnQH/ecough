@@ -106,7 +106,7 @@ var delOrderByOutTradeNo = async (out_trade_no) => {
 
 //取消订单
 var updateOrderStatus = (out_trade_no) => {
-	var result = db.update("T_WECHAT_ORDER", {status = 0}, {out_trade_no: out_trade_no});
+	var result = db.update("T_WECHAT_ORDER", {status: 0}, {out_trade_no: out_trade_no});
 	return result
 }
 module.exports = {    
