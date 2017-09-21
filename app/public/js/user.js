@@ -1,6 +1,6 @@
     $(function() {
     var i = -1;
-    var num = 10;
+    var num = 60;
     var clock = '';
     var phone = $('.telphone').text();
     var code = '';
