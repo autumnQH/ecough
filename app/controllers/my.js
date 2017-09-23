@@ -72,11 +72,7 @@ var product = async (ctx, next) => {
     if(ctx.session.openid){
         await ctx.render('product', {
             userinfo: ctx.session,
-            store: store,
-            current_money_13: config.current_money_13 * 0.01,
-            original_money_13: config.original_money_13 * 0.01,
-            current_money_10: config.current_money_10 * 0.01,
-            original_money_10: config.original_money_10 * 0.01
+            store: store
         });       
     }else{
         if(!ctx.query.code){
@@ -94,11 +90,7 @@ var product = async (ctx, next) => {
                 ctx.session = userinfo;
                 await ctx.render('product', {
                     userinfo: userinfo,
-                    store: store,
-                    current_money_13: config.current_money_13 * 0.01,
-                    original_money_13: config.original_money_13 * 0.01,
-                    current_money_10: config.current_money_10 * 0.01,
-                    original_money_10: config.original_money_10 * 0.01
+                    store: store
                 })
             }    
         }
@@ -145,7 +137,7 @@ var jssdk = async(ctx, next) => {
     }
 
     var pay_money = total * current_money - derate_money ;
-    var page = await pay.setPackageData(openid, pay_money, value);
+    var page = await pay.setPackageData(openid, pay_money, value,store.name);
     
     //console.log(page,'统一下单');
 

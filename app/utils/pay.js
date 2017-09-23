@@ -7,12 +7,12 @@ const request = require('request');
 const _ = require('lodash');
 
 //统一下单
-exports.setPackageData = async function (openid, pay_money, value) {
+exports.setPackageData = async function (openid, pay_money, value,store_name) {
     const config = await dao.getConfig();	
     var data = {
         appid: config.appid, //appId
-        attach: '支付测试',
-        body: 'Test', //商品描述
+        attach: store_name,
+        body: store_name, //商品描述
         mch_id: config.store_mchid, //商户号id
         nonce_str: value.nonceStr,
         out_trade_no: value.out_trade_no,//商户订单号

@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS STORE (
   description varchar(255) DEFAULT NULL COMMENT '网页描述',
   centent TEXT DEFAULT NULL COMMENT '网页内容',
   name varchar(72) DEFAULT NULL COMMENT '产品名称',
+  ski_description varchar(255) DEFAULT NULL COMMENT '产品描述',
   sku_attr TEXT(255) DEFAULT NULL COMMENT '产品属性(key,key2,key3)',
   sku_info TEXT(255) DEFAULT NULL COMMENT '多规格({specifications:price:ori_price:repertory:qr},{specifications:price:ori_price:repertory:qr})',
   icon_url varchar(255) DEFAULT NULL COMMENT 'icon图片地址',
