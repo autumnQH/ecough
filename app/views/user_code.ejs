@@ -99,7 +99,7 @@ function gengxin() {
   $('.w-out').show();
   FP.setAjaxTimeout(5000);
   FP.ajaxPost(
-    '/wx_cs/get_my_code',
+    '/user/code',
     {},
     function(d){
         if (d.f== true) {
