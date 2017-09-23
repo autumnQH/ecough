@@ -1,5 +1,6 @@
 logs
 npm-debug.log
+app/public/imgs
 /node_modules
 coverage
 .DS_Store

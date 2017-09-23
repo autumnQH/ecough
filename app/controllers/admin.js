@@ -7,7 +7,7 @@ const urlencode = require('urlencode');
 const crypto = require('crypto');
 const moment = require('moment');
 const USER = require('../utils/user');
-
+const STORE = require('../utils/store');
 
 var a = function(ctx, next) {
     if(ctx.session.admin){
@@ -36,6 +36,7 @@ var Sign = async function(ctx, next) {
     }
     if(name ==='root' && password ==='root666888'){
         ctx.session = admin;
+        console.log(ctx.session);
        return await ctx.redirect('/admin');
     }else{
        return await ctx.redirect('back');
@@ -182,6 +183,58 @@ var setConfig = async (ctx, next) => {
     await ctx.redirect('/admin/getconfig');
 }
 
+var product = async(ctx, next) =>{
+    var data = await STORE.getStore();
+    data.map(function(val) {
+        val.sku_attr = val.sku_attr.split(',');
+        val.sku_info = val.sku_info.split(',').map(function(val1, index, arr) {
+            var newarr = val1.split(':');
+            return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
+        });    
+        return val
+    });
+    ctx.state.data = data;
+    console.log(JSON.stringify(data));  
+    await ctx.render('admin_product');
+}
+
+var setproduct = async (ctx, next) => {
+    var data = ctx.request.body;
+    var sku_info = ''
+    if(typeof data.specifications != 'object'){
+        sku_info = data.specifications+':'+data.price+':'+data.ori_price+':'+data.repertory;
+    }else{
+        for(var i=0;i<data.specifications.length;i++) {
+            sku_info += data.specifications[i]+':'+data.price[i]+':'+data.ori_price[i]+':'+data.repertory[i];
+            if(i!=data.specifications.length-1){            
+                sku_info+=','
+            }
+        }
+    }
+    delete data.specifications;
+    delete data.price;
+    delete data.ori_price;
+    delete data.repertory;
+
+    data.sku_info = sku_info; 
+    STORE.updateStore(data);
+    return ctx.redirect('back');
+}
+
+
+var getProduct = async (ctx, next) => {
+    var data = await STORE.getStore();
+    data.map(function(val) {
+        val.sku_attr = val.sku_attr.split(',');
+        val.sku_info = val.sku_info.split(',').map(function(val1, index, arr) {
+            var newarr = val1.split(':');
+            return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
+        });    
+        return val
+    });
+    console.log(JSON.stringify(data));
+    return ctx.body=data;
+}
 
 
 module.exports = {
@@ -197,6 +250,9 @@ module.exports = {
     'POST /admin/order/deliver': adminSetDeliver,
     'GET /admin/getconfig': getConfig,
     'POST /admin/setconfig' : setConfig,
-    'GET /api/admin/order': getOrder
+    'GET /api/admin/order': getOrder,
+    'GET /admin/product': product, 
+    'POST /admin/setproduct': setproduct
+    //'GET /api/admin/product': getProduct
 
 };

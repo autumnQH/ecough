@@ -10,7 +10,7 @@ class RedisStore extends Store {
 		let data = await this.redis.get(`SESSION: ${ sid}`);
 		return JSON.parse(data);
 	}
-	async set(session, { sid = this.getID(24), maxAge = 1000000 } = { }) {
+	async set(session, { sid = this.getID(24), maxAge = 2592000 } = { }) {
 		try{
 			//Use redis set EX to automatically drop expired sessions 
 			await this.redis.set(`SESSION: ${ sid}`, JSON.stringify(session), 'EX' ,maxAge / 1000);

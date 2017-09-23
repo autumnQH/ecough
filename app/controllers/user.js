@@ -66,7 +66,7 @@ var UserCode = async(ctx, next) => {
       }else{
         //拉取用户信息
         var userinfo = await tools.getUserInfo(user.access_token, user.openid);
-            
+            userinfo = JSON.parse(userinfo);
             ctx.session = userinfo; 
         await ctx.render('user_code');    
       } 
@@ -89,15 +89,18 @@ var userCode = async (ctx, next) => {
         }
     });
     var qrurl =  await tools.getQRCode(token, json);
+    console.log(qrurl);
     var userinfo =  ctx.session;
     var url = await tools.getQrFile(userinfo, qrurl); 
     return ctx.body = {
-      url : '/imgs/'+ url + '.jpeg'
+      url : '/imgs/'+ url + '.jpeg',
+      f: true
     }
     
   }else{
     return ctx.body = {     
-      url : ''
+      url : '',
+      f: false
     }
   }
 }
@@ -434,7 +437,7 @@ var setUserPhone = async function(ctx, next) {
 module.exports = {
     'GET /users/user': User,
     'GET /users/code': UserCode,
-    'POST /user/code': userCode,
+    'GET /user/code': userCode,
     'GET /users/customer':  UserCustomer ,
     'GET /users/voucher': UserVoucher,
     'POST /user/setvoucher': setUserVoucher,
