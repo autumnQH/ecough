@@ -116,32 +116,32 @@ exports.getDefaultMessage = (msg, content) => {
 }
 
 
-exports.getImageMessage = async (msg) => {
-    const token = await dao.getActiveAccessToken();
-    let json = JSON.stringify({
-        "expire_seconds": 60480, 
-        "action_name": "QR_STR_SCENE", 
-        "action_info": {
-            "scene": {
-                "scene_str": msg.FromUserName[0]
-            }
-        }
-    });
-    var qrurl =  await tools.getQRCode(token, json);
-    var userinfo =  await tools.getUserInfo2(token, msg.FromUserName[0]);
-    var data =  await tools.uploadFile(userinfo, token, qrurl);    
-    return xml.jsonToXml({
-        xml: {
-            ToUserName: msg.FromUserName,
-            FromUserName: msg.ToUserName,
-            CreateTime: Date.now(),
-            MsgType: 'image',
-            Image: {
-                MediaId: data.media_id
-            }
-        }
-    });
-}
+// exports.getImageMessage = async (msg) => {
+//     const token = await dao.getActiveAccessToken();
+//     let json = JSON.stringify({
+//         "expire_seconds": 60480, 
+//         "action_name": "QR_STR_SCENE", 
+//         "action_info": {
+//             "scene": {
+//                 "scene_str": msg.FromUserName[0]
+//             }
+//         }
+//     });
+//     var qrurl =  await tools.getQRCode(token, json);
+//     var userinfo =  await tools.getUserInfo2(token, msg.FromUserName[0]);
+//     var data =  await tools.uploadFile(userinfo, token, qrurl);    
+//     return xml.jsonToXml({
+//         xml: {
+//             ToUserName: msg.FromUserName,
+//             FromUserName: msg.ToUserName,
+//             CreateTime: Date.now(),
+//             MsgType: 'image',
+//             Image: {
+//                 MediaId: data.media_id
+//             }
+//         }
+//     });
+// }
 
 exports.getJsApiTicket = () => {
     return dao.getJsapiTicket();

@@ -110,16 +110,16 @@ var postHandle = async(ctx, next) => {
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
 
-              case 'CLICK':
-                switch (msg.EventKey[0]) {
-                    case 'GOOD':                         
-                    reMsg = await wechat.getImageMessage(msg);
-                    break;
-                } 
-                break; 
+              // case 'CLICK':
+              //   switch (msg.EventKey[0]) {
+              //       case 'GOOD':                         
+              //       reMsg = await wechat.getImageMessage(msg);
+              //       break;
+              //   } 
+              //   break; 
 
               case 'TEMPLATESENDJOBFINISH':
-                reMsg = await wechat.getImageMessage(msg);
+                reMsg = await wechat.getTextMessage(msg);
                 break;
 
               default:

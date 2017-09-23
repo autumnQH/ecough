@@ -176,29 +176,29 @@ exports.getQRCodeImg = function(ticket) {
 }
 
 //上传临时素材
-exports.uploadFile = async function(userinfo,token, qrurl){
-  var q=  await qr.qr(userinfo);
-  var logo = await qr.qr_logo(userinfo, qrurl);
-  let formData = {
-    custom_file: {
-      value:  fs.createReadStream(__dirname+'/'+ userinfo.openid+'.jpeg'),
-      options: {
-        contentType: 'image/jpeg'
-      }
-    }
-  }; 
-  return new Promise(function(resolve, reject) {
-    request.post({url:'http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token='+ token +'&type=image', formData: formData}, function optionalCallback(err, httpResponse, body) {
-      if (body) {
-        fs.unlinkSync(__dirname+'/'+userinfo.openid+ '.jpeg');
-        fs.unlinkSync(__dirname+'/'+userinfo.openid+ 'logo.jpeg');
-        return resolve(JSON.parse(body))
-      }else{        
-        return reject(JSON.parse(err));
-      }
-    });
-  });
-};
+// exports.uploadFile = async function(userinfo,token, qrurl){
+//   var q=  await qr.qr(userinfo);
+//   var logo = await qr.qr_logo(userinfo, qrurl);
+//   let formData = {
+//     custom_file: {
+//       value:  fs.createReadStream(__dirname+'/'+ userinfo.openid+'.jpeg'),
+//       options: {
+//         contentType: 'image/jpeg'
+//       }
+//     }
+//   }; 
+//   return new Promise(function(resolve, reject) {
+//     request.post({url:'http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token='+ token +'&type=image', formData: formData}, function optionalCallback(err, httpResponse, body) {
+//       if (body) {
+//         fs.unlinkSync(__dirname+'/'+userinfo.openid+ '.jpeg');
+//         fs.unlinkSync(__dirname+'/'+userinfo.openid+ 'logo.jpeg');
+//         return resolve(JSON.parse(body))
+//       }else{        
+//         return reject(JSON.parse(err));
+//       }
+//     });
+//   });
+// };
 
 exports.getQrFile = async function(userinfo, qrurl) {
   var q=  await qr.qr(userinfo);
