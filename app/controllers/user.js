@@ -89,7 +89,6 @@ var userCode = async (ctx, next) => {
         }
     });
     var qrurl =  await tools.getQRCode(token, json);
-    console.log(qrurl);
     var userinfo =  ctx.session;
     var url = await tools.getQrFile(userinfo, qrurl); 
     return ctx.body = {
