@@ -222,19 +222,19 @@ var setproduct = async (ctx, next) => {
 }
 
 
-var getProduct = async (ctx, next) => {
-    var data = await STORE.getStore();
-    data.map(function(val) {
-        val.sku_attr = val.sku_attr.split(',');
-        val.sku_info = val.sku_info.split(',').map(function(val1, index, arr) {
-            var newarr = val1.split(':');
-            return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
-        });    
-        return val
-    });
-    console.log(JSON.stringify(data));
-    return ctx.body=data;
-}
+// var getProduct = async (ctx, next) => {
+//     var data = await STORE.getStore();
+//     data.map(function(val) {
+//         val.sku_attr = val.sku_attr.split(',');
+//         val.sku_info = val.sku_info.split(',').map(function(val1, index, arr) {
+//             var newarr = val1.split(':');
+//             return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
+//         });    
+//         return val
+//     });
+//     console.log(JSON.stringify(data));
+//     return ctx.body=data;
+// }
 
 
 module.exports = {
