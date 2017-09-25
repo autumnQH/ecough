@@ -116,7 +116,6 @@ exports.getDefaultMessage = (msg, content) => {
 }
 
 exports.transfer2CustomerService = (msg) => {
-    console.log('???');
     return xml.jsonToXml({
         xml: {
             ToUserName: msg.FromUserName,

@@ -1,13 +1,30 @@
 const request = require('request');
 
+let token = 'qfTwUnUJKudayVhawrBFuFjL40nK-0UHSsJUxRCPwSS37DAu1q5TNL_Jir2EcprCKm0lVHKh7NZ-2lL0NRZv_EwQRSSG_EokfImpSQRrrTD7VBijjLsYPIEFFSAvYSQuOLWhAAAGDO';
+
+async function b() {
+  let options = {
+    url: 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token='+ token
+  };
+  
+  return new Promise(function(resolve, reject){
+    request(options, function(err, res ,body) {
+      if(body){
+        return resolve(body);
+      }else{
+        return reject(err);
+      }
+    });
+  });
+}
 async function a () {
-  let token = '84iIrVZu9IlQeqCaxakm9bZYjm-x-pfm9360bIAswbDEm60DhldKde4Cu_JsmgkoGCp1MhEGjYTXVecNnTuWkxKoX1MPWBniD7sAm6caJhFD1bD0Cx-knpOhNPPKKF3HRIAcAIAEVN';
+  
   let json = JSON.stringify({
-    kf_account: 'test@qh_Jack',
-    invite_wx: 'wx_liup778328'
+    kf_account: 'kf2002@gh_3b35ec5a2616',
+    openid: 'oDC9Z0qeRibY8W5xwv-wUrNskdoU'
   });
   let options = {
-    url: 'https://api.weixin.qq.com/customservice/kfaccount/inviteworker?access_token='+ token,
+    url: 'https://api.weixin.qq.com/customservice/kfsession/create?access_token='+token,
     method: 'post',
     body: json,
   };
@@ -22,7 +39,9 @@ async function a () {
     
   });
 } 
-
+// b().then(function(r) {
+//   console.log(r);
+// });
 a().then(function(r) {
   console.log(r,'??');
 });
