@@ -117,10 +117,12 @@ exports.getDefaultMessage = (msg, content) => {
 
 exports.transfer2CustomerService = (msg) => {
     return xml.jsonToXml({
-        ToUserName: msg.FromUserName,
-        FromUserName: msg.ToUserName,
-        CreateTime: Date.now(),
-        MsgType: 'transfer_customer_service'
+        xml: {
+            ToUserName: msg.FromUserName,
+            FromUserName: msg.ToUserName,
+            CreateTime: Date.now(),
+            MsgType: 'transfer_customer_service'            
+        }
     });
 }
 // exports.getImageMessage = async (msg) => {
