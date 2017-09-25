@@ -273,7 +273,7 @@ exports.customservice_getonlinekflist = async () => {
       url: 'https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist?access_token='+ token
     }, function(err, res, body) {
       if(body){
-        JSON.parse(body);
+        body = JSON.parse(body);
         console.log(body);
         body.kf_online_list.forEach(function(val, index, arr) {
           if(val.status ==1){
