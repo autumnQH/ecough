@@ -266,6 +266,30 @@ exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
   });
 }
 
+//客服-创建会话
+exports.customservice = (openid) =>{
+  var token = await dao.getActiveAccessToken();
+  let json = JSON.stringify({
+    kf_account: 'kf2002@gh_3b35ec5a2616',
+    openid: openid
+  });
+  let options = {
+    url: 'https://api.weixin.qq.com/customservice/kfsession/create?access_token='+token,
+    method: 'post',
+    body: json,
+  };
+  return new Promise(function(resolve, reject) {
+    request(options, function(err, res, body) {
+      if(body){
+        return resolve(body);    
+      }else{
+        return reject(err);
+      }
+    });
+    
+  });  
+}
+
 exports.formatDate = (date)=> {
   return moment(new Date(date)).format('YYYY-MM-DD HH:mm:ss')
 }
