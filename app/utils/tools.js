@@ -266,9 +266,33 @@ exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
   });
 }
 
+exports.customservice_getonlinekflist = async () => {
+  return new Promise(function(resolve, reject) {
+    request({
+      url: 'https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist?access_token='+ token
+    }, function(err, res, body) {
+      if(body){
+        JSON.parse(body);
+        console.log(body);
+        body.forEach(function(val, index, arr) {
+          if(val.status ==1){
+            return resolve(val.kf_account);
+          }
+        });
+      }else{
+        return reject(JSON.parse(err));
+      }
+    });
+    
+  });
+
+}
+
 //客服-创建会话
 exports.customservice = async (openid) =>{
   var token = await dao.getActiveAccessToken();
+  var kf_account = await customservice_getonlinekflist();
+  console.log(kf_account,'客服---');
   let json = JSON.stringify({
     kf_account: 'kf2002@gh_3b35ec5a2616',
     openid: openid
@@ -281,9 +305,9 @@ exports.customservice = async (openid) =>{
   return new Promise(function(resolve, reject) {
     request(options, function(err, res, body) {
       if(body){
-        return resolve(body);    
+        return resolve(JSON.parse(body));    
       }else{
-        return reject(err);
+        return reject(JSON.parse(err));
       }
     });
     
