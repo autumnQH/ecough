@@ -291,7 +291,7 @@ exports.customservice_getonlinekflist = async () => {
 //客服-创建会话
 exports.customservice = async (openid) =>{
   var token = await dao.getActiveAccessToken();
-  var kf_account = await customservice_getonlinekflist();
+  var kf_account = await this.customservice_getonlinekflist();
   console.log(kf_account,'客服---');
   let json = JSON.stringify({
     kf_account: 'kf2002@gh_3b35ec5a2616',
