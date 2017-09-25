@@ -489,7 +489,7 @@ var FAQIssue = async function(ctx, next) {
 
 var FAQ = async function(ctx, next) {
   ctx.state.data =  await USER.getFAQ();
-  await ctx.render('user_FAQ_issue');
+  await ctx.render('user_FAQ');
 }
 
 var customservice = async function(ctx, next) {
