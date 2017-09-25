@@ -135,7 +135,8 @@ var postHandle = async(ctx, next) => {
     }
 
     console.log("reply message: " + reMsg); 
-    return ctx.body = reMsg;
+    console.log(wechat.transfer2CustomerService(msg),'客服------');
+    return ctx.body = wechat.transfer2CustomerService(msg);
      
 };
 
