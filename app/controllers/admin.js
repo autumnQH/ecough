@@ -88,6 +88,7 @@ var admin_qrcode = async function(ctx, next) {
 }
 
 var admin_setQrcode = async function(ctx, next) {
+    a(ctx, next);
     var req = ctx.request.body;
    
     var token = await dao.getActiveAccessToken();
@@ -184,6 +185,7 @@ var setConfig = async (ctx, next) => {
 }
 
 var product = async(ctx, next) =>{
+
     var data = await STORE.getStore();
     data.map(function(val) {
         val.sku_attr = val.sku_attr.split(',');
@@ -238,12 +240,14 @@ var setproduct = async (ctx, next) => {
 
 //获取所有FAQ列表
 var getFAQ = async function(ctx, next) {
+    a(ctx, next);
     ctx.state.FAQ = await wechat.getFAQTitle();
     await ctx.render('admin_FAQ');
 }
 
 //新建FAQ get
 var setFAQ = async function(ctx, next) {
+    a(ctx, next);
     await ctx.render('admin_add_FAQ');
 
 }
@@ -259,6 +263,7 @@ var SetFAQ = async function(ctx, next) {
 
 //更新FAQ get
 var updateFAQ =  async function(ctx, next) {
+    a(ctx, next);
     var id = ctx.params.id;    
     var data = await wechat.getFAQById(id);    
     ctx.state.data = data;
@@ -276,6 +281,7 @@ var UpdateFAQ = async function (ctx, next) {
 }
 
 var delFAQ= async function(ctx, next) {
+    a(ctx, next);
     var id = ctx.params.id;
     await wechat.delFAQ(id);
     return ctx.body= {
