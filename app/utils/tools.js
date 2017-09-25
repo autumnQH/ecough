@@ -275,13 +275,17 @@ exports.customservice_getonlinekflist = async () => {
       if(body){
         body = JSON.parse(body);
         console.log(body);
-        body.kf_online_list.forEach(function(val, index, arr) {
-          if(val.status ==1){
-            return resolve(val.kf_account);
-          }else{
-            return resolve(val.kf_account);
-          }
-        });
+        if(body.kf_account.length==0){
+          return resolve('null');
+        }else{        
+          body.kf_online_list.forEach(function(val, index, arr) {
+            if(val.status ==1){
+              return resolve(val.kf_account);
+            }else{
+              return resolve(val.kf_account);
+            }
+          });
+        }
       }else{
         return reject(JSON.parse(err));
       }
