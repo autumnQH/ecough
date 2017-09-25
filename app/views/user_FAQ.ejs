@@ -70,8 +70,13 @@
 			$.ajax({
 				url: '/users/customservice/<%= openid %>',
 				type: 'get'
+			}).done(function(msg) {
+				if(msg.errcode ==0&&msg.errmsg =='ok'){
+					wx.closeWindow();					
+				}else{
+					alert('客服繁忙，稍后再试！');
+				}
 			});
-			wx.closeWindow();
 		});
 	});
 
