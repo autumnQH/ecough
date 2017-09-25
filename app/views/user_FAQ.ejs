@@ -45,40 +45,5 @@
 
 
 				<!-- /front_ticket/ticket_list -->
-		<a class="weui_cell" id="colse">
-		    <div class="weui_cell_bd weui_cell_primary">
-		      <p style="font-size:14px;color: red;">联系客服</p>
-		    </div>
-		    <div class="weui_cell_ft"></div>
-		  </a>
-	</div>
-	<div style="height:20px;width:100%"></div>
 
-        </div>
-    </body>
-<script>
-	$(function() {
-		wx.config({
-			debug: false,
-			appId: '<%= wxcfg.appid %>',
-			timestamp: '<%= wxcfg.timestamp %>',
-			nonceStr: '<%= wxcfg.nonceStr %>',
-			signature: '<%= wxcfg.signature %>',
-			jsApiList:['closeWindow']
-		});
-		$('#colse').on('click', function( ) {
-			$.ajax({
-				url: '/users/customservice/<%= openid %>',
-				type: 'get'
-			}).done(function(msg) {
-				if(msg.errcode ==0&&msg.errmsg =='ok'){
-					wx.closeWindow();					
-				}else{
-					alert('客服MM不在线哦～');
-				}
-			});
-		});
-	});
-
-</script>
 </html>
