@@ -129,7 +129,8 @@ var postHandle = async(ctx, next) => {
             }
             break;
           default:
-              reMsg = wechat.getDefaultMessage(msg, config.message_default);
+              //reMsg = wechat.getDefaultMessage(msg, config.message_default);
+              reMsg = wechat.transfer2CustomerService(msg);
             break;
     }
 
