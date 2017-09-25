@@ -274,7 +274,6 @@ exports.customservice_getonlinekflist = async () => {
     }, function(err, res, body) {
       if(body){
         body = JSON.parse(body);
-        console.log(body);
         body.kf_online_list.forEach(function(val, index, arr) {
           if(val.status ==1){
             return resolve(val.kf_account);
@@ -293,9 +292,8 @@ exports.customservice_getonlinekflist = async () => {
 exports.customservice = async (openid) =>{
   var token = await dao.getActiveAccessToken();
   var kf_account = await this.customservice_getonlinekflist();
-  console.log(kf_account,'客服---');
   let json = JSON.stringify({
-    kf_account: 'kf2002@gh_3b35ec5a2616',
+    kf_account: kf_account,
     openid: openid
   });
   let options = {
