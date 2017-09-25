@@ -53,7 +53,7 @@ exports.createMenu = async (menu, token) => {
 
             },{
                 type: 'view',
-                name: '常见问题',
+                name: '联系客服',
                 url: host+'/users/FAQ'                
             },{
                 type: 'view',

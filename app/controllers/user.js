@@ -434,7 +434,8 @@ var setUserPhone = async function(ctx, next) {
 
 }
 
-var FAQ = async function(ctx, next) {
+var FAQIssue = async function(ctx, next) {
+  var id = ctx.params.id;
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
@@ -447,9 +448,9 @@ var FAQ = async function(ctx, next) {
     };
 
     ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
-    ctx.state.data =  await USER.getFAQ();
+    ctx.state.data =  await USER.getFAQById(id);
     ctx.state.openid = ctx.session.openid;
-    await ctx.render('user_FAQ');
+    await ctx.render('user_FAQ_issue');
 
   }else{
     if(!ctx.query.code){
@@ -474,9 +475,9 @@ var FAQ = async function(ctx, next) {
           };
 
           ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
-          ctx.state.data =  await USER.getFAQ();
+          ctx.state.data =  await USER.getFAQById(id);
           ctx.state.openid = ctx.session.openid;
-          await ctx.render('user_FAQ'); 
+          await ctx.render('user_FAQ_issue'); 
 
       }  
 
@@ -486,9 +487,8 @@ var FAQ = async function(ctx, next) {
 }
 
 
-var FAQIssue = async function(ctx, next) {
-  var id = ctx.params.id;
-  ctx.state.data =  await USER.getFAQById(id);
+var FAQ = async function(ctx, next) {
+  ctx.state.data =  await USER.getFAQ();
   await ctx.render('user_FAQ_issue');
 }
 
