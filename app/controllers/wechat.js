@@ -99,8 +99,10 @@ var postHandle = async(ctx, next) => {
             //reMsg = wechat.getTextMessage(msg, config.message_text);
             break;
           case 'image':
+            reMsg = wechat.transfer2CustomerService(msg);
             break;
           case 'voice':
+            reMsg = wechat.transfer2CustomerService(msg);
             break;
           case 'event':
             //reMsg = wechat.getDefaultMessage(msg, config.message_default);
@@ -122,7 +124,9 @@ var postHandle = async(ctx, next) => {
               case 'TEMPLATESENDJOBFINISH':
                 reMsg = await wechat.getTextMessage(msg);
                 break;
-
+              case 'kf_create_session':
+              reMsg = wechat.transfer2CustomerService(msg);
+              break;
               default:
                 reMsg = wechat.getDefaultMessage(msg, config.message_default);
                 break;
@@ -135,8 +139,7 @@ var postHandle = async(ctx, next) => {
     }
 
     console.log("reply message: " + reMsg); 
-    console.log(wechat.transfer2CustomerService(msg),'客服------');
-    return ctx.body = wechat.transfer2CustomerService(msg);
+    return ctx.body = reMsg;
      
 };
 
