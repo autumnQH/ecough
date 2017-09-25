@@ -495,7 +495,6 @@ var FAQIssue = async function(ctx, next) {
 var customservice = async function(ctx, next) {
   var openid = ctx.params.openid;
   var status = await tools.customservice(openid);
-  console.log(status);
   ctx.body = status;
 }
 module.exports = {

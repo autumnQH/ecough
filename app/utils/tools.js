@@ -274,7 +274,6 @@ exports.customservice_getonlinekflist = async () => {
     }, function(err, res, body) {
       if(body){
         body = JSON.parse(body);
-        console.log(body);
         if(body.kf_online_list.length==0){
           return resolve('null');
         }else{        
@@ -299,7 +298,6 @@ exports.customservice_getonlinekflist = async () => {
 exports.customservice = async (openid) =>{
   var token = await dao.getActiveAccessToken();
   var kf_account = await this.customservice_getonlinekflist();
-  console.log(kf_account,'asdds');
   let json = JSON.stringify({
     kf_account: kf_account,
     openid: openid
