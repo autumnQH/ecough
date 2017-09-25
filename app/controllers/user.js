@@ -495,7 +495,6 @@ var FAQIssue = async function(ctx, next) {
 var customservice = async function(ctx, next) {
   var openid = ctx.params.openid;
   tools.customservice(openid);
-  return ctx.body ={};
 }
 module.exports = {
     'GET /users/user': User,
