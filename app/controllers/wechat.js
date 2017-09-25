@@ -95,7 +95,8 @@ var postHandle = async(ctx, next) => {
 
     switch (msgType) {
           case 'text':
-            reMsg = wechat.getTextMessage(msg, config.message_text);
+            reMsg = wechat.transfer2CustomerService(msg);
+            //reMsg = wechat.getTextMessage(msg, config.message_text);
             break;
           case 'image':
             break;

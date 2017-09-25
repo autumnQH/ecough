@@ -115,7 +115,14 @@ exports.getDefaultMessage = (msg, content) => {
         })
 }
 
-
+exports.transfer2CustomerService = (msg) => {
+    return xml.jsonToXml({
+        ToUserName: msg.FromUserName,
+        FromUserName: msg.ToUserName,
+        CreateTime: Date.now(),
+        MsgType: 'transfer_customer_service'
+    });
+}
 // exports.getImageMessage = async (msg) => {
 //     const token = await dao.getActiveAccessToken();
 //     let json = JSON.stringify({
@@ -192,4 +199,23 @@ exports.delOrderByOutTradeNo = (out_trade_no) => {
 
 exports.updateOrderStatus = (out_trade_no) => {
     return dao.updateOrderStatus(out_trade_no);
+}
+
+exports.setFAQ = (data)=> {
+    return dao.setFAQ(data);
+}
+
+exports.getFAQTitle = () => {
+    return dao.getFAQTitle();
+}
+
+exports.getFAQById = (id) => {
+    return dao.getFAQById(id);
+}
+
+exports.updateFAQById =(data,id) => {
+    return dao.updateFAQById(data, id);
+}
+exports.delFAQ = (id) =>{
+    return dao.delFAQ(id);
 }

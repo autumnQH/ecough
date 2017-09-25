@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>常见问题</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<%include nav.ejs %>     
+    <a class="btn btn-info" href="/admin/setFAQ">新建</a>
+<div class="list-group">
+  <% if(FAQ.length>0) { %>
+    <% for(var i=0;i<FAQ.length;i++){ %>
+      <a href="/admin/updateFAQ/<%= FAQ[i].id %>" class="list-group-item"><%= FAQ[i].title %></a>    
+    <% } %>
+  <% } %>
+</div>
+</body>    
+</html>

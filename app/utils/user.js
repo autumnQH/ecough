@@ -74,3 +74,13 @@ exports.getUserService = async () => {
 	var result = await dao.getUserService();
 	return result;
 }
+
+exports.getFAQ = async () => {
+	var result = await dao.getFAQ();
+	return result;
+}
+
+exports.getFAQById = async (id) => {
+	var result = await dao.getFAQById(id);
+	return result;
+}

@@ -433,19 +433,78 @@ var setUserPhone = async function(ctx, next) {
   }
 
 }
+
+var FAQ = async function(ctx, next) {
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect'; 
+  if(ctx.session.openid){
+    var jssdk = await dao.getJsapiTicket();
+    var value = {
+      nonceStr: tools.createRandom(),
+      timeStamp: tools.createTimestamp()
+    };
+
+    ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
+    ctx.state.data =  await USER.getFAQ();
+    await ctx.render('user_FAQ');
+
+  }else{
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+          ctx.redirect(url);
+      }else{
+          //拉取用户信息
+          var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+              userinfo = JSON.parse(userinfo);
+          ctx.session = userinfo;
+
+          var jssdk = await dao.getJsapiTicket();
+          var value = {
+              nonceStr: tools.createRandom(),
+              timeStamp: tools.createTimestamp()
+          };
+
+          ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
+          ctx.state.data =  await USER.getFAQ();
+          await ctx.render('user_FAQ'); 
+
+      }  
+
+    }
+
+  }    
+}
+
+
+var FAQIssue = async function(ctx, next) {
+  var id = ctx.params.id;
+  ctx.state.data =  await USER.getFAQById(id);
+  await ctx.render('user_FAQ_issue');
+}
+
 module.exports = {
     'GET /users/user': User,
     'GET /users/code': UserCode,
     'GET /user/code': userCode,
     'GET /users/customer':  UserCustomer ,
     'GET /users/voucher': UserVoucher,
-    'POST /user/setvoucher': setUserVoucher,
     'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
     'GET /users/my/order': myOrder,
-    'POST /users/my/order/query': queryUserOrder,
     'GET /users/service': CustomerService,
+    'GET /users/FAQ': FAQ,
+    'GET /users/FAQ/issue/:id': FAQIssue,
+    'POST /users/my/order/query': queryUserOrder,
+    'POST /user/setvoucher': setUserVoucher,
     'POST /users/service/issue': setUserService,
-    'POST /user/setphone': setUserPhone
+    'POST /user/setphone': setUserPhone,
 
 };
