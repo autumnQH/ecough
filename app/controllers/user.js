@@ -493,7 +493,9 @@ var FAQIssue = async function(ctx, next) {
 }
 
 var customservice = async function(ctx, next) {
-  console.log('heh');
+  var openid = ctx.params.openid;
+  tools.customservice(openid);
+  return ctx.body ={};
 }
 module.exports = {
     'GET /users/user': User,
@@ -511,6 +513,6 @@ module.exports = {
     'POST /user/setvoucher': setUserVoucher,
     'POST /users/service/issue': setUserService,
     'POST /user/setphone': setUserPhone,
-    'GET /users/customservice': customservice
+    'GET /users/customservice/:openid': customservice
 
 };
