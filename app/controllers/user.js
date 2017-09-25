@@ -446,7 +446,7 @@ var FAQIssue = async function(ctx, next) {
       nonceStr: tools.createRandom(),
       timeStamp: tools.createTimestamp()
     };
-
+    console.log('ha');
     ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
     ctx.state.data =  await USER.getFAQById(id);
     ctx.state.openid = ctx.session.openid;
@@ -475,6 +475,7 @@ var FAQIssue = async function(ctx, next) {
           };
 
           ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
+          console.log('ha');
           ctx.state.data =  await USER.getFAQById(id);
           ctx.state.openid = ctx.session.openid;
           await ctx.render('user_FAQ_issue'); 
