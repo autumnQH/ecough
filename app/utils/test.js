@@ -21,7 +21,7 @@ async function a () {
   
   let json = JSON.stringify({
     kf_account: 'kf2002@gh_3b35ec5a2616',
-    openid: 'oDC9Z0qeRibY8W5xwv-wUrNskdoU'
+    openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4'
   });
   let options = {
     url: 'https://api.weixin.qq.com/customservice/kfsession/create?access_token='+token,

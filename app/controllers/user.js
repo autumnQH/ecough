@@ -448,6 +448,7 @@ var FAQ = async function(ctx, next) {
 
     ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
     ctx.state.data =  await USER.getFAQ();
+    ctx.state.openid = ctx.session.openid;
     await ctx.render('user_FAQ');
 
   }else{
@@ -474,6 +475,7 @@ var FAQ = async function(ctx, next) {
 
           ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
           ctx.state.data =  await USER.getFAQ();
+          ctx.state.openid = ctx.session.openid;
           await ctx.render('user_FAQ'); 
 
       }  
@@ -490,6 +492,9 @@ var FAQIssue = async function(ctx, next) {
   await ctx.render('user_FAQ_issue');
 }
 
+var customservice = async function(ctx, next) {
+  console.log('heh');
+}
 module.exports = {
     'GET /users/user': User,
     'GET /users/code': UserCode,
@@ -506,5 +511,6 @@ module.exports = {
     'POST /user/setvoucher': setUserVoucher,
     'POST /users/service/issue': setUserService,
     'POST /user/setphone': setUserPhone,
+    'GET /users/customservice': customservice
 
 };
