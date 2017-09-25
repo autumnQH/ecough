@@ -169,3 +169,11 @@ CREATE TABLE IF NOT EXISTS NOTIFY (
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8  COMMENT='支付成功通知';
+
+CREATE TABLE IF NOT EXISTS FAQ (
+  id int NOT NULL AUTO_INCREMENT ,
+  title varchar(128) NOT NULL COMMENT '标题',
+  centent TEXT NOT NULL COMMENT '内容',
+  create_time datetime DEFAULT NULL COMMENT '',
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 COMMENT='常见问题';

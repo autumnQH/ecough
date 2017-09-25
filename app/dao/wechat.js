@@ -109,6 +109,28 @@ var updateOrderStatus = (out_trade_no) => {
 	var result = db.update("T_WECHAT_ORDER", {status: 0}, {out_trade_no: out_trade_no});
 	return result
 }
+
+var setFAQ = (data) => {
+	var result = db.add("FAQ",data);
+	return result
+}
+var getFAQTitle = () => {
+	var result = db.find("SELECT id,title FROM FAQ ORDER BY create_time DESC ");
+	return result;
+}
+var getFAQById = (id) => {
+	var result = db.findOne("SELECT * FROM FAQ WHERE id='" +id+ "'")
+	return result;
+}
+
+var updateFAQById = (data, id) =>{
+	var result = db.update("FAQ",data, {id: id});
+	return result;
+}
+var delFAQ = (id) => {
+	var result = db.delete("FAQ", {id: id});
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -128,5 +150,10 @@ module.exports = {
 	setConfig: setConfig,
 	setNOTIFY: setNOTIFY,
 	delOrderByOutTradeNo: delOrderByOutTradeNo,
-	updateOrderStatus: updateOrderStatus
+	updateOrderStatus: updateOrderStatus,
+	setFAQ: setFAQ,
+	getFAQTitle: getFAQTitle,
+	getFAQById: getFAQById,
+	updateFAQById: updateFAQById,
+	delFAQ: delFAQ
 };

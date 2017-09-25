@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><%= data.title %></title>
+	<meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+</head>
+<style type="text/css">
+	/** {
+		-webkit-tap-highlight-color:transparent
+	}*/
+    .weui_panel_hd{
+      font-size: 16px;
+      font-weight: bolder;
+      line-height: 24px;
+      color: black;
+    }
+    #reason p{
+      display: block;
+      -webkit-margin-before: 1em;
+      -webkit-margin-after: 1em;
+      -webkit-margin-start: 0px;
+      -webkit-margin-end: 0px;
+    }
+    .weui_btn.weui_btn_mini {
+      padding: 0px;
+    }
+    .weui_media_desc img{
+    	/*margin: 0 auto;*/
+    	align-self: center;;
+    	/*margin-top: 20px;*/
+    max-width: 100%;
+    max-height: 100%;
+    objec-fit: cover;
+    }
+    
+</style>
+<body>
+<div class="weui_panel weui_panel_access">
+  <div class="weui_panel_hd"><%- data.title %></div>
+
+  <div class="weui_panel_bd">
+    <div class="weui_media_box weui_media_text">
+      <p class="weui_media_desc" style="color: rgb(0, 128, 0);font-size: 15px;">温馨答案</p>
+      <div class="weui_media_desc" >     
+      <%- data.centent %>  
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

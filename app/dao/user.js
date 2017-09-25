@@ -74,6 +74,16 @@ var setUserPhone = (data) => {
 	var result = db.find("UPDATE T_WECHAT_USER SET integral = integral+"+data.integral+", phone = "+data.phone+" WHERE openid = '"+data.openid +"'");
 	return result;
 }
+
+var getFAQ = () => {
+	var result = db.find("SELECT id, title FROM FAQ ORDER BY create_time DESC");
+	return result;
+}
+
+var getFAQById = (id) => {
+	var result = db.findOne("SELECT * FROM FAQ WHERE id = '" +id+ "'");
+	return result;
+}
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
 	getUserOrder: getUserOrder,
@@ -88,5 +98,7 @@ module.exports = {
 	getUserVoucherByOpenId: getUserVoucherByOpenId,
 	setUserVoucher: setUserVoucher,
 	getUserFlagByOpenId: getUserFlagByOpenId,
-	setUserPhone: setUserPhone
+	setUserPhone: setUserPhone,
+	getFAQ: getFAQ,
+	getFAQById: getFAQById
 };

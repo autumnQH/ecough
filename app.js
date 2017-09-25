@@ -3,12 +3,14 @@ const app = new Koa();
 const router = require('koa-router')();
 const views = require('koa-views');
 const path = require('path')
+const fs = require('fs');
 
 const bodyParser = require('koa-bodyparser');
 const xmlParser = require('koa-xml-body').default;
 const onerror = require('koa-onerror');
 const logger = require('koa-logger');
 const compress = require('koa-compress')
+const multer = require('koa-multer');
 
 //const json = require('koa-json');
 
@@ -35,7 +37,9 @@ app.use(logger());
 app.use(xmlParser());
 
 //解析表单和json请求数据
-app.use(bodyParser()); 
+app.use(bodyParser({
+	formLimit: 1024*1024
+})); 
 
 app.use(require('koa-static')(__dirname + '/app/public'));
 
@@ -49,28 +53,55 @@ app.use(require('koa-static')(__dirname + '/app/public'));
 // }))
 
 //logger
-app.use(async (ctx, next) => {
-  //响应开始时间
-  const start = new Date();
-  //响应间隔时间
-  var ms;
-  try {
-    //开始进入到下一个中间件
-    await next();
+// app.use(async (ctx, next) => {
+//   //响应开始时间
+//   const start = new Date();
+//   //响应间隔时间
+//   var ms;
+//   try {
+//     //开始进入到下一个中间件
+//     await next();
 
-    ms = new Date() - start;
-    //记录响应日志
-    logUtil.logResponse(ctx, ms);
+//     ms = new Date() - start;
+//     //记录响应日志
+//     logUtil.logResponse(ctx, ms);
 
-  } catch (error) {    
-    ms = new Date() - start;
-    //记录异常日志
-    logUtil.logError(ctx, error, ms);
-  }
-});
+//   } catch (error) {    
+//     ms = new Date() - start;
+//     //记录异常日志
+//     logUtil.logError(ctx, error, ms);
+//   }
+// });
 
 //控制器
 app.use(controller(path.join(__dirname, './app/controllers')));
+
+async function a(dataBuffer,type) {
+	var name = Date.now() +'.' + type;
+	var url = __dirname + '/app/public/uploads/'+name
+    return new Promise(function(resolve, reject) {
+    	fs.writeFile(url, dataBuffer, function(err) {
+    		if(err){
+    			reject(err);
+    		}else{
+    			resolve({
+    				url: '/uploads/'+name
+    			});
+    		}
+    	});
+    });	
+}
+router.post('/base64', async function(ctx, next) {
+    var imgData = ctx.request.body.img;
+    //过滤data:URL
+    var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
+    var type = imgData.replace(/data:image\/([^;]+).*/i,'$1');//取类型
+    var dataBuffer = new Buffer(base64Data, 'base64');	
+	var img = await a(dataBuffer,type);	
+	console.log(img);
+	return ctx.body = img;
+});
+app.use(router.routes());
 
 app.on('error', function(err, ctx){
     console.log(err)

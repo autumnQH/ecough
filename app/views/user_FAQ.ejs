@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="" >
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>常见问题</title>
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/lib/weui.css?_t=201701201">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/css/jquery-weui.css?_t=201701201">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    </head>
+  <body ontouchstart="">
+        <div class="page">
+	<style type="text/css">
+	
+	body{
+		background-color: #fff;
+	}
+	*{
+	   -webkit-tap-highlight-color:transparent;
+	}
+	</style>
+
+	<div>
+
+	<img src="/images/changjianwenti.jpg" width="100%" alt="">
+	<div class="weui_cells weui_cells_access" style="margin-top:-10px;">
+		<% if(data.length> 0){ %>
+			<% for(var i = 0;i<data.length;i++ ){ %>
+			<a class="weui_cell" href="/users/FAQ/issue/<%= data[i].id %>" >
+		    <div class="weui_cell_bd weui_cell_primary">
+		      <p style="font-size:14px;"><%= data[i].title %></p>
+		    </div>
+		    <div class="weui_cell_ft"></div>
+		  </a>				
+			<% } %>
+		<% } %>
+
+
+				<!-- /front_ticket/ticket_list -->
+		<a href="#" class="weui_cell" id="colse">
+		    <div class="weui_cell_bd weui_cell_primary">
+		      <p style="font-size:14px;color: red;">联系客服</p>
+		    </div>
+		    <div class="weui_cell_ft"></div>
+		  </a>
+	</div>
+	<div style="height:20px;width:100%"></div>
+
+        </div>
+    </body>
+<script>
+	$(function() {
+		wx.config({
+			debug: false,
+			appId: '<%= wxcfg.appid %>',
+			timestamp: '<%= wxcfg.timestamp %>',
+			nonceStr: '<%= wxcfg.nonceStr %>',
+			signature: '<%= wxcfg.signature %>',
+			jsApiList:['closeWindow']
+		});
+		$('#colse').on('click', function( ) {
+			wx.closeWindow();
+		});
+	});
+
+</script>
+</html>

@@ -236,7 +236,52 @@ var setproduct = async (ctx, next) => {
 //     return ctx.body=data;
 // }
 
+//获取所有FAQ列表
+var getFAQ = async function(ctx, next) {
+    ctx.state.FAQ = await wechat.getFAQTitle();
+    await ctx.render('admin_FAQ');
+}
 
+//新建FAQ get
+var setFAQ = async function(ctx, next) {
+    await ctx.render('admin_add_FAQ');
+
+}
+//新建FAQ post
+var SetFAQ = async function(ctx, next) {
+    var req = ctx.request.body;
+    req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+    await wechat.setFAQ(req);
+    return ctx.body = {
+        msg: 'SUCCESS'
+    }
+}
+
+//更新FAQ get
+var updateFAQ =  async function(ctx, next) {
+    var id = ctx.params.id;    
+    var data = await wechat.getFAQById(id);    
+    ctx.state.data = data;
+    await ctx.render('admin_edit_FAQ');
+}
+
+//更新FAQ post
+var UpdateFAQ = async function (ctx, next) {
+    var id = ctx.params.id;    
+    var req = ctx.request.body;
+    await wechat.updateFAQById(req, id);
+    return ctx.body= {
+        msg: 'SUCCESS'
+    }
+}
+
+var delFAQ= async function(ctx, next) {
+    var id = ctx.params.id;
+    await wechat.delFAQ(id);
+    return ctx.body= {
+        msg: 'SUCCESS'
+    }
+}
 module.exports = {
     'GET /sign': sign,
     'POST /sign': Sign,
@@ -252,7 +297,13 @@ module.exports = {
     'POST /admin/setconfig' : setConfig,
     'GET /api/admin/order': getOrder,
     'GET /admin/product': product, 
-    'POST /admin/setproduct': setproduct
+    'POST /admin/setproduct': setproduct,
     //'GET /api/admin/product': getProduct
+    'GET /admin/FAQ': getFAQ,
+    'GET /admin/setFAQ': setFAQ,
+    'POST /admin/setFAQ': SetFAQ,
+    'GET /admin/updateFAQ/:id': updateFAQ,
+    'POST /admin/updateFAQ/:id': UpdateFAQ,
+    'GET /admin/delFAQ/:id': delFAQ
 
 };

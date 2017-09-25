@@ -95,7 +95,8 @@ var postHandle = async(ctx, next) => {
 
     switch (msgType) {
           case 'text':
-            reMsg = wechat.getTextMessage(msg, config.message_text);
+            reMsg = wechat.transfer2CustomerService(msg);
+            //reMsg = wechat.getTextMessage(msg, config.message_text);
             break;
           case 'image':
             break;
@@ -128,12 +129,14 @@ var postHandle = async(ctx, next) => {
             }
             break;
           default:
-              reMsg = wechat.getDefaultMessage(msg, config.message_default);
+              //reMsg = wechat.getDefaultMessage(msg, config.message_default);
+              reMsg = wechat.transfer2CustomerService(msg);
             break;
     }
 
     console.log("reply message: " + reMsg); 
-    return ctx.body = reMsg;
+    console.log(wechat.transfer2CustomerService(msg),'客服------');
+    return ctx.body = wechat.transfer2CustomerService(msg);
      
 };
 
