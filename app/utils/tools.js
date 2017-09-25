@@ -275,7 +275,7 @@ exports.customservice_getonlinekflist = async () => {
       if(body){
         JSON.parse(body);
         console.log(body);
-        body.forEach(function(val, index, arr) {
+        body.kf_online_list.forEach(function(val, index, arr) {
           if(val.status ==1){
             return resolve(val.kf_account);
           }
