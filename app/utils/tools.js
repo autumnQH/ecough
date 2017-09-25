@@ -267,6 +267,7 @@ exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
 }
 
 exports.customservice_getonlinekflist = async () => {
+  var token = await dao.getActiveAccessToken();
   return new Promise(function(resolve, reject) {
     request({
       url: 'https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist?access_token='+ token
