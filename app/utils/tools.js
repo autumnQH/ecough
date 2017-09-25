@@ -267,7 +267,7 @@ exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
 }
 
 //客服-创建会话
-exports.customservice = (openid) =>{
+exports.customservice = async (openid) =>{
   var token = await dao.getActiveAccessToken();
   let json = JSON.stringify({
     kf_account: 'kf2002@gh_3b35ec5a2616',
