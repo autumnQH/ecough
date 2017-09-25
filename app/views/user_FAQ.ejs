@@ -45,7 +45,7 @@
 
 
 				<!-- /front_ticket/ticket_list -->
-		<a href="/users/customservice/<%= openid %>" class="weui_cell" id="colse">
+		<a class="weui_cell" id="colse">
 		    <div class="weui_cell_bd weui_cell_primary">
 		      <p style="font-size:14px;color: red;">联系客服</p>
 		    </div>
@@ -67,6 +67,10 @@
 			jsApiList:['closeWindow']
 		});
 		$('#colse').on('click', function( ) {
+			$.ajax({
+				url: '/users/customservice/<%= openid %>',
+				type: 'get'
+			});
 			wx.closeWindow();
 		});
 	});
