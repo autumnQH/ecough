@@ -493,7 +493,12 @@ var FAQ = async function(ctx, next) {
 
 var customservice = async function(ctx, next) {
   var openid = ctx.params.openid;
-  var status = await tools.customservice(openid);
+  var token = await dao.getActiveAccessToken();
+  var kf_account = await tools.customservice_getonlinekflist(token);
+  var status = await tools.customservice(token,openid, kf_account);
+  if(status){
+    tools.customSendMsg(token,openid, kf_account)
+  }
   ctx.body = status;
 }
 module.exports = {
