@@ -327,6 +327,7 @@ exports.customSendMsg = async (token, openid, kf_account) => {
       kf_account: kf_account
     }
   });
+  console.log(json);
   let options = {
     url: 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='+token,
     body: json
