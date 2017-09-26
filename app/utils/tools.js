@@ -322,6 +322,9 @@ exports.customSendMsg = async (token, openid, kf_account) => {
     msgtype: 'text',
     text: {
       content: 'hello'
+    },
+    customservice: {
+      kf_account: kf_account
     }
   });
   let options = {
