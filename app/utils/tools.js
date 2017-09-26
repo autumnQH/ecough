@@ -334,8 +334,10 @@ exports.customSendMsg = async (token, openid, kf_account) => {
   return new Promise(function(resolve, reject) {
     request(options, function(err, res, body){
       if(body){
+        console.log(body);
         return resolve(JSON.parse(body));
       }else{
+        console.log(err);
         return reject(JSON.parse(err))
       }
     });
