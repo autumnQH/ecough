@@ -133,7 +133,7 @@ var adminSetDeliver = async(ctx, next) => {
         var pay_money = data.pay_money;
         var flag = await USER.getUserFlagByOpenId(openid);//是否首单
         if(flag.flag == '1'){
-            console.log(pay_money,'支付金额');
+            
             //下单送积分
             var integral = await USER.getUserForIntegralByOpenId(openid);
             var number = integral.integral + (parseInt(pay_money*config.shoping_integral*0.01));
