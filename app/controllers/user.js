@@ -105,7 +105,7 @@ var userCode = async (ctx, next) => {
 }
 
 //用户订单
-var myOrder = async(ctx, next) => {
+var UserOrder = async(ctx, next) => {
   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
@@ -117,7 +117,7 @@ var myOrder = async(ctx, next) => {
       data.create_time = tools.formatDate(data.create_time);
     });
 
-  	await ctx.render('myOrder', {
+  	await ctx.render('user_order', {
   		data: result
   	});
   }else{
@@ -142,7 +142,7 @@ var myOrder = async(ctx, next) => {
     result.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
     });
-            await ctx.render('myOrder', {
+            await ctx.render('user_order', {
                 data: result
             })
         }    
@@ -504,7 +504,7 @@ module.exports = {
     'GET /users/voucher': UserVoucher,
     'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
-    'GET /users/my/order': myOrder,
+    'GET /users/my/order': UserOrder,
     'GET /users/service': CustomerService,
     'GET /users/FAQ': FAQ,
     'GET /users/FAQ/issue/:id': FAQIssue,

@@ -40,7 +40,6 @@ var postHandle = async(ctx, next) => {
                 }
 
                 var userinfo = await tools.getUserInfo2(token,openid);
-                console.log(userinfo);
                 data.headimgurl = userinfo.headimgurl;
                 data.nick = userinfo.nickname;
                 wechat.setUser(data);
@@ -62,19 +61,19 @@ var postHandle = async(ctx, next) => {
             }
         //如果已经关注，但是扫描了其他人的二维码
         }else if(msg.Event[0] == 'SCAN') {
-            var eventKey = msg.EventKey[0];
+            if(eventKey!=openid){//自己扫描自己不算
+                var eventKey = msg.EventKey[0];
+                    //修改用户备注
+                    tools.updateremark(token, openid, eventKey);
+                var data = {
+                    eventKey: eventKey,
+                    create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
+                };
+                var userinfo = await tools.getUserInfo2(token,openid);
+                wechat.updateUser(data, {openid: openid});
+                
+            }
                 //修改用户备注
-                tools.updateremark(token, openid, eventKey);
-            var data = {
-                eventKey: eventKey,
-                create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
-            };
-            var userinfo = await tools.getUserInfo2(token,openid);
-            console.log(userinfo);
-            wechat.updateUser(data, {openid: openid});
-
-                //修改用户备注
-
         }else if(msg.Event[0] == 'merchant_order') {
             //记录微信小店用户购买产品
             //console.log('进来了');
