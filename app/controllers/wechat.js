@@ -104,6 +104,7 @@ var postHandle = async(ctx, next) => {
             reMsg = wechat.transfer2CustomerService(msg);
             break;
           case 'event':
+
             //reMsg = wechat.getDefaultMessage(msg, config.message_default);
             switch (msg.Event[0]) {
 
@@ -112,25 +113,21 @@ var postHandle = async(ctx, next) => {
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
 
-              // case 'CLICK':
-              //   switch (msg.EventKey[0]) {
-              //       case 'GOOD':                         
-              //       reMsg = await wechat.getImageMessage(msg);
-              //       break;
-              //   } 
-              //   break; 
-
               case 'TEMPLATESENDJOBFINISH':
                 reMsg = await wechat.getTextMessage(msg);
                 break;
+
               case 'kf_create_session':
-              reMsg = wechat.transfer2CustomerService(msg);
-              break;
+                reMsg = wechat.transfer2CustomerService(msg);
+                break;
+
               default:
-                reMsg = wechat.getDefaultMessage(msg, config.message_default);
+                reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
             }
+
             break;
+            
           default:
               //reMsg = wechat.getDefaultMessage(msg, config.message_default);
               reMsg = wechat.transfer2CustomerService(msg);
