@@ -493,6 +493,7 @@ var customservice = async function(ctx, next) {
   var token = await dao.getActiveAccessToken();
   var kf_account = await tools.customservice_getonlinekflist(token);
   var status = await tools.customservice(token,openid, kf_account);
+  console.log(status,'status--');
       await tools.customSendMsg(token,openid, kf_account)
   ctx.body = status;
 }

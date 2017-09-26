@@ -327,7 +327,7 @@ exports.customSendMsg = async (token, openid, kf_account) => {
       kf_account: kf_account
     }
   });
-  console.log(json);
+  console.log(json,'jsonbody');
   let options = {
     url: 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='+token,
     body: json
@@ -335,10 +335,10 @@ exports.customSendMsg = async (token, openid, kf_account) => {
   return new Promise(function(resolve, reject) {
     request(options, function(err, res, body){
       if(body){
-        console.log(body);
+        console.log(body,'errerer');
         return resolve(JSON.parse(body));
       }else{
-        console.log(err);
+        console.log(err,'=====');
         return reject(JSON.parse(err))
       }
     });
