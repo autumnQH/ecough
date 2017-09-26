@@ -15,7 +15,6 @@ var User = async (ctx, next) => {
 
   if(ctx.session.openid){
     var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
-    console.log(userinfo);
     await ctx.render('user', {
       data: userinfo
     });   
@@ -35,7 +34,6 @@ var User = async (ctx, next) => {
             ctx.session = userinfo; 
 
         var userinfo = await USER.getUserInfoByOpenId(ctx.session.openid);  
-        console.log(userinfo);
         await ctx.render('user', {
           data: userinfo
         });     
@@ -357,7 +355,7 @@ var UserIntegral =async function(ctx, next) {
 
   if(ctx.session.openid){
     var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
-    console.log(data);
+    
     return await ctx.render('user_integral', {
       data: data,
       config: {
@@ -381,7 +379,7 @@ var UserIntegral =async function(ctx, next) {
         ctx.session = userinfo; 
 
         var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
-        console.log(data);
+        
         return await ctx.render('user_integral', {
           data: data,
           config: {
@@ -426,7 +424,6 @@ var setUserPhone = async function(ctx, next) {
   if(config.signup_phone_integral!= null) {
     req.integral = config.signup_phone_integral;
   }
-  console.log(req);
   USER.setUserPhone(req);
   return ctx.body = {
     code :1,msg :'绑定成功'  
@@ -496,9 +493,7 @@ var customservice = async function(ctx, next) {
   var token = await dao.getActiveAccessToken();
   var kf_account = await tools.customservice_getonlinekflist(token);
   var status = await tools.customservice(token,openid, kf_account);
-  if(status){
-    tools.customSendMsg(token,openid, kf_account)
-  }
+      await tools.customSendMsg(token,openid, kf_account)
   ctx.body = status;
 }
 module.exports = {
