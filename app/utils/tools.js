@@ -317,7 +317,7 @@ exports.customservice = async (token,openid, kf_account) =>{
 }
 
 exports.customSendMsg = async (token, openid, kf_account) => {
-  let json = JSON.stringify({
+  var json = JSON.stringify({
     touser: openid,
     msgtype: 'text',
     text: {
@@ -327,7 +327,7 @@ exports.customSendMsg = async (token, openid, kf_account) => {
       kf_account: kf_account
     }
   });
-  let options = {
+  var options = {
     url: 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='+token,
     body: json
   };
