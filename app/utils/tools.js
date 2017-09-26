@@ -321,7 +321,7 @@ exports.customSendMsg = async (token, openid, kf_account) => {
     touser: openid,
     msgtype: 'text',
     text: {
-      content: '你好，很高兴为你服务'
+      content: 'hello'
     },
     customservice: {
       kf_account: kf_account
