@@ -61,7 +61,7 @@ var postHandle = async(ctx, next) => {
             }
         //如果已经关注，但是扫描了其他人的二维码
         }else if(msg.Event[0] == 'SCAN') {
-            if(eventKey!=openid){//自己扫描自己不算
+            if(eventKey.replace(/^qrscene_/,"") != openid){//自己扫描自己不算
                 var eventKey = msg.EventKey[0];
                     //修改用户备注
                     tools.updateremark(token, openid, eventKey);
