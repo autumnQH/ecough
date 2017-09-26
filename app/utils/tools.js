@@ -266,8 +266,7 @@ exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
   });
 }
 
-exports.customservice_getonlinekflist = async () => {
-  var token = await dao.getActiveAccessToken();
+exports.customservice_getonlinekflist = async (token) => {
   return new Promise(function(resolve, reject) {
     request({
       url: 'https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist?access_token='+ token
@@ -295,9 +294,7 @@ exports.customservice_getonlinekflist = async () => {
 }
 
 //客服-创建会话
-exports.customservice = async (openid) =>{
-  var token = await dao.getActiveAccessToken();
-  var kf_account = await this.customservice_getonlinekflist();
+exports.customservice = async (token,openid, kf_account) =>{
   let json = JSON.stringify({
     kf_account: kf_account,
     openid: openid
@@ -317,6 +314,32 @@ exports.customservice = async (openid) =>{
     });
     
   });  
+}
+
+exports.customSendMsg = async (token, openid, kf_account) => {
+  let json = JSON.stringify({
+    touser: openid,
+    msgtype: 'text',
+    text: {
+      content: '你好，很高兴为你服务'
+    },
+    customservice: {
+      kf_account: kf_account
+    }
+  });
+  let options = {
+    url: 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='+token,
+    body: json
+  };
+  return new Promise(function(resolve, reject) {
+    request(options, function(err, res, body){
+      if(body){
+        return resolve(JSON.parse(body));
+      }else{
+        return reject(JSON.parse(err))
+      }
+    });
+  });
 }
 
 exports.formatDate = (date)=> {
