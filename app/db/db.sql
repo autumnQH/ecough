@@ -71,7 +71,8 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   status int(4) NOT NULL COMMENT '订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消 )',
   PRIMARY KEY (id),
   INDEX openid (openid),
-  INDEX out_trade_no (out_trade_no)
+  INDEX out_trade_no (out_trade_no),
+  INDEX create_time (create_time)
 )DEFAULT CHARSET=utf8  COMMENT='订单表';
 
 CREATE TABLE IF NOT EXISTS USER_SERVICE (
@@ -80,7 +81,8 @@ CREATE TABLE IF NOT EXISTS USER_SERVICE (
   out_trade_no varchar(32) NOT NULL COMMENT '订单号',
   title varchar(255) NOT NULL COMMENT '问题标题',
   issue TEXT NOT NULL COMMENT '问题详细内容',
-  phone int(32) NOT NULL COMMENT '用户电话', 
+  phone int(32) DEFAULT NULL COMMENT '用户电话', 
+  create_time datetime NOT NULL COMMENT '',
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 COMMENT='用户售后服务' ;

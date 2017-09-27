@@ -82,13 +82,13 @@ var admin_setOrder = async function (ctx, next) {
 var admin_qrcode = async function(ctx, next) {
     a(ctx, next);
     var data = await wechat.getQRCode();
+    console.log(data);
     await ctx.render('admin_spread', {
         datas: data
     });    
 }
 
 var admin_setQrcode = async function(ctx, next) {
-    a(ctx, next);
     var req = ctx.request.body;
    
     var token = await dao.getActiveAccessToken();
@@ -191,12 +191,11 @@ var product = async(ctx, next) =>{
         val.sku_attr = val.sku_attr.split(',');
         val.sku_info = val.sku_info.split(',').map(function(val1, index, arr) {
             var newarr = val1.split(':');
-            return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
+            return {specifications: newarr[0], price: parseInt(newarr[1]/100), ori_price: parseInt(newarr[2]/100), repertory: newarr[3], qr: newarr[4]}; 
         });    
         return val
     });
-    ctx.state.data = data;
-    console.log(JSON.stringify(data));  
+    ctx.state.data = data;  
     await ctx.render('admin_product');
 }
 
@@ -204,10 +203,10 @@ var setproduct = async (ctx, next) => {
     var data = ctx.request.body;
     var sku_info = ''
     if(typeof data.specifications != 'object'){
-        sku_info = data.specifications+':'+data.price+':'+data.ori_price+':'+data.repertory;
+        sku_info = data.specifications+':'+parseInt(data.price * 100)+':'+parseInt(data.ori_price * 100)+':'+data.repertory;
     }else{
         for(var i=0;i<data.specifications.length;i++) {
-            sku_info += data.specifications[i]+':'+data.price[i]+':'+data.ori_price[i]+':'+data.repertory[i];
+            sku_info += data.specifications[i]+':'+parseInt(data.price[i]* 100)+':'+parseInt(data.ori_price[i]* 100)+':'+data.repertory[i];
             if(i!=data.specifications.length-1){            
                 sku_info+=','
             }
@@ -287,29 +286,29 @@ var delFAQ= async function(ctx, next) {
     return ctx.body= {
         msg: 'SUCCESS'
     }
-}
-module.exports = {
-    'GET /sign': sign,
-    'POST /sign': Sign,
-    'GET /admin':admin, 
-    'GET /admin/store': getStore,
-    'GET /admin/order': admin_order,
-    'POST /admin/setOrder': admin_setOrder,
-    'GET /admin/qrcode': admin_qrcode,
-    'POST /admin/setQrcode': admin_setQrcode,
-    'GET /admin/user/service': admin_userService,
-    'POST /admin/order/deliver': adminSetDeliver,
-    'GET /admin/getconfig': getConfig,
-    'POST /admin/setconfig' : setConfig,
-    'GET /api/admin/order': getOrder,
-    'GET /admin/product': product, 
-    'POST /admin/setproduct': setproduct,
-    //'GET /api/admin/product': getProduct
-    'GET /admin/FAQ': getFAQ,
-    'GET /admin/setFAQ': setFAQ,
-    'POST /admin/setFAQ': SetFAQ,
-    'GET /admin/updateFAQ/:id': updateFAQ,
-    'POST /admin/updateFAQ/:id': UpdateFAQ,
-    'GET /admin/delFAQ/:id': delFAQ
+ }
+// module.exports = {
+//     'GET /sign': sign,
+//     'POST /sign': Sign,
+//     'GET /admin':admin, 
+//     'GET /admin/store': getStore,
+//     'GET /admin/order': admin_order,
+//     'POST /admin/setOrder': admin_setOrder,
+//     'GET /admin/qrcode': admin_qrcode,
+//     'POST /admin/setQrcode': admin_setQrcode,
+//     'GET /admin/user/service': admin_userService,
+//     'POST /admin/order/deliver': adminSetDeliver,
+//     'GET /admin/getconfig': getConfig,
+//     'POST /admin/setconfig' : setConfig,
+//     'GET /api/admin/order': getOrder,
+//     'GET /admin/product': product, 
+//     'POST /admin/setproduct': setproduct,
+//     //'GET /api/admin/product': getProduct
+//     'GET /admin/FAQ': getFAQ,
+//     'GET /admin/setFAQ': setFAQ,
+//     'POST /admin/setFAQ': SetFAQ,
+//     'GET /admin/updateFAQ/:id': updateFAQ,
+//     'POST /admin/updateFAQ/:id': UpdateFAQ,
+//     'GET /admin/delFAQ/:id': delFAQ
 
-};
+// };

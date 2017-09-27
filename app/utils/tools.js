@@ -346,3 +346,46 @@ exports.customSendMsg = async (token, openid, kf_account) => {
 exports.formatDate = (date)=> {
   return moment(new Date(date)).format('YYYY-MM-DD HH:mm:ss')
 }
+//第一丑
+exports.StoreDataStringToObject = (data)=> {
+    data.map(function(val) {
+        val.sku_attr = val.sku_attr.split(',');
+        val.sku_info = val.sku_info.split(',').map(function(val1, index, arr) {
+            var newarr = val1.split(':');
+            return {specifications: newarr[0], price: parseInt(newarr[1]/100), ori_price: parseInt(newarr[2]/100), repertory: newarr[3]}; 
+        });    
+        return val
+    });
+    return data;
+}
+
+//第二丑
+exports.StoreDataObjectToString = (sku_info) => {
+  var info = '';
+  for(var i =0; i< sku_info.length; i++) {
+    info += sku_info[i].specifications + ':' + parseInt(sku_info[i].price*100) + ':' + parseInt(sku_info[i].ori_price*100) + ':' + sku_info[i].repertory;    
+    if(i!=sku_info.length-1){
+      info += ','
+    }
+  }
+  return info;
+}
+//第三丑
+exports.StoreDataArrayToString = (sku_info)=> {
+  var info = ''
+  if(typeof sku_info.specifications != 'object'){
+      info = sku_info.specifications+':'+parseInt(sku_info.price * 100)+':'+parseInt(sku_info.ori_price * 100)+':'+sku_info.repertory;
+  }else{
+      for(var i=0;i<sku_info.specifications.length;i++) {
+          info += sku_info.specifications[i]+':'+parseInt(sku_info.price[i]* 100)+':'+parseInt(sku_info.ori_price[i]* 100)+':'+sku_info.repertory[i];
+          if(i!=sku_info.specifications.length-1){            
+              info+=','
+          }
+      }
+  }
+  delete sku_info.specifications;
+  delete sku_info.price;
+  delete sku_info.ori_price;
+  delete sku_info.repertory;
+  return info;  
+}

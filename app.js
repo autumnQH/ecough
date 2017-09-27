@@ -21,6 +21,8 @@ const logUtil = require('./utils/log');
 const session = require('koa-session2');
 const Store = require('./Store.js');
 
+const routers = require('./app/routers');
+
 app.use(session({
   store: new Store()
 }));
@@ -101,8 +103,8 @@ router.post('/base64', async function(ctx, next) {
 	console.log(img);
 	return ctx.body = img;
 });
-app.use(router.routes());
-
+app.use(router.routes()).use(router.allowedMethods());
+app.use(routers.routes()).use(routers.allowedMethods());
 app.on('error', function(err, ctx){
     console.log(err)
     logUtil.logError(ctx, err);
@@ -110,6 +112,6 @@ app.on('error', function(err, ctx){
 
 //创建微信菜单
 const wechatService = require('./app/service/wechat');
-wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
+//wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
 
 app.listen(8080);

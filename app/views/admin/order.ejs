@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>订单</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</head>
+<body>
+<%include nav.ejs %>
+
+<table id="table" class="table table-hover">
+</table>
+
+<script>
+$(function() {
+    $('#table').bootstrapTable({
+      data: JSON.parse('<%- JSON.stringify(data) %>'),
+      columns:[{
+        field: 'name',
+        title: '姓名',
+        sortable: true
+      },{
+        field: 'phone',
+        title: '电话',
+        sortable: true
+      },{
+        field: 'product',
+        title: '产品',
+        sortable: true
+      },{
+        field: 'total',
+        title: '数量',
+        sortable: true
+      },{
+        field: 'specifications',
+        title: '规格',
+        sortable: true
+      },{
+        field: 'total_money',
+        title: '总金额',
+        sortable: true
+      },{
+        field: 'derate_money',
+        title: '减免金额',
+        sortable: true
+      },{
+        field: 'pay_money',
+        title: '支付金额',
+        sortable: true
+      },{
+        field: 'out_trade_no',
+        title: '订单号',
+        sortable: true
+      },{
+        field: 'status',
+        title: '状态',
+        sortable: true
+      },{
+        field: 'delivery_company',
+        title: '物流公司',
+        sortable: true
+      },{
+        field: 'delivery_track_no',
+        title: '物流号',
+        sortable: true
+      },{
+        field: 'create_time',
+        title: '下单时间',
+        sortable: true
+      }],
+      search: true,
+      showPaginationSwitch: true,
+      striped: true,
+      pagination: true,
+      paginationLoop: false,
+      pageList: [10, 20, 30, 40, 50, 100],
+      searchOnEnterKey: true,
+      showColumns: true,
+      showRefresh: true,
+      showPaginationSwitch: true,
+      showToggle: true,
+      showPaginationSwitch: true,
+      sortOrder: true
+    });
+
+
+
+    $("table").on("click","td",function(e){
+      var tr = $(this).parent();
+      var arr = []
+      tr.children().map(function(el){
+          arr.push($(this)[0].innerText)
+      })
+     // if(arr[9] == '待发货'){
+
+        $('#current_name').val(arr[0]);
+        $('#current_phone').val(arr[1]);
+        $('#current_address').val(arr[2]);
+        $('#current_out_trade_no').val(arr[8]);
+        $('#myModalLabel').text(arr[9]);
+        $('#delivery_track_no').val(arr[11]);
+        switch(arr[10]){
+          case '申通':
+          arr[10] = 'shentong'
+          break;
+          case '百世': 
+          arr[10] =  'huitongkuaidi'
+          break;
+        }
+        $('#delivery_company').val(arr[10]);
+        $('#myModal').modal('show');        
+      // } else if(arr[9] == '已发货'){
+
+      //   $('#current_name').val(arr[0]);
+      //   $('#current_phone').val(arr[1]);
+      //   $('#current_address').val(arr[2]);
+      //   $('#current_out_trade_no').val(arr[8]);
+      //   $('#myModalLabel2').text(arr[9]);
+      //   $('#delivery_track_no').val(arr[11]);
+      //   switch(arr[10]){
+      //     case '申通':
+      //     arr[10] = 'shentong'
+      //     break;
+      //     case '百世': 
+      //     arr[10] =  'huitongkuaidi'
+      //     break;
+      //   }
+      //   $('#delivery_company').val(arr[10]);
+      //   $('#myModal2').modal('show');
+      // }
+
+    });
+});
+</script>
+
+<!-- <button id="modal" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">发货</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">发货</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="current_name">名字</label>
+          <input type="text" class="form-control" name="current_name" id="current_name" readonly="true">
+        </div> 
+        <div class="form-group">
+          <label for="current_phone">电话</label>
+          <input type="text" class="form-control" name="current_phone" id="current_phone" readonly="true">
+        </div>         
+        <div class="form-group">
+          <label for="current_address">地址</label>
+          <input type="text" class="form-control" name="current_address" id="current_address" readonly="true">
+        </div> 
+        <form action="/admin/order/express" method="post">  
+        <div class="form-group">
+          <label for="current_out_trade_no">订单号</label>
+          <input type="text" class="form-control" name="out_trade_no" id="current_out_trade_no" readonly="true"> 
+        </div> 
+          <div class="form-group">
+            <label for="delivery_track_no">物流号</label>
+            <input type="text" class="form-control"  name="delivery_track_no" id="delivery_track_no">
+          </div>               
+          <div class="form-group">
+            <label for="delivery_company">物流公司</label>
+            <select name="delivery_company" id="delivery_company" class="form-control">
+              <option value="shentong">申通</option>
+              <option value="huitongkuaidi">百世</option>
+            </select>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="submit" class="btn btn-primary" id="sub" >确定</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel2">发货</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="current_name">名字</label>
+          <input type="text" class="form-control" name="current_name" id="current_name" readonly="true">
+        </div> 
+        <div class="form-group">
+          <label for="current_phone">电话</label>
+          <input type="text" class="form-control" name="current_phone" id="current_phone" readonly="true">
+        </div>         
+        <div class="form-group">
+          <label for="current_address">地址</label>
+          <input type="text" class="form-control" name="current_address" id="current_address" readonly="true">
+        </div> 
+        <form action="/admin/order/express" method="post">  
+        <div class="form-group">
+          <label for="current_out_trade_no">订单号</label>
+          <input type="text" class="form-control" name="out_trade_no" id="current_out_trade_no" readonly="true"> 
+        </div> 
+          <div class="form-group">
+            <label for="delivery_track_no">物流号</label>
+            <input type="text" class="form-control"  name="delivery_track_no" id="delivery_track_no" readonly="true">
+          </div>               
+          <div class="form-group">
+            <label for="delivery_company">物流公司</label>
+            <select name="delivery_company" id="delivery_company" class="form-control" readonly="true">
+              <option value="shentong">申通</option>
+              <option value="huitongkuaidi">百世</option>
+            </select>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="submit" class="btn btn-primary" id="sub" >交易完成</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
