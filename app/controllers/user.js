@@ -201,6 +201,7 @@ var CustomerService = async (ctx, next) => {
 //设置我的问题
 var setUserService = async (ctx, next) => {
 	let data = ctx.request.body;
+  data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
 	var result = await USER.setUserService(data);
 	return ctx.body = result;
 }

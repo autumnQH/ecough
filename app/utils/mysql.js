@@ -6,13 +6,11 @@ var options = {
     //'port': config.db.port,
     'database': 'ecough',
     'user': 'root',
-    'password': 'root'
- /*
-    'charset': config.db.charset,
-    'connectionLimit': config.db.conn_limit,
+    'password': '450450',
+    'connectionLimit': 5,
+    // 'charset': config.db.charset,
     'supportBigNumbers': true,
     'bigNumberStrings': true
-*/
 }
 
 //创建数据库连接池
