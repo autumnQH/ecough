@@ -36,55 +36,70 @@
 		        <!-- Add Pagination -->
 		        <div class="swiper-pagination"></div>
 		    </div>
-		    <div class="detail">
-			    <div class="detail-div img-rounded">
+
+
+
+
+<div class="detail">
+  <div class="detail-div img-rounded">
+			    	
 			      <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
 
 
-			      <div class="detail-group" style="margin-top:10px;" id="s_money">
-			      	<% for(var i = 0; i< store.sku_info.length; i++) { %>
-			      	<div specifications="<%= store.sku_info[i].specifications %>" class="hide">
-				      	<span class="col-xs-8" style="width:100%;">
-				      		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
-									<%= parseInt(store.sku_info[i].price) %></span> 元&nbsp;/ 件
-								<label class="yjia" style="text-decoration:line-through;">
-									原价：<%= parseInt(store.sku_info[i].ori_price) %></label>
-								</span>			      		
-							</div>
-			      	<% } %>
-			      </div>
+<div class="detail-group" style="margin-top:10px;" id="s_money">
+	<% for(var i = 0; i< store.sku_info.length; i++) { %>
+	<div specifications="<%= store.sku_info[i].specifications %>" class="hide">
+  	<span class="col-xs-8" style="width:100%;">
+  		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
+			<%= parseInt(store.sku_info[i].price / 100) %></span> 元&nbsp;/ 件
+		<label class="yjia" style="text-decoration:line-through;">
+			原价：<%= parseInt(store.sku_info[i].ori_price / 100) %></label>
+		</span>			      		
+	</div>
+	<% } %>
+</div>
 
-			      <div class="detail-group" style="margin-top:10px;">
-			        <span style="float:left;margin-top:5px;">数量 :</span>
-			            <div class="input-group" style="width:100px;float:left;margin-left:8px;">
-<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
-	<input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
-<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
-			            </div>
-			        <span id="stockcontainer" style="float:left;margin-left:5px;">( 剩余 <span id="stock"> 9940 </span> ) </span>
-			      </div>
+<div class="detail-group" style="margin-top:10px;">
+  <span style="float:left;margin-top:5px;">数量 :</span>
+    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
+			<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
+				<input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
+			<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
+    </div>
+	  <div id="stockcontainer">
+		  <% for(var i = 0; i< store.sku_info.length; i++){ %>
+			<div specifications="<%= store.sku_info[i].specifications %>" style="float:left;margin-left:5px;">
+				( 剩余<span > <%= store.sku_info[i].repertory %> </span> ) 
+			</div>
+			<% } %>
+	  </div>
+</div>
 
 
-                  <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
-                    <span style="float:left;margin-top:5px;">规格 :</span>
-                    <% for(var i = 0; i< store.sku_info.length; i++) { %>
-                    		<button class="btn btn-default btn-xs"><%= store.sku_info[i].specifications %></button>
-                    <% }%>
-                  </div>
+<div class="detail-group" style="margin-top:10px;" id="menu_specifications">
+  <span style="float:left;margin-top:5px;">规格 :</span>
+  <% for(var i = 0; i< store.sku_info.length; i++) { %>
+  		<button class="btn btn-default btn-xs"><%= store.sku_info[i].specifications %></button>
+  <% }%>
+</div>
+
+	</div>
+</div>
 <script>
 $(function() {
 $('#menu_specifications button').on('click',function() {
     $("#menu_specifications button").removeClass("active");  
     $(this).addClass("active");
 		var specifications = $(this).text();
-		$('#s_money div').addClass('hide');;
-		var specifications_id = $('#s_money div[specifications="'+specifications+'"]').removeClass('hide');
+		$('#s_money div').addClass('hide');
+		$('#stockcontainer div').addClass('hide');
+		$('#s_money div[specifications="'+specifications+'"]').removeClass('hide');
+		$('#stockcontainer div[specifications="'+specifications+'"]').removeClass('hide');
 });
 $('#menu_specifications button').eq(0).click();
 });
 </script>
-			    </div>
-			</div>
+
 			<div class="product-js">
 				产品详情
 			</div>
