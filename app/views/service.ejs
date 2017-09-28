@@ -62,6 +62,7 @@
 			var out_trade_no = $('#select').val();
 			var title = $('#title').val();
 			var issue = $('#issue').val();
+			var phone = $('#phone').val();
 			$.ajax({
 				url: '/users/service/issue',
 				type: 'post',
@@ -69,7 +70,8 @@
 					openid: openid,
 					out_trade_no: out_trade_no,
 					title: title,
-					issue: issue
+					issue: issue,
+					phone: phone
 				}
 			}).done(function(msg) {
 				alert('🙏谢谢反馈');
