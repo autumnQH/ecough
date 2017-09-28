@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS USER_SERVICE (
   out_trade_no varchar(32) NOT NULL COMMENT '订单号',
   title varchar(255) NOT NULL COMMENT '问题标题',
   issue TEXT NOT NULL COMMENT '问题详细内容',
-  phone varchar(255) DEFAULT NULL COMMENT '用户电话', 
+  phone varchar(255) DEFAULT NULL COMMENT '联系方式', 
   create_time datetime NOT NULL COMMENT '',
   PRIMARY KEY (id),
   INDEX openid (openid)

@@ -107,7 +107,9 @@ exports.express = async (ctx)=> {
 }
 
 exports.showService = async (ctx)=> {
-	ctx.state.data =  await Admin.getService();
+  var data = await Admin.getService();
+  data.create_time = tools.formatDate(data.create_time);
+  ctx.state.data = data;
 	await ctx.render('admin/service');
 }
 
