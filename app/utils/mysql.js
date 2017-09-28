@@ -6,7 +6,7 @@ var options = {
     //'port': config.db.port,
     'database': 'ecough',
     'user': 'root',
-    'password': '450450',
+    'password': 'root',
     'connectionLimit': 5,
     // 'charset': config.db.charset,
     'supportBigNumbers': true,
