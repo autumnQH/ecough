@@ -66,12 +66,12 @@
 						break;
 						case 2:
 						data.status = '待发货';
-						kuaidi100 = '<a class="btn btn-xs" id="refund" val="'+data.out_trade_no+'" money="'+data.pay_money+'"'+
+						kuaidi100 = '<a style="display: inline;margin-left: 20%" id="refund" val="'+data.out_trade_no+'" money="'+data.pay_money+'"'+
 						'openid="'+ data.openid+'">申请退款</a>'
 						break;
 						case 3:
 						data.status = '已发货';
-						kuaidi100 = '<a class="btn btn-xs" id="kuaidi" href="https://m.kuaidi100.com/index_all.html?type='+
+						kuaidi100 = '<a style="display: inline;margin-left: 20%" id="kuaidi" href="https://m.kuaidi100.com/index_all.html?type='+
 							data.delivery_company+'&postid='+data.delivery_track_no+'">查询物流</a>';
 						break;
 						case 5:
@@ -137,12 +137,12 @@
 						<span>订单号：</span>
 						<span><%= data[i].out_trade_no %></span>
 					<% if(data[i].status == 3 ) { %>
- 						<a class="btn btn-xs" id="kuaidi" 
+ 						<a style="display: inline;margin-left: 20%" id="kuaidi" 
  						href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">
  						查询物流</a>
   				<% } %>
 					<% if(data[i].status == 2) { %>
-					<a class="btn btn-xs" id="refund" val="<%= data[i].out_trade_no %>" money="<%= data[i].pay_money%>"
+					<a style="display: inline;margin-left: 20%" id="refund" val="<%= data[i].out_trade_no %>" money="<%= data[i].pay_money%>"
 						openid="<%= data[i].openid %>">我要退款</a>
 					<% } %>
 					</div>
