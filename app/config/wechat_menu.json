@@ -3,7 +3,7 @@
     {  
       "type":"view",  
       "name":"产品订购",
-      "url":"http://www.e-cough.com/product/100001"
+      "url":"http://www.ecough.cn/product/100001"
     },
     {
       "name":"自助服务",
@@ -11,23 +11,23 @@
         {  
           "type":"view",  
           "name":"我的订单",
-          "url":"http://www.e-cough.com/users/my/order"
+          "url":"http://www.ecough.cn/users/my/order"
         },{  
           "type":"view",  
           "name":"联系客服",
-          "url":"http://www.e-cough.com/users/service"
+          "url":"http://www.ecough.cn/users/service"
         },{
           "type":"view",
           "name":"我的地址",
-          "url": "http://www.e-cough.com/users/getUserAddress"
+          "url": "http://www.ecough.cn/users/getUserAddress"
         },{
           "type":"view",
           "name":"福利二维码",
-          "url":"http://www.e-cough.com/users/code"
+          "url":"http://www.ecough.cn/users/code"
         },{
           "type": "view",
           "name": "个人中心",
-          "url": "http://www.e-cough.com/users/user"
+          "url": "http://www.ecough.cn/users/user"
         }      
       ]
     }
