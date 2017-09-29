@@ -78,32 +78,6 @@ app.use(async (ctx, next) => {
 //控制器
 app.use(controller(path.join(__dirname, './app/controllers')));
 
-async function a(dataBuffer,type) {
-	var name = Date.now() +'.' + type;
-	var url = __dirname + '/app/public/uploads/'+name
-    return new Promise(function(resolve, reject) {
-    	fs.writeFile(url, dataBuffer, function(err) {
-    		if(err){
-    			reject(err);
-    		}else{
-    			resolve({
-    				url: '/uploads/'+name
-    			});
-    		}
-    	});
-    });	
-}
-router.post('/base64', async function(ctx, next) {
-    var imgData = ctx.request.body.img;
-    //过滤data:URL
-    var base64Data = imgData.replace(/^data:image\/\w+;base64,/, "");
-    var type = imgData.replace(/data:image\/([^;]+).*/i,'$1');//取类型
-    var dataBuffer = new Buffer(base64Data, 'base64');	
-	var img = await a(dataBuffer,type);	
-	console.log(img);
-	return ctx.body = img;
-});
-app.use(router.routes()).use(router.allowedMethods());
 app.use(routers.routes()).use(routers.allowedMethods());
 app.on('error', function(err, ctx){
     console.log(err)
