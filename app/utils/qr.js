@@ -18,10 +18,11 @@ exports.qr_logo = async function(userinfo, qrurl){
     var qr = qr_image.imageSync(qrurl.url);
     var q_size = 120;
     var logo_size = 26;
-
+    var x = 25;
+    var y = 280;
     var logo = images(__dirname+'/../public/imgs/'+userinfo.openid+'logo.jpeg').size(logo_size);
     var q = images(qr).size(q_size).draw(logo,q_size/2-logo_size/2,q_size/2-logo_size/2);
-    images(__dirname + '/'+'backage.jpg').draw(q,52,330)
+    images(__dirname + '/'+'backage.jpg').draw(q,x,y)
     .saveAsync(__dirname+'/../public/imgs/'+userinfo.openid+'.jpeg',{quality:50},{}, function() {
           return resolve('ok');      
     });

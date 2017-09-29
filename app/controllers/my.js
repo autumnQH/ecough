@@ -62,7 +62,7 @@ var product = async (ctx, next) => {
         var newarr = val.split(':');
         return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
     });
-    
+
     var r_url = config.server_host + ctx.url.split('?').slice(0,1);
     
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
@@ -305,7 +305,6 @@ var refund = async function(ctx, next) {
     req.total_fee = parseInt(req.total_fee* 100);
     var refund = await pay.refund(req);    
     var xml = refund.xml; 
-    console.log(xml);
     if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
         if(xml.result_code[0] === 'SUCCESS'){
             // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单

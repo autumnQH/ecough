@@ -12,11 +12,10 @@
     <title>产品</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/libs/swiper/swiper-3.4.2.min.css"/>
-    <script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
     <script src="/libs/swiper/swiper-3.4.2.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>      
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 </head>
 <body>
     <div class="main">
@@ -25,80 +24,102 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="javascript:">
-                            <img src="/images/14951862453097.jpg"/>
+                            <img src="/images/chuangtie_xuanzhuan1.jpeg"/>
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:">
-                            <img src="/images/15003684727311.jpg"/>
+                            <img src="/images/chuangtie_xuanzhuan2.jpeg"/>
                         </a>
                     </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:">
+                            <img src="/images/chuangtie_xuanzhuan3.jpeg"/>
+                        </a>
+                    </div>                  
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
             </div>
-            <div class="detail">
-                <div class="detail-div img-rounded">
+
+
+
+
+<div class="detail">
+  <div class="detail-div img-rounded">
+                    
                   <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
 
 
-                  <div class="detail-group" style="margin-top:10px;">
-                            <span class="col-xs-8" style="width:100%;">
-                                                现价 : ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
-                                                1</span> 元&nbsp;/ 件
-                                                <label class="yjia" style="text-decoration:line-through;">原价：2</label>
-                            </span>
-                  </div>
+<div class="detail-group" style="margin-top:10px;" id="s_money">
+    <div specifications="<%= store.sku_info[i].specifications %>" class="hide">
+    <span class="col-xs-8" style="width:100%;">
+        现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
+            159</span> 元&nbsp;/ 件
+        <label class="yjia" style="text-decoration:line-through;">
+            原价：199</label>
+        </span>                     
+    </div>
+</div>
 
-                  <div class="detail-group" style="margin-top:10px;">
-                    <span style="float:left;margin-top:5px;">数量 :</span>
-                        <div class="input-group" style="width:100px;float:left;margin-left:8px;">
-<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
-    <input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
-<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
-                        </div>
-                    <span id="stockcontainer" style="float:left;margin-left:5px;">( 剩余 <span id="stock"> 9940 </span> ) </span>
-                  </div>
+<div class="detail-group" style="margin-top:10px;">
+  <span style="float:left;margin-top:5px;">数量 :</span>
+    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
+            <span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
+                <input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
+            <span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
+    </div>
+      <div id="stockcontainer">
+          
+            <div specifications="<%= store.sku_info[i].specifications %>" style="float:left;margin-left:5px;">
+                ( 剩余<span > 998 </span> ) 
+            </div>
+            
+      </div>
+</div>
 
 
-                  <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
-                    <span style="float:left;margin-top:5px;">规格 :</span>
-                    <a  class="btn btn-default btn-xs active">1米</a>
-                    <a  class="btn btn-default btn-xs">1.3米</a>
-                  </div>
+<div class="detail-group" style="margin-top:10px;" id="menu_specifications">
+  <span style="float:left;margin-top:5px;">规格 :</span>
+        <button class="btn btn-default btn-xs">1.3米*0.7米</button>
+</div>
+
+    </div>
+</div>
 <script>
 $(function() {
-
-$('#menu_specifications a').on('click',function() {
-    $("#menu_specifications a").removeClass("active");  
+$('#menu_specifications button').on('click',function() {
+    $("#menu_specifications button").removeClass("active");  
     $(this).addClass("active");
+        var specifications = $(this).text();
+        $('#s_money div').addClass('hide');
+        $('#stockcontainer div').addClass('hide');
+        $('#s_money div[specifications="'+specifications+'"]').removeClass('hide');
+        $('#stockcontainer div[specifications="'+specifications+'"]').removeClass('hide');
 });
+$('#menu_specifications button').eq(0).click();
 });
 </script>
 
-
-                </div>
-            </div>
             <div class="product-js">
                 产品详情
             </div>
             <div class="product-item">
-                <img src="/images/14997402965602.jpg"/>
-                <p>雾霾、我们要对你说不，给窗户贴上“小咳嗽”防雾霾窗贴；妈妈、爸爸们，你们可以时刻开窗、窗外的雾霾阻挡不了窗内风的清丽、光的柔和、99%的纯净空气；</p>
-                <p>不再惧怕窗内的甲醛、TVOC……任它们随风飘离。</p>
-                <p>我们不希望再看到因雾霾产生的咳嗽宝宝，我们希望娃儿们减轻咳嗽(Ease-Cough),保持着澄澈如初的笑，自然而然，向阳生长。</p>
-                <p>时光会告诉你，你所期望的，即使迟到也一定会到。</p>
+<img src="/images/fangwumaichuangtie_01.jpg">
+<img src="/images/fangwumaichuangtie_03.jpg">
+<img src="/images/fangwumaichuangtie_05.jpg">
+<img src="/images/fangwumaichuangtie_07.jpg">
+<img src="/images/fangwumaichuangtie_09.jpg">
+<img src="/images/fangwumaichuangtie_11.jpg ">
+<img src="/images/fangwumaichuangtie_13.jpg">
+<img src="/images/fangwumaichuangtie_02.jpg">
+<img src="/images/fangwumaichuangtie_04.jpg">
+<img src="/images/fangwumaichuangtie_06.jpg">
+<img src="/images/fangwumaichuangtie_08.jpg">
+<img src="/images/fangwumaichuangtie_10.jpg">
+<img src="/images/fangwumaichuangtie_12.jpg">
+            </div>
 
-            </div>
-            <div class="product-item">
-                <img src="/images/14998319849732.jpg"/>
-                <p>“小咳嗽”E-cough高效防雾霾窗贴材料安全环保、高效过滤雾霾（PM2.5颗粒）：使用新型超细纤维过滤材料，三维立体网状结构，医用级空气过滤净度，超大量容尘吸附颗粒物，无毒、无味、环保安全。
-可过滤吸附物质：高效过滤、吸附雾霾PM2.5、花粉、尘螨、带菌颗粒、灰尘、柳絮等。</p>
-                <p>自然通透：自然风可穿透性强，阻止和吸附雾霾PM2.5同时，保持室内干净通风、换气，挥发室内甲醛、苯等有害气体。</p>
-                <p>使用方式：创新家用型，自己轻松贴在您家窗户上</p>
-                <p>雾霾天，打开窗，呼吸新鲜空气</p>
-                <p>（更新说明：雾霾较严重季节，本产品使用3个月，因吸附大量雾霾（PM2.5颗粒），防雾霾窗贴会由白色变为灰黑色，为了您和家人呼吸新鲜空气，建议3个月内更换一张新的窗贴。）</p>
-            </div>
             <div class="footer">
                 <a id="pay">立即订购</a>
             </div>
@@ -133,11 +154,9 @@ $('#menu_specifications a').on('click',function() {
         });
 
         $(function() {      
-            $('#pay').on('click', function(event) {
-                var total = $('#total').val();
-                var specifications = $('.active').text();
-           
-            });
+      $('#pay').on('click', function(event) {
+        alert('请在微信上打开');
+      });
         });
     </script>
 </body>

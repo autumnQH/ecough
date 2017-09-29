@@ -78,7 +78,7 @@ var userCode = async (ctx, next) => {
   if(ctx.session.openid){
     const token = await dao.getActiveAccessToken();
     let json = JSON.stringify({
-        "expire_seconds": 2592000, 
+        "expire_seconds": 3 * 60 *60 *24, 
         "action_name": "QR_STR_SCENE", 
         "action_info": {
             "scene": {
@@ -87,7 +87,7 @@ var userCode = async (ctx, next) => {
         }
     });
     var qrurl =  await tools.getQRCode(token, json);
-    var userinfo =  ctx.session;
+    var userinfo =  ctx.session;    
     var url = await tools.getQrFile(userinfo, qrurl); 
     return ctx.body = {
       url : '/imgs/'+ url + '.jpeg',
