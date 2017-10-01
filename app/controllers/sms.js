@@ -10,6 +10,7 @@ var send = async (ctx, next) => {
 		PhoneNumbers: req.phone,
 		TemplateParam: '{"code":"'+number+'"}'
 	});
+  console.log(s);
   if(s.Code=="OK"){ 
     return  ctx.body = {code :1,msg :number}  
   }else{ 
