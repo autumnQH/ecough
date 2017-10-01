@@ -62,6 +62,17 @@
 					'<input type="checkbox" name="apk[]" value="'+val.voucher_denomination +'">'+val.voucher_denomination+
 					'元'+val.voucher_type+'</li>');				
 			});
+
+		$('input[type=checkbox]').click(function() {
+			$("input[name='apk[]']").attr('disabled', true);
+
+		 		if ($("input[name='apk[]']:checked").length >= 4) {
+		  		$("input[name='apk[]']:checked").attr('disabled', false);
+		 		} else {
+		  		$("input[name='apk[]']").attr('disabled', false);
+		 		}
+		});
+
 			$('#myModal').modal('show');
 		});
 	});
@@ -82,14 +93,6 @@
  		$('#myModal').modal('hide');
  	});
 
-  $('input[type=checkbox]').click(function() {
-   $("input[name='apk[]']").attr('disabled', true);
-   if ($("input[name='apk[]']:checked").length >= 4) {
-    $("input[name='apk[]']:checked").attr('disabled', false);
-   } else {
-    $("input[name='apk[]']").attr('disabled', false);
-   }
-  });
  })
 
 	wx.config({

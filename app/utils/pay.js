@@ -7,7 +7,7 @@ const request = require('request');
 const _ = require('lodash');
 
 //统一下单
-exports.setPackageData = async function (openid, pay_money, value,store_name) {
+exports.setPackageData = async function (openid, pay_money, value,store_name, ip) {
     const config = await dao.getConfig();	
     var data = {
         appid: config.appid, //appId
@@ -17,7 +17,7 @@ exports.setPackageData = async function (openid, pay_money, value,store_name) {
         nonce_str: value.nonceStr,
         out_trade_no: value.out_trade_no,//商户订单号
         total_fee: pay_money,//标价金额
-        spbill_create_ip: '47.93.245.51',//终端IP
+        spbill_create_ip: ip || '47.93.245.51',//终端IP
         notify_url: config.server_host+'/notify',
         trade_type: 'JSAPI',
         openid: openid          

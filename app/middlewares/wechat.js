@@ -12,7 +12,7 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.pay = async (ctx)=> {
-    console.log(ctx.ip.match(/\d+.\d+.\d+.\d+/)[0],'ctx.id=====');
+    var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var body = ctx.request.body;
     console.log(body,'res===');
 
@@ -25,7 +25,7 @@ exports.pay = async (ctx)=> {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
-	var page = await pay.setPackageData(body.openid, body.pay_money, value,body.store_name);
+	var page = await pay.setPackageData(body.openid, body.total_fee, value,body.store_name, ip);
     
     console.log(page,'统一下单');
 
