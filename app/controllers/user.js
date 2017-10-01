@@ -404,10 +404,11 @@ var setUserVoucher = async function(ctx, next) {
 
   var integral = await USER.getUserForIntegralByOpenId(req.openid);
 
-  if(integral.integral >=req.voucher_denomination ){
-    var number = integral.integral - req.voucher_denomination;
+  if(integral.integral >=req.voucher_integral ){
+    var number = integral.integral - req.voucher_integral;
     
-    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
+    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid});
+    delete req.voucher_integral;
     USER.setUserVoucher(req);
     return ctx.body = {
       success: '兑换成功'
