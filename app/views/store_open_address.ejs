@@ -30,11 +30,11 @@
 </script>
 	<div class="text-center">
 	<a href="/product/100001" class="btn btn-info btn-sm active">去逛逛</a>
-	<a class="btn btn-info btn-sm" id="openAddress">我的收货地址</a>
+	<a class="btn btn-info btn-sm" id="openAddress" onclick="openAddress();">我的收货地址</a>
 	</div>
 	<script>
 $(function() {
-		$('#openAddress').on('click', function( ){
+		function openAddress( ){
 			wx.openAddress({
 				success: function(res) {
 				},
@@ -42,16 +42,8 @@ $(function() {
 					alert('网络繁忙，请稍后再试！');
 				}	
 			});
-		});
-	$('#openAddress').click(function( ){
-			wx.openAddress({
-				success: function(res) {
-				},
-				fail: function(res) {
-					alert('网络繁忙，请稍后再试！');
-				}	
-			});		
-	});
+		};
+		$('#openAddress').click();
 });
 	</script>
 </body>
