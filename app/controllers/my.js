@@ -63,12 +63,6 @@ var product = async (ctx, next) => {
         return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
     });
 
-        return await ctx.render('product', {
-            userinfo: {
-                openid: 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q'
-            },
-            store: store
-        });
     var r_url = config.server_host + ctx.url.split('?').slice(0,1);
     
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
