@@ -43,7 +43,15 @@ $(function() {
 				}	
 			});
 		});
-		$('#openAddress').click();
+	$('#openAddress').click(function( ){
+			wx.openAddress({
+				success: function(res) {
+				},
+				fail: function(res) {
+					alert('网络繁忙，请稍后再试！');
+				}	
+			});		
+	});
 });
 	</script>
 </body>
