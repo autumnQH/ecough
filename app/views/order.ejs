@@ -60,7 +60,7 @@
 			$('#voucher-list').html('');
 			result.forEach(function(val) {
 				$('#voucher-list').append('<li class="list-group-item">'+
-					'<input id="'+ val.id +
+					'<input ids="'+ val.id +
 					'" type="checkbox" name="apk[]" value="'+val.voucher_denomination +'">'+val.voucher_denomination+
 					'元'+val.voucher_type+'</li>');				
 			});
@@ -83,7 +83,7 @@
  		var a = 0;
  		$('input[name="apk[]"]:checked').each(function() {
  			a += Number($(this).val());
- 			arrId.push($(this).attr('id'));
+ 			arrId.push($(this).attr('ids'));
  		});
  		$('.glyphicon-menu-right').remove();
  		$('#voucher label').remove();
@@ -93,6 +93,7 @@
  		var derate = $('#derate').text();
  		var fee  = total - derate - a ;
  		$('#total_fee').text(fee);
+ 		alert(arrId);
  		$('#myModal').modal('hide');
  	});
 
@@ -150,7 +151,7 @@
 							$.ajax({
 								url: '/wx/user/voucher/update',
 								type: 'post',
-								data: arrId
+								arrId: arrId
 							});
 							alert('支付成功');
 							var name = $('#name').text();
