@@ -49,9 +49,9 @@
 
 <script type="text/javascript">
 	var arrId = [];
- $(document).ready(function() {
 
-	$('.order-center li').eq(3).on('click', function() {	
+
+ $(document).ready(function() {
 		$.ajax({
 			url: '/wx/user/voucher',
 			type: 'get'
@@ -73,7 +73,8 @@
 		  		$("input[name='apk[]']").attr('disabled', false);
 		 		}
 		});
-
+		//ajax end
+	$('.order-center li').eq(3).on('click', function() {	
 			$('#myModal').modal('show');
 		});
 	});

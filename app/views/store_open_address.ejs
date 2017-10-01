@@ -27,16 +27,6 @@
 		signature: '<%= wxcfg.signature %>',
 		jsApiList:['openAddress']
 	});
-
-	wx.ready(function() {
-		wx.openAddress({
-			success: function(res) {
-			},
-			fail: function(res) {
-				alert('网络繁忙，请稍后再试！');
-			}	
-		});	
-	});
 </script>
 	<div class="text-center">
 	<a href="/product/100001" class="btn btn-info btn-sm active">去逛逛</a>
@@ -44,15 +34,16 @@
 	</div>
 	<script>
 $(function() {
-		$('#openAddress').onclick = function() {
-		wx.openAddress({
-			success: function(res) {
-			},
-			fail: function(res) {
-				alert('网络繁忙，请稍后再试！');
-			}	
+		$('#openAddress').on('click', function( ){
+			wx.openAddress({
+				success: function(res) {
+				},
+				fail: function(res) {
+					alert('网络繁忙，请稍后再试！');
+				}	
+			});
 		});
-	}
+		$('#openAddress').click();
 });
 	</script>
 </body>
