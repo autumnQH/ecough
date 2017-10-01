@@ -49,6 +49,7 @@
         if(!a){
             alert('请选择');
         }else{
+
             var number = $('#integral p strong').text();
             if(number>=a){
                 let data = {
@@ -66,6 +67,7 @@
 
                 });
             }else{
+                alert(number + '- ' + a + '=' + number-a);
                 alert('您的积分不够兑换该代金券!');
             }
         }
