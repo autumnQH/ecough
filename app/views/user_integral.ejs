@@ -29,7 +29,7 @@
                 <div >
                     <h1 class="text-center" style="padding-top: 12px;">
                         <label style="width: 60%;" >代金券<label style="color: #cb3837;">
-                            ¥<span id="voucher_denomination"><%= config.m_voucher %></span></label></label>
+                            ¥<span id="voucher_denomination"><%- Number(config.m_voucher / 100) %></span></label></label>
                         <label><strong><%= config.n_integral %></strong>积分</label>
                     </h1>
                 </div>
