@@ -44,6 +44,8 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
+  console.log(req.arr);
+  delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
   wechat.setOrder(req);

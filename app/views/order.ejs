@@ -149,11 +149,6 @@
 						signType: msg.signType,//'<%= data.signType %>',
 						paySign: msg.paySign,//'<%= data.paySign %>',
 						success: function(res) {
-							$.ajax({
-								url: '/wx/user/voucher/update',
-								type: 'post',
-								data: {arr: arrId}
-							});
 							alert('支付成功');
 							var name = $('#name').text();
 							var address = $('#address').text();
@@ -177,7 +172,8 @@
 							$('#order_total_money').val(total_money);
 							$('#order_derate_money').val(derate_money);
 							$('#order_out_trade_no').val(out_trade_no);
-							$('#sub').click();
+							$('#arr').val(arrId);
+							$('#sub').click();						
 
 						},
 						fail: function(res) {
@@ -283,6 +279,7 @@
 	<input type="text" name="derate_money" id="order_derate_money">
 	<input type="text" name="out_trade_no" id="order_out_trade_no">
 	<input type="text" name="status" value="2">
+	<input type="text" name="arr" id="arr">
 	<input type="submit" id="sub">
 </form>
 
