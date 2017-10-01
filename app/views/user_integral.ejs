@@ -54,7 +54,7 @@
             if(Number(number)>=Number(a)){
                 let data = {
                     voucher_type: '代金券',
-                    voucher_denomination: $('#voucher_denomination').text(),
+                    voucher_denomination: Number($('#voucher_denomination').text() * 100),
                     voucher_integral: a
                 };
                 $.ajax({
