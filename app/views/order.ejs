@@ -40,8 +40,7 @@
 </ul>     
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+        <button type="button" class="btn btn-primary" id="save">确定</button>
       </div>
     </div>
   </div>
@@ -93,6 +92,9 @@
  		var total = $('#total').text();
  		var derate = $('#derate').text();
  		var fee  = total - derate - a ;
+ 		if(0>=fee) {
+ 			fee = 1;
+ 		}
  		$('#total_fee').text(fee);
  		$('#myModal').modal('hide');
  	});
@@ -100,7 +102,7 @@
  })
 
 	wx.config({
-		debug: true,
+		debug: false,
 		appId: '<%= config.appid %>',
 		timestamp: '<%= config.timestamp %>',
 		nonceStr: '<%= config.nonceStr %>',
