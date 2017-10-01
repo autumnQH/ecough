@@ -75,6 +75,10 @@
  		$('#voucher label').remove();
  		$('#voucher').append('<label>¥'+ a +'.00</label>');
  		$('#voucher_number').val(a);
+ 		var total = $('#total').text();
+ 		var derate = $('#derate').text();
+ 		var fee  = total - derate - a ;
+ 		$('#total_fee').text(fee);
  		$('#myModal').modal('hide');
  	});
 
@@ -87,11 +91,6 @@
    }
   });
  })
-
-
- 	$('#voucher_number').change(function() {
- 		console.log('???');
- 	});
 
 	wx.config({
 		debug: true,
@@ -149,10 +148,10 @@
 							var product = $('#product').text();
 							var total = '<%= total %>件';
 							var specifications = '<%= specifications %>';
-							var money = '<%= pay_money %>';
+							var money = ($('#total').text() - $('#derate').text() - $('#voucher_number').val());
 							var out_trade_no = msg.out_trade_no;
-							var derate_money = "<%= derate_money %>";
-							var total_money = "<%= total_money %>";
+							var derate_money = ($('#derate').text() + $('#voucher_number').val()) ;
+							var total_money = $('#total').text();
 
 
 							$('#order_openid').val('<%= openid %>');
@@ -223,7 +222,7 @@
 					<ul>
 						<li>
 							<span>商品总额：</span>
-							<label>￥<%= total_money %></label>
+							<label><span>￥</span><span id="total"><%= total_money %></span></label>
 						</li>
 						<li>
 							<span>运费：</span>
@@ -231,7 +230,7 @@
 						</li>
 						<li>
 							<span>首单代金券减免:</span>
-							<label>￥<%= derate_money %></label>
+							<label><span>￥</span><span id="derate"><%= derate_money %></span></label>
 						</li>
 						<li id="voucher">
 							<span>代金券</span>
@@ -241,7 +240,7 @@
 						</li>												
 						<li>
 							<span>付款金额：</span>
-							<label style="color: #ff4141;">￥<span id="total_fee"><%= pay_money %></span></label>
+							<label style="color: #ff4141;"><span>￥</span><span id="total_fee"><%= pay_money %></span></label>
 						</li>
 					</ul>
 				</div>
