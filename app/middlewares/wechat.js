@@ -11,12 +11,6 @@ exports.voucher = async (ctx)=> {
 	ctx.body = voucher;
 }
 
-exports.updateVoucher = async (ctx)=> {
-    var req = ctx.request.body;
-    console.log(req);
-    //User.updateUserVoucherById();
-}
-
 exports.pay = async (ctx)=> {
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var body = ctx.request.body;
