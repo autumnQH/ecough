@@ -128,7 +128,7 @@
 		  if(name && phone && address){
 				$.ajax({
 					url: '/wx/pay',
-					type: 'get',
+					type: 'post',
 					data: {
 						openid: '<%= openid %>',
 						store_name: $('#product').text(),
