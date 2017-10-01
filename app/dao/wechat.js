@@ -134,8 +134,12 @@ var delFAQ = (id) => {
 
 var refundVoucherByOutTradeNo = (order_id)=> {
 	var result = db.update("USER_VOUCHER", {status: 2, order_id: null}, {order_id: order_id});
+	return result
 }
-
+var refundUserByOutTradeNo = (out_trade_no) =>{
+	var result = db.update("T_WECHAT_USER", {flag: '1'}, {flag: out_trade_no});
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -161,5 +165,6 @@ module.exports = {
 	getFAQById: getFAQById,
 	updateFAQById: updateFAQById,
 	delFAQ: delFAQ,
-	refundVoucherByOutTradeNo: refundVoucherByOutTradeNo
+	refundVoucherByOutTradeNo: refundVoucherByOutTradeNo,
+	refundUserByOutTradeNo: refundUserByOutTradeNo
 };

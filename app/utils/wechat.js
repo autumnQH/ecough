@@ -226,3 +226,6 @@ exports.refundVoucherByOutTradeNo = async (out_trade_no)=> {
     var order_id = await dao.getOutTradeNo(out_trade_no);
     return dao.refundVoucherByOutTradeNo(order_id.id);
 }
+exports.refundUserByOutTradeNo = async (out_trade_no)=> {
+    return dao.refundUserByOutTradeNo(out_trade_no);
+}
