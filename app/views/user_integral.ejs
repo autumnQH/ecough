@@ -49,9 +49,8 @@
         if(!a){
             alert('请选择');
         }else{
-
             var number = $('#integral p strong').text();
-            if(number>=a){
+            if(Number(number)>=Number(a)){
                 let data = {
                     voucher_type: '代金券',
                     voucher_denomination: a
@@ -67,7 +66,6 @@
 
                 });
             }else{
-                alert(number + '- ' + a + '=');
                 alert('您的积分不够兑换该代金券!');
             }
         }
