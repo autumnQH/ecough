@@ -25,7 +25,7 @@ exports.pay = async (ctx)=> {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
-	var page = await pay.setPackageData(bdoy.openid, bdoy.pay_money, value,bdoy.store_name);
+	var page = await pay.setPackageData(body.openid, body.pay_money, value,body.store_name);
     
     console.log(page,'统一下单');
 

@@ -53,7 +53,7 @@
 
 	$('.order-center li').eq(3).on('click', function() {	
 		$.ajax({
-			url: '/wx/user/voucher/'+ 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q',
+			url: '/wx/user/voucher/'+ '<%= openid %>',
 			type: 'get'
 		}).done(function(result) {
 			$('#voucher-list').html('');
