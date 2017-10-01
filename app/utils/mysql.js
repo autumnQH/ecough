@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 var options = {
     'host': 'localhost',//config.db.host,
     //'port': config.db.port,
-    'database': 'ecough2',
+    'database': 'ecough',
     'user': 'root',
     'password': 'root',
     'connectionLimit': 5,
