@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
   phone varchar(16) DEFAULT NULL COMMENT '用户电话',
   integral int(16) DEFAULT 0 COMMENT '积分', 
   create_time datetime DEFAULT NULL COMMENT '',
-  flag tinyint(1) DEFAULT '1' COMMENT '是否是首单',
+  flag varchar(64) DEFAULT '1' COMMENT '是否是首单（1-首单, 订单号）',
   order_count int(12) DEFAULT 0 COMMENT '下单次数',
   PRIMARY KEY (id),
   INDEX openid (openid)

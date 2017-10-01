@@ -62,9 +62,7 @@ var UserCode = async(ctx, next) => {
     //获取js-ticket
     var jsapi_ticket = await dao.getJsapiTicket();
     var jsapi_ticket_url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
-    console.log(jsapi_ticket_url);
-    var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value); 
-    console.log(wxcfg,'wxcfg');  
+    var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value);  
     ctx.state.config = wxcfg; 
     await ctx.render('user_code');   
   }else{
@@ -93,9 +91,7 @@ var UserCode = async(ctx, next) => {
         //获取js-ticket
         var jsapi_ticket = await dao.getJsapiTicket();
         var jsapi_ticket_url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
-        console.log(jsapi_ticket_url);
         var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value);   
-        console.log(wxcfg,'wxcfg');
         ctx.state.config = wxcfg; 
         await ctx.render('user_code');    
       } 

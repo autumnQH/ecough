@@ -163,8 +163,8 @@ exports.setQRCode = (data) => {
     return dao.setQRCode(data);
 }
 
-exports.customUpdateUser = (openid)=> {
-    return dao.customUpdateUser(openid);
+exports.customUpdateUser = (openid, out_trade_no)=> {
+    return dao.customUpdateUser(openid, out_trade_no);
 }
 
 exports.getUser = () => {
