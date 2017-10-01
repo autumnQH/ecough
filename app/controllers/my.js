@@ -63,6 +63,12 @@ var product = async (ctx, next) => {
         return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
     });
 
+        return await ctx.render('product', {
+            userinfo: {
+                openid: 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q'
+            },
+            store: store
+        });
     var r_url = config.server_host + ctx.url.split('?').slice(0,1);
     
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
@@ -143,7 +149,7 @@ var jssdk = async(ctx, next) => {
 
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    //console.log(result);
+    console.log(result);
     if(result.xml.err_code){
         if(result.xml.err_code[0] == 'ORDERPAID'){
             console.log('该订单已经支付');
@@ -172,7 +178,7 @@ var jssdk = async(ctx, next) => {
 
         });         
     }else{
-        await ctx.redirect('/product/100001');
+        await ctx.redirect('/product/10001');
     }
 
 };
