@@ -61,8 +61,8 @@
 			result.forEach(function(val) {
 				$('#voucher-list').append('<li class="list-group-item">'+
 					'<input ids="'+ val.id +
-					'" type="checkbox" name="apk[]" value="'+Number(val.voucher_denomination / 100) +'">'
-					+ Number(val.voucher_denomination / 100)+'元'+val.voucher_type+'</li>');				
+					'" type="checkbox" name="apk[]" value="'+val.voucher_denomination+'">'
+					+ val.voucher_denomination+'元'+val.voucher_type+'</li>');				
 			});
 
 		$('input[type=checkbox]').click(function() {
@@ -86,7 +86,6 @@
  			a += Number($(this).val());
  			arrId.push($(this).attr('ids'));
  		});
- 		alert(a);
  		$('.glyphicon-menu-right').remove();
  		$('#voucher label').remove();
  		$('#voucher').append('<label>¥'+ a +'</label>');
@@ -95,7 +94,6 @@
  		var derate = $('#derate').text();
  		var fee  = total - derate - a ;
  		$('#total_fee').text(fee);
- 		alert(arrId);
  		$('#myModal').modal('hide');
  	});
 

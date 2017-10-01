@@ -14,7 +14,6 @@ exports.voucher = async (ctx)=> {
 exports.pay = async (ctx)=> {
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var body = ctx.request.body;
-    console.log(body,'res===');
 
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
@@ -25,6 +24,7 @@ exports.pay = async (ctx)=> {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
+    body.total_fee = body.total_fee * 100;
 	var page = await pay.setPackageData(body.openid, body.total_fee, value,body.store_name, ip);
     
     console.log(page,'统一下单');
