@@ -147,6 +147,11 @@
 						signType: msg.signType,//'<%= data.signType %>',
 						paySign: msg.paySign,//'<%= data.paySign %>',
 						success: function(res) {
+							$.ajax({
+								url: '/wx/user/voucher/update',
+								type: 'post',
+								data: arrId
+							});
 							alert('支付成功');
 							var name = $('#name').text();
 							var address = $('#address').text();
@@ -158,11 +163,6 @@
 							var out_trade_no = msg.out_trade_no;
 							var derate_money = ($('#derate').text() + $('#voucher_number').val()) ;
 							var total_money = $('#total').text();
-							$.ajax({
-								url: '/wx/user/voucher/update',
-								type: 'post',
-								data: arrId
-							});
 
 							$('#order_openid').val('<%= openid %>');
 							$('#order_name').val(name);
