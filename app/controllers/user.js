@@ -353,11 +353,18 @@ var UserIntegral =async function(ctx, next) {
   var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
-
+var data = await USER.getUserForIntegralByOpenId('o5Yi9wOfXWopOcMYiujWBZmwBH0Q');
+   return  await ctx.render('user_integral', {
+      data: data,
+      config: {
+        n_integral: config.n_integral,
+        m_voucher: config.m_voucher
+      }
+    });
   if(ctx.session.openid){
     var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
     
-    return await ctx.render('user_integral', {
+    await ctx.render('user_integral', {
       data: data,
       config: {
         n_integral: config.n_integral,
@@ -381,7 +388,7 @@ var UserIntegral =async function(ctx, next) {
 
         var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
         
-        return await ctx.render('user_integral', {
+        await ctx.render('user_integral', {
           data: data,
           config: {
             n_integral: config.n_integral,
@@ -399,6 +406,7 @@ var UserIntegral =async function(ctx, next) {
 //积分兑换代金券
 var setUserVoucher = async function(ctx, next) {
   var req = ctx.request.body;
+      req.openid = ctx.session.openid;
       req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
 
   var integral = await USER.getUserForIntegralByOpenId(req.openid);
