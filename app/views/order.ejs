@@ -49,6 +49,7 @@
 
 
 <script type="text/javascript">
+	var arrId = [];
  $(document).ready(function() {
 
 	$('.order-center li').eq(3).on('click', function() {	
@@ -59,7 +60,8 @@
 			$('#voucher-list').html('');
 			result.forEach(function(val) {
 				$('#voucher-list').append('<li class="list-group-item">'+
-					'<input type="checkbox" name="apk[]" value="'+val.voucher_denomination +'">'+val.voucher_denomination+
+					'<input id="'+ val.id +
+					'" type="checkbox" name="apk[]" value="'+val.voucher_denomination +'">'+val.voucher_denomination+
 					'元'+val.voucher_type+'</li>');				
 			});
 
@@ -81,6 +83,7 @@
  		var a = 0;
  		$('input[name="apk[]"]:checked').each(function() {
  			a += Number($(this).val());
+ 			arrId.push($(this).attr('id'));
  		});
  		$('.glyphicon-menu-right').remove();
  		$('#voucher label').remove();
@@ -134,7 +137,8 @@
 					data: {
 						openid: '<%= openid %>',
 						store_name: $('#product').text(),
-						total_fee: Number($('#total_fee').text())
+						total_fee: Number($('#total_fee').text()),
+						arrId: arrId
 					}
 				}).done(function(msg) {
 					wx.chooseWXPay({

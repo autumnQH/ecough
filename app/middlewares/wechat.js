@@ -12,6 +12,7 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.pay = async (ctx)=> {
+    console.log(ctx.ip,'ip----');
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var body = ctx.request.body;
     console.log(body,'res===');
