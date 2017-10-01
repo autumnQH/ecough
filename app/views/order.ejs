@@ -128,9 +128,13 @@
 		  if(name && phone && address){
 				$.ajax({
 					url: '/wx/pay',
-					type: 'get'
+					type: 'get',
+					data: {
+						openid: '<%= openid %>',
+						store_name: $('#product').text(),
+						total_fee: Number($('#total_fee').text())
+					}
 				}).done(function(msg) {
-					alert(msg);
 					wx.chooseWXPay({
 						timestamp: msg.timeStamp,//'<%= data.timeStamp %>',
 						nonceStr: msg.nonceStr,//'<%= data.nonceStr %>',
@@ -146,7 +150,7 @@
 							var total = '<%= total %>件';
 							var specifications = '<%= specifications %>';
 							var money = '<%= pay_money %>';
-							var out_trade_no = "<%= data.out_trade_no %>";
+							var out_trade_no = msg.out_trade_no;
 							var derate_money = "<%= derate_money %>";
 							var total_money = "<%= total_money %>";
 
@@ -237,7 +241,7 @@
 						</li>												
 						<li>
 							<span>付款金额：</span>
-							<label style="color: #ff4141;">￥<%= pay_money %></label>
+							<label style="color: #ff4141;">￥<span id="total_fee"><%= pay_money %></span></label>
 						</li>
 					</ul>
 				</div>

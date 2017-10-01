@@ -12,6 +12,14 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.pay = async (ctx)=> {
+    console.log(ctx.ip.match(/\d+.\d+.\d+.\d+/)[0],'ctx.id=====');
+    var body = ctx.request.body;
+    console.log(body,'res===');
+    var req = {
+        openid: 'oDC9Z0l_Ngjc36rTb7i86hgj57R4',
+        pay_money: 1,
+        store_name: 'api测试'
+    };
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
     var out_trade_no = tools.trade();
@@ -21,8 +29,7 @@ exports.pay = async (ctx)=> {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
-    var openid = 'oDC9Z0l_Ngjc36rTb7i86hgj57R4';
-	var page = await pay.setPackageData(openid, 1, value,'api测试');
+	var page = await pay.setPackageData(req.openid, req.pay_money, value,req.store_name);
     
     console.log(page,'统一下单');
 
