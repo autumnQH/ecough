@@ -31,12 +31,6 @@ exports.pay = async (ctx)=> {
     console.log(result);
     var prepayid = result.xml.prepay_id[0];
     var data2 = await pay.setPaySign(prepayid, value);
-
-    //获取js-ticket才能调用微信支付请求
-    //获取js-ticket
-    var jsapi = await SDK.getWXSDK();
-    var url = 'http://' + ctx.header.host + ctx.url;
-    var wxcfg = await pay.setWXConfig(jsapi, url, value);
-    console.log(wxcfg);
-    ctx.body = wxcfg;
+    console.log(data2,'data2')
+    ctx.body = data2;
 }
