@@ -132,7 +132,7 @@
 				}).done(function(msg) {
 					alert(msg);
 					wx.chooseWXPay({
-						timestamp: msg.appid,//'<%= data.timeStamp %>',
+						timestamp: msg.timeStamp,//'<%= data.timeStamp %>',
 						nonceStr: msg.nonceStr,//'<%= data.nonceStr %>',
 						package: msg.package,//'<%= data.package %>',
 						signType: msg.signType,//'<%= data.signType %>',
