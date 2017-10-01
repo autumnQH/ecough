@@ -36,8 +36,8 @@ var getUser = async () => {
 	return result;
 }
 
-var customUpdateUser = (openid) => {
-	return db.find("update T_WECHAT_USER set order_count = IFNULL(order_count, 0) +1, flag = false where openid = '"+ openid +"'");
+var customUpdateUser = (openid, out_trade_no) => {
+	return db.find("update T_WECHAT_USER set order_count = IFNULL(order_count, 0) +1, flag = '"+ out_trade_no+"' where openid = '"+ openid +"'");
 }
 
 var setUser = async (data) => {
@@ -131,6 +131,15 @@ var delFAQ = (id) => {
 	var result = db.delete("FAQ", {id: id});
 	return result;
 }
+
+var refundVoucherByOutTradeNo = (order_id)=> {
+	var result = db.update("USER_VOUCHER", {status: 2, order_id: null}, {order_id: order_id});
+	return result
+}
+var refundUserByOutTradeNo = (out_trade_no) =>{
+	var result = db.update("T_WECHAT_USER", {flag: '1'}, {flag: out_trade_no});
+	return result;
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -155,5 +164,7 @@ module.exports = {
 	getFAQTitle: getFAQTitle,
 	getFAQById: getFAQById,
 	updateFAQById: updateFAQById,
-	delFAQ: delFAQ
+	delFAQ: delFAQ,
+	refundVoucherByOutTradeNo: refundVoucherByOutTradeNo,
+	refundUserByOutTradeNo: refundUserByOutTradeNo
 };

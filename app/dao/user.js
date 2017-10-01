@@ -47,6 +47,11 @@ var getUserForIntegralByOpenId = (openid) => {
 	return result
 }
 
+//设置用户代金券使用中
+var updateUserVoucherById = (id, order_id)=>{
+	var result = db.update("USER_VOUCHER", {status: 3, order_id: order_id }, {id: id});
+}
+
 var delUserForIntegralByOpendId = (value, openid) => {
 	var result  = db.update("T_WECHAT_USER", value, openid);
 	return result
@@ -58,7 +63,7 @@ var addUserForIntegralByOpendId = (value, openid) => {
 }
 
 var getUserVoucherByOpenId = (openid) => {
-	var result = db.find("SELECT * FROM USER_VOUCHER WHERE openid = '" + openid+ "' ORDER BY CREATE_TIME DESC");
+	var result = db.find("SELECT * FROM USER_VOUCHER WHERE ? AND status = 2 ORDER BY CREATE_TIME DESC", {openid: openid});
 	return result;
 }
 var setUserVoucher = (data)=> {
@@ -100,5 +105,6 @@ module.exports = {
 	getUserFlagByOpenId: getUserFlagByOpenId,
 	setUserPhone: setUserPhone,
 	getFAQ: getFAQ,
-	getFAQById: getFAQById
+	getFAQById: getFAQById,
+	updateUserVoucherById: updateUserVoucherById
 };

@@ -17,9 +17,90 @@
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<style type="text/css">
+			.modal{
+				position: fixed;
+				bottom: 0;
+			}
+		</style>
 </head>
 <body>
-<script>
+
+<!-- Modal -->
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">选择代金券</h4>
+        <p>最多可以选择4张</p>
+      </div>
+      <div class="modal-body">
+<ul class="list-group" id="voucher-list">
+</ul>     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="save">确定</button>
+      </div>
+    </div>
+  </div>
+</div>	
+
+
+<script type="text/javascript">
+	var arrId = [];
+ $(document).ready(function() {
+
+	$('.order-center li').eq(3).on('click', function() {	
+		$.ajax({
+			url: '/wx/user/voucher',
+			type: 'get'
+		}).done(function(result) {
+			$('#voucher-list').html('');
+			result.forEach(function(val) {
+				$('#voucher-list').append('<li class="list-group-item">'+
+					'<input ids="'+ val.id +
+					'" type="checkbox" name="apk[]" value="'+Number(val.voucher_denomination /100)+'">'
+					+ Number(val.voucher_denomination / 100)+'元'+val.voucher_type+'</li>');				
+			});
+
+		$('input[type=checkbox]').click(function() {
+			$("input[name='apk[]']").attr('disabled', true);
+
+		 		if ($("input[name='apk[]']:checked").length >= 4) {
+		  		$("input[name='apk[]']:checked").attr('disabled', false);
+		 		} else {
+		  		$("input[name='apk[]']").attr('disabled', false);
+		 		}
+		});
+
+			$('#myModal').modal('show');
+		});
+	});
+
+ 	$('#save').on('click', function( ){
+ 		var a = 0;
+ 			arrId = [];
+ 		$('input[name="apk[]"]:checked').each(function() {
+ 			a += Number($(this).val());
+ 			arrId.push($(this).attr('ids'));
+ 		});
+ 		$('.glyphicon-menu-right').remove();
+ 		$('#voucher label').remove();
+ 		$('#voucher').append('<label>¥'+ a +'</label>');
+ 		$('#voucher_number').val(a);
+ 		var total = $('#total').text();
+ 		var derate = $('#derate').text();
+ 		var fee  = total - derate - a ;
+ 		if(0>=fee) {
+ 			fee = 1;
+ 		}
+ 		$('#total_fee').text(fee);
+ 		$('#myModal').modal('hide');
+ 	});
+
+ })
+
 	wx.config({
 		debug: false,
 		appId: '<%= config.appid %>',
@@ -53,43 +134,53 @@
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
 		  if(name && phone && address){
-				wx.chooseWXPay({
-					timestamp: '<%= data.timeStamp %>',
-					nonceStr: '<%= data.nonceStr %>',
-					package: '<%= data.package %>',
-					signType: '<%= data.signType %>',
-					paySign: '<%= data.paySign %>',
-					success: function(res) {
-						alert('支付成功');
-						var name = $('#name').text();
-						var address = $('#address').text();
-						var phone = $('#phone').text();
-						var product = $('#product').text();
-						var total = '<%= total %>件';
-						var specifications = '<%= specifications %>';
-						var money = '<%= pay_money %>';
-						var out_trade_no = "<%= data.out_trade_no %>";
-						var derate_money = "<%= derate_money %>";
-						var total_money = "<%= total_money %>";
-
-
-						$('#order_openid').val('<%= openid %>');
-						$('#order_name').val(name);
-						$('#order_address').val(address);
-						$('#order_phone').val(phone);
-						$('#order_product').val(product);
-						$('#order_total').val(total);
-						$('#order_specifications').val(specifications);
-						$('#order_money').val(money);
-						$('#order_total_money').val(total_money);
-						$('#order_derate_money').val(derate_money);
-						$('#order_out_trade_no').val(out_trade_no);
-						$('#sub').click();
-
-					},
-					fail: function(res) {
-						alert('网络繁忙，请稍后再试！');
+				$.ajax({
+					url: '/wx/pay',
+					type: 'post',
+					data: {
+						openid: '<%= openid %>',
+						store_name: $('#product').text(),
+						total_fee: Number($('#total_fee').text())
 					}
+				}).done(function(msg) {
+					wx.chooseWXPay({
+						timestamp: msg.timeStamp,//'<%= data.timeStamp %>',
+						nonceStr: msg.nonceStr,//'<%= data.nonceStr %>',
+						package: msg.package,//'<%= data.package %>',
+						signType: msg.signType,//'<%= data.signType %>',
+						paySign: msg.paySign,//'<%= data.paySign %>',
+						success: function(res) {
+							alert('支付成功');
+							var name = $('#name').text();
+							var address = $('#address').text();
+							var phone = $('#phone').text();
+							var product = $('#product').text();
+							var total = '<%= total %>件';
+							var specifications = '<%= specifications %>';
+							var money = Number($('#total').text() - $('#derate').text() - $('#voucher_number').val());
+							var out_trade_no = msg.out_trade_no;
+							var derate_money = Number($('#derate').text() + $('#voucher_number').val()) ;
+							var total_money = Number($('#total').text());
+
+							$('#order_openid').val('<%= openid %>');
+							$('#order_name').val(name);
+							$('#order_address').val(address);
+							$('#order_phone').val(phone);
+							$('#order_product').val(product);
+							$('#order_total').val(total);
+							$('#order_specifications').val(specifications);
+							$('#order_money').val(money);
+							$('#order_total_money').val(total_money);
+							$('#order_derate_money').val(derate_money);
+							$('#order_out_trade_no').val(out_trade_no);
+							$('#arr').val(arrId);
+							$('#sub').click();						
+
+						},
+						fail: function(res) {
+							alert('网络繁忙，请稍后再试！');
+						}
+					});
 				});
 
 		  }else{
@@ -140,7 +231,7 @@
 					<ul>
 						<li>
 							<span>商品总额：</span>
-							<label>￥<%= total_money %></label>
+							<label><span>￥</span><span id="total"><%= total_money %></span></label>
 						</li>
 						<li>
 							<span>运费：</span>
@@ -148,11 +239,17 @@
 						</li>
 						<li>
 							<span>首单代金券减免:</span>
-							<label>￥<%= derate_money %></label>
-						</li>						
+							<label><span>￥</span><span id="derate"><%= derate_money %></span></label>
+						</li>
+						<li id="voucher">
+							<span>代金券</span>
+							<span class="pull-right glyphicon glyphicon-menu-right" aria-hidden="true" style="line-height: 2;"></span>
+							<input id="voucher_number" type="text" style="visibility: hidden;">
+							</label>
+						</li>												
 						<li>
 							<span>付款金额：</span>
-							<label style="color: #ff4141;">￥<%= pay_money %></label>
+							<label style="color: #ff4141;"><span>￥</span><span id="total_fee"><%= pay_money %></span></label>
 						</li>
 					</ul>
 				</div>
@@ -162,6 +259,13 @@
 			</div>
 		</div>
 	</div>
+<script>
+	$(function() {
+		$('.order-center li').eq(3).on('click', function() {			
+			$('#myModal').modal('show');
+		});
+	});
+</script>
 
 	<form action="/admin/order" method="post" style="visibility: hidden;margin-top: -100px;">
 	<input type="text" name="openid" id="order_openid">
@@ -176,6 +280,7 @@
 	<input type="text" name="derate_money" id="order_derate_money">
 	<input type="text" name="out_trade_no" id="order_out_trade_no">
 	<input type="text" name="status" value="2">
+	<input type="text" name="arr" id="arr">
 	<input type="submit" id="sub">
 </form>
 

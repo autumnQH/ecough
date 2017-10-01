@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
-
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     </head>
   <body ontouchstart="">
         <div class="page">
@@ -68,6 +68,17 @@
  <div id="loadingdetail" style="display:block;position:fixed;z-index:10;width:70px;height:70px;top:50%;left:50%;margin-top:-18px;margin-left:-35px;text-align:center;border-radius:3px;background:rgba(0,0,0,.8);color:#fff;z-index:555;padding-top:15px;display: none;"><img src="/images/jz.gif" alt="" style="width:40px;height:40px"></div>
 <script>
 $(function() {
+  wx.config({
+    debug: false,
+    appId: '<%= config.appid %>',
+    timestamp: '<%= config.timestamp %>',
+    nonceStr: '<%= config.nonceStr %>',
+    signature: '<%= config.signature %>',
+    jsApiList: ['hideAllNonBaseMenuItem']
+  });
+  wx.ready(function() {
+    wx.hideAllNonBaseMenuItem();
+  });
     create_my_code();
 })
 var img_url = '';

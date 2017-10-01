@@ -44,9 +44,15 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
+  var arr = req.arr.split(',');
+  delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
-  wechat.setOrder(req);
+  await wechat.setOrder(req);
+  var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
+  arr.forEach(function(val) {
+    User.updateUserVoucherById(val, order_id.id);
+  });
   await ctx.redirect('/users/my/order');	
 }
 

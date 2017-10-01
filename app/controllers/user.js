@@ -45,12 +45,25 @@ var User = async (ctx, next) => {
 
 //我要推广
 var UserCode = async(ctx, next) => {
-  var config = await dao.getConfig();
+   var config = await dao.getConfig();
   var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
 
   if(ctx.session.openid){
+    var nonceStr = tools.createRandom();
+    var timeStamp = tools.createTimestamp();
+
+    var value = {
+        nonceStr: nonceStr,
+        timeStamp: timeStamp
+    };     
+    //获取js-ticket才能调用微信支付请求
+    //获取js-ticket
+    var jsapi_ticket = await dao.getJsapiTicket();
+    var jsapi_ticket_url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
+    var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value);  
+    ctx.state.config = wxcfg; 
     await ctx.render('user_code');   
   }else{
     if(!ctx.query.code){
@@ -66,6 +79,20 @@ var UserCode = async(ctx, next) => {
         var userinfo = await tools.getUserInfo(user.access_token, user.openid);
             userinfo = JSON.parse(userinfo);
             ctx.session = userinfo; 
+
+        var nonceStr = tools.createRandom();
+        var timeStamp = tools.createTimestamp();
+
+        var value = {
+            nonceStr: nonceStr,
+            timeStamp: timeStamp
+        }; 
+        //获取js-ticket才能调用微信支付请求
+        //获取js-ticket
+        var jsapi_ticket = await dao.getJsapiTicket();
+        var jsapi_ticket_url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
+        var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value);   
+        ctx.state.config = wxcfg; 
         await ctx.render('user_code');    
       } 
            
@@ -357,7 +384,7 @@ var UserIntegral =async function(ctx, next) {
   if(ctx.session.openid){
     var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
     
-    return await ctx.render('user_integral', {
+    await ctx.render('user_integral', {
       data: data,
       config: {
         n_integral: config.n_integral,
@@ -381,7 +408,7 @@ var UserIntegral =async function(ctx, next) {
 
         var data = await USER.getUserForIntegralByOpenId(ctx.session.openid);
         
-        return await ctx.render('user_integral', {
+        await ctx.render('user_integral', {
           data: data,
           config: {
             n_integral: config.n_integral,
@@ -399,14 +426,16 @@ var UserIntegral =async function(ctx, next) {
 //积分兑换代金券
 var setUserVoucher = async function(ctx, next) {
   var req = ctx.request.body;
+      req.openid = ctx.session.openid;
       req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
 
   var integral = await USER.getUserForIntegralByOpenId(req.openid);
 
-  if(integral.integral >=req.voucher_denomination ){
-    var number = integral.integral - req.voucher_denomination;
+  if(integral.integral >=req.voucher_integral ){
+    var number = integral.integral - req.voucher_integral;
     
-    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid})
+    USER.delUserForIntegralByOpendId({integral: number},{openid: req.openid});
+    delete req.voucher_integral;
     USER.setUserVoucher(req);
     return ctx.body = {
       success: '兑换成功'

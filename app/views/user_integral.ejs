@@ -28,7 +28,8 @@
             <li style="height: 60px; background: #fff; margin-top: 10px;" >
                 <div >
                     <h1 class="text-center" style="padding-top: 12px;">
-                        <label style="width: 60%;" >代金券<label style="color: #cb3837;">¥<%= config.m_voucher %></label></label>
+                        <label style="width: 60%;" >代金券<label style="color: #cb3837;">
+                            ¥<span id="voucher_denomination"><%- Number(config.m_voucher / 100) %></span></label></label>
                         <label><strong><%= config.n_integral %></strong>积分</label>
                     </h1>
                 </div>
@@ -50,11 +51,11 @@
             alert('请选择');
         }else{
             var number = $('#integral p strong').text();
-            if(number>=a){
+            if(Number(number)>=Number(a)){
                 let data = {
-                    openid : 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q',
                     voucher_type: '代金券',
-                    voucher_denomination: a
+                    voucher_denomination: Number($('#voucher_denomination').text() * 100),
+                    voucher_integral: a
                 };
                 $.ajax({
                     url: '/user/setvoucher',

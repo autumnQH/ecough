@@ -172,7 +172,7 @@ var jssdk = async(ctx, next) => {
 
         });         
     }else{
-        await ctx.redirect('/product/100001');
+        await ctx.redirect('/product/10001');
     }
 
 };
@@ -278,7 +278,7 @@ var notify = async function(ctx, next) {
         }
         //console.log(data,'数据');
         dao.setNOTIFY(data);
-        wechat.customUpdateUser(data.openid); //记录用户购买一次,关闭首单         
+        wechat.customUpdateUser(data.openid, data.out_trade_no); //记录用户购买一次,关闭首单         
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
             return_msg: msg.return_code[0]
@@ -308,7 +308,9 @@ var refund = async function(ctx, next) {
     if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
         if(xml.result_code[0] === 'SUCCESS'){
             // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
-            await wechat.updateOrderStatus(req.out_trade_no);
+            await wechat.refundVoucherByOutTradeNo(req.out_trade_no);//退款代金券
+            await wechat.refundUserByOutTradeNo(req.out_trade_no);//退款首单
+            await wechat.updateOrderStatus(req.out_trade_no);//更新订单状态0-交易取消
             return ctx.body = {
                 msg: xml.result_code[0]
             }

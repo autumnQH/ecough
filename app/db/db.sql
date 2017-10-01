@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
   phone varchar(16) DEFAULT NULL COMMENT '用户电话',
   integral int(16) DEFAULT 0 COMMENT '积分', 
   create_time datetime DEFAULT NULL COMMENT '',
-  flag tinyint(1) DEFAULT '1' COMMENT '是否是首单',
+  flag varchar(64) DEFAULT '1' COMMENT '是否是首单（1-首单, 订单号）',
   order_count int(12) DEFAULT 0 COMMENT '下单次数',
   PRIMARY KEY (id),
   INDEX openid (openid)
@@ -94,6 +94,8 @@ CREATE TABLE IF NOT EXISTS USER_VOUCHER (
   voucher_denomination int(10) DEFAULT NULL COMMENT '代金券面额',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   end_time datetime DEFAULT NULL COMMENT '到期时间',
+  status int(2) DEFAULT 2 COMMENT '2-未使用 3-使用中',
+  order_id varchar(32) DEFAULT NULL COMMENT '订单ID',
   PRIMARY KEY (id),
   Index openid (openid)
 ) DEFAULT CHARSET=utf8 COMMENT='用户代金券';
