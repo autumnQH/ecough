@@ -94,6 +94,8 @@ CREATE TABLE IF NOT EXISTS USER_VOUCHER (
   voucher_denomination int(10) DEFAULT NULL COMMENT '代金券面额',
   create_time datetime DEFAULT NULL COMMENT '创建时间',
   end_time datetime DEFAULT NULL COMMENT '到期时间',
+  status int(2) DEFAULT 2 COMMENT '2-未使用 3-使用中',
+  order_id int(8) NOT NULL COMMENT '订单ID',
   PRIMARY KEY (id),
   Index openid (openid)
 ) DEFAULT CHARSET=utf8 COMMENT='用户代金券';

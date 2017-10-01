@@ -23,3 +23,10 @@ exports.addUserIntegralByOpenId = (integral, order_count, openid)=> {
 exports.addUserVoucherByOpenId = (data)=> {
 	return user.setUserVoucher(data);
 }
+/**
+ * 获取用户代金券
+ * @param {String} openid 用户标示
+ */
+exports.getUserVoucherByOpenId = (openid)=> {
+	return user.getUserVoucherByOpenId(openid);
+}

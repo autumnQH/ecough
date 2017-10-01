@@ -58,7 +58,7 @@ var addUserForIntegralByOpendId = (value, openid) => {
 }
 
 var getUserVoucherByOpenId = (openid) => {
-	var result = db.find("SELECT * FROM USER_VOUCHER WHERE openid = '" + openid+ "' ORDER BY CREATE_TIME DESC");
+	var result = db.find("SELECT * FROM USER_VOUCHER WHERE ? AND status = 2 ORDER BY CREATE_TIME DESC", {openid: openid});
 	return result;
 }
 var setUserVoucher = (data)=> {

@@ -1,11 +1,11 @@
-const User = require('../proxy/').User;
-const SDK = require('../proxy/').SDK;
+const User = require('../proxy').User;
+const SDK = require('../proxy').SDK;
 const tools = require('../utils/tools');
 const pay = require('../utils/pay');
 const xml = require('../utils/xml');
 
 exports.voucher = async (ctx)=> {
-	var openid = ctx.params.openid;
+	var openid = ctx.session.openid;
 	var voucher = await User.getUserVoucherByOpenId(openid);
 	console.log(voucher);
 	ctx.body = voucher;
