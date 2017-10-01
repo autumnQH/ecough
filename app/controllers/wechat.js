@@ -121,6 +121,7 @@ var postHandle = async(ctx, next) => {
                 break;
 
               default:
+                msg.MsgType = 'text';
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
             }
