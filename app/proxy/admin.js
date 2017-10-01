@@ -5,6 +5,13 @@ exports.getOrder = ()=> {
 	return admin.getOrder();
 }
 /**
+ * 根据订单号获取订单ID
+ * @param {String} out_trade_no 订单号
+ */
+exports.getOrderIdByOutTradeNo = (out_trade_no)=> {
+	return admin.getOrderIdByOutTradeNo(out_trade_no);
+}
+/**
  * 根据订单号获取用户订单
  * @param {String} out_trade_no 订单号
  */

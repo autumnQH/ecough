@@ -8,6 +8,10 @@ exports.getOrder = ()=> {
 exports.getOrderByOutTradeNo = (out_trade_no)=> {
 	return db.findOne("SELECT * FROM T_WECHAT_ORDER WHERE ? ", {out_trade_no: out_trade_no});
 }
+//根据订单号获取订单ID
+exports.getOrderIdByOutTradeNo = (out_trade_no)=> {
+	return db.findOne("SELECT id T_WECHAT_ORDER WHERE ? ", {out_trade_no: out_trade_no});
+}
 //设置订单物流
 exports.updateOrderExpress = (data)=> {
 	return db.update("T_WECHAT_ORDER",data, {out_trade_no: data.out_trade_no});
