@@ -47,6 +47,11 @@ var getUserForIntegralByOpenId = (openid) => {
 	return result
 }
 
+//设置用户代金券使用中
+var updateUserVoucherById = (id, order_id)=>{
+	var result = db.update("USER_VOUCHER", {status: 3, order_id: order_id }, {id: id});
+}
+
 var delUserForIntegralByOpendId = (value, openid) => {
 	var result  = db.update("T_WECHAT_USER", value, openid);
 	return result
@@ -100,5 +105,6 @@ module.exports = {
 	getUserFlagByOpenId: getUserFlagByOpenId,
 	setUserPhone: setUserPhone,
 	getFAQ: getFAQ,
-	getFAQById: getFAQById
+	getFAQById: getFAQById,
+	updateUserVoucherById: updateUserVoucherById
 };

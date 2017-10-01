@@ -137,8 +137,7 @@
 					data: {
 						openid: '<%= openid %>',
 						store_name: $('#product').text(),
-						total_fee: Number($('#total_fee').text()),
-						arrId: arrId
+						total_fee: Number($('#total_fee').text())
 					}
 				}).done(function(msg) {
 					wx.chooseWXPay({
@@ -159,7 +158,11 @@
 							var out_trade_no = msg.out_trade_no;
 							var derate_money = ($('#derate').text() + $('#voucher_number').val()) ;
 							var total_money = $('#total').text();
-
+							$.ajax({
+								url: '/wx/user/voucher/update',
+								type: 'post',
+								data: arrId
+							});
 
 							$('#order_openid').val('<%= openid %>');
 							$('#order_name').val(name);
