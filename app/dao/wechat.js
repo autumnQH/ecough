@@ -131,6 +131,11 @@ var delFAQ = (id) => {
 	var result = db.delete("FAQ", {id: id});
 	return result;
 }
+
+var refundVoucherByOutTradeNo = (order_id)=> {
+	var result = db.update("USER_VOUCHER", {status: 2, order_id: null}, {order_id: order_id});
+}
+
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -155,5 +160,6 @@ module.exports = {
 	getFAQTitle: getFAQTitle,
 	getFAQById: getFAQById,
 	updateFAQById: updateFAQById,
-	delFAQ: delFAQ
+	delFAQ: delFAQ,
+	refundVoucherByOutTradeNo: refundVoucherByOutTradeNo
 };

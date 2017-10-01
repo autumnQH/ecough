@@ -27,13 +27,10 @@ exports.pay = async (ctx)=> {
     body.total_fee = body.total_fee * 100;
 	var page = await pay.setPackageData(body.openid, body.total_fee, value,body.store_name, ip);
     
-    console.log(page,'统一下单');
-
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    console.log(result);
+
     var prepayid = result.xml.prepay_id[0];
     var data2 = await pay.setPaySign(prepayid, value);
-    console.log(data2,'data2')
     ctx.body = data2;
 }

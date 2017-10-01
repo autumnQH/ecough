@@ -221,3 +221,8 @@ exports.updateFAQById =(data,id) => {
 exports.delFAQ = (id) =>{
     return dao.delFAQ(id);
 }
+
+exports.refundVoucherByOutTradeNo = async (out_trade_no)=> {
+    var order_id = await dao.getOutTradeNo(out_trade_no);
+    return dao.refundVoucherByOutTradeNo(order_id);
+}
