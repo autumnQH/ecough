@@ -21,8 +21,8 @@ exports.pay = async (ctx)=> {
         timeStamp: timeStamp,
         out_trade_no: out_trade_no
     };
-
-		var page = await pay.setPackageData(openid, 1, value,'api测试');
+    var openid = 'oDC9Z0l_Ngjc36rTb7i86hgj57R4';
+	var page = await pay.setPackageData(openid, 1, value,'api测试');
     
     console.log(page,'统一下单');
 
