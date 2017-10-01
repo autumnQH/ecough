@@ -27,7 +27,7 @@
 		signature: '<%= wxcfg.signature %>',
 		jsApiList:['openAddress']
 	});
-	function openAddress( ){
+	function openAddress(){
 		wx.openAddress({
 			success: function(res) {
 			},
@@ -37,7 +37,9 @@
 		});
 	};	
 $(function() {
-	openAddress();
+	wx.ready(function() {
+		openAddress();
+	});
 });
 </script>
 	<div class="text-center">
