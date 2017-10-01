@@ -27,6 +27,15 @@
 		signature: '<%= wxcfg.signature %>',
 		jsApiList:['openAddress']
 	});
+	function openAddress( ){
+		wx.openAddress({
+			success: function(res) {
+			},
+			fail: function(res) {
+				alert('网络繁忙，请稍后再试！');
+			}	
+		});
+	};	
 </script>
 	<div class="text-center">
 	<a href="/product/100001" class="btn btn-info btn-sm active">去逛逛</a>
@@ -34,15 +43,6 @@
 	</div>
 	<script>
 $(function() {
-		function openAddress( ){
-			wx.openAddress({
-				success: function(res) {
-				},
-				fail: function(res) {
-					alert('网络繁忙，请稍后再试！');
-				}	
-			});
-		};
 		$('#openAddress').click();
 });
 	</script>
