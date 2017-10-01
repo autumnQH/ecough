@@ -83,6 +83,7 @@
  		var a = 0;
  		$('input[name="apk[]"]:checked').each(function() {
  			a += Number($(this).val());
+ 			arrId = [];
  			arrId.push($(this).attr('ids'));
  		});
  		$('.glyphicon-menu-right').remove();
