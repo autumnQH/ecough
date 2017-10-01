@@ -19,17 +19,6 @@
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     </head>
   <body ontouchstart="">
-    <script>
-  wx.config({
-    debug: false,
-    appId: '<%= config.appid %>',
-    timestamp: '<%= config.timestamp %>',
-    nonceStr: '<%= config.nonceStr %>',
-    signature: '<%= config.signature %>',
-    jsApiList: ['hideAllNonBaseMenuItem']
-  });
-    wx.hideAllNonBaseMenuItem();
-    </script>
         <div class="page">
 
     <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m.css">
@@ -78,6 +67,17 @@
    <!--  弹窗  -->
  <div id="loadingdetail" style="display:block;position:fixed;z-index:10;width:70px;height:70px;top:50%;left:50%;margin-top:-18px;margin-left:-35px;text-align:center;border-radius:3px;background:rgba(0,0,0,.8);color:#fff;z-index:555;padding-top:15px;display: none;"><img src="/images/jz.gif" alt="" style="width:40px;height:40px"></div>
 <script>
+  wx.config({
+    debug: false,
+    appId: '<%= config.appid %>',
+    timestamp: '<%= config.timestamp %>',
+    nonceStr: '<%= config.nonceStr %>',
+    signature: '<%= config.signature %>',
+    jsApiList: ['hideAllNonBaseMenuItem']
+  });
+  wx.ready(function() {
+    wx.hideAllNonBaseMenuItem();
+  });
 $(function() {
     create_my_code();
 })
