@@ -152,7 +152,7 @@
 							$.ajax({
 								url: '/wx/user/voucher/update',
 								type: 'post',
-								arrId: arrId
+								data: {arr: arrId}
 							});
 							alert('支付成功');
 							var name = $('#name').text();
