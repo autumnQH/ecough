@@ -122,53 +122,53 @@
 
 		};
 		document.querySelector('#chooseWXPay').onclick = function() {
-			$.ajax({
-				url: '/wx/pay',
-				type: 'get'
-			}).done(function(msg) {
-				alert(msg);
-			});
 			var name = $('#name').text();
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
 		  if(name && phone && address){
-				wx.chooseWXPay({
-					timestamp: '<%= data.timeStamp %>',
-					nonceStr: '<%= data.nonceStr %>',
-					package: '<%= data.package %>',
-					signType: '<%= data.signType %>',
-					paySign: '<%= data.paySign %>',
-					success: function(res) {
-						alert('支付成功');
-						var name = $('#name').text();
-						var address = $('#address').text();
-						var phone = $('#phone').text();
-						var product = $('#product').text();
-						var total = '<%= total %>件';
-						var specifications = '<%= specifications %>';
-						var money = '<%= pay_money %>';
-						var out_trade_no = "<%= data.out_trade_no %>";
-						var derate_money = "<%= derate_money %>";
-						var total_money = "<%= total_money %>";
+				$.ajax({
+					url: '/wx/pay',
+					type: 'get'
+				}).done(function(msg) {
+					alert(msg);
+					wx.chooseWXPay({
+						timestamp: msg.appid,//'<%= data.timeStamp %>',
+						nonceStr: msg.nonceStr,//'<%= data.nonceStr %>',
+						package: msg.package,//'<%= data.package %>',
+						signType: msg.signType,//'<%= data.signType %>',
+						paySign: msg.paySign,//'<%= data.paySign %>',
+						success: function(res) {
+							alert('支付成功');
+							var name = $('#name').text();
+							var address = $('#address').text();
+							var phone = $('#phone').text();
+							var product = $('#product').text();
+							var total = '<%= total %>件';
+							var specifications = '<%= specifications %>';
+							var money = '<%= pay_money %>';
+							var out_trade_no = "<%= data.out_trade_no %>";
+							var derate_money = "<%= derate_money %>";
+							var total_money = "<%= total_money %>";
 
 
-						$('#order_openid').val('<%= openid %>');
-						$('#order_name').val(name);
-						$('#order_address').val(address);
-						$('#order_phone').val(phone);
-						$('#order_product').val(product);
-						$('#order_total').val(total);
-						$('#order_specifications').val(specifications);
-						$('#order_money').val(money);
-						$('#order_total_money').val(total_money);
-						$('#order_derate_money').val(derate_money);
-						$('#order_out_trade_no').val(out_trade_no);
-						$('#sub').click();
+							$('#order_openid').val('<%= openid %>');
+							$('#order_name').val(name);
+							$('#order_address').val(address);
+							$('#order_phone').val(phone);
+							$('#order_product').val(product);
+							$('#order_total').val(total);
+							$('#order_specifications').val(specifications);
+							$('#order_money').val(money);
+							$('#order_total_money').val(total_money);
+							$('#order_derate_money').val(derate_money);
+							$('#order_out_trade_no').val(out_trade_no);
+							$('#sub').click();
 
-					},
-					fail: function(res) {
-						alert('网络繁忙，请稍后再试！');
-					}
+						},
+						fail: function(res) {
+							alert('网络繁忙，请稍后再试！');
+						}
+					});
 				});
 
 		  }else{
