@@ -86,9 +86,10 @@
  			a += Number($(this).val());
  			arrId.push($(this).attr('ids'));
  		});
+ 		alert(a);
  		$('.glyphicon-menu-right').remove();
  		$('#voucher label').remove();
- 		$('#voucher').append('<label>¥'+ a +'.00</label>');
+ 		$('#voucher').append('<label>¥'+ a +'</label>');
  		$('#voucher_number').val(a);
  		var total = $('#total').text();
  		var derate = $('#derate').text();
