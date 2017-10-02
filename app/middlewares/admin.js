@@ -44,7 +44,9 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
-  console.log(req);
+  console.log(req,'进来了');
+  console.log(typeof req ,'累心');
+  console.log(req.openid,'he???');
   var arr = req.arr.split(',');
   delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
