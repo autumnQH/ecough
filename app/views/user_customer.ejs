@@ -25,7 +25,7 @@
 
     <div id="customer">
         <ul>
-        <% if(data.length ==0 && data[0].create_time){ %>
+        <% if(data.length ==0 && data[0].create_time != null){ %>
             <li><div style="height: 60px; background: #fff ;">
                 <img src="/images/logo.png" class="img-circle" style="width: 60px; height: 60px; margin-left: 30px;">
                 <label style="padding-left: 30px; width: 52%;">还没有人下过单～</label></div>
