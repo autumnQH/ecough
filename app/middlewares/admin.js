@@ -86,7 +86,7 @@ exports.express = async (ctx)=> {
         voucher_denomination: config.spread_voucher
       };
       //推广员获得代金券
-      User.addUserVoucherByOpenId(data);
+      await User.addUserVoucherByOpenId(data);
     }
 
     //减库存
@@ -106,7 +106,9 @@ exports.express = async (ctx)=> {
         product_id: store[0].product_id,
         sku_info: sku_info
       }
-      Admin.updateStore(s);
+
+    await Admin.updateStore(s);
+    wechat.customUpdateUser(openid, out_trade_no); //记录用户购买一次,关闭首单         
   }//第一次发货end
 	await Admin.updateOrderExpress(req);
 	await ctx.redirect('back');
