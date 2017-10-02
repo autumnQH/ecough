@@ -159,7 +159,7 @@
 							var product = $('#product').text();
 							var total = '<%= total %>件';
 							var specifications = '<%= specifications %>';
-							var money = Number($('#total').text() - $('#derate').text() - $('#voucher_number').val());
+							var pay_money = Number($('#total_fee').text());
 							var out_trade_no = msg.out_trade_no;
 							var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
 							var total_money = Number($('#total').text());
@@ -174,7 +174,7 @@
 									product: product,
 									total: total,
 									specifications: specifications,
-									pay_money: money,
+									pay_money: pay_money,
 									total_money: total_money,
 									derate_money: derate_money,
 									out_trade_no: out_trade_no,
