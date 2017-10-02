@@ -44,18 +44,19 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
-  console.log(req);
-  var arr = req.arr;
-  console.log(arr,'arr');
-  delete req.arr;
+  var arr = [];
+  if(req.arr){
+    arr = req.arr;
+    delete req.arr;   
+  }  
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-  var a = await wechat.setOrder(req);
-  var t = await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
+  await wechat.setOrder(req);
+  await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
   var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
-  if(arr!='undefined'){
+  if(arr.length>0){
     arr.forEach(function(val) {
       User.updateUserVoucherById(val, order_id.id);
-    }); 
+    });    
   }
   ctx.status = 204;	
 }
