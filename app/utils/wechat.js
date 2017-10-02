@@ -57,10 +57,6 @@ exports.createMenu = async (menu, token) => {
                 url: host+'/users/FAQ'                
             },{
                 type: 'view',
-                name: '售后服务',
-                url: host+'/users/service'                 
-            },{
-                type: 'view',
                 name: '我的地址',
                 url: host+'/users/getUserAddress'                
             },{
