@@ -44,16 +44,11 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
-  console.log(req,'进来了');
-  console.log(typeof req ,'累心');
-  console.log(req.openid,'he???');
   var arr = req.arr;
   delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   var a = await wechat.setOrder(req);
   var t = await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
-  console.log(a,'>>>');
-  console.log(t,'??');
   var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
   arr.forEach(function(val) {
     User.updateUserVoucherById(val, order_id.id);
