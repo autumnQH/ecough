@@ -36,8 +36,9 @@
             </li>           
         </ul>
 
-        <footer>
-            <a id="exchange" class="btn">兑换</a>                    
+        <footer> 
+            <button id="exchange" type="button" data-loading-text="Loading..." class="btn" autocomplete="off">
+            兑换</button>                   
         </footer>
     </div> 
 <script>
@@ -46,9 +47,11 @@
         $(this).addClass('active2');
     });
     $('#exchange').on('click', function() {
+        var $btn = $(this).button('loading')
         var a = $('.active2 strong').text();
         if(!a){
             alert('请选择');
+            $btn.button('reset');
         }else{
             var number = $('#integral p strong').text();
             if(Number(number)>=Number(a)){
@@ -63,12 +66,14 @@
                     data: data
                 }).done(function(msg) {
                     alert(msg.success);
-                    window.location.href = '/users/voucher'
+                    window.location.href = '/users/voucher';
+                    $btn.button('reset');
                 }).fail(function(jqXHR, textStatus) {
-
+                    $btn.button('reset');
                 });
             }else{
                 alert('您的积分不够兑换该代金券!');
+                $btn.button('reset');
             }
         }
     });
