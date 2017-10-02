@@ -45,6 +45,7 @@ exports.showOrder = async (ctx)=> {
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
   var arr = req.arr;
+  console.log(arr,'arr');
   delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   var a = await wechat.setOrder(req);
