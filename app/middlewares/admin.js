@@ -59,6 +59,7 @@ exports.order = async (ctx)=> {
 //设置发货
 exports.express = async (ctx)=> {
 	var req = ctx.request.body;
+  console.log(req);
   var out_trade_no = req.out_trade_no;
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
   if(order.status == 2){//第一次发货
