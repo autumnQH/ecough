@@ -296,6 +296,7 @@ var UserCustomer = async function(ctx, next) {
 
   if(ctx.session.openid){
     var data = await USER.getUserByEnentKey(ctx.session.openid);
+    console.log(data,'data');
     return await ctx.render('user_customer',{
       data: data
     });
@@ -316,6 +317,7 @@ var UserCustomer = async function(ctx, next) {
         ctx.session = userinfo; 
 
         var data = await USER.getUserByEnentKey(ctx.session.openid);
+        console.log(data,'data');
         await ctx.render('user_customer',{
           data: data
         });        
