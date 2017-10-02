@@ -131,7 +131,7 @@
 
 		};
 		$('#chooseWXPay').on('click',function() {
-			var $btn = $(this).button('请求中..')
+			var $btn = $(this).button('loading')
 			var name = $('#name').text();
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
@@ -259,7 +259,7 @@
 			</div>
 			<div class="sum-btn">
 				<button type="button" class="btn btn-danger btn-block active" 
-				id="chooseWXPay" data-loading-text="Loading..." autocomplete="off">购买</button> 
+				id="chooseWXPay" data-loading-text="请求中.." autocomplete="off">购买</button> 
 			</div>
 		</div>
 	</div>
