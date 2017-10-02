@@ -51,9 +51,11 @@ exports.order = async (ctx)=> {
   var a = await wechat.setOrder(req);
   var t = await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
   var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
-  arr.forEach(function(val) {
-    User.updateUserVoucherById(val, order_id.id);
-  });
+  if(arr!='undefined'){
+    arr.forEach(function(val) {
+      User.updateUserVoucherById(val, order_id.id);
+    }); 
+  }
   ctx.status = 204;	
 }
 
