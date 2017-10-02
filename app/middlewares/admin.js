@@ -44,6 +44,7 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
+  console.log(req);
   var arr = req.arr;
   console.log(arr,'arr');
   delete req.arr;
