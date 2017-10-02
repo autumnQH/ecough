@@ -58,7 +58,9 @@ var getOrder = async () => {
 
 //添加订单
 var setOrder = async(data) => {
+	console.log('dao-----');
 	var result = db.add("T_WECHAT_ORDER", data);
+	console.log(result,'result');
 	return result;
 }
 
