@@ -110,6 +110,7 @@
         if(next != 0){
             $('.inputBox div').eq(next-1).text(txt).nextAll().text('');                
         }
+        
         //$('.inputBox div').eq(next).removeClass('border1px');
 
         if(next === 4){

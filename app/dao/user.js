@@ -37,7 +37,7 @@ var getUserService = () => {
 
 //获取用户场景值
 var getUserByEnentKey = (eventKey) => {
-	var result = db.find("SELECT headimgurl, nick , order_count FROM T_WECHAT_USER WHERE order_count > 0 AND eventKey = 'qrscene_"+ eventKey +"' or eventKey = '"+ eventKey+"' AND order_count > 0 ORDER BY order_count DESC");
+	var result = db.find("SELECT headimgurl, nick , (select create_time from T_WECHAT_ORDER where openid = U.openid ORDER BY CREATE_TIME LIMIT 1 )as create_time FROM T_WECHAT_USER as U WHERE order_count > 0 AND eventKey = 'qrscene_"+ eventKey +"' or eventKey = '"+ eventKey+"' AND order_count > 0 ORDER BY order_count DESC");
 	return result;
 }
 
