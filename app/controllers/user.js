@@ -299,7 +299,6 @@ var UserCustomer = async function(ctx, next) {
     data.forEach(function(val) {      
       val.create_time =  moment(new Date(val.create_time)).format('YYYY-MM-DD')
     });
-    console.log(data);
     return await ctx.render('user_customer',{
       data: data
     });
@@ -322,8 +321,7 @@ var UserCustomer = async function(ctx, next) {
         var data = await USER.getUserByEnentKey(ctx.session.openid);
         data.forEach(function(val) {      
           val.create_time =  moment(new Date(val.create_time)).format('YYYY-MM-DD')
-        });   
-        console.log(data);            
+        });             
         await ctx.render('user_customer',{
           data: data
         });        
