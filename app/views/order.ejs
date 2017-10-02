@@ -183,8 +183,11 @@
 							alert('网络繁忙，请稍后再试！');
 						}
 					});
+							$btn.button('reset')
+				}).fail(function() {
+					$btn.button('reset')
 				});
-				$btn.button('reset')
+				
 		  }else{
 		  	alert('请输入收获地址');
 		  }
