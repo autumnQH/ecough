@@ -61,7 +61,7 @@ exports.express = async (ctx)=> {
 	var req = ctx.request.body;
   var out_trade_no = req.out_trade_no;
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
-  if(order.status == 2){//第一次发货
+  if(order.status == 2 && req.status == 3){//第一次发货
     var openid = order.openid;//openid
     var specifications = order.specifications;//规格
     var pay_money = order.pay_money;//支付金额
