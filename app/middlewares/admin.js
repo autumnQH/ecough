@@ -78,6 +78,8 @@ exports.express = async (ctx)=> {
     var order_count = userinfo.order_count;//下单次数
         //order_count += 1;
     var integral = userinfo.integral;//用户积分
+      console.log(integral);
+      console.log(parseInt(pay_money * config.shoping_integral * 0.01));
         integral = integral + parseInt(pay_money * config.shoping_integral * 0.01);//计算积分
 console.log(integral,'下单送积分------');
     //下单赠送积分
