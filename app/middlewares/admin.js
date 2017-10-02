@@ -53,7 +53,7 @@ exports.order = async (ctx)=> {
   arr.forEach(function(val) {
     User.updateUserVoucherById(val, order_id.id);
   });
-  await ctx.redirect('/users/my/order');	
+  ctx.status = 204;	
 }
 
 //设置发货
