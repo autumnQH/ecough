@@ -131,6 +131,7 @@
 
 		};
 		$('#chooseWXPay').on('click',function() {
+			var $btn = $(this).button('请求中..')
 			var name = $('#name').text();
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
@@ -183,12 +184,12 @@
 						}
 					});
 				});
-
+				$btn.button('reset')
 		  }else{
 		  	alert('请输入收获地址');
 		  }
 		});
-		
+
 	});	
 </script>
 
