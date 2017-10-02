@@ -130,7 +130,7 @@
 			});	
 
 		};
-		document.querySelector('#chooseWXPay').onclick = function() {
+		$('#chooseWXPay').on('click',function() {
 			var name = $('#name').text();
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
@@ -187,7 +187,8 @@
 		  }else{
 		  	alert('请输入收获地址');
 		  }
-		};
+		});
+		
 	});	
 </script>
 
