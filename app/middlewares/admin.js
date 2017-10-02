@@ -48,7 +48,7 @@ exports.order = async (ctx)=> {
   console.log(typeof req ,'累心');
   console.log(req.openid,'he???');
   var arr = req.arr.split(',');
-  delete req.arr;
+  //delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   var a = await wechat.setOrder(req);
   var t = await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
