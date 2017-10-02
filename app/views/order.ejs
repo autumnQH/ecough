@@ -161,7 +161,7 @@
 							var specifications = '<%= specifications %>';
 							var money = Number($('#total').text() - $('#derate').text() - $('#voucher_number').val());
 							var out_trade_no = msg.out_trade_no;
-							var derate_money = Number($('#derate').text() + $('#voucher_number').val()) ;
+							var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
 							var total_money = Number($('#total').text());
 
 							$('#order_openid').val('<%= openid %>');
