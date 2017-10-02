@@ -44,6 +44,7 @@ exports.showOrder = async (ctx)=> {
 
 exports.order = async (ctx)=> {
   var req = ctx.request.body;
+  console.log(req);
   var arr = req.arr.split(',');
   delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -59,7 +60,6 @@ exports.order = async (ctx)=> {
 //设置发货
 exports.express = async (ctx)=> {
 	var req = ctx.request.body;
-  console.log(req);
   var out_trade_no = req.out_trade_no;
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
   if(order.status == 2){//第一次发货
