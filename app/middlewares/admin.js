@@ -47,12 +47,7 @@ exports.order = async (ctx)=> {
   console.log(req,'进来了');
   console.log(typeof req ,'累心');
   console.log(req.openid,'he???');
-  var arr = ''
-  if(req.arr.length>1){
-     arr = req.arr.split(',');
-  }else{
-    arr = req.arr;
-  }
+  var arr = req.arr;
   delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   var a = await wechat.setOrder(req);
