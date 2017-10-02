@@ -163,20 +163,37 @@
 							var out_trade_no = msg.out_trade_no;
 							var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
 							var total_money = Number($('#total').text());
-
-							$('#order_openid').val('<%= openid %>');
-							$('#order_name').val(name);
-							$('#order_address').val(address);
-							$('#order_phone').val(phone);
-							$('#order_product').val(product);
-							$('#order_total').val(total);
-							$('#order_specifications').val(specifications);
-							$('#order_money').val(money);
-							$('#order_total_money').val(total_money);
-							$('#order_derate_money').val(derate_money);
-							$('#order_out_trade_no').val(out_trade_no);
-							$('#arr').val(arrId);
-							$('#sub').click();						
+							$.ajax({
+								url: '/admin/order',
+								type: 'post',
+								data: {
+									openid: '<%= openid %>',
+									name: name,
+									address: address,
+									phone: phone,
+									product: product,
+									total: total,
+									specifications: specifications,
+									pay_money: money,
+									total_money: total_money,
+									derate_money: derate_money,
+									out_trade_no: out_trade_no,
+									arr: arrId
+								}
+							});
+							// $('#order_openid').val('<%= openid %>');
+							// $('#order_name').val(name);
+							// $('#order_address').val(address);
+							// $('#order_phone').val(phone);
+							// $('#order_product').val(product);
+							// $('#order_total').val(total);
+							// $('#order_specifications').val(specifications);
+							// $('#order_money').val(money);
+							// $('#order_total_money').val(total_money);
+							// $('#order_derate_money').val(derate_money);
+							// $('#order_out_trade_no').val(out_trade_no);
+							// $('#arr').val(arrId);
+							// $('#sub').click();						
 						},
 						fail: function(res) {
 							alert('网络繁忙，请稍后再试！');
@@ -274,7 +291,7 @@
 		});
 	});
 </script>
-
+<!-- 
 	<form action="/admin/order" method="post" style="visibility: hidden;margin-top: -100px;">
 	<input type="text" name="openid" id="order_openid">
 	<input type="text" name="name" id="order_name">
@@ -290,7 +307,7 @@
 	<input type="text" name="status" value="2">
 	<input type="text" name="arr" id="arr">
 	<input type="submit" id="sub">
-</form>
+</form> -->
 
 </body>
 </html>
