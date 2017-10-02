@@ -177,13 +177,12 @@
 							$('#order_out_trade_no').val(out_trade_no);
 							$('#arr').val(arrId);
 							$('#sub').click();						
-
 						},
 						fail: function(res) {
 							alert('网络繁忙，请稍后再试！');
+							$btn.button('reset')
 						}
 					});
-							$btn.button('reset')
 				}).fail(function() {
 					$btn.button('reset')
 				});
