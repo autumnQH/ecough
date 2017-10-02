@@ -172,7 +172,7 @@ var jssdk = async(ctx, next) => {
 
         });         
     }else{
-        await ctx.redirect('/product/10001');
+        await ctx.redirect('/product/100001');
     }
 
 };
