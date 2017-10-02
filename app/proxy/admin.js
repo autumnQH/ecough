@@ -24,7 +24,6 @@ exports.getOrderByOutTradeNo = (out_trade_no)=> {
  * @param {Object} data 数据包
  */
 exports.updateOrderExpress = (data)=> {
-	data.status = 3;
 	return admin.updateOrderExpress(data);
 }
 

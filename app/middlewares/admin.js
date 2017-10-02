@@ -6,7 +6,7 @@ const User = require('../proxy').User;
 const Config = require('../proxy').Config;
 
 exports.home = async (ctx)=> {
-	await ctx.render('admin');
+	await ctx.redirect('admin/order');
 }
 exports.showOrder = async (ctx)=> {
   var datas = await Admin.getOrder();
@@ -23,10 +23,10 @@ exports.showOrder = async (ctx)=> {
           data.status = '已发货';
           break;
           case 5:
-          data.status = '已完成';
+          data.status = '交易完成';
           break;
           case 8:
-          data.status = '维权中';
+          data.status = '交易维权';
           break;
         }
         switch(data.delivery_company){
