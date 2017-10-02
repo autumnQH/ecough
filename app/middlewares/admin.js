@@ -49,7 +49,8 @@ exports.order = async (ctx)=> {
   delete req.arr;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
-  await wechat.setOrder(req);
+  var a = await wechat.setOrder(req);
+  console.log(a,'>>>');
   var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
   arr.forEach(function(val) {
     User.updateUserVoucherById(val, order_id.id);
