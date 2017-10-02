@@ -152,7 +152,7 @@
 						signType: msg.signType,//'<%= data.signType %>',
 						paySign: msg.paySign,//'<%= data.paySign %>',
 						success: function(res) {
-							alert('支付成功');
+							
 							var name = $('#name').text();
 							var address = $('#address').text();
 							var phone = $('#phone').text();
@@ -181,6 +181,7 @@
 									arr: arrId
 								}
 							});
+							alert('支付成功');
 							// $('#order_openid').val('<%= openid %>');
 							// $('#order_name').val(name);
 							// $('#order_address').val(address);
