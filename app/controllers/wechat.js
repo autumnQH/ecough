@@ -119,9 +119,11 @@ var postHandle = async(ctx, next) => {
               case 'kf_create_session':
                 reMsg = wechat.transfer2CustomerService(msg);
                 break;
-
-              default:
+              case 'SCAN':
                 msg.MsgType = 'text';
+                reMsg = wechat.transfer2CustomerService(msg);
+                break;
+              default:
                 reMsg = wechat.getTextMessage(msg, config.message_text);
                 break;
             }
