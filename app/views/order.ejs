@@ -181,6 +181,8 @@
 									status: 2,
 									arr: arrId
 								}
+							}).done(function(msg){
+								window.location.href = '/users/my/order'
 							});
 							alert('支付成功');
 							// $('#order_openid').val('<%= openid %>');
