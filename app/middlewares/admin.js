@@ -73,6 +73,7 @@ exports.express = async (ctx)=> {
     var total = order.total;//数量
 
     var userinfo = await User.getUserByOpenId(openid);//获取用户信息
+    console.log(userinfo,'userinfo---');
     var config = await Config.getActivityCFG();//获取活动信息
 
     var order_count = userinfo.order_count;//下单次数
