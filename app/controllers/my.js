@@ -139,7 +139,7 @@ var jssdk = async(ctx, next) => {
     var pay_money = total * current_money - derate_money ;
     var page = await pay.setPackageData(openid, pay_money, value,store.name);
     
-    //console.log(page,'统一下单');
+    console.log(page,'统一下单');
 
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
