@@ -67,7 +67,6 @@
                 }).done(function(msg) {
                     alert(msg.success);
                     window.location.href = '/users/voucher';
-                    $btn.button('reset');
                 }).fail(function(jqXHR, textStatus) {
                     $btn.button('reset');
                 });
