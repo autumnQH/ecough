@@ -102,7 +102,7 @@ exports.express = async (ctx)=> {
     var store = await Admin.getStore();
       store = tools.StoreDataStringToObject(store);
       console.log(store,'减库存');
-      console.log(total,,'total');
+      console.log(total,'total');
       store[0].sku_info.map(function(val, index, arr) {
         switch(val.specifications){
           case specifications:          
