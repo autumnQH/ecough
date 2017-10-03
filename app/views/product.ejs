@@ -137,20 +137,20 @@ $('#menu_specifications button').eq(0).click();
 			//初始化数量为1,并失效减
 			$('.jian').attr('disabled',true);
 			 //数量增加操作
-				$(".add").click(function(){ 
+				$(".add").click(function(){
+				p.text(Number(p.text()-=1)); 
 			  // 给获取的val加上绝对值，避免出现负数
 					t.val(Math.abs(parseInt(t.val()))+1);
-					p.text(p.text()-=1);
-					p-=1;
+			
 			  		if (parseInt(t.val())!=1){
 			  			$('.jian').attr('disabled',false);
 			  		};
 			 	}) 
 			 //数量减少操作
 			$(".jian").click(function(){
+				p.text(Number(p.text()+=1)); 
 				t.val(Math.abs(parseInt(t.val()))-1);
-				p.text(p.text()+=1);
-
+			
 			 	if (parseInt(t.val())==1){
 			 		$('.jian').attr('disabled',true);
 			 	};
