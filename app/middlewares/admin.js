@@ -104,6 +104,7 @@ exports.express = async (ctx)=> {
       console.log(store,'减库存');
       console.log(total,'total');
       store[0].sku_info.map(function(val, index, arr) {
+        console.log(val,'val----');
         switch(val.specifications){
           case specifications:          
           val.repertory -= total;
