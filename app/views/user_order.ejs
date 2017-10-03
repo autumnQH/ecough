@@ -153,7 +153,8 @@
 <% } %>
 						<script>
 							$('.order-number').on('click','a', function() {
-								if($(this).attr('money')!=0){
+								if($(this).attr('money')){
+									alert('退款');
 										var out_trade_no = $(this).attr('val');									
 										var total_fee = $(this).attr('money');									
 										var openid = $(this).attr('openid');
@@ -179,6 +180,7 @@
 									});
 									
 								}else{
+									alert('查询物流');
 									window.location=href;
 								}
 
