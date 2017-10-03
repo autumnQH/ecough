@@ -51,6 +51,7 @@ exports.order = async (ctx)=> {
   }  
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   await wechat.setOrder(req);
+  wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单         
   await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
   var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
   if(arr.length>0){
@@ -112,7 +113,6 @@ exports.express = async (ctx)=> {
       }
 
     await Admin.updateStore(s);
-    wechat.customUpdateUser(openid, out_trade_no); //记录用户购买一次,关闭首单         
   }//第一次发货end
 	await Admin.updateOrderExpress(req);
 	await ctx.redirect('back');
