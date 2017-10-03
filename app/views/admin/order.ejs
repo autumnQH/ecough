@@ -122,6 +122,9 @@ $(function() {
           case '百世': 
           arr[11] =  'huitongkuaidi'
           break;
+          default:
+          arr[11] = 'shentong'
+          break;
         }
         $('#delivery_company').val(arr[11]);
         $('#myModal').modal('show');        
@@ -185,7 +188,7 @@ $(function() {
           <div class="form-group">
             <label for="delivery_company">物流公司</label>
             <select name="delivery_company" id="delivery_company" class="form-control">
-              <option value="shentong" selected="true">申通</option>
+              <option value="shentong">申通</option>
               <option value="huitongkuaidi">百世</option>
             </select>
           </div>
