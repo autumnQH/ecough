@@ -7,13 +7,14 @@
     <meta name="description" content="">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-    <title>常见问题</title>
+    <title>联系客服</title>
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/lib/weui.css?_t=201701201">
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/css/jquery-weui.css?_t=201701201">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     
     </head>
   <body ontouchstart="">
@@ -43,7 +44,39 @@
 			<% } %>
 		<% } %>
 
+<a class="weui_cell" id="colse">
+        <div class="weui_cell_bd weui_cell_primary">
+          <p style="font-size:14px;color: red;">联系客服</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+      </a>
+  </div>
+  <div style="height:20px;width:100%"></div></div>
 
-				<!-- /front_ticket/ticket_list -->
+<script>
+  $(function() {
+    wx.config({
+      debug: false,
+      appId: '<%= wxcfg.appid %>',
+      timestamp: '<%= wxcfg.timestamp %>',
+      nonceStr: '<%= wxcfg.nonceStr %>',
+      signature: '<%= wxcfg.signature %>',
+      jsApiList:['closeWindow']
+    });
+    $('#colse').on('click', function( ) {
+      $.ajax({
+        url: '/users/customservice/<%= openid %>',
+        type: 'get'
+      }).done(function(msg) {
+        if(msg.errcode ==0&&msg.errmsg =='ok'){
+          wx.closeWindow();         
+        }else{
+          alert('客服MM不在线哦～');
+        }
+      });
+    });
+  });
+
+</script>
 
 </html>

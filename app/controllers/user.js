@@ -520,8 +520,53 @@ var FAQIssue = async function(ctx, next) {
 
 
 var FAQ = async function(ctx, next) {
-  ctx.state.data =  await USER.getFAQ();
-  await ctx.render('user_FAQ');
+  var config = await dao.getConfig();
+  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
+  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
+      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';   
+  if(ctx.session.openid){
+    var jssdk = await dao.getJsapiTicket();
+    var value = {
+      nonceStr: tools.createRandom(),
+      timeStamp: tools.createTimestamp()
+    };
+    ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
+    ctx.state.data =  await USER.getFAQ();
+    ctx.state.openid = ctx.session.openid;
+    await ctx.render('user_FAQ');
+
+  }else{
+    if(!ctx.query.code){
+      ctx.redirect(url);
+    }else{
+
+      let code = ctx.query.code;
+      var user = await tools.getOauth2Token(code);
+          user = JSON.parse(user);
+      if(user.errcode){
+          ctx.redirect(url);
+      }else{
+          //拉取用户信息
+          var userinfo = await tools.getUserInfo(user.access_token, user.openid);
+              userinfo = JSON.parse(userinfo);
+          ctx.session = userinfo;
+
+          var jssdk = await dao.getJsapiTicket();
+          var value = {
+              nonceStr: tools.createRandom(),
+              timeStamp: tools.createTimestamp()
+          };
+
+          ctx.state.wxcfg = await pay.setWXConfig(jssdk, r_url, value);
+          ctx.state.data =  await USER.getFAQ();
+          ctx.state.openid = ctx.session.openid;
+          await ctx.render('user_FAQ'); 
+
+      }  
+
+    }
+
+  }            
 }
 
 var customservice = async function(ctx, next) {
