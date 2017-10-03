@@ -137,12 +137,12 @@
 						<span>订单号：</span>
 						<span><%= data[i].out_trade_no %></span>
 					<% if(data[i].status == 3 ) { %>
- 						<a style="display: inline;" id="kuaidi" 
+ 						<a style="display: inline;"  
  						href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">
  						查询物流</a>
   				<% } %>
 					<% if(data[i].status == 2) { %>
-					<a style="display: inline;" id="refund" val="<%= data[i].out_trade_no %>" money="<%= data[i].pay_money%>"
+					<a style="display: inline;"  val="<%= data[i].out_trade_no %>" money="<%= data[i].pay_money%>"
 						openid="<%= data[i].openid %>">我要退款</a>
 					<% } %>
 					</div>
@@ -152,34 +152,36 @@
 		</div>
 <% } %>
 						<script>
-							var href = $('#kuaidi').attr('href');
-							$('#kuaidi').on('click', function(event) {
-								window.location=href;
-							});
-							$('#refund').on('click', function() {
-									var out_trade_no = $(this).attr('val');									
-									var total_fee = $(this).attr('money');									
-									var openid = $(this).attr('openid');
+							$('.order-number').on('click','a', function() {
+								if($(this).attr(val)!=0){
+										var out_trade_no = $(this).attr('val');									
+										var total_fee = $(this).attr('money');									
+										var openid = $(this).attr('openid');
+										
+									let data = {
+										out_trade_no: out_trade_no,
+										total_fee: total_fee,
+									};
+									var t = $(this);
+									t.hide()
+									$.ajax({
+										url: '/my/refund',
+										data: data,
+										method: 'post'
+									}).done(function(msg) {									
+										if(msg.msg === 'SUCCESS'){
+											alert('申请成功！');
+											window.location.href = window.location.href;
+										}else{
+											t.show();
+											alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
+										}
+									});
 									
-								let data = {
-									out_trade_no: out_trade_no,
-									total_fee: total_fee,
-								};
-								var t = $(this);
-								t.hide()
-								$.ajax({
-									url: '/my/refund',
-									data: data,
-									method: 'post'
-								}).done(function(msg) {									
-									if(msg.msg === 'SUCCESS'){
-										alert('申请成功！');
-										window.location.href = window.location.href;
-									}else{
-										t.show();
-										alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
-									}
-								});
+								}else{
+									window.location=href;
+								}
+
 							});
 						</script>
 
