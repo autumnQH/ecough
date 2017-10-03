@@ -74,7 +74,7 @@ exports.express = async (ctx)=> {
     var openid = order.openid;//openid
     var specifications = order.specifications;//规格
     var pay_money = order.pay_money;//支付金额
-    var total = order.total.replace(/[\u4e00-\u9fa5]+/g,"");//数量
+    var total = order.total.replace(/[\u4e00-\u9fa5]+/g,"");//数量,去除中文。件
 
     var userinfo = await User.getUserByOpenId(openid);//获取用户信息
     var config = await Config.getActivityCFG();//获取活动信息
@@ -101,14 +101,13 @@ exports.express = async (ctx)=> {
     //最烂代码没有之一
     var store = await Admin.getStore();
       store = tools.StoreDataStringToObject(store);
-      console.log(store,'减库存');
-      console.log(total,'total');
+
       store[0].sku_info.map(function(val, index, arr) {
-        console.log(val,'val----');
+        
         switch(val.specifications){
           case specifications:          
           val.repertory -= total;
-          console.log(val.repertory,'repertory');
+          
         }
         return val;
       }); 
