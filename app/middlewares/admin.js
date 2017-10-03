@@ -52,7 +52,7 @@ exports.order = async (ctx)=> {
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   await wechat.setOrder(req);
   var userinfo = await User.getUserByOpenId(req.openid);//获取用户信息
-  if(req.flag == '1'){
+  if(userinfo.flag == '1'){
     wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
   }
   await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
