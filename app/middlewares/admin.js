@@ -80,12 +80,12 @@ exports.express = async (ctx)=> {
     var config = await Config.getActivityCFG();//获取活动信息
 
     var order_count = userinfo.order_count;//下单次数
-        //order_count += 1;
+        order_count += 1;
     var integral = userinfo.integral;//用户积分
         integral = integral + parseInt(pay_money * config.shoping_integral * 0.01);//计算积分
     //下单赠送积分
     User.addUserIntegralByOpenId(integral, order_count, openid);
-    if(userinfo.flag == '1' && userinfo.eventKey){//首单
+    if(userinfo.flag == out_trade_no && userinfo.eventKey){//首单
       var eventKey = userinfo.eventKey.replace(/^qrscene_/,"");//推广员
       var data = {
         openid: eventKey,

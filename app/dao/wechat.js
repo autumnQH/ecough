@@ -37,7 +37,7 @@ var getUser = async () => {
 }
 
 var customUpdateUser = (openid, out_trade_no) => {
-	return db.find("update T_WECHAT_USER set order_count = IFNULL(order_count, 0) +1, flag = '"+ out_trade_no+"' where openid = '"+ openid +"'");
+	return db.find("update T_WECHAT_USER set flag = '"+ out_trade_no+"' where openid = '"+ openid +"'");
 }
 
 var setUser = async (data) => {
