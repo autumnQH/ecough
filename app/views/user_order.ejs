@@ -81,7 +81,7 @@
 					$('.main').append('<div class="order"><div class="order-title"><span>'+data.status+'</span><label>'+
 						data.create_time+'</label></div><div class="order-item"><div class="order-center">' + 
 						'<a href="javascript:" class="order-shoplist"><img src="/images/chuangtie_xuanzhuan3.jpeg" alt="">'+
-						 '<div class="order-shoplist_right"><div class="shoplist_title"><span>'+data.product+'</span>'+
+						 '<div class="order-shoplist_right"><div class="shoplist_title"><span>'+data.product+'('+data.total+')</span>'+
 						 '<label>￥'+data.pay_money+'</label></div><span class="shoplist_ms"><p>'+data.name+data.phone+'</p>'+
 						 '<p>'+data.address+'</p></span></div></a><div class="order-number"><span>订单号：</span><span>'+
 						 data.out_trade_no+'</span>'+kuaidi100+'</div></div></div></div>');
@@ -124,7 +124,7 @@
 						<img src="/images/chuangtie_xuanzhuan3.jpeg" alt="">
 						<div class="order-shoplist_right">
 							<div class="shoplist_title">
-								<span><%= data[i].product %></span>
+								<span><%= data[i].product %>(<%= data[i].total %>)</span>
 								<label>￥<%= data[i].pay_money %></label>
 							</div>
 							<span class="shoplist_ms">
