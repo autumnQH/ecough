@@ -107,7 +107,7 @@ exports.express = async (ctx)=> {
         console.log(val,'val----');
         switch(val.specifications){
           case specifications:          
-          val.repertory -= total;
+          val.repertory = Numner(total) - Numner(val.repertory);
           console.log(val.repertory,'repertory');
         }
         return val;
