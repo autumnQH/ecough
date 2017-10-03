@@ -133,7 +133,7 @@ $('#menu_specifications button').eq(0).click();
 		$(document).ready(function(){
 			//获得文本框对象
 			var t = $(".form-control");
-			var p = $('#stockcontainer div span').text();
+
 			//初始化数量为1,并失效减
 			$('.jian').attr('disabled',true);
 			 //数量增加操作
@@ -141,7 +141,8 @@ $('#menu_specifications button').eq(0).click();
 				
 			  // 给获取的val加上绝对值，避免出现负数
 					t.val(Math.abs(parseInt(t.val()))+1);
-					p.text(Math.abs(parseInt(p)-1));
+					
+
 			  		if (parseInt(t.val())!=1){
 			  			$('.jian').attr('disabled',false);
 			  		};
@@ -149,7 +150,8 @@ $('#menu_specifications button').eq(0).click();
 			 //数量减少操作
 			$(".jian").click(function(){
 				t.val(Math.abs(parseInt(t.val()))-1);
-				p.text(Math.abs(parseInt(p)+1));
+				
+
 			 	if (parseInt(t.val())==1){
 			 		$('.jian').attr('disabled',true);
 			 	};
