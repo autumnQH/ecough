@@ -74,7 +74,7 @@ exports.express = async (ctx)=> {
     var openid = order.openid;//openid
     var specifications = order.specifications;//规格
     var pay_money = order.pay_money;//支付金额
-    var total = order.total;//数量
+    var total = order.total.replace(/^件/,"");//数量
 
     var userinfo = await User.getUserByOpenId(openid);//获取用户信息
     var config = await Config.getActivityCFG();//获取活动信息
@@ -107,7 +107,7 @@ exports.express = async (ctx)=> {
         console.log(val,'val----');
         switch(val.specifications){
           case specifications:          
-          val.repertory = Numner(total) - Numner(val.repertory);
+          val.repertory -= total;
           console.log(val.repertory,'repertory');
         }
         return val;

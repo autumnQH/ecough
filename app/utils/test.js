@@ -10,8 +10,8 @@ async function a() {
 	let json = {
 		appid : 'wxff24c10734aed1ef',
     mch_id : '1470073502',
-    out_refund_no : '2017100315185730',//退款号=订单号
-    out_trade_no: '2017100315185730',
+    out_refund_no : '201710031525090',//退款号=订单号
+    out_trade_no: '201710031525090',
     refund_fee : 200,
     total_fee : 200
 	};
