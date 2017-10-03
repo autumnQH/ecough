@@ -74,7 +74,7 @@ exports.express = async (ctx)=> {
     var openid = order.openid;//openid
     var specifications = order.specifications;//规格
     var pay_money = order.pay_money;//支付金额
-    var total = order.total.replace(/^件/,"");//数量
+    var total = order.total.replace(/[\u4e00-\u9fa5]+/g,"");//数量
 
     var userinfo = await User.getUserByOpenId(openid);//获取用户信息
     var config = await Config.getActivityCFG();//获取活动信息
