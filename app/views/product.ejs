@@ -99,7 +99,7 @@ $(function() {
     paginationClickable: true,
     loop:true
   });
-
+  
 	$('.jian').attr('disabled',true);
 	$('#total .add').on('click', function() {
 		let t = $(this).parent().next();
@@ -112,6 +112,10 @@ $(function() {
 	});
 
 	$('#total .jian').on('click', function() {
+		if($(this).parent().prev().val()<=1){
+			$(this).attr('disabled', true);
+			return;
+		}
 		let t = $(this).parent().prev();
 		t.val(Math.abs(parseInt(t.val()))-1);
 		var a = $(this).parent().parent().next().children().text();
@@ -123,8 +127,10 @@ $(function() {
 
 	$('#total .form-control').on('change', function() {
 		let o = $(this).parent().parent().find('span').last().text();
-		console.log(o);
 		let v = $(this).val()
+		if(parseInt(v)<=1){
+			$('.jian').attr('disabled',true);
+		}
 		var t = $(this).parent().next().children();
 		t.text(parseInt(o)-v);
 		$(this).next().children().attr('disabled',false);
