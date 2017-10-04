@@ -34,7 +34,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">选择代金券</h4>
         <p>最多可以选择4张</p>
-        <p style="color: red">代金券金额大于支付金额最少也要付1元哦～</p>
+        <strong style="color: red">代金券金额大于支付金额最少也要付1元哦～</strong>
       </div>
       <div class="modal-body">
 <ul class="list-group" id="voucher-list">
@@ -65,15 +65,28 @@
 					+ Number(val.voucher_denomination / 100)+'元'+val.voucher_type+'</li>');				
 			});
 
-		$('input[type=checkbox]').click(function() {
-			$("input[name='apk[]']").attr('disabled', true);
-
-		 		if ($("input[name='apk[]']:checked").length >= 4) {
-		  		$("input[name='apk[]']:checked").attr('disabled', false);
-		 		} else {
-		  		$("input[name='apk[]']").attr('disabled', false);
-		 		}
-		});
+			var a = 0;
+			$('input[type=checkbox]').click(function() {
+				$("input[name='apk[]']").attr('disabled', true);
+				if($("input[name='apk[]']:checked").length >= 4) {
+					$("input[name='apk[]']:checked").attr('disabled', false);
+				}else{
+					$("input[name='apk[]']").attr('disabled', false);
+				}
+				let total = parseInt($('#total').text());
+				if($(this).is(':checked') ){//选中
+					a += parseInt($(this).val());
+					if(a>=total){
+						$('#err').removeClass('hide');
+					}
+				}
+				if(!$(this).is(':checked') ){//!选中
+					a -= parseInt($(this).val());
+					if(a<total){
+						$('#err').addClass('hide');
+					}			
+				}		
+		  });
 		//ajax end
 	$('.order-center li').eq(3).on('click', function() {	
 			$('#myModal').modal('show');
