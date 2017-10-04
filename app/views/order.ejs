@@ -73,7 +73,7 @@
 				}else{
 					$("input[name='apk[]']").attr('disabled', false);
 				}
-				let total = parseInt($('#total').text());
+				let total = parseInt($('#total_fee').text());
 				if($(this).is(':checked') ){//选中
 					a += parseInt($(this).val());
 					if(a>=total){
