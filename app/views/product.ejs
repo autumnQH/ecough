@@ -64,21 +64,23 @@
 	<% } %>
 </div>
 
-<div class="detail-group" style="margin-top:10px;">
-  <span style="float:left;margin-top:5px;">数量 :</span>
-    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
-			<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
-				<input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="1" id="total">
-			<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
-    </div>
-	  <div id="stockcontainer">
-		  <% for(var i = 0; i< store.sku_info.length; i++){ %>
-			<div specifications="<%= store.sku_info[i].specifications %>" style="float:left;margin-left:5px;">
-				( 剩余<span> <%= store.sku_info[i].repertory %> </span> ) 
-			</div>
-			<% } %>
-	  </div>
+<div id="total"  class="detail-group" style="margin-top:10px;">
+	<% for(var i = 0;i< store.sku_info.length;i++){ %>
+		<div class="hide" spe="<%= store.sku_info[i].specifications %>">
+		  <span style="float:left;margin-top:5px;">数量 :</span>
+
+	    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
+				<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
+				<input type="tel" class="form-control" style="width:50px;height:25px;text-align:center" value="0">
+				<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
+	    </div>
+
+			<div style="float:left;margin-left:5px;">( 剩余<span><%= store.sku_info[i].repertory %></span> )</div>
+			<span style="visibility: hidden;"><%= store.sku_info[i].repertory %></span>
+		</div>
+	<% } %>
 </div>
+
 
 
 <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
@@ -92,16 +94,65 @@
 </div>
 <script>
 $(function() {
-$('#menu_specifications button').on('click',function() {
-    $("#menu_specifications button").removeClass("active");  
-    $(this).addClass("active");
+	new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',
+    paginationClickable: true,
+    loop:true
+  });
+
+	$('.jian').attr('disabled',true);
+	$('#total .add').on('click', function() {
+		let t = $(this).parent().next();
+		t.val(Math.abs(parseInt(t.val()))+1);
+		var a = $(this).parent().parent().next().children().text();
+		$(this).parent().parent().next().children().text(parseInt(a)-1);
+		if(parseInt(t.val())!=1){
+			$(this).parent().next().next().find('button').attr('disabled',false);			
+		}
+	});
+
+	$('#total .jian').on('click', function() {
+		let t = $(this).parent().prev();
+		t.val(Math.abs(parseInt(t.val()))-1);
+		var a = $(this).parent().parent().next().children().text();
+		$(this).parent().parent().next().children().text(parseInt(a)+1);
+		if(parseInt(t.val())==1){
+			$(this).attr('disabled', true);
+		}
+	});
+
+	$('#total .form-control').on('change', function() {
+		let o = $(this).parent().parent().find('span').last().text();
+		console.log(o);
+		let v = $(this).val()
+		var t = $(this).parent().next().children();
+		t.text(parseInt(o)-v);
+		$(this).next().children().attr('disabled',false);
+	});
+
+	$('#menu_specifications button').on('click',function() {
+	  $("#menu_specifications button").removeClass("active");  
+	  $(this).addClass("active");
 		var specifications = $(this).text();
 		$('#s_money div').addClass('hide');
-		$('#stockcontainer div').addClass('hide');
+		$('#total').children().addClass('hide');
+		$('#total div[spe="'+specifications+'"]').removeClass('hide');
 		$('#s_money div[specifications="'+specifications+'"]').removeClass('hide');
-		$('#stockcontainer div[specifications="'+specifications+'"]').removeClass('hide');
-});
-$('#menu_specifications button').eq(0).click();
+		var a = $('#total div[spe="'+specifications+'"]').find('div').eq(0);
+		if(parseInt(a.find('input').val()) ==0 ){
+			a.find('span').eq(0).children().click();			
+		}
+		
+	});
+
+  $('#pay').on('click', function(event) {
+      var specifications = $('.active').text();
+      var total = $('#total div[spe="'+specifications+'"]').find('input').val();
+  		$('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications+ "&product=<%= store.product_id %>");
+  });
+
+	$('#menu_specifications button').eq(0).click();
+
 });
 </script>
 
@@ -129,47 +180,5 @@ $('#menu_specifications button').eq(0).click();
 			</div>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function(){
-			//获得文本框对象
-			var t = $(".form-control");
-
-			//初始化数量为1,并失效减
-			$('.jian').attr('disabled',true);
-			 //数量增加操作
-				$(".add").click(function(){
-				
-			  // 给获取的val加上绝对值，避免出现负数
-					t.val(Math.abs(parseInt(t.val()))+1);
-					
-
-			  		if (parseInt(t.val())!=1){
-			  			$('.jian').attr('disabled',false);
-			  		};
-			 	}) 
-			 //数量减少操作
-			$(".jian").click(function(){
-				t.val(Math.abs(parseInt(t.val()))-1);
-				
-
-			 	if (parseInt(t.val())==1){
-			 		$('.jian').attr('disabled',true);
-			 	};
-			});
-			var swiper = new Swiper('.swiper-container', {
-		        pagination: '.swiper-pagination',
-		        paginationClickable: true,
-		        loop:true
-		    });
-		});
-
-		$(function() {		
-      $('#pay').on('click', function(event) {
-          var total = $('#total').val();
-          var specifications = $('.active').text();
-      $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications+ "&product=<%= store.product_id %>");
-      });
-		});
-    </script>
 </body>
 </html>
