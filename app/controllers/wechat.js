@@ -40,7 +40,6 @@ var postHandle = async(ctx, next) => {
             var result =  await wechat.getOneUser(openid);
 
             if(result.length == 0){
-                data.flag= '1'
                 wechat.setUser(data);
             }else{
                 //修改用户
