@@ -230,9 +230,13 @@ exports.updateremark = (token, openid, remark) => {
 exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
   var token = await dao.getActiveAccessToken();
   var config = await dao.getConfig();
+  var template_id = 'eE2JhSjiUnLB6cQQm23RckRhj57T0HCTBXUERRSeqPs';
+  if(config.appid=='wx763a4dcf0ae3d8c1'){
+    template_id = 'SNA5sKLNV1vVxGhUYQ_IFq1PwdP-cJoXi9s4mPYRovs'
+  }
   let json = JSON.stringify({
     touser: openid,
-    template_id: 'eE2JhSjiUnLB6cQQm23RckRhj57T0HCTBXUERRSeqPs',
+    template_id: template_id,
     url: config.server_host+'/users/code',
     topcolor: "#FF0000",
     data: {
