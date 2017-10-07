@@ -122,7 +122,7 @@
  		});
  		$('.glyphicon-menu-right').remove();
  		$('#voucher label').remove();
- 		$('#voucher').append('<label>¥'+ a +'元</label>');
+ 		$('#voucher').append('<label>¥'+ a +'</label>');
  		$('#voucher_number').val(a);
  		var total = $('#total').text();
  		var derate = $('#derate').text();
@@ -293,7 +293,7 @@
 					<ul>
 						<li>
 							<span>商品总额：</span>
-							<label><span>￥</span><span id="total"><%= total_money %></span>元</label>
+							<label><span>￥</span><span id="total"><%= total_money %></span></label>
 						</li>
 						<li>
 							<span>运费：</span>
@@ -301,7 +301,7 @@
 						</li>
 						<li>
 							<span>首单代金券减免:</span>
-							<label><span>￥</span><span id="derate"><%= derate_money %></span>元</label>
+							<label><span>￥</span><span id="derate"><%= derate_money %></span></label>
 						</li>
 						<li id="voucher">
 							<span>代金券</span>
@@ -310,7 +310,7 @@
 						</li>												
 						<li>
 							<span>付款金额：</span>
-							<label style="color: #ff4141;"><span>￥</span><span id="total_fee"><%= pay_money %></span>元</label>
+							<label style="color: #ff4141;"><span>￥</span><span id="total_fee"><%= pay_money %></span></label>
 						</li>
 					</ul>
 				</div>
