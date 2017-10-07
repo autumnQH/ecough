@@ -73,7 +73,7 @@
 
 				let total = parseInt($('#total').text());
 				let derate = parseInt($('#derate').text());
-				let flag  = false;
+				
 				if(!$(this).is(':checked') ){//!选中
 					a -= parseInt($(this).val());
 					if(a<(total-derate)){
@@ -85,10 +85,10 @@
 					a += parseInt($(this).val());
 					if(a>=(total-derate)){
 						$('#err').removeClass('hide');
-						flag = true;
+					}else{
+						$('#err').addClass('hide');
 					}
 				}
-
 				if(a>=(total-derate)){
 					a -= parseInt($(this).val());
 					$(this).removeAttr('checked');
@@ -96,7 +96,7 @@
 				}
 
 				var checked = $("input[name='apk[]']:checked");
-				if(flag ||checked.length >= 4) {
+				if(checked.length >= 4) {
 					$("input[name='apk[]']:checked").attr('disabled', false);
 				}else{
 					$("input[name='apk[]']").attr('disabled', false);
