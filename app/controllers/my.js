@@ -57,6 +57,7 @@ var product = async (ctx, next) => {
     const config = await dao.getConfig();
     var product_id = ctx.params.product;
     var store = await STORE.getStoreById(product_id);
+    console.log(store);
     store.sku_attr = store.sku_attr.split(',');
     store.sku_info = store.sku_info.split(',').map(function(val, index, arr) {
         var newarr = val.split(':');
@@ -125,9 +126,10 @@ var jssdk = async(ctx, next) => {
     var derate_money = 0;//首单减免减免
 
     var todaySubscribe = await USER.getUserFlagByOpenId(openid); 
-    
+    console.log('todaySubscribe',todaySubscribe);
     if(todaySubscribe.flag == '1'){//首单
-        derate_money = config.derate_money
+        derate_money = config.derate_money;
+        console.log('首单减免减免？？？／',derate_money,'|',config.derate_money);
     }
 
     for(var i = 0 ; i< store.sku_info.length; i++){
