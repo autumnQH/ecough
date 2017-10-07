@@ -105,12 +105,17 @@ $(function() {
 	$('#total .add').on('click', function() {
 		let t = $(this).parent().next();
 		let a = $(this).parent().parent().next().children().text();
+		let o = $(this).parent().parent().next().next().text()
 		if(a!='已售馨'){
-			t.val(Math.abs(parseInt(t.val()))+1);
-			$(this).parent().parent().next().children().text(parseInt(a)-1);
+			if(t.val()<o){
+				t.val(Math.abs(parseInt(t.val()))+1);
+				$(this).parent().parent().next().children().text(parseInt(a)-1);
+			}
+
 			if(parseInt(t.val())!=1){
 				$(this).parent().next().next().find('button').attr('disabled',false);			
-			}			
+			}
+
 		}
 
 	});
