@@ -149,9 +149,9 @@ $(function() {
         }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
         if (parseInt(a.find('input').val()) == 0) {
-        	console.log('???');
+        	alert('???');
             a.find('span').eq(0).children().click();
-            console.log('!!???');
+            alert('!!???');
         }
         
     });
