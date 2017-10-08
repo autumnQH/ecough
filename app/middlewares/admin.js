@@ -119,7 +119,9 @@ exports.express = async (ctx)=> {
 
     await Admin.updateStore(s);
   }//第一次发货end
-	await Admin.updateOrderExpress(req);
+  if(order.status!=0){
+	 await Admin.updateOrderExpress(req);
+  }
 	await ctx.redirect('back');
 }
 
