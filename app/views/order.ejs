@@ -147,7 +147,6 @@
 	});
 	wx.ready(function() {
 		document.querySelector('#openAddress').onclick = function() {
-			alert('asd');
 			wx.openAddress({
 				success: function(res) {
 					var name = $('#name').html('');
