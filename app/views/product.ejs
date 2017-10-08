@@ -17,9 +17,12 @@
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <style type="text/css">
-    .button{
-       cursor:pointer
-    }
+    	.button{
+    		cursor: pointer;
+    	}
+    	#pay{
+    		cursor: pointer;
+    	}
     </style>
 </head>
 <body>
@@ -58,7 +61,7 @@
 
 <div class="detail-group" style="margin-top:10px;" id="s_money">
 	<% for(var i = 0; i< store.sku_info.length; i++) { %>
-	<div specifications="<%= store.sku_info[i].specifications %>">
+	<div specifications="<%= store.sku_info[i].specifications %>" class="hide">
   	<span class="col-xs-8" style="width:100%;">
   		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
 			<%= parseInt(store.sku_info[i].price / 100) %></span> 元&nbsp;/ 件
@@ -71,7 +74,7 @@
 
 <div id="total"  class="detail-group" style="margin-top:10px;">
 	<% for(var i = 0;i< store.sku_info.length;i++){ %>
-		<div spe="<%= store.sku_info[i].specifications %>">
+		<div class="hide" spe="<%= store.sku_info[i].specifications %>">
 		  <span style="float:left;margin-top:5px;">数量 :</span>
 
 	    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
@@ -105,8 +108,6 @@ $(function() {
     loop:true
   });
   
-
-
 	$('.jian').attr('disabled',true);
 	
 	$('#total .add').on('click', function() {
@@ -180,7 +181,6 @@ $(function() {
 	});
 
   $('#pay').on('click', function(event) {
-  	alert('订购');
       var specifications = $('.active').text();
       var total = $('#total div[spe="'+specifications+'"]').find('input').val();
       if($(this).attr('disabled')){
