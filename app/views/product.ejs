@@ -137,7 +137,7 @@ $(function() {
         var o = $(this).parent().parent().next().next().text();
         if (a != '已售馨') {
             if (parseInt(t.val()) < o) {
-                t.val(parseInt(t.val()) + 1);
+                t.val(Math.abs(parseInt(t.val())) + 1);
                 $(this).parent().parent().next().children().text(parseInt(a) - 1);
             }
 
