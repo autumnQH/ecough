@@ -53,7 +53,7 @@
 
 <div class="detail-group" style="margin-top:10px;" id="s_money">
 	<% for(var i = 0; i< store.sku_info.length; i++) { %>
-	<div specifications="<%= store.sku_info[i].specifications %>" class="hide">
+	<div specifications="<%= store.sku_info[i].specifications %>">
   	<span class="col-xs-8" style="width:100%;">
   		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
 			<%= parseInt(store.sku_info[i].price / 100) %></span> 元&nbsp;/ 件
@@ -66,7 +66,7 @@
 
 <div id="total"  class="detail-group" style="margin-top:10px;">
 	<% for(var i = 0;i< store.sku_info.length;i++){ %>
-		<div class="hide" spe="<%= store.sku_info[i].specifications %>">
+		<div spe="<%= store.sku_info[i].specifications %>">
 		  <span style="float:left;margin-top:5px;">数量 :</span>
 
 	    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
