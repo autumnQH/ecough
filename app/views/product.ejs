@@ -180,7 +180,7 @@ $(function() {
 		
 	});
 
-  $('#pay').on('click', function(event) {
+  $('#pay').on('click touchstart', function(event) {
   	alert('哈');
       var specifications = $('.active').text();
       var total = $('#total div[spe="'+specifications+'"]').find('input').val();
