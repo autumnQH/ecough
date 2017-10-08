@@ -184,9 +184,9 @@ alert('??');
         $(this).addClass("active");
         var specifications = $(this).text();
         $('#s_money').find('div').hide();
+        $('#s_money div[specifications="' + specifications + '"]').show();
         $('#total').children().addClass('hide');
         $('#total div[spe="' + specifications + '"]').removeClass('hide');
-        $('#s_money div').show();
         var sub = $('#total div[spe="' + specifications + '"]');
         if (sub.find('span').last().text() == '0') {
         	alert('已售馨');
