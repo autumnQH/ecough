@@ -116,11 +116,11 @@
 </body>
 <script type="text/javascript">
 $(function() {
-	var index =0;
+	var EQ =0;
     //立即购买
     $('#pay').on('click', function(event) {
         var specifications = $('.active').text();
-        var total = $('#total').find('input').eq(index).val();
+        var total = $('#total').find('input').eq(EQ).val();
         if ($(this).attr('disabled')) {
             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
         } else {
@@ -130,7 +130,8 @@ $(function() {
 
 
     $('#menu_specifications button').on('click', function() {   	
-				index = $(this).index()-1;
+				EQ = $(this).index()-1;
+				alert(EQ);
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
