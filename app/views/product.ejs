@@ -110,7 +110,7 @@
                 <img src="/images/fangwumaichuangtie_12.jpeg">
                 <img src="/images/fangwumaichuangtie_13.jpeg">
             </div>
- <div class="footer"> <a id=pay href=javascript: class="weui-btn weui-btn_primary">提交</a> </div>
+ <div class="footer"> <a id="pay" href="javascript:" class="weui-btn weui-btn_primary">提交</a> </div>
         </div>
     </div>
 </body>
@@ -179,7 +179,7 @@ $(function() {
     });
 
     $('#menu_specifications button').on('click', function() {
-
+alert('??');
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
@@ -189,9 +189,11 @@ $(function() {
         $('#s_money div[specifications="' + specifications + '"]').removeClass('hide');
         var sub = $('#total div[spe="' + specifications + '"]');
         if (sub.find('span').last().text() == '0') {
+        	alert('已售馨');
             sub.find('div').last().html('<label style="color: red;">已售馨</label>');
             $('#pay').text('已售馨').attr('disabled', false);
         } else {
+        	alert('立即订购');
             $('#pay').text('立即订购').attr('disabled', true);
         }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
