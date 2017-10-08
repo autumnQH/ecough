@@ -120,8 +120,9 @@ $(function() {
     //立即购买
     $('#pay').on('click', function(event) {
         var specifications = $('.active').text();
-        var total = $('#total').find('input').eq(EQ).val();
+        var total = $('#total').children().eq(EQ).find('input').val();
         alert(EQ);
+        alert(total);
         if ($(this).attr('disabled')) {
             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
         } else {
