@@ -119,7 +119,7 @@ $(function() {
 	var EQ =0;
     //立即购买
     $('#pay').on('click', function(event) {
-        var specifications = $('.active').text();
+        var specifications = $.trim($('.active').text());
         var total = $('#total').children().eq(EQ).find('input').val();
         alert(EQ);
         alert(total);
