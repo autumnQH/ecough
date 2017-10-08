@@ -299,28 +299,38 @@ var refund = async function(ctx, next) {
     var req = ctx.request.body;
     var out_trade_no = req.out_trade_no;
     var config = await dao.getConfig();
-    req.appid = config.appid;
-    req.mch_id = config.store_mchid;
-    req.out_refund_no = req.out_trade_no;//退款号=订单号
-    req.refund_fee = parseInt(req.total_fee* 100);//退款金额=支付金额
-    req.total_fee = parseInt(req.total_fee* 100);
-    var refund = await pay.refund(req);    
-    var xml = refund.xml; 
-    console.log(xml);
-    if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
-        if(xml.result_code[0] === 'SUCCESS'){
-            // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
-            await wechat.refundVoucherByOutTradeNo(req.out_trade_no);//退款代金券
-            await wechat.refundUserByOutTradeNo(req.out_trade_no);//退款首单
-            await wechat.updateOrderStatus(req.out_trade_no);//更新订单状态0-交易取消
-            return ctx.body = {
-                msg: xml.result_code[0]
+    var order = await wechat.getOutTradeNo(out_trade_no);
+    console.log(order);
+    if(order.status == 2){
+        req.appid = config.appid;
+        req.mch_id = config.store_mchid;
+        req.out_refund_no = req.out_trade_no;//退款号=订单号
+        req.refund_fee = parseInt(req.total_fee* 100);//退款金额=支付金额
+        req.total_fee = parseInt(req.total_fee* 100);
+        var refund = await pay.refund(req);    
+        var xml = refund.xml; 
+        console.log(xml);
+        if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
+            if(xml.result_code[0] === 'SUCCESS'){
+                // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
+                await wechat.refundVoucherByOutTradeNo(req.out_trade_no);//退款代金券
+                await wechat.refundUserByOutTradeNo(req.out_trade_no);//退款首单
+                await wechat.updateOrderStatus(req.out_trade_no);//更新订单状态0-交易取消
+                return ctx.body = {
+                    msg: xml.result_code[0]
+                }
+            }else{        
+                return ctx.body = {
+                    msg: xml.result_code[0],
+                    code:xml.err_code +':'+ xml.err_code_des[0]
+                }
             }
-        }else{        
-            return ctx.body = {
-                msg: xml.result_code[0],
-                code:xml.err_code +':'+ xml.err_code_des[0]
-            }
+        }
+        
+    }else{
+        return ctx.body = {
+            msg: 'ERROR',
+            code: '该订单已经发货'
         }
     }
 } 
