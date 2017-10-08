@@ -128,88 +128,75 @@ $(function() {
         }
     });
 
-    // $('.jian').attr('disabled', true);
+    $('.jian').attr('disabled', true);
 
-    // $('#total .add').on('click', function() {
-    //     let t = $(this).parent().next();
-    //     let a = $(this).parent().parent().next().children().text();
-    //     let o = $(this).parent().parent().next().next().text()
-    //     if (a != '已售馨') {
-    //         if (t.val() < o) {
-    //             t.val(Math.abs(parseInt(t.val())) + 1);
-    //             $(this).parent().parent().next().children().text(parseInt(a) - 1);
-    //         }
+    $('#total .add').on('click', function() {
+        let t = $(this).parent().next();
+        let a = $(this).parent().parent().next().children().text();
+        let o = $(this).parent().parent().next().next().text()
+        if (a != '已售馨') {
+            if (t.val() < o) {
+                t.val(Math.abs(parseInt(t.val())) + 1);
+                $(this).parent().parent().next().children().text(parseInt(a) - 1);
+            }
 
-    //         if (parseInt(t.val()) != 1) {
-    //             $(this).parent().next().next().find('button').attr('disabled', false);
-    //         }
+            if (parseInt(t.val()) != 1) {
+                $(this).parent().next().next().find('button').attr('disabled', false);
+            }
 
-    //     }
+        }
 
-    // });
+    });
 
-    // $('#total .jian').on('click', function() {
-    //     if ($(this).parent().prev().val() <= 1) {
-    //         $(this).attr('disabled', true);
-    //         return;
-    //     }
-    //     let t = $(this).parent().prev();
-    //     t.val(Math.abs(parseInt(t.val())) - 1);
-    //     var a = $(this).parent().parent().next().children().text();
-    //     $(this).parent().parent().next().children().text(parseInt(a) + 1);
-    //     if (parseInt(t.val()) == 1) {
-    //         $(this).attr('disabled', true);
-    //     }
-    // });
+    $('#total .jian').on('click', function() {
+        if ($(this).parent().prev().val() <= 1) {
+            $(this).attr('disabled', true);
+            return;
+        }
+        let t = $(this).parent().prev();
+        t.val(Math.abs(parseInt(t.val())) - 1);
+        var a = $(this).parent().parent().next().children().text();
+        $(this).parent().parent().next().children().text(parseInt(a) + 1);
+        if (parseInt(t.val()) == 1) {
+            $(this).attr('disabled', true);
+        }
+    });
 
-    // $('#total .form-control').on('change', function() {
-    //     let o = $(this).parent().parent().find('span').last().text();
-    //     let v = $(this).val()
-    //     if (parseInt(v) <= 1) {
-    //         $('.jian').attr('disabled', true);
-    //     }
-    //     var t = $(this).parent().next().children();
-    //     if (parseInt($(this).val()) > o) {
-    //         $(this).val(o);
-    //         t.text(parseInt(o - $(this).val()));
-    //     } else {
-    //         t.text(parseInt(o) - v);
-    //         $(this).next().children().attr('disabled', false);
-    //     }
-    // });
+    $('#total .form-control').on('change', function() {
+        let o = $(this).parent().parent().find('span').last().text();
+        let v = $(this).val()
+        if (parseInt(v) <= 1) {
+            $('.jian').attr('disabled', true);
+        }
+        var t = $(this).parent().next().children();
+        if (parseInt($(this).val()) > o) {
+            $(this).val(o);
+            t.text(parseInt(o - $(this).val()));
+        } else {
+            t.text(parseInt(o) - v);
+            $(this).next().children().attr('disabled', false);
+        }
+    });
 
     $('#menu_specifications button').on('click', function() {
-    	alert('????');
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
-        alert(specifications);
         $('#s_money div').addClass('hide');
-        alert('1');
         $('#total').children().addClass('hide');
-        alert('2');
         $('#total div[spe="' + specifications + '"]').removeClass('hide');
-        alert('3');
         $('#s_money div[specifications="' + specifications + '"]').removeClass('hide');
-        alert('4');
         var sub = $('#total div[spe="' + specifications + '"]');
-        alert('5');
         if (sub.find('span').last().text() == '0') {
-        	alert('6');
             sub.find('div').last().html('<label style="color: red;">已售馨</label>');
             $('#pay').text('已售馨').attr('disabled', false);
         } else {
-        	alert('7');
             $('#pay').text('立即订购').attr('disabled', true);
         }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
-        alert('8');
         if (parseInt(a.find('input').val()) == 0) {
-        	alert('9');
             a.find('span').eq(0).children().click();
         }
-        alert('ok');
-
     });
 
     $('#menu_specifications button').eq(0).click();
