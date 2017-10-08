@@ -100,6 +100,8 @@ $(function() {
     loop:true
   });
   
+
+
 	$('.jian').attr('disabled',true);
 	
 	$('#total .add').on('click', function() {
@@ -173,6 +175,7 @@ $(function() {
 	});
 
   $('#pay').on('click', function(event) {
+  	alert('订购');
       var specifications = $('.active').text();
       var total = $('#total div[spe="'+specifications+'"]').find('input').val();
       if($(this).attr('disabled')){
