@@ -121,8 +121,6 @@ $(function() {
     $('#pay').on('click', function(event) {
         var specifications = $.trim($('.active').text());
         var total = $('#total').children().eq(EQ).find('input').val();
-        alert(EQ);
-        alert(total);
         if ($(this).attr('disabled')) {
             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
         } else {
@@ -131,35 +129,10 @@ $(function() {
     });
 
 
-    $('#menu_specifications button').on('click', function() {   	
-				EQ = $(this).index()-1;
-        $("#menu_specifications button").removeClass("active");
-        $(this).addClass("active");
-        var specifications = $(this).text();
-        $('#s_money').children().hide();
-        $('#s_money').children().eq(EQ).show();
-        $('#total').children().addClass('hide');
-        $('#total').children().eq(EQ).removeClass('hide');
-        var sub = $('#total div[spe="' + specifications + '"]');
-        if (sub.find('span').last().text() == '0') {
-            sub.find('div').last().html('<label style="color: red;">已售馨</label>');
-            $('#pay').text('已售馨').attr('disabled', false);
-        } else {
-            $('#pay').text('立即订购').attr('disabled', true);
-        }
-        var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
-        if (parseInt(a.find('input').val()) == 0) {
-        	alert('???');
-            a.find('span').eq(0).children().click();
-            alert('!!???');
-        }
-        
-    });
-
-    $('#menu_specifications button').eq(0).click();
     $('.jian').attr('disabled', true);
 
     $('#total .add').on('click', function() {
+    	alert('add?');
         var t = $(this).parent().next();
         var a = $(this).parent().parent().next().children().text();
         var o = $(this).parent().parent().next().next().text()
@@ -207,6 +180,30 @@ $(function() {
         }
     });
 
+
+    $('#menu_specifications button').on('click', function() {   	
+				EQ = $(this).index()-1;
+        $("#menu_specifications button").removeClass("active");
+        $(this).addClass("active");
+        var specifications = $(this).text();
+        $('#s_money').children().hide();
+        $('#s_money').children().eq(EQ).show();
+        $('#total').children().addClass('hide');
+        $('#total').children().eq(EQ).removeClass('hide');
+        var sub = $('#total div[spe="' + specifications + '"]');
+        if (sub.find('span').last().text() == '0') {
+            sub.find('div').last().html('<label style="color: red;">已售馨</label>');
+            $('#pay').text('已售馨').attr('disabled', false);
+        } else {
+            $('#pay').text('立即订购').attr('disabled', true);
+        }
+        var a = $('#total').children().eq(EQ);
+        if (parseInt(a.find('input').val()) == 0) {
+            a.find('input').prev().find('button').click();
+        }
+    });
+
+    $('#menu_specifications button').eq(0).click();
 });
 </script>
 </html>
