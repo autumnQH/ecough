@@ -141,7 +141,7 @@ var jssdk = async(ctx, next) => {
     }
 
     var pay_money = total * current_money - derate_money ;
-    console.log(pay_money,current_money,derate_money,total,'?????');
+    console.log(pay_money,current_money,derate_money,total,specifications,'?????');
     var page = await pay.setPackageData(openid, pay_money, value,store.name);
     
     console.log(page,'统一下单');
