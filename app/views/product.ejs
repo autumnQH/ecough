@@ -193,20 +193,20 @@ $(function() {
         console.log('4');
         let sub = $('#total div[spe="' + specifications + '"]');
         console.log('5');
-        if (sub.find('span').last().text() == '0') {
-        	console.log('6');
-            sub.find('div').last().html('<label style="color: red;">已售馨</label>');
-            $('#pay').text('已售馨').attr('disabled', false);
-        } else {
-        	console.log('7');
-            $('#pay').text('立即订购').attr('disabled', true);
-        }
+        // if (sub.find('span').last().text() == '0') {
+        // 	console.log('6');
+        //     sub.find('div').last().html('<label style="color: red;">已售馨</label>');
+        //     $('#pay').text('已售馨').attr('disabled', false);
+        // } else {
+        // 	console.log('7');
+        //     $('#pay').text('立即订购').attr('disabled', true);
+        // }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
         console.log('8');
-        if (parseInt(a.find('input').val()) == 0) {
-        	console.log('9');
-            a.find('span').eq(0).children().click();
-        }
+        // if (parseInt(a.find('input').val()) == 0) {
+        // 	console.log('9');
+        //     a.find('span').eq(0).children().click();
+        // }
         console.log('ok');
 
     });
