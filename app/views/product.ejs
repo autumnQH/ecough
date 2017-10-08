@@ -177,7 +177,7 @@ $(function() {
     //     }
     // });
 
-    $('#menu_specifications button').on('click', function() {
+    $('#menu_specifications').on('click','button', function() {
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
