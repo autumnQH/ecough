@@ -110,14 +110,14 @@
                 <img src="/images/fangwumaichuangtie_12.jpeg">
                 <img src="/images/fangwumaichuangtie_13.jpeg">
             </div>
- <div class="footer"> <a id=formSubmitBtn href=javascript: class="weui-btn weui-btn_primary">提交</a> </div>
+ <div class="footer"> <a id=pay href=javascript: class="weui-btn weui-btn_primary">提交</a> </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
 $(function() {
     //立即购买
-    $('#formSubmitBtn').on('click touchstart', function(event) {
+    $('#pay').on('click', function(event) {
         alert('哈');
         var specifications = $('.active').text();
         var total = $('#total div[spe="' + specifications + '"]').find('input').val();
@@ -183,7 +183,7 @@ $(function() {
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
-        $('#s_money div').addClass('hide');
+        $('#s_money').find('div').addClass('hide');
         $('#total').children().addClass('hide');
         $('#total div[spe="' + specifications + '"]').removeClass('hide');
         $('#s_money div[specifications="' + specifications + '"]').removeClass('hide');
