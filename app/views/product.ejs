@@ -133,7 +133,6 @@ $(function() {
 
     $('#menu_specifications button').on('click', function() {   	
 				EQ = $(this).index()-1;
-				alert(EQ);
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
@@ -150,7 +149,9 @@ $(function() {
         }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
         if (parseInt(a.find('input').val()) == 0) {
+        	console.log('???');
             a.find('span').eq(0).children().click();
+            console.log('!!???');
         }
         
     });
