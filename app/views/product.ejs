@@ -59,6 +59,7 @@
                             </div>
                             <% } %>
                     </div>
+                    
                     <div id="total" class="detail-group" style="margin-top:10px;">
                         <% for(var i = 0;i< store.sku_info.length;i++){ %>
                             <div class="hide" spe="<%= store.sku_info[i].specifications %>">
@@ -183,8 +184,8 @@ $(function() {
         $(this).addClass("active");
         var specifications = $(this).text();
         alert(specifications);
-        // $('#s_money div').addClass('hide');
-        // alert('1');
+        $('#s_money div').addClass('hide');
+        alert('1');
         // $('#total').children().addClass('hide');
         // alert('2');
         // $('#total div[spe="' + specifications + '"]').removeClass('hide');
