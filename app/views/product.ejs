@@ -121,6 +121,7 @@ $(function() {
     $('#pay').on('click', function(event) {
         var specifications = $('.active').text();
         var total = $('#total').find('input').eq(EQ).val();
+        alert(EQ);
         if ($(this).attr('disabled')) {
             $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
         } else {
