@@ -47,7 +47,7 @@
                     <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
                     <div class="detail-group" style="margin-top:10px;" id="s_money">
                         <% for(var i = 0; i< store.sku_info.length; i++) { %>
-                            <div specifications="<%= store.sku_info[i].specifications %>">
+                            <div class="hide" specifications="<%= store.sku_info[i].specifications %>">
                                 <span class="col-xs-8" style="width:100%;">
   		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
 			<%= parseInt(store.sku_info[i].price / 100) %></span> 元&nbsp;/ 件
