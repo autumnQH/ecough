@@ -63,7 +63,10 @@ var product = async (ctx, next) => {
         var newarr = val.split(':');
         return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
     });
-
+       // return await ctx.render('product', {
+       //      userinfo: {openid: 'asd'},
+       //      store: store
+       //  }); 
     var r_url = config.server_host + ctx.url.split('?').slice(0,1);
     
     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
@@ -139,6 +142,7 @@ var jssdk = async(ctx, next) => {
     }
 
     var pay_money = total * current_money - derate_money ;
+    console.log(pay_money,'?????');
     var page = await pay.setPackageData(openid, pay_money, value,store.name);
     
     console.log(page,'统一下单');
@@ -300,7 +304,6 @@ var refund = async function(ctx, next) {
     var out_trade_no = req.out_trade_no;
     var config = await dao.getConfig();
     var order = await wechat.getOutTradeNo(out_trade_no);
-    console.log(order);
     if(order.status == 2){
         req.appid = config.appid;
         req.mch_id = config.store_mchid;
