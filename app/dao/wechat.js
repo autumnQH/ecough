@@ -70,7 +70,7 @@ var setStoreOrder = async (data) => {
 
 //根据订单号获取
 var getOutTradeNo = async (out_trade_no) => {
-	var result = db.findOne("SELECT id,openid,pay_money FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
+	var result = db.findOne("SELECT id,openid,pay_money,status FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
 	return result;
 }
 
