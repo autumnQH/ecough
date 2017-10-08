@@ -184,17 +184,6 @@
                 });
 
                 $('#menu_specifications button').eq(0).click();
-						// 表单提交
-						document.querySelector('#formSubmitBtn').addEventListener('click', function () {
-              alert('哈??addEventListener');
-              var specifications = $('.active').text();
-              var total = $('#total div[spe="' + specifications + '"]').find('input').val();
-              if ($(this).attr('disabled')) {
-                  $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
-              } else {
-                  return;
-              }
-						});
 
             });
             </script>
@@ -216,13 +205,23 @@
                 <img src="/images/fangwumaichuangtie_12.jpeg">
                 <img src="/images/fangwumaichuangtie_13.jpeg">
             </div>
- <div class=weui-btn-area> <a id=formSubmitBtn href=javascript: class="weui-btn weui-btn_primary">提交</a> </div>
+ <div class="footer"> <a id=formSubmitBtn href=javascript: class="weui-btn weui-btn_primary">提交</a> </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
 	$(function() {
-		alert('??');
+		//立即购买
+		document.querySelector('#formSubmitBtn').addEventListener('click', function () {
+      alert('哈??addEventListener');
+      var specifications = $('.active').text();
+      var total = $('#total div[spe="' + specifications + '"]').find('input').val();
+      if ($(this).attr('disabled')) {
+          $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
+      } else {
+          return;
+      }
+		});
 	});
 </script>
 </html>
