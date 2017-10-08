@@ -192,7 +192,7 @@ $(function() {
         alert('3');
         $('#s_money div[specifications="' + specifications + '"]').removeClass('hide');
         alert('4');
-        let sub = $('#total div[spe="' + specifications + '"]');
+        let sub = $('#total div[spe="' + specifications + '"]').find('span').last().text();
         alert('5');
         // if (sub.find('span').last().text() == '0') {
         // 	alert('6');
