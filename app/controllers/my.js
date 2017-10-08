@@ -299,7 +299,7 @@ var refund = async function(ctx, next) {
     var out_trade_no = req.out_trade_no;
     var config = await dao.getConfig();
     var order = await wechat.getOutTradeNo(out_trade_no);
-    console.log(req,out_trade_no,order,'??');
+    console.log(req,'req',out_trade_no,'out_trade_no',order,'??');
     if(order.status == 2){
         req.appid = config.appid;
         req.mch_id = config.store_mchid;
