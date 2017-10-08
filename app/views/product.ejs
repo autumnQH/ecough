@@ -186,6 +186,17 @@
                 });
 
                 $('#menu_specifications button').eq(0).click();
+						// 表单提交
+						document.querySelector('#formSubmitBtn').addEventListener('click', function () {
+              alert('哈??addEventListener');
+              var specifications = $('.active').text();
+              var total = $('#total div[spe="' + specifications + '"]').find('input').val();
+              if ($(this).attr('disabled')) {
+                  $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
+              } else {
+                  return;
+              }
+						});
 
             });
             </script>
