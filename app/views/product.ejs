@@ -94,7 +94,7 @@
 <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
   <span style="float:left;margin-top:5px;">规格 :</span>
   <% for(var i = 0; i< store.sku_info.length; i++) { %>
-  		<button class="btn btn-default btn-xs"><%= store.sku_info[i].specifications %></button>
+  		<button class="btn btn-default btn-xs" type="button"><%= store.sku_info[i].specifications %></button>
   <% }%>
 </div>
 
@@ -222,7 +222,7 @@ $(function() {
 			</div>
 
 			<div class="footer">
-				<a id="pay">立即订购</a>
+				<button id="pay" type="button"> 立即订购</button>
 			</div>
 		</div>
 	</div>
