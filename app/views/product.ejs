@@ -72,7 +72,7 @@
                                 <div style="float:left;margin-left:5px;">( 剩余<span><%= store.sku_info[i].repertory %></span> )</div>
                                 <span style="visibility: hidden;"><%= store.sku_info[i].repertory %></span>
                             </div>
-                            <% } %>
+                        <% } %>
                     </div>
                     <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
                         <span style="float:left;margin-top:5px;">规格 :</span>
@@ -179,21 +179,19 @@ $(function() {
     });
 
     $('#menu_specifications button').on('click', function() {
-alert('??');
+				var index = $(this).index()-1;
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
         var specifications = $(this).text();
         $('#s_money').find('div').hide();
-        $('#s_money div[specifications="' + specifications + '"]').show();
+        $('#s_money div').eq(index).show();
         $('#total').children().addClass('hide');
-        $('#total div[spe="' + specifications + '"]').removeClass('hide');
+        $('#total').children().eq(index).removeClass('hide');
         var sub = $('#total div[spe="' + specifications + '"]');
         if (sub.find('span').last().text() == '0') {
-        	alert('已售馨');
             sub.find('div').last().html('<label style="color: red;">已售馨</label>');
             $('#pay').text('已售馨').attr('disabled', false);
         } else {
-        	alert('立即订购');
             $('#pay').text('立即订购').attr('disabled', true);
         }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
