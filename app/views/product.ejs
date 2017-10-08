@@ -1,233 +1,217 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <meta content="email=no" name="format-detection">
     <title>产品</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/libs/swiper/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/libs/swiper/swiper-3.4.2.min.css" />
     <script src="/libs/swiper/swiper-3.4.2.min.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css">
+    <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.1/weui.min.js"></script>
     <style type="text/css">
-    	.btn{
-    		cursor: pointer;
-    	}
-    	.footer{
-    		cursor: pointer;
-    	}
+    .btn {
+        cursor: pointer;
+    }
+
+    .footer {
+        cursor: pointer;
+    }
     </style>
 </head>
+
 <body>
-	<div class="main">
-		<div class="product">
-			<div class="swiper-container">
-		        <div class="swiper-wrapper">
-		            <div class="swiper-slide">
-		            	<a href="javascript:">
+    <div class="main">
+        <div class="product">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="javascript:">
 		            		<img src="/images/chuangtie_xuanzhuan1.jpeg"/>
 		            	</a>
-		            </div>
-		            <div class="swiper-slide">
-		            	<a href="javascript:">
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:">
 		            		<img src="/images/chuangtie_xuanzhuan2.jpeg"/>
 		            	</a>
-		            </div>
-		            <div class="swiper-slide">
-		            	<a href="javascript:">
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:">
 		            		<img src="/images/chuangtie_xuanzhuan3.jpeg"/>
 		            	</a>
-		            </div>		            
-		        </div>
-		        <!-- Add Pagination -->
-		        <div class="swiper-pagination"></div>
-		    </div>
-
-
-
-
-<div class="detail">
-  <div class="detail-div img-rounded">
-			    	
-			      <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
-
-
-<div class="detail-group" style="margin-top:10px;" id="s_money">
-	<% for(var i = 0; i< store.sku_info.length; i++) { %>
-	<div specifications="<%= store.sku_info[i].specifications %>" class="hide">
-  	<span class="col-xs-8" style="width:100%;">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="detail">
+                <div class="detail-div img-rounded">
+                    <div class="detail-group text-center" style="line-height:20px;font-weight:bold;">1件套装</div>
+                    <div class="detail-group" style="margin-top:10px;" id="s_money">
+                        <% for(var i = 0; i< store.sku_info.length; i++) { %>
+                            <div specifications="<%= store.sku_info[i].specifications %>" class="hide">
+                                <span class="col-xs-8" style="width:100%;">
   		现价: ¥ <span id="marketprice" class="text-danger" style="font-size:18px; font-weight:bold;">
 			<%= parseInt(store.sku_info[i].price / 100) %></span> 元&nbsp;/ 件
-		<label class="yjia" style="text-decoration:line-through;">
-			原价：<%= parseInt(store.sku_info[i].ori_price / 100) %></label>
-		</span>			      		
-	</div>
-	<% } %>
-</div>
+                                <label class="yjia" style="text-decoration:line-through;">
+                                    原价：
+                                    <%= parseInt(store.sku_info[i].ori_price / 100) %>
+                                </label>
+                                </span>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div id="total" class="detail-group" style="margin-top:10px;">
+                        <% for(var i = 0;i< store.sku_info.length;i++){ %>
+                            <div class="hide" spe="<%= store.sku_info[i].specifications %>">
+                                <span style="float:left;margin-top:5px;">数量 :</span>
+                                <div class="input-group" style="width:100px;float:left;margin-left:8px;">
+                                    <span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
+                                    <input type="tel" class="form-control" style="width:70px;height:25px;text-align:center" value="0">
+                                    <span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
+                                </div>
+                                <div style="float:left;margin-left:5px;">( 剩余<span><%= store.sku_info[i].repertory %></span> )</div>
+                                <span style="visibility: hidden;"><%= store.sku_info[i].repertory %></span>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="detail-group" style="margin-top:10px;" id="menu_specifications">
+                        <span style="float:left;margin-top:5px;">规格 :</span>
+                        <% for(var i = 0; i< store.sku_info.length; i++) { %>
+                            <button class="btn btn-default btn-xs" type="button">
+                                <%= store.sku_info[i].specifications %>
+                            </button>
+                            <% }%>
+                    </div>
+                </div>
+            </div>
+            <script>
+            $(function() {
+                new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true,
+                    loop: true
+                });
 
-<div id="total"  class="detail-group" style="margin-top:10px;">
-	<% for(var i = 0;i< store.sku_info.length;i++){ %>
-		<div class="hide" spe="<%= store.sku_info[i].specifications %>">
-		  <span style="float:left;margin-top:5px;">数量 :</span>
+                $('.jian').attr('disabled', true);
 
-	    <div class="input-group" style="width:100px;float:left;margin-left:8px;">
-				<span class="input-group-btn"><button class="btn btn-default btn-sm add" type="button">+</button></span>
-				<input type="tel" class="form-control" style="width:70px;height:25px;text-align:center" value="0">
-				<span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
-	    </div>
+                $('#total .add').on('click', function() {
+                    let t = $(this).parent().next();
+                    let a = $(this).parent().parent().next().children().text();
+                    let o = $(this).parent().parent().next().next().text()
+                    if (a != '已售馨') {
+                        if (t.val() < o) {
+                            t.val(Math.abs(parseInt(t.val())) + 1);
+                            $(this).parent().parent().next().children().text(parseInt(a) - 1);
+                        }
 
-			<div style="float:left;margin-left:5px;">( 剩余<span><%= store.sku_info[i].repertory %></span> )</div>
-			<span style="visibility: hidden;"><%= store.sku_info[i].repertory %></span>
-		</div>
-	<% } %>
-</div>
+                        if (parseInt(t.val()) != 1) {
+                            $(this).parent().next().next().find('button').attr('disabled', false);
+                        }
 
+                    }
 
+                });
 
-<div class="detail-group" style="margin-top:10px;" id="menu_specifications">
-  <span style="float:left;margin-top:5px;">规格 :</span>
-  <% for(var i = 0; i< store.sku_info.length; i++) { %>
-  		<button class="btn btn-default btn-xs" type="button"><%= store.sku_info[i].specifications %></button>
-  <% }%>
-</div>
+                $('#total .jian').on('click', function() {
+                    if ($(this).parent().prev().val() <= 1) {
+                        $(this).attr('disabled', true);
+                        return;
+                    }
+                    let t = $(this).parent().prev();
+                    t.val(Math.abs(parseInt(t.val())) - 1);
+                    var a = $(this).parent().parent().next().children().text();
+                    $(this).parent().parent().next().children().text(parseInt(a) + 1);
+                    if (parseInt(t.val()) == 1) {
+                        $(this).attr('disabled', true);
+                    }
+                });
 
-	</div>
-</div>
-<script>
-$(function() {
-	new Swiper('.swiper-container', {
-    pagination: '.swiper-pagination',
-    paginationClickable: true,
-    loop:true
-  });
-  
-	$('.jian').attr('disabled',true);
-	
-	$('#total .add').on('click', function() {
-		let t = $(this).parent().next();
-		let a = $(this).parent().parent().next().children().text();
-		let o = $(this).parent().parent().next().next().text()
-		if(a!='已售馨'){
-			if(t.val()<o){
-				t.val(Math.abs(parseInt(t.val()))+1);
-				$(this).parent().parent().next().children().text(parseInt(a)-1);
-			}
+                $('#total .form-control').on('change', function() {
+                    let o = $(this).parent().parent().find('span').last().text();
+                    let v = $(this).val()
+                    if (parseInt(v) <= 1) {
+                        $('.jian').attr('disabled', true);
+                    }
+                    var t = $(this).parent().next().children();
+                    if (parseInt($(this).val()) > o) {
+                        $(this).val(o);
+                        t.text(parseInt(o - $(this).val()));
+                    } else {
+                        t.text(parseInt(o) - v);
+                        $(this).next().children().attr('disabled', false);
+                    }
+                });
 
-			if(parseInt(t.val())!=1){
-				$(this).parent().next().next().find('button').attr('disabled',false);			
-			}
+                $('#menu_specifications button').on('click touchstart', function() {
+                    $("#menu_specifications button").removeClass("active");
+                    $(this).addClass("active");
+                    var specifications = $(this).text();
+                    $('#s_money div').addClass('hide');
+                    $('#total').children().addClass('hide');
+                    $('#total div[spe="' + specifications + '"]').removeClass('hide');
+                    $('#s_money div[specifications="' + specifications + '"]').removeClass('hide');
+                    let sub = $('#total div[spe="' + specifications + '"]');
+                    if (sub.find('span').last().text() == '0') {
+                        sub.find('div').last().html('<label style="color: red;">已售馨</label>');
+                        $('#pay').text('已售馨').attr('disabled', false);
+                    } else {
+                        $('#pay').text('立即订购').attr('disabled', true);
+                    }
+                    var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
+                    if (parseInt(a.find('input').val()) == 0) {
+                        a.find('span').eq(0).children().click();
+                    }
 
-		}
+                });
 
-	});
+                $('#formSubmitBtn').on('click touchstart', function(event) {
+                    alert('哈');
+                    var specifications = $('.active').text();
+                    var total = $('#total div[spe="' + specifications + '"]').find('input').val();
+                    if ($(this).attr('disabled')) {
+                        $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
+                    } else {
+                        return;
+                    }
+                });
 
-	$('#total .jian').on('click', function() {
-		if($(this).parent().prev().val()<=1){
-			$(this).attr('disabled', true);
-			return;
-		}
-		let t = $(this).parent().prev();
-		t.val(Math.abs(parseInt(t.val()))-1);
-		var a = $(this).parent().parent().next().children().text();
-		$(this).parent().parent().next().children().text(parseInt(a)+1);
-		if(parseInt(t.val())==1){
-			$(this).attr('disabled', true);
-		}
-	});
+                $('#menu_specifications button').eq(0).click();
 
-	$('#total .form-control').on('change', function() {
-		let o = $(this).parent().parent().find('span').last().text();
-		let v = $(this).val()
-		if(parseInt(v)<=1){
-			$('.jian').attr('disabled',true);
-		}
-		var t = $(this).parent().next().children();
-		if(parseInt($(this).val())>o){
-			$(this).val(o);
-			t.text(parseInt(o-$(this).val()));
-		}else{			
-			t.text(parseInt(o)-v);
-			$(this).next().children().attr('disabled',false);
-		}
-	});
-
-	$('#menu_specifications button').on('click touchstart',function() {
-	  $("#menu_specifications button").removeClass("active");  
-	  $(this).addClass("active");
-		var specifications = $(this).text();
-		$('#s_money div').addClass('hide');
-		$('#total').children().addClass('hide');
-		$('#total div[spe="'+specifications+'"]').removeClass('hide');
-		$('#s_money div[specifications="'+specifications+'"]').removeClass('hide');
-		let sub = $('#total div[spe="'+specifications+'"]');
-		if(sub.find('span').last().text() == '0'){
-			sub.find('div').last().html('<label style="color: red;">已售馨</label>');
-			$('#pay').text('已售馨').attr('disabled', false);
-		}else{
-			$('#pay').text('立即订购').attr('disabled', true);
-		}
-		var a = $('#total div[spe="'+specifications+'"]').find('div').eq(0);
-		if(parseInt(a.find('input').val()) ==0 ){
-			a.find('span').eq(0).children().click();			
-		}
-		
-	});
-
-	$(document).on('click', '.btn', function() {
-		alert('????');
-	});
-		$(document).on('click', '#pay', function() {
-		alert('????');
-	});
-  $('#pay').on('click touchstart', function(event) {
-  	alert('哈');
-      var specifications = $('.active').text();
-      var total = $('#total div[spe="'+specifications+'"]').find('input').val();
-      if($(this).attr('disabled')){
-  			$('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total="+ total+"&specifications=" + specifications+ "&product=<%= store.product_id %>");      	
-      }else{
-      	return;
-      }
-  });
-
-	$('#menu_specifications button').eq(0).click();
-
-});
-</script>
-
-			<div class="product-js">
-				产品详情
-			</div>
-			<div class="product-item">
-<img src="/images/fangwumaichuangtie_01.jpeg">
-<img src="/images/fangwumaichuangtie_02.jpeg">
-<img src="/images/fangwumaichuangtie_03.jpeg">
-<img src="/images/fangwumaichuangtie_04.jpeg">
-<img src="/images/fangwumaichuangtie_05.jpeg">
-<img src="/images/fangwumaichuangtie_06.jpeg">
-<img src="/images/fangwumaichuangtie_07.jpeg">
-<img src="/images/fangwumaichuangtie_08.jpeg">
-<img src="/images/fangwumaichuangtie_09.jpeg">
-<img src="/images/fangwumaichuangtie_10.jpeg">
-<img src="/images/fangwumaichuangtie_11.jpeg">
-<img src="/images/fangwumaichuangtie_12.jpeg">
-<img src="/images/fangwumaichuangtie_13.jpeg">
-			</div>
-
-<!-- 			<div class="footer">
-				<button id="pay" type="button"> 立即订购</button>
-			</div> -->
-		</div>
-	</div>
-	<footer>
-<button type="button" id="pay" type="button" data-loading-text="Loading..." class="btn" autocomplete="off">兑换</button>
-	</footer>
+            });
+            </script>
+            <div class="product-js">
+                产品详情
+            </div>
+            <div class="product-item">
+                <img src="/images/fangwumaichuangtie_01.jpeg">
+                <img src="/images/fangwumaichuangtie_02.jpeg">
+                <img src="/images/fangwumaichuangtie_03.jpeg">
+                <img src="/images/fangwumaichuangtie_04.jpeg">
+                <img src="/images/fangwumaichuangtie_05.jpeg">
+                <img src="/images/fangwumaichuangtie_06.jpeg">
+                <img src="/images/fangwumaichuangtie_07.jpeg">
+                <img src="/images/fangwumaichuangtie_08.jpeg">
+                <img src="/images/fangwumaichuangtie_09.jpeg">
+                <img src="/images/fangwumaichuangtie_10.jpeg">
+                <img src="/images/fangwumaichuangtie_11.jpeg">
+                <img src="/images/fangwumaichuangtie_12.jpeg">
+                <img src="/images/fangwumaichuangtie_13.jpeg">
+            </div>
+            <div class="weui-btn-area">
+                <a id="formSubmitBtn" href="javascript:" class="weui-btn weui-btn_primary">提交</a> 
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
