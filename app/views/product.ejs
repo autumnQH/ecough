@@ -128,55 +128,55 @@ $(function() {
         }
     });
 
-    $('.jian').attr('disabled', true);
+    // $('.jian').attr('disabled', true);
 
-    $('#total .add').on('click', function() {
-        let t = $(this).parent().next();
-        let a = $(this).parent().parent().next().children().text();
-        let o = $(this).parent().parent().next().next().text()
-        if (a != '已售馨') {
-            if (t.val() < o) {
-                t.val(Math.abs(parseInt(t.val())) + 1);
-                $(this).parent().parent().next().children().text(parseInt(a) - 1);
-            }
+    // $('#total .add').on('click', function() {
+    //     let t = $(this).parent().next();
+    //     let a = $(this).parent().parent().next().children().text();
+    //     let o = $(this).parent().parent().next().next().text()
+    //     if (a != '已售馨') {
+    //         if (t.val() < o) {
+    //             t.val(Math.abs(parseInt(t.val())) + 1);
+    //             $(this).parent().parent().next().children().text(parseInt(a) - 1);
+    //         }
 
-            if (parseInt(t.val()) != 1) {
-                $(this).parent().next().next().find('button').attr('disabled', false);
-            }
+    //         if (parseInt(t.val()) != 1) {
+    //             $(this).parent().next().next().find('button').attr('disabled', false);
+    //         }
 
-        }
+    //     }
 
-    });
+    // });
 
-    $('#total .jian').on('click', function() {
-        if ($(this).parent().prev().val() <= 1) {
-            $(this).attr('disabled', true);
-            return;
-        }
-        let t = $(this).parent().prev();
-        t.val(Math.abs(parseInt(t.val())) - 1);
-        var a = $(this).parent().parent().next().children().text();
-        $(this).parent().parent().next().children().text(parseInt(a) + 1);
-        if (parseInt(t.val()) == 1) {
-            $(this).attr('disabled', true);
-        }
-    });
+    // $('#total .jian').on('click', function() {
+    //     if ($(this).parent().prev().val() <= 1) {
+    //         $(this).attr('disabled', true);
+    //         return;
+    //     }
+    //     let t = $(this).parent().prev();
+    //     t.val(Math.abs(parseInt(t.val())) - 1);
+    //     var a = $(this).parent().parent().next().children().text();
+    //     $(this).parent().parent().next().children().text(parseInt(a) + 1);
+    //     if (parseInt(t.val()) == 1) {
+    //         $(this).attr('disabled', true);
+    //     }
+    // });
 
-    $('#total .form-control').on('change', function() {
-        let o = $(this).parent().parent().find('span').last().text();
-        let v = $(this).val()
-        if (parseInt(v) <= 1) {
-            $('.jian').attr('disabled', true);
-        }
-        var t = $(this).parent().next().children();
-        if (parseInt($(this).val()) > o) {
-            $(this).val(o);
-            t.text(parseInt(o - $(this).val()));
-        } else {
-            t.text(parseInt(o) - v);
-            $(this).next().children().attr('disabled', false);
-        }
-    });
+    // $('#total .form-control').on('change', function() {
+    //     let o = $(this).parent().parent().find('span').last().text();
+    //     let v = $(this).val()
+    //     if (parseInt(v) <= 1) {
+    //         $('.jian').attr('disabled', true);
+    //     }
+    //     var t = $(this).parent().next().children();
+    //     if (parseInt($(this).val()) > o) {
+    //         $(this).val(o);
+    //         t.text(parseInt(o - $(this).val()));
+    //     } else {
+    //         t.text(parseInt(o) - v);
+    //         $(this).next().children().attr('disabled', false);
+    //     }
+    // });
 
     $('#menu_specifications button').on('click', function() {
     	alert('?');
