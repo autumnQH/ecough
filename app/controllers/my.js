@@ -137,7 +137,8 @@ var jssdk = async(ctx, next) => {
 
     for(var i = 0 ; i< store.sku_info.length; i++){
         if(specifications === store.sku_info[i].specifications) {
-            current_money = store.sku_info[i].price
+            current_money = store.sku_info[i].price;
+            console.log(current_money,'现在价格？')
         }
     }
 
