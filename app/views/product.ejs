@@ -17,7 +17,7 @@
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <style type="text/css">
-    	.button{
+    	.btn{
     		cursor: pointer;
     	}
     	#pay{
@@ -181,6 +181,7 @@ $(function() {
 	});
 
   $('#pay').on('click', function(event) {
+  	alert('哈');
       var specifications = $('.active').text();
       var total = $('#total div[spe="'+specifications+'"]').find('input').val();
       if($(this).attr('disabled')){
