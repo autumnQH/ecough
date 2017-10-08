@@ -179,6 +179,7 @@ $(function() {
     });
 
     $('#menu_specifications button').on('click', function() {
+    	alert('?');
 				var index = $(this).index()-1;
         $("#menu_specifications button").removeClass("active");
         $(this).addClass("active");
@@ -192,12 +193,14 @@ $(function() {
             sub.find('div').last().html('<label style="color: red;">已售馨</label>');
             $('#pay').text('已售馨').attr('disabled', false);
         } else {
+        	alert('立即订购');
             $('#pay').text('立即订购').attr('disabled', true);
         }
         var a = $('#total div[spe="' + specifications + '"]').find('div').eq(0);
         if (parseInt(a.find('input').val()) == 0) {
             a.find('span').eq(0).children().click();
         }
+        alert('??');
     });
 
     $('#menu_specifications button').eq(0).click();
