@@ -114,7 +114,6 @@ var jssdk = async(ctx, next) => {
         var newarr = val.split(':');
         return {specifications: newarr[0], price: newarr[1], ori_price: newarr[2], repertory: newarr[3], qr: newarr[4]}; 
     });
-    console.log(store);
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
     var out_trade_no = tools.trade();
@@ -136,12 +135,10 @@ var jssdk = async(ctx, next) => {
     for(var i = 0 ; i< store.sku_info.length; i++){
         if(specifications === store.sku_info[i].specifications) {
             current_money = store.sku_info[i].price;
-            console.log(current_money,'现在价格？')
         }
     }
 
     var pay_money = total * current_money - derate_money ;
-    console.log(pay_money,current_money,derate_money,total,specifications,'?????');
     var page = await pay.setPackageData(openid, pay_money, value,store.name);
     
     console.log(page,'统一下单');
@@ -151,7 +148,6 @@ var jssdk = async(ctx, next) => {
     console.log(result);
     if(result.xml.err_code){
         if(result.xml.err_code[0] == 'ORDERPAID'){
-            console.log('该订单已经支付');
             await ctx.redirect('/product/100001');
         }
     }
