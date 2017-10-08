@@ -165,7 +165,7 @@ $(function() {
 
     $('#total .form-control').on('change', function() {
         var o = $(this).parent().parent().find('span').last().text();
-        var v = $(this).val()
+        var v = Math.abs($(this).val());
         if (parseInt(v) <= 1) {
             $('.jian').attr('disabled', true);
         }
