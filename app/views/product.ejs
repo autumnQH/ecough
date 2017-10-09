@@ -84,14 +84,7 @@
                     </div>
                 </div>
             </div>
-            <script>
-            $(function() {
 
-
-
-
-            });
-            </script>
             <div class="product-js">
                 产品详情
             </div>
@@ -116,6 +109,11 @@
 </body>
 <script type="text/javascript">
 $(function() {
+    new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop:true
+    });
 	var EQ =0;
     //立即购买
     $('#pay').on('click', function(event) {
