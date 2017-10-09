@@ -80,6 +80,7 @@ exports.getUserInfo2 = function(token, openid) {
     return new Promise((resolve, reject)=> {
       request(options, function(err, res, body) {
         if(body){
+          console.log(body);
           return resolve(JSON.parse(body));
         }else{
           return reject(JSON.parse(err));
