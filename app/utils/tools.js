@@ -75,12 +75,14 @@ exports.getOauth2Token = async function (code) {
 exports.getUserInfo2 = function(token, openid) {
     let options ={
         method: 'get',
-        url: 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='+token+'&openid='+openid+'&lang=zh_CN'
+        url: 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='+token+'&openid='+openid+'&lang=zh_CN',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
     };
     return new Promise((resolve, reject)=> {
       request(options, function(err, res, body) {
         if(body){
-          console.log(body);
           return resolve(JSON.parse(body));
         }else{
           return reject(JSON.parse(err));
