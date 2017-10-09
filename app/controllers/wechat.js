@@ -32,7 +32,7 @@ var postHandle = async(ctx, next) => {
         nick: userinfo.nickname
     };
     console.log(msg);
-    console.log(data.nickname,'nickname');
+    console.log(data.nick,'nickname');
     let msgType = msg.MsgType[0];
     if(msg.Event){
         if(msg.Event[0] == 'subscribe'){//用户关注
