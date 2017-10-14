@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 </head>
 <body>
     
@@ -68,37 +67,5 @@
             </div>
         </div>
     </div>
-    <script>
-      wx.config({
-        debug: true,
-        appId: '<%= config.appid %>',
-        timestamp: '<%= config.timestamp %>',
-        nonceStr: '<%= config.nonceStr %>',
-        signature: '<%= config.signature %>',
-        jsApiList: ['openAddress']
-
-      });    
-      wx.ready(function() {
-        document.querySelector('#openAddress').onclick = function() {
-          wx.openAddress({
-            success: function(res) {
-              alert(res);
-              // var name = $('#name').html('');
-              // var phone = $('#phone').html('');
-              // var address = $('#address').html('');
-
-              // $('#name').html(res.userName);
-              // $('#phone').html(res.telNumber);
-              // $('#address').html(res.provinceName+res.cityName+res.countryName+res.detailInfo);
-
-            },
-            fail: function(res) {
-              alert(res,'res');
-              alert('网络繁忙，请稍后再试！');
-            } 
-          });                 
-        }
-      });  
-    </script>
 </body>
 </html>
