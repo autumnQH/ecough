@@ -13,7 +13,7 @@ exports.showGift = async (ctx)=> {
 exports.showGiftById = async (ctx)=> {
 	let id = ctx.params.id;
 	var jsapi_ticket = await dao.getJsapiTicket();
-  var url = 'http://' + ctx.header.host + ctx.url;
+  var url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
   console.log(url);
   var nonceStr = tools.createRandom();
   var timeStamp = tools.createTimestamp();
