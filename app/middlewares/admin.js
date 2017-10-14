@@ -189,7 +189,42 @@ exports.showConfig = async (ctx)=> {
 
 exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
-	console.log(req);
 	await Admin.updateConfig(req);
 	return ctx.redirect('back');
+}
+
+exports.showGift = async (ctx) => {
+  ctx.state.data = await Admin.getGift();
+  await ctx.render('admin/gift');
+}
+
+exports.showAddGift = async (ctx) => {
+  ctx.state.data = null;
+  await ctx.render('admin/giftEdit');
+}
+
+exports.addGift = async (ctx) => {
+  var req = ctx.request.body;
+  req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+  await Admin.addGift(req);
+  ctx.status = 204;
+}
+
+exports.showEditGift = async (ctx)=> {
+  var id = ctx.params.id;
+  ctx.state.data = await Admin.getGiftById(id);
+  await ctx.render('admin/giftEdit');
+}
+
+exports.updateGift = async (ctx)=> {
+  var id = ctx.params.id;
+  var req = ctx.request.body;
+  await Admin.updateGift(req, id);
+  ctx.status = 204;  
+}
+
+exports.delGiftById = async (ctx)=> {
+  var id = ctx.params.id;
+  await Admin.delGiftById(id);
+  ctx.status = 204;  
 }

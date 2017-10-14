@@ -181,3 +181,15 @@ CREATE TABLE IF NOT EXISTS FAQ (
   create_time datetime DEFAULT NULL COMMENT '',
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8 COMMENT='常见问题';
+
+CREATE TABLE IF NOT EXISTS GIFT (
+  id int NOT NULL AUTO_INCREMENT ,
+  title varchar(128) NOT NULL COMMENT '标题',
+  img_url varchar(255) DEFAULT NULL COMMENT '大图URL',
+  centent TEXT NOT NULL COMMENT '详细内容',
+  icon_url varchar(255) DEFAULT NULL COMMENT '小图URL',
+  consume int(10) DEFAULT NUll COMMENT '所需件数',
+  create_time datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (id),
+  INDEX create_time (create_time)
+)DEFAULT CHARSET=utf8 COMMENT='礼品';

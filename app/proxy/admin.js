@@ -44,7 +44,7 @@ exports.getFAQById = (id)=> {
 	return admin.getFAQById(id);
 }
 /**
- * 修改一条FAQ
+ * 根据Id修改一条FAQ
  * @param {Object} data 数据包
  * @param {String} id ID
  */
@@ -59,7 +59,7 @@ exports.delFAQ = (id)=> {
 	return admin.delFAQ(id);
 }
 /**
- * 增加一天FAQ
+ * 增加一条FAQ
  * @param {Object} data 数据包
  */
 exports.addFAQ = (data)=> {
@@ -86,6 +86,43 @@ exports.getConfig = ()=> {
  * 更新CONFIG
  * @param {Object} data 数据包
  */
-exports.updateConfig= (data)=> {
+exports.updateConfig = (data)=> {
 	return admin.updateConfig(data);
+}
+//获取所有礼品
+exports.getGift = ()=> {
+	return admin.getGift();
+}
+
+/**
+ * 增加一条礼品
+ * @param {Object} data 数据包
+ */
+exports.addGift = (data)=> {
+	return admin.addGift(data);
+}
+
+/**
+ * 根据Id获取一条礼品信息
+ * @param {String} id ID 
+ */
+exports.getGiftById = (id)=> {
+	return admin.getGiftById(id);
+}
+
+/**
+ * 根据Id修改一条礼品信息
+ * @param {Object} data 数据包
+ * @param {String} id ID
+ */
+exports.updateGift = (data, id)=> {
+	return admin.updateGift(data, id);
+}
+
+/**
+ * 根据ID删除一条礼品
+ * @param {String} id ID
+ */
+exports.delGiftById = (id)=> {
+	return admin.delGiftById(id);
 }

@@ -32,7 +32,7 @@ exports.getFAQById = (id)=> {
 exports.updateFAQ = (data, id)=> {
 	return db.update("FAQ",data, {id: id});
 }
-//删除一条FAQ
+//根据ID删除一条FAQ
 exports.delFAQ = (id)=> {
 	return db.delete("FAQ", {id: id});
 }
@@ -53,6 +53,26 @@ exports.getConfig = ()=> {
 	return db.findOne("SELECT * FROM CONFIG");
 }
 //更新config
-exports.updateConfig= (data)=> {
+exports.updateConfig = (data)=> {
 	return db.update("CONFIG", data, {id: 1});
+}
+//获取礼品列表
+exports.getGift = ()=> {
+	return db.find("SELECT * FROM GIFT ORDER BY CREATE_TIME DESC");
+}
+//添加礼品
+exports.addGift = (data)=> {
+	return db.add("GIFT", data);
+}
+//获取一条礼品信息
+exports.getGiftById = (id)=> {
+	return db.findOne("SELECT * FROM GIFT WHERE ? ",{id: id});
+}
+//根据Id修改礼品信息
+exports.updateGift = (data, id)=> {
+	return db.update("GIFT", data, {id: id});
+}
+//根据ID删除一条礼品
+exports.delGiftById = (id)=> {
+	return db.delete("GIFT", {id: id})
 }

@@ -135,6 +135,16 @@ var UserOrder = async(ctx, next) => {
   var r_url = config.server_host + ctx.url.split('?').slice(0,1);
   var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
       '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
+
+   //  var result =  await USER.getUserOrder('o5Yi9wOfXWopOcMYiujWBZmwBH0Q');
+    
+   //  result.forEach(function(data) {
+   //    data.create_time = tools.formatDate(data.create_time);
+   //  });
+
+   // return  await ctx.render('user_order', {
+   //    data: result
+   //  });     
   if(ctx.session.openid){
 		var result =  await USER.getUserOrder(ctx.session.openid);
     
