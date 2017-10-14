@@ -17,10 +17,10 @@ router.get('/store', checkAdmin, adminController.showStore);//显示所有产品
 router.post('/store', checkAdmin, adminController.updateStore);//修改产品
 router.get('/config', checkAdmin, adminController.showConfig);//显示config
 router.post('/config', checkAdmin, adminController.updateConfig);//修改config
-router.get('/gift', adminController.showGift);//显示礼品列表
-router.get('/gift/create', adminController.showAddGift);//显示添加礼品
-router.put('/gift/create', adminController.addGift);//显示添加礼品
-router.get('/gift/:id', adminController.showEditGift);//显示一条礼品
-router.post('/gift/:id', adminController.updateGift);//显示一条礼品
-router.del('/gift/:id', adminController.delGiftById);//显示一条礼品
+router.get('/gift', checkAdmin, adminController.showGift);//显示礼品列表
+router.get('/gift/create', checkAdmin, adminController.showAddGift);//显示添加礼品
+router.put('/gift/create', checkAdmin, adminController.addGift);//显示添加礼品
+router.get('/gift/:id', checkAdmin, adminController.showEditGift);//显示一条礼品
+router.post('/gift/:id', checkAdmin, adminController.updateGift);//显示一条礼品
+router.del('/gift/:id', checkAdmin, adminController.delGiftById);//显示一条礼品
 module.exports= router;
