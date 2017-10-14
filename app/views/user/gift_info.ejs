@@ -70,7 +70,7 @@
     </div>
     <script>
       wx.config({
-        debug: false,
+        debug: true,
         appId: '<%= config.appid %>',
         timestamp: '<%= config.timestamp %>',
         nonceStr: '<%= config.nonceStr %>',
@@ -82,7 +82,7 @@
         document.querySelector('#openAddress').onclick = function() {
           wx.openAddress({
             success: function(res) {
-              console.log(res);
+              alert(res);
               // var name = $('#name').html('');
               // var phone = $('#phone').html('');
               // var address = $('#address').html('');
@@ -93,7 +93,7 @@
 
             },
             fail: function(res) {
-              console.log(res,'res');
+              alert(res,'res');
               alert('网络繁忙，请稍后再试！');
             } 
           });                 
