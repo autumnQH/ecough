@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>礼品兑换</title>
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/lib/weui.css?_t=201701201">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/css/jquery-weui.css?_t=201701201">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    body {
+        background-color: #fff;
+    }
+
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    </style>
+</head>
+
+<body ontouchstart="">
+    <div class="page">
+        <div>
+            <img src="/images/gift.jpg" width="100%" alt="">
+            <div class="list-group">
+                <% if(data.length> 0){ %>
+                    <% for(var i = 0;i<data.length;i++ ){ %>
+                        <a href="/user/gift/<%= data[i].id %>" class="list-group-item">
+                          <img style="width: 100px;" src="<%= data[i].icon_url %>">
+                          <%= data[i].title %>
+                          <!-- <span class="badge"><%= data[i].consume %></span> -->
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

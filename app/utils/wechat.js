@@ -69,6 +69,13 @@ exports.createMenu = async (menu, token) => {
                 url: host+'/users/user'                
             }
             ]
+        },{
+            name: '礼物兑换',
+            sub_button: [{
+                type: 'view',
+                name: '礼物兑换',
+                url: host + '/user/gift'
+            }]
         }
         ]
     };

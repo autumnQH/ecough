@@ -32,11 +32,19 @@
 <div class="container">
   <div class="row">
   <% if(data){ %>
-  <input id="title" type="text" name="title" style="height: 40px; width: 650px" placeholder="标题" maxlength="20" required
+  <input id="title" type="text" style="height: 40px; width: 650px" placeholder="标题" maxlength="20" required
     value="<%= data.title %>" >
   <% }else{ %>
-    <input id="title" type="text" name="title" style="height: 40px; width: 650px" placeholder="标题" maxlength="20" required>
+    <input id="title" type="text" style="height: 40px; width: 650px" placeholder="标题" maxlength="20" required>
   <% } %> 
+  </div>
+  <div class="row">
+    <% if(data) { %>
+      <input id="name" type="text" style="height: 40px; width: 650px" placeholder="产品名称" maxlength="20" 
+      value="<%= data.name %>"  required>
+    <% }else{ %>
+      <input id="name" type="text" style="height: 40px; width: 650px" placeholder="产品名称" maxlength="20" required>
+    <% } %>
   </div>
   <div class="row">
     <% if(data) { %>
@@ -203,11 +211,13 @@
       var img_url = $.trim($('#upimg').find('img').eq(0).attr('src'));//大图
       var icon_url = $.trim($('#upimg').find('img').eq(1).attr('src'));//小图
       var consume = Math.abs($('#consume').val());
+      var name = $.trim($('#name').val());
       $.ajax({
         url: '/admin/gift/<%= data.id %>',
         type: 'post',
         data: {
           title: title,
+          name,
           centent: centent,
           img_url: img_url,
           icon_url: icon_url,
@@ -239,12 +249,14 @@
     var img_url = $.trim($('#upimg').find('img').eq(0).attr('src'));//大图
     var icon_url = $.trim($('#upimg').find('img').eq(1).attr('src'));//小图
     var consume = Math.abs($('#consume').val());
+    var name = $.trim($('#name').val());
     if(centent && title && img_url && icon_url && consume){
       $.ajax({
         url: '/admin/gift/create',
         type: 'put',
         data: {
           title: title,
+          name,
           centent: centent,
           img_url: img_url,
           icon_url: icon_url,

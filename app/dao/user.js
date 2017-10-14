@@ -89,6 +89,13 @@ var getFAQById = (id) => {
 	var result = db.findOne("SELECT * FROM FAQ WHERE id = '" +id+ "'");
 	return result;
 }
+var showGift = ()=> {
+	return db.find("SELECT id, title, icon_url FROM GIFT ORDER BY create_time DESC");
+}
+
+var showGiftById = (id)=> {
+	return db.findOne("SELECT * FROM GIFT WHERE ? ", {id: id});
+}
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
 	getUserOrder: getUserOrder,
@@ -106,5 +113,7 @@ module.exports = {
 	setUserPhone: setUserPhone,
 	getFAQ: getFAQ,
 	getFAQById: getFAQById,
-	updateUserVoucherById: updateUserVoucherById
+	updateUserVoucherById: updateUserVoucherById,
+	showGift: showGift,
+	showGiftById: showGiftById
 };

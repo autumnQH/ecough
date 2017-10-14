@@ -38,3 +38,12 @@ exports.getUserVoucherByOpenId = (openid)=> {
 exports.updateUserVoucherById = (id, order_id)=> {
 	return user.updateUserVoucherById(id, order_id);
 }
+
+//显示礼物列表
+exports.showGift = ()=> {
+	return user.showGift();
+}
+
+exports.showGiftById = (id)=> {
+	return user.showGiftById(id);
+}
