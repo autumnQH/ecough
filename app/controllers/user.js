@@ -306,9 +306,7 @@ var UserCustomer = async function(ctx, next) {
 
   if(ctx.session.openid){
     var data = await USER.getUserByEnentKey(ctx.session.openid);
-    console.log(data,'data');
     var data2 = await USER.getUserTotalConsume(ctx.session.openid);
-    console.log(data2,'data2');
     data.forEach(function(val) {      
       val.create_time =  moment(new Date(val.create_time)).format('YYYY-MM-DD')
     });
@@ -333,9 +331,7 @@ var UserCustomer = async function(ctx, next) {
         ctx.session = userinfo; 
 
         var data = await USER.getUserByEnentKey(ctx.session.openid);
-        console.log(data,'data');
         var data2 = await USER.getUserTotalConsume(ctx.session.openid);
-        console.log(data2,'data2');
         data.forEach(function(val) {      
           val.create_time =  moment(new Date(val.create_time)).format('YYYY-MM-DD')
         });             
