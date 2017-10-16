@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const request = require('request');
 const tools = require('./tools');
 const dao = require('../dao/wechat');
+const userdao = require('../dao/user');
 const fs = require('fs');
 const qr_image = require('qr-image');  
 const images = require('images');
@@ -237,4 +238,9 @@ exports.refundVoucherByOutTradeNo = async (out_trade_no)=> {
 }
 exports.refundUserByOutTradeNo = async (out_trade_no)=> {
     return dao.refundUserByOutTradeNo(out_trade_no);
+}
+exports.refundGift = async (out_trade_no)=> {
+    var order = await dao.getOutTradeNo(out_trade_no);
+    var consume = await dao.getGiftForConsumeByNameAndSpecifications(order.product, order.specifications);
+    return userdao.addUserConsumeByEventKey(order.openid, consume.consume);
 }

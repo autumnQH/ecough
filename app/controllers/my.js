@@ -299,8 +299,20 @@ var refund = async function(ctx, next) {
     var out_trade_no = req.out_trade_no;
     var config = await dao.getConfig();
     var order = await wechat.getOutTradeNo(out_trade_no);
-    console.log(req,'req',out_trade_no,'out_trade_no',order,'??');
-    if(order.status == 2){
+    if(order.status == 2 && req.total_fee == 0){//礼物退货
+        var status = await wechat.refundGift(req.out_trade_no);//更新订单状态0-交易取消
+        console.log(status);
+        if(status == 1){
+            return ctx.body = {
+                msg: "SUCCESS"
+            }
+        }else{
+            return ctx.body = {
+                msg: "ERROR",
+                code: "500:网络繁忙!"
+            }
+        }
+    }else if(order.status == 2 && req.total_fee>0){//退款
         req.appid = config.appid;
         req.mch_id = config.store_mchid;
         req.out_refund_no = req.out_trade_no;//退款号=订单号

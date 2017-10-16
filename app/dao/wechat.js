@@ -70,7 +70,7 @@ var setStoreOrder = async (data) => {
 
 //根据订单号获取
 var getOutTradeNo = async (out_trade_no) => {
-	var result = db.findOne("SELECT id,openid,pay_money,status FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
+	var result = db.findOne("SELECT id,openid,pay_money,status,product,specifications FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
 	return result;
 }
 
@@ -140,6 +140,10 @@ var refundUserByOutTradeNo = (out_trade_no) =>{
 	var result = db.update("T_WECHAT_USER", {flag: '1'}, {flag: out_trade_no});
 	return result;
 }
+
+var getGiftForConsumeByNameAndSpecifications = (name, specifications)=> {
+	return db.find("SELECT consume FROM GIFT WHERE name = '"+ name+"' AND specifications = '"+ specifications+"'");
+}
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
 	getJsapiTicket: getJsapiTicket,
@@ -166,5 +170,6 @@ module.exports = {
 	updateFAQById: updateFAQById,
 	delFAQ: delFAQ,
 	refundVoucherByOutTradeNo: refundVoucherByOutTradeNo,
-	refundUserByOutTradeNo: refundUserByOutTradeNo
+	refundUserByOutTradeNo: refundUserByOutTradeNo,
+	getGiftForConsumeByNameAndSpecifications: getGiftForConsumeByNameAndSpecifications
 };
