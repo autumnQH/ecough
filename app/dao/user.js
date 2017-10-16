@@ -46,7 +46,7 @@ var getUserByEnentKey = (eventKey)=> {
 	return result;
 }
 var getUserTotalConsume = (eventKey)=> {
-	return db.findOne("SELECT total_consume, consume, (select count(id) from T_WECHAT_USER where eventKey = '"+ eventKey+"' AND flag NOT IN('1')) as count, (select count(order_count) from T_WECHAT_USER where eventKey = '"+ eventKey+"' AND flag NOT IN('1')) as order_count FROM T_WECHAT_USER  WHERE openid = '"+ eventKey+"'");
+	return db.findOne("SELECT total_consume, consume, (select count(id) from T_WECHAT_USER where eventKey = '"+ eventKey+"' AND flag NOT IN('1')) as count, (select SUM(order_count) from T_WECHAT_USER where eventKey = '"+ eventKey+"' AND flag NOT IN('1')) as order_count FROM T_WECHAT_USER  WHERE openid = '"+ eventKey+"'");
 } 
 
 //获取用户积分
