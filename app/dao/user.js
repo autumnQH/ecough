@@ -34,20 +34,23 @@ var setUserService = (data) => {
 }
 
 //获取我的客服
-var getUserService = () => {
+var getUserService = ()=> {
 	var result = db.find("SELECT * FROM USER_SERVICE");
 	return result;
 }
 
 //获取用户场景值
-var getUserByEnentKey = (eventKey) => {
+var getUserByEnentKey = (eventKey)=> {
 	//var result = db.find("SELECT headimgurl, nick , (select create_time from T_WECHAT_ORDER where out_trade_no = U.flag )as create_time FROM T_WECHAT_USER as U WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
-	var result = db.find("SELECT headimgurl, nick , order_count, (SELECT consume FROM T_WECHAT_USER WHERE openid = '"+ eventKey+"') as consume FROM T_WECHAT_USER  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
+	var result = db.find("SELECT headimgurl, nick , order_count FROM T_WECHAT_USER  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
 	return result;
 }
+var getUserTotalConsume = (eventKey)=> {
+	return db.findOne("SELECT total_consume, consume, count(select id from T_WECHAT_USER where eventKey = '"+ eventKey+"') as count, count(select order_count from T_WECHAT_USER where eventKey = '"+ eventKey+"') as order_count FROM T_WECHAT_USER  WHERE openid = '"+ eventKey+"'");
+} 
 
 //获取用户积分
-var getUserForIntegralByOpenId = (openid) => {
+var getUserForIntegralByOpenId = (openid)=> {
 	var result = db.findOne("SELECT integral FROM T_WECHAT_USER WHERE openid = '"+ openid+ "' ORDER BY CREATE_TIME DESC");
 	return result
 }
@@ -57,17 +60,17 @@ var updateUserVoucherById = (id, order_id)=>{
 	var result = db.update("USER_VOUCHER", {status: 3, order_id: order_id }, {id: id});
 }
 
-var delUserForIntegralByOpendId = (value, openid) => {
+var delUserForIntegralByOpendId = (value, openid)=> {
 	var result  = db.update("T_WECHAT_USER", value, openid);
 	return result
 }
 
-var addUserForIntegralByOpendId = (value, openid) => {
+var addUserForIntegralByOpendId = (value, openid)=> {
   var result = db.update("T_WECHAT_USER", value, openid);
   return result;
 }
 
-var getUserVoucherByOpenId = (openid) => {
+var getUserVoucherByOpenId = (openid)=> {
 	var result = db.find("SELECT * FROM USER_VOUCHER WHERE ? AND status = 2 ORDER BY CREATE_TIME DESC", {openid: openid});
 	return result;
 }
@@ -126,5 +129,6 @@ module.exports = {
 	updateUserVoucherById: updateUserVoucherById,
 	showGift: showGift,
 	showGiftById: showGiftById,
-	addUserConsumeByEventKey: addUserConsumeByEventKey
+	addUserConsumeByEventKey: addUserConsumeByEventKey,
+	getUserTotalConsume: getUserTotalConsume
 };

@@ -306,11 +306,13 @@ var UserCustomer = async function(ctx, next) {
 
   if(ctx.session.openid){
     var data = await USER.getUserByEnentKey(ctx.session.openid);
+    var data2 = await USER.getUserTotalConsume(ctx.session.openid);
     data.forEach(function(val) {      
       val.create_time =  moment(new Date(val.create_time)).format('YYYY-MM-DD')
     });
     return await ctx.render('user_customer',{
-      data: data
+      data: data,
+      data2: data2
     });
   }else{
 
@@ -329,11 +331,13 @@ var UserCustomer = async function(ctx, next) {
         ctx.session = userinfo; 
 
         var data = await USER.getUserByEnentKey(ctx.session.openid);
+        var data2 = await USER.getUserTotalConsume(ctx.session.openid);
         data.forEach(function(val) {      
           val.create_time =  moment(new Date(val.create_time)).format('YYYY-MM-DD')
         });             
         await ctx.render('user_customer',{
-          data: data
+          data: data,
+          data2: data2
         });        
       }  
 
