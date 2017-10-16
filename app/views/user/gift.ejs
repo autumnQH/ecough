@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
     <style type="text/css">
     body {
         background-color: #fff;
@@ -26,21 +28,31 @@
 </head>
 
 <body ontouchstart="">
-    <div class="page">
-        <div>
-            <img src="/images/gift.jpg" width="100%" alt="">
-            <div class="list-group">
-                <% if(data.length> 0){ %>
-                    <% for(var i = 0;i<data.length;i++ ){ %>
-                        <a href="/user/gift/<%= data[i].id %>" class="list-group-item">
+    <div class="weui-navbar" style="position: static;">
+        <div class="weui-navbar__item weui_bar__item_on">
+            <a href="/users/code">我要推广</a>
+        </div>
+        <div class="weui-navbar__item">
+            <a href="/users/customer">已下单的人</a>
+        </div>
+        <div class="weui-navbar__item">
+            <a href="/user/gift">礼物兑换</a>
+        </div>
+    </div>
+    <div>
+        <img src="/images/gift.jpg" width="100%" alt="">
+        <div class="list-group">
+            <% if(data.length> 0){ %>
+                <% for(var i = 0;i<data.length;i++ ){ %>
+                    <a href="/user/gift/<%= data[i].id %>" class="list-group-item">
                           <img style="width: 100px;" src="<%= data[i].icon_url %>">
                           <%= data[i].title %>
                           <!-- <span class="badge"><%= data[i].consume %></span> -->
                         </a>
-                    <% } %>
                 <% } %>
-            </div>
+            <% } %>
         </div>
     </div>
 </body>
+
 </html>

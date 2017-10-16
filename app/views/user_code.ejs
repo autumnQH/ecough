@@ -1,48 +1,51 @@
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="keywords" content="花+,花加,flowerplus,鲜花,鲜花订阅" >
-        <meta name="description" content="一周一花，用鲜花点亮生活,提供98元单品鲜花包月服务、168元混合鲜花包月服务和花艺周边配件、花艺课程服务。">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <title>我的二维码</title>
-        <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
 
-        <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/lib/weui.css?_t=201701201">
-        <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/css/jquery-weui.css?_t=201701201">
-     
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>我的二维码</title>
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/lib/weui.css?_t=201701201">
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/weui/css/jquery-weui.css?_t=201701201">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    </head>
-  <body ontouchstart="">
-    <script>
-        wx.config({
-    debug: false,
-    appId: '<%= config.appid %>',
-    timestamp: '<%= config.timestamp %>',
-    nonceStr: '<%= config.nonceStr %>',
-    signature: '<%= config.signature %>',
-    jsApiList: ['hideAllNonBaseMenuItem']
-  });
-  wx.ready(function() {
-    wx.hideAllNonBaseMenuItem();
-  });
-    </script>
-        <div class="page">
-
     <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m.css">
     <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/m_web.css">
     <link rel="stylesheet" type="text/css" href="//static2.flowerplus.cn/Static/css/code.css?_t=20170502">
+</head>
+
+<body ontouchstart="">
+    <script>
+    wx.config({
+        debug: false,
+        appId: '<%= config.appid %>',
+        timestamp: '<%= config.timestamp %>',
+        nonceStr: '<%= config.nonceStr %>',
+        signature: '<%= config.signature %>',
+        jsApiList: ['hideAllNonBaseMenuItem']
+    });
+    wx.ready(function() {
+        wx.hideAllNonBaseMenuItem();
+    });
+    </script>
+    <div class="weui-navbar" style="position: static;">
+        <div class="weui-navbar__item weui_bar__item_on">
+            <a href="/users/code">我要推广</a>
+        </div>
+        <div class="weui-navbar__item">
+            <a href="/users/customer">已下单的人</a>
+        </div>
+        <div class="weui-navbar__item">
+            <a href="/user/gift">礼物兑换</a>
+        </div>
+    </div>
     <div class="page">
-        <ul class="header-top">
-            <li class="current"><a href="/users/code">我要推广</a></li>
-            <li class=""><a href="/users/customer">已下单的人</a></li>
-            <li class=""><a href="/users/voucher">我的代金劵</a></li>
-        </ul>
         <div class="yqm-conout">
             <p class="tit">邀请好友得奖励</p>
             <div class="Img">
@@ -50,74 +53,71 @@
               <img onclick="previewimg(this)" src="" alt="" style="border: 0 none">
                 </span>
             </div>
-        <div class="yqm-but">
-            <p>如您的二维码过期，请<img src="/images/Refresh.png" alt="" width='13px' height='13px' style="margin:0 5px"><span onclick="gengxin()" style="color:#FF6699;">更新</span></p> 
-        </div>
-        <ul class="yqm-des">
-          <li class="top"><span>活动说明</span></li>
-                      <li>长按图片发送给朋友</li>
-            <li>每成功邀请1名<span style="color: #FF6688;">新用户</span>通过扫描你的专属二维码进行下单，即可获得40元代金券等奖励。</li>
-            <li>该活动可重复参加，无次数上限</li>
-            <p style="list-style:none;color: #FF6688;margin-bottom:8px;margin-top: 8px;margin-left: 5px;"> 注意事项:</p>
-            <li>邀请好友数按人数统计，同一好友无论下单几次都只记录1次</li>
-            <li style="color: #FF6688;;">被邀请好友需为初次下单的新用户，老用户不算在内</li>
-            <li>被邀请好友所购商品需为<span style="color: #FF6688;">防雾霾窗贴</span>产品</li>
-            <li>扫描自己的二维码下单，不算在邀请人数内</li>
-            <li>邀请的好友中途退款，不算在邀请人数内</li>
-                  </ul>
+            <div class="yqm-but">
+                <p>如您的二维码过期，请<img src="/images/Refresh.png" alt="" width='13px' height='13px' style="margin:0 5px"><span onclick="gengxin()" style="color:#FF6699;">更新</span></p>
+            </div>
+            <ul class="yqm-des">
+                <li class="top"><span>活动说明</span></li>
+                <li>长按图片发送给朋友</li>
+                <li>每成功邀请1名<span style="color: #FF6688;">新用户</span>通过扫描你的专属二维码进行下单，即可获得40元代金券等奖励。</li>
+                <li>该活动可重复参加，无次数上限</li>
+                <p style="list-style:none;color: #FF6688;margin-bottom:8px;margin-top: 8px;margin-left: 5px;"> 注意事项:</p>
+                <li>邀请好友数按人数统计，同一好友无论下单几次都只记录1次</li>
+                <li style="color: #FF6688;;">被邀请好友需为初次下单的新用户，老用户不算在内</li>
+                <li>被邀请好友所购商品需为<span style="color: #FF6688;">防雾霾窗贴</span>产品</li>
+                <li>扫描自己的二维码下单，不算在邀请人数内</li>
+                <li>邀请的好友中途退款，不算在邀请人数内</li>
+            </ul>
         </div>
     </div>
-   <!--  弹窗  -->
-       <div class="w-out" style="display:none;background: rgba(0,0,0,0)">
-          <div class="w-in">
-              <p style="text-align:right;display:none">
+    <!--  弹窗  -->
+    <div class="w-out" style="display:none;background: rgba(0,0,0,0)">
+        <div class="w-in">
+            <p style="text-align:right;display:none">
                 <a href="javascript:void(0)" class="close"></a>
-              </p>
-              <div class="w-in-header"></div>
-              <p id="content_code"></p>
-          </div>
-       </div>  
-   <!--  弹窗  -->
- <div id="loadingdetail" style="display:block;position:fixed;z-index:10;width:70px;height:70px;top:50%;left:50%;margin-top:-18px;margin-left:-35px;text-align:center;border-radius:3px;background:rgba(0,0,0,.8);color:#fff;z-index:555;padding-top:15px;display: none;"><img src="/images/jz.gif" alt="" style="width:40px;height:40px"></div>
-<script>
-$(function() {
-    create_my_code();
-})
-var img_url = '';
-function create_my_code() {
-      $('#loadingdetail').show();
-      $.ajax({
-        url: '/user/code',
-        method: 'get'
-      }).done(function(d){
-          img_url = d.url;
-          $('.Img').find('img').attr('src',img_url);
-          $('#loadingdetail').hide();        
-      });
-}
-// ok  waining  waiting
-function gengxin() {
-  $('.w-out').find('div').find('div').removeClass('waining','ok').addClass('waiting');
-  $('#content_code').text('更新中...');
-  $('.w-out').show();
-  $.ajax({
-    url: '/user/code',
-    method: 'get'
-  }).done(function(d) {
-    if (d.f== true) {
-        $('#content_code').text('更新成功');
-        $('.Img').find('img').attr('src',img_url + '?t='+new Date().getTime());
-    }
-    $('.w-out').hide();    
-  }).fail(function() {
-
-  });
-}
-
-</script>
-
+            </p>
+            <div class="w-in-header"></div>
+            <p id="content_code"></p>
         </div>
+    </div>
+    <!--  弹窗  -->
+    <div id="loadingdetail" style="display:block;position:fixed;z-index:10;width:70px;height:70px;top:50%;left:50%;margin-top:-18px;margin-left:-35px;text-align:center;border-radius:3px;background:rgba(0,0,0,.8);color:#fff;z-index:555;padding-top:15px;display: none;"><img src="/images/jz.gif" alt="" style="width:40px;height:40px"></div>
+    <script>
+    $(function() {
+        create_my_code();
+    })
+    var img_url = '';
 
-    </body>
+    function create_my_code() {
+        $('#loadingdetail').show();
+        $.ajax({
+            url: '/user/code',
+            method: 'get'
+        }).done(function(d) {
+            img_url = d.url;
+            $('.Img').find('img').attr('src', img_url);
+            $('#loadingdetail').hide();
+        });
+    }
+    // ok  waining  waiting
+    function gengxin() {
+        $('.w-out').find('div').find('div').removeClass('waining', 'ok').addClass('waiting');
+        $('#content_code').text('更新中...');
+        $('.w-out').show();
+        $.ajax({
+            url: '/user/code',
+            method: 'get'
+        }).done(function(d) {
+            if (d.f == true) {
+                $('#content_code').text('更新成功');
+                $('.Img').find('img').attr('src', img_url + '?t=' + new Date().getTime());
+            }
+            $('.w-out').hide();
+        }).fail(function() {
+
+        });
+    }
+    </script>
+</body>
 
 </html>
