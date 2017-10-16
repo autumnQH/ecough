@@ -4,6 +4,10 @@ var getUserInfoByOpenId = (openid) => {
 	var result = db.findOne("SELECT * FROM T_WECHAT_USER WHERE ?", {openid: openid});
 	return result;
 }
+//删除用户信息
+var removeUserByOpenId = (openid)=> {
+	return db.delete("T_WECHAT_USER", {openid: openid});
+}
 
 //获取用户订单
 var getUserOrder = (openid) => {
@@ -102,6 +106,7 @@ var addUserConsumeByEventKey = (eventKey, total)=> {
 }
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
+	removeUserByOpenId: removeUserByOpenId,
 	getUserOrder: getUserOrder,
 	queryUserOrder: queryUserOrder,
 	getUserOrderNumber: getUserOrderNumber,

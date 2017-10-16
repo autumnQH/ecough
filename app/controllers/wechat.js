@@ -3,6 +3,7 @@ const dao = require('../dao/wechat');
 const moment = require('moment');
 const urlencode = require('urlencode');
 const tools = require('../utils/tools');
+const User = require('../proxy').User;
 
 var checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);
@@ -58,20 +59,23 @@ var postHandle = async(ctx, next) => {
                     
                 }                
             }
-        //如果已经关注，但是扫描了其他人的二维码
-        }else if(msg.Event[0] == 'SCAN') {
-            if(msg.EventKey[0].replace(/^qrscene_/,"") != openid){//自己扫描自己不算
-                var eventKey = msg.EventKey[0];
-                //修改用户备注
-                tools.updateremark(token, openid, eventKey);
-                data.eventKey= eventKey;               
-                //修改用户
-                wechat.updateUser(data, {openid: openid});                
-            }
-        }else if(msg.Event[0] == 'VIEW'){//每次点击菜单都更新用户信息
-            //修改用户
-            wechat.updateUser(data, {openid: openid});                               
+        }else if(msg.Event[0] == 'unsubscribe'){//取消关注
+            User.removeUserByOpenId(openid);
         }
+        //如果已经关注，但是扫描了其他人的二维码
+        // else if(msg.Event[0] == 'SCAN') {
+        //     if(msg.EventKey[0].replace(/^qrscene_/,"") != openid){//自己扫描自己不算
+        //         var eventKey = msg.EventKey[0];
+        //         //修改用户备注
+        //         tools.updateremark(token, openid, eventKey);
+        //         data.eventKey= eventKey;               
+        //         //修改用户
+        //         wechat.updateUser(data, {openid: openid});                
+        //     }
+        // }else if(msg.Event[0] == 'VIEW'){//每次点击菜单都更新用户信息
+        //     //修改用户
+        //     wechat.updateUser(data, {openid: openid});                               
+        // }
         //else if(msg.Event[0] == 'merchant_order') {
         //     //记录微信小店用户购买产品
         //     //console.log('进来了');

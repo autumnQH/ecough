@@ -6,6 +6,14 @@ const user = require('../dao/user');
 exports.getUserByOpenId = (openid)=> {
 	return user.getUserInfoByOpenId(openid);
 }
+
+/**
+ * 删除用户信息
+ * @param {String} openid 用户标示
+ */
+exports.removeUserByOpenId = (openid)=> {
+	return user.removeUserByOpenId(openid);
+}
 /**
  * 增加用户积分
  * @param {Int} integral 积分
