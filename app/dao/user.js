@@ -143,6 +143,7 @@ module.exports = {
 	showGift: showGift,
 	showGiftById: showGiftById,
 	addUserConsumeByEventKey: addUserConsumeByEventKey,
+	addUserConsumeByOpenId: addUserConsumeByOpenId,
 	delUserConsumeByOpenId: delUserConsumeByOpenId,
 	getUserTotalConsume: getUserTotalConsume,
 	addUserOrderCountByOpenId: addUserOrderCountByOpenId

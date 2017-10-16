@@ -242,7 +242,7 @@ exports.refundUserByOutTradeNo = async (out_trade_no)=> {
 exports.refundGift = async (out_trade_no)=> {
     var order = await dao.getOutTradeNo(out_trade_no);
     var consume = await dao.getGiftForConsumeByNameAndSpecifications(order.product, order.specifications);
-    return userdao.addUserConsumeByEventKey(order.openid, consume.consume);
+    return userdao.addUserConsumeByOpenId(order.openid, consume.consume);
 }
 exports.getGiftForConsumeByNameAndSpecifications = (name, specifications)=> {
     return dao.getGiftForConsumeByNameAndSpecifications(name, specifications);
