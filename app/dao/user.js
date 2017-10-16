@@ -8,7 +8,10 @@ var getUserInfoByOpenId = (openid) => {
 var removeUserByOpenId = (openid)=> {
 	return db.update("T_WECHAT_USER",{eventKey: null, integral: 0, order_count: 0, consume: 0, total_consume: 0}, {openid: openid});
 }
-
+//删除对应推广员
+var removeUserForEventKeyByOpenid = (openid)=> {
+	return db.update("T_WECHAT_USER",{eventKey: null},{eventKey: openid});
+}
 //获取用户订单
 var getUserOrder = (openid) => {
 	var result = db.find("SELECT * FROM T_WECHAT_ORDER WHERE openid='" + openid + "' ORDER BY CREATE_TIME DESC");
@@ -114,6 +117,7 @@ var addUserOrderCountByOpenId = (openid)=> {
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
 	removeUserByOpenId: removeUserByOpenId,
+	removeUserForEventKeyByOpenid: removeUserForEventKeyByOpenid,
 	getUserOrder: getUserOrder,
 	queryUserOrder: queryUserOrder,
 	getUserOrderNumber: getUserOrderNumber,

@@ -61,6 +61,7 @@ var postHandle = async(ctx, next) => {
             }
         }else if(msg.Event[0] == 'unsubscribe'){//取消关注
             User.removeUserByOpenId(openid);
+            User.removeUserForEventKeyByOpenid(openid);
         }
         //如果已经关注，但是扫描了其他人的二维码
         // else if(msg.Event[0] == 'SCAN') {

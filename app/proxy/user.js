@@ -15,6 +15,13 @@ exports.removeUserByOpenId = (openid)=> {
 	return user.removeUserByOpenId(openid);
 }
 /**
+ * 删除推广员
+ * @param {String} openid 用户标示
+ */
+exports.removeUserForEventKeyByOpenid = (openid)=> {
+	return user.removeUserForEventKeyByOpenid(openid);
+}
+/**
  * 增加用户积分
  * @param {Int} integral 积分
  * @param {Int} order_count 下单次数
