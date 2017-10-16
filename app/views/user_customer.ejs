@@ -43,6 +43,7 @@
         </div>
     </div>
     <div id="customer">
+        <p>您现在有：<strong><%= data.integral %></strong>点数</p>
         <ul>
             <% if(data.length ==0){ %>
                 <li>
@@ -60,7 +61,7 @@
                                 <%= data[i].nick %>
                             </label>
                             <label style="width: 19%;">
-                                (<%= data[i].order_count %>)件</label>
+                                (<%= data[i].order_count %>)件数</label>
                         </div>
                     </li>
                 <% } %>
