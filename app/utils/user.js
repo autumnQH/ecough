@@ -10,6 +10,10 @@ exports.getUserByEnentKey = async function(eventKey) {
 	return dao.getUserByEnentKey(eventKey);
 }
 
+exports.getUserTotalConsume = async function(eventKey) {
+	return dao.getUserTotalConsume(eventKey);
+}
+
 //获取用户积分
 exports.getUserForIntegralByOpenId = async function(openid) {
 	return dao.getUserForIntegralByOpenId(openid);
