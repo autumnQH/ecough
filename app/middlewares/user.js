@@ -21,5 +21,6 @@ exports.showGiftById = async (ctx)=> {
 	let id = ctx.params.id;
 	let openid = ctx.session.openid;  
 	ctx.state.data = await User.showGiftById(openid, id);
+	console.log(await User.showGiftById(openid, id));
 	await ctx.render('user/gift_info');
 }
