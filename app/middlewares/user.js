@@ -20,5 +20,5 @@ exports.showGiftById = async (ctx)=> {
 	let id = ctx.params.id;
 	let openid = ctx.session.openid;  
 	ctx.state.data = await User.showGiftById(openid, id);
-	await ctx.redirect('/users/my/order');
+	await ctx.render('user/gift_info');
 }
