@@ -8,7 +8,6 @@ exports.showOrder = async (ctx)=> {
 	ctx.state.product = ctx.query.product;
 	ctx.state.specifications = ctx.query.specifications;
 	ctx.state.out_trade_no = tools.trade();
-	console.log(ctx.session.openid);
  	await ctx.render('common/order');
 }
 
@@ -21,6 +20,5 @@ exports.showGiftById = async (ctx)=> {
 	let id = ctx.params.id;
 	let openid = ctx.session.openid;  
 	ctx.state.data = await User.showGiftById(openid, id);
-	console.log(await User.showGiftById(openid, id));
 	await ctx.render('user/gift_info');
 }
