@@ -7,10 +7,9 @@ exports.showOrder = async (ctx)=> {
 	let openid = ctx.session.openid
 	let id = ctx.query.id;
 	ctx.state.openid = openid;
-	ctx.state.product = ctx.query.product;
-	ctx.state.specifications = ctx.query.specifications;
 	ctx.state.out_trade_no = tools.trade();
 	ctx.state.data = await User.showGiftById(openid,id);
+	console.log(await User.showGiftById(openid,id));
  	await ctx.render('common/order');
 }
 
@@ -23,6 +22,5 @@ exports.showGiftById = async (ctx)=> {
 	let id = ctx.params.id;
 	let openid = ctx.session.openid;  
 	ctx.state.data = await User.showGiftById(openid, id);
-	console.log(await User.showGiftById(openid, id));
 	await ctx.render('user/gift_info');
 }

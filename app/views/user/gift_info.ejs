@@ -33,7 +33,7 @@
                     <li class="top"><span>我的推广点数:<%= data.myConsume %></span></li>
                 </ul>
                 <% if(data.myConsume>=data.consume) { %>
-                  <a href="/user/order?id=<%= data.id %>&product=<%= data.name %>&specifications=<% data.specifications %>"  
+                  <a href="/user/order?id=<%= data.id %>"  
                     class="btn" >需要推广<%= data.consume %>点数</a>
                 <% }else{ %>
                   <a href="javascript:code();"  class="btn" >需要推广<%= data.consume %>点数</a>
