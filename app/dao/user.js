@@ -106,7 +106,7 @@ var showGiftById = (openid, id)=> {
 }
 
 var addUserConsumeByEventKey = (eventKey, total)=> {
-	return db.find("UPDATE T_WECHAT_USER SET consume = consume+" + total + "  WHERE openid = '" + eventKey +"'");
+	return db.find("UPDATE T_WECHAT_USER SET consume = consume+" + total + " ,total_consume = total_consume+"+total+" WHERE openid = '" + eventKey +"'");
 }
 var addUserOrderCountByOpenId = (openid)=> {
 	return db.find("UPDATE T_WECHAT_USER SET order_count = order_count+1 WHERE openid = '"+openid+"'");
