@@ -74,7 +74,6 @@ exports.express = async (ctx)=> {
   var req = ctx.request.body;
   var out_trade_no = req.out_trade_no;
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
-  console.log(order,'??');
   if(order.status == 2 && req.status == 3){//第一次发货
     var openid = order.openid;//openid
     var specifications = order.specifications;//规格
@@ -86,7 +85,6 @@ exports.express = async (ctx)=> {
 
     var order_count = userinfo.order_count;//下单件数
         order_count += total;
-        console.log(order.eventKey,'eventKey_order', total);
     if(order.eventKey){
       User.addUserConsumeByEventKey(order.eventKey, total);
     }

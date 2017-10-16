@@ -6,7 +6,7 @@ var getUserInfoByOpenId = (openid) => {
 }
 //删除用户信息
 var removeUserByOpenId = (openid)=> {
-	return db.delete("T_WECHAT_USER", {openid: openid});
+	return db.update("T_WECHAT_USER",{eventKey: null, integral: 0, order_count: 0, consume: 0}, {openid: openid});
 }
 
 //获取用户订单
