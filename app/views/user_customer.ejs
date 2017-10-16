@@ -43,11 +43,13 @@
         </div>
     </div>
     <div id="customer">
+    <% if(data.length >0) { %>
         <p style=" display: block;background-color: #f7f5f5" style="margin-top: 10px;">
             总人数<strong><%= data2.count %></strong>
             总件数<strong><%= data2.order_count %></strong>
             可用件数<strong><%= data2.consume %></strong>
             已使用件数<strong><%= (data2.total_consume-data2.consume) %></strong></p>
+    <% } %>
         <ul>
             <% if(data.length ==0){ %>
                 <li>
