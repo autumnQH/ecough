@@ -50,7 +50,7 @@ var postHandle = async(ctx, next) => {
             if(msg.Ticket){
                 if(msg.EventKey[0].replace(/^qrscene_/,"") != openid){//自己扫描自己不算
                     //记录用户扫描带参数的二维码
-                    var eventKey = msg.EventKey[0];
+                    var eventKey = msg.EventKey[0].replace(/^qrscene_/,"");
                     //修改用户备注
                     tools.updateremark(token, openid, eventKey);                       
                     data.eventKey= eventKey,
