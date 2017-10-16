@@ -301,6 +301,7 @@ var refund = async function(ctx, next) {
     var order = await wechat.getOutTradeNo(out_trade_no);
     if(order.status == 2 && req.total_fee == 0){//礼物退货
         var status = await wechat.refundGift(req.out_trade_no);//更新订单状态0-交易取消
+        console.log(status);
         if(status.affectedRows == 1){
             return ctx.body = {
                 msg: "SUCCESS"
