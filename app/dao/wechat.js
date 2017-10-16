@@ -142,7 +142,7 @@ var refundUserByOutTradeNo = (out_trade_no) =>{
 }
 
 var getGiftForConsumeByNameAndSpecifications = (name, specifications)=> {
-	return db.find("SELECT consume FROM GIFT WHERE name = '"+ name+"' AND specifications = '"+ specifications+"'");
+	return db.findOne("SELECT consume FROM GIFT WHERE name = '"+ name+"' AND specifications = '"+ specifications+"'");
 }
 module.exports = {    
 	getActiveAccessToken : getActiveAccessToken,
