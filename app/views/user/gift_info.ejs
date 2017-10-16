@@ -21,7 +21,7 @@
     <div class="page">
         <div class="page">
             <div class="yqm-conout" style="padding-top: 0;">
-                <p class="tit"><%= data.title %></p>
+                <p class="tit"><%= data.title %>(<%= data.specifications %>)</p>
                 <div class="Img">
                   <span>
                     <img onclick="previewimg(this)" src="<%= data.img_url %>" style="border: 0 none">
@@ -33,7 +33,8 @@
                     <li class="top"><span>我的推广点数:<%= data.myConsume %></span></li>
                 </ul>
                 <% if(data.myConsume>=data.consume) { %>
-                  <a href="/user/order?product=iphone X&specifications=128g"  class="btn" >需要推广<%= data.consume %>点数</a>
+                  <a href="/user/order?product=<%= data.name %>&specifications=<% data.specifications %>"  
+                    class="btn" >需要推广<%= data.consume %>点数</a>
                 <% }else{ %>
                   <a href="javascript:code();"  class="btn" >需要推广<%= data.consume %>点数</a>
                 <% } %>
