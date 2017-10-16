@@ -69,3 +69,11 @@ exports.showGiftById = (openid, id)=> {
 exports.addUserConsumeByEventKey = (eventKey, total)=> {
 	return user.addUserConsumeByEventKey(eventKey, total);
 }
+
+/**
+ * 下单次数+1
+ * @param {String} openid 用户标示
+ */
+exports.addUserOrderCountByOpenId = (openid)=> {
+	return user.addUserOrderCountByOpenId(openid);
+}

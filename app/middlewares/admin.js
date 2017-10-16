@@ -87,6 +87,7 @@ exports.express = async (ctx)=> {
         order_count += total;
     if(order.eventKey){
       User.addUserConsumeByEventKey(order.eventKey, total);
+      User.addUserOrderCountByOpenId(openid);
     }
     // var integral = userinfo.integral;//用户积分
     //     integral = integral + parseInt(pay_money * config.shoping_integral * 0.01);//计算积分
