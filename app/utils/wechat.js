@@ -242,7 +242,8 @@ exports.refundUserByOutTradeNo = async (out_trade_no)=> {
 exports.refundGift = async (out_trade_no)=> {
     var order = await dao.getOutTradeNo(out_trade_no);
     var consume = await dao.getGiftForConsumeByNameAndSpecifications(order.product, order.specifications);
-    return userdao.addUserConsumeByOpenId(order.openid, consume.consume);
+    await userdao.addUserConsumeByOpenId(order.openid, consume.consume);
+    return await dao.updateOrderStatus(out_trade_no);//更新订单状态0-交易取消
 }
 exports.getGiftForConsumeByNameAndSpecifications = (name, specifications)=> {
     return dao.getGiftForConsumeByNameAndSpecifications(name, specifications);
