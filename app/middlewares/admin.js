@@ -51,22 +51,30 @@ exports.order = async (ctx)=> {
   }  
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
   var userinfo = await User.getUserByOpenId(req.openid);//获取用户信息
-  if(userinfo.eventKey){
+  if(userinfo.eventKey){//是否有推广员
     req.eventKey = userinfo.eventKey;
   }
   console.log(req);
   await wechat.setOrder(req);
-  if(userinfo.flag == '1'){
-    wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
+  if(req.pay_money !=0 && total_money != 0) {//产品订单
+    if(userinfo.flag == '1'){
+      wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
+    }
+    await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
+    var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
+    if(arr.length>0){
+      arr.forEach(function(val) {
+        User.updateUserVoucherById(val, order_id.id);
+      });    
+    }
+    ctx.status = 204;	
+  }else if(req.pay_money ==0 && total_money == 0){//礼物订单
+    var gift = await wechat.getGiftForConsumeByNameAndSpecifications(req.product, req.specifications);
+    console.log(gift);
+        User.delUserConsumeByOpenId(req.openid, gift.consume);
+    await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
+    ctx.status = 204;
   }
-  await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
-  var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
-  if(arr.length>0){
-    arr.forEach(function(val) {
-      User.updateUserVoucherById(val, order_id.id);
-    });    
-  }
-  ctx.status = 204;	
 }
 
 //设置发货

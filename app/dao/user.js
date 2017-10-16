@@ -111,6 +111,9 @@ var showGiftById = (openid, id)=> {
 var addUserConsumeByEventKey = (eventKey, total)=> {
 	return db.find("UPDATE T_WECHAT_USER SET consume = consume+" + total + " ,total_consume = total_consume+"+total+" WHERE openid = '" + eventKey +"'");
 }
+var delUserConsumeByOpenId = (openid, consume)=> {
+	return db.find("UPDATE T_WECHAT_USER SET consume = consume-"+ consume + " WHERE openid = '" + openid + "'");
+}
 var addUserOrderCountByOpenId = (openid)=> {
 	return db.find("UPDATE T_WECHAT_USER SET order_count = order_count+1 WHERE openid = '"+openid+"'");
 }
@@ -137,6 +140,7 @@ module.exports = {
 	showGift: showGift,
 	showGiftById: showGiftById,
 	addUserConsumeByEventKey: addUserConsumeByEventKey,
+	delUserConsumeByOpenId: delUserConsumeByOpenId,
 	getUserTotalConsume: getUserTotalConsume,
 	addUserOrderCountByOpenId: addUserOrderCountByOpenId
 };

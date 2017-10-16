@@ -71,10 +71,19 @@ exports.showGiftById = (openid, id)=> {
 /**
  * 增加推广员件数
  * @param {String} eventKey 推广员openid
- * @param {Int} total 件数
+ * @param {Int} total 增加数量
  */
 exports.addUserConsumeByEventKey = (eventKey, total)=> {
 	return user.addUserConsumeByEventKey(eventKey, total);
+}
+
+/**
+ * 扣除用户件数
+ * @param {String} openid 用户标示
+ * @param {Int} consume 扣除数量
+ */
+exports.delUserConsumeByOpenId = (openid, consume)=> {
+	return user.delUserConsumeByOpenId(openid, consume);
 }
 
 /**
