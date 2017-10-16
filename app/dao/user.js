@@ -124,5 +124,6 @@ module.exports = {
 	getFAQById: getFAQById,
 	updateUserVoucherById: updateUserVoucherById,
 	showGift: showGift,
-	showGiftById: showGiftById
+	showGiftById: showGiftById,
+	addUserConsumeByEventKey: addUserConsumeByEventKey
 };
