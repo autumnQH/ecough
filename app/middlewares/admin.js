@@ -74,28 +74,32 @@ exports.express = async (ctx)=> {
     var openid = order.openid;//openid
     var specifications = order.specifications;//规格
     var pay_money = order.pay_money;//支付金额
-    var total = order.total.replace(/[\u4e00-\u9fa5]+/g,"");//数量,去除中文。件
+    var total = Number(order.total.replace(/[\u4e00-\u9fa5]+/g,""));//数量,去除中文。件
 
     var userinfo = await User.getUserByOpenId(openid);//获取用户信息
     var config = await Config.getActivityCFG();//获取活动信息
 
-    var order_count = userinfo.order_count;//下单次数
-        order_count += 1;
-    var integral = userinfo.integral;//用户积分
-        integral = integral + parseInt(pay_money * config.shoping_integral * 0.01);//计算积分
-    //下单赠送积分
-    User.addUserIntegralByOpenId(integral, order_count, openid);
-    if(userinfo.flag == out_trade_no && userinfo.eventKey){//首单
-      var eventKey = userinfo.eventKey.replace(/^qrscene_/,"");//推广员
-      var data = {
-        openid: eventKey,
-        voucher_type: '推广代金券',
-        create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
-        voucher_denomination: config.spread_voucher
-      };
-      //推广员获得代金券
-      await User.addUserVoucherByOpenId(data);
+    var order_count = userinfo.order_count;//下单件数
+        order_count += total;
+        console.log(order.eventKey,'eventKey_order', total);
+    if(order.eventKey){
+      User.addUserConsumeByEventKey(order.eventKey, total);
     }
+    // var integral = userinfo.integral;//用户积分
+    //     integral = integral + parseInt(pay_money * config.shoping_integral * 0.01);//计算积分
+    // //下单赠送积分
+    // User.addUserIntegralByOpenId(integral, order_count, openid);
+    // if(userinfo.flag == out_trade_no && userinfo.eventKey){//首单
+    //   var eventKey = userinfo.eventKey.replace(/^qrscene_/,"");//推广员
+    //   var data = {
+    //     openid: eventKey,
+    //     voucher_type: '推广代金券',
+    //     create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+    //     voucher_denomination: config.spread_voucher
+    //   };
+    //   //推广员获得代金券
+    //   await User.addUserVoucherByOpenId(data);
+    // }
 
     //减库存
     //最烂代码没有之一

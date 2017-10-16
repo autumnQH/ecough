@@ -12,17 +12,17 @@ exports.getUserByOpenId = (openid)=> {
  * @param {Int} order_count 下单次数
  * @param {String} openid 用户标示
  */
-exports.addUserIntegralByOpenId = (integral, order_count, openid)=> {
-	return user.addUserForIntegralByOpendId({integral: integral, order_count: order_count}, {openid: openid});
-}
+// exports.addUserIntegralByOpenId = (integral, order_count, openid)=> {
+// 	return user.addUserForIntegralByOpendId({integral: integral, order_count: order_count}, {openid: openid});
+// }
 
 /**
  * 增加用户代金券
  * @param {Object} data 数据包
  */
-exports.addUserVoucherByOpenId = (data)=> {
-	return user.setUserVoucher(data);
-}
+// exports.addUserVoucherByOpenId = (data)=> {
+// 	return user.setUserVoucher(data);
+// }
 /**
  * 获取用户代金券
  * @param {String} openid 用户标示
@@ -51,4 +51,13 @@ exports.showGift = ()=> {
  */
 exports.showGiftById = (openid, id)=> {
 	return user.showGiftById(openid, id);
+}
+
+/**
+ * 增加推广员件数
+ * @param {String} eventKey 推广员openid
+ * @param {Int} total 件数
+ */
+exports.addUserConsumeByEventKey = (eventKey, total)=> {
+	return user.addUserConsumeByEventKey(eventKey, total);
 }

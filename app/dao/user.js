@@ -94,7 +94,11 @@ var showGift = ()=> {
 }
 
 var showGiftById = (openid, id)=> {
-	return db.findOne("SELECT *, (SELECT consume FROM T_WECHAT_USER WHERE openid = '"+openid+"') as myConsume FROM GIFT WHERE ? ", {id: id});
+	return db.findOne("SELECT *, (SELECT consume FROM T_WECHAT_USER WHERE openid = '" + openid + "') as myConsume FROM GIFT WHERE ? ", {id: id});
+}
+
+var addUserConsumeByEventKey = (eventKey, total)=> {
+	return db.find("UPDATE T_WECHAT_USER SET consume = consume+" + total + " WHERE openid = '" + eventKey +"'");
 }
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
