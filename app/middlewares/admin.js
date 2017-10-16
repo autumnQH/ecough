@@ -56,7 +56,8 @@ exports.order = async (ctx)=> {
   }
   console.log(req);
   await wechat.setOrder(req);
-  if(req.pay_money !=0 && total_money != 0) {//产品订单
+  if(req.pay_money !='0' && total_money != '0') {//产品订单
+    console.log('产品订单');
     if(userinfo.flag == '1'){
       wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
     }
@@ -68,7 +69,8 @@ exports.order = async (ctx)=> {
       });    
     }
     ctx.status = 204;	
-  }else if(req.pay_money ==0 && total_money == 0){//礼物订单
+  }else if(req.pay_money =='0' && total_money == '0'){//礼物订单
+    console.log('礼物订单');
     var gift = await wechat.getGiftForConsumeByNameAndSpecifications(req.product, req.specifications);
     console.log(gift);
         User.delUserConsumeByOpenId(req.openid, gift.consume);
