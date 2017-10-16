@@ -189,6 +189,7 @@ CREATE TABLE IF NOT EXISTS GIFT (
   id int NOT NULL AUTO_INCREMENT ,
   title varchar(255) NOT NULL COMMENT '标题',
   name varchar(255) NOT NUll COMMENT '产品名称',
+  specifications varchar(255) DEFAULT NULL COMMENT '规格',
   img_url varchar(255) DEFAULT NULL COMMENT '大图URL',
   centent TEXT NOT NULL COMMENT '详细内容',
   icon_url varchar(255) DEFAULT NULL COMMENT '小图URL',

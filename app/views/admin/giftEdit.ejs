@@ -48,6 +48,14 @@
   </div>
   <div class="row">
     <% if(data) { %>
+      <input id="specifications" type="text" style="height: 40px; width: 650px" placeholder="规格" maxlength="20" 
+      value="<%= data.specifications %>"  required>
+    <% }else{ %>
+      <input id="specifications" type="text" style="height: 40px; width: 650px" placeholder="规格" maxlength="20" required>
+    <% } %>
+  </div>
+  <div class="row">
+    <% if(data) { %>
       <input id="consume" type="number" placeholder="所需件数" required style="height: 40px; width: 150px" 
       value="<%= data.consume%>">
     <% }else{ %>
@@ -210,6 +218,7 @@
       var title = $.trim($('#title').val()); 
       var img_url = $.trim($('#upimg').find('img').eq(0).attr('src'));//大图
       var icon_url = $.trim($('#upimg').find('img').eq(1).attr('src'));//小图
+      var specifications = $.trim($('#specifications').val());
       var consume = Math.abs($('#consume').val());
       var name = $.trim($('#name').val());
       $.ajax({
@@ -217,7 +226,8 @@
         type: 'post',
         data: {
           title: title,
-          name,
+          name: name,
+          specifications: specifications,
           centent: centent,
           img_url: img_url,
           icon_url: icon_url,
@@ -248,6 +258,7 @@
     var title = $.trim($('#title').val()); 
     var img_url = $.trim($('#upimg').find('img').eq(0).attr('src'));//大图
     var icon_url = $.trim($('#upimg').find('img').eq(1).attr('src'));//小图
+    var specifications = $.trim($('#specifications').val());
     var consume = Math.abs($('#consume').val());
     var name = $.trim($('#name').val());
     if(centent && title && img_url && icon_url && consume){
@@ -256,7 +267,8 @@
         type: 'put',
         data: {
           title: title,
-          name,
+          name: name,
+          specifications: specifications,
           centent: centent,
           img_url: img_url,
           icon_url: icon_url,
