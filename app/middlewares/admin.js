@@ -73,6 +73,7 @@ exports.order = async (ctx)=> {
     console.log('礼物订单');
     var gift = await wechat.getGiftForConsumeByNameAndSpecifications(req.product, req.specifications);
     console.log(gift);
+    console.log(gift.consume);
         User.delUserConsumeByOpenId(req.openid, gift.consume);
     await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
     ctx.status = 204;
