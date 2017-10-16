@@ -14,35 +14,13 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
 </head>
 <body>
-    
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">礼品兑换-<%= data.name %></h4>
-      </div>
-      <div class="modal-body">
-<form>
-  <div class="form-group">
-    <button id="openAddress">添加收获地址</button> 
-  </div>
-  <button type="submit" class="btn btn-default" style="display: none;">Submit</button>
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100px">关闭</button>
-        <button type="button" class="btn btn-primary" style="width: 100px">兑换</button>
-      </div>
-    </div>
-  </div>
-</div>
     <div class="page">
         <div class="page">
-            <div class="yqm-conout">
+            <div class="yqm-conout" style="padding-top: 0;">
                 <p class="tit"><%= data.title %></p>
                 <div class="Img">
                   <span>
@@ -52,20 +30,26 @@
                 <ul class="yqm-des">
                     <li class="top"><span>活动说明</span></li>
                     <%- data.centent %>
+                    <li class="top"><span>我的推广点数:<%= data.myConsume %></span></li>
                 </ul>
-                <button type="button" id="myButton" data-loading-text="兑换中..." class="btn" autocomplete="off">
-                  兑换
-                </button>
-                <script>
-                $('#myButton').on('click', function() {
-                    var $btn = $(this).button('loading')
-                    $('#myModal').modal('show');
-                    // business logic...
-                    $btn.button('reset')
-                })
-                </script>
+                <% if(data.myConsume>=data.consume) { %>
+                  <a href="/user/order?product=iphone X&specifications=128g"  class="btn" >需要推广<%= data.consume %>点数</a>
+                <% }else{ %>
+                  <a href="javascript:code();"  class="btn" >需要推广<%= data.consume %>点数</a>
+                <% } %>
             </div>
         </div>
     </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script type="text/javascript">
+function code() {
+  $.confirm("您的点数不足,是否获取更多点数?","点数不足", function() {
+    window.location.href='/users/code'; 
+  }, function() {
+    
+  });
+}
+    </script>
 </body>
 </html>

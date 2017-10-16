@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
   create_time datetime DEFAULT NULL COMMENT '',
   flag varchar(64) DEFAULT '1' COMMENT '是否是首单（1-首单, 订单号）',
   order_count int(12) DEFAULT 0 COMMENT '下单次数',
+  consume int(8) DEFAULT 0 COMMENT '推广件数',
   PRIMARY KEY (id),
   INDEX openid (openid)
 ) DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
   delivery_company varchar(32) DEFAULT NULL COMMENT '物流公司id (申通快递-shentong )（百世快递-huitongkuaidi）',
   delivery_track_no varchar(32) DEFAULT NULL COMMENT '物流号',
   status int(4) NOT NULL COMMENT '订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消 )',
+  eventKey varchar(128) DEFAULT NUlL COMMENT '推广员',
   PRIMARY KEY (id),
   INDEX openid (openid),
   INDEX out_trade_no (out_trade_no),

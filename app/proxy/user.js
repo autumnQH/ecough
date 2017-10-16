@@ -32,7 +32,7 @@ exports.getUserVoucherByOpenId = (openid)=> {
 }
 /**
  * 设置用户代金券状态
- * @param {Int} id Id
+ * @param {Int} id ID
  * @param {String} order_id 订单ID
  */
 exports.updateUserVoucherById = (id, order_id)=> {
@@ -44,6 +44,11 @@ exports.showGift = ()=> {
 	return user.showGift();
 }
 
-exports.showGiftById = (id)=> {
-	return user.showGiftById(id);
+/**
+ * 显示一条礼物信息
+ * @param {String} openid 用户标示
+ * @param {Int} id ID
+ */
+exports.showGiftById = (openid, id)=> {
+	return user.showGiftById(openid, id);
 }

@@ -93,8 +93,8 @@ var showGift = ()=> {
 	return db.find("SELECT id, title, icon_url FROM GIFT ORDER BY create_time DESC");
 }
 
-var showGiftById = (id)=> {
-	return db.findOne("SELECT * FROM GIFT WHERE ? ", {id: id});
+var showGiftById = (openid, id)=> {
+	return db.findOne("SELECT *, (SELECT consume FROM T_WECHAT_USER WHERE openid = '"+openid+"') as myConsume FROM GIFT WHERE ? ", {id: id});
 }
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
