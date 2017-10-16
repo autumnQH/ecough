@@ -4,10 +4,13 @@ const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 
 exports.showOrder = async (ctx)=> {
-	ctx.state.openid = ctx.session.openid;
+	let openid = ctx.session.openid
+	let id = ctx.query.id;
+	ctx.state.openid = openid;
 	ctx.state.product = ctx.query.product;
 	ctx.state.specifications = ctx.query.specifications;
 	ctx.state.out_trade_no = tools.trade();
+	ctx.state.data = await User.showGiftById(openid,id);
  	await ctx.render('common/order');
 }
 
