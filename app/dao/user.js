@@ -106,7 +106,7 @@ var showGiftById = (openid, id)=> {
 }
 
 var addUserConsumeByEventKey = (eventKey, total)=> {
-	return db.find("UPDATE T_WECHAT_USER SET consume = consume+" + total + " WHERE openid = '" + eventKey +"'");
+	return db.find("UPDATE T_WECHAT_USER SET consume = consume+" + total + " , order_count = order_count +1 WHERE openid = '" + eventKey +"'");
 }
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
