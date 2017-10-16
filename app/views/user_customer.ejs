@@ -39,19 +39,18 @@
                         <label style="padding-left: 30px; width: 52%;">还没有人下过单～</label>
                     </div>
                 </li>
-                <% }else{ %>
-                    <% for(var i = 0 ;i<data.length; i++) { %>
-                        <li>
-                            <div style="background: #fff;">
-                                <img src="<%= data[i].headimgurl %>" class="img-circle" style="width:11%;">
-                                <label style="width: 55%;">
-                                    <%= data[i].nick %>
-                                </label>
-                                <label style="width: 29%;">(
-                                    <%= data[i].create_time %>)</label>
-                            </div>
-                        </li>
-                    <% } %>
+            <% }else{ %>
+                <% for(var i = 0 ;i<data.length; i++) { %>
+                    <li>
+                        <div style="background: #fff;">
+                            <img src="<%= data[i].headimgurl %>" class="img-circle" style="width:11%;">
+                            <label style="width: 55%;">
+                                <%= data[i].nick %>
+                            </label>
+                            <label style="width: 29%;">(
+                                <%= data[i].create_time %>)</label>
+                        </div>
+                    </li>
                 <% } %>
             <% } %>
         </ul>
