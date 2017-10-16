@@ -43,7 +43,11 @@
         </div>
     </div>
     <div id="customer">
-        <p>您现在有：<strong><%= data.consume %></strong>点数</p>
+        <p style="background-color: #f7f5f5">
+            推广总人数<strong><%= data2.count %></strong></p>
+            推广总件数<strong><%= data2.order_count %></strong></p>
+            可用件数<strong><%= data2.consume %></strong></p>
+            已使用件数<strong><%= (data2.total_consume-data2.consume) %></strong></p>
         <ul>
             <% if(data.length ==0){ %>
                 <li>
