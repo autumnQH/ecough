@@ -50,8 +50,12 @@ exports.order = async (ctx)=> {
     delete req.arr;   
   }  
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-  await wechat.setOrder(req);
   var userinfo = await User.getUserByOpenId(req.openid);//获取用户信息
+  if(userinfo.eventKey){
+    req.eventKey = userinfo.eventKey;
+  }
+  console.log(req);
+  await wechat.setOrder(req);
   if(userinfo.flag == '1'){
     wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
   }
