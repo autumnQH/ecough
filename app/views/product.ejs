@@ -186,8 +186,8 @@ $(function() {
         $('#s_money').children().hide();
         $('#s_money').children().eq(EQ).show();
         $('#total').children().addClass('hide');
-        $('#total').children().eq(EQ).removeClass('hide');
-        var sub = $('#total div[spe="' + specifications + '"]');
+        var sub = $('#total').children().eq(EQ);
+        sub.removeClass('hide');
         if (sub.find('span').last().text() == '0') {
             sub.find('div').last().html('<label style="color: red;">已售馨</label>');
             $('#pay').text('已售馨').attr('disabled', false);
