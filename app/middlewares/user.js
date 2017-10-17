@@ -5,7 +5,10 @@ const tools = require('../utils/tools');
 
 exports.index = async (ctx)=> {
 	console.log('???');
-  ctx.state.data = await User.getUserInfoByOpenId(ctx.session.openid);  
+	console.log(ctx.session.openid);
+  var user = await User.getUserInfoByOpenId(ctx.session.openid);  
+  console.log(user);
+  ctx.state.data = user;
   await ctx.render('user/index');
 }
 
