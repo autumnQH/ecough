@@ -12,12 +12,15 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="/jqueryweui/lib/weui.min.css">
+    <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.css">
+    
 </head>
 <body ontouchstart="">
     <div class="page">
 
 <div class="my-banner">
-    <a class="banner-link-panel">
+    <div class="banner-link-panel">
         <div class="top-avatar" style="background:url('<%= data.headimgurl %>') no-repeat center; background-size:cover;"></div>
         <div class="userInfo">
             <div class="userName">
@@ -27,88 +30,9 @@
             <p class="telphone"><%= data.phone %></p>
             <p id="openid" style="visibility: hidden;"><%= data.openid %></p>
         </div>
-    </a>
+    </div>
 </div>
-<!-- <div class="orders-panel">
-    <a href="/users/my/order" class="orderRow">
-        <p class="my-order my-order-ar borderBottom">
-            全部订单
-            <span class="p_span" style="top:15px;"></span>
-        </p>
-    </a>
-    <div class="orders-status-b">
-        <a href="#">
-            <u>
-                                <img src="//static2.flowerplus.cn/Static/img/my/dai.svg" alt="">
-            </u>
-            <p>待付款</p>
-        </a>
-        <a href="#">
-            <u> 
-                                <img src="//static2.flowerplus.cn/Static/img/my/Group 3.svg" alt="">
-            </u>
-            <p>服务中</p>
-        </a>
-        <a style="border:0 none" href="#">
-            <u>
-                <img src="//static2.flowerplus.cn/Static/img/my/Group 2.svg" alt="">
-            </u>
-            <p>已完成</p>
-        </a>
-        <a  href="#">
-            <u >    
-                                <img src="//static2.flowerplus.cn/Static/img/my/Combined Shape.svg" alt="">
-            </u>
-            <p>待评价</p>
-        </a>
-        <a class="serviceItem"  href="/users/service">
-            <u >    
-                <img src="//static2.flowerplus.cn/Static/img/my/contact.svg" alt="">
-            </u>
-            <p>售后服务</p>
-        </a>
-    </div>
-</div> -->
-<!-- <div class="orders-panel">
-    <a href="/users/my/order" class="orderRow">
-        <p class="my-order my-order-ar borderBottom">
-            全部订单
-            <span class="p_span" style="top:15px;"></span>
-        </p>
-    </a>
-    <div class="orders-status-b">
-        <a href="#">
-            <u>
-                                <img src="//static2.flowerplus.cn/Static/img/my/dai.svg" alt="">
-            </u>
-            <p>待付款</p>
-        </a>
-        <a href="#">
-            <u> 
-                                <img src="//static2.flowerplus.cn/Static/img/my/Group 3.svg" alt="">
-            </u>
-            <p>服务中</p>
-        </a>
-        <a style="border:0 none" href="#">
-            <u>
-                <img src="//static2.flowerplus.cn/Static/img/my/Group 2.svg" alt="">
-            </u>
-            <p>已完成</p>
-        </a>
-        <a  href="#">
-            <u >    
-                                <img src="//static2.flowerplus.cn/Static/img/my/Combined Shape.svg" alt="">
-            </u>
-            <p>待评价</p>
-        </a>
-        <a class="serviceItem"  href="/users/service">
-            <u >    
-                <img src="//static2.flowerplus.cn/Static/img/my/contact.svg" alt="">
-            </u>
-            <p>售后服务</p>
-        </a>
-    </div>
-</div> -->
+
 <div class="orders-panel orders-panel2">
     <p class="my-order borderBottom">我的服务</p>
     <div class="serviceBox first clear">
@@ -122,11 +46,7 @@
         </a>        
         <a href="/users/voucher" class="item yhq">
             <div class="iconImg"></div>
-            我的代金券
-        </a>
-        <a href="/users/integral" class="item jf">
-            <div class="iconImg"></div>
-            我的积分
+            礼物兑换
         </a>
         <a href="/users/FAQ" class="item help">
             <div class="iconImg"></div>
@@ -139,44 +59,7 @@
         <div class="flagLine"></div>
     </div>
 </div>
-<!-- <div class="orders-panel orders-panel2">
-    <p class="my-order borderBottom">我的服务</p>
-    <div class="serviceBox first clear">
-        <a href="/users/my/order" class="item code">
-            <div class="iconImg"></div>
-            我的订单
-        </a>
-        <a href="/my/coupons" class="item yhq">
-            <div class="iconImg"></div>
-            我的优惠券
-        </a>
-        <a href="/my/jifen" class="item jf">
-            <div class="iconImg"></div>
-            我的积分
-        </a>
-        <a href="/my/redpacket" class="item hb">
-            <div class="iconImg"></div>
-            我的红包
-        </a>
-        <a href="/dh" class="item xhkdh">
-            <div class="iconImg"></div>
-            鲜花卡兑换
-        </a>
-        <a href="/my/orders/?status=100" class="item cx">
-            <div class="iconImg"></div>
-            第三方查询
-        </a>
-        <a href="/wx_cs/serverce_index" class="item help">
-            <div class="iconImg"></div>
-            帮助中心
-        </a>
-        <a href="/help/feedback" class="item tcjy">
-            <div class="iconImg"></div>
-            吐槽&建议
-        </a>
-        <div class="flagLine"></div>
-            </div>
-</div> -->
+
 
 <!-- 绑定手机号码弹框-->
 <div class="poupVerifyBox hide">
@@ -220,5 +103,13 @@
 </div>
 </div>
 <script src="/js/user.js"></script>
+<script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
+<script src="/jqueryweui/lib/fastclick.js"></script>
+<script>
+$(function() {
+    FastClick.attach(document.body);
+});
+</script>
+<script src="/jqueryweui/js/jquery-weui.js"></script>
 </body>
 </html>
