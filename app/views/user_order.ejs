@@ -1,193 +1,167 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta content="telephone=no" name="format-detection">
-    <meta content="email=no" name="format-detection">
-    <title>订单</title>
-    <meta charset="UTF-8">
-    
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link href="/js/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="/js/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-		<script src="/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-		<script src="/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>    
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="/jqueryweui/lib/weui.min.css">
+    <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.css">
+    <link rel="stylesheet" href="/jqueryweui/css/demos.css">
 </head>
-<body>
-<!-- 
-<% if (data.length != 0 ){ %>
-	
-<div class="page-header" style="margin: 20px 0 0">
-	<div class="input-append date form_datetime">
-	    <input size="16" type="text" value="" readonly id="datetimepicker">
-	    <span class="add-on"><i class="icon-remove"></i></span>
-	    <span class="add-on"><i class="icon-calendar"></i></span>
-	</div>	
-</div>
 
+<body ontouchstart>
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item" href="#tab1">
+                待发货
+            </div>
+            <div class="weui-navbar__item" href="#tab2">
+                交易完成
+            </div>
+            <div class="weui-navbar__item" href="#tab3">
+                交易取消
+            </div>
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active infinite">
+                <div class="content-padded">
 
-	<script>
+                </div>
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+            </div>
+            <div id="tab2" class="weui-tab__bd-item infinite">
+                <div class="content-padded">
 
-		$(function() {
-		$('.form_datetime').datetimepicker({ 
-      startView: 3,  
-      minView: 3,
-		　format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式 
-		　language: 'zh-CN', //汉化 
-		　autoclose:true //选择日期后自动关闭 
-		});
-		//监听搜索
-		$('#datetimepicker').on('change', function() {
-			var date = $(this).val();
-			var data = {
-				date: date,
-				openid: '<%= data[0].openid %>'
-			};
-			$.ajax({
-				url: '/users/my/order/query',
-				method: 'post',
-				data: data
-			}).done(function(msg) {
-				var kuaidi100 = '';
-				$('.main').html('');
-				msg.forEach(function(data) {
-					switch(data.status) {
-						case 0:
-						data.status = '交易取消';
-						break;
-						case 2:
-						data.status = '待发货';
-						kuaidi100 = '<a style="display: inline;" id="refund" val="'+data.out_trade_no+'" money="'+data.pay_money+'"'+
-						'openid="'+ data.openid+'">申请退款</a>'
-						break;
-						case 3:
-						data.status = '已发货';
-						kuaidi100 = '<a style="display: inline;" id="kuaidi" href="https://m.kuaidi100.com/index_all.html?type='+
-							data.delivery_company+'&postid='+data.delivery_track_no+'">查询物流</a>';
-						break;
-						case 5:
-						data.status = '交易完成';
-						break;
-					}
-					$('.main').append('<div class="order"><div class="order-title"><span>'+data.status+'</span><label>'+
-						data.create_time+'</label></div><div class="order-item"><div class="order-center">' + 
-						'<a href="javascript:" class="order-shoplist"><img src="/images/chuangtie_xuanzhuan3.jpeg" alt="">'+
-						 '<div class="order-shoplist_right"><div class="shoplist_title"><span>'+data.product+'('+data.total+')</span>'+
-						 '<label>￥'+data.pay_money+'</label></div><span class="shoplist_ms"><p>'+data.name+data.phone+'</p>'+
-						 '<p>'+data.address+'</p></span></div></a><div class="order-number"><span>订单号：</span><span>'+
-						 data.out_trade_no+'</span>'+kuaidi100+'</div></div></div></div>');
-				});
-			});
-		});
-		});
-	</script>
-<% }%> -->	
-<div class="main">
-<% if(data.length === 0){ %>
-	<div class="text-center">
-	<p >空空如也~T.T</p>
-	<p>快点去下单吧</p>
-	<a href="/product/100001" class="btn btn-info btn-sm active">去逛逛</a>
-	</div>
-<% } %>
+                </div>
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+            </div>
+            <div id="tab3" class="weui-tab__bd-item infinite">
+                <div class="content-padded">
 
-<% for(var i = 0; i<data.length; i++) { %>
-		<div class="order">
-			<div class="order-title">
-				<% if(data[i].status == 0){ %>
-				<span>交易取消</span>
-				<% } %>				
-				<% if(data[i].status == 2){ %>
-				<span>待发货</span>
-				<% } %>
-				<% if(data[i].status == 3){ %>
-				<span>已发货</span>
-				<% } %>
-				<% if(data[i].status == 5){ %>
-				<span>交易完成</span>
-				<% } %>
-				<label><%= data[i].create_time %></label>
-			</div>
+                </div>
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
+    <script src="/jqueryweui/lib/fastclick.js"></script>
+    <script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+    </script>
+    <script src="/jqueryweui/js/jquery-weui.js"></script>
+    <script>
+    var page = 2;
+    var size = 6;
+    var status = 3;
 
-			<div class="order-item">
-				<div class="order-center">
-					<a href="javascript:" class="order-shoplist">
-						<img src="/images/chuangtie_xuanzhuan3.jpeg" alt="">
-						<div class="order-shoplist_right">
-							<div class="shoplist_title">
-								<span><%= data[i].product %>(<%= data[i].total %>)</span>
-								<label>￥<%= data[i].pay_money %></label>
-							</div>
-							<span class="shoplist_ms">
-							<p><%= data[i].name %><%= data[i].phone %></p>
-							<p><%= data[i].address %></p>
-							</span>
-						</div>
-					</a>
-					<div class="order-number">
-						<span>订单号：</span>
-						<span><%= data[i].out_trade_no %></span>
-					<% if(data[i].status == 3 ) { %>
- 						<a style="display: inline;"  
- 						href="https://m.kuaidi100.com/index_all.html?type=<%= data[i].delivery_company %>&postid=<%= data[i].delivery_track_no %>">
- 						查询物流</a>
-  				<% } %>
-					<% if(data[i].status == 2) { %>
-					<a style="display: inline;"  val="<%= data[i].out_trade_no %>" money="<%= data[i].pay_money%>"
-						openid="<%= data[i].openid %>">我要退款</a>
-					<% } %>
-					</div>
-				</div>
-			</div>	
+    $('.weui-navbar__item').on('click', function() {
+    	$(".weui-loadmore").html('<i class="weui-loading"></i> <span class="weui-loadmore__tips">正在加载</span>');
+    	var findbox=$($(this).attr("href")).find(".content-padded");
+    	findbox.empty();
+    	findbox.append('<div class="weui-panel weui-panel_access"></div>'); 
+    	setTimeout(function() {
+      	ajaxdata(1,6,findbox);
+    	},2000); 
+    });//end weui-tab__bd-item()
+    $('.weui-navbar__item').eq(0).click();
+    $(".weui-tab__bd-item").infinite().on("infinite", function() {
+        var self = this;
+        if (self.loading) return;
+        self.loading = true;
+        setTimeout(function() {
+        	ajaxdata(page, size,$(self));
+           self.loading = false;
+           page ++;
+        }, 2000); //模拟延迟
+    });
 
-		</div>
-<% } %>
-						<script>
-							$('.order-number').on('click','a', function() {
-								if($(this).attr('money')){
-										var out_trade_no = $(this).attr('val');									
-										var total_fee = $(this).attr('money');									
-										var openid = $(this).attr('openid');
-										
-									var data = {
-										out_trade_no: out_trade_no,
-										total_fee: total_fee,
-									};
-									var t = $(this);
-									t.hide()
-									$.ajax({
-										url: '/my/refund',
-										data: data,
-										method: 'post'
-									}).done(function(msg) {									
-										if(msg.msg === 'SUCCESS'){
-											alert('申请成功！');
-											window.location.href = window.location.href;
-										}else{
-											t.show();
-											alert('申请失败，请主动联系客服申请!错误代码: '+msg.code);
-											window.location.href = window.location.href;
-										}
-									});
-									
-								}else{
-									window.location=href;
-								}
-
-							});
-						</script>
-
-
-</div>
-
+    function ajaxdata(page,size,el) {
+    	switch (el.parent().attr("id")) {
+    		case 'tab1': 
+    		status = 3;
+    		break;
+    		case 'tab2': 
+    		status = 5;
+    		break;
+    		case 'tab3':
+    		status = 0;
+    		break;
+    	}
+        $.ajax({
+            url: '/user/order/status',
+            data: {
+                status: status,
+                page: page,
+                size: size,
+            },
+            type: 'get'
+        }).done(function(msg) {
+        	if(msg.rows.length!=0){
+            msg.rows.forEach(function(val, index, arr) {
+                switch (val.status) {
+                    case 2:
+                        val.status = '待发货';
+                        break;
+                    case 3:
+                        val.status = '已发货';
+                        break;
+                    case 5:
+                        val.status = '交易完成';
+                        break;
+                    case 8:
+                        val.status = '维权中';
+                        break;
+                    case 0:
+                        val.status = '交易取消';
+                        break;
+                }
+                el.find(".weui-panel").append('<div class="weui-panel__hd weui-media-box weui-media-box_appmsg">' +
+                    '<div class="weui-media-box__bd"><p>订单编号:<span>' + val.out_trade_no + '</span></p></div>' +
+                    '<div class="weui-media-box__ft" style="color: #ec701f">' +
+                    '<h3>' + val.status + '</h3>' +
+                    '</div> ' +
+                    '</div>' +
+                    '<div class="weui-panel__bd">' +
+                    '<a href="javascript:;" class="weui-media-box weui-media-box_appmsg">' +
+                    '<div class="weui-media-box__hd">' +
+                    '<img class="weui-media-box__thumb" src="' + val.img_url + '">' +
+                    '</div>' +
+                    '<div class="weui-media-box__bd">' +
+                    '<h3 class="weui-media-box__title">' + val.title + '</h3>' +
+                    '</div>' +
+                    '<div class="weui_media-box__ft">' +
+                    '<p>¥<span>' + val.pay_money + '</span></p>' +
+                    '<p style="font-size: 12px;float: right;">x<span>' + val.total + '</span></p>' +
+                    '</div>' +
+                    '</a>' +
+                    '</div>');
+            }); //end forEach() 
+            if(msg.rows.length<size){
+	        		$(".infinite").destroyInfinite()  
+	            $(".weui-loadmore").html('<div class="weui-loadmore weui-loadmore_line"> <span class="weui-loadmore__tips">暂无数据</span> </div>');             	
+            }
+        	}else{
+        		$(".infinite").destroyInfinite()  
+            $(".weui-loadmore").html('<div class="weui-loadmore weui-loadmore_line"> <span class="weui-loadmore__tips">暂无数据</span> </div>'); 
+        	}//end if
+        }); //end ajax
+    }//end ajaxdata()
+    </script>
 </body>
+
 </html>

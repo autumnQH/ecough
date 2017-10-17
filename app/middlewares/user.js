@@ -24,3 +24,14 @@ exports.showGiftById = async (ctx)=> {
 	ctx.state.data = await User.showGiftById(openid, id);
 	await ctx.render('user/gift_info');
 }
+
+exports.getOrderByStatus = async (ctx)=> {
+	let openid = ctx.session.openid;
+	let status = ctx.query.status;
+	let page = ctx.query.page;
+	let size = ctx.query.size;
+	openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
+	var order = await User.getUserOrderForStatusByStatusAndOpenId(openid, status,page,size);
+	console.log(order);
+	return ctx.body = order;
+}

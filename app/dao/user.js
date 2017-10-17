@@ -120,6 +120,10 @@ var delUserConsumeByOpenId = (openid, consume)=> {
 var addUserOrderCountByOpenId = (openid)=> {
 	return db.find("UPDATE T_WECHAT_USER SET order_count = order_count+1 WHERE openid = '"+openid+"'");
 }
+
+var getUserOrderForStatusByStatusAndOpenId = (openid, status,page, size)=> {
+	return db.queryPage("SELECT * FROM T_WECHAT_ORDER WHERE status = "+ status +" AND openid = '"+openid+"'",null, page,size);
+}
 module.exports = { 
 	getUserInfoByOpenId: getUserInfoByOpenId,
 	removeUserByOpenId: removeUserByOpenId,
@@ -146,5 +150,6 @@ module.exports = {
 	addUserConsumeByOpenId: addUserConsumeByOpenId,
 	delUserConsumeByOpenId: delUserConsumeByOpenId,
 	getUserTotalConsume: getUserTotalConsume,
-	addUserOrderCountByOpenId: addUserOrderCountByOpenId
+	addUserOrderCountByOpenId: addUserOrderCountByOpenId,
+	getUserOrderForStatusByStatusAndOpenId: getUserOrderForStatusByStatusAndOpenId
 };

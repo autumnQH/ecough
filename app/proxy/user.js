@@ -93,3 +93,14 @@ exports.delUserConsumeByOpenId = (openid, consume)=> {
 exports.addUserOrderCountByOpenId = (openid)=> {
 	return user.addUserOrderCountByOpenId(openid);
 }
+
+/**
+ * 根据openid和状态码获取用户订单
+ * @param {String} openid 用户标示
+ * @param {Int} status 状态码 (2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消)
+ * @param {Int} page 
+ * @param {Int} size 
+ */
+exports.getUserOrderForStatusByStatusAndOpenId = (openid, status,page,size)=> {
+	return user.getUserOrderForStatusByStatusAndOpenId(openid, status, page, size);
+} 
