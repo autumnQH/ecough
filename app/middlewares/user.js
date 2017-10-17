@@ -3,6 +3,11 @@ const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 
+exports.index = async (ctx)=> {
+  ctx.state.data = await User.getUserInfoByOpenId(ctx.session.openid);  
+  await ctx.render('user');
+}
+
 exports.showOrder = async (ctx)=> {
 	let openid = ctx.session.openid
 	let id = ctx.query.id;

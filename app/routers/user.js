@@ -2,9 +2,10 @@ const router = require('koa-router')();
 const checkUser = require('../middlewares/').check.checkUser;
 const userController = require('../middlewares').user;
 
-router.get('/order', checkUser, userController.showOrder);
-router.get('/gift', userController.showGift);
-router.get('/gift/:id', checkUser, userController.showGiftById);
-router.get('/order/status',checkUser, userController.getOrderByStatus);
+router.get('/', checkUser, userController.index);//个人中心
+router.get('/gift', userController.showGift);//礼物列表
+router.get('/gift/:id', checkUser, userController.showGiftById);//某个礼物信息
+router.get('/order', checkUser, userController.showOrder);//礼物订单
+router.get('/order/status', checkUser, userController.getOrderByStatus);//根据订单状态查找订单
 
 module.exports= router;
