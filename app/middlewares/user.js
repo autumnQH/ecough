@@ -6,7 +6,7 @@ const tools = require('../utils/tools');
 exports.index = async (ctx)=> {
 	console.log('???');
   ctx.state.data = await User.getUserInfoByOpenId(ctx.session.openid);  
-  await ctx.render('user');
+  await ctx.render('user/index');
 }
 
 exports.showOrder = async (ctx)=> {
