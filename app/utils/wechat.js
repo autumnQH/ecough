@@ -67,7 +67,7 @@ exports.createMenu = async (menu, token) => {
             },{
                 type: 'view',
                 name: '个人中心',
-                url: host+'/users/user'                
+                url: host+'/user'                
             }
             ]
         },{
