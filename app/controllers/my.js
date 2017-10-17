@@ -97,7 +97,7 @@ var jssdk = async(ctx, next) => {
     }
 
     var pay_money = total * current_money - derate_money ;
-    var page = await pay.setPackageData(openid, pay_money, value,store.name);
+    var page = await pay.setPackageData(openid, pay_money, value, store.name);
     
     console.log(page,'统一下单');
 
@@ -124,6 +124,7 @@ var jssdk = async(ctx, next) => {
             data: data2,
             openid: openid,
             total: total,
+            store: store,
             specifications: specifications,
             total_money: (pay_money + derate_money) * 0.01,
             derate_money: derate_money * 0.01,

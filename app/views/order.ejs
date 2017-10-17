@@ -195,8 +195,10 @@
 							var specifications = '<%= specifications %>';
 							var pay_money = Number($('#total_fee').text());
 							var out_trade_no = msg.out_trade_no;
-							var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
+							//var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
+							var derate_money = Number($('#derate').text());
 							var total_money = Number($('#total').text());
+							console.log();
 							$.ajax({
 								url: '/admin/order',
 								type: 'post',
@@ -206,7 +208,9 @@
 									address: address,
 									phone: phone,
 									product: product,
-									img_url: '/images/chuangtie_xuanzhuan3.min.jpg',
+									img_url: '<%= store.icon_url %>',
+									title: '<%= store.title %>',
+									url: '/product/<%= store.product_id %>',
 									total: total,
 									specifications: specifications,
 									pay_money: pay_money,
@@ -242,7 +246,8 @@
 
 <div class="main">
 		<div class="order">
-			<div id=openAddress class="order-address" style="border-image: url('/images/addr.png') 10 40 round; padding: 5px 15px 2px 15px;">
+			<div id=openAddress class="order-address" 
+				style="border-image: url('/images/addr.png') 10 40 round; padding: 15px 15px 15px 15px;">
 				<address>
 					<span class="pull-right glyphicon glyphicon-menu-right" aria-hidden="true" style="line-height: 2;"></span>
  					<p><label id="name"></label><label id="phone"></label></p>
