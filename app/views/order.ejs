@@ -27,7 +27,7 @@
 <body>
 
 <!-- Modal -->
-<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-</div>	
+</div>	 -->
 
 
 <script type="text/javascript">
@@ -55,84 +55,84 @@
 
 
  $(document).ready(function() {
-		$.ajax({
-			url: '/wx/user/voucher',
-			type: 'get'
-		}).done(function(result) {
-			$('#voucher-list').html('');
-			result.forEach(function(val) {
-				$('#voucher-list').append('<li class="list-group-item">'+
-					'<input ids="'+ val.id +
-					'" type="checkbox" name="apk[]" value="'+Number(val.voucher_denomination /100)+'">'
-					+ Number(val.voucher_denomination / 100)+'元'+val.voucher_type+'</li>');				
-			});
+		// $.ajax({
+		// 	url: '/wx/user/voucher',
+		// 	type: 'get'
+		// }).done(function(result) {
+		// 	$('#voucher-list').html('');
+		// 	result.forEach(function(val) {
+		// 		$('#voucher-list').append('<li class="list-group-item">'+
+		// 			'<input ids="'+ val.id +
+		// 			'" type="checkbox" name="apk[]" value="'+Number(val.voucher_denomination /100)+'">'
+		// 			+ Number(val.voucher_denomination / 100)+'元'+val.voucher_type+'</li>');				
+		// 	});
 
-			var a = 0;
-			$('input[type=checkbox]').click(function() {
-				$("input[name='apk[]']").attr('disabled', true);
+		// 	var a = 0;
+		// 	$('input[type=checkbox]').click(function() {
+		// 		$("input[name='apk[]']").attr('disabled', true);
 
-				var total = parseInt($('#total').text());
-				var derate = parseInt($('#derate').text());
+		// 		var total = parseInt($('#total').text());
+		// 		var derate = parseInt($('#derate').text());
 				
-				if(!$(this).is(':checked') ){//!选中
-					a -= parseInt($(this).val());
-					if(a<(total-derate)){
-						$('#err').addClass('hide');				
-					}			
-				}	
+		// 		if(!$(this).is(':checked') ){//!选中
+		// 			a -= parseInt($(this).val());
+		// 			if(a<(total-derate)){
+		// 				$('#err').addClass('hide');				
+		// 			}			
+		// 		}	
 
-				if($(this).is(':checked') ){//选中
-					a += parseInt($(this).val());
-					if(a>=(total-derate)){
-						$('#err').removeClass('hide');
-					}else{
-						$('#err').addClass('hide');
-					}
-				}
-				if(a>=(total-derate)){
-					a -= parseInt($(this).val());
-					$(this).removeAttr('checked');
-					$('#err').removeClass('hide');	
-				}
+		// 		if($(this).is(':checked') ){//选中
+		// 			a += parseInt($(this).val());
+		// 			if(a>=(total-derate)){
+		// 				$('#err').removeClass('hide');
+		// 			}else{
+		// 				$('#err').addClass('hide');
+		// 			}
+		// 		}
+		// 		if(a>=(total-derate)){
+		// 			a -= parseInt($(this).val());
+		// 			$(this).removeAttr('checked');
+		// 			$('#err').removeClass('hide');	
+		// 		}
 
-				var checked = $("input[name='apk[]']:checked");
-				if(checked.length >= 4) {
-					$("input[name='apk[]']:checked").attr('disabled', false);
-				}else{
-					$("input[name='apk[]']").attr('disabled', false);
-				}
-						$('#err_total').text(total);
-						$('#err_derate').text(derate);
-						$('#err_a').text(a);		
-						$('#err_fee').text(total-derate-a);	
-			});
+		// 		var checked = $("input[name='apk[]']:checked");
+		// 		if(checked.length >= 4) {
+		// 			$("input[name='apk[]']:checked").attr('disabled', false);
+		// 		}else{
+		// 			$("input[name='apk[]']").attr('disabled', false);
+		// 		}
+		// 				$('#err_total').text(total);
+		// 				$('#err_derate').text(derate);
+		// 				$('#err_a').text(a);		
+		// 				$('#err_fee').text(total-derate-a);	
+		// 	});
 
 		//ajax end
-	$('.order-center li').eq(3).on('click', function() {	
-			$('#myModal').modal('show');
-		});
-	});
+	// $('.order-center li').eq(3).on('click', function() {	
+	// 		$('#myModal').modal('show');
+	// 	});
+	// });
 
- 	$('#save').on('click', function( ){
- 		var a = 0;
- 			arrId = [];
- 		$('input[name="apk[]"]:checked').each(function() {
- 			a += Number($(this).val());
- 			arrId.push($(this).attr('ids'));
- 		});
- 		$('.glyphicon-menu-right').remove();
- 		$('#voucher label').remove();
- 		$('#voucher').append('<label>¥'+ a +'</label>');
- 		$('#voucher_number').val(a);
- 		var total = $('#total').text();
- 		var derate = $('#derate').text();
- 		var fee  = total - derate - a ;
- 		if(0>=fee) {
- 			fee = 1;
- 		}
- 		$('#total_fee').text(fee);
- 		$('#myModal').modal('hide');
- 	});
+ 	// $('#save').on('click', function( ){
+ 	// 	var a = 0;
+ 	// 		arrId = [];
+ 	// 	$('input[name="apk[]"]:checked').each(function() {
+ 	// 		a += Number($(this).val());
+ 	// 		arrId.push($(this).attr('ids'));
+ 	// 	});
+ 	// 	$('.glyphicon-menu-right').remove();
+ 	// 	$('#voucher label').remove();
+ 	// 	$('#voucher').append('<label>¥'+ a +'</label>');
+ 	// 	$('#voucher_number').val(a);
+ 	// 	var total = $('#total').text();
+ 	// 	var derate = $('#derate').text();
+ 	// 	var fee  = total - derate - a ;
+ 	// 	if(0>=fee) {
+ 	// 		fee = 1;
+ 	// 	}
+ 	// 	$('#total_fee').text(fee);
+ 	// 	$('#myModal').modal('hide');
+ 	// });
 
  })
 
@@ -304,11 +304,11 @@
 							<span>首单代金券减免:</span>
 							<label><span>￥</span><span id="derate"><%= derate_money %></span></label>
 						</li>
-						<li id="voucher">
+<!-- 						<li id="voucher">
 							<span>代金券</span>
 							<span class="pull-right glyphicon glyphicon-menu-right" aria-hidden="true" style="line-height: 2;"></span>
 							<input id="voucher_number" type="text" style="visibility: hidden;">
-						</li>												
+						</li> -->												
 						<li>
 							<span>付款金额：</span>
 							<label style="color: #ff4141;"><span>￥</span><span id="total_fee"><%= pay_money %></span></label>
@@ -323,11 +323,11 @@
 		</div>
 	</div>
 <script>
-	$(function() {
-		$('.order-center li').eq(3).on('click', function() {			
-			$('#myModal').modal('show');
-		});
-	});
+	// $(function() {
+	// 	$('.order-center li').eq(3).on('click', function() {			
+	// 		$('#myModal').modal('show');
+	// 	});
+	// });
 </script>
 <!-- 
 	<form action="/admin/order" method="post" style="visibility: hidden;margin-top: -100px;">
