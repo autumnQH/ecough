@@ -4,9 +4,7 @@ const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 
 exports.index = async (ctx)=> {
-  var user = await User.getUserByOpenId(ctx.session.openid);  
-  console.log(user);
-  ctx.state.data = user;
+  ctx.state.data = await User.getUserByOpenId(ctx.session.openid);  
   await ctx.render('user/index');
 }
 
