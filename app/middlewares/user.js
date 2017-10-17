@@ -9,7 +9,6 @@ exports.showOrder = async (ctx)=> {
 	ctx.state.openid = openid;
 	ctx.state.out_trade_no = tools.trade();
 	ctx.state.data = await User.showGiftById(openid,id);
-	console.log(await User.showGiftById(openid,id));
  	await ctx.render('common/order');
 }
 
@@ -30,8 +29,6 @@ exports.getOrderByStatus = async (ctx)=> {
 	let status = ctx.query.status;
 	let page = ctx.query.page;
 	let size = ctx.query.size;
-	openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 	var order = await User.getUserOrderForStatusByStatusAndOpenId(openid, status,page,size);
-	console.log(order);
 	return ctx.body = order;
 }
