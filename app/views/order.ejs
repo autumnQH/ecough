@@ -146,7 +146,7 @@
 
 	});
 	wx.ready(function() {
-		document.querySelector('.order').onclick = function() {
+		document.querySelector('#openAddress').onclick = function() {
 			wx.openAddress({
 				success: function(res) {
 					var name = $('#name').html('');
@@ -256,8 +256,7 @@
 <!-- <button id="openAddress" class="">
 	我的收货地址
 </button> -->
- <div style="display: none;"> <a id=openAddress href=javascript: class="btn btn-primary btn-sm">我的收货地址</a> </div>
-		<div class="order">
+		<div class="order" id=openAddress>
 			<div class="order-address" style="border-image: url('/images/addr.png') 10 40 round; padding: 5px 15px 2px 15px;">
 				<address>
 					<span class="pull-right glyphicon glyphicon-menu-right" aria-hidden="true" style="line-height: 2;"></span>
