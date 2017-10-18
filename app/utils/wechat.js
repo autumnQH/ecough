@@ -58,8 +58,8 @@ exports.createMenu = async (menu, token) => {
                 url: host+'/users/FAQ'                
             },{
                 type: 'view',
-                name: '我的地址',
-                url: host+'/users/getUserAddress'                
+                name: '礼物兑换',
+                url: host + '/user/gift'                
             },{
                 type: 'view',
                 name: '福利二维码',
@@ -70,13 +70,6 @@ exports.createMenu = async (menu, token) => {
                 url: host+'/user'                
             }
             ]
-        },{
-            name: '礼物兑换',
-            sub_button: [{
-                type: 'view',
-                name: '礼物兑换',
-                url: host + '/user/gift'
-            }]
         }
         ]
     };
