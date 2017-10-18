@@ -46,8 +46,9 @@ var getUserService = ()=> {
 var getUserByEnentKey = (eventKey)=> {
 	//var result = db.find("SELECT headimgurl, nick , (select create_time from T_WECHAT_ORDER where out_trade_no = U.flag )as create_time FROM T_WECHAT_USER as U WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
 	//var result = db.find("SELECT headimgurl, nick , order_count FROM T_WECHAT_USER  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
-	var result = db.find("SELECT headimgurl, nick , (select count(id) from T_WECHAT_ORDER where eventKey = '"+ eventKey+"' AND status IN(3,5) ) as order_count FROM T_WECHAT_USER as U  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
+	//var result = db.find("SELECT headimgurl, nick , (select count(id) from T_WECHAT_ORDER where eventKey = '"+ eventKey+"' AND status IN(3,5) ) as order_count FROM T_WECHAT_USER as U  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
 	//var result = db.find("SELECT U.headimgurl, U.nick, count(O.id) as order_count FROM ( select A.id, A.eventKey from T_WECHAT_ORDER A  WHERE A.eventKey = '"+ eventKey+"' AND A.status IN(3,5)) as O LEFT JOIN T_WECHAT_USER  as U ON O.eventKey = U.openid ");
+	var result = db.find("SELECT count(O.id) as order_count, (SELECT A.headimgurl from T_WECHAT_USER A where A.openid = O.openid) as headimgurl, (select B.nick from T_WECHAT_USER B where B.openid = O.openid) as nick FROM T_WECHAT_ORDER O where status in(3,5) AND eventKey = '"+ eventKey+"' GROUP BY O.openid;");
 	return result;
 }
 var getUserTotalConsume = (eventKey)=> {
