@@ -50,7 +50,7 @@ exports.createMenu = async (menu, token) => {
             sub_button: [{
                 type: 'view',
                 name: '我的订单',
-                url: host+'/users/my/order'
+                url: host+'/user/my/order'
 
             },{
                 type: 'view',
