@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>订单详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="/jqueryweui/lib/weui.min.css">
+    <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.css">
+    <link rel="stylesheet" href="/jqueryweui/css/demos.css">
+</head>
+<body ontouchstart="">
+
+<header style="text-align: center;padding: 2%;">
+  <img style="width: 95%;" src="<%= data.img_url %>" >
+</header>
+
+<div class="weui-form-preview">
+  <div class="weui-form-preview__hd">
+    <label class="weui-form-preview__label">付款金额</label>
+    <em class="weui-form-preview__value">¥<%= data.pay_money %></em>
+  </div>
+  <div class="weui-form-preview__bd">
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">订单号</label>
+      <span class="weui-form-preview__value"><%= data.out_trade_no %></span>
+    </div>    
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">商品</label>
+      <span class="weui-form-preview__value">¥<%= data.product %></span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">规格</label>
+      <span class="weui-form-preview__value"><%= data.specifications %></span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">下单时间</label>
+      <span class="weui-form-preview__value"><%- new Date(data.create_time).toLocaleString() %></span>
+    </div>  
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">收货人</label>
+      <span class="weui-form-preview__value"><%= data.name %></span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">联系电话</label>
+      <span class="weui-form-preview__value"><%= data.phone %></span>
+    </div>  
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">收货地址</label>
+      <span class="weui-form-preview__value"><%= data.address %></span>
+    </div>  
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">总金额</label>
+      <span class="weui-form-preview__value">¥<%= data. total_money %></span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">减免金额</label>
+      <span class="weui-form-preview__value">¥<%= data.derate_money %></span>
+    </div> 
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">数量</label>
+      <span class="weui-form-preview__value"><%= data.total %></span>
+    </div>       
+    </div> 
+    <% if(data.delivery_company && data.delivery_track_no) { %>
+	  <div class="weui-form-preview__ft">
+	    <a class="weui-form-preview__btn weui-form-preview__btn_primary" 
+	    href="https://m.kuaidi100.com/index_all.html?type=<%= data.delivery_company %>&postid=<%= data.delivery_track_no %>">
+	  	查询物流</a>
+	  </div>
+    <% }else{ %>
+	  <div class="weui-form-preview__ft">
+	    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:refund();">
+	  	申请退款</a>
+	  </div>    
+    <% } %>                                      
+</div>
+<script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
+<script src="/jqueryweui/lib/fastclick.js"></script>
+<script>
+$(function() {
+    FastClick.attach(document.body);
+});
+</script>
+<script src="/jqueryweui/js/jquery-weui.js"></script>
+<script>
+	function refund() {
+		$.confirm('确定要退款吗？','申请退款', function success() {
+			$.showLoading();
+			$.ajax({
+				url: '/my/refund',
+				data: {
+					out_trade_no: '<%= data.out_trade_no %>',
+					total_fee: '<%= data.pay_money %>'
+				},
+				method: 'post'
+			}).done(function(msg) {
+				console.log(msg);
+				if(msg.msg == 'SUCCESS'){					
+					$.hideLoading();
+					$.toast("申请成功",2000);
+				}else if(msg.msg =='ERROR') {
+					$.hideLoading();	
+					$.toast(msg.code, 'cancel',function() {
+						window.location.href = window.location.href;
+					});
+				}else{
+					$.hideLoading();
+					$.toast('未知错误', 'cancel',function() {
+						window.location.href = window.location.href;
+					});
+				}
+			}).fail(function() {
+      	$.hideLoading();
+      	$.toast("网络繁忙",'cancel',2000);
+			});
+		}, function cancel() {
+
+		});
+	}
+</script>
+</body>
+
+</html>

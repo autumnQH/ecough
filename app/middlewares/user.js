@@ -1,4 +1,5 @@
 const User = require('../proxy').User;
+const Order = require('../proxy').Order;
 const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 const tools = require('../utils/tools');
@@ -30,15 +31,20 @@ exports.showGiftById = async (ctx)=> {
 }
 
 exports.showUserOrder = async (ctx)=> {
-	await ctx.render('user_order');
+	await ctx.render('user/order');
 }
 
 exports.getOrderByStatus = async (ctx)=> {
 	let openid = ctx.session.openid;
-	openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 	let status = ctx.query.status;
 	let page = ctx.query.page;
 	let size = ctx.query.size;
 	var order = await User.getUserOrderForStatusByStatusAndOpenId(openid, status,page,size);
 	return ctx.body = order;
+}
+
+exports.getOrderInfoById =async (ctx)=> {
+	let order_id = ctx.query.id;
+	ctx.state.data = await Order.getOneOrderById(order_id);
+	return ctx.render('user/order_info');
 }
