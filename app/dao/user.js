@@ -45,7 +45,8 @@ var getUserService = ()=> {
 //获取用户场景值
 var getUserByEnentKey = (eventKey)=> {
 	//var result = db.find("SELECT headimgurl, nick , (select create_time from T_WECHAT_ORDER where out_trade_no = U.flag )as create_time FROM T_WECHAT_USER as U WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
-	var result = db.find("SELECT headimgurl, nick , order_count FROM T_WECHAT_USER  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
+	//var result = db.find("SELECT headimgurl, nick , order_count FROM T_WECHAT_USER  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
+	var result = db.find("SELECT headimgurl, nick , (select count(id) from T_WECHAT_ORDER where eventKey = '"+ eventKey+"' AND openid = U.openid) as order_count FROM T_WECHAT_USER as U  WHERE  flag NOT IN('1')  AND order_count > 0 AND eventKey IN('qrscene_"+ eventKey +"','"+ eventKey+"') ORDER BY order_count DESC");
 	return result;
 }
 var getUserTotalConsume = (eventKey)=> {
