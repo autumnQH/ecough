@@ -29,8 +29,13 @@ exports.showGiftById = async (ctx)=> {
 	await ctx.render('user/gift_info');
 }
 
+exports.showUserOrder = async (ctx)=> {
+	await ctx.render('user_order');
+}
+
 exports.getOrderByStatus = async (ctx)=> {
 	let openid = ctx.session.openid;
+	openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 	let status = ctx.query.status;
 	let page = ctx.query.page;
 	let size = ctx.query.size;

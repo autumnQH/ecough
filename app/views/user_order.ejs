@@ -70,12 +70,14 @@
 
     $('.weui-navbar__item').on('click', function() {
     	$(".weui-loadmore").html('<i class="weui-loading"></i> <span class="weui-loadmore__tips">正在加载</span>');
+        $(".infinite").infinite();
     	var findbox=$($(this).attr("href")).find(".content-padded");
     	findbox.empty();
     	findbox.append('<div class="weui-panel weui-panel_access"></div>'); 
+        size=6,page=2; 
     	setTimeout(function() {
       	ajaxdata(1,6,findbox);
-    	},2000); 
+    	},1000); 
     });//end weui-tab__bd-item()
     $('.weui-navbar__item').eq(0).click();
     $(".weui-tab__bd-item").infinite().on("infinite", function() {

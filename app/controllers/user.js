@@ -601,7 +601,7 @@ module.exports = {
     //'GET /users/voucher': UserVoucher,
     //'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
-    'GET /users/my/order': UserOrder,
+    //'GET /users/my/order': UserOrder,
     'GET /users/service': CustomerService,
     'GET /users/FAQ': FAQ,
     'GET /users/FAQ/issue/:id': FAQIssue,
