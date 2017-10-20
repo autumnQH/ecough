@@ -5,17 +5,10 @@ const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 
 exports.index = async (ctx)=> {
-  ctx.state.data = await User.getUserByOpenId(ctx.session.openid);  
+	let openid = ctx.session.openid;
+	//openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
+  ctx.state.data = await User.getUserByOpenId(openid);  
   await ctx.render('user/index');
-}
-
-exports.showOrder = async (ctx)=> {
-	let openid = ctx.session.openid
-	let id = ctx.query.id;
-	ctx.state.openid = openid;
-	ctx.state.out_trade_no = tools.trade();
-	ctx.state.data = await User.showGiftById(openid,id);
- 	await ctx.render('common/order');
 }
 
 exports.showGift = async (ctx)=> {
@@ -26,7 +19,10 @@ exports.showGift = async (ctx)=> {
 exports.showGiftById = async (ctx)=> {
 	let id = ctx.params.id;
 	let openid = ctx.session.openid;  
+	ctx.state.openid = openid;
+	ctx.state.out_trade_no = tools.trade();
 	ctx.state.data = await User.showGiftById(openid, id);
+
 	await ctx.render('user/gift_info');
 }
 

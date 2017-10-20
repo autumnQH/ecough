@@ -30,27 +30,168 @@
                 <ul class="yqm-des">
                     <li class="top"><span>活动说明</span></li>
                     <%- data.centent %>
-                    <li class="top"><span>我的推广点数:<%= data.myConsume %></span></li>
+                    <li class="top"><span>我的推广件数:<%= data.myConsume %></span></li>
                 </ul>
                 <% if(data.myConsume>=data.consume) { %>
-                  <a href="/user/order?id=<%= data.id %>"  
-                    class="btn" >需要推广<%= data.consume %>点数</a>
+
+                <div class="weui-cells">
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                      <label class="weui-label">收件人</label>
+                    </div>
+                    <div class="weui-cell__bd" id="name">
+                        <input  class="weui-input" type="text" placeholder="收件人">
+                    </div>
+                    <div class="weui-cell__ft">
+                      <i class="weui-icon-warn"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="weui-cells">
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                      <label class="weui-label">手机号</label>
+                    </div>
+                    <div class="weui-cell__bd" id="phone">
+                        <input class="weui-input" type="tel" placeholder="手机号">
+                    </div>
+                    <div class="weui-cell__ft">
+                      <i class="weui-icon-warn"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="weui-cells">
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                      <label class="weui-label">城市</label>
+                    </div>
+                    <div class="weui-cell__bd" id="city" >
+                        <input class="weui-input" type="text" placeholder="城市" >
+                    </div>
+                    <div class="weui-cell__ft">
+                      <i class="weui-icon-warn"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="weui-cells">
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                      <label class="weui-label">详细地址</label>
+                    </div>
+                    <div class="weui-cell__bd" id="address">
+                      <input class="weui-input" type="text" placeholder="详细地址">
+                    </div>
+                    <div class="weui-cell__ft">
+                      <i class="weui-icon-warn"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="weui-cells">
+                      <a id="add" href="javascript:;" class="weui-btn weui-btn_warn">确认</a>
+                </div>                
+
                 <% }else{ %>
-                  <a href="javascript:code();"  class="btn" >需要推广<%= data.consume %>点数</a>
+                  <a href="javascript:code();"  class="btn" >需要推广<%= data.consume %>件数</a>
                 <% } %>
             </div>
         </div>
     </div>
     <script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
     <script type="text/javascript">
 function code() {
-  $.confirm("您的点数不足,是否获取更多点数?","点数不足", function() {
+  $.confirm("您的件数不足,是否获取更多件数?","件数不足", function() {
     window.location.href='/users/code'; 
   }, function() {
     
   });
 }
     </script>
+
+<% if(data.myConsume>=data.consume) { %>
+<script>
+    $('.weui-cell__ft').hide();
+    function Errel(el) {
+        el.next().show();
+        el.prev().addClass('weui-cell_warn');
+        el.find('input').focus();
+        $('#add').addClass('weui-btn_disabled');
+    }
+    function el(el) {
+        el.next().hide();
+        el.prev().removeClass('weui-cell_warn');
+        $('#add').removeClass('weui-btn_disabled');
+    }
+    $('#add').on('click', function() {
+        $.confirm('该礼物需要<%= data.consume %>件数，是否继续?','订单确认', function() {
+
+        if($(this).hasClass('weui-btn_disabled')){
+            return false;
+        }else{
+            var name = $.trim($('#name input').val());
+            var phone = $.trim($('#phone input').val());
+            var city = $.trim($('#city input').val());
+            var address = $.trim($('#address input').val());
+            if(!name){
+                Errel($('#name')); 
+                return false;
+            }else if(!phone){
+                Errel($('#phone'));
+                return false;
+            }else if(!city){
+                Errel($('#city'));
+                return false;
+            }else if(!address){
+                Errel($('#address'));
+                return false;
+            }
+            address = city + address
+            $.ajax({
+                url: '/admin/order',
+                type: 'post',
+                data: {
+                    openid: '<%= openid %>',
+                    name: name,
+                    address: address,
+                    phone: phone,
+                    product: '<%= data.name %>',
+                    total: '1件',
+                    specifications: '<%= data.specifications %>',
+                    img_url: '<%= data.icon_url %>',
+                    title: '<%= data.title %>',
+                    url: '/gift/<%= data.id %>',
+                    pay_money: 0,
+                    total_money: 0,
+                    derate_money: 0,
+                    out_trade_no: '<%= out_trade_no %>',
+                    status: 2
+                }
+            }).done(function(msg){
+                $.toast("兑换成功", function() {
+                    location.replace('/user/my/order');                
+                });
+            }).fail(function() {
+                $.toast("网络超时", "cancel");
+            });
+        }//if end()
+        }, function() {
+
+        });
+
+    });
+    $('.weui-cell__bd').on('change', 'input', function() {
+        el($(this).parent());
+    });
+    $("#city input").cityPicker({
+        title: "请选择收货地址"
+    });
+</script>    
+<% } %>
 </body>
 </html>
