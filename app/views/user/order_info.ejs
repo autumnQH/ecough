@@ -100,7 +100,9 @@ $(function() {
 				console.log(msg);
 				if(msg.msg == 'SUCCESS'){					
 					$.hideLoading();
-					$.toast("申请成功",2000);
+					$.toast("申请成功",function() {
+            window.location.href = window.location.href;
+          });
 				}else if(msg.msg =='ERROR') {
 					$.hideLoading();	
 					$.toast(msg.code, 'cancel',function() {

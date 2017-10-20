@@ -222,10 +222,20 @@ var refund = async function(ctx, next) {
             }
         }
         
-    }else{
+    }else if(order.status == 3) {
         return ctx.body = {
             msg: 'ERROR',
             code: '该订单已经发货'
+        }
+    }else if(order.status == 0) {
+        return ctx.body = {
+            msg: 'ERROR',
+            code: '该订单已经取消'
+        }
+    }else{
+        return ctx.body = {
+            msg:'ERROR',
+            code: '未知错误!'
         }
     }
 } 
