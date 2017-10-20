@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/会员中心/联系客服</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/会员中心/联系客服">
+            <g id="Icon/模板"></g>
+            <g id="客服-(1)-copy" transform="translate(3.000000, 3.000000)" stroke="#666666" stroke-width="0.8">
+                <path d="M24.6058398,12.1025944 C24.6058398,5.4185161 19.1873237,0 12.5032454,0 C5.81916703,0 0.400650928,5.4185161 0.400650928,12.1025944" id="Oval"></path>
+                <path d="M15.5,23.5 L22.1258658,19.713791" id="Line" stroke-linecap="square"></path>
+                <rect id="Rectangle-2" x="10.4777634" y="22.9298196" width="5.12223659" height="2.67018037" rx="1.33509018"></rect>
+            </g>
+            <rect id="Rectangle" stroke="#666666" stroke-width="0.8" x="22.4" y="13.4" width="5.2" height="9.2" rx="2"></rect>
+            <rect id="Rectangle-Copy" stroke="#666666" stroke-width="0.8" x="3.4" y="13.4" width="5.2" height="9.2" rx="2"></rect>
+        </g>
+    </g>
+</svg>

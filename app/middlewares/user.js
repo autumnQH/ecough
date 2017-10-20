@@ -30,6 +30,10 @@ exports.showUserOrder = async (ctx)=> {
 	await ctx.render('user/order');
 }
 
+exports.showUserOrder2 = async (ctx)=> {
+	await ctx.render('user/order2');
+}
+
 exports.getOrderByStatus = async (ctx)=> {
 	let openid = ctx.session.openid;
 	let status = ctx.query.status;

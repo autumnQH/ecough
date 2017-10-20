@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>我的订单</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="/jqueryweui/lib/weui.min.css">
+    <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.css">
+    <link rel="stylesheet" href="/jqueryweui/css/demos.css">
+</head>
+
+<body ontouchstart>
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item" href="#tab1">
+                交易取消
+            </div>
+<!--             <div class="weui-navbar__item" href="#tab2">
+                已发货
+            </div>
+            <div class="weui-navbar__item" href="#tab3">
+                交易完成
+            </div> -->
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active infinite">
+                <div class="content-padded">
+
+                </div>
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+            </div>
+            <div id="tab2" class="weui-tab__bd-item infinite">
+                <div class="content-padded">
+
+                </div>
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+            </div>
+            <div id="tab3" class="weui-tab__bd-item infinite">
+                <div class="content-padded">
+
+                </div>
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
+    <script src="/jqueryweui/lib/fastclick.js"></script>
+    <script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+    </script>
+    <script src="/jqueryweui/js/jquery-weui.js"></script>
+    <script>
+    var page = 2;
+    var size = 6;
+    var status = 0;
+
+    $('.weui-navbar__item').on('click', function() {
+    	$(".weui-loadmore").html('<i class="weui-loading"></i> <span class="weui-loadmore__tips">正在加载</span>');
+        $(".infinite").infinite();
+    	var findbox=$($(this).attr("href")).find(".content-padded");
+    	findbox.empty();
+    	findbox.append('<div class="weui-panel weui-panel_access"></div>'); 
+        size=6,page=2; 
+    	setTimeout(function() {
+      	ajaxdata(1,6,findbox);
+    	},1000); 
+    });//end weui-tab__bd-item()
+    $('.weui-navbar__item').eq(0).click();
+    $(".weui-tab__bd-item").infinite().on("infinite", function() {
+        var self = this;
+        if (self.loading) return;
+        self.loading = true;
+        setTimeout(function() {
+        	ajaxdata(page, size,$(self));
+           self.loading = false;
+           page ++;
+        }, 2000); //模拟延迟
+    });
+
+    function ajaxdata(page,size,el) {
+    	switch (el.parent().attr("id")) {
+    		case 'tab1': 
+    		status = 0;
+    		break;
+    		case 'tab2': 
+    		status = 0;
+    		break;
+    		case 'tab3':
+    		status = 0;
+    		break;
+    	}
+        $.ajax({
+            url: '/user/order/status',
+            data: {
+                status: status,
+                page: page,
+                size: size,
+            },
+            type: 'get'
+        }).done(function(msg) {
+        	if(msg.rows.length!=0){
+            msg.rows.forEach(function(val, index, arr) {
+                switch (val.status) {
+                    case 2:
+                        val.status = '待发货';
+                        break;
+                    case 3:
+                        val.status = '已发货';
+                        break;
+                    case 5:
+                        val.status = '交易完成';
+                        break;
+                    case 8:
+                        val.status = '维权中';
+                        break;
+                    case 0:
+                        val.status = '交易取消';
+                        break;
+                }
+                el.find(".weui-panel").append('<div class="weui-panel__hd weui-media-box weui-media-box_appmsg">' +
+                    '<div class="weui-media-box__bd"><p>订单编号:<span>' + val.out_trade_no + '</span></p></div>' +
+                    '<div class="weui-media-box__ft" style="color: #ec701f">' +
+                    '<h3>' + val.status + '</h3>' +
+                    '</div> ' +
+                    '</div>' +
+                    '<div class="weui-panel__bd">' +
+                    '<a href="/user/order/info?id=' + val.id + '" class="weui-media-box weui-media-box_appmsg">' +
+                    '<div class="weui-media-box__hd">' +
+                    '<img class="weui-media-box__thumb" src="' + val.img_url + '">' +
+                    '</div>' +
+                    '<div class="weui-media-box__bd">' +
+                    '<h3 class="weui-media-box__title">' + val.title + '</h3>' +
+                    '</div>' +
+                    '<div class="weui_media-box__ft">' +
+                    '<p>¥<span>' + val.pay_money + '</span></p>' +
+                    '<p style="font-size: 12px;float: right;">x<span>' + val.total + '</span></p>' +
+                    '</div>' +
+                    '</a>' +
+                    '</div>');
+            }); //end forEach() 
+            if(msg.rows.length<size){
+	        		$(".infinite").destroyInfinite()  
+	            $(".weui-loadmore").html('<div class="weui-loadmore weui-loadmore_line"> <span class="weui-loadmore__tips">暂无数据</span> </div>');             	
+            }
+        	}else{
+        		$(".infinite").destroyInfinite()  
+            $(".weui-loadmore").html('<div class="weui-loadmore weui-loadmore_line"> <span class="weui-loadmore__tips">暂无数据</span> </div>'); 
+        	}//end if
+        }); //end ajax
+    }//end ajaxdata()
+    </script>
+</body>
+
+</html>

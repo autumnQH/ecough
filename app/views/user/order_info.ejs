@@ -64,13 +64,13 @@
       <span class="weui-form-preview__value"><%= data.total %></span>
     </div>       
     </div> 
-    <% if(data.delivery_company && data.delivery_track_no) { %>
+    <% if(data.delivery_company && data.delivery_track_no && data.status == '3' || data.status == '5') { %>
 	  <div class="weui-form-preview__ft">
 	    <a class="weui-form-preview__btn weui-form-preview__btn_primary" 
 	    href="https://m.kuaidi100.com/index_all.html?type=<%= data.delivery_company %>&postid=<%= data.delivery_track_no %>">
 	  	查询物流</a>
 	  </div>
-    <% }else{ %>
+    <% }else if(data.status == '2'){ %>
 	  <div class="weui-form-preview__ft">
 	    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:refund();">
 	  	申请退款</a>

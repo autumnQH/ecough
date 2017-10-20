@@ -15,6 +15,7 @@ module.exports = {
 	},
 	checkUser: async(ctx, next)=> {
 		var config = await dao.getConfig();
+		//ctx.session.openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 		if(!ctx.session.openid){
 		  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
 		  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/会员中心/待付款</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/会员中心/待付款">
+            <g id="Icon/模板"></g>
+            <g id="Group-2-Copy" transform="translate(1.351563, 4.500000)">
+                <rect id="Rectangle-2" fill="#666666" x="2.94712426" y="9.82374754" width="10.1682168" height="1" rx="0.5"></rect>
+                <rect id="Rectangle-2-Copy" fill="#666666" x="2.94712426" y="14.7356213" width="7.49558499" height="1" rx="0.5"></rect>
+                <rect id="Rectangle-20" fill="#666666" x="0.279841785" y="5.45454806" width="28.9881509" height="1" rx="0.5"></rect>
+                <ellipse id="Oval-9" stroke="#666666" stroke-width="0.8" cx="23.1704942" cy="16.8124897" rx="5.69749847" ry="5.60636738"></ellipse>
+                <path d="M17.3127867,21.2348262 L1.41222721,21.2348262 L1.41222721,21.2348262 C0.859942457,21.2348262 0.412227207,20.787111 0.412227207,20.2348262 L0.412227207,1.24284654 L0.412227207,1.24284654 C0.412227207,0.690561793 0.859942457,0.242846542 1.41222721,0.242846542 L27.9543042,0.242846542 L27.9543042,0.242846542 C28.506589,0.242846542 28.9543042,0.690561793 28.9543042,1.24284654 L28.9543042,9.605642" id="Path-2" stroke="#666666" stroke-width="0.8" stroke-linecap="round"></path>
+                <polyline id="Path-3" stroke="#666666" stroke-width="0.8" stroke-linecap="round" points="23.0639986 14.4838986 23.0639986 16.9904147 25.2768308 19.2032468"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

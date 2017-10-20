@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/会员中心/我的红包</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="5.60566351" width="19.3998638" height="5.4925661" rx="0.5"></rect>
+        <rect id="path-2" x="2.7335039" y="9.82444391" width="13.932856" height="5.77666629"></rect>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/会员中心/我的红包">
+            <g id="Icon/模板"></g>
+            <g id="Group-2-Copy" transform="translate(2.000000, 1.636174)">
+                <rect id="Rectangle-17" stroke="#666666" stroke-width="0.8" x="1.83702695" y="5.99003557" width="15.7258099" height="13.5702695" rx="1"></rect>
+                <g id="Rectangle-17-Copy">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#666666" stroke-width="0.8" x="0.4" y="6.00566351" width="18.5998638" height="4.6925661" rx="0.5"></rect>
+                </g>
+                <g id="Rectangle-17-Copy-2" transform="translate(9.699932, 12.712777) rotate(90.000000) translate(-9.699932, -12.712777) ">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#666666" stroke-width="0.8" x="3.1335039" y="10.2244439" width="13.132856" height="4.97666629"></rect>
+                </g>
+                <ellipse id="Oval" stroke="#666666" stroke-width="0.8" transform="translate(7.792123, 3.674206) rotate(-20.000000) translate(-7.792123, -3.674206) " cx="7.79212256" cy="3.67420624" rx="2.01145918" ry="2.51479716"></ellipse>
+                <ellipse id="Oval-Copy" stroke="#666666" stroke-width="0.8" transform="translate(11.966998, 3.674206) scale(-1, 1) rotate(-20.000000) translate(-11.966998, -3.674206) " cx="11.966998" cy="3.67420624" rx="2.01145918" ry="2.51479716"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>
