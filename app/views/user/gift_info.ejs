@@ -84,9 +84,9 @@ function code() {
     // }
     $('#add').on('click', function() {
         $.confirm('该礼物需要<%= data.consume %>件数，是否继续?','订单确认', function() {
-            var name = $.trim($('#name'));
-            var phone = $.trim($('#phone'));
-            var address = $.trim($('#address'));
+            var name = $.trim($('#name').text());
+            var phone = $.trim($('#phone').text());
+            var address = $.trim($('#address').text());
         if(name && phone && address){
             $.ajax({
                 url: '/admin/order',
