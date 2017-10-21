@@ -12,10 +12,15 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.sdk = async (ctx)=> {
-    console.log('??');
     var SDK = await WXSDK.getWeSDK();
-    console.log(SDK,'SDK');
     var url = 'http://' + ctx.header.host + ctx.url;
+    var nonceStr = tools.createRandom();
+    var timeStamp = tools.createTimestamp();
+
+    var value = {
+        nonceStr: nonceStr,
+        timeStamp: timeStamp
+    };
     var wxcfg = await pay.setWXConfig(SDK, url, value); 
     console.log(wxcfg);
     ctx.body = wxcfg;   
