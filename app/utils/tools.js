@@ -237,7 +237,7 @@ exports.sendTemplateMessage = async (openid,orderMoneySum,orderProductName) => {
   let json = JSON.stringify({
     touser: openid,
     template_id: template_id,
-    url: config.server_host+'/users/code',
+    url: config.server_host+'/user/my/code',
     topcolor: "#FF0000",
     data: {
       first :{
