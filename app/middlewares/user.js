@@ -57,7 +57,7 @@ exports.showCode = async (ctx)=> {
         nonceStr: nonceStr,
         timeStamp: timeStamp
     };     
-    var jsapi_ticket = await WXSDK.getWXSDK();
+    var jsapi_ticket = await WXSDK.getWeSDK();
     var jsapi_ticket_url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
     var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value);  
     ctx.state.config = wxcfg; 
