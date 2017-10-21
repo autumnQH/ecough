@@ -1,6 +1,6 @@
 const User = require('../proxy').User;
 const Order = require('../proxy').Order;
-const weSDK = require('../proxy/').weSDK;
+const WXSDK = require('../proxy').WXSDK;
 const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 
@@ -57,7 +57,7 @@ exports.showCode = async (ctx)=> {
         nonceStr: nonceStr,
         timeStamp: timeStamp
     };     
-    var jsapi_ticket = await weSDK.getWXSDK();
+    var jsapi_ticket = await WXSDK.getWXSDK();
     var jsapi_ticket_url = 'http://' + ctx.header.host + ctx.url.split('?').slice(0,1);
     var wxcfg = await pay.setWXConfig(jsapi_ticket, jsapi_ticket_url, value);  
     ctx.state.config = wxcfg; 
@@ -65,7 +65,7 @@ exports.showCode = async (ctx)=> {
 }
 
 exports.getMyQR_Code = async (ctx)=> {
-	  let token = await weSDK.getWeAccessToken();
+	let token = await WXSDK.getWeAccessToken();
     let json = JSON.stringify({
         "expire_seconds": 3 * 60 *60 *24, 
         "action_name": "QR_STR_SCENE", 

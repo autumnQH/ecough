@@ -1,5 +1,5 @@
 const User = require('../proxy').User;
-const weSDK = require('../proxy').weSDK;
+const WXSDK = require('../proxy').WXSDK;
 const tools = require('../utils/tools');
 const pay = require('../utils/pay');
 const xml = require('../utils/xml');
@@ -13,10 +13,10 @@ exports.voucher = async (ctx)=> {
 
 exports.sdk = async (ctx)=> {
     console.log('??');
-    var weSDK = await weSDK.getWeSDK();
-    console.log(weSDK,'SDK');
+    var WXSDK = await WXSDK.getWeSDK();
+    console.log(WXSDK,'SDK');
     var url = 'http://' + ctx.header.host + ctx.url;
-    var wxcfg = await pay.setWXConfig(weSDK, url, value); 
+    var wxcfg = await pay.setWXConfig(WXSDK, url, value); 
     console.log(wxcfg);
     ctx.body = wxcfg;   
 }
