@@ -21,6 +21,7 @@ exports.sdk = async (ctx)=> {
         nonceStr: nonceStr,
         timeStamp: timeStamp
     };
+    console.log(url);
     var wxcfg = await pay.setWXConfig(SDK, url, value); 
     console.log(wxcfg);
     ctx.body = wxcfg;   

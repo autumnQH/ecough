@@ -148,7 +148,7 @@ function code() {
     $.ajax({
         url: '/wx/sdk'
     }).done(function(msg) {
-        alert(msg);
+        alert(msg.appid);
         wx.config({
             debug: true,
             appId: msg.appid,
