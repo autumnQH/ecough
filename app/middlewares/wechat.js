@@ -12,11 +12,8 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.sdk = async (ctx)=> {
-    let a = ctx.query.url;
-    a = decodeURIComponent(a);
-    console.log(a);
+    let url = decodeURIComponent(ctx.query.url);
     var SDK = await WXSDK.getWeSDK();
-    var url = 'http://' + ctx.header.host + ctx.url;
     var nonceStr = tools.createRandom();
     var timeStamp = tools.createTimestamp();
 
@@ -24,9 +21,7 @@ exports.sdk = async (ctx)=> {
         nonceStr: nonceStr,
         timeStamp: timeStamp
     };
-    console.log(url, value, SDK);
-    var wxcfg = await pay.setWXConfig(SDK, a, value); 
-    console.log(wxcfg);
+    var wxcfg = await pay.setWXConfig(SDK, url, value); 
     ctx.body = wxcfg;   
 }
 
