@@ -97,7 +97,8 @@ var jssdk = async(ctx, next) => {
     }
 
     var pay_money = total * current_money - derate_money ;
-    var page = await pay.setPackageData(openid, pay_money, value, store.name);
+    var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
+    var page = await pay.setPackageData(openid, pay_money, value, store.name, ip);
     
     console.log(page,'统一下单');
 
