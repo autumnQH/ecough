@@ -70,42 +70,24 @@ function code() {
 
 <% if(data.myConsume>=data.consume) { %>
 <script>
-    $('.weui-cell__ft').hide();
-    function Errel(el) {
-        el.next().show();
-        el.prev().addClass('weui-cell_warn');
-        el.find('input').focus();
-        $('#add').addClass('weui-btn_disabled');
-    }
-    function el(el) {
-        el.next().hide();
-        el.prev().removeClass('weui-cell_warn');
-        $('#add').removeClass('weui-btn_disabled');
-    }
+    // $('.weui-cell__ft').hide();
+    // function Errel(el) {
+    //     el.next().show();
+    //     el.prev().addClass('weui-cell_warn');
+    //     el.find('input').focus();
+    //     $('#add').addClass('weui-btn_disabled');
+    // }
+    // function el(el) {
+    //     el.next().hide();
+    //     el.prev().removeClass('weui-cell_warn');
+    //     $('#add').removeClass('weui-btn_disabled');
+    // }
     $('#add').on('click', function() {
         $.confirm('该礼物需要<%= data.consume %>件数，是否继续?','订单确认', function() {
-
-        if($(this).hasClass('weui-btn_disabled')){
-            return false;
-        }else{
-            var name = $.trim($('#name input').val());
-            var phone = $.trim($('#phone input').val());
-            var city = $.trim($('#city input').val());
-            var address = $.trim($('#address input').val());
-            if(!name){
-                Errel($('#name')); 
-                return false;
-            }else if(!phone){
-                Errel($('#phone'));
-                return false;
-            }else if(!city){
-                Errel($('#city'));
-                return false;
-            }else if(!address){
-                Errel($('#address'));
-                return false;
-            }
-            address = city + address
+            var name = $.trim($('#name'));
+            var phone = $.trim($('#phone'));
+            var address = $.trim($('#address'));
+        if(name && phone && address){
             $.ajax({
                 url: '/admin/order',
                 type: 'post',
@@ -133,6 +115,12 @@ function code() {
             }).fail(function() {
                 $.toast("网络超时", "cancel");
             });
+           
+        }else{
+            $.toast('请选择收货地址','cancel',function() {
+                return false;
+            });
+    
         }//if end()
         }, function() {
 
