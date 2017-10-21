@@ -12,6 +12,7 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.sdk = async (ctx)=> {
+    console.log('??');
     var weSDK = await weSDK.getWeSDK();
     console.log(weSDK,'SDK');
     var url = 'http://' + ctx.header.host + ctx.url;
