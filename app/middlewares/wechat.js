@@ -1,5 +1,5 @@
 const User = require('../proxy').User;
-const SDK = require('../proxy').SDK;
+const weSDK = require('../proxy').weSDK;
 const tools = require('../utils/tools');
 const pay = require('../utils/pay');
 const xml = require('../utils/xml');
@@ -9,6 +9,14 @@ exports.voucher = async (ctx)=> {
 	var voucher = await User.getUserVoucherByOpenId(openid);
 	console.log(voucher);
 	ctx.body = voucher;
+}
+
+exports.sdk = async (ctx)=> {
+    var weSDK = await weSDK.getWeAccessToken();
+    var url = 'http://' + ctx.header.host + ctx.url;
+    var wxcfg = await pay.setWXConfig(weSDK, url, value); 
+    console.log(wxcfg);
+    ctx.body = wxcfg;   
 }
 
 exports.pay = async (ctx)=> {
@@ -33,4 +41,8 @@ exports.pay = async (ctx)=> {
     var prepayid = result.xml.prepay_id[0];
     var data2 = await pay.setPaySign(prepayid, value);
     ctx.body = data2;
+}
+
+exports.openAddress = async (ctx) => {
+
 }

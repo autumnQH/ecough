@@ -104,3 +104,19 @@ exports.addUserOrderCountByOpenId = (openid)=> {
 exports.getUserOrderForStatusByStatusAndOpenId = (openid, status,page,size)=> {
 	return user.getUserOrderForStatusByStatusAndOpenId(openid, status, page, size);
 } 
+
+/**
+ * 获取我推广的人
+ * @param {String} eventKey 推广人openid 
+ */
+exports.getUserByEnentKey = (eventKey)=> {
+	return user.getUserByEnentKey(eventKey);
+}
+
+/**
+ * 获取我的推广人数，件数
+ * @parsm {String} eventKey 推广人openid
+ */
+exports.getUserTotalConsume = (eventKey)=> {
+	return user.getUserTotalConsume(eventKey);
+}

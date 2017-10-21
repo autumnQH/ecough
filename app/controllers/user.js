@@ -595,9 +595,9 @@ var customservice = async function(ctx, next) {
 }
 module.exports = {
     //'GET /users/user': User,
-    'GET /users/code': UserCode,
-    'GET /user/code': userCode,
-    'GET /users/customer':  UserCustomer ,
+    //'GET /users/code': UserCode,
+    //'GET /user/code': userCode,
+    //'GET /users/customer':  UserCustomer ,
     //'GET /users/voucher': UserVoucher,
     //'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,

@@ -63,7 +63,7 @@ exports.createMenu = async (menu, token) => {
             },{
                 type: 'view',
                 name: '福利二维码',
-                url: host+'/users/code'                
+                url: host+'/user/my/code'                
             },{
                 type: 'view',
                 name: '个人中心',
