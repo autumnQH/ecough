@@ -12,7 +12,8 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.sdk = async (ctx)=> {
-    var weSDK = await weSDK.getWeAccessToken();
+    var weSDK = await weSDK.getWeSDK();
+    console.log(weSDK,'SDK');
     var url = 'http://' + ctx.header.host + ctx.url;
     var wxcfg = await pay.setWXConfig(weSDK, url, value); 
     console.log(wxcfg);
