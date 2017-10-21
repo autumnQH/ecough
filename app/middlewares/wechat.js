@@ -12,6 +12,9 @@ exports.voucher = async (ctx)=> {
 }
 
 exports.sdk = async (ctx)=> {
+    let a = ctx.query.url;
+    a = decodeURIComponent(a);
+    console.log(a);
     var SDK = await WXSDK.getWeSDK();
     var url = 'http://' + ctx.header.host + ctx.url;
     var nonceStr = tools.createRandom();
