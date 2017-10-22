@@ -4,12 +4,24 @@ const WXSDK = require('../proxy').WXSDK;
 const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 const moment = require('moment');
+const dao = require('../dao/admin');
 
 exports.index = async (ctx)=> {
-	let openid = ctx.session.openid;
-	//openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
-  ctx.state.data = await User.getUserByOpenId(openid);  
-  await ctx.render('user/index');
+    let openid = ctx.session.openid;
+    ctx.state.data = await User.getUserByOpenId(openid);  
+    await ctx.render('user/index');
+}
+
+exports.addUserPhone = async (ctx)=> {
+    var req = ctx.request.body;
+    var config = await dao.getConfig();
+    if(config.signup_phone_integral!= null) {
+        req.integral = config.signup_phone_integral;
+    }
+    User.setUserForPhone(req);
+    return ctx.body = {
+    code :1,msg :'绑定成功'  
+    }
 }
 
 exports.showGift = async (ctx)=> {
@@ -104,4 +116,17 @@ exports.addService = async (ctx)=> {
     data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
     User.setService(data);
     return ctx.status = 204;
+}
+
+exports.showFAQ = async (ctx)=> {
+    ctx.state.data =  await User.getFAQ();
+    ctx.state.openid = ctx.session.openid;
+    await ctx.render('user/FAQ');
+}
+
+exports.showFAQById = async (ctx)=> {
+    var id = ctx.params.id;
+    ctx.state.data =  await User.getFAQById(id);
+    ctx.state.openid = ctx.session.openid;
+    await ctx.render('user/FAQ_info');     
 }
