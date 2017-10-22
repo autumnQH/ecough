@@ -7,3 +7,11 @@ const order = require('../dao/order');
 exports.getOneOrderById = (id)=> {
 	return order.getOneOrderById(id);
 }
+
+/**
+ * 根据openid获取用户订单号
+ * @param {String} openid 用户标示
+ */
+exports.getOrderForTradeByOpenId = (openid)=> {
+	return order.getOrderForTradeByOpenId(openid);
+}

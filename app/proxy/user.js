@@ -125,14 +125,6 @@ exports.getUserTotalConsume = (eventKey)=> {
 }
 
 /**
- * 根据openid获取用户订单号
- * @param {String} openid 用户标示
- */
-exports.getOrderForTradeByOpenId = (openid)=> {
-	return order.getOrderForTradeByOpenId(openid);
-}
-
-/**
  * 添加一条售后服务
  * @param {Object} data 数据包
  */
