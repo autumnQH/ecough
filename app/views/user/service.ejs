@@ -77,7 +77,7 @@
 				}
 			}).done(function(msg) {
 				$.toast('谢谢反馈', function() {
-					location.replace();
+					location.replace(location.href);
 				});
 			}).fail(function() {
 				$.toast("网络繁忙",'cancel',2000);
