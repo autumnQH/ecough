@@ -18,5 +18,7 @@ router.get('/partner', checkUser, userController.showPartner);//显示我推广�
 router.get('/order/status', checkUser, userController.getOrderByStatus);//根据订单状态查找订单
 router.get('/order/info', checkUser, userController.getOrderInfoById);//根据订单状态查找订单
 
+router.get('/service', checkUser, userController.showService);//显示售后服务
+router.put('/service', checkUser, userController.addService);//添加用户售后服务
 
 module.exports= router;

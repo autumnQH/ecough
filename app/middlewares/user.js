@@ -3,6 +3,7 @@ const Order = require('../proxy').Order;
 const WXSDK = require('../proxy').WXSDK;
 const pay = require('../utils/pay');
 const tools = require('../utils/tools');
+const moment = require('moment');
 
 exports.index = async (ctx)=> {
 	let openid = ctx.session.openid;
@@ -88,5 +89,19 @@ exports.showPartner = async (ctx)=> {
 	let openid = ctx.session.openid
 	ctx.state.data = await User.getUserByEnentKey(openid);
 	ctx.state.data2 = await User.getUserTotalConsume(openid);
-  await ctx.render('user/partner');	
+    await ctx.render('user/partner');	
+}
+
+exports.showService = async (ctx)=> {
+    let openid = ctx.session.openid;
+    ctx.state.data =  await Order.getOrderForTradeByOpenId(openid);
+    ctx.state.openid = openid;
+    await ctx.render('user/service');
+}
+
+exports.addService = async (ctx)=> {
+    let data = ctx.request.body;
+    data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+    User.setService(data);
+    return ctx.status = 204;
 }

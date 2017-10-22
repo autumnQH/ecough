@@ -1,4 +1,7 @@
 const user = require('../dao/user');
+const order = require('../dao/order');
+const service = require('../dao/service');
+
 /**
  * 获取用户信息
  * @param {String} openid 用户标示
@@ -119,4 +122,20 @@ exports.getUserByEnentKey = (eventKey)=> {
  */
 exports.getUserTotalConsume = (eventKey)=> {
 	return user.getUserTotalConsume(eventKey);
+}
+
+/**
+ * 根据openid获取用户订单号
+ * @param {String} openid 用户标示
+ */
+exports.getOrderForTradeByOpenId = (openid)=> {
+	return order.getOrderForTradeByOpenId(openid);
+}
+
+/**
+ * 添加一条售后服务
+ * @param {Object} data 数据包
+ */
+exports.setService = (data)=> {
+	return service.setService(data);
 }

@@ -602,12 +602,12 @@ module.exports = {
     //'GET /users/integral': UserIntegral,
     'GET /users/getUserAddress': getOpenAddress,
     //'GET /users/my/order': UserOrder,
-    'GET /users/service': CustomerService,
+    //'GET /users/service': CustomerService,
     'GET /users/FAQ': FAQ,
     'GET /users/FAQ/issue/:id': FAQIssue,
     //'POST /users/my/order/query': queryUserOrder,
     //'POST /user/setvoucher': setUserVoucher,
-    'POST /users/service/issue': setUserService,
+    //'POST /users/service/issue': setUserService,
     'POST /user/setphone': setUserPhone,
     'GET /users/customservice/:openid': customservice
 

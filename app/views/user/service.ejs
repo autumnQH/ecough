@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>售后</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script src="/js/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">    
+</head>
+<body style="background: #f5f5f5;" ontouchstart>
+	<div class="main">
+<% if(data.length === 0){ %>
+	<div class="text-center">
+	<p >您还没有下过订单~T.T</p>
+	<p>快点去下单吧</p>
+	<a href="/product/100001" class="btn btn-info btn-sm active">去逛逛</a>
+	</div>
+<% }else{ %> 
+		<div class="sales">
+			<form>
+				<div class="form-box">
+					<div class="form-group">
+						<label>选择订单</label>
+						<div class="group-item">
+							<select id="select">
+								<% for(var i = 0; i< data.length; i++) { %>
+								<option value="<%= data[i].out_trade_no %>"><%= data[i].out_trade_no %></option>
+								<% } %>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group" style="border-bottom: none;">
+						<label>问题详情</label>
+						<div class="group-item">
+							<input id="title" type="text" value="" placeholder="请输入问题详情" >
+						</div>
+					</div>
+				</div>
+				<div class="sales-other">
+					<textarea id="issue" placeholder="问题描述(非必填)"></textarea>
+				</div>
+				<div class="sales-other">
+					<textarea id="phone" placeholder="联系方式"></textarea>
+				</div>				
+			</form>
+		</div>
+		<button onclick="add();" type="button" class="sales-bt">提交问题</button>
+
+		<script>
+		function add() {
+			var openid = "<%= openid %>";
+			var out_trade_no = $('#select').val();
+			var title = $('#title').val();
+			var issue = $('#issue').val();
+			var phone = $('#phone').val();
+			$.ajax({
+				url: '/user/service',
+				type: 'put',
+				data:{
+					openid: openid,
+					out_trade_no: out_trade_no,
+					title: title,
+					issue: issue,
+					phone: phone
+				}
+			}).done(function(msg) {
+				$.toast('谢谢反馈', function() {
+					location.replace();
+				});
+			}).fail(function() {
+				$.toast("网络繁忙",'cancel',2000);
+			});
+		}	
+		</script>
+<% } %>		
+	</div>
+<script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
+<script src="/jqueryweui/lib/fastclick.js"></script>
+<script>
+$(function() {
+    FastClick.attach(document.body);
+});
+</script>
+<script src="/jqueryweui/js/jquery-weui.js"></script>	
+</body>
+</html>
