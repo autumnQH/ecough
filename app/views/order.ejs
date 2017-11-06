@@ -77,7 +77,7 @@
 		// 		if(!$(this).is(':checked') ){//!选中
 		// 			a -= parseInt($(this).val());
 		// 			if(a<(total-derate)){
-		// 				$('#err').addClass('hide');				
+		// 				$('#err').addClass('hide');	
 		// 			}			
 		// 		}	
 
@@ -222,7 +222,7 @@
 							}).done(function(msg){
 								location.replace('/user/my/order');
 							});
-							alert('支付成功');					
+							alert('支付成功');	
 						},
 						fail: function(res) {
 							alert('网络繁忙，请稍后再试！');
@@ -296,7 +296,7 @@
 							<span>代金券</span>
 							<span class="pull-right glyphicon glyphicon-menu-right" aria-hidden="true" style="line-height: 2;"></span>
 							<input id="voucher_number" type="text" style="visibility: hidden;">
-						</li> -->												
+						</li> -->			
 						<li>
 							<span>付款金额：</span>
 							<label style="color: #ff4141;"><span>￥</span><span id="total_fee"><%= pay_money %></span></label>
@@ -312,7 +312,7 @@
 	</div>
 <script>
 	// $(function() {
-	// 	$('.order-center li').eq(3).on('click', function() {			
+	// 	$('.order-center li').eq(3).on('click', function() {		
 	// 		$('#myModal').modal('show');
 	// 	});
 	// });

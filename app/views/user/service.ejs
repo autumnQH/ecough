@@ -14,9 +14,11 @@
     <script src="/js/jquery-1.9.1.js"></script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">    
 </head>
-<body style="background: #f5f5f5;">
+<body style="background: #f5f5f5;" ontouchstart>
 	<div class="main">
 <% if(data.length === 0){ %>
 	<div class="text-center">
@@ -64,8 +66,8 @@
 			var issue = $('#issue').val();
 			var phone = $('#phone').val();
 			$.ajax({
-				url: '/users/service/issue',
-				type: 'post',
+				url: '/user/service',
+				type: 'put',
 				data:{
 					openid: openid,
 					out_trade_no: out_trade_no,
@@ -74,14 +76,23 @@
 					phone: phone
 				}
 			}).done(function(msg) {
-				alert('🙏谢谢反馈');
-				window.location.href = "http://www.ecough.cn/product/100001";
+				$.toast('谢谢反馈', function() {
+					location.replace(location.href);
+				});
 			}).fail(function() {
-				alert('网络繁忙，请稍后再试！');
+				$.toast("网络繁忙",'cancel',2000);
 			});
 		}	
 		</script>
 <% } %>		
 	</div>
+<script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
+<script src="/jqueryweui/lib/fastclick.js"></script>
+<script>
+$(function() {
+    FastClick.attach(document.body);
+});
+</script>
+<script src="/jqueryweui/js/jquery-weui.js"></script>	
 </body>
 </html>

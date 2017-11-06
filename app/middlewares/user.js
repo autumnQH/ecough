@@ -3,12 +3,25 @@ const Order = require('../proxy').Order;
 const WXSDK = require('../proxy').WXSDK;
 const pay = require('../utils/pay');
 const tools = require('../utils/tools');
+const moment = require('moment');
+const dao = require('../dao/admin');
 
 exports.index = async (ctx)=> {
-	let openid = ctx.session.openid;
-	//openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
-  ctx.state.data = await User.getUserByOpenId(openid);  
-  await ctx.render('user/index');
+    let openid = ctx.session.openid;
+    ctx.state.data = await User.getUserByOpenId(openid);  
+    await ctx.render('user/index');
+}
+
+exports.addUserPhone = async (ctx)=> {
+    var req = ctx.request.body;
+    var config = await dao.getConfig();
+    if(config.signup_phone_integral!= null) {
+        req.integral = config.signup_phone_integral;
+    }
+    User.setUserForPhone(req);
+    return ctx.body = {
+    code :1,msg :'绑定成功'  
+    }
 }
 
 exports.showGift = async (ctx)=> {
@@ -88,5 +101,43 @@ exports.showPartner = async (ctx)=> {
 	let openid = ctx.session.openid
 	ctx.state.data = await User.getUserByEnentKey(openid);
 	ctx.state.data2 = await User.getUserTotalConsume(openid);
-  await ctx.render('user/partner');	
+    await ctx.render('user/partner');	
+}
+
+exports.showService = async (ctx)=> {
+    let openid = ctx.session.openid;
+    ctx.state.data =  await Order.getOrderForTradeByOpenId(openid);
+    ctx.state.openid = openid;
+    await ctx.render('user/service');
+}
+
+exports.addService = async (ctx)=> {
+    let data = ctx.request.body;
+    data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+    User.setService(data);
+    return ctx.status = 204;
+}
+
+exports.showFAQ = async (ctx)=> {
+    ctx.state.data =  await User.getFAQ();
+    ctx.state.openid = ctx.session.openid;
+    await ctx.render('user/FAQ');
+}
+
+exports.showFAQById = async (ctx)=> {
+    var id = ctx.params.id;
+    ctx.state.data =  await User.getFAQById(id);
+    ctx.state.openid = ctx.session.openid;
+    await ctx.render('user/FAQ_info');     
+}
+
+exports.contactCustomService = async (ctx)=> {
+    let openid = ctx.session.openid;
+    var token = await WXSDK.getWeAccessToken();
+    var kf_account = await tools.customservice_getonlinekflist(token);
+    var status = await tools.customservice(token, openid, kf_account);
+    if(status.errcode==0&& status.errmsg=='ok'){
+    await tools.customSendMsg(token,openid, kf_account);
+    }
+    ctx.body = status;    
 }

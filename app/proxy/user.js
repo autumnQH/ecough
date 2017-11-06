@@ -1,4 +1,8 @@
 const user = require('../dao/user');
+const order = require('../dao/order');
+const service = require('../dao/service');
+const FAQ = require('../dao/FAQ');
+
 /**
  * 获取用户信息
  * @param {String} openid 用户标示
@@ -20,6 +24,14 @@ exports.removeUserByOpenId = (openid)=> {
  */
 exports.removeUserForEventKeyByOpenid = (openid)=> {
 	return user.removeUserForEventKeyByOpenid(openid);
+}
+
+/**
+ * 修改用户手机号码
+ * @parsm {Object} data 数据包
+ */
+exports.setUserForPhone = (data)=> {
+	return user.setUserPhone(data);
 }
 /**
  * 增加用户积分
@@ -119,4 +131,25 @@ exports.getUserByEnentKey = (eventKey)=> {
  */
 exports.getUserTotalConsume = (eventKey)=> {
 	return user.getUserTotalConsume(eventKey);
+}
+
+/**
+ * 添加一条售后服务
+ * @param {Object} data 数据包
+ */
+exports.setService = (data)=> {
+	return service.setService(data);
+}
+
+//获取常见问题
+exports.getFAQ = ()=> {
+	return FAQ.getFAQ();
+}
+
+/**
+ * 根据id获取一条常见问题
+ * @param {Int} id ID
+ */
+exports.getFAQById = (id)=> {
+	return FAQ.getFAQById(id);
 }
