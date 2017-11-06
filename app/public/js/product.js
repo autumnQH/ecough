@@ -119,8 +119,8 @@ $(function() {
         });
         wx.onMenuShareTimeline({//分享朋友圈
             title: '小咳嗽',
-            link: 'www.e-cough.com',
-            imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
+            link: 'www.e-cough.com/product/100003',
+            imgUrl: 'www.e-cough.com/uploads/1508250089609.jpeg',
             success: function(res) {
                 alert('分享');
             },
