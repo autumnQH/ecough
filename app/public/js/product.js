@@ -110,13 +110,13 @@ $(function() {
 
     wx.ready(function() {
         var opts = {
-            title: 'aa?',
-            link: 'http://www.e-cough.com/product/100001',
+            title: '双十一大促销: 买二赠一',
+            link: location.href.split('#')[0],
             imgUrl: 'http://www.e-cough.com/uploads/1508250089609.jpeg',
-            desc: '??'
+            desc: '双十一大促销: 买二赠一'
         };
         //分享朋友圈
-        wx.onMenuShareTimeline(opts);//分享朋友圈 end
+        wx.onMenuShareTimeline(opts);
     });//ready end       
     });//ajax end
 });
