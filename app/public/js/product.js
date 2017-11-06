@@ -105,18 +105,12 @@ $(function() {
           timestamp: msg.timestamp,
           nonceStr: msg.nonceStr,
           signature: msg.signature,
-          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
+          jsApiList: ['onMenuShareTimeline']
         });//wx/config end
 
     });//ajax end
     wx.ready(function() {
-        wx.checkJsApi({
-            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-            success: function(res) {
-                // 以键值对的形式返回，可用的api值true，不可用为false
-                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-            }
-        });
+
         wx.onMenuShareTimeline({//分享朋友圈
             title: '小咳嗽',
             link: 'www.e-cough.com/product/100003',
