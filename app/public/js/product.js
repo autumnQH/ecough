@@ -102,8 +102,8 @@ $(function() {
     }).done(function(msg) {
 
         var news = {
-            title: '双十一大促销:买二赠一',
-            desc: '双十一大促销:买二送一',
+            title: '小咳嗽',
+            desc: '小咳嗽',
             link: 'www.e-cough.com/product/100001',
             imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg'
         };
@@ -120,19 +120,13 @@ $(function() {
         wx.ready(function() {
             
             wx.onMenuShareTimeline({//分享朋友圈
-                title: '我知道被了',
+                title: '小咳嗽',
                 link: 'www.e-cough.com/product/100001',
                 imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
-                trigger: function(res) {
-
-                },
                 success: function(res) {
-                    alert('??ready');
+                    
                 },
                 cancel: function(res) {
-
-                },
-                fail: function(res) {
 
                 }
             });//分享朋友圈 end
