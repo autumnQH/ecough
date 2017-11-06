@@ -111,7 +111,7 @@ $(function() {
         wx.onMenuShareTimeline({//分享朋友圈
             title: '双十一大促销:买二赠一',
             link: location.href.split('#')[0],
-            imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
+            imgUrl: '',
             success: function() {
                 alert('成功');
             },
