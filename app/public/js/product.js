@@ -131,18 +131,18 @@ $(function() {
                 }
             });//分享朋友圈 end
 
-            // wx.onMenuShareAppMessage({//分享给朋友
-            //     title: news.title,
-            //     desc: news.desc,
-            //     link: news.link,
-            //     imgUrl: news.imgUrl,
-            //     success: function() {
+            wx.onMenuShareAppMessage({//分享给朋友
+                title: news.title,
+                desc: news.desc,
+                link: news.link,
+                imgUrl: news.imgUrl,
+                success: function() {
                     
-            //     },
-            //     cancel: function() {
+                },
+                cancel: function() {
                     
-            //     }
-            // });//分享给朋友 end
+                }
+            });//分享给朋友 end
 
             // wx.onMenuShareQQ({//分享到QQ
             //     title: news.title,
