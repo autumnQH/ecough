@@ -97,7 +97,7 @@ $(function() {
         url: '/wx/sdk',
         type: 'get',
         data:{
-          url: encodeURIComponent(location.href.split('#')[0])
+          url: encodeURIComponent('www.e-cough.com/product/100001')
         } 
     }).done(function(msg) {
 
