@@ -97,17 +97,9 @@ $(function() {
         url: '/wx/sdk',
         type: 'get',
         data:{
-          url: encodeURIComponent('www.e-cough.com/product/100001')
+          url: encodeURIComponent(location.href.split('#')[0])
         } 
     }).done(function(msg) {
-
-        var news = {
-            title: '小咳嗽',
-            desc: '小咳嗽',
-            link: 'www.e-cough.com/product/100001',
-            imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg'
-        };
-
         wx.config({
           debug: true,
           appId: msg.appid,
@@ -140,10 +132,10 @@ $(function() {
         });//分享朋友圈 end
 
         wx.onMenuShareAppMessage({//分享给朋友
-            title: news.title,
-            desc: news.desc,
-            link: news.link,
-            imgUrl: news.imgUrl,
+            title: '小咳嗽',
+            desc: '小咳嗽',
+            link: '小咳嗽',
+            imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
             success: function() {
                 
             },
