@@ -120,7 +120,7 @@ $(function() {
         //wx.ready(function() {
             
             wx.onMenuShareTimeline({//分享朋友圈
-                title: '双十一大促销:买二送一',
+                title: '我知道被屏蔽了',
                 link: 'www.e-cough.com/product/100001',
                 imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
                 success: function() {
