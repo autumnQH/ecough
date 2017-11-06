@@ -24,6 +24,10 @@ exports.setPackageData = async function (openid, pay_money, value,store_name, ip
         //sign: data.sign,//签名
     }; 
     var key = config.store_key;
+    // data.openid = 'oDC9Z0l_Ngjc36rTb7i86hgj57R4';
+    // data.appid = 'wxff24c10734aed1ef';
+    // data.mch_id = '1470073502'
+    // key = 'qwertyuiopasdfghjklzxcvbnm123456'; 
     var str = tools.raw(data);
     		str += '&key='+ key;
 

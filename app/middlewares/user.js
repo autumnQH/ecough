@@ -130,3 +130,14 @@ exports.showFAQById = async (ctx)=> {
     ctx.state.openid = ctx.session.openid;
     await ctx.render('user/FAQ_info');     
 }
+
+exports.contactCustomService = async (ctx)=> {
+    let openid = ctx.session.openid;
+    var token = await WXSDK.getWeAccessToken();
+    var kf_account = await tools.customservice_getonlinekflist(token);
+    var status = await tools.customservice(token, openid, kf_account);
+    if(status.errcode==0&& status.errmsg=='ok'){
+    await tools.customSendMsg(token,openid, kf_account);
+    }
+    ctx.body = status;    
+}

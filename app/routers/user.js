@@ -26,4 +26,5 @@ router.put('/service', checkUser, userController.addService);//添加用户售�
 router.get('/FAQ', checkUser, userController.showFAQ);//显示常见问题
 router.get('/FAQ/:id', checkUser, userController.showFAQById);//显示常见问题
 
+router.get('/customservice/api', checkUser, userController.contactCustomService);//联系客服
 module.exports= router;
