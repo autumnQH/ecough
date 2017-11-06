@@ -118,14 +118,6 @@ $(function() {
         });//wx/config end
 
         wx.ready(function() {
-            wx.checkJsApi({
-                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-                success: function(res) {
-                    alert(news.title);
-            // 以键值对的形式返回，可用的api值true，不可用为false
-            // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-                }
-            });
             
             wx.onMenuShareTimeline({//分享朋友圈
                 title: news.title,
@@ -192,5 +184,16 @@ $(function() {
             });//分享到QQ空间 end
         });//ready end
 
+            wx.onMenuShareTimeline({//分享朋友圈
+                title: '????',
+                link: 'www.baidu.com',
+                imgUrl: 'http://a.hiphotos.baidu.com/image/pic/item/77094b36acaf2edde3e75223841001e9380193e1.jpg',
+                success: function() {
+                    alert('????');
+                },
+                cancel: function() {
+                    
+                }
+            });//分享朋友圈 end        
     });//ajax end
 });
