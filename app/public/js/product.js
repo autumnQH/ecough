@@ -109,7 +109,7 @@ $(function() {
         };
 
         wx.config({
-          debug: true,
+          debug: false,
           appId: msg.appid,
           timestamp: msg.timestamp,
           nonceStr: msg.nonceStr,
@@ -125,9 +125,6 @@ $(function() {
                 imgUrl: 'http://a.hiphotos.baidu.com/image/pic/item/77094b36acaf2edde3e75223841001e9380193e1.jpg',
                 success: function() {
                     alert('??ready');
-                },
-                cancel: function() {
-                    
                 }
             });//分享朋友圈 end
 
