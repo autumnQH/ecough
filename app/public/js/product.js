@@ -119,25 +119,24 @@ $(function() {
             wx.checkJsApi({
                 jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
                 success: function(res) {
-                    alert(res);
             // 以键值对的形式返回，可用的api值true，不可用为false
             // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
                 }
             });
             
+            wx.onMenuShareTimeline({//分享朋友圈
+                title: news.title,
+                link: news.link,
+                imgUrl: news.imgUrl,
+                success: function() {
+                    alert('已分享');
+                },
+                cancel: function() {
+                    alert('已取消');
+                }
+            });//分享朋友圈 end
         });
 
-        wx.onMenuShareTimeline({//分享朋友圈
-            title: news.title,
-            link: news.link,
-            imgUrl: news.imgUrl,
-            success: function() {
-                alert('已分享');
-            },
-            cancel: function() {
-                alert('已取消');
-            }
-        });//分享朋友圈 end
 
         wx.onMenuShareAppMessage({//分享给朋友
             title: news.title,
