@@ -117,7 +117,7 @@ $(function() {
           jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
 
-        wx.ready(function() {
+  //      wx.ready(function() {
             
             wx.onMenuShareTimeline({//分享朋友圈
                 title: '小咳嗽',
@@ -131,57 +131,57 @@ $(function() {
                 }
             });//分享朋友圈 end
 
-            wx.onMenuShareAppMessage({//分享给朋友
-                title: news.title,
-                desc: news.desc,
-                link: news.link,
-                imgUrl: news.imgUrl,
-                success: function() {
+            // wx.onMenuShareAppMessage({//分享给朋友
+            //     title: news.title,
+            //     desc: news.desc,
+            //     link: news.link,
+            //     imgUrl: news.imgUrl,
+            //     success: function() {
                     
-                },
-                cancel: function() {
+            //     },
+            //     cancel: function() {
                     
-                }
-            });//分享给朋友 end
+            //     }
+            // });//分享给朋友 end
 
-            wx.onMenuShareQQ({//分享到QQ
-                title: news.title,
-                desc: news.desc,
-                link: news.link,
-                imgUrl: news.imgUrl,
-                success: function() {
+            // wx.onMenuShareQQ({//分享到QQ
+            //     title: news.title,
+            //     desc: news.desc,
+            //     link: news.link,
+            //     imgUrl: news.imgUrl,
+            //     success: function() {
                     
-                },
-                cancel: function() {
+            //     },
+            //     cancel: function() {
                     
-                }
-            });//分享到QQ end
+            //     }
+            // });//分享到QQ end
 
-            wx.onMenuShareWeibo({//分享到腾讯微博
-                title: news.title,
-                desc: news.desc,
-                link: news.link,
-                imgUrl: news.imgUrl,
-                success: function() {
+            // wx.onMenuShareWeibo({//分享到腾讯微博
+            //     title: news.title,
+            //     desc: news.desc,
+            //     link: news.link,
+            //     imgUrl: news.imgUrl,
+            //     success: function() {
                     
-                },
-                cancel: function() {
+            //     },
+            //     cancel: function() {
                     
-                }
-            });//分享到腾讯微博 end
+            //     }
+            // });//分享到腾讯微博 end
 
-            wx.onMenuShareQZone({//分享到QQ空间
-                title: news.title,
-                desc: news.desc,
-                link: news.link,
-                imgUrl: news.imgUrl,
-                success: function() {
+            // wx.onMenuShareQZone({//分享到QQ空间
+            //     title: news.title,
+            //     desc: news.desc,
+            //     link: news.link,
+            //     imgUrl: news.imgUrl,
+            //     success: function() {
                     
-                },
-                cancel: function() {
+            //     },
+            //     cancel: function() {
                     
-                }
-            });//分享到QQ空间 end
-        });//ready end       
+            //     }
+            // });//分享到QQ空间 end
+  //      });//ready end       
     });//ajax end
 });
