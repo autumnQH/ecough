@@ -120,11 +120,11 @@ $(function() {
         wx.ready(function() {
             
             wx.onMenuShareTimeline({//分享朋友圈
-                title: news.title,
-                link: news.link,
+                title: '双十一大促销:买二送一',
+                link: 'www.e-cough.com/product/100001',
                 imgUrl: 'http://a.hiphotos.baidu.com/image/pic/item/77094b36acaf2edde3e75223841001e9380193e1.jpg',
                 success: function() {
-                    
+                    alert('??ready');
                 },
                 cancel: function() {
                     
