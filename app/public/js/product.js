@@ -92,6 +92,13 @@ $(function() {
 
     $('#menu_specifications button').eq(0).click();
 
+    var news = {
+        title: '双十一大促销:买二赠一',
+        desc: '双十一大促销:买二送一',
+        link: 'www.e-cough.com/product/100001',
+        imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg'
+    };
+
     $.ajax({
         url: '/wx/sdk',
         type: 'get',
@@ -109,15 +116,67 @@ $(function() {
         });//wx/config end
 
         wx.onMenuShareTimeline({//分享朋友圈
-            title: '双十一大促销:买二赠一',
-            link: location.href.split('#')[0],
-            imgUrl: '',
+            title: news.title,
+            link: news.link,
+            imgUrl: news.imgUrl,
             success: function() {
-                alert('成功');
+                alert('已分享');
             },
             cancel: function() {
-                alert('取消');
+                alert('已取消');
             }
         });//分享朋友圈 end
+
+        wx.onMenuShareAppMessage({//分享给朋友
+            title: news.title,
+            desc: news.desc,
+            link: news.link,
+            imgUrl: news.imgUrl,
+            success: function() {
+                alert('已分享');
+            },
+            cancel: function() {
+                alert('已取消');
+            }
+        });//分享给朋友 end
+
+        wx.onMenuShareQQ({//分享到QQ
+            title: news.title,
+            desc: news.desc,
+            link: news.link,
+            imgUrl: news.imgUrl,
+            success: function() {
+                alert('已分享');
+            },
+            cancel: function() {
+                alert('已取消');
+            }
+        });//分享到QQ end 
+
+        wx.onMenuShareWeibo({//分享到腾讯微博
+            title: news.title,
+            desc: news.desc,
+            link: news.link,
+            imgUrl: news.imgUrl,
+            success: function() {
+                alert('已分享');
+            },
+            cancel: function() {
+                alert('已取消'); 
+            }
+        });//分享到腾讯微博 end
+
+        wx.onMenuShareQZone({//分享到QQ空间
+            title: news.title,
+            desc: news.desc,
+            link: news.link,
+            imgUrl: news.imgUrl,
+            success: function() {
+                alert('已分享');
+            },
+            cancel: function() {
+                alert('已取消'); 
+            }
+        });//分享到QQ空间 end
     });//ajax end
 });
