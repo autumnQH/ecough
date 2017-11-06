@@ -109,17 +109,14 @@ $(function() {
         });//wx/config end
 
     wx.ready(function() {
-        wx.onMenuShareTimeline({//分享朋友圈
-            title: '小咳嗽',
+        var opts = {
+            title: 'aa?',
             link: 'http://www.e-cough.com/product/100001',
             imgUrl: 'http://www.e-cough.com/uploads/1508250089609.jpeg',
-            success: function(res) {
-                alert('分享');
-            },
-            cancel: function(res) {
-                alert('取消');
-            }
-        });//分享朋友圈 end
+            desc: '??'
+        };
+        //分享朋友圈
+        wx.onMenuShareTimeline(opts);//分享朋友圈 end
     });//ready end       
     });//ajax end
 });
