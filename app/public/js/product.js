@@ -108,6 +108,7 @@ $(function() {
           jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
 
+    });//ajax end
     wx.ready(function() {
         wx.checkJsApi({
             jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
@@ -121,65 +122,12 @@ $(function() {
             link: 'www.e-cough.com',
             imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
             success: function(res) {
-                
+                alert('分享');
             },
             cancel: function(res) {
-
+                alert('取消');
             }
         });//分享朋友圈 end
-
-        // wx.onMenuShareAppMessage({//分享给朋友
-        //     title: '小咳嗽',
-        //     desc: '小咳嗽',
-        //     link: 'www.e-cough.com/product/100001',
-        //     imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
-        //     success: function() {
-                
-        //     },
-        //     cancel: function() {
-                
-        //     }
-        // });//分享给朋友 end
-
-        // wx.onMenuShareQQ({//分享到QQ
-        //     title: news.title,
-        //     desc: news.desc,
-        //     link: news.link,
-        //     imgUrl: news.imgUrl,
-        //     success: function() {
-                
-        //     },
-        //     cancel: function() {
-                
-        //     }
-        // });//分享到QQ end
-
-        // wx.onMenuShareWeibo({//分享到腾讯微博
-        //     title: news.title,
-        //     desc: news.desc,
-        //     link: news.link,
-        //     imgUrl: news.imgUrl,
-        //     success: function() {
-                
-        //     },
-        //     cancel: function() {
-                
-        //     }
-        // });//分享到腾讯微博 end
-
-        // wx.onMenuShareQZone({//分享到QQ空间
-        //     title: news.title,
-        //     desc: news.desc,
-        //     link: news.link,
-        //     imgUrl: news.imgUrl,
-        //     success: function() {
-                
-        //     },
-        //     cancel: function() {
-                
-        //     }
-        // });//分享到QQ空间 end
     });//ready end       
-    });//ajax end
 });
 
