@@ -111,7 +111,7 @@ $(function() {
     wx.ready(function() {
         wx.onMenuShareTimeline({//分享朋友圈
             title: '小咳嗽',
-            link: 'http://www.e-cough.com/product/100001',
+            link: 'http://www.e-cough.com/product/10001',
             imgUrl: 'http://www.e-cough.com/uploads/1508250089609.jpeg',
             success: function(res) {
                 alert('分享');
