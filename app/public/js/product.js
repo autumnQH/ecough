@@ -93,6 +93,9 @@ $(function() {
     $('#menu_specifications button').eq(0).click();
 
 
+
+});
+
     $.ajax({
         url: '/wx/sdk',
         type: 'get',
@@ -108,8 +111,6 @@ $(function() {
           signature: msg.signature,
           jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
-
-    });//ajax end
 
     wx.ready(function() {
         wx.checkJsApi({
@@ -183,4 +184,4 @@ $(function() {
         //     }
         // });//分享到QQ空间 end
     });//ready end       
-});
+    });//ajax end
