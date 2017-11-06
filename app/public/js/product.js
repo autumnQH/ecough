@@ -117,12 +117,12 @@ $(function() {
           jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
 
-        wx.ready(function() {
+        //wx.ready(function() {
             
             wx.onMenuShareTimeline({//分享朋友圈
                 title: '双十一大促销:买二送一',
                 link: 'www.e-cough.com/product/100001',
-                imgUrl: 'http://a.hiphotos.baidu.com/image/pic/item/77094b36acaf2edde3e75223841001e9380193e1.jpg',
+                imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
                 success: function() {
                     alert('??ready');
                 }
@@ -179,6 +179,6 @@ $(function() {
                     
                 }
             });//分享到QQ空间 end
-        });//ready end       
+       // });//ready end       
     });//ajax end
 });
