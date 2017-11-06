@@ -92,10 +92,6 @@ $(function() {
 
     $('#menu_specifications button').eq(0).click();
 
-
-
-});
-
     $.ajax({
         url: '/wx/sdk',
         type: 'get',
@@ -122,7 +118,7 @@ $(function() {
         });
         wx.onMenuShareTimeline({//分享朋友圈
             title: '小咳嗽',
-            link: 'www.e-cough.com/product/100001',
+            link: 'www.e-cough.com',
             imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
             success: function(res) {
                 
@@ -132,18 +128,18 @@ $(function() {
             }
         });//分享朋友圈 end
 
-        wx.onMenuShareAppMessage({//分享给朋友
-            title: '小咳嗽',
-            desc: '小咳嗽',
-            link: '小咳嗽',
-            imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
-            success: function() {
+        // wx.onMenuShareAppMessage({//分享给朋友
+        //     title: '小咳嗽',
+        //     desc: '小咳嗽',
+        //     link: 'www.e-cough.com/product/100001',
+        //     imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
+        //     success: function() {
                 
-            },
-            cancel: function() {
+        //     },
+        //     cancel: function() {
                 
-            }
-        });//分享给朋友 end
+        //     }
+        // });//分享给朋友 end
 
         // wx.onMenuShareQQ({//分享到QQ
         //     title: news.title,
@@ -185,3 +181,5 @@ $(function() {
         // });//分享到QQ空间 end
     });//ready end       
     });//ajax end
+});
+
