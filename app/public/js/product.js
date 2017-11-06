@@ -131,14 +131,27 @@ $(function() {
                 link: news.link,
                 imgUrl: news.imgUrl,
                 success: function() {
-                    alert('已分享');
+                    
                 },
                 cancel: function() {
-                    alert('已取消');
+                    
                 }
             });//分享朋友圈 end
 
             wx.onMenuShareAppMessage({//分享给朋友
+                title: news.title,
+                desc: news.desc,
+                link: news.link,
+                imgUrl: news.imgUrl,
+                success: function() {
+                    
+                },
+                cancel: function() {
+                    
+                }
+            });//分享给朋友 end
+
+            wx.onMenuShareQQ({//分享到QQ
                 title: news.title,
                 desc: news.desc,
                 link: news.link,
@@ -149,48 +162,34 @@ $(function() {
                 cancel: function() {
                     alert('已取消');
                 }
-            });//分享给朋友 end
+            });//分享到QQ end
+
+            wx.onMenuShareWeibo({//分享到腾讯微博
+                title: news.title,
+                desc: news.desc,
+                link: news.link,
+                imgUrl: news.imgUrl,
+                success: function() {
+                    alert('已分享');
+                },
+                cancel: function() {
+                    alert('已取消'); 
+                }
+            });//分享到腾讯微博 end
+
+            wx.onMenuShareQZone({//分享到QQ空间
+                title: news.title,
+                desc: news.desc,
+                link: news.link,
+                imgUrl: news.imgUrl,
+                success: function() {
+                    alert('已分享');
+                },
+                cancel: function() {
+                    alert('已取消'); 
+                }
+            });//分享到QQ空间 end
         });//ready end
 
-
-
-        wx.onMenuShareQQ({//分享到QQ
-            title: news.title,
-            desc: news.desc,
-            link: news.link,
-            imgUrl: news.imgUrl,
-            success: function() {
-                alert('已分享');
-            },
-            cancel: function() {
-                alert('已取消');
-            }
-        });//分享到QQ end 
-
-        wx.onMenuShareWeibo({//分享到腾讯微博
-            title: news.title,
-            desc: news.desc,
-            link: news.link,
-            imgUrl: news.imgUrl,
-            success: function() {
-                alert('已分享');
-            },
-            cancel: function() {
-                alert('已取消'); 
-            }
-        });//分享到腾讯微博 end
-
-        wx.onMenuShareQZone({//分享到QQ空间
-            title: news.title,
-            desc: news.desc,
-            link: news.link,
-            imgUrl: news.imgUrl,
-            success: function() {
-                alert('已分享');
-            },
-            cancel: function() {
-                alert('已取消'); 
-            }
-        });//分享到QQ空间 end
     });//ajax end
 });
