@@ -114,7 +114,7 @@ wx.ready(function() {
     var opts = {
         title: '双十一大促销: 买二赠一',
         link: location.href.split('#')[0],
-        imgUrl: 'http://www.e-cough.com/uploads/1508250089609.jpeg',
+        imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
         desc: '双十一大促销: 买二赠一'
     };
     //分享朋友圈
