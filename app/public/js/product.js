@@ -108,9 +108,7 @@ $(function() {
           jsApiList: ['onMenuShareTimeline']
         });//wx/config end
 
-    });//ajax end
     wx.ready(function() {
-
         wx.onMenuShareTimeline({//分享朋友圈
             title: '小咳嗽',
             link: 'www.e-cough.com/product/100003',
@@ -123,5 +121,6 @@ $(function() {
             }
         });//分享朋友圈 end
     });//ready end       
+    });//ajax end
 });
 
