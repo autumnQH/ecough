@@ -92,12 +92,6 @@ $(function() {
 
     $('#menu_specifications button').eq(0).click();
 
-    var news = {
-        title: '双十一大促销:买二赠一',
-        desc: '双十一大促销:买二送一',
-        link: 'www.e-cough.com/product/100001',
-        imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg'
-    };
 
     $.ajax({
         url: '/wx/sdk',
@@ -106,6 +100,14 @@ $(function() {
           url: encodeURIComponent(location.href.split('#')[0])
         } 
     }).done(function(msg) {
+
+        var news = {
+            title: '双十一大促销:买二赠一',
+            desc: '双十一大促销:买二送一',
+            link: 'www.e-cough.com/product/100001',
+            imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg'
+        };
+
         wx.config({
           debug: true,
           appId: msg.appid,
@@ -135,21 +137,22 @@ $(function() {
                     alert('已取消');
                 }
             });//分享朋友圈 end
-        });
+
+            wx.onMenuShareAppMessage({//分享给朋友
+                title: news.title,
+                desc: news.desc,
+                link: news.link,
+                imgUrl: news.imgUrl,
+                success: function() {
+                    alert('已分享');
+                },
+                cancel: function() {
+                    alert('已取消');
+                }
+            });//分享给朋友 end
+        });//ready end
 
 
-        wx.onMenuShareAppMessage({//分享给朋友
-            title: news.title,
-            desc: news.desc,
-            link: news.link,
-            imgUrl: news.imgUrl,
-            success: function() {
-                alert('已分享');
-            },
-            cancel: function() {
-                alert('已取消');
-            }
-        });//分享给朋友 end
 
         wx.onMenuShareQQ({//分享到QQ
             title: news.title,
