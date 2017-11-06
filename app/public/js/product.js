@@ -91,7 +91,7 @@ $(function() {
     });
 
     $('#menu_specifications button').eq(0).click();
-    alert(location.href.split('#')[0]);
+
     $.ajax({
         url: '/wx/sdk',
         type: 'get',
@@ -100,7 +100,7 @@ $(function() {
         } 
     }).done(function(msg) {
         wx.config({
-          debug: false,
+          debug: true,
           appId: msg.appid,
           timestamp: msg.timestamp,
           nonceStr: msg.nonceStr,
