@@ -125,7 +125,7 @@ $(function() {
                 imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
                 trigger: function(res) {
 
-                }
+                },
                 success: function(res) {
                     alert('??ready');
                 },
