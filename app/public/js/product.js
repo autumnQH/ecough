@@ -157,10 +157,10 @@ $(function() {
                 link: news.link,
                 imgUrl: news.imgUrl,
                 success: function() {
-                    alert('已分享');
+                    
                 },
                 cancel: function() {
-                    alert('已取消');
+                    
                 }
             });//分享到QQ end
 
@@ -170,10 +170,10 @@ $(function() {
                 link: news.link,
                 imgUrl: news.imgUrl,
                 success: function() {
-                    alert('已分享');
+                    
                 },
                 cancel: function() {
-                    alert('已取消'); 
+                    
                 }
             });//分享到腾讯微博 end
 
@@ -183,10 +183,10 @@ $(function() {
                 link: news.link,
                 imgUrl: news.imgUrl,
                 success: function() {
-                    alert('已分享');
+                    
                 },
                 cancel: function() {
-                    alert('已取消'); 
+                    
                 }
             });//分享到QQ空间 end
         });//ready end
