@@ -117,7 +117,7 @@ $(function() {
           jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
 
-        //wx.ready(function() {
+        wx.ready(function() {
             
             wx.onMenuShareTimeline({//分享朋友圈
                 title: '我知道被了',
@@ -188,6 +188,6 @@ $(function() {
                     
                 }
             });//分享到QQ空间 end
-       // });//ready end       
+        });//ready end       
     });//ajax end
 });
