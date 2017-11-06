@@ -105,19 +105,27 @@ $(function() {
           timestamp: msg.timestamp,
           nonceStr: msg.nonceStr,
           signature: msg.signature,
-          jsApiList: ['onMenuShareTimeline']
+          jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
-
-    wx.ready(function() {
-        var opts = {
-            title: '双十一大促销: 买二赠一',
-            link: location.href.split('#')[0],
-            imgUrl: 'http://www.e-cough.com/uploads/1508250089609.jpeg',
-            desc: '双十一大促销: 买二赠一'
-        };
-        //分享朋友圈
-        wx.onMenuShareTimeline(opts);
-    });//ready end       
     });//ajax end
 });
+
+wx.ready(function() {
+    var opts = {
+        title: '双十一大促销: 买二赠一',
+        link: location.href.split('#')[0],
+        imgUrl: 'http://www.e-cough.com/uploads/1508250089609.jpeg',
+        desc: '双十一大促销: 买二赠一'
+    };
+    //分享朋友圈
+    wx.onMenuShareTimeline(opts);
+    //分享给朋友
+    wx.onMenuShareAppMessage(opts);
+    //分享到QQ
+    wx.onMenuShareQQ(opts);
+    //分享到腾讯微博
+    wx.onMenuShareWeibo(opts);
+    //分享到QQ空间
+    wx.onMenuShareQZone(opts);
+});//ready end       
 
