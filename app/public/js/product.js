@@ -122,7 +122,7 @@ $(function() {
             wx.onMenuShareTimeline({//分享朋友圈
                 title: news.title,
                 link: news.link,
-                imgUrl: news.imgUrl,
+                imgUrl: 'http://a.hiphotos.baidu.com/image/pic/item/77094b36acaf2edde3e75223841001e9380193e1.jpg',
                 success: function() {
                     
                 },
@@ -182,18 +182,6 @@ $(function() {
                     
                 }
             });//分享到QQ空间 end
-        });//ready end
-
-            wx.onMenuShareTimeline({//分享朋友圈
-                title: '????',
-                link: 'www.baidu.com',
-                imgUrl: 'http://a.hiphotos.baidu.com/image/pic/item/77094b36acaf2edde3e75223841001e9380193e1.jpg',
-                success: function() {
-                    alert('????');
-                },
-                cancel: function() {
-                    
-                }
-            });//分享朋友圈 end        
+        });//ready end       
     });//ajax end
 });
