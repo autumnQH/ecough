@@ -112,7 +112,7 @@ $(function() {
 
 wx.ready(function() {
     var opts = {
-        title: '双十一大促销: 买二赠一',
+        title: '空气净化器伴侣—小咳嗽防雾霾窗贴',
         link: location.href.split('#')[0],
         imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
         desc: '双十一大促销: 买二赠一'
