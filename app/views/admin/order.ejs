@@ -132,18 +132,20 @@ $(function() {
     });
   
     $("table").on("click","td:nth-child(11)",function(e){
-      var tr = $(this).parent();
-      var arr = []
-      tr.children().map(function(el){
-          arr.push($(this)[0].innerText)
-      })
-        $('#myModalLabel').text(arr[10]);//标题
-        $('#current_name2').val(arr[0]);
-        $('#current_phone2').val(arr[1]);
-        $('#current_address2').val(arr[2]);
-        $('#current_out_trade_no2').val(arr[9]);//订单号
-        $('#delivery_track_no2').val(arr[12]);
-        $('#myModal2').modal('show');        
+      if(arr[10]!='待发货'){
+        var tr = $(this).parent();
+        var arr = []
+        tr.children().map(function(el){
+            arr.push($(this)[0].innerText)
+        })
+          $('#myModalLabel').text(arr[10]);//标题
+          $('#current_name2').val(arr[0]);
+          $('#current_phone2').val(arr[1]);
+          $('#current_address2').val(arr[2]);
+          $('#current_out_trade_no2').val(arr[9]);//订单号
+          $('#delivery_track_no2').val(arr[12]);
+          $('#myModal2').modal('show');        
+      }
     });
 });
 </script>
