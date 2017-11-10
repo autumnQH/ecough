@@ -181,7 +181,7 @@ $(function() {
         <input type="hidden" name="status" value="3"> 
           <div class="form-group">
             <label for="delivery_track_no">物流号</label>
-            <input type="number" class="form-control"  name="delivery_track_no" id="delivery_track_no" readonly="true">
+            <input type="number" class="form-control"  name="delivery_track_no" id="delivery_track_no">
           </div> 
           <div class="form-group">
             <label for="delivery_track_no">件数</label>
@@ -204,7 +204,14 @@ $(function() {
   </div>
 </div>
 
-
+<script>
+  var delivery_track_no = $('#delivery_track_no').val();
+  if(delivery_track_no.length > 10){
+    alert('true');
+  }else{
+    alert('??');
+  }
+</script>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -244,7 +251,7 @@ $(function() {
           </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button type="submit" class="btn btn-primary" id="sub" >确定</button>
+          <button type="submit" class="btn btn-primary" >确定</button>
         </div>
         </form>
       </div>
