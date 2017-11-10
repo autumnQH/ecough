@@ -205,12 +205,14 @@ $(function() {
 </div>
 
 <script>
-  var delivery_track_no = $('#delivery_track_no').val();
-  if(delivery_track_no.length > 10){
-    alert('true');
-  }else{
-    alert('??');
-  }
+  $('#sub').on('click', function() {
+    var delivery_track_no = $('#delivery_track_no').val();
+    if(delivery_track_no.length > 10){
+      alert('true');
+    }else{
+      alert('??');
+    }
+  });
 </script>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
   <div class="modal-dialog" role="document">
