@@ -221,7 +221,9 @@ $(function() {
       break;
     }
     var index = parseInt(mail); //快递下拉框选择索引
+    console.log(mail);
     console.log(index,'index');
+    e.preventDefault();
     if (!companyReg[index].exec(no.val())){ 
       alert("物流编号格式不正确\n" + msg[index]);
       no.focus();
@@ -230,7 +232,6 @@ $(function() {
       console.log('??');
       e.preventDefault();
     }
-    e.preventDefault();
   });
 </script>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
