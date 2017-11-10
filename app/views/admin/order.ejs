@@ -209,8 +209,10 @@ $(function() {
     var no = $('#delivery_track_no');
     var companyReg = new Array();
     companyReg[0] = /^[0-9]{12}$/;//申通
+    companyReg[1] = //;
     var msg = new Array();
     msg[0] = '申通快递单号由12位数字组成,目前常见以268**、368**、58**等开头.';
+    msg[1] = '百世快递单号是9~16位的数字和字母哦';
     var mail = $('#delivery_company').val();
     switch(mail) {
       case 'shentong':
@@ -221,16 +223,14 @@ $(function() {
       break;
     }
     var index = parseInt(mail); //快递下拉框选择索引
-    console.log(mail);
-    console.log(index,'index');
-    e.preventDefault();
+    
     if (!companyReg[index].exec(no.val())){ 
       alert("物流编号格式不正确\n" + msg[index]);
       no.focus();
       e.preventDefault();
     }else{
       console.log('??');
-      e.preventDefault();
+      return true;
     }
   });
 </script>
