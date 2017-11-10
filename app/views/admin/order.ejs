@@ -206,7 +206,13 @@ $(function() {
 
 <script>
   $('#form').submit(function(e) {
-    e.preventDefault();
+    var delivery_track_no = $('#delivery_track_no').val();
+    alert(delivery_track_no);
+    if(delivery_track_no.length < 10){
+      e.preventDefault();
+    }else{
+      alert('sub');
+    }
   });
 </script>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
