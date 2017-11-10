@@ -206,9 +206,19 @@ $(function() {
 
 <script>
   $('#form').submit(function(e) {
-    var delivery_track_no = $('#delivery_track_no').val();
-    alert(delivery_track_no);
-    if(delivery_track_no.length < 10){
+    var no = $('#delivery_track_no').val();
+    var companyReg = new Array();
+    companyReg[0] = /^[0-9]{12}$/;//申通
+    var msg = new Array();
+    msg[0] = '申通快递单号由12位数字组成,目前常见以268**、368**、58**等开头.';
+    var mail = $('#delivery_company');
+    console.log(mail.val(),'val');
+    console.log(mail);
+    var index = parseInt(mail.val()); //快递下拉框选择索引
+    console.log(index,'index');
+    if (!companyReg[index].exec(no.val())){ 
+      alert("物流编号格式不正确\n" + msg[index]);
+      no.focus();
       e.preventDefault();
     }else{
       alert('sub');
