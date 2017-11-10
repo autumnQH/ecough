@@ -224,6 +224,7 @@ $(function() {
     }
     var index = parseInt(mail); //快递下拉框选择索引
     try{
+      index = 2;
       if (!companyReg[index].exec(no.val())){ 
         alert("物流编号格式不正确\n" + msg[index]);
         no.focus();
