@@ -173,7 +173,7 @@ $(function() {
           <label for="current_address">地址</label>
           <input type="text" class="form-control" name="current_address" id="current_address" readonly="true">
         </div> 
-        <form action="/admin/order/express" method="post">  
+        <form action="/admin/order/express" method="post" id="form">  
         <div class="form-group">
           <label for="current_out_trade_no">订单号</label>
           <input type="text" class="form-control" name="out_trade_no" id="current_out_trade_no" readonly="true"> 
@@ -205,13 +205,8 @@ $(function() {
 </div>
 
 <script>
-  $('#sub').on('click', function() {
-    var delivery_track_no = $('#delivery_track_no').val();
-    if(delivery_track_no.length > 10){
-      alert('true');
-    }else{
-      alert('??');
-    }
+  $('#form').submit(function() {
+    e.preventDefault();
   });
 </script>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
