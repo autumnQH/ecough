@@ -211,10 +211,16 @@ $(function() {
     companyReg[0] = /^[0-9]{12}$/;//申通
     var msg = new Array();
     msg[0] = '申通快递单号由12位数字组成,目前常见以268**、368**、58**等开头.';
-    var mail = $('#delivery_company');
-    console.log(mail.val(),'val');
-    console.log(mail);
-    var index = parseInt(mail.val()); //快递下拉框选择索引
+    var mail = $('#delivery_company').val();
+    switch(mail.val()) {
+      case 'shentong':
+      mail = 0;
+      break;
+      case 'huitongkuaidi':
+      mail =1;
+      break;
+    }
+    var index = parseInt(mail); //快递下拉框选择索引
     console.log(index,'index');
     if (!companyReg[index].exec(no.val())){ 
       alert("物流编号格式不正确\n" + msg[index]);
