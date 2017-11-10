@@ -223,14 +223,17 @@ $(function() {
       break;
     }
     var index = parseInt(mail); //快递下拉框选择索引
-    
-    if (!companyReg[index].exec(no.val())){ 
-      alert("物流编号格式不正确\n" + msg[index]);
-      no.focus();
+    try{
+      if (!companyReg[index].exec(no.val())){ 
+        alert("物流编号格式不正确\n" + msg[index]);
+        no.focus();
+        e.preventDefault();
+      }else{
+        return true;
+      }
+    }catch(){
+      alert('??');
       e.preventDefault();
-    }else{
-      console.log('??');
-      return true;
     }
   });
 </script>
