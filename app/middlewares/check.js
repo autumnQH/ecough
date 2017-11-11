@@ -8,7 +8,6 @@ module.exports = {
 		  ctx.session.referer = '/admin'
 		  if(ctx.url != '/sign'){
 		    ctx.session.referer = ctx.url;
-		    console.log(ctx.session.referer,'referer');
 		  }
 			return ctx.redirect('/sign');
 		}
