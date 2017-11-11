@@ -17,7 +17,8 @@ exports.SignIn = async (ctx) => {
   var pwd = crypto.createHash('md5').update(password,'utf8').digest('hex').toUpperCase();
   if(name ==='root' && pwd ==='448C734BAB346602663CF807DAA5EB2B'){
       ctx.session.admin = admin;
-     await ctx.redirect(ctx.session.referer);
+      console.log(ctx.session.referer,'admin');
+     await ctx.redirect(ctx.session.referer || '/admin');
   }else{
      await ctx.redirect('back');
   }	
