@@ -122,6 +122,8 @@ $(function() {
           case '百世': 
           arr[11] =  'huitongkuaidi'
           break;
+          case '圆通':
+          arr[11] = 'yuantong'
           default:
           arr[11] = 'shentong'
           break;
@@ -192,6 +194,7 @@ $(function() {
             <select name="delivery_company" id="delivery_company" class="form-control">
               <option value="shentong">申通</option>
               <option value="huitongkuaidi">百世</option>
+              <option value="yuantong">圆通</option>
             </select>
           </div>
         <div class="modal-footer">
@@ -209,10 +212,12 @@ $(function() {
     var no = $('#delivery_track_no');
     var companyReg = new Array();
     companyReg[0] = /^[0-9]{12}$/;//申通
-    companyReg[1] = /^[a-z0-9A-Z]{9,16}$/;
+    companyReg[1] = /^[a-z0-9A-Z]{9,16}$/;//百世
+    companyReg[2] = /^[a-z-A-Z-0-9]{10}$/;//圆通
     var msg = new Array();
     msg[0] = '申通快递单号由12位数字组成,目前常见以268**、368**、58**等开头.';
     msg[1] = '百世快递单号由9~16位的数字和字母组成.';
+    msg[2] = '圆通快递单号由10位字母数字组成,目前常见以1*、2*、6*、8*、V*等开头.';
     var mail = $('#delivery_company').val();
     switch(mail) {
       case 'shentong':

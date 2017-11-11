@@ -36,6 +36,9 @@ exports.showOrder = async (ctx)=> {
           case 'huitongkuaidi':
           data.delivery_company = '百世';
           break;
+          case 'yuantong':
+          data.delivery_company = '圆通';
+          break;
         } 
   });
   ctx.state.data = datas;
