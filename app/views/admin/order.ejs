@@ -224,7 +224,10 @@ $(function() {
       mail = 0;
       break;
       case 'huitongkuaidi':
-      mail =1;
+      mail = 1;
+      break;
+      case 'yuantong':
+      mail = 2;
       break;
     }
     var index = parseInt(mail); //快递下拉框选择索引
@@ -237,7 +240,7 @@ $(function() {
         return true;
       }
     }catch(err){
-      alert('请联系管理员');
+      alert('系统错误！请联系管理员');
       e.preventDefault();
     }
   });
