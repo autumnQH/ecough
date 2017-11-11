@@ -123,10 +123,8 @@ $(function() {
           arr[11] =  'huitongkuaidi'
           break;
           case '圆通':
-          arr[11] = 'yuantong'
-          default:
-          arr[11] = 'shentong'
-          break;
+          arr[11] = 'yuantong';
+          break
         }
         $('#delivery_company').val(arr[11]);
         $('#myModal').modal('show');        
@@ -233,7 +231,7 @@ $(function() {
     var index = parseInt(mail); //快递下拉框选择索引
     try{
       if (!companyReg[index].exec(no.val())){ 
-        alert("物流编号格式不正确\n" + msg[index]);
+        alert("物流编号格式不正确!\n" + msg[index]);
         no.focus();
         e.preventDefault();
       }else{
