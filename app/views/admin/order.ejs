@@ -124,7 +124,10 @@ $(function() {
           break;
           case '圆通':
           arr[11] = 'yuantong';
-          break
+          break;
+          default :
+          arr[11] = 'shentong',
+          break;
         }
         $('#delivery_company').val(arr[11]);
         $('#myModal').modal('show');        
