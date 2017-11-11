@@ -117,17 +117,16 @@ $(function() {
         $('#total').val(arr[4]);
         switch(arr[11]){
           case '申通':
-          arr[11] = 'shentong'
+          arr[11] = 'shentong';
           break;
           case '百世': 
-          arr[11] =  'huitongkuaidi'
+          arr[11] =  'huitongkuaidi';
           break;
           case '圆通':
           arr[11] = 'yuantong';
           break;
-          default :
-          arr[11] = 'shentong',
-          break;
+          default:
+          arr[11] = 'shentong';
         }
         $('#delivery_company').val(arr[11]);
         $('#myModal').modal('show');        
