@@ -213,7 +213,7 @@ $(function() {
     var companyReg = new Array();
     companyReg[0] = /^[0-9]{12}$/;//申通
     companyReg[1] = /^[a-z0-9A-Z]{9,16}$/;//百世
-    companyReg[2] = /^[a-z-A-Z-0-9]{10}$/;//圆通
+    companyReg[2] = /^[a-z-A-Z-0-9]{10,12}$/;//圆通
     var msg = new Array();
     msg[0] = '申通快递单号由12位数字组成,目前常见以268**、368**、58**等开头.';
     msg[1] = '百世快递单号由9~16位的数字和字母组成.';
@@ -232,7 +232,7 @@ $(function() {
     }
     var index = parseInt(mail); //快递下拉框选择索引
     try{
-      if (!companyReg[index].exec(no.val())){ 
+      if (!companyReg[index].exec($.trim(no.val()))){ 
         alert("物流编号格式不正确!\n" + msg[index]);
         no.focus();
         e.preventDefault();
