@@ -119,11 +119,8 @@ exports.addService = async (ctx)=> {
 }
 
 exports.showFAQ = async (ctx)=> {
-    console.log('asd?');
     ctx.state.data =  await User.getFAQ();
-    console.log('asd?');
     ctx.state.openid = ctx.session.openid;
-    console.log('asd?11');
     await ctx.render('user/FAQ');
 }
 

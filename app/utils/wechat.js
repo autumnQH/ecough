@@ -55,7 +55,7 @@ exports.createMenu = async (menu, token) => {
             },{
                 type: 'view',
                 name: '联系客服',
-                url: host+'/users/FAQ'                
+                url: host+'/user/FAQ'                
             },{
                 type: 'view',
                 name: '礼物兑换',
