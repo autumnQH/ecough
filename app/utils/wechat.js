@@ -102,7 +102,42 @@ exports.transfer2CustomerService = (msg) => {
 exports.createMenu = async (menu, token) => {
     let options = {
         url: 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' + token,
-        form: require(menu),
+        form: JSON.stringify({  
+  "button":[  
+    {  
+      "type":"view",  
+      "name":"产品订购",
+      "url":"http://www.c-fafn.com/product/100001"
+    },
+    {
+      "name":"自助服务",
+      "sub_button": [
+        {  
+          "type":"view",  
+          "name":"我的订单",
+          "url":"http://www.c-fafn.com/users/my/order"
+        },{  
+          "type":"view",  
+          "name":"联系客服",
+          "url":"http://www.c-fafn.com/users/service"
+        },{
+          "type":"view",
+          "name":"我的地址",
+          "url": "http://www.c-fafn.com/users/getUserAddress"
+        },{
+          "type":"view",
+          "name":"福利二维码",
+          "url":"http://www.c-fafn.com/users/code"
+        },{
+          "type": "view",
+          "name": "个人中心",
+          "url": "http://www.c-fafn.com/users/user"
+        }      
+      ]
+    }
+  ]  
+}
+),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
