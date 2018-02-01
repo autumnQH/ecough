@@ -99,6 +99,25 @@ exports.transfer2CustomerService = (msg) => {
 //     });
 // }
 
+exports.createMenu = async (menu, token) => {
+    let options = {
+        url: 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' + token,
+        form: JSON.stringify(require(menu)),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    request.post(options, function (err, res, body) {
+        if (err) {
+          console.log(err)
+        }else {
+          console.log(body);
+        }
+    })
+  
+}
+
 exports.getJsApiTicket = () => {
     return dao.getJsapiTicket();
 }
