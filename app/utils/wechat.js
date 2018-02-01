@@ -102,7 +102,7 @@ exports.transfer2CustomerService = (msg) => {
 exports.createMenu = async (menu, token) => {
     let options = {
         url: 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' + token,
-        form: JSON.stringify(require(menu)),
+        form: require(menu),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
