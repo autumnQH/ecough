@@ -1,4 +1,4 @@
-module.exports = Object.assing({}, 
+module.exports = Object.assign({}, 
 {  
   "button":[  
     {  
