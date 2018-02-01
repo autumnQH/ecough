@@ -48,7 +48,3 @@ exports.pay = async (ctx)=> {
     var data2 = await pay.setPaySign(prepayid, value);
     ctx.body = data2;
 }
-
-exports.openAddress = async (ctx) => {
-
-}

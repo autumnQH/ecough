@@ -12,7 +12,6 @@ const logger = require('koa-logger');
 const compress = require('koa-compress')
 const multer = require('koa-multer');
 
-//const json = require('koa-json');
 
 const controller = require('./controller');
 const logUtil = require('./utils/log');

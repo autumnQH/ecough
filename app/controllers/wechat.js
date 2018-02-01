@@ -63,33 +63,6 @@ var postHandle = async(ctx, next) => {
             //User.removeUserByOpenId(openid);
             User.removeUserForEventKeyByOpenid(openid);
         }
-        //如果已经关注，但是扫描了其他人的二维码
-        // else if(msg.Event[0] == 'SCAN') {
-        //     if(msg.EventKey[0].replace(/^qrscene_/,"") != openid){//自己扫描自己不算
-        //         var eventKey = msg.EventKey[0];
-        //         //修改用户备注
-        //         tools.updateremark(token, openid, eventKey);
-        //         data.eventKey= eventKey;               
-        //         //修改用户
-        //         wechat.updateUser(data, {openid: openid});                
-        //     }
-        // }else if(msg.Event[0] == 'VIEW'){//每次点击菜单都更新用户信息
-        //     //修改用户
-        //     wechat.updateUser(data, {openid: openid});                               
-        // }
-        //else if(msg.Event[0] == 'merchant_order') {
-        //     //记录微信小店用户购买产品
-        //     //console.log('进来了');
-        //     let data = {
-        //         openid : msg.FromUserName[0],
-        //         order_id: msg.OrderId[0],
-        //         order_status: msg.OrderStatus[0],
-        //         product_id: msg.ProductId[0],
-        //         sku_info: msg.SkuInfo[0],
-        //         create_time: moment(msg.CreateTime[0] * 1000).format('YYYY-MM-DD HH:mm:ss')
-        //     };
-        //     wechat.setStoreOrder(data);                
-        // }
     }
 
     var reMsg;
@@ -98,7 +71,6 @@ var postHandle = async(ctx, next) => {
     switch (msgType) {
           case 'text':
             reMsg = wechat.transfer2CustomerService(msg);
-            //reMsg = wechat.getTextMessage(msg, config.message_text);
             break;
           case 'image':
             reMsg = wechat.transfer2CustomerService(msg);
@@ -108,7 +80,6 @@ var postHandle = async(ctx, next) => {
             break;
           case 'event':
 
-            //reMsg = wechat.getDefaultMessage(msg, config.message_default);
             switch (msg.Event[0]) {
 
               case 'subscribe':
@@ -135,7 +106,6 @@ var postHandle = async(ctx, next) => {
             break;
 
           default:
-              //reMsg = wechat.getDefaultMessage(msg, config.message_default);
               reMsg = wechat.transfer2CustomerService(msg);
             break;
     }

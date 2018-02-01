@@ -12,6 +12,7 @@ const config = {
     wx: {
       appid: 'wxc25f48089fba29f3',
       appSecret: '328f39d113a5e31d58b0fb20cdccb4c7',
+      // getGiftForConsumeByNameAndSpecifications
       token: 'ecough'
       //,encodingAESKey: 'FWLsqciavqqVROWeWHsyt5p10z76b0ovIs6oEevXuL2'
     },
