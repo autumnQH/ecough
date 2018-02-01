@@ -19,16 +19,12 @@ module.exports = Object.assing({},
           "url":"http://www.c-fafn.com/user/service"
         },{
           "type":"view",
-          "name":"我的地址",
-          "url": "http://www.c-fafn.com/user/getUserAddress"
-        },{
-          "type":"view",
           "name":"福利二维码",
-          "url":"http://www.c-fafn.com/user/code"
+          "url":"http://www.c-fafn.com/user/my/code"
         },{
           "type": "view",
           "name": "个人中心",
-          "url": "http://www.c-fafn.com/user/user"
+          "url": "http://www.c-fafn.com/user"
         }      
       ]
     }
