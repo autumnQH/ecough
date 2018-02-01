@@ -85,6 +85,6 @@ app.on('error', function(err, ctx){
 
 //创建微信菜单
 const wechatService = require('./app/service/wechat');
-wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.json"));
+wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.js"));
 
 app.listen(3000);
