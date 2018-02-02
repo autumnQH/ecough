@@ -8,7 +8,7 @@ var send = async (ctx, next) => {
   } 	
 	var s =  await sms.send({
 		PhoneNumbers: req.phone,
-		TemplateParam: '{"number":"'+number+'"}'
+		TemplateParam: '{"code":"'+number+'"}'
 	});
   console.log(s);
   if(s.Code=="OK"){ 
