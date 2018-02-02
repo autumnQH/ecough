@@ -178,12 +178,39 @@ cd /usr/local/bin
 表结构文件在`` wt/db/db.sql ``
 
 # 启动服务
+请确保mysql redis 服务已经启动
 启动前先把 `` wt/config.js ``相关配置修改成自己的.
 启动前先把 `` ecough/app/utils/mysql.js ``密码修改成自己的.
 `` cd wt  ``
 `` pm2 start app.js -n middle``
 `` cd ecough ``
 `` pm2 start app.js -n app ``
+
+## 配置Nginx
+`` vim /etc/nginx/nginx.conf ``
+修改相关配置，大致如下：
+```
+......
+    server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  www.baidu.com;
+        # return      301 https://$server_name$request_uri; #强制https
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection ‘upgrade’;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+......    
+```
+重新加载配置文件
+`` nginx -s reload ``
 ## 修改配置
 ### 账号密码
 1.登录``域名/admin/config``修改相关配置
