@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS STORE (
   description varchar(255) DEFAULT NULL COMMENT '网页描述',
   centent TEXT DEFAULT NULL COMMENT '网页内容',
   name varchar(72) DEFAULT NULL COMMENT '产品名称',
-  ski_description varchar(255) DEFAULT NULL COMMENT '产品描述',
+  sku_description varchar(255) DEFAULT NULL COMMENT '产品描述',
   sku_attr TEXT(255) DEFAULT NULL COMMENT '产品属性(key,key2,key3)',
   sku_info TEXT(255) DEFAULT NULL COMMENT '多规格({specifications:price:ori_price:repertory:qr},{specifications:price:ori_price:repertory:qr})',
   icon_url varchar(255) DEFAULT NULL COMMENT 'icon图片地址',
@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS STORE (
   isSupportReplace tinyint(1) DEFAULT '0' COMMENT '是否支持退换货 1-是，0-否',
   PRIMARY KEY (product_id)
 )DEFAULT CHARSET=utf8  COMMENT='产品表';
+
+INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', sku_attr = '白色,黑色', sku_info = '10*10米:1000:1200:0,12*12米:1200:1500:96'; 
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   id int NOT NULL AUTO_INCREMENT,
