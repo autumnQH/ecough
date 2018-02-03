@@ -20,8 +20,7 @@ exports.setPackageData = async function (openid, pay_money, value,store_name, ip
         spbill_create_ip: ip || '47.93.245.51',//终端IP
         notify_url: config.server_host+'/notify',
         trade_type: 'JSAPI',
-        openid: openid,
-        sub_mch_id: config.store_mchid          
+        openid: openid          
         //sign: data.sign,//签名
     }; 
     var key = config.store_key;
