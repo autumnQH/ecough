@@ -44,10 +44,10 @@
      return pattern.test(phone); 
     };        
 
-    $('.poupVerifyBox').addClass('hide');
-    $('.firstStep').addClass('hide');
-    $('.secStep').addClass('hide');
-    $('.lastStep').addClass('hide');
+    // $('.poupVerifyBox').addClass('hide');
+    // $('.firstStep').addClass('hide');
+    // $('.secStep').addClass('hide');
+    // $('.lastStep').addClass('hide');
     //是否绑定手机
     if(phone.length<10){
         $('.poupVerifyBox').removeClass('hide');
