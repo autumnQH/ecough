@@ -242,8 +242,10 @@ display: inline;
 
     //返回输入手机号
     $('.goBack').on('click', function() {
-        $('.secStep').addClass('hide');
-        $('.firstStep').removeClass('hide');
+        // $('.secStep').addClass('hide');
+        // $('.firstStep').removeClass('hide');
+        $('.secStep').hide();
+        $('.firstStep').show();        
     });
 
     //重新发送验证码
