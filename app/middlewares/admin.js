@@ -198,10 +198,10 @@ exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
   data = await Admin.getConfig();
   console.log(data,'data')
-  if(!data.length) {
-    await Admin.saveConfig(req)
+  if(data.id) {
+	  await Admin.updateConfig(req);
   }else {
-	 await Admin.updateConfig(req);
+    await Admin.saveConfig(req)
   }
 	return ctx.redirect('back');
 }
