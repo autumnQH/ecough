@@ -43,12 +43,17 @@
      var pattern = /^1[34578]\d{9}$/; 
      return pattern.test(phone); 
     };        
+
     //是否绑定手机
     if(phone.length>10){
         // $('.poupVerifyBox').removeClass('hide');
         // $('.firstStep').removeClass('hide');
         $('.poupVerifyBox').addClass('hide');
         $('.firstStep').addClass('hide');
+    }else {
+        // $('.firstStep').addClass('hide');
+        $('.secStep').addClass('hide');
+        $('.lastStep').removeClass('hide');
     }
 
     //监听手机正确   
