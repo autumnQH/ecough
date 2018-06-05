@@ -117,7 +117,8 @@ var jssdk = async(ctx, next) => {
         //获取js-ticket才能调用微信支付请求
         //获取js-ticket
         var jsapi_ticket = await dao.getJsapiTicket();
-        var url = 'http://' + ctx.header.host + ctx.url;
+        // var url = 'http://' + ctx.header.host + ctx.url;
+        var url = config.server_host + ctx.url;
         var wxcfg = await pay.setWXConfig(jsapi_ticket, url, value);
         console.log(wxcfg,'wxcfg')
         await ctx.render('order', {
