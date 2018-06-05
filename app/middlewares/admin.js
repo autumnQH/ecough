@@ -198,7 +198,7 @@ exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
   data = await Admin.getConfig();
   console.log(data,'data')
-  if(!data) {
+  if(!data.length) {
     await Admin.saveConfig(req)
   }else {
 	 await Admin.updateConfig(req);
