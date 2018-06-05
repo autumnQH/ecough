@@ -104,9 +104,9 @@ display: inline;
       </div>
 
 <!-- 绑定手机号码弹框-->
-<div class="poupVerifyBox">
+<div id="poupVerifyBox" class="poupVerifyBox">
     <div class="bgMask"></div>
-    <div class="firstStep">
+    <div id="firstStep" class="firstStep">
         <div class="phoneNum">
             <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
             <div class="phoneBox">
@@ -118,7 +118,7 @@ display: inline;
         <button class="confirmBind" id="SendCode" disabled>下一步</button>
     </div>
     
-    <div class="secStep">
+    <div id="secStep" class="secStep">
         <div class="writeCode">
             <div class="goBack"></div>
             <p class="secTitle">输入验证码</p>
@@ -135,7 +135,7 @@ display: inline;
         <button class="confirmBind" id="submit" disabled style="bottom: auto;">确认绑定</button>
     </div>
 
-    <div class="lastStep">
+    <div id="lastStep" class="lastStep">
         <img class="closeImg" src="//static2.flowerplus.cn/Static/images/icon_close.svg">
         <p class="secTitle">绑定成功！</p>
         <img class="sucImg" src="//static2.flowerplus.cn/Static/images/icon_success.svg">
@@ -149,17 +149,14 @@ display: inline;
 <script src="/jqueryweui/lib/fastclick.js"></script>
 <script>
 $(document).ready(function() {
-    var poupVerifyBox = document.getElementByClassName('poupVerifyBox')
-    console.log(poupVerifyBox)
-    var firstStep = document.getElementByClassName('firstStep')
-    var secStep = document.getElementByClassName('secStep')
-    var lastStep = document.getElementByClassName('lastStep')
-
-    poupVerifyBox.style.display = 'none';
-    firstStep.style.display = 'none';
-    secStep.style.display = 'none';
-    lastStep.style.display = 'none';
-
+    $('#poupVerifyBox').hide();
+    $('#firstStep').hide();
+    $('#secStep').hide();
+    $('#lastStep').hide();
+//    $('.poupVerifyBox').addClass('hide');
+//    $('.firstStep').addClass('hide');
+//    $('.secStep').addClass('hide');
+//    $('.lastStep').addClass('hide');
     var i = -1;
     var num = 60;
     var clock = '';
@@ -205,14 +202,16 @@ $(document).ready(function() {
      return pattern.test(phone); 
     };        
 
+    // $('.poupVerifyBox').addClass('hide');
+    // $('.firstStep').addClass('hide');
+    // $('.secStep').addClass('hide');
+    // $('.lastStep').addClass('hide');
     //是否绑定手机
     if(phone.length<10){
         // $('.poupVerifyBox').removeClass('hide');
         // $('.firstStep').removeClass('hide');
-        // $('.poupVerifyBox').show();
-        // $('.firstStep').show();
-        poupVerifyBox.style.display = 'inline'
-        firstStep.style.display = 'inline'
+        $('#poupVerifyBox').show();
+        $('#firstStep').show();
     }
 
     //监听手机正确   
@@ -239,8 +238,8 @@ $(document).ready(function() {
         // $('.firstStep').addClass('hide');
         //$('.inputBox div').eq(0).removeClass('border1px');
 
-        $('.secStep').show();
-        $('.firstStep').hide();
+        $('#secStep').show();
+        $('#firstStep').hide();
 
         $('#sendAgin').attr('disabled','');
         $('#sendAgin').text(num+ '秒');
@@ -253,8 +252,8 @@ $(document).ready(function() {
     $('.goBack').on('click', function() {
         // $('.secStep').addClass('hide');
         // $('.firstStep').removeClass('hide');
-        $('.secStep').hide();
-        $('.firstStep').show();        
+        $('#secStep').hide();
+        $('#firstStep').show();        
     });
 
     //重新发送验证码
@@ -313,8 +312,8 @@ $(document).ready(function() {
             // $('.secStep').addClass('hide');
             // $('.lastStep').removeClass('hide');
 
-            $('.secStep').hide();
-            $('.lastStep').show();
+            $('#secStep').hide();
+            $('#lastStep').show();
 
             $('#hasBindPhonetel').text($('#uclogin_mobile').val());
             $('.telphone').text($('#uclogin_mobile').val());
@@ -330,8 +329,8 @@ $(document).ready(function() {
     $('.closeImg').on('click', function() {
         // $('.lastStep').addClass('hide');
         // $('.poupVerifyBox').addClass('hide');
-        $('.lastStep').hide();
-        $('.poupVerifyBox').hide();        
+        $('#lastStep').hide();
+        $('#poupVerifyBox').hide();        
     });    
     FastClick.attach(document.body);
 
