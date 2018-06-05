@@ -9,7 +9,8 @@
     <meta content="telephone=no" name="format-detection">
     <meta content="email=no" name="format-detection">
 
-    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508">
+    <!-- <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508"> -->
+    <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20180528">
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/my.css?_t=20170810">
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/new_2017/bindTell.css?_t=1.0">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -104,7 +105,48 @@ display: inline;
       </div>
 
 <!-- 绑定手机号码弹框-->
-<div id="poupVerifyBox" class="poupVerifyBox">
+    <!-- 绑定手机号码弹框-->
+    <div class="poupVerifyBox">
+        <div class="bgMask"></div>
+        <div class="firstStep">
+            <div class="phoneNum">
+                <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
+                <div class="phoneBox">
+                    <img class="iconPhone" src="//static2.flowerplus.cn/Static/images/icon_phone.svg">
+                    <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11" >
+                </div>
+            </div>
+            <!-- <button class="confirmBind" id="confirmBind">确认绑定</button> -->
+            <button class="confirmBind" id="SendCode" disabled>下一步</button>
+        </div>
+
+        <div class="secStep">
+            <div class="writeCode">
+                <div class="goBack"></div>
+                <p class="secTitle">输入验证码</p>
+                <p class="secP">验证码发送至&nbsp;<span id="phoneHolder"></span></p>
+                <button class="send_agin" id="sendAgin">重新发送短信验证码</button>
+                <div class="inputBox">
+                    <div class="number border1px borderRadiu2px"></div>
+                    <div class="number border1px borderRadiu2px"></div>
+                    <div class="number border1px borderRadiu2spx"></div>
+                    <div class="number border1px borderRadiu2px"></div>
+                    <input type="tel" id="hiddenInput">
+                </div>
+                <button id="chooseVoice" class="choose_voice" disabled>收不到短信?获取语音验证码</button>
+            </div>
+            <button class="confirmBind disabled" id="submit">确认绑定</button>
+        </div>
+
+        <div class="lastStep">
+            <img class="closeImg" src="//static2.flowerplus.cn/Static/images/icon_close.svg">
+            <p class="secTitle">绑定成功！</p>
+            <img class="sucImg" src="//static2.flowerplus.cn/Static/images/icon_success.svg">
+            <p class="secP">当前绑定的手机号</p>
+            <p id="hasBindPhonetel"></p>
+        </div>
+    </div>
+<!-- <div id="poupVerifyBox" class="poupVerifyBox">
     <div class="bgMask"></div>
     <div id="firstStep" class="firstStep">
         <div class="phoneNum">
@@ -114,7 +156,6 @@ display: inline;
                 <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11" >
             </div>
         </div>
-        <!-- <button class="confirmBind" id="confirmBind">确认绑定</button> -->
         <button class="confirmBind" id="SendCode" disabled>下一步</button>
     </div>
     
@@ -142,7 +183,7 @@ display: inline;
         <p class="secP">当前绑定的手机号</p>
         <p id="hasBindPhonetel">12345678908</p>
     </div>
-</div>
+</div> -->
 </div>
 <!-- <script src="/js/user.js"></script> -->
 <script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
@@ -162,6 +203,7 @@ $(document).ready(function() {
     var clock = '';
     var phone = $('.telphone').text();
     var code = '';
+    $('.poupVerifyBox').addClass('g-poupBox-show');
     function doLoop() {
         num--;
         if(num > 0){
@@ -210,8 +252,9 @@ $(document).ready(function() {
     if(phone.length<10){
         // $('.poupVerifyBox').removeClass('hide');
         // $('.firstStep').removeClass('hide');
-        $('#poupVerifyBox').show();
-        $('#firstStep').show();
+        // $('#poupVerifyBox').show();
+        // $('#firstStep').show();
+        $('.poupVerifyBox').removeClass('g-poupBox-show');        
     }
 
     //监听手机正确   
@@ -238,9 +281,12 @@ $(document).ready(function() {
         // $('.firstStep').addClass('hide');
         //$('.inputBox div').eq(0).removeClass('border1px');
 
-        $('#secStep').show();
-        $('#firstStep').hide();
+        // $('#secStep').show();
+        // $('#firstStep').hide();
 
+        $('.secStep').show();
+        $('.firstStep').hide();
+        
         $('#sendAgin').attr('disabled','');
         $('#sendAgin').text(num+ '秒');
         $('#SendCode').attr('disabled','');
@@ -252,8 +298,10 @@ $(document).ready(function() {
     $('.goBack').on('click', function() {
         // $('.secStep').addClass('hide');
         // $('.firstStep').removeClass('hide');
-        $('#secStep').hide();
-        $('#firstStep').show();        
+        // $('#secStep').hide();
+        // $('#firstStep').show();        
+        $('.secStep').hide();
+        $('.firstStep').show();
     });
 
     //重新发送验证码
@@ -312,8 +360,12 @@ $(document).ready(function() {
             // $('.secStep').addClass('hide');
             // $('.lastStep').removeClass('hide');
 
-            $('#secStep').hide();
-            $('#lastStep').show();
+            // $('#secStep').hide();
+            // $('#lastStep').show();
+
+            $('.secStep').hide();
+            $('.firstStep').hide();
+            $('.lastStep').show();
 
             $('#hasBindPhonetel').text($('#uclogin_mobile').val());
             $('.telphone').text($('#uclogin_mobile').val());
@@ -329,8 +381,9 @@ $(document).ready(function() {
     $('.closeImg').on('click', function() {
         // $('.lastStep').addClass('hide');
         // $('.poupVerifyBox').addClass('hide');
-        $('#lastStep').hide();
-        $('#poupVerifyBox').hide();        
+        // $('#lastStep').hide();
+        // $('#poupVerifyBox').hide();
+        $('.poupVerifyBox').removeClass('g-poupBox-show');        
     });    
     FastClick.attach(document.body);
 
