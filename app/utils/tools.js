@@ -42,6 +42,7 @@ exports.raw = function(args){
           string += '&' + k + '=' + newArgs[k];
       }
       string = string.substr(1);
+      console.log(string,'string')
       return string;
 }
 
