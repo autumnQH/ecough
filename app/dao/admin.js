@@ -54,7 +54,13 @@ exports.getConfig = ()=> {
 }
 //更新config
 exports.updateConfig = (data)=> {
-	return db.update("CONFIG", data, {id: 1});
+	data =  db.findOne("SELECT * FROM CONFIG")
+	console.log(data)
+	if(!data) {
+		return db.add("CONFIG", data)
+	}else {
+		return db.update("CONFIG", data, {id: 1});
+	}
 }
 //获取礼品列表
 exports.getGift = ()=> {
