@@ -95,7 +95,6 @@ var jssdk = async(ctx, next) => {
             current_money = store.sku_info[i].price;
         }
     }
-
     var pay_money = total * current_money - derate_money ;
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var page = await pay.setPackageData(openid, pay_money, value, store.name, ip);
@@ -120,7 +119,7 @@ var jssdk = async(ctx, next) => {
         // var url = 'http://' + ctx.header.host + ctx.url;
         var url = config.server_host + ctx.url;
         var wxcfg = await pay.setWXConfig(jsapi_ticket, url, value);
-        console.log(wxcfg,'wxcfg')
+       // console.log(wxcfg,'wxcfg')
         await ctx.render('order', {
             config: wxcfg,
             data: data2,
