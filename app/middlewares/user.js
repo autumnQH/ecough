@@ -15,7 +15,6 @@ exports.index = async (ctx)=> {
 
 exports.addUserPhone = async (ctx)=> {
     var req = ctx.request.body;
-    console.log(req,'req')
     var config = await dao.getConfig();
     if(config.signup_phone_integral!= null) {
         req.integral = config.signup_phone_integral;

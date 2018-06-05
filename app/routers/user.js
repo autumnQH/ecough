@@ -4,7 +4,7 @@ const userController = require('../middlewares').user;
 
 router.get('/', checkUser, userController.index);//个人中心
 
-router.post('/user/setphone', checkUser, userController.addUserPhone);//添加用户手机号码
+router.post('/setphone', checkUser, userController.addUserPhone);//添加用户手机号码
 
 router.get('/gift', checkUser,userController.showGift);//礼物列表
 router.get('/gift/:id', checkUser, userController.showGiftById);//某个礼物信息
