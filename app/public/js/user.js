@@ -44,16 +44,14 @@
      return pattern.test(phone); 
     };        
 
+    $('.poupVerifyBox').addClass('hide');
+    $('.firstStep').addClass('hide');
+    $('.secStep').addClass('hide');
+    $('.lastStep').addClass('hide');
     //是否绑定手机
-    if(phone.length>10){
-        // $('.poupVerifyBox').removeClass('hide');
-        // $('.firstStep').removeClass('hide');
-        $('.poupVerifyBox').addClass('hide');
-        $('.firstStep').addClass('hide');
-    }else {
-        // $('.firstStep').addClass('hide');
-        $('.secStep').addClass('hide');
-        $('.lastStep').removeClass('hide');
+    if(phone.length<10){
+        $('.poupVerifyBox').removeClass('hide');
+        $('.firstStep').removeClass('hide');
     }
 
     //监听手机正确   
@@ -76,7 +74,7 @@
     $('#SendCode').on('click',function() {
         PhoneCode();
 
-        // $('.secStep').removeClass('hide');
+        $('.secStep').removeClass('hide');
         $('.firstStep').addClass('hide');
         //$('.inputBox div').eq(0).removeClass('border1px');
 
@@ -147,7 +145,7 @@
         if(code2 === code){
             addphone();
             $('.secStep').addClass('hide');
-            //$('.lastStep').removeClass('hide');
+            $('.lastStep').removeClass('hide');
             $('#hasBindPhonetel').text($('#uclogin_mobile').val());
             $('.telphone').text($('#uclogin_mobile').val());
             setTimeout(function() {
