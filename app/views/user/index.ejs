@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/jqueryweui/lib/weui.min.css">
     <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.css">
     <style type="text/css">
-        .poupVerifyBox {
+/*        .poupVerifyBox {
 display: inline;
         }
         .firstStep{
@@ -30,7 +30,7 @@ display: inline;
         }
         .lastStep{
 display: inline;
-        }
+        }*/
     </style>
 </head>
 <body ontouchstart>
@@ -190,10 +190,10 @@ display: inline;
 <script src="/jqueryweui/lib/fastclick.js"></script>
 <script>
 $(document).ready(function() {
-    $('#poupVerifyBox').hide();
-    $('#firstStep').hide();
-    $('#secStep').hide();
-    $('#lastStep').hide();
+    // $('#poupVerifyBox').hide();
+    // $('#firstStep').hide();
+    // $('#secStep').hide();
+    // $('#lastStep').hide();
 //    $('.poupVerifyBox').addClass('hide');
 //    $('.firstStep').addClass('hide');
 //    $('.secStep').addClass('hide');
@@ -259,6 +259,7 @@ $(document).ready(function() {
 
     //监听手机正确   
     $('#uclogin_mobile').keyup(function(){
+      $('#SendCode').show();
       var phone = $('#uclogin_mobile').val();
       var flag = isPhoneNo(phone);
       if(flag){
@@ -286,7 +287,7 @@ $(document).ready(function() {
 
         $('.secStep').show();
         $('.firstStep').hide();
-        
+
         $('#sendAgin').attr('disabled','');
         $('#sendAgin').text(num+ '秒');
         $('#SendCode').attr('disabled','');
