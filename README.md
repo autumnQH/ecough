@@ -16,9 +16,9 @@
 `` yum -y install gcc gcc-c++ openssl-devel ``
 
 2.下载源码包:
-``wget https://npm.taobao.org/mirrors/node/v8.9.3/node-v8.9.3.tar.gz ``
+`` wget https://npm.taobao.org/mirrors/node/v8.9.3/node-v8.9.3.tar.gz ``
 `` tar -zxvf node-v8.9.3.tar.gz ``
-`` cd node-v8.9.3.tar.gz ``
+`` cd node-v8.9.3 ``
 
 3.配置、编译、安装: 
 `` ./configure --prefix=/usr/local/node ``
@@ -46,6 +46,8 @@ pm2 是一个带有负载均衡功能的Node应用的进程管理器.
 ### Mysql安装
 ---
 因CentOS已经使用MariaDB替代了MySQL，如直接输入``yum install mysql-server ``则安装MariaDB。
+`` rpm -qa | grep maria ``
+`` yum -y remove maria*** ``
 [安装链接](https://www.ytyzx.org/index.php/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%AD%E5%AE%89%E8%A3%85MySQL)
 
 ### Redis安装

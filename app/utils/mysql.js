@@ -1,13 +1,13 @@
 const mysql = require('mysql2');
-
+const config = require('../../config/config.js')
 //数据库连接配置选项
 var options = {
-    'host': 'localhost',//config.db.host,
+    'host': config.db.host,
     //'port': config.db.port,
-    'database': 'ecough',
-    'user': 'root',
-    'password': '450450',
-    'connectionLimit': 5,
+    'database': config.db.database,
+    'user': config.db.user,
+    'password': config.db.password,
+    'connectionLimit': config.db.conn_limit,
     // 'charset': config.db.charset,
     'supportBigNumbers': true,
     'bigNumberStrings': true
