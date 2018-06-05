@@ -1,10 +1,12 @@
+const config = require('../../config/config.js')
+
 module.exports = Object.assign({}, 
 {  
   "button":[  
     {  
       "type":"view",  
       "name":"产品订购",
-      "url":"http://www.c-fafn.com/product/100001"
+      "url":config.SITE_ROOT_URL + "/100001"
     },
     {
       "name":"自助服务",
@@ -12,19 +14,19 @@ module.exports = Object.assign({},
         {  
           "type":"view",  
           "name":"我的订单",
-          "url":"http://www.c-fafn.com/user/my/order"
+          "url": config.SITE_ROOT_URL + "/user/my/order"
         },{  
           "type":"view",  
           "name":"联系客服",
-          "url":"http://www.c-fafn.com/user/service"
+          "url": config.SITE_ROOT_URL + "/user/service"
         },{
           "type":"view",
           "name":"福利二维码",
-          "url":"http://www.c-fafn.com/user/my/code"
+          "url": config.SITE_ROOT_URL + "/user/my/code"
         },{
           "type": "view",
           "name": "个人中心",
-          "url": "http://www.c-fafn.com/user"
+          "url":  config.SITE_ROOT_URL + "/user"
         }      
       ]
     }

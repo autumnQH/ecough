@@ -203,3 +203,11 @@ CREATE TABLE IF NOT EXISTS GIFT (
   PRIMARY KEY (id),
   INDEX create_time (create_time)
 )DEFAULT CHARSET=utf8 COMMENT='礼品';
+
+CREATE TABLE IF NOT EXISTS WECHAT (
+  id int NOT NULL AUTO_INCREMENT,
+  access_token varchar(255) NOT NULL,
+  jsapi_ticket varchar(255) NOT NULL,
+  create_time datetime DEFAULT NUll,
+  PRIMARY KEY (id)
+);
