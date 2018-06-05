@@ -89,6 +89,12 @@ exports.getConfig = ()=> {
 exports.updateConfig = (data)=> {
 	return admin.updateConfig(data);
 }
+/**
+ *	保存config
+ */
+exports.saveConfig = (data) => {
+	return admin.saveConfig(data);
+}
 //获取所有礼品
 exports.getGift = ()=> {
 	return admin.getGift();

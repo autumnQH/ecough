@@ -52,15 +52,13 @@ exports.updateStore = (data)=> {
 exports.getConfig = ()=> {
 	return db.findOne("SELECT * FROM CONFIG");
 }
+
+exports.saveConfig = (data) => {
+	return db.add("CONFIG", data)
+}
 //更新config
 exports.updateConfig = (data)=> {
-	data =  db.findOne("SELECT * FROM CONFIG")
-	console.log(data)
-	if(!data) {
-		return db.add("CONFIG", data)
-	}else {
-		return db.update("CONFIG", data, {id: 1});
-	}
+	return db.update("CONFIG", data, {id: 1});
 }
 //获取礼品列表
 exports.getGift = ()=> {

@@ -196,7 +196,12 @@ exports.showConfig = async (ctx)=> {
 
 exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
-	await Admin.updateConfig(req);
+  data = await Admin.getConfig();
+  if(!data) {
+    await Admin.saveConfig(req)
+  }else {
+	 await Admin.updateConfig(req);
+  }
 	return ctx.redirect('back');
 }
 

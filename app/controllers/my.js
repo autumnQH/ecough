@@ -15,7 +15,7 @@ var product = async (ctx, next) => {
     const config = await dao.getConfig();
     var product_id = ctx.params.product;
     var store = await STORE.getStoreById(product_id);
-    console.log(store);
+    
     store.sku_attr = store.sku_attr.split(',');
     store.sku_info = store.sku_info.split(',').map(function(val, index, arr) {
         var newarr = val.split(':');
