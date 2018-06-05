@@ -164,8 +164,8 @@
 			});	
 
 		};
-		$('#chooseWXPay').on('click',function() {
-			var $btn = $(this).button('loading')
+		$('#chooseWXPay').on('click',function(event) {
+			// var $btn = $(this).button('loading')
 			var name = $('#name').text();
 		  var phone = $('#phone').text();
 		  var address = $('#address').text();
@@ -226,17 +226,17 @@
 						},
 						fail: function(res) {
 							alert('网络繁忙，请稍后再试！');
-							$btn.button('reset')
+							// $btn.button('reset')
 						}
 					});//chooseWXPay end
-					$btn.button('reset')
+					// $btn.button('reset')
 				}).fail(function() {
-					$btn.button('reset')
+					// $btn.button('reset')
 				});
 				
 		  }else{
 		  	alert('请输入收货地址');
-		  	$btn.button('reset')
+		  	// $btn.button('reset')
 		  }
 		});
 
