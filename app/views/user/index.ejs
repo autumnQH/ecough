@@ -141,10 +141,14 @@ display: inline;
     </div>
 </div>
 <script type="text/javascript">
-    $('.poupVerifyBox').addClass('hide');
-    $('.firstStep').addClass('hide');
-    $('.secStep').addClass('hide');
-    $('.lastStep').addClass('hide');
+    $('.poupVerifyBox').hide();
+    $('.firstStep').hide();
+    $('.secStep').hide();
+    $('.lastStep').hide();
+//    $('.poupVerifyBox').addClass('hide');
+//    $('.firstStep').addClass('hide');
+//    $('.secStep').addClass('hide');
+//    $('.lastStep').addClass('hide');
     var i = -1;
     var num = 60;
     var clock = '';
@@ -196,8 +200,10 @@ display: inline;
     // $('.lastStep').addClass('hide');
     //是否绑定手机
     if(phone.length<10){
-        $('.poupVerifyBox').removeClass('hide');
-        $('.firstStep').removeClass('hide');
+        // $('.poupVerifyBox').removeClass('hide');
+        // $('.firstStep').removeClass('hide');
+        $('.poupVerifyBox').show();
+        $('.firstStep').show();
     }
 
     //监听手机正确   
@@ -220,9 +226,12 @@ display: inline;
     $('#SendCode').on('click',function() {
         PhoneCode();
 
-        $('.secStep').removeClass('hide');
-        $('.firstStep').addClass('hide');
+        // $('.secStep').removeClass('hide');
+        // $('.firstStep').addClass('hide');
         //$('.inputBox div').eq(0).removeClass('border1px');
+
+        $('.secStep').show();
+        $('.firstStep').hide();
 
         $('#sendAgin').attr('disabled','');
         $('#sendAgin').text(num+ '秒');
@@ -290,8 +299,12 @@ display: inline;
         var code2 = $('#hiddenInput').val();;
         if(code2 === code){
             addphone();
-            $('.secStep').addClass('hide');
-            $('.lastStep').removeClass('hide');
+            // $('.secStep').addClass('hide');
+            // $('.lastStep').removeClass('hide');
+
+            $('.secStep').hide();
+            $('.lastStep').show();
+
             $('#hasBindPhonetel').text($('#uclogin_mobile').val());
             $('.telphone').text($('#uclogin_mobile').val());
             setTimeout(function() {
@@ -304,8 +317,10 @@ display: inline;
     });  
     //关闭窗口
     $('.closeImg').on('click', function() {
-        $('.lastStep').addClass('hide');
-        $('.poupVerifyBox').addClass('hide');
+        // $('.lastStep').addClass('hide');
+        // $('.poupVerifyBox').addClass('hide');
+        $('.lastStep').hide();
+        $('.poupVerifyBox').hide();        
     });       
 </script>
 </div>
