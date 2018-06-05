@@ -46,6 +46,7 @@
     alert(phone,'phone')
     //是否绑定手机
     if(phone.length<10){
+        alert('?????');
         $('.poupVerifyBox').removeClass('hide');
         $('.firstStep').removeClass('hide');
     }
