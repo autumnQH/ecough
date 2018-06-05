@@ -9,7 +9,7 @@ const dao = require('../dao/admin');
 exports.index = async (ctx)=> {
     let openid = ctx.session.openid;
     ctx.state.data = await User.getUserByOpenId(openid);  
-    console.log(ctx.state.data,'data')
+
     await ctx.render('user/index');
 }
 

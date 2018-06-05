@@ -43,10 +43,8 @@
      var pattern = /^1[34578]\d{9}$/; 
      return pattern.test(phone); 
     };        
-    alert(phone,'phone')
     //是否绑定手机
     if(phone.length<10){
-        alert('?????');
         $('.poupVerifyBox').removeClass('hide');
         $('.firstStep').removeClass('hide');
     }
