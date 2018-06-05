@@ -6,7 +6,7 @@ module.exports = Object.assign({},
     {  
       "type":"view",  
       "name":"产品订购",
-      "url":config.SITE_ROOT_URL + "/100001"
+      "url":config.SITE_ROOT_URL + "/product/100001"
     },
     {
       "name":"自助服务",
