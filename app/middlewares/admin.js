@@ -197,7 +197,7 @@ exports.showConfig = async (ctx)=> {
 exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
   data = await Admin.getConfig();
-  console.log(data,'data')
+  
   if(data.id) {
 	  await Admin.updateConfig(req);
   }else {
