@@ -100,11 +100,11 @@ var jssdk = async(ctx, next) => {
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var page = await pay.setPackageData(openid, pay_money, value, store.name, ip);
     
-    console.log(page,'统一下单');
+    // console.log(page,'统一下单');
 
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    console.log(result);
+    // console.log(result);
     if(result.xml.err_code){
         if(result.xml.err_code[0] == 'ORDERPAID'){
             await ctx.redirect('/product/100001');
@@ -119,7 +119,7 @@ var jssdk = async(ctx, next) => {
         var jsapi_ticket = await dao.getJsapiTicket();
         var url = 'http://' + ctx.header.host + ctx.url;
         var wxcfg = await pay.setWXConfig(jsapi_ticket, url, value);
-
+        console.log(wxcfg,'wxcfg')
         await ctx.render('order', {
             config: wxcfg,
             data: data2,
