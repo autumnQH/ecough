@@ -149,14 +149,16 @@ display: inline;
 <script src="/jqueryweui/lib/fastclick.js"></script>
 <script>
 $(document).ready(function() {
-    $('.poupVerifyBox').hide();
-    $('.firstStep').hide();
-    $('.secStep').hide();
-    $('.lastStep').hide();
-//    $('.poupVerifyBox').addClass('hide');
-//    $('.firstStep').addClass('hide');
-//    $('.secStep').addClass('hide');
-//    $('.lastStep').addClass('hide');
+    var poupVerifyBox = document.getElementByClassName('poupVerifyBox')
+    var firstStep = document.getElementByClassName('firstStep')
+    var secStep = document.getElementByClassName('secStep')
+    var lastStep = document.getElementByClassName('lastStep')
+
+    poupVerifyBox.style.display = 'none';
+    firstStep.style.display = 'none';
+    secStep.style.display = 'none';
+    lastStep.style.display = 'none';
+
     var i = -1;
     var num = 60;
     var clock = '';
@@ -202,16 +204,14 @@ $(document).ready(function() {
      return pattern.test(phone); 
     };        
 
-    // $('.poupVerifyBox').addClass('hide');
-    // $('.firstStep').addClass('hide');
-    // $('.secStep').addClass('hide');
-    // $('.lastStep').addClass('hide');
     //是否绑定手机
     if(phone.length<10){
         // $('.poupVerifyBox').removeClass('hide');
         // $('.firstStep').removeClass('hide');
-        $('.poupVerifyBox').show();
-        $('.firstStep').show();
+        // $('.poupVerifyBox').show();
+        // $('.firstStep').show();
+        poupVerifyBox.style.display = 'inline'
+        firstStep.style.display = 'inline'
     }
 
     //监听手机正确   
