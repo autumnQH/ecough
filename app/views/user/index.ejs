@@ -48,27 +48,27 @@ function doLoop() {
         num = 10;
     }
 }
-// function PhoneCode() {
-//     let data = {
-//        phone: $('#uclogin_mobile').val() 
-//     };
-//     //ajax
-//     $.ajax({
-//         url: '/sms/send',
-//         data: data,
-//         method: 'post'
-//     }).done(function(msg) {
-//         console.log(msg);
-//         if(msg.code =='1'){
-//             code = msg.msg;
-//         }else{
-//             alert(msg.msg);
-//         }
-//     }).fail(function(jqXHR, textStatus) {
+function PhoneCode() {
+    let data = {
+       phone: $('#uclogin_mobile').val() 
+    };
+    //ajax
+    $.ajax({
+        url: '/sms/send',
+        data: data,
+        method: 'post'
+    }).done(function(msg) {
+        console.log(msg);
+        if(msg.code =='1'){
+            code = msg.msg;
+        }else{
+            alert(msg.msg);
+        }
+    }).fail(function(jqXHR, textStatus) {
 
-//     });
-//     //end ajax        
-// }
+    });
+    //end ajax        
+}
 alert('lll')
 </script>
 <body ontouchstart>
