@@ -108,7 +108,6 @@
  <div class="footer"> <a id="pay" href="javascript:" class="weui-btn weui-btn_primary">提交</a> </div>
         </div>
     </div>
-</body>
 <script type="text/javascript" >
     $(function() {
     new Swiper('.swiper-container', {
@@ -243,4 +242,12 @@ wx.ready(function() {
 
 
 </script>
+<script src="/jqueryweui/lib/fastclick.js"></script>
+<script>
+//iOS 系统下默认的 click 事件会有300毫秒的延迟，这个延迟是iOS系统的特性而不是jQuery WeUI设定的，可以使用 fastclick 来消除这个延迟。
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+</body>
 </html>
