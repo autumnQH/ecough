@@ -23,10 +23,9 @@
 $(function() {
 alert('???')    
 $('#poupVerifyBox').addClass("g-poupBox-show");
-var i = -1;
 var num = 60;
 var clock = '';
-var phone = $('.telphone').text();
+var phone = '<%= data.phone %>'
 var code = '';
 function doLoop() {
     num--;
