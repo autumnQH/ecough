@@ -9,7 +9,6 @@
     <meta content="telephone=no" name="format-detection">
     <meta content="email=no" name="format-detection">
 
-    <!-- <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20170508"> -->
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/m_web.css?_t=20180528">
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/my.css?_t=20180528">
     <link rel="stylesheet" href="//static2.flowerplus.cn/Static/css/new_2017/bindTell.css?_t=20180528">
@@ -19,20 +18,6 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script> 
     <link rel="stylesheet" href="/jqueryweui/lib/weui.min.css">
     <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.css">
-    <style type="text/css">
-/*        .poupVerifyBox {
-display: inline;
-        }
-        .firstStep{
-display: inline;            
-        }
-        .secStep{
-display: inline;
-        }
-        .lastStep{
-display: inline;
-        }*/
-    </style>
 </head>
 <body ontouchstart>
     <div class="page">
@@ -147,44 +132,7 @@ display: inline;
             <p id="hasBindPhonetel"></p>
         </div>
     </div>
-<!-- <div id="poupVerifyBox" class="poupVerifyBox">
-    <div class="bgMask"></div>
-    <div id="firstStep" class="firstStep">
-        <div class="phoneNum">
-            <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
-            <div class="phoneBox">
-                <img class="iconPhone" src="//static2.flowerplus.cn/Static/images/icon_phone.svg">
-                <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11" >
-            </div>
-        </div>
-        <button class="confirmBind" id="SendCode" disabled>下一步</button>
-    </div>
-    
-    <div id="secStep" class="secStep">
-        <div class="writeCode">
-            <div class="goBack"></div>
-            <p class="secTitle">输入验证码</p>
-            <p class="secP">验证码发送至&nbsp;<span id="phoneHolder"></span></p>
-            <button class="send_agin" id="sendAgin">重新发送</button>
-            <div class="inputBox">
-                <div class="number border1px borderRadiu2px"></div>
-                <div class="number border1px borderRadiu2px"></div>
-                <div class="number border1px borderRadiu2px"></div>
-                <div class="number border1px borderRadiu2px"></div>
-                <input type="tel" id="hiddenInput" maxlength="4">
-            </div>
-        </div>
-        <button class="confirmBind" id="submit" disabled style="bottom: auto;">确认绑定</button>
-    </div>
 
-    <div id="lastStep" class="lastStep">
-        <img class="closeImg" src="//static2.flowerplus.cn/Static/images/icon_close.svg">
-        <p class="secTitle">绑定成功！</p>
-        <img class="sucImg" src="//static2.flowerplus.cn/Static/images/icon_success.svg">
-        <p class="secP">当前绑定的手机号</p>
-        <p id="hasBindPhonetel">12345678908</p>
-    </div>
-</div> -->
 </div>
 <!-- <script src="/js/user.js"></script> -->
 <script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
@@ -192,14 +140,7 @@ display: inline;
 <script>
 $('.poupVerifyBox').addClass('g-poupBox-show');
 $(document).ready(function() {
-    // $('#poupVerifyBox').hide();
-    // $('#firstStep').hide();
-    // $('#secStep').hide();
-    // $('#lastStep').hide();
-//    $('.poupVerifyBox').addClass('hide');
-//    $('.firstStep').addClass('hide');
-//    $('.secStep').addClass('hide');
-//    $('.lastStep').addClass('hide');
+
     var i = -1;
     var num = 60;
     var clock = '';
@@ -245,16 +186,8 @@ $(document).ready(function() {
      return pattern.test(phone); 
     };        
 
-    // $('.poupVerifyBox').addClass('hide');
-    // $('.firstStep').addClass('hide');
-    // $('.secStep').addClass('hide');
-    // $('.lastStep').addClass('hide');
     //是否绑定手机
     if(phone.length>10){
-        // $('.poupVerifyBox').removeClass('hide');
-        // $('.firstStep').removeClass('hide');
-        // $('#poupVerifyBox').show();
-        // $('#firstStep').show();
         $('.poupVerifyBox').removeClass('g-poupBox-show');        
     }
 
@@ -279,13 +212,6 @@ $(document).ready(function() {
     $('#SendCode').on('click',function() {
         PhoneCode();
 
-        // $('.secStep').removeClass('hide');
-        // $('.firstStep').addClass('hide');
-        //$('.inputBox div').eq(0).removeClass('border1px');
-
-        // $('#secStep').show();
-        // $('#firstStep').hide();
-
         $('.secStep').show();
         $('.firstStep').hide();
 
@@ -297,11 +223,7 @@ $(document).ready(function() {
     });  
 
     //返回输入手机号
-    $('.goBack').on('click', function() {
-        // $('.secStep').addClass('hide');
-        // $('.firstStep').removeClass('hide');
-        // $('#secStep').hide();
-        // $('#firstStep').show();        
+    $('.goBack').on('click', function() {      
         $('.secStep').hide();
         $('.firstStep').show();
     });
@@ -359,11 +281,6 @@ $(document).ready(function() {
         var code2 = $('#hiddenInput').val();;
         if(code2 === code){
             addphone();
-            // $('.secStep').addClass('hide');
-            // $('.lastStep').removeClass('hide');
-
-            // $('#secStep').hide();
-            // $('#lastStep').show();
 
             $('.secStep').hide();
             $('.firstStep').hide();
@@ -381,10 +298,6 @@ $(document).ready(function() {
     });  
     //关闭窗口
     $('.closeImg').on('click', function() {
-        // $('.lastStep').addClass('hide');
-        // $('.poupVerifyBox').addClass('hide');
-        // $('#lastStep').hide();
-        // $('#poupVerifyBox').hide();
         $('.poupVerifyBox').removeClass('g-poupBox-show');        
     });    
     FastClick.attach(document.body);
