@@ -53,23 +53,23 @@ function PhoneCode() {
        phone: $('#uclogin_mobile').val() 
     };
     //ajax
-    $.ajax({
-        url: '/sms/send',
-        data: data,
-        method: 'post'
-    }).done(function(msg) {
-        console.log(msg);
-        if(msg.code =='1'){
-            code = msg.msg;
-        }else{
-            alert(msg.msg);
-        }
-    }).fail(function(jqXHR, textStatus) {
+    // $.ajax({
+    //     url: '/sms/send',
+    //     data: data,
+    //     method: 'post'
+    // }).done(function(msg) {
+    //     console.log(msg);
+    //     if(msg.code =='1'){
+    //         code = msg.msg;
+    //     }else{
+    //         alert(msg.msg);
+    //     }
+    // }).fail(function(jqXHR, textStatus) {
 
-    });
+    // });
     //end ajax        
 }
-alert('lll')
+alert(';;')
 </script>
 <body ontouchstart>
     <div class="page">
@@ -310,6 +310,7 @@ $(document).ready(function() {
     $('.closeImg').on('click', function() {
         $('.poupVerifyBox').removeClass('g-poupBox-show');        
     });    
+
     FastClick.attach(document.body);
 
 });
