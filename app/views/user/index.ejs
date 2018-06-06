@@ -23,133 +23,7 @@
 $(function() {
 alert('???')    
 $('#poupVerifyBox').addClass("g-poupBox-show");
-alert('!!')
-})
-</script>
-<body ontouchstart>
-    <div class="page">
-
-<div class="my-banner">
-    <div class="banner-link-panel">
-        <div class="top-avatar" style="background:url('<%= data.headimgurl %>') no-repeat center; background-size:cover;"></div>
-        <div class="userInfo" style="color: #fff">
-            <div class="userName">
-                <span><%= data.nick %></span>
-            </div> 
-            <!-- <div class="subTips">点击编辑个人资料</div> -->
-            <p class="telphone"><%= data.phone %></p>
-            <p id="openid" style="visibility: hidden;"><%= data.openid %></p>
-        </div>
-    </div>
-</div>
-
-        <div class="weui-cells__title"></div>
-        <div class="weui-cells">
-          <a class="weui-cell weui-cell_access" href="/user/my/order">
-            <div class="weui-cell__hd"><img src="/images/group.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>我的订单</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>
-          <a class="weui-cell weui-cell_access" href="/user/my/order2">
-            <div class="weui-cell__hd"><img src="/images/my_cx.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>退货查询</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>           
-          <a class="weui-cell weui-cell_access" href="/user/my/code">
-            <div class="weui-cell__hd"><img src="/images/code.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>我的二维码</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>           
-          <a class="weui-cell weui-cell_access" href="/user/partner">
-            <div class="weui-cell__hd"><img src="/images/xiadan.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>已下单的人</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>           
-          <a class="weui-cell weui-cell_access" href="/user/gift">
-            <div class="weui-cell__hd"><img src="/images/my_hb.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>礼物兑换</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>           
-          <a class="weui-cell weui-cell_access" href="/user/FAQ">
-            <div class="weui-cell__hd"><img src="/images/contact.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>联系客服</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>
-          <a class="weui-cell weui-cell_access" href="/user/service">
-            <div class="weui-cell__hd"><img src="/images/my_jy.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
-            <div class="weui-cell__bd">
-              <h5>问题留言</h5>
-            </div>
-            <div class="weui-cell__ft"></div>
-          </a>                                               
-        </div>
-      </div>
-
-<!-- 绑定手机号码弹框-->
-    <!-- 绑定手机号码弹框-->
-    <div id="poupVerifyBox" class="poupVerifyBox">
-        <div class="bgMask"></div>
-        <div class="firstStep">
-            <div class="phoneNum">
-                <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
-                <div class="phoneBox">
-                    <img class="iconPhone" src="//static2.flowerplus.cn/Static/images/icon_phone.svg">
-                    <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11" >
-                </div>
-            </div>
-            <!-- <button class="confirmBind" id="confirmBind">确认绑定</button> -->
-            <button class="confirmBind" id="SendCode" disabled>下一步</button>
-        </div>
-
-        <div class="secStep">
-            <div class="writeCode">
-                <div class="goBack"></div>
-                <p class="secTitle">输入验证码</p>
-                <p class="secP">验证码发送至&nbsp;<span id="phoneHolder"></span></p>
-                <button class="send_agin" id="sendAgin">重新发送短信验证码</button>
-                <div class="inputBox">
-                    <div class="number border1px borderRadiu2px"></div>
-                    <div class="number border1px borderRadiu2px"></div>
-                    <div class="number border1px borderRadiu2spx"></div>
-                    <div class="number border1px borderRadiu2px"></div>
-                    <input type="tel" id="hiddenInput">
-                </div>
-            </div>
-            <button class="confirmBind disabled" id="submit">确认绑定</button>
-        </div>
-
-        <div class="lastStep">
-            <img class="closeImg" src="//static2.flowerplus.cn/Static/images/icon_close.svg">
-            <p class="secTitle">绑定成功！</p>
-            <img class="sucImg" src="//static2.flowerplus.cn/Static/images/icon_success.svg">
-            <p class="secP">当前绑定的手机号</p>
-            <p id="hasBindPhonetel"></p>
-        </div>
-    </div>
-
-</div>
-<!-- <script src="/js/user.js"></script> -->
-<!-- <script src="/jqueryweui/lib/jquery-2.1.4.js"></script> -->
-<script src="/js/jquery3.3.1.js"></script>
-<script src="/jqueryweui/lib/fastclick.js"></script>
-<script src="/jqueryweui/js/jquery-weui.js"></script>
-<script>    
-
-$(document).ready(function() {
-
-    var i = -1;
+   var i = -1;
     var num = 60;
     var clock = '';
     var phone = $('.telphone').text();
@@ -308,6 +182,133 @@ $(document).ready(function() {
     $('.closeImg').on('click', function() {
         $('.poupVerifyBox').removeClass('g-poupBox-show');        
     });    
+    alert('!!!!!')
+})
+</script>
+<body ontouchstart>
+    <div class="page">
+
+<div class="my-banner">
+    <div class="banner-link-panel">
+        <div class="top-avatar" style="background:url('<%= data.headimgurl %>') no-repeat center; background-size:cover;"></div>
+        <div class="userInfo" style="color: #fff">
+            <div class="userName">
+                <span><%= data.nick %></span>
+            </div> 
+            <!-- <div class="subTips">点击编辑个人资料</div> -->
+            <p class="telphone"><%= data.phone %></p>
+            <p id="openid" style="visibility: hidden;"><%= data.openid %></p>
+        </div>
+    </div>
+</div>
+
+        <div class="weui-cells__title"></div>
+        <div class="weui-cells">
+          <a class="weui-cell weui-cell_access" href="/user/my/order">
+            <div class="weui-cell__hd"><img src="/images/group.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>我的订单</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>
+          <a class="weui-cell weui-cell_access" href="/user/my/order2">
+            <div class="weui-cell__hd"><img src="/images/my_cx.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>退货查询</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>           
+          <a class="weui-cell weui-cell_access" href="/user/my/code">
+            <div class="weui-cell__hd"><img src="/images/code.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>我的二维码</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>           
+          <a class="weui-cell weui-cell_access" href="/user/partner">
+            <div class="weui-cell__hd"><img src="/images/xiadan.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>已下单的人</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>           
+          <a class="weui-cell weui-cell_access" href="/user/gift">
+            <div class="weui-cell__hd"><img src="/images/my_hb.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>礼物兑换</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>           
+          <a class="weui-cell weui-cell_access" href="/user/FAQ">
+            <div class="weui-cell__hd"><img src="/images/contact.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>联系客服</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>
+          <a class="weui-cell weui-cell_access" href="/user/service">
+            <div class="weui-cell__hd"><img src="/images/my_jy.svg" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <h5>问题留言</h5>
+            </div>
+            <div class="weui-cell__ft"></div>
+          </a>                                               
+        </div>
+      </div>
+
+<!-- 绑定手机号码弹框-->
+    <!-- 绑定手机号码弹框-->
+    <div id="poupVerifyBox" class="poupVerifyBox">
+        <div class="bgMask"></div>
+        <div class="firstStep">
+            <div class="phoneNum">
+                <p>为了保证您的账户安全，请绑定您的个人手机号码</p>
+                <div class="phoneBox">
+                    <img class="iconPhone" src="//static2.flowerplus.cn/Static/images/icon_phone.svg">
+                    <input type="tel" class="tel_input row-h40" id="uclogin_mobile" maxlength="11" >
+                </div>
+            </div>
+            <!-- <button class="confirmBind" id="confirmBind">确认绑定</button> -->
+            <button class="confirmBind" id="SendCode" disabled>下一步</button>
+        </div>
+
+        <div class="secStep">
+            <div class="writeCode">
+                <div class="goBack"></div>
+                <p class="secTitle">输入验证码</p>
+                <p class="secP">验证码发送至&nbsp;<span id="phoneHolder"></span></p>
+                <button class="send_agin" id="sendAgin">重新发送短信验证码</button>
+                <div class="inputBox">
+                    <div class="number border1px borderRadiu2px"></div>
+                    <div class="number border1px borderRadiu2px"></div>
+                    <div class="number border1px borderRadiu2spx"></div>
+                    <div class="number border1px borderRadiu2px"></div>
+                    <input type="tel" id="hiddenInput">
+                </div>
+            </div>
+            <button class="confirmBind disabled" id="submit">确认绑定</button>
+        </div>
+
+        <div class="lastStep">
+            <img class="closeImg" src="//static2.flowerplus.cn/Static/images/icon_close.svg">
+            <p class="secTitle">绑定成功！</p>
+            <img class="sucImg" src="//static2.flowerplus.cn/Static/images/icon_success.svg">
+            <p class="secP">当前绑定的手机号</p>
+            <p id="hasBindPhonetel"></p>
+        </div>
+    </div>
+
+</div>
+<!-- <script src="/js/user.js"></script> -->
+<!-- <script src="/jqueryweui/lib/jquery-2.1.4.js"></script> -->
+<script src="/js/jquery3.3.1.js"></script>
+<script src="/jqueryweui/lib/fastclick.js"></script>
+<script src="/jqueryweui/js/jquery-weui.js"></script>
+<script>    
+
+$(document).ready(function() {
+
+ 
     FastClick.attach(document.body);
 
 });
