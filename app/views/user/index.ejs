@@ -20,42 +20,34 @@
     <link rel="stylesheet" href="/jqueryweui/css/jquery-weui.min.css">
 </head>
 <script type="text/javascript">
-$(function() {
-    alert('???')    
+$(function() {  
     $('#poupVerifyBox').addClass("g-poupBox-show");
-    var num = 60;
-    var clock = '';
-    alert('11');
-    var phone = '<%= data.phone %>'
-    var code = '';
-    alert('1')
 
-    alert('2')
-
-    alert('3')
-
-
-    alert('???');
 })
+var num = 60;
+var clock = '';
+var phone = '<%= data.phone %>'
+var code = '';
+
 function isPhoneNo(phone) { 
  var pattern = /^1[34578]\d{9}$/; 
  return pattern.test(phone); 
 };
 
-// function doLoop() {
-//     num--;
-//     if(num > 0){
-//         $('#sendAgin').text(num +'秒');
-//         $('#SendCode').text(num +'秒');
-//     }else{
-//         clearInterval(clock);
-//         $('#sendAgin').removeAttr('disabled');
-//         $('#sendAgin').text('重新发送');
-//         $('#SendCode').removeAttr('disabled');
-//         $('#SendCode').text('下一步');
-//         num = 10;
-//     }
-// }
+function doLoop() {
+    num--;
+    if(num > 0){
+        $('#sendAgin').text(num +'秒');
+        $('#SendCode').text(num +'秒');
+    }else{
+        clearInterval(clock);
+        $('#sendAgin').removeAttr('disabled');
+        $('#sendAgin').text('重新发送');
+        $('#SendCode').removeAttr('disabled');
+        $('#SendCode').text('下一步');
+        num = 10;
+    }
+}
 // function PhoneCode() {
 //     let data = {
 //        phone: $('#uclogin_mobile').val() 
