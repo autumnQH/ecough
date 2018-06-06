@@ -92,7 +92,7 @@
 
 <!-- 绑定手机号码弹框-->
     <!-- 绑定手机号码弹框-->
-    <div class="poupVerifyBox">
+    <div id="poupVerifyBox" class="poupVerifyBox">
         <div class="bgMask"></div>
         <div class="firstStep">
             <div class="phoneNum">
@@ -119,7 +119,6 @@
                     <div class="number border1px borderRadiu2px"></div>
                     <input type="tel" id="hiddenInput">
                 </div>
-                <button id="chooseVoice" class="choose_voice" disabled>收不到短信?获取语音验证码</button>
             </div>
             <button class="confirmBind disabled" id="submit">确认绑定</button>
         </div>
@@ -140,7 +139,7 @@
 <script src="/jqueryweui/lib/fastclick.js"></script>
 <script src="/jqueryweui/js/jquery-weui.js"></script>
 <script>
-$('.poupVerifyBox').addClass('g-poupBox-show');
+$('#poupVerifyBox').addClass("g-poupBox-show");
 $(document).ready(function() {
 
     var i = -1;
@@ -190,7 +189,7 @@ $(document).ready(function() {
 
     //是否绑定手机
     if(phone.length>10){
-        $('.poupVerifyBox').removeClass('g-poupBox-show');        
+        $('#poupVerifyBox').removeClass("g-poupBox-show");        
     }
 
     //监听手机正确   
