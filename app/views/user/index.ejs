@@ -190,6 +190,7 @@ display: inline;
 <script src="/jqueryweui/lib/jquery-2.1.4.js"></script>
 <script src="/jqueryweui/lib/fastclick.js"></script>
 <script>
+$('.poupVerifyBox').addClass('g-poupBox-show');
 $(document).ready(function() {
     // $('#poupVerifyBox').hide();
     // $('#firstStep').hide();
@@ -204,7 +205,6 @@ $(document).ready(function() {
     var clock = '';
     var phone = $('.telphone').text();
     var code = '';
-    $('.poupVerifyBox').addClass('g-poupBox-show');
     function doLoop() {
         num--;
         if(num > 0){
@@ -250,7 +250,7 @@ $(document).ready(function() {
     // $('.secStep').addClass('hide');
     // $('.lastStep').addClass('hide');
     //是否绑定手机
-    if(phone.length<10){
+    if(phone.length>10){
         // $('.poupVerifyBox').removeClass('hide');
         // $('.firstStep').removeClass('hide');
         // $('#poupVerifyBox').show();
