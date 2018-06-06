@@ -25,8 +25,10 @@ alert('???')
 $('#poupVerifyBox').addClass("g-poupBox-show");
 var num = 60;
 var clock = '';
+alert('11');
 var phone = '<%= data.phone %>'
 var code = '';
+alert('1')
 function doLoop() {
     num--;
     if(num > 0){
@@ -41,6 +43,7 @@ function doLoop() {
         num = 10;
     }
 }
+alert('2')
 function PhoneCode() {
     let data = {
        phone: $('#uclogin_mobile').val() 
@@ -62,6 +65,7 @@ function PhoneCode() {
     });
     //end ajax        
 }
+alert('3')
 function isPhoneNo(phone) { 
  var pattern = /^1[34578]\d{9}$/; 
  return pattern.test(phone); 
