@@ -8,13 +8,13 @@ const config = {
   },
   SITE_ROOT_URL: 'https://www.fafuna.cn',
   db: {
-    // host: '10.66.218.107',
-    host: 'localhost',
+    host: '10.66.218.107',
+    // host: 'localhost',
     //port:  '3306',
     database: 'ecough',
     user: 'root',
-    // password: 'Root123456==',
-    password: '450450',
+    password: 'Root123456==',
+    // password: '450450',
     conn_limit: 5
   }
 
