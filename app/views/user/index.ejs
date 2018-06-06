@@ -29,47 +29,7 @@ alert('11');
 var phone = '<%= data.phone %>'
 var code = '';
 alert('1')
-function doLoop() {
-    num--;
-    if(num > 0){
-        $('#sendAgin').text(num +'秒');
-        $('#SendCode').text(num +'秒');
-    }else{
-        clearInterval(clock);
-        $('#sendAgin').removeAttr('disabled');
-        $('#sendAgin').text('重新发送');
-        $('#SendCode').removeAttr('disabled');
-        $('#SendCode').text('下一步');
-        num = 10;
-    }
-}
-alert('2')
-function PhoneCode() {
-    let data = {
-       phone: $('#uclogin_mobile').val() 
-    };
-    //ajax
-    $.ajax({
-        url: '/sms/send',
-        data: data,
-        method: 'post'
-    }).done(function(msg) {
-        console.log(msg);
-        if(msg.code =='1'){
-            code = msg.msg;
-        }else{
-            alert(msg.msg);
-        }
-    }).fail(function(jqXHR, textStatus) {
 
-    });
-    //end ajax        
-}
-alert('3')
-function isPhoneNo(phone) { 
- var pattern = /^1[34578]\d{9}$/; 
- return pattern.test(phone); 
-};
 
 alert('???');
 })
