@@ -150,7 +150,7 @@ $(function() {
       var out_trade_no = $('#current_out_trade_no').val()
       var total_fee = $('#current_total_fee').val()
       $.ajax({
-        url: '/my/refund',
+        url: '/admin/refund',
         type: 'post',
         data: {
           out_trade_no,
