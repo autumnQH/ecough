@@ -4,6 +4,7 @@ const moment = require('moment');
 const Admin = require('../proxy').Admin;
 const User = require('../proxy').User;
 const Config = require('../proxy').Config;
+const dao = require('../dao/wechat');
 
 exports.home = async (ctx)=> {
 	await ctx.redirect('admin/order');
@@ -134,12 +135,10 @@ exports.refundList = async (ctx)=> {
   await ctx.render('admin/refundList');
 }
 exports.refund = async (ctx) => {
-  console.log('??')
   var req = ctx.request.body;
-  console.log(req)
   var out_trade_no = req.out_trade_no;
-  var config = await dao.getConfig();
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
+  console.log(order)
   if(order.status == 4 && req.total_fee == 0){//礼物退货
       var status = await wechat.refundGift(req.out_trade_no);//更新订单状态0-交易取消
       if(status == 1){
@@ -153,6 +152,7 @@ exports.refund = async (ctx) => {
           }
       }
   }else if(order.status == 4 && req.total_fee>0){//退款
+      var config = await dao.getConfig();
       req.appid = config.appid;
       req.mch_id = config.store_mchid;
       req.out_refund_no = req.out_trade_no;//退款号=订单号
