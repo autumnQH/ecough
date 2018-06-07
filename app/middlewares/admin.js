@@ -22,6 +22,9 @@ exports.showOrder = async (ctx)=> {
           case 3:
           data.status = '已发货';
           break;
+          case 4:
+          data.status = '申请退款';
+          break;          
           case 5:
           data.status = '交易完成';
           break;
@@ -58,7 +61,7 @@ exports.order = async (ctx)=> {
       wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
     }
     await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
-    var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
+    // var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
     ctx.status = 204;	
   }else if(req.pay_money =='0' && req.total_money == '0'){//礼物订单
     var gift = await wechat.getGiftForConsumeByNameAndSpecifications(req.product, req.specifications);
@@ -88,21 +91,6 @@ exports.express = async (ctx)=> {
       User.addUserConsumeByEventKey(order.eventKey, total);
       User.addUserOrderCountByOpenId(openid);
     }
-    // var integral = userinfo.integral;//用户积分
-    //     integral = integral + parseInt(pay_money * config.shoping_integral * 0.01);//计算积分
-    // //下单赠送积分
-    // User.addUserIntegralByOpenId(integral, order_count, openid);
-    // if(userinfo.flag == out_trade_no && userinfo.eventKey){//首单
-    //   var eventKey = userinfo.eventKey.replace(/^qrscene_/,"");//推广员
-    //   var data = {
-    //     openid: eventKey,
-    //     voucher_type: '推广代金券',
-    //     create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
-    //     voucher_denomination: config.spread_voucher
-    //   };
-    //   //推广员获得代金券
-    //   await User.addUserVoucherByOpenId(data);
-    // }
 
     //减库存
     //最烂代码没有之一

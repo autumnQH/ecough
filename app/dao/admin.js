@@ -2,7 +2,7 @@ const db = require('../utils/mysql');
 
 //获取订单
 exports.getOrder = ()=> {
-	return db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME DESC");
+	return db.find("SELECT * FROM T_WECHAT_ORDER WHERE status != 4 ORDER BY CREATE_TIME DESC");
 }
 //根据订单号获取用户订单
 exports.getOrderByOutTradeNo = (out_trade_no)=> {
