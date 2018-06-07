@@ -6,7 +6,6 @@ router.get('/', checkAdmin, adminController.home);
 router.get('/order',checkAdmin, adminController.showOrder);//显示所有订单
 router.post('/order', adminController.order);//添加一条订单
 router.post('/order/express',checkAdmin, adminController.express);//更新订单物流
-router.post('/order/refund', checkAdmin, adminController.refundOrder)// 退款申请
 router.get('/service', checkAdmin, adminController.showService);//显示售后服务
 router.get('/FAQ', checkAdmin ,adminController.showFAQ);//显示常见问题
 router.get('/FAQ/create', checkAdmin, adminController.showAddFAQ);//显示添加FAQ

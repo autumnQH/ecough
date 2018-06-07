@@ -90,7 +90,7 @@ $(function() {
 		$.confirm('确定要退款吗？','申请退款', function success() {
 			$.showLoading();
 			$.ajax({
-				url: '/admin/order/refund',
+				url: '/user/order/refund',
 				data: {
 					out_trade_no: '<%= data.out_trade_no %>',
 					total_fee: '<%= data.pay_money %>'
