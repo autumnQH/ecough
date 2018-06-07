@@ -147,7 +147,10 @@ exports.contactCustomService = async (ctx)=> {
 exports.refundOrder = async (ctx) => {
   var req = ctx.request.body;
   var out_trade_no = req.out_trade_no;
-  var order = await wechat.getOutTradeNo(out_trade_no);
+  var id = req.id
+  console.log(req)
+  var order = await Order.getOneOrderById(id);
+  //var order = await wechat.getOutTradeNo(out_trade_no);
   console.log(order,'order')
   if(order.status == 2 && req.total_fee == 0){//礼物退货
     var status = await Order.updateOrderStatusByOutTradeNo(req.out_trade_no, 0);

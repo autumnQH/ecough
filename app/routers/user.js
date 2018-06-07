@@ -27,5 +27,5 @@ router.get('/FAQ', checkUser, userController.showFAQ);//显示常见问题
 router.get('/FAQ/:id', checkUser, userController.showFAQById);//显示常见问题
 
 router.get('/customservice/api', checkUser, userController.contactCustomService);//联系客服
-router.post('/order/refund', checkUser, userController.refundOrder)// 退款申请
+router.post('/order/refund', checkUser, userController.refundOrder);// 退款申请
 module.exports= router;
