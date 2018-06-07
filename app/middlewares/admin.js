@@ -133,6 +133,66 @@ exports.refundList = async (ctx)=> {
   ctx.state.data = datas;
   await ctx.render('admin/refundList');
 }
+exports.refund = async (ctx) => {
+  var req = ctx.request.body;
+  var out_trade_no = req.out_trade_no;
+  var config = await dao.getConfig();
+  var order = await Admin.getOrderByOutTradeNo(out_trade_no);
+  if(order.status == 4 && req.total_fee == 0){//礼物退货
+      var status = await wechat.refundGift(req.out_trade_no);//更新订单状态0-交易取消
+      if(status == 1){
+          return ctx.body = {
+              msg: "SUCCESS"
+          }
+      }else{
+          return ctx.body = {
+              msg: "ERROR",
+              code: "500:网络繁忙!"
+          }
+      }
+  }else if(order.status == 4 && req.total_fee>0){//退款
+      req.appid = config.appid;
+      req.mch_id = config.store_mchid;
+      req.out_refund_no = req.out_trade_no;//退款号=订单号
+      req.refund_fee = parseInt(req.total_fee* 100);//退款金额=支付金额
+      req.total_fee = parseInt(req.total_fee* 100);
+      var refund = await pay.refund(req);    
+      var xml = refund.xml; 
+      console.log(xml);
+      if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
+          if(xml.result_code[0] === 'SUCCESS'){
+              // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
+              await wechat.refundVoucherByOutTradeNo(req.out_trade_no);//退款代金券
+              await wechat.refundUserByOutTradeNo(req.out_trade_no);//退款首单
+              await wechat.updateOrderStatus(req.out_trade_no);//更新订单状态0-交易取消
+              return ctx.body = {
+                  msg: xml.result_code[0]
+              }
+          }else{        
+              return ctx.body = {
+                  msg: xml.result_code[0],
+                  code:xml.err_code +':'+ xml.err_code_des[0]
+              }
+          }
+      }
+      
+  }else if(order.status == 3) {
+      return ctx.body = {
+          msg: 'ERROR',
+          code: '该订单已经发货'
+      }
+  }else if(order.status == 0) {
+      return ctx.body = {
+          msg: 'ERROR',
+          code: '该订单已经取消'
+      }
+  }else{
+      return ctx.body = {
+          msg:'ERROR',
+          code: '未知错误!'
+      }
+  }
+}
 exports.showService = async (ctx)=> {
   var data = await Admin.getService();
   data.forEach(function(val) {
