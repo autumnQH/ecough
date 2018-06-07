@@ -116,7 +116,6 @@
             method: 'get'
         }).done(function(d) {
             img_url = d.url;
-            alert(img_url)
             $('.Img').find('img').attr('src', img_url);
             $('#loadingdetail').hide();
         });
