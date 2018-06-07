@@ -1,7 +1,7 @@
 logs
 npm-debug.log
 app/public/imgs
-app/public/uploads
+app/public/uploads/
 app/utils/apiclient_cert.p12
 node_modules
 coverage
