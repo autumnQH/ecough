@@ -228,13 +228,14 @@ $(function() {
     }
     var index = parseInt(mail); //快递下拉框选择索引
     try{
-      if (!companyReg[index].exec($.trim(no.val()))){ 
-        alert("物流编号格式不正确!\n" + msg[index]);
-        no.focus();
-        e.preventDefault();
-      }else{
-        return true;
-      }
+      // if (!companyReg[index].exec($.trim(no.val()))){ 
+      //   alert("物流编号格式不正确!\n" + msg[index]);
+      //   no.focus();
+      //   e.preventDefault();
+      // }else{
+      //   return true;
+      // }
+      return true
     }catch(err){
       alert('系统错误！请联系管理员');
       e.preventDefault();
