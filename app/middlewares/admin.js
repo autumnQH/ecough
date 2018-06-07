@@ -5,6 +5,7 @@ const Admin = require('../proxy').Admin;
 const User = require('../proxy').User;
 const Config = require('../proxy').Config;
 const dao = require('../dao/wechat');
+const pay = require('../utils/pay');
 
 exports.home = async (ctx)=> {
 	await ctx.redirect('admin/order');
