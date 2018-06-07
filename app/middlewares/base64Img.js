@@ -11,6 +11,7 @@ exports.index = async (ctx)=> {
 	var img = await new Promise(function(resolve, reject) {
   	fs.writeFile(url, dataBuffer, function(err) {
   		if(err){
+        console.log(err);
   			reject(err);
   		}else{
   			resolve({
