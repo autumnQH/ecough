@@ -139,7 +139,6 @@ exports.refund = async (ctx) => {
   var req = ctx.request.body;
   var out_trade_no = req.out_trade_no;
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
-  console.log(order)
   if(order.status == 4 && req.total_fee == 0){//礼物退货
       var status = await wechat.refundGift(req.out_trade_no);//更新订单状态0-交易取消
       if(status == 1){
@@ -161,7 +160,6 @@ exports.refund = async (ctx) => {
       req.total_fee = parseInt(req.total_fee* 100);
       var refund = await pay.refund(req);    
       var xml = refund.xml; 
-      console.log(xml);
       if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
           if(xml.result_code[0] === 'SUCCESS'){
               // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
