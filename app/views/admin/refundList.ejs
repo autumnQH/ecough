@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>订单</title>
+    <%include bootcss.ejs %>
+    <%include bootcssTable.ejs %>
+</head>
+<body>
+<%include nav.ejs %>
+
+<table id="table" class="table table-hover">
+</table>
+
+<script>
+$(function() {
+    $('#table').bootstrapTable({
+      data: JSON.parse('<%- JSON.stringify(data) %>'),
+      columns:[{
+        field: 'name',
+        title: '姓名',
+        sortable: true
+      },{
+        field: 'phone',
+        title: '电话',
+        sortable: true
+      },{
+        field: 'address',
+        title: '地址',
+        sortable: true
+      },{
+        field: 'product',
+        title: '产品',
+        sortable: true
+      },{
+        field: 'total',
+        title: '数量',
+        sortable: true
+      },{
+        field: 'specifications',
+        title: '规格',
+        sortable: true
+      },{
+        field: 'total_money',
+        title: '总金额',
+        sortable: true
+      },{
+        field: 'derate_money',
+        title: '减免金额',
+        sortable: true
+      },{
+        field: 'pay_money',
+        title: '支付金额',
+        sortable: true
+      },{
+        field: 'out_trade_no',
+        title: '订单号',
+        sortable: true
+      },{
+        field: 'status',
+        title: '状态',
+        sortable: true
+      },{
+        field: 'create_time',
+        title: '下单时间',
+        sortable: true
+      }],
+      search: true,
+      showPaginationSwitch: true,
+      striped: true,
+      pagination: true,
+      paginationLoop: false,
+      pageList: [10, 20, 30, 40, 50, 100],
+      searchOnEnterKey: true,
+      showColumns: true,
+      showRefresh: true,
+      showPaginationSwitch: true,
+      showToggle: true,
+      showPaginationSwitch: true,
+      sortOrder: true
+    });
+
+
+
+    $("table").on("click","td:not(td:nth-child(11))",function(e){
+      var tr = $(this).parent();
+      var arr = []
+      tr.children().map(function(el){
+          arr.push($(this)[0].innerText)
+      })
+      if(arr[10] =='待发货' || arr[10] == '已发货'){
+        $('#myModalLabel').text(arr[10]);//标题
+        $('#current_name').val(arr[0]);
+        $('#current_phone').val(arr[1]);
+        $('#current_address').val(arr[2]);
+        $('#current_out_trade_no').val(arr[9]);//订单号
+        $('#delivery_track_no').val(arr[12]);
+        $('#total').val(arr[4]);
+        switch(arr[11]){
+          case '申通':
+          arr[11] = 'shentong';
+          break;
+          case '百世': 
+          arr[11] =  'huitongkuaidi';
+          break;
+          case '圆通':
+          arr[11] = 'yuantong';
+          break;
+          default:
+          arr[11] = 'shentong';
+        }
+        $('#delivery_company').val(arr[11]);
+        $('#myModal').modal('show');        
+      }
+    });
+  
+    $("table").on("click","td:nth-child(11)",function(e){
+      var tr = $(this).parent();
+      var arr = []
+      tr.children().map(function(el){
+          arr.push($(this)[0].innerText)
+      })
+      if(arr[10]!='待发货'){
+          $('#myModalLabel').text(arr[10]);//标题
+          $('#current_name2').val(arr[0]);
+          $('#current_phone2').val(arr[1]);
+          $('#current_address2').val(arr[2]);
+          $('#current_out_trade_no2').val(arr[9]);//订单号
+          $('#delivery_track_no2').val(arr[12]);
+          $('#myModal2').modal('show');        
+      }
+    });
+});
+</script>
+
+</body>
+</html>

@@ -120,6 +120,19 @@ exports.express = async (ctx)=> {
 	await ctx.redirect('back');
 }
 
+exports.refundList = async (ctx)=> {
+    var datas = await Admin.getOrder();
+  datas.forEach(function(data) {
+      data.create_time = tools.formatDate(data.create_time);
+        switch(data.status){
+          case 4:
+          data.status = '申请退款';
+          break;          
+        }
+  });
+  ctx.state.data = datas;
+  await ctx.render('admin/refundList');
+}
 exports.showService = async (ctx)=> {
   var data = await Admin.getService();
   data.forEach(function(val) {
