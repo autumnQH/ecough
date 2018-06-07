@@ -146,15 +146,10 @@ exports.contactCustomService = async (ctx)=> {
 
 exports.refundOrder = async (ctx) => {
   var req = ctx.request.body;
-  var out_trade_no = req.out_trade_no;
   var id = req.id
-  console.log(req)
   var order = await Order.getOneOrderById(id);
-  //var order = await wechat.getOutTradeNo(out_trade_no);
-  console.log(order,'order')
   if(order.status == 2 && req.total_fee == 0){//礼物退货
-    var status = await Order.updateOrderStatusByOutTradeNo(req.out_trade_no, 0);
-    console.log(status ,'status')
+    var status = await Order.updateOrderStatusById(order.id, 0);
     if(status == 1){
         return ctx.body = {
             msg: "SUCCESS"
@@ -166,8 +161,7 @@ exports.refundOrder = async (ctx) => {
         }
     }
   }else if(order.status == 2 && req.total_fee > 0) {   // 产品退货 
-    var status = await Order.updateOrderStatusByOutTradeNo(req.out_trade_no, 4);
-    console.log(status, 'status, order')
+    var status = await Order.updateOrderStatusById(order.id, 4);
     return ctx.body = {
       msg: "SUCCESS"
     }

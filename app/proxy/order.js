@@ -17,10 +17,10 @@ exports.getOrderForTradeByOpenId = (openid)=> {
 }
 
 /**
- * 根据订单号修改订单状态
- * @params { String } out_trade_no 订单号
+ * 根据订单ID修改订单状态
+ * @params { Int } id 订单ID
  * @params { Number } status 订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消 4-申请退款 )
  */
-exports.updateOrderStatusByOutTradeNo = (out_trade_no, status) => {
-	return order.updateOrderStatusByOutTradeNo(out_trade_no, status)
+exports.updateOrderStatusById = (id, status) => {
+	return order.updateOrderStatusById(id, status)
 }

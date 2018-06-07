@@ -92,7 +92,6 @@ $(function() {
 			$.ajax({
 				url: '/user/order/refund',
 				data: {
-					out_trade_no: '<%= data.out_trade_no %>',
 					total_fee: '<%= data.pay_money %>',
           id: '<%= data.id %>'
 				},

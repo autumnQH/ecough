@@ -9,6 +9,6 @@ exports.getOrderForTradeByOpenId = (openid)=> {
 	return db.find("SELECT out_trade_no FROM T_WECHAT_ORDER WHERE openid = '"+ openid +"'");
 }
 //修改订单状态
-exports.updateOrderStatusByOutTradeNo = (out_trade_no, status)=> {
-	return db.update("T_WECHAT_ORDER", {status}, {out_trade_no});
+exports.updateOrderStatusById = (id, status)=> {
+	return db.update("T_WECHAT_ORDER", {status}, {id});
 }
