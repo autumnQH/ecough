@@ -134,7 +134,9 @@ exports.refundList = async (ctx)=> {
   await ctx.render('admin/refundList');
 }
 exports.refund = async (ctx) => {
+  console.log('??')
   var req = ctx.request.body;
+  console.log(req)
   var out_trade_no = req.out_trade_no;
   var config = await dao.getConfig();
   var order = await Admin.getOrderByOutTradeNo(out_trade_no);
