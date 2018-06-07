@@ -121,7 +121,7 @@ exports.express = async (ctx)=> {
 }
 
 exports.refundList = async (ctx)=> {
-    var datas = await Admin.getOrder();
+  var datas = await Admin.getRefundList();
   datas.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
         switch(data.status){

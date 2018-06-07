@@ -4,6 +4,9 @@ const admin = require('../dao/admin');
 exports.getOrder = ()=> {
 	return admin.getOrder();
 }
+exports.getRefundList = ()=> {
+	return admin.getRefundList()
+}
 /**
  * 根据订单号获取订单ID
  * @param {String} out_trade_no 订单号

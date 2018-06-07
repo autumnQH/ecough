@@ -4,6 +4,9 @@ const db = require('../utils/mysql');
 exports.getOrder = ()=> {
 	return db.find("SELECT * FROM T_WECHAT_ORDER WHERE status != 4 ORDER BY CREATE_TIME DESC");
 }
+exports.getRefundList = ()=> {
+	return db.find("SELECT * FROM T_WECHAT_ORDER WHERE status = 4 ORDER BY CREATE_TIME DESC")
+}
 //根据订单号获取用户订单
 exports.getOrderByOutTradeNo = (out_trade_no)=> {
 	return db.findOne("SELECT * FROM T_WECHAT_ORDER WHERE ? ", {out_trade_no: out_trade_no});
