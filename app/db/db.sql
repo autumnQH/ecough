@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS STORE (
   PRIMARY KEY (product_id)
 )DEFAULT CHARSET=utf8  COMMENT='产品表';
 
-INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', sku_attr = '白色,黑色', sku_info = '10*10米:1000:1200:0,12*12米:1200:1500:96', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
+INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色,黑色', sku_info = '10*10米:1000:1200:0,12*12米:1200:1500:96', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   id int NOT NULL AUTO_INCREMENT,
