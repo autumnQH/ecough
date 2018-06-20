@@ -4,12 +4,12 @@ const tools = require('../utils/tools');
 const pay = require('../utils/pay');
 const xml = require('../utils/xml');
 
-exports.voucher = async (ctx)=> {
-	var openid = ctx.session.openid;
-	var voucher = await User.getUserVoucherByOpenId(openid);
-	console.log(voucher);
-	ctx.body = voucher;
-}
+// exports.voucher = async (ctx)=> {
+// 	var openid = ctx.session.openid;
+// 	var voucher = await User.getUserVoucherByOpenId(openid);
+// 	console.log(voucher);
+// 	ctx.body = voucher;
+// }
 
 exports.sdk = async (ctx)=> {
     let url = decodeURIComponent(ctx.query.url);

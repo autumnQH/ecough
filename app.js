@@ -11,7 +11,7 @@ const onerror = require('koa-onerror');
 const logger = require('koa-logger');
 const compress = require('koa-compress')
 const multer = require('koa-multer');
-
+const config = require('./config/config')
 
 const controller = require('./controller');
 const logUtil = require('./utils/log');
@@ -87,4 +87,4 @@ app.on('error', function(err, ctx){
 const wechatService = require('./app/service/wechat');
 wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.js"));
 
-app.listen(3000);
+app.listen(config.service.port);

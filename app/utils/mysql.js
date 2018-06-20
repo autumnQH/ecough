@@ -9,8 +9,8 @@ var options = {
     'password': config.db.password,
     'connectionLimit': config.db.conn_limit,
     // 'charset': config.db.charset,
-    'supportBigNumbers': true,
-    'bigNumberStrings': true
+    'supportBigNumbers': config.db.supportBigNumbers,
+    'bigNumberStrings': config.db.bigNumberStrings
 }
 
 //创建数据库连接池

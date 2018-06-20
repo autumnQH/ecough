@@ -117,8 +117,8 @@ cd /usr/local/bin
 |       └---db.sql          表结构
 |   └---middlewares         中间件
 |       └---admin.js
-|       └---base64Img.js 
-|       └---check.js
+|       └---base64Img.js    前端传入base64数据格式，转化为图片
+|       └---check.js        检查用户session
 |       └---index.js 
 |       └---sign.js
 |       └---user.js
@@ -182,7 +182,7 @@ cd /usr/local/bin
 # 启动服务
 请确保mysql redis 服务已经启动
 启动前先把 `` wt/config.js ``相关配置修改成自己的.
-启动前先把 `` ecough/app/utils/mysql.js ``密码修改成自己的.
+启动前先把 `` ecough/app/config/config.js ``修改成自己的.
 `` cd wt  ``
 `` pm2 start app.js -n middle``
 `` cd ecough ``
