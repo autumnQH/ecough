@@ -13,7 +13,6 @@ const compress = require('koa-compress')
 const multer = require('koa-multer');
 const config = require('./config/config')
 
-const controller = require('./controller');
 const logUtil = require('./utils/log');
 
 //session
@@ -74,9 +73,8 @@ app.use(async (ctx, next) => {
   }
 });
 
-//控制器
-app.use(controller(path.join(__dirname, './app/controllers')));
 
+// 路由
 app.use(routers.routes()).use(routers.allowedMethods());
 app.on('error', function(err, ctx){
     console.log(err)
