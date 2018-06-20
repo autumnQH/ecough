@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS CONFIG (
   sms_secretAccessKey varchar(255) DEFAULT '' COMMENT '阿里短信 secretAccessKey',
   sms_TemplateCode varchar(255) DEFAULT '' COMMENT '阿里短信 TemplateCode',
   sms_SignName varchar(255) DEFAULT '' COMMENT '阿里短信 SignName',
-  server_host varchar(255) DEFAULT '' COMMENT '填写微信公众号后台配置对应的url',
+  server_host varchar(255) DEFAULT '' COMMENT '填写微信公众号后台授权的url地址',
   template_title TEXT DEFAULT NULL COMMENT '微信支付成功模版消息标题',
   template_remake TEXT DEFAULT NULL COMMENT '微信支付成功模版消息备注',
   derate_money int(36) DEFAULT 0 COMMENT '首单代金券',

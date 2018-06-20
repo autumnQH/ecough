@@ -214,6 +214,8 @@ cd /usr/local/bin
 重新加载配置文件
 `` nginx -s reload ``
 ## 修改配置
+### 微信后台配置
+服务器地址: `你的域名` + `/wechat`
 ### 账号密码
 1.登录``域名/admin/config``修改相关配置
 账号： root
