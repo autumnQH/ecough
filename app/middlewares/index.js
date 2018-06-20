@@ -7,3 +7,4 @@ exports.user = require('./user');
 exports.sms = require('./sms')
 exports.product = require('./product')
 exports.order = require('./order')
+exports.notify = require('./notify')

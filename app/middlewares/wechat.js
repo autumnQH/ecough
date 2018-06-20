@@ -6,8 +6,6 @@ const xml = require('../utils/xml');
 const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
 const moment = require('moment');
-const urlencode = require('urlencode');
-
 
 exports.checkToken = async (ctx, next) => {
     let result = await wechat.auth(ctx);

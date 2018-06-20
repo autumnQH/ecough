@@ -1,13 +1,7 @@
-const request = require('request');
 const xml = require('../utils/xml');
-const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
 const tools = require('../utils/tools');
 const urlencode = require('urlencode');
-const crypto = require('crypto');
-const moment = require('moment');
-const pay = require('../utils/pay');
-const USER = require('../utils/user');
 const STORE = require('../utils/store');
 
 exports.getProductById = async (ctx, next) => {
