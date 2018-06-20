@@ -7,8 +7,6 @@ const wechat = require('../utils/wechat');
 const dao = require('../dao/wechat');
 const moment = require('moment');
 const urlencode = require('urlencode');
-const tools = require('../utils/tools');
-const User = require('../proxy').User;
 
 
 exports.checkToken = async (ctx, next) => {
