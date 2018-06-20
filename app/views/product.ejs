@@ -121,7 +121,7 @@
         var specifications = $.trim($('.active').text());
         var total = Math.abs(parseInt($('#total').children().eq(EQ).find('input').val()));
         if ($(this).attr('disabled')) {
-            $('#pay').attr('href', "/my/pay?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
+            $('#pay').attr('href', "/order/create?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
         } else {
             return;
         }
