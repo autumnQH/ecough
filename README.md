@@ -100,10 +100,6 @@ cd /usr/local/bin
 |---app : 业务逻辑代码
 |   └---config
 |       └---wechat_meun.js   创建微信公众号菜单配置文件
-|   └---controllers
-|       └---my.js            获取产品，支付，退款, 收款通知
-|       └---sms.js           阿里云短信服务
-|       └---wechat.js        检查是否是微信发送过来的消息
 |   └---dao   增删改查mysql
 |       └---admin.js 
 |       └---config.js  
@@ -120,7 +116,11 @@ cd /usr/local/bin
 |       └---base64Img.js    前端传入base64数据格式，转化为图片
 |       └---check.js        检查用户session
 |       └---index.js 
+|       └---notify.js.      微信支付通知
+|       └---order.js        
+|       └---product.js      
 |       └---sign.js
+|       └---sms.js          阿里短信服务Api
 |       └---user.js
 |       └---wechat.js
 |   └---proxy  代理操作dao
