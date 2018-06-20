@@ -5,6 +5,7 @@ const base64 = require('./base64Img');
 const wx = require('./wechat');
 const user = require('./user');
 const sms = require('./sms')
+const product = require('./product')
 
 router.use('/admin',admin.routes(), admin.allowedMethods());
 router.use('/sign',sign.routes(), sign.allowedMethods());
@@ -12,5 +13,5 @@ router.use('/base64', base64.routes(), base64.allowedMethods());
 router.use('/wx', wx.routes(), wx.allowedMethods());
 router.use('/user', user.routes(), user.allowedMethods());
 router.use('/sms', sms.routes(), sms.allowedMethods());
-
+router.use('/product', product.routes(), product.allowedMethods())
 module.exports = router;

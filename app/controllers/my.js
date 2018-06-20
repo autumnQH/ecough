@@ -181,7 +181,7 @@ var notify = async function(ctx, next) {
 
 module.exports = {
     //'GET /product/100001': PreOrder,
-    'GET /product/:product': product,
+   // 'GET /product/:product': product,
     'POST /notify': notify,
     'GET /my/pay': jssdk
 

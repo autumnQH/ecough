@@ -2,10 +2,10 @@
 # 环境要求
 
 > Linux(CentOS 7.2): 自由和开放源码的类UNIX操作系统。
-> NodeJS: Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
-> Nginx: 轻量级网页服务器、反向代理服务器。
-> Mysql: 关系型数据库管理系统。
-> Redis:内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。
+> NodeJS(version 8.9): Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
+> Nginx(version 1.12.2): 轻量级网页服务器、反向代理服务器。
+> Mysql(version 5.6): 关系型数据库管理系统。
+> Redis(version 3.6):内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。
 
 ## 环境准备
 ### CentOS7.2
@@ -215,7 +215,7 @@ cd /usr/local/bin
 `` nginx -s reload ``
 ## 修改配置
 ### 微信后台配置
-服务器地址: `你的域名` + `/wechat`
+服务器地址: `你的域名` + `/wx`
 ### 账号密码
 1.登录``域名/admin/config``修改相关配置
 账号： root
