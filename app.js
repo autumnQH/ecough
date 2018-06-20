@@ -87,4 +87,4 @@ app.on('error', function(err, ctx){
 const wechatService = require('./app/service/wechat');
 wechatService.createMenu(path.join(__dirname, "./app/config/wechat_menu.js"));
 
-app.listen(config.service.port);
+app.listen(config.server.port);
