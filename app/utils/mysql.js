@@ -1,20 +1,8 @@
 const mysql = require('mysql2');
 const config = require('../../config/config.js')
-//数据库连接配置选项
-var options = {
-    'host': config.db.host,
-    //'port': config.db.port,
-    'database': config.db.database,
-    'user': config.db.user,
-    'password': config.db.password,
-    'connectionLimit': config.db.conn_limit,
-    // 'charset': config.db.charset,
-    'supportBigNumbers': config.db.supportBigNumbers,
-    'bigNumberStrings': config.db.bigNumberStrings
-}
 
 //创建数据库连接池
-const pool = mysql.createPool(options);
+const pool = mysql.createPool(config.db);
 
 //数据库查询操作
 function execQuery(sql, values, callback) {
