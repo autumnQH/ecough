@@ -8,7 +8,7 @@ const config = {
     port:  '3306', 
     database: 'ecough', 
     user: 'root', 
-    password: 'Root123456',
+    password: 'Root123456==',
     supportBigNumbers: true,
     bigNumberStrings: true 
   }
