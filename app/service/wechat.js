@@ -1,8 +1,8 @@
-const dao = require('../dao/wechat.js');
+const wxSDK = require('../proxy').WXSDK;
 const wechat = require('../utils/wechat.js');
 
-var createMenu = async(menu) => {
-	var token = await dao.getActiveAccessToken();
+var createMenu = (menu) => {
+	var token = wxSDK.getWeAccessToken();
 	wechat.createMenu(menu, token);
 } 
 

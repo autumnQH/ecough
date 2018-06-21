@@ -8,9 +8,8 @@
 > Redis(version 3.6):内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。
 
 ## 环境准备
-### 服务器（CentOS7.2）
-购买链接 https://cloud.tencent.com/product/cvm
-![image](http://p8p8yzlxl.bkt.clouddn.com/FgPqAnO7JmxCES11ntKTVa3dmf1F)
+### CentOS7.2
+购买链接 https://www.aliyun.com/
 ### nodejs 安装
 ---
 1.安装依赖包:

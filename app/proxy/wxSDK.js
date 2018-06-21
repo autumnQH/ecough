@@ -1,8 +1,8 @@
-const wechat = require("../dao/wechat");
+const wechatDAO = require("../dao/wechat");
 
 exports.getWeSDK = ()=> {
-	return wechat.getJsapiTicket();
+	return wechatDAO.getJsapiTicket();
 }
 exports.getWeAccessToken = ()=> {
-	return wechat.getActiveAccessToken();
+	return wechatDAO.getActiveAccessToken();
 }

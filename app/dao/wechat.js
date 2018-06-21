@@ -5,6 +5,13 @@ var getActiveAccessToken = async () => {
 	return result.access_token; 
 }
 
+var fetchToken = () => {
+	return db.findOne("SELECT * FROM WECHAT ORDER BY CREATE_TIME DESC LIMIT 1")
+}
+
+var saveToken = (data) => {
+	return db.add("WECHAT", data)
+}
 var getJsapiTicket = async () => {
 	var result = await db.findOne("SELECT * FROM WECHAT ORDER BY CREATE_TIME DESC LIMIT 1");
 	return result.jsapi_ticket;
@@ -171,5 +178,7 @@ module.exports = {
 	delFAQ: delFAQ,
 	refundVoucherByOutTradeNo: refundVoucherByOutTradeNo,
 	refundUserByOutTradeNo: refundUserByOutTradeNo,
-	getGiftForConsumeByNameAndSpecifications: getGiftForConsumeByNameAndSpecifications
+	getGiftForConsumeByNameAndSpecifications: getGiftForConsumeByNameAndSpecifications,
+	fetchToken,
+	saveToken
 };

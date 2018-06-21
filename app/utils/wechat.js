@@ -118,6 +118,41 @@ exports.createMenu = async (menu, token) => {
   
 }
 
+exports.getToken = function(obj) {
+    return new Promise(function(resolve, reject) {
+        let options = {
+            url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+ obj.appid +'&secret=' + obj.secret,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            method: 'get'
+        };
+        request(options, function(err, res, body) {
+            if(body){
+                return resolve(JSON.parse(body));
+            }else{
+                return reject(JSON.parse(err));
+            }
+        });
+    });
+}
+
+
+exports.getTicket = function(token) {
+    return new Promise(function(resolve, reject) {
+        let options = {
+            url: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='+ token +'&type=jsapi',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            method: 'get'
+        };
+        request(options, function(err, res, body) {
+            if(body){
+                return resolve(JSON.parse(body));
+            }else{
+                return reject(JSON.parse(err));
+            }
+        });
+    });
+}
+
 exports.getJsApiTicket = () => {
     return dao.getJsapiTicket();
 }

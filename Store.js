@@ -1,10 +1,11 @@
 const Redis = require('ioredis');
 const { Store } = require('koa-session2');
+const config = require('./config/config')
 
 class RedisStore extends Store {
 	constructor(){
 		super();
-		this.redis = new Redis();
+		this.redis = new Redis(config.redis);
 	}
 	async get(sid){
 		let data = await this.redis.get(`SESSION: ${ sid}`);
