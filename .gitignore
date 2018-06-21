@@ -1,5 +1,6 @@
 logs
 npm-debug.log
+package-lock.json
 app/public/imgs/
 app/public/uploads/
 app/utils/apiclient_cert.p12
