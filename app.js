@@ -16,18 +16,21 @@ const config = require('./config/config')
 const logUtil = require('./utils/log');
 
 //session
-const session = require('koa-session2');
+const session = require('koa-session');
 //const Store = require('./Store.js');
 
 const routers = require('./app/routers');
+app.keys = ['fafuna']
 
-app.use(session({
-    key: 'koa:sess',
-    maxAge: 86400000,
-    overwrite: true,
-    signed: true,
-    rolling: false,
-}));
+const CONFIG = {
+  key: 'koa:sess',
+  maxAge: 86400000,
+  overwrite: true,
+  signed: true,
+  rolling: false,
+}
+
+app.use(session(CONFIG, app))
 
 //模板
 app.use(views(path.join(__dirname, './app/views'), {
