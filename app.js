@@ -17,12 +17,16 @@ const logUtil = require('./utils/log');
 
 //session
 const session = require('koa-session2');
-const Store = require('./Store.js');
+//const Store = require('./Store.js');
 
 const routers = require('./app/routers');
 
 app.use(session({
-  store: new Store()
+    key: 'koa:sess',
+    maxAge: 86400000,
+    overwrite: true,
+    signed: true,
+    rolling: false,
 }));
 
 //模板
