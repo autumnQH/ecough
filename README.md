@@ -103,23 +103,28 @@
 输入`` cd wt ``
 输入`` npm i ``
 
-获取Mysql IP 地址
+5.获取Mysql IP 地址
 ![iamge](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.32.44.png)
 
-获取云服务器 IP地址， 获取公网IP
+6.获取云服务器 IP地址， 获取公网IP
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.43.14.png)
 
-5.修改相关配置
-打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
-打开`` ecough/app/config/``文件夹下``config.js ``文件，相关配置修改成自己的
+7.登录微信公众号获取微信AppId,appSecret
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.13.08.png)
 
-6.启动服务
+8.修改相关配置，没说明的就不用修改
+打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.19.07.png)
+打开`` ecough/app/config/``文件夹下``config.js ``文件，相关配置修改成自己的
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.21.39.png)
+
+9.启动服务
 输入`` cd wt  ``
 输入`` pm2 start app.js -n middle``
 输入`` cd ecough ``
 输入`` pm2 start app.js -n app ``
 
-7.配置Nginx
+10.配置Nginx
 输入`` vim /etc/nginx/nginx.conf ``
 修改相关配置，大致如下：
 ```
