@@ -116,7 +116,7 @@
 ###### 8.1 打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.19.07.png)
 
-###### 8.2 打开`` ecough/app/config/``文件夹下``config.js ``文件，相关配置修改成自己的
+###### 8.2 打开`` ecough/config/``文件夹下``config.js ``文件，相关配置修改成自己的
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.21.39.png)
 
 ##### 9.启动服务
