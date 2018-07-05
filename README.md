@@ -79,29 +79,29 @@
 
 #### 第二十三步：在服务器下输入下面命令
 ##### 1.nodejs 安装
-输入`` wget https://npm.taobao.org/mirrors/node/v8.9.3/node-v8.9.3.tar.gz ``
-输入`` tar -zxvf node-v8.9.3.tar.gz ``
-输入`` cd node-v8.9.3 ``
-输入`` ./configure --prefix=/usr/local/node ``
-输入``  make && make install ``
-输入`` node -v ``
-输入`` npm -v ``
-输入`` npm i -g pm2 ``
+`` wget https://npm.taobao.org/mirrors/node/v8.9.3/node-v8.9.3.tar.gz ``
+`` tar -zxvf node-v8.9.3.tar.gz ``
+`` cd node-v8.9.3 ``
+`` ./configure --prefix=/usr/local/node ``
+``  make && make install ``
+`` node -v ``
+`` npm -v ``
+`` npm i -g pm2 ``
 
 ##### 2.Nginx 安装
-输入`` yum install nginx ``
-输入`` service nginx restart ``
-输入`` wget http://127.0.0.1 ``
+`` yum install nginx ``
+`` service nginx restart ``
+`` wget http://127.0.0.1 ``
 
 ##### 3.下载项目源代码
-输入`` git clone https://github.com/autumnQH/ecough.git ``
-输入`` cd ecough ``
-输入`` npm i ``
+`` git clone https://github.com/autumnQH/ecough.git ``
+`` cd ecough ``
+`` npm i ``
 
 ##### 4.下载中控服务器代码：
-输入`` git clone https://github.com/autumnQH/wt.git ``
-输入`` cd wt ``
-输入`` npm i ``
+`` git clone https://github.com/autumnQH/wt.git ``
+`` cd wt ``
+`` npm i ``
 
 ##### 5.获取Mysql IP 地址
 ![iamge](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.32.44.png)
@@ -113,19 +113,20 @@
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.13.08.png)
 
 ##### 8.修改相关配置，没说明的就不用修改
-打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
+###### 8.1 打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.19.07.png)
-打开`` ecough/app/config/``文件夹下``config.js ``文件，相关配置修改成自己的
+
+###### 8.2 打开`` ecough/app/config/``文件夹下``config.js ``文件，相关配置修改成自己的
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.21.39.png)
 
 ##### 9.启动服务
-输入`` cd wt  ``
-输入`` pm2 start app.js -n middle``
-输入`` cd ecough ``
-输入`` pm2 start app.js -n app ``
+`` cd wt  ``
+`` pm2 start app.js -n middle``
+`` cd ecough ``
+`` pm2 start app.js -n app ``
 
 ##### 10.配置Nginx
-输入`` vim /etc/nginx/nginx.conf ``
+`` vim /etc/nginx/nginx.conf ``
 修改相关配置，大致如下：
 ```
 ......
@@ -148,8 +149,8 @@
 ......    
 ```
 重新加载配置文件
-输入`` nginx -s reload ``
-输入`service nginx start `
+`` nginx -s reload ``
+`service nginx start `
 
 #### 第二十四步：登录微信公众号后台，修改微信公众后台配置（重要）
 ##### 1.ip白名单，填写第 步获取的IP地址
@@ -175,7 +176,7 @@
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%888.13.15.png)
 
 #### 第二十流步：本地打开浏览器
-输入`你的域名/admin`并修改相关配置
+`你的域名/admin`并修改相关配置
 账号： root
 密码： root666888
 
