@@ -75,7 +75,7 @@
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%885.36.04.png)
 
 #### 第二十二步：进入服务器
-![image]('http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%885.40.32.png')
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%885.40.32.png)
 
 #### 第二十三步：在服务器下输入下面命令
 ##### 1.nodejs 安装
