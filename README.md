@@ -78,30 +78,39 @@
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%885.40.32.png)
 
 #### 第二十三步：在服务器下输入下面命令
-##### 1.nodejs 安装
+##### 1.1nodejs 下载安装
 `` wget https://npm.taobao.org/mirrors/node/v8.9.3/node-v8.9.3.tar.gz ``
+##### 1.2 解压缩
 `` tar -zxvf node-v8.9.3.tar.gz ``
+##### 1.3 进入目录
 `` cd node-v8.9.3 ``
-`` ./configure --prefix=/usr/local/node ``
+##### 1.3 安装
+`` ./configure``
+##### 1.3 编译
 ``  make && make install ``
+##### 1.3 查看nodejs 版本
 `` node -v ``
+##### 1.3 查看npm 版本
 `` npm -v ``
+##### 1.3 安装pm2
 `` npm i -g pm2 ``
 
-##### 2.Nginx 安装
+##### 2.1 Nginx 安装
 `` yum install nginx ``
+##### 2.2 启动Nginx服务
 `` service nginx restart ``
+##### 2.2 查看Nginx 服务是否启动成功
 `` wget http://127.0.0.1 ``
 
-##### 3.下载项目源代码
+##### 3.1 使用git下载项目源代码
 `` git clone https://github.com/autumnQH/ecough.git ``
-`` cd ecough ``
-`` npm i ``
+##### 3.2 进入项目并安装依赖的包
+`` cd ecough && npm i ``
 
-##### 4.下载中控服务器代码：
+##### 4.1 下载中控服务器代码
 `` git clone https://github.com/autumnQH/wt.git ``
-`` cd wt ``
-`` npm i ``
+##### 4.2 下载中控服务器代码
+`` cd wt && npm i ``
 
 ##### 5.获取Mysql IP 地址
 ![iamge](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.32.44.png)
@@ -119,11 +128,10 @@
 ###### 8.2 打开`` ecough/config/``文件夹下``config.js ``文件，相关配置修改成自己的
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.21.39.png)
 
-##### 9.启动服务
-`` cd wt  ``
-`` pm2 start app.js -n middle``
-`` cd ecough ``
-`` pm2 start app.js -n app ``
+##### 9.1 中控服务器项目并启动
+`` cd wt  && pm2 start app.js -n middle``
+##### 9.2 项目启动
+`` cd ecough && pm2 start app.js -n app ``
 
 ##### 10.配置Nginx
 `` vim /etc/nginx/nginx.conf ``
@@ -148,9 +156,8 @@
     }
 ......    
 ```
-重新加载配置文件
-`` nginx -s reload ``
-`service nginx start `
+重新加载配置文件并启动服务
+`` nginx -s reload && service nginx start``
 
 #### 第二十四步：登录微信公众号后台，修改微信公众后台配置（重要）
 ##### 1.ip白名单，填写第 步获取的IP地址
