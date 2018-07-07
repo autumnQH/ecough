@@ -5,7 +5,6 @@
 > NodeJS(version 8.9): Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
 > Nginx(version 1.12.2): 轻量级网页服务器、反向代理服务器。
 > Mysql(version 5.6): 关系型数据库管理系统。
-> Redis(version 3.6):内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。
 
 ## 环境准备
 ### 服务器（CentOS7.2）
