@@ -3,7 +3,6 @@
 
 > Linux(CentOS 7.2): 自由和开放源码的类UNIX操作系统。
 > NodeJS(version 8.9): Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
-> Nginx(version 1.12.2): 轻量级网页服务器、反向代理服务器。
 > Mysql(version 5.6): 关系型数据库管理系统。
 
 ## 环境准备
@@ -94,13 +93,6 @@
 ##### 1.3 安装pm2
 `` npm i -g pm2 ``
 
-##### 2.1 Nginx 安装
-`` yum install nginx ``
-##### 2.2 启动Nginx服务
-`` service nginx restart ``
-##### 2.2 查看Nginx 服务是否启动成功
-`` wget http://127.0.0.1 ``
-
 ##### 3.1 使用git下载项目源代码
 `` git clone https://github.com/autumnQH/ecough.git ``
 ##### 3.2 进入项目并安装依赖的包
@@ -131,32 +123,6 @@
 `` cd wt  && pm2 start app.js -n middle``
 ##### 9.2 项目启动
 `` cd ecough && pm2 start app.js -n app ``
-
-##### 10.配置Nginx
-`` vim /etc/nginx/nginx.conf ``
-修改相关配置，大致如下：
-```
-......
-    server {
-        listen       80 default_server;
-        listen       [::]:80 default_server;
-        server_name  www.baidu.com #你的域名 如www.baidu.com;
-        # return      301 https://$server_name$request_uri; #强制https
-        # Load configuration files for the default server block.
-        include /etc/nginx/default.d/*.conf;
-
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection ‘upgrade’;
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-......    
-```
-重新加载配置文件并启动服务
-`` nginx -s reload && service nginx start``
 
 #### 第二十四步：登录微信公众号后台，修改微信公众后台配置（重要）
 ##### 1.ip白名单，填写第 步获取的IP地址
