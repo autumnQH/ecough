@@ -1,6 +1,6 @@
 const config = {
   server: {
-    port: 3000 // 程序端口号,不用修改
+    port: 80 // 程序端口号,不用修改
   },
   SITE_ROOT_URL: 'https://www.fafuna.cn',
   db: {

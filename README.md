@@ -93,51 +93,49 @@
 ##### 1.3 安装pm2
 `` npm i -g pm2 ``
 
-##### 3.1 使用git下载项目源代码
+##### 2.1 使用git下载项目源代码
 `` git clone https://github.com/autumnQH/ecough.git ``
-##### 3.2 进入项目并安装依赖的包
+##### 2.2 进入项目并安装依赖的包
 `` cd ecough && npm i ``
 
-##### 4.1 下载中控服务器代码
+##### 3.1 下载中控服务器代码
 `` git clone https://github.com/autumnQH/wt.git ``
-##### 4.2 下载中控服务器代码
+##### 3.2 下载中控服务器代码
 `` cd wt && npm i ``
 
-##### 5.获取Mysql IP 地址
-![iamge](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.32.44.png)
-
-##### 6.获取云服务器 IP地址， 获取公网IP
+##### 4.获取云服务器 IP地址， 获取公网IP
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.43.14.png)
 
-##### 7.登录微信公众号获取微信AppId,appSecret
+##### 5.登录微信公众号获取微信AppId,appSecret
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.13.08.png)
 
-##### 8.修改相关配置，没说明的就不用修改
-###### 8.1 打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
+##### 6.修改相关配置，没说明的就不用修改
+###### 6.1 打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.19.07.png)
 
-###### 8.2 打开`` ecough/config/``文件夹下``config.js ``文件，相关配置修改成自己的
+###### 6.2 打开`` ecough/config/``文件夹下``config.js ``文件，相关配置修改成自己的
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.21.39.png)
 
-##### 9.1 中控服务器项目并启动
-`` cd wt  && pm2 start app.js -n middle``
-##### 9.2 项目启动
-`` cd ecough && pm2 start app.js -n app ``
-
 #### 第二十四步：登录微信公众号后台，修改微信公众后台配置（重要）
-##### 1.ip白名单，填写第 步获取的IP地址
+##### 1.ip白名单，填写第二十三步4中的获取的IP地址
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.45.37.png)
 
-##### 2.填写第服务器地址: `你的域名` + `/wx`。如``www.ecough.cn/wx``
-![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.48.52.png)
-
-##### 3.修改公众号功能设置
+##### 2.修改公众号功能设置
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.56.34.png)
 
-##### 4.下载MP_verify_0Ula6xjDfEiNpXFD.txt文件并放到``ecoug/app/public``目录下
+##### 3.下载MP_verify_0Ula6xjDfEiNpXFD.txt文件并放到``ecoug/app/public``目录下
 
-##### 5.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/app/utils/`目录下
+##### 4.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/app/utils/`目录下
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.54.22.png)
+
+##### 5 中控服务器项目并启动
+`` cd wt  && pm2 start app.js -n middle``
+##### 6 项目启动
+`` cd ecough && pm2 start app.js -n app ``
+
+##### 7.填写第服务器地址: `你的域名` + `/wx`。如``www.ecough.cn/wx``
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.48.52.png)
+
 #### 第二十五步：获取阿里云短信服务accessKeyId,secretAccessKey,短信签名，短信模版
 登录阿里云网站https://www.aliyun.com 进入控制台,选择accesskey
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%888.10.48.png)
@@ -147,7 +145,7 @@
 ##### 短信模版CODE
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%888.13.15.png)
 
-#### 第二十流步：本地打开浏览器
+#### 第二十七步：本地打开浏览器
 `你的域名/admin`并修改相关配置
 账号： root
 密码： root666888
