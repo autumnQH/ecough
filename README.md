@@ -128,13 +128,13 @@
 ##### 4.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/app/utils/`目录下
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.54.22.png)
 
-##### 5 中控服务器项目并启动
-`` cd wt  && pm2 start app.js -n middle``
-##### 6 项目启动
-`` cd ecough && pm2 start app.js -n app ``
+##### 5.设置微信支付平台授权目录
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-10%20%E4%B8%8B%E5%8D%881.35.08.png)
 
-##### 7.填写第服务器地址: `你的域名` + `/wx`。如``www.ecough.cn/wx``
-![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.48.52.png)
+##### 6 中控服务器项目并启动
+`` cd wt  && pm2 start app.js -n middle``
+##### 7 项目启动
+`` cd ecough && pm2 start app.js -n app ``
 
 #### 第二十五步：获取阿里云短信服务accessKeyId,secretAccessKey,短信签名，短信模版
 登录阿里云网站https://www.aliyun.com 进入控制台,选择accesskey
@@ -152,6 +152,10 @@
 
 根据前面步骤获取的微信公众号ID，微信支付密钥，阿里云短信服务填写
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.52.57.png)
+
+
+##### 填写第服务器地址: `你的域名` + `/wx`。如``www.ecough.cn/wx``
+![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.48.52.png)
 # OK
 
 
