@@ -43,23 +43,13 @@ exports.create = async(ctx, next) => {
     }
     var pay_money = total * current_money - derate_money ;
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
-    var page = await pay.setPackageData(openid, pay_money, value, store.name, ip);
-
-    var res = await tools.getPackge(page);//发起统一下单
-    var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-    // console.log(result);
-    if(result.xml.err_code){
-        if(result.xml.err_code[0] == 'ORDERPAID'){
-            await ctx.redirect('/product/100001');
-        }
-    }
-    if(result.xml.prepay_id){
+    try{
         //获取js-ticket才能调用微信支付请求
         var jsapi_ticket = await dao.getJsapiTicket();
         // var url = 'http://' + ctx.header.host + ctx.url;
         var url = config.server_host + ctx.url;
         var wxcfg = await pay.setWXConfig(jsapi_ticket, url, value);
-       // console.log(wxcfg,'wxcfg')
+        // console.log(wxcfg,'wxcfg')
         await ctx.render('order', {
             config: wxcfg,
             openid: openid,
@@ -69,9 +59,8 @@ exports.create = async(ctx, next) => {
             total_money: (pay_money + derate_money) * 0.01,
             derate_money: derate_money * 0.01,
             pay_money: pay_money * 0.01,
-
         });         
-    }else{
+    }catch(e){
         await ctx.redirect('/product/100001');
     }
 
