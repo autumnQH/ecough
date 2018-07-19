@@ -44,8 +44,6 @@ exports.create = async(ctx, next) => {
     var pay_money = total * current_money - derate_money ;
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var page = await pay.setPackageData(openid, pay_money, value, store.name, ip);
-    
-    // console.log(page,'统一下单');
 
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
@@ -56,11 +54,7 @@ exports.create = async(ctx, next) => {
         }
     }
     if(result.xml.prepay_id){
-        var prepayid = result.xml.prepay_id[0];
-        var data2 = await pay.setPaySign(prepayid, value);
-
         //获取js-ticket才能调用微信支付请求
-        //获取js-ticket
         var jsapi_ticket = await dao.getJsapiTicket();
         // var url = 'http://' + ctx.header.host + ctx.url;
         var url = config.server_host + ctx.url;
@@ -68,7 +62,6 @@ exports.create = async(ctx, next) => {
        // console.log(wxcfg,'wxcfg')
         await ctx.render('order', {
             config: wxcfg,
-            data: data2,
             openid: openid,
             total: total,
             store: store,

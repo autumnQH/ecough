@@ -18,10 +18,10 @@
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 		<style type="text/css">
-			.modal{
-				position: fixed;
-				bottom: 0;
-			}
+.modal{
+	position: fixed;
+	bottom: 0;
+}
 .footer{
 	position: fixed;
 	left: 0;
@@ -103,8 +103,10 @@
 							var specifications = '<%= specifications %>';
 							var pay_money = Number($('#total_fee').text());
 							var out_trade_no = msg.out_trade_no;
+							//var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
 							var derate_money = Number($('#derate').text());
 							var total_money = Number($('#total').text());
+							console.log();
 							$.ajax({
 								url: '/admin/order',
 								type: 'post',
@@ -119,7 +121,7 @@
 									url: '/product/<%= store.product_id %>',
 									total: total,
 									specifications: specifications,
-									pay_money: 1,
+									pay_money: pay_money,
 									total_money: total_money,
 									derate_money: derate_money,
 									out_trade_no: out_trade_no,

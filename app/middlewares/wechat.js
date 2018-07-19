@@ -135,18 +135,14 @@ exports.sdk = async (ctx)=> {
 exports.pay = async (ctx)=> {
     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     var body = ctx.request.body;
-
-    var nonceStr = tools.createRandom();
-    var timeStamp = tools.createTimestamp();
-    var out_trade_no = tools.trade();
-
+    var { openid, store_name, total_fee} = body
     var value = {
-        nonceStr: nonceStr,
-        timeStamp: timeStamp,
-        out_trade_no: out_trade_no
+        nonceStr: tools.createRandom(),
+        timeStamp: tools.createTimestamp(),
+        out_trade_no: tools.trade()
     };
-    body.total_fee = body.total_fee * 100;
-	var page = await pay.setPackageData(body.openid, body.total_fee, value,body.store_name, ip);
+    total_fee = total_fee * 100;
+	var page = await pay.setPackageData(openid, 1, value, store_name, ip);
     
     var res = await tools.getPackge(page);//发起统一下单
     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
