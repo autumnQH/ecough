@@ -61,6 +61,7 @@ exports.create = async(ctx, next) => {
             pay_money: pay_money * 0.01,
         });         
     }catch(e){
+        console.error(e)
         await ctx.redirect('/product/100001');
     }
 
