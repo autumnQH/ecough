@@ -2,10 +2,10 @@ const order = require('../dao/order');
 
 /**
  * 添加一条订单
- * @param {Object} order 订单数据
+ * @param {Object} data 订单数据
  */
-exports.setOrder = (order)=> {
-	return order.setOrder(order)
+exports.setOrder = (data)=> {
+	return order.setOrder(data)
 }
 
 /**
