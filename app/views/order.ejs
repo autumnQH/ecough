@@ -88,11 +88,11 @@
 					}
 				}).done(function(msg) {
 					wx.chooseWXPay({
-						timestamp: msg.timeStamp,//'<%= data.timeStamp %>',
-						nonceStr: msg.nonceStr,//'<%= data.nonceStr %>',
-						package: msg.package,//'<%= data.package %>',
-						signType: msg.signType,//'<%= data.signType %>',
-						paySign: msg.paySign,//'<%= data.paySign %>',
+						timestamp: msg.timeStamp,
+						nonceStr: msg.nonceStr,
+						package: msg.package,
+						signType: msg.signType,
+						paySign: msg.paySign,
 						success: function(res) {
 							
 							var name = $('#name').text();
