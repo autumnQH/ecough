@@ -4,6 +4,7 @@ const moment = require('moment');
 const Admin = require('../proxy').Admin;
 const User = require('../proxy').User;
 const Config = require('../proxy').Config;
+const Order = require('../proxy').Order;
 const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 
@@ -51,24 +52,25 @@ exports.showOrder = async (ctx)=> {
 }
 
 exports.order = async (ctx)=> {
-  var req = ctx.request.body; 
+  const req = ctx.request.body; 
+  const { openid, pay_money, total_money, out_trade_no, product, specifications, total } = req;
   req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-  var userinfo = await User.getUserByOpenId(req.openid);//获取用户信息
-  if(userinfo.eventKey){//是否有推广员
-    req.eventKey = userinfo.eventKey;
+  const { eventKey, flag } = await User.getUserByOpenId(openid);//获取用户信息
+  if(eventKey){//是否有推广员
+    req.eventKey = eventKey;
   }
-  await wechat.setOrder(req);
-  if(req.pay_money !='0' && req.total_money != '0') {//产品订单
-    if(userinfo.flag == '1'){
-      wechat.customUpdateUser(req.openid, req.out_trade_no); //记录用户购买一次,关闭首单          
+  const data = await Order.setOrder(req);
+  console.log(data,'data')
+  if(pay_money !='0' && total_money != '0') {//产品订单
+    if(flag == '1'){
+      User.updateUserByFlag(openid, out_trade_no); //记录用户购买订单号,关闭首单          
     }
-    await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
-    // var order_id = await Admin.getOrderIdByOutTradeNo(req.out_trade_no);
+    await tools.sendTemplateMessage(openid, pay_money, product+ '('+specifications+total+')');//发送模版消息
     ctx.status = 204;	
-  }else if(req.pay_money =='0' && req.total_money == '0'){//礼物订单
-    var gift = await wechat.getGiftForConsumeByNameAndSpecifications(req.product, req.specifications);
-        User.delUserConsumeByOpenId(req.openid, gift.consume);
-    await tools.sendTemplateMessage(req.openid, req.pay_money, req.product+ '('+req.specifications+req.total+')');//发送模版消息
+  }else if(pay_money =='0' && total_money == '0'){//礼物订单
+    var gift = await wechat.getGiftForConsumeByNameAndSpecifications(product, specifications);
+        User.delUserConsumeByOpenId(openid, gift.consume);
+    await tools.sendTemplateMessage(openid, pay_money, product+ '('+specifications+total+')');//发送模版消息
     ctx.status = 204;
   }
 }

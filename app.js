@@ -17,7 +17,6 @@ const logUtil = require('./utils/log');
 
 //session
 const session = require('koa-session');
-//const Store = require('./Store.js');
 
 const routers = require('./app/routers');
 app.keys = ['fafuna']

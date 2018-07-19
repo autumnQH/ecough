@@ -1,6 +1,14 @@
 const order = require('../dao/order');
 
 /**
+ * 添加一条订单
+ * @param {Object} order 订单数据
+ */
+exports.setOrder = (order)=> {
+	return order.setOrder(order)
+}
+
+/**
  * 根据订单id查找一条订单
  * @param {Int} id 订单ID
  */

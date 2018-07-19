@@ -43,10 +43,6 @@ var getUser = async () => {
 	return result;
 }
 
-var customUpdateUser = (openid, out_trade_no) => {
-	return db.find("update T_WECHAT_USER set flag = '"+ out_trade_no+"' where openid = '"+ openid +"'");
-}
-
 var setUser = async (data) => {
 	var result = db.add("T_WECHAT_USER", data);
 	return result;
@@ -60,12 +56,6 @@ var updateUser = async (data, value)=>{
 //获取订单
 var getOrder = async () => {
 	var result = await db.find("SELECT * FROM T_WECHAT_ORDER ORDER BY CREATE_TIME DESC");
-	return result;
-}
-
-//添加订单
-var setOrder = async(data) => {
-	var result = db.add("T_WECHAT_ORDER", data);
 	return result;
 }
 
@@ -157,12 +147,10 @@ module.exports = {
 	getQRCode: getQRCode,
 	setQRCode: setQRCode,
 	getOneUser: getOneUser,
-	customUpdateUser: customUpdateUser,
 	getUser: getUser,
 	setUser: setUser,
 	updateUser: updateUser,
 	getOrder: getOrder,
-	setOrder: setOrder,
 	setStoreOrder: setStoreOrder,
 	getOutTradeNo:getOutTradeNo,
 	adminSetDeliver: adminSetDeliver,
