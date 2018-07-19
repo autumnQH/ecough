@@ -128,9 +128,9 @@
 									status: 2
 								}
 							}).done(function(msg){
+								alert('支付成功');	
 								location.replace('/user/my/order');
 							});
-							alert('支付成功');	
 						},
 						fail: function(res) {
 							alert('网络繁忙，请稍后再试！');
