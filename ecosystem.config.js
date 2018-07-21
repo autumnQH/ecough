@@ -18,7 +18,7 @@ module.exports = {
       repo : 'https://github.com/autumnQH/ecough.git',
       path : '/home/www/production',
       ssh_options: 'StrictHostKeyChecking=no',
-      'post-deploy': 'git pull && npm install && pm2 startOrRestart ecosystem.config.js --env production',
+      'post-deploy': 'git pull && npm install && pm2 reload ecosystem.config.js --env production',
       env: {
         NODE_ENV: 'production'
       }
