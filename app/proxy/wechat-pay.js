@@ -24,6 +24,8 @@ console.log(init,'initConfig-----------')
 
 
 exports.getBrandWCPayRequestParams = (config) => {
+	console.log('进来辣')
+	console.log(config,'getBrandWCPayRequestParams--------------')
 	const payment = new Payment({
 		  partnerKey: config.store_key,
 		  appId: config.appid,
