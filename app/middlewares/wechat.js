@@ -133,7 +133,7 @@ exports.pay = async (ctx)=> {
             body: store_name,
             attach: store_name,
             out_trade_no: 'ffn' + (+new Date),
-            total_fee: pay_money * 100,
+            total_fee: 1, //total_fee * 100,
             spbill_create_ip: ip,
             openid: openid,
             trade_type: 'JSAPI'
