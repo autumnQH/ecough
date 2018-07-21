@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    port: 3000 // 程序端口号,不用修改
+    port: 80 // 程序端口号,不用修改
   },
   SITE_ROOT_URL: 'http://www.fafuna.cn',
   db: {
