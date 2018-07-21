@@ -3,7 +3,7 @@ module.exports = {
     name      : 'app',
     script    : 'app.js',
     env: {
-      NODE_ENV: 'development'
+      COMMON_VARIABLE: true
     },
     env_production : {
       NODE_ENV: 'production'
@@ -18,7 +18,7 @@ module.exports = {
       repo : 'https://github.com/autumnQH/ecough.git',
       path : '/home/www/production',
       ssh_options: 'StrictHostKeyChecking=no',
-      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
       env: {
         NODE_ENV: 'production'
       }
