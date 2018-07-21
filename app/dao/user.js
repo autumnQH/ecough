@@ -11,8 +11,10 @@ exports.saveUser = async (data) => {
 }
 //记录用户购买订单号,关闭首单 
 exports.updateUserByFlag = (openid, out_trade_no) => {
-	return db.find("update USER set flag = '"+ out_trade_no+"' where openid = '"+ openid +"'");
+	return db.update("USER", {flag: out_trade_no}, {openid});
 }
+
+// new end
 
 exports.getUserInfoByOpenId = (openid) => {
 	var result = db.findOne("SELECT * FROM USER WHERE ?", {openid: openid});

@@ -1,9 +1,5 @@
 const db = require("../utils/mysql");
 
-exports.getActiveAccessToken = async () => {    
-	var result = await db.findOne("SELECT * FROM WECHAT ORDER BY id DESC LIMIT 1");
-	return result.access_token; 
-}
 
 exports.fetchToken = () => {
 	return db.findOne("SELECT * FROM TOKEN ORDER BY id DESC LIMIT 1")
@@ -35,6 +31,12 @@ exports.saveTicket = async (data) => {
 	}
 }
 
+// new end
+
+exports.getActiveAccessToken = async () => {    
+	var result = await db.findOne("SELECT * FROM WECHAT ORDER BY id DESC LIMIT 1");
+	return result.access_token; 
+}
 
 exports.getJsapiTicket = async () => {
 	var result = await db.findOne("SELECT * FROM WECHAT ORDER BY CREATE_TIME DESC LIMIT 1");

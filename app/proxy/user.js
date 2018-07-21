@@ -21,6 +21,7 @@ exports.updateUser = (data) => {
 	data.tagid_list = data.tagid_list.join()
 	return user.saveUser(data)
 }
+
 /**
  * 获取用户信息
  * @param {String} openid 用户标示
@@ -28,6 +29,17 @@ exports.updateUser = (data) => {
 exports.getUserByOpenId = (openid)=> {
 	return user.getUserInfoByOpenId(openid);
 }
+
+/**
+ * 修改用户第一次购买状态 
+ * @param {String} openid 用户标示
+ * @param {String} out_trade_no (1 是第一次购买， 否则是订单号)
+ */
+exports.updateUserByFlag = (openid, out_trade_no)=> {
+	return user.updateUserByFlag(openid, out_trade_no)
+}
+
+// new end
 
 /**
  * 删除用户信息

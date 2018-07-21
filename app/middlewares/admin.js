@@ -56,20 +56,22 @@ exports.order = async (ctx)=> {
     const req = ctx.request.body; 
     const { openid, pay_money, total_money, out_trade_no, product, specifications, total } = req;
     req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-    const user = await User.getUserByOpenId(openid);//获取用户信息
-    console.log(user)
-    const { eventKey, flag } = user 
+    //获取用户信息
+    const { eventKey, flag } = await User.getUserByOpenId(openid);
     if(eventKey){//是否有推广员
       req.eventKey = eventKey;
     }
+    //新增订单信息
     await Order.setOrder(req);
-    if(pay_money !='0' && total_money != '0') {//产品订单
+    //产品订单
+    if(pay_money !='0' && total_money != '0') {
       if(flag == '1'){
         User.updateUserByFlag(openid, out_trade_no); //记录用户购买订单号,关闭首单          
       }
       await tools.sendTemplateMessage(openid, pay_money, product+ '('+specifications+total+')');//发送模版消息
       ctx.status = 204;	
-    }else if(pay_money =='0' && total_money == '0'){//礼物订单
+    //礼物订单
+    }else if(pay_money =='0' && total_money == '0'){
       var gift = await wechat.getGiftForConsumeByNameAndSpecifications(product, specifications);
           User.delUserConsumeByOpenId(openid, gift.consume);
       await tools.sendTemplateMessage(openid, pay_money, product+ '('+specifications+total+')');//发送模版消息
