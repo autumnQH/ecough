@@ -16,6 +16,7 @@
     "@alicloud/mns": "^1.0.0-beta5",
     "@alicloud/sms-sdk": "^1.0.2",
     "Buffer": "0.0.0",
+    "consolidate": "^0.15.1",
     "ejs": "^2.5.6",
     "images": "^2.2.1",
     "ioredis": "^3.1.4",
