@@ -18,10 +18,10 @@ async function initConfig() {
 	};
 }
 
-const initConfig = initConfig()
-console.log(initConfig,'initConfig')
+const init = initConfig()
+console.log(init,'initConfig')
 
-const payment = new Payment(initConfig || {});
+const payment = new Payment(init || {});
 
 exports.getBrandWCPayRequestParams = (order) => {
 	return new Promise((resolve, reject)=> {
