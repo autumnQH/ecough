@@ -87,12 +87,12 @@ exports.updateTicket = async (token)=> {
 exports.getTicket = async ()=> {
   console.log('getTicket')
   let data = await wechat.fetchTicket();
-  if(data.errmsg !== 'ok') {
-    return {}
-  }
   if (!this.isValidToken(data, 'ticket')) {
     const token = await this.getAccessToken()
     data = await this.updateTicket(token.access_token)
+    if(data.errmsg !== 'ok') {
+      return {}
+    }
     delete data.errcode
     delete data.errmsg
     await wechat.saveTicket(data)
@@ -118,11 +118,11 @@ exports.updateAccessToken = async ()=> {
 exports.getAccessToken = async ()=> {
   console.log('getAccessToken')
 	let data = await wechat.fetchToken();
-  if(data.errcode) {
-    return {}
-  }
   if (!this.isValidToken(data, 'access_token')) {
     data = await this.updateAccessToken()
+    if(data.errcode) {
+      return {}
+    }
     await wechat.saveToken(data)
   }
 	return data
