@@ -7,15 +7,16 @@ const cert = resolve(__dirname,'../../' ,'config/apiclient_cert.p12')
 
 console.log(cert)
 
-async function initConfig() {
-	const config = await Config.getConfig()
-	return {
-	  partnerKey: config.store_key,
-	  appId: config.appid,
-	  mchId: config.store_mchid,
-	  notifyUrl: config.server_host + '/notify',
-	  pfx: fs.readFileSync(cert)
-	};
+function initConfig() {
+	Config.getConfig().then(function(config) {
+		return {
+		  partnerKey: config.store_key,
+		  appId: config.appid,
+		  mchId: config.store_mchid,
+		  notifyUrl: config.server_host + '/notify',
+		  pfx: fs.readFileSync(cert)
+		};
+	})
 }
 
 const init = initConfig()
