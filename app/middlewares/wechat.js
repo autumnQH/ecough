@@ -126,7 +126,7 @@ exports.signature = async (ctx)=> {
 
 exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
-    console.log(ip,'ip======')
+    console.log(ip + 'ip======')
     const config = await Config.getConfig()
     console.log(config,'-----config')
     const { openid, store_name, total_fee} = ctx.request.body
