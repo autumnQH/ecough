@@ -140,7 +140,6 @@ exports.pay = async (ctx)=> {
         const config = await Config.getConfig()
         
         const data = await Pay.getBrandWCPayRequestParams(config)(order)
-        console.log(data,'data')
         
         ctx.body = data;
     }catch(e) {
