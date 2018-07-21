@@ -10,7 +10,6 @@ const xmlParser = require('koa-xml-body').default;
 const onerror = require('koa-onerror');
 const logger = require('koa-logger');
 const compress = require('koa-compress')
-const multer = require('koa-multer');
 const config = require('./config/config')
 
 const logUtil = require('./utils/log');

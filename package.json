@@ -1,12 +1,14 @@
 {
   "name": "ecough",
   "version": "1.0.0",
-  "description": "",
+  "description": "[TOC] # 环境要求",
   "main": "app.js",
-  "directories": {
-    "doc": "doc",
-    "lib": "lib",
-    "test": "tests"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autumnQH/ecough.git"
   },
   "dependencies": {
     "@alicloud/dybaseapi": "^1.0.0",
@@ -40,10 +42,10 @@
     "wechat-pay": "^0.3.2",
     "xml2js": "^0.4.17"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/autumnQH/ecough/issues"
   },
-  "author": "ecough",
-  "license": "ISC"
+  "homepage": "https://github.com/autumnQH/ecough#readme"
 }
