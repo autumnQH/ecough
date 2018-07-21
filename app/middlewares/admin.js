@@ -56,7 +56,9 @@ exports.order = async (ctx)=> {
     const req = ctx.request.body; 
     const { openid, pay_money, total_money, out_trade_no, product, specifications, total } = req;
     req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-    const { eventKey, flag } = await User.getUserByOpenId(openid);//获取用户信息
+    const user = await User.getUserByOpenId(openid);//获取用户信息
+    console.log(user)
+    const { eventKey, flag } = user 
     if(eventKey){//是否有推广员
       req.eventKey = eventKey;
     }
