@@ -2,6 +2,7 @@ const user = require('../dao/user');
 const order = require('../dao/order');
 const service = require('../dao/service');
 const FAQ = require('../dao/FAQ');
+const isArray = arr => Array.isArray(arr)? arr : [arr]
 
 /**
  * 查询用户是否第一次购买
