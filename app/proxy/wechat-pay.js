@@ -22,16 +22,25 @@ function initConfig() {
 const init = initConfig()
 console.log(init,'initConfig-----------')
 
-const payment = new Payment(init || {});
 
-exports.getBrandWCPayRequestParams = (order) => {
-	return new Promise((resolve, reject)=> {
-		payment.getBrandWCPayRequestParams(order, (err, payargs) => {
-			if(err) {
-				reject(err)
-			}else{
-				resolve(payargs)
-			}	
-		})		
-	})
+exports.getBrandWCPayRequestParams = (config) => {
+	const payment = new Payment({
+		  partnerKey: config.store_key,
+		  appId: config.appid,
+		  mchId: config.store_mchid,
+		  notifyUrl: config.server_host + '/notify',
+		  pfx: fs.readFileSync(cert)
+	} || {});
+
+	return function(order) {
+		return new Promise((resolve, reject)=> {
+			payment.getBrandWCPayRequestParams(order, (err, payargs) => {
+				if(err) {
+					reject(err)
+				}else{
+					resolve(payargs)
+				}	
+			})		
+		})
+	}
 }

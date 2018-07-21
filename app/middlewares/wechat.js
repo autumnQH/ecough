@@ -138,7 +138,9 @@ exports.pay = async (ctx)=> {
             openid: openid,
             trade_type: 'JSAPI'
         }
-        const data = await Pay.getBrandWCPayRequestParams(order)
+        const config = await Config.getConfig()
+        console.log(config,'-----config')
+        const data = await Pay.getBrandWCPayRequestParams(config)(order)
         console.log(data,'data')
         
         ctx.body = data;
