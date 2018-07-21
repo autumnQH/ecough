@@ -127,11 +127,13 @@ exports.signature = async (ctx)=> {
 exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     const { openid, store_name, total_fee} = ctx.request.body
+    const out_trade_no = 'ffn' + (+new Date)
+    console.log(out_trade_no)
     try {
         const order = {
             body: store_name,
             attach: store_name,
-            out_trade_no: 'ffn' + (+new Date),
+            out_trade_no: out_trade_no,
             total_fee: 1, //total_fee * 100,
             spbill_create_ip: ip,
             openid: openid,
@@ -141,6 +143,7 @@ exports.pay = async (ctx)=> {
         
         const data = await Pay.getBrandWCPayRequestParams(config)(order)
         
+        data.out_trade_no = out_trade_no
         ctx.body = data;
     }catch(e) {
         console.error(e)
