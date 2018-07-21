@@ -3,7 +3,7 @@ const { resolve } = require('path');
 const Config = require('../proxy').Config;
 const Payment = require('wechat-pay').Payment;
 
-const cert = resolve(__dirname, 'config/cert/apiclient_cert.p12')
+const cert = resolve(__dirname,'../../' ,'config/apiclient_cert.p12')
 
 console.log(cert)
 
