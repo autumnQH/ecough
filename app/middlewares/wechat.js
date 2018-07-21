@@ -128,19 +128,24 @@ exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     console.log(ip)
     const { openid, store_name, total_fee} = ctx.request.body
-    const order = {
-        body: store_name,
-        attach: store_name,
-        out_trade_no: 'ffn' + (+new Date),
-        total_fee: pay_money * 100,
-        spbill_create_ip: ip,
-        openid: openid,
-        trade_type: 'JSAPI'
+    try {
+        const order = {
+            body: store_name,
+            attach: store_name,
+            out_trade_no: 'ffn' + (+new Date),
+            total_fee: pay_money * 100,
+            spbill_create_ip: ip,
+            openid: openid,
+            trade_type: 'JSAPI'
+        }
+        const data = await Pay.getBrandWCPayRequestParams(order)
+        console.log(data,'data')
+        
+        ctx.body = data;
+    }catch(e) {
+        console.error(e)
+        ctx.body = {}
     }
-    const data = await Pay.getBrandWCPayRequestParams(order)
-    console.log(data,'data')
-    
-    ctx.body = data;
 }
 
 
