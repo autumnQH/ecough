@@ -14,7 +14,7 @@ function execQuery(sql, values, callback) {
             console.log(err);
             throw errinfo;
         } else {
-            var querys = connection.query(sql, values, function(err, rows) {
+            var querys = connection.query(sql, values, function(error, results, fields) {
                 release(connection);
                 if (err) {
                     errinfo = 'DB-SQL语句执行错误:' + err;
@@ -22,7 +22,7 @@ function execQuery(sql, values, callback) {
                     //throw errinfo;
                     callback(err);
                 } else {
-                    callback(null, rows);
+                    callback(null, results);
                 }
             });
             console.log(querys.sql);
@@ -90,6 +90,26 @@ exports.queryPage = function(sql, values, page, size) {
         });
     });
 }
+
+//根据唯一标识(openid)，得到记录
+exports.getByOpenId = function(tablename, id){
+    return new Promise(function(resolve, reject){
+        var values = {openid:id};
+        var sql = 'SELECT * FROM ?? WHERE ?';
+        execQuery(sql,[tablename, values], function(err, rows){
+            if(err){
+                reject(err);
+            }else{
+                if (rows && rows.length > 0) {
+                    resolve(rows[0]);
+                } else {
+                    resolve(rows);
+                }
+            }
+        })
+    });
+}
+
 
 //根据唯一标识(id)，得到记录
 exports.getById = function(tablename, id){

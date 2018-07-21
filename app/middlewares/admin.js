@@ -60,8 +60,7 @@ exports.order = async (ctx)=> {
     if(eventKey){//是否有推广员
       req.eventKey = eventKey;
     }
-    const data = await Order.setOrder(req);
-    console.log(data,'data')
+    await Order.setOrder(req);
     if(pay_money !='0' && total_money != '0') {//产品订单
       if(flag == '1'){
         User.updateUserByFlag(openid, out_trade_no); //记录用户购买订单号,关闭首单          
@@ -92,7 +91,6 @@ exports.express = async (ctx)=> {
     var total = Number(order.total.replace(/[\u4e00-\u9fa5]+/g,""));//数量,去除中文。件
 
     var userinfo = await User.getUserByOpenId(openid);//获取用户信息
-    //var config = await Config.getActivityCFG();//获取活动信息
 
     var order_count = userinfo.order_count;//下单件数
         order_count += total;

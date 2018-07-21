@@ -41,116 +41,6 @@
 </head>
 <body>
 
-<script type="text/javascript">
-	var arrId = [];
-
-	wx.config({
-		debug: false,
-		appId: '<%= config.appid %>',
-		timestamp: '<%= config.timestamp %>',
-		nonceStr: '<%= config.nonceStr %>',
-		signature: '<%= config.signature %>',
-		jsApiList: ['chooseWXPay']
-
-	});
-	wx.ready(function() {
-		document.querySelector('#openAddress').onclick = function() {
-			wx.openAddress({
-				success: function(res) {
-					var name = $('#name').html('');
-			  	var phone = $('#phone').html('');
-			  	var address = $('#address').html('');
-
-				  $('#name').html(res.userName);
-				  $('#phone').html(res.telNumber);
-				  $('#address').html(res.provinceName+res.cityName+res.countryName+res.detailInfo);
-
-				},
-				fail: function(res) {
-					alert('网络繁忙，请稍后再试！');
-				}	
-			});	
-
-		};
-		$('#chooseWXPay').on('click',function(event) {
-			// var $btn = $(this).button('loading')
-			var name = $('#name').text();
-		  var phone = $('#phone').text();
-		  var address = $('#address').text();
-		  if(name && phone && address){
-				$.ajax({
-					url: '/wx/pay',
-					type: 'post',
-					data: {
-						openid: '<%= openid %>',
-						store_name: $('#product').text(),
-						total_fee: Number($('#total_fee').text())
-					}
-				}).done(function(msg) {
-					wx.chooseWXPay({
-						timestamp: msg.timeStamp,
-						nonceStr: msg.nonceStr,
-						package: msg.package,
-						signType: msg.signType,
-						paySign: msg.paySign,
-						success: function(res) {
-							
-							var name = $('#name').text();
-							var address = $('#address').text();
-							var phone = $('#phone').text();
-							var product = $('#product').text();
-							var total = '<%= total %>件';
-							var specifications = '<%= specifications %>';
-							var pay_money = Number($('#total_fee').text());
-							var out_trade_no = msg.out_trade_no;
-							//var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
-							var derate_money = Number($('#derate').text());
-							var total_money = Number($('#total').text());
-							console.log();
-							$.ajax({
-								url: '/admin/order',
-								type: 'post',
-								data: {
-									openid: '<%= openid %>',
-									name: name,
-									address: address,
-									phone: phone,
-									product: product,
-									img_url: '<%= store.icon_url %>',
-									title: '<%= store.title %>',
-									url: '/product/<%= store.product_id %>',
-									total: total,
-									specifications: specifications,
-									pay_money: pay_money,
-									total_money: total_money,
-									derate_money: derate_money,
-									out_trade_no: out_trade_no,
-									status: 2
-								}
-							}).done(function(msg){
-								alert('支付成功');	
-								location.replace('/user/my/order');
-							});
-						},
-						fail: function(res) {
-							alert('网络繁忙，请稍后再试！');
-							// $btn.button('reset')
-						}
-					});//chooseWXPay end
-					// $btn.button('reset')
-				}).fail(function() {
-					// $btn.button('reset')
-				});
-				
-		  }else{
-		  	alert('请输入收货地址');
-		  	// $btn.button('reset')
-		  }
-		});
-
-	});	
-</script>
-
 <div class="main">
 		<div class="order">
 			<div id=openAddress class="order-address" 
@@ -217,6 +107,112 @@
 	</div>
 <script src="/jqueryweui/lib/fastclick.js"></script>
 <script>
+wx.config({
+	debug: false,
+	appId: '<%= config.appid %>',
+	timestamp: '<%= config.timestamp %>',
+	nonceStr: '<%= config.noncestr %>',
+	signature: '<%= config.signature %>',
+	jsApiList: ['chooseWXPay']
+});
+
+wx.ready(function() {
+	document.querySelector('#openAddress').onclick = function() {
+		wx.openAddress({
+			success: function(res) {
+				var name = $('#name').html('');
+		  	var phone = $('#phone').html('');
+		  	var address = $('#address').html('');
+
+			  $('#name').html(res.userName);
+			  $('#phone').html(res.telNumber);
+			  $('#address').html(res.provinceName+res.cityName+res.countryName+res.detailInfo);
+
+			},
+			fail: function(res) {
+				alert('网络繁忙，请稍后再试！');
+			}	
+		});	
+
+	};
+	$('#chooseWXPay').on('click',function(event) {
+		// var $btn = $(this).button('loading')
+		var name = $('#name').text();
+	  var phone = $('#phone').text();
+	  var address = $('#address').text();
+	  if(name && phone && address){
+			$.ajax({
+				url: '/wx/pay',
+				type: 'post',
+				data: {
+					openid: '<%= openid %>',
+					store_name: $('#product').text(),
+					total_fee: Number($('#total_fee').text())
+				}
+			}).done(function(msg) {
+				wx.chooseWXPay({
+					timestamp: msg.timeStamp,
+					nonceStr: msg.nonceStr,
+					package: msg.package,
+					signType: msg.signType,
+					paySign: msg.paySign,
+					success: function(res) {
+						
+						var name = $('#name').text();
+						var address = $('#address').text();
+						var phone = $('#phone').text();
+						var product = $('#product').text();
+						var total = '<%= total %>件';
+						var specifications = '<%= specifications %>';
+						var pay_money = Number($('#total_fee').text());
+						var out_trade_no = msg.out_trade_no;
+						//var derate_money = Number($('#derate').text()) + Number($('#voucher_number').val());
+						var derate_money = Number($('#derate').text());
+						var total_money = Number($('#total').text());
+	
+						$.ajax({
+							url: '/admin/order',
+							type: 'post',
+							data: {
+								openid: '<%= openid %>',
+								name: name,
+								address: address,
+								phone: phone,
+								product: product,
+								img_url: '<%= store.icon_url %>',
+								title: '<%= store.title %>',
+								url: '/product/<%= store.product_id %>',
+								total: total,
+								specifications: specifications,
+								pay_money: pay_money,
+								total_money: total_money,
+								derate_money: derate_money,
+								out_trade_no: out_trade_no,
+								status: 2
+							}
+						}).done(function(msg){
+							alert('支付成功');	
+							location.replace('/user/my/order');
+						});
+					},
+					fail: function(res) {
+						alert('网络繁忙，请稍后再试！');
+						// $btn.button('reset')
+					}
+				});//chooseWXPay end
+				// $btn.button('reset')
+			}).fail(function() {
+				// $btn.button('reset')
+			});
+			
+	  }else{
+	  	alert('请输入收货地址');
+	  	// $btn.button('reset')
+	  }
+	});
+
+});	
+
 //iOS 系统下默认的 click 事件会有300毫秒的延迟，这个延迟是iOS系统的特性而不是jQuery WeUI设定的，可以使用 fastclick 来消除这个延迟。
   $(function() {
     FastClick.attach(document.body);

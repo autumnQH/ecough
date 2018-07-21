@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS STORE (
   name varchar(72) DEFAULT NULL COMMENT '产品名称',
   sku_description varchar(255) DEFAULT NULL COMMENT '产品描述',
   sku_attr TEXT(255) DEFAULT NULL COMMENT '产品属性(key,key2,key3)',
-  sku_info TEXT(255) DEFAULT NULL COMMENT '多规格({specifications:price:ori_price:repertory:qr},{specifications:price:ori_price:repertory:qr})',
+  sku_info TEXT(255) DEFAULT NULL COMMENT '多规格({"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0})',
   icon_url varchar(255) DEFAULT NULL COMMENT 'icon图片地址',
   icon_url_opt TEXT DEFAULT NULL COMMENT '其他图片',
   isPostFree tinyint(1) DEFAULT '1' COMMENT '是否包邮 1-是，0-否',
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS STORE (
   PRIMARY KEY (product_id)
 )DEFAULT CHARSET=utf8  COMMENT='产品表';
 
-INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色,黑色', sku_info = '10*10米:1000:1200:0,12*12米:1200:1500:96', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
+INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色,黑色', sku_info = '{"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0};{"specifications":"12*12米","price":1200,"old_price":1500,"stock_num":100}', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   id int NOT NULL AUTO_INCREMENT,
@@ -38,15 +38,29 @@ CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8  COMMENT='生成带参数二维码';
 
-CREATE TABLE IF NOT EXISTS T_WECHAT_USER (
+CREATE TABLE IF NOT EXISTS USER (
   id int(11) NOT NULL AUTO_INCREMENT,
+  subscribe int(1) NOT NULL COMMENT '用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息',
   openid varchar(128) NOT NULL COMMENT 'openid',
-  headimgurl varchar(255) DEFAULT NULL COMMENT '用户头像url',
-  nick varchar(50) DEFAULT NULL COMMENT '用户昵称',
+  nickname varchar(50) DEFAULT NULL COMMENT '用户昵称',
+  sex int(1) DEFAULT NULL COMMENT '用户的性别，值为1时是男性，值为2时是女性，值为0时是未知',
+  city varchar(128) DEFAULT NULL COMMENT '用户所在城市',
+  country varchar(128) DEFAULT NULL COMMENT '用户所在国家',
+  province varchar(128) DEFAULT NULL COMMENT '用户所在省份',
+  language varchar(128) DEFAULT NULL COMMENT '用户的语言，简体中文为zh_CN',
+  headimgurl varchar(255) DEFAULT NULL COMMENT '用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效',
+  subscribe_time int(36) DEFAULT NULL COMMENT '用户关注时间，为时间戳。如果用户曾多次关注，则取最后关注时间',
+  unionid varchar(128) DEFAULT NULL COMMENT '只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段',
+  remark varchar(255) DEFAULT NULL COMMENT '公众号运营者对粉丝的备注，公众号运营者可在微信公众平台用户管理界面对粉丝添加备注',
+  groupid int(16) DEFAULT NULL COMMENT '用户所在的分组ID',
+  tagid_list varchar(255) DEFAULT NUll COMMENT '用户被打上的标签ID列表',
+  subscribe_scene varchar(255) DEFAULT NULL COMMENT '返回用户关注的渠道来源，ADD_SCENE_SEARCH 公众号搜索，ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移，ADD_SCENE_PROFILE_CARD 名片分享，ADD_SCENE_QR_CODE 扫描二维码，ADD_SCENEPROFILE LINK 图文页内名称点击，ADD_SCENE_PROFILE_ITEM 图文页右上角菜单，ADD_SCENE_PAID 支付后关注，ADD_SCENE_OTHERS 其他',
+  qr_scene int(16) DEFAULT NUll COMMENT '二维码扫码场景（开发者自定义)',
+  qr_scene_str varchar(255) DEFAULT NUll COMMENT '二维码扫码场景描述（开发者自定义)',
   eventKey varchar(128) DEFAULT NULL COMMENT '推广人',
   phone varchar(16) DEFAULT NULL COMMENT '用户电话',
   integral int(16) DEFAULT 0 COMMENT '积分', 
-  create_time datetime DEFAULT NULL COMMENT '',
+  create_time varchar(36) DEFAULT NULL COMMENT '创建时间',
   flag varchar(64) DEFAULT '1' COMMENT '是否是首单（1-首单, 订单号）',
   order_count int(12) DEFAULT 0 COMMENT '下单次数',
   total_consume int(8) DEFAULT 0 COMMENT '推广总件数',
@@ -211,3 +225,23 @@ CREATE TABLE IF NOT EXISTS WECHAT (
   create_time datetime DEFAULT NUll,
   PRIMARY KEY (id)
 );
+
+CREATE TABLE IF NOT EXISTS TOKEN (
+  id int NOT NULL AUTO_INCREMENT,
+  access_token varchar(255) NOT NULL COMMENT '微信token凭证',
+  expires_in varchar(36) NOT NULL COMMENT '有效时间,时间戳',
+  create_time varchar(36) NOT NULL COMMENT '创建时间,时间戳',
+  update_time varchar(36) NOT NULL COMMENT '更新时间,时间戳',
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 COMMENT='微信票据';
+
+
+
+CREATE TABLE IF NOT EXISTS TICKET (
+  id int NOT NULL AUTO_INCREMENT,
+  ticket varchar(255) NOT NULL COMMENT '微信ticket临时凭证',
+  expires_in varchar(36) NOT NULL COMMENT '有效时间,时间戳',
+  create_time varchar(36) NOT NULL COMMENT '创建时间,时间戳',
+  update_time varchar(36) NOT NULL COMMENT '更新时间,时间戳',
+  PRIMARY KEY (id)
+)DEFAULT CHARSET=utf8 COMMENT='微信临时票据';

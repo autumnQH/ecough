@@ -4,6 +4,24 @@ const service = require('../dao/service');
 const FAQ = require('../dao/FAQ');
 
 /**
+ * 查询用户是否第一次购买
+ * @param {String} openid 用户标示
+ * @return {flag} flag 1表示没有购买，否则是对应的订单号
+ */
+exports.getUserFlagByOpenId = (openid)=> {
+	return user.getUserFlagByOpenId
+}
+
+/**
+ * 新增用户
+ * @param {Object} data 数据
+ */
+exports.updateUser = (data) => {
+	data.create_time = (new Date().getTime())
+	data.tagid_list = data.tagid_list.join()
+	return user.saveUser(data)
+}
+/**
  * 获取用户信息
  * @param {String} openid 用户标示
  */
@@ -54,17 +72,17 @@ exports.setUserForPhone = (data)=> {
  * 获取用户代金券
  * @param {String} openid 用户标示
  */
-exports.getUserVoucherByOpenId = (openid)=> {
-	return user.getUserVoucherByOpenId(openid);
-}
+// exports.getUserVoucherByOpenId = (openid)=> {
+// 	return user.getUserVoucherByOpenId(openid);
+// }
 /**
  * 设置用户代金券状态
  * @param {Int} id ID
  * @param {String} order_id 订单ID
  */
-exports.updateUserVoucherById = (id, order_id)=> {
-	return user.updateUserVoucherById(id, order_id);
-}
+// exports.updateUserVoucherById = (id, order_id)=> {
+// 	return user.updateUserVoucherById(id, order_id);
+// }
 
 //显示礼物列表
 exports.showGift = ()=> {

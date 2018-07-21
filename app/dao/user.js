@@ -1,6 +1,14 @@
 var db = require("../utils/mysql");
 
-
+//新增用户
+exports.saveUser = async (data) => {
+	const result = await db.getByOpenId("USER", data.openid)
+	if(result.openid) {
+		return db.update("USER", data, {openid: data.openid})
+	}else{
+		return db.add("USER", data)
+	}
+}
 //记录用户购买订单号,关闭首单 
 exports.updateUserByFlag = (openid, out_trade_no) => {
 	return db.find("update T_WECHAT_USER set flag = '"+ out_trade_no+"' where openid = '"+ openid +"'");
@@ -64,10 +72,10 @@ exports.getUserForIntegralByOpenId = (openid)=> {
 	return result
 }
 
-//设置用户代金券使用中
-exports.updateUserVoucherById = (id, order_id)=>{
-	var result = db.update("USER_VOUCHER", {status: 3, order_id: order_id }, {id: id});
-}
+// //设置用户代金券使用中
+// exports.updateUserVoucherById = (id, order_id)=>{
+// 	var result = db.update("USER_VOUCHER", {status: 3, order_id: order_id }, {id: id});
+// }
 
 exports.delUserForIntegralByOpendId = (value, openid)=> {
 	var result  = db.update("T_WECHAT_USER", value, openid);

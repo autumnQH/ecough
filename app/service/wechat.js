@@ -1,9 +1,13 @@
-const wxSDK = require('../dao/wechat');
+const WXSDK = require('../proxy').WXSDK;
 const wechat = require('../utils/wechat.js');
 
 var createMenu = async (menu) => {
-	var token = await wxSDK.getActiveAccessToken();
-	wechat.createMenu(menu, token);
+	try{
+		await WXSDK.handle('deleteMenu')
+		await WXSDK.handle('createMenu', JSON.stringify(require(menu)))
+	}catch(e) {
+		console.error(e)
+	}
 } 
 
 module.exports = {    

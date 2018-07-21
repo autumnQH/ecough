@@ -55,7 +55,7 @@
 			<%= parseInt(store.sku_info[i].price / 100) %></span> 元&nbsp;/ 件
                                 <label class="yjia" style="text-decoration:line-through;">
                                     原价：
-                                    <%= parseInt(store.sku_info[i].ori_price / 100) %>
+                                    <%= parseInt(store.sku_info[i].old_price / 100) %>
                                 </label>
                                 </span>
                             </div>
@@ -71,8 +71,8 @@
                                     <input type="tel" class="form-control" style="width:70px;height:25px;text-align:center" value="0">
                                     <span class="input-group-btn"><button class="btn btn-default btn-sm jian" type="button">-</button></span>
                                 </div>
-                                <div style="float:left;margin-left:5px;">( 剩余<span><%= store.sku_info[i].repertory %></span> )</div>
-                                <span style="visibility: hidden;"><%= store.sku_info[i].repertory %></span>
+                                <div style="float:left;margin-left:5px;">( 剩余<span><%= store.sku_info[i].stock_num %></span> )</div>
+                                <span style="visibility: hidden;"><%= store.sku_info[i].stock_num %></span>
                             </div>
                         <% } %>
                     </div>
@@ -121,7 +121,8 @@
         var specifications = $.trim($('.active').text());
         var total = Math.abs(parseInt($('#total').children().eq(EQ).find('input').val()));
         if ($(this).attr('disabled')) {
-            $('#pay').attr('href', "/order/create?openid=<%= userinfo.openid %>&total=" + total + "&specifications=" + specifications + "&product=<%= store.product_id %>");
+            var url = "/order/create?total=" + total + "&specifications=" + specifications + "&productId=<%= store.product_id %>"
+            $('#pay').attr('href', url);
         } else {
             return;
         }
@@ -204,18 +205,19 @@
     $('#menu_specifications button').eq(0).click();
 
     $.ajax({
-        url: '/wx/sdk',
+        url: '/wx/signature',
         type: 'get',
         data:{
           url: encodeURIComponent(location.href.split('#')[0])
         } 
-    }).done(function(msg) {
+    }).done(function(res) {
+        var data = res.data
         wx.config({
           debug: false,
-          appId: msg.appid,
-          timestamp: msg.timestamp,
-          nonceStr: msg.nonceStr,
-          signature: msg.signature,
+          appId: data.appid,
+          timestamp: data.timestamp,
+          nonceStr: data.noncestr,
+          signature: data.signature,
           jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone']
         });//wx/config end
     });//ajax end
@@ -225,7 +227,7 @@ wx.ready(function() {
     var opts = {
         title: '空气净化器伴侣—小咳嗽防雾霾窗贴',
         link: location.href.split('#')[0],
-        imgUrl: 'http://www.ecough.cn/images/fangwumaichuangtie_share.jpeg',
+        imgUrl: '<%= url %>/images/fangwumaichuangtie_share.jpeg',
         desc: '双十一大促销: 买二赠一'
     };
     //分享朋友圈

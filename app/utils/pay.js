@@ -17,7 +17,7 @@ exports.setPackageData = async function (openid, pay_money, value,store_name, ip
         nonce_str: value.nonceStr,
         out_trade_no: value.out_trade_no,//商户订单号
         total_fee: pay_money,//标价金额
-        spbill_create_ip: ip || '47.93.245.51',//终端IP
+        spbill_create_ip: ip || '127.0.0.1',//终端IP
         notify_url: config.server_host+'/notify',
         trade_type: 'JSAPI',
         openid: openid          
@@ -29,12 +29,12 @@ exports.setPackageData = async function (openid, pay_money, value,store_name, ip
     // data.mch_id = '1470073502'
     // key = 'qwertyuiopasdfghjklzxcvbnm123456'; 
     var str = tools.raw(data);
-    		str += '&key='+ key;
+    	str += '&key='+ key;
 
     var sign = crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();//签名
 
         data.sign = sign;
-    		data = xml.jsonToXml(data);
+    	data = xml.jsonToXml(data);
     return data;
 }
 
