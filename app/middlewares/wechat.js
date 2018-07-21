@@ -126,12 +126,8 @@ exports.signature = async (ctx)=> {
 
 exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
-    console.log(ip + 'ip======')
-    const config = await Config.getConfig()
-    console.log(config,'1sad--config')
     const { openid, store_name, total_fee} = ctx.request.body
     try {
-        console.log('!!!')
         const order = {
             body: store_name,
             attach: store_name,
@@ -141,8 +137,9 @@ exports.pay = async (ctx)=> {
             openid: openid,
             trade_type: 'JSAPI'
         }
-        console.log('???')
-        // const data = await Pay.getBrandWCPayRequestParams(config)(order)
+        const config = await Config.getConfig()
+        
+        const data = await Pay.getBrandWCPayRequestParams(config)(order)
         console.log(data,'data')
         
         ctx.body = data;
