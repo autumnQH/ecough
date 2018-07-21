@@ -20,7 +20,7 @@ function initConfig() {
 }
 
 const init = initConfig()
-console.log(init,'initConfig')
+console.log(init,'initConfig-----------')
 
 const payment = new Payment(init || {});
 
