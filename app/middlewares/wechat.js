@@ -128,6 +128,8 @@ exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     console.log(ip)
     const { openid, store_name, total_fee} = ctx.request.body
+    const config = await Config.getConfig()
+    console.log(config,'-----config')
     try {
         console.log('!!!')
         const order = {
@@ -140,8 +142,6 @@ exports.pay = async (ctx)=> {
             trade_type: 'JSAPI'
         }
         console.log('???')
-        const config = await Config.getConfig()
-        console.log(config,'-----config')
         const data = await Pay.getBrandWCPayRequestParams(config)(order)
         console.log(data,'data')
         
