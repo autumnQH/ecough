@@ -11,8 +11,6 @@ exports.getProductById = async (ctx, next) => {
         if(ctx.session.openid){
             const config = await Config.getConfig();
             const product_id = ctx.params.product;
-            console.log(product_id)
-            console.log(typeof product_id)
             const store = await Store.getStoreById(product_id);
             await ctx.render('product', {
                 url: config.server_host,
@@ -21,7 +19,6 @@ exports.getProductById = async (ctx, next) => {
         }else{
             const config = await Config.getConfig();
             const r_url = config.server_host + ctx.url.split('?').slice(0,1);
-            console.log(r_url)
             const url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
             if(!ctx.query.code){
                 ctx.redirect(url);
@@ -33,7 +30,6 @@ exports.getProductById = async (ctx, next) => {
                     ctx.redirect(url);
                 }else{
                     const product_id = ctx.params.product;
-                    console.log(product_id)
                     const store = await Store.getStoreById(product_id);                    
                     let userinfo = await tools.getUserInfo(user.access_token, user.openid);
                         userinfo = JSON.parse(userinfo);
