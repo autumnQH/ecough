@@ -12,6 +12,7 @@ const STORE = require('../utils/store');
 exports.create = async(ctx, next) => {
     try{
         const { total, specifications, productId} = ctx.query
+        console.log(total, specifications, productId,'=========')
         const { openid } = ctx.session
         const config = await Config.getConfig();
         const store = await Store.getStoreById(productId);

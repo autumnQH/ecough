@@ -19,7 +19,7 @@ exports.getUserFlagByOpenId = (openid)=> {
  */
 exports.updateUser = (data) => {
 	data.create_time = (new Date().getTime())
-	data.tagid_list = data.tagid_list.join()
+	data.tagid_list = isArray(data.tagid_list).join()
 	return user.saveUser(data)
 }
 
