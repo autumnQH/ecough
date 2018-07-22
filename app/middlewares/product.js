@@ -21,6 +21,7 @@ exports.getProductById = async (ctx, next) => {
         }else{
             const config = await Config.getConfig();
             const r_url = config.server_host + ctx.url.split('?').slice(0,1);
+            console.log(r_url)
             const url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';
             if(!ctx.query.code){
                 ctx.redirect(url);
