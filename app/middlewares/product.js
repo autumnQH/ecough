@@ -11,7 +11,8 @@ exports.getProductById = async (ctx, next) => {
         if(ctx.session.openid){
             const config = await Config.getConfig();
             const product_id = ctx.params.product;
-            console.log(ctx.params)
+            console.log(product_id)
+            console.log(typeof product_id)
             const store = await Store.getStoreById(product_id);
             await ctx.render('product', {
                 url: config.server_host,
@@ -31,7 +32,7 @@ exports.getProductById = async (ctx, next) => {
                     ctx.redirect(url);
                 }else{
                     const product_id = ctx.params.product;
-                    console.log(ctx.params)
+                    console.log(product_id)
                     const store = await Store.getStoreById(product_id);                    
                     let userinfo = await tools.getUserInfo(user.access_token, user.openid);
                         userinfo = JSON.parse(userinfo);

@@ -11,5 +11,5 @@ exports.updateStore = function(data) {
 }
 //获取指定商品信息
 exports.getStoreById = function(product_id) {
-  return db.findOne(`SELECT * FROM STORE WHERE product_id='${product_id}'`);
+  return db.findOne("SELECT * FROM STORE WHERE ? ", {product_id});
 }
