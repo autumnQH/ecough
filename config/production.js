@@ -9,5 +9,6 @@ module.exports = {
     database: 'ecough', 
     user: 'root', 
     password: 'Root123456==' // Root123456==
+    ,conn_limit: 5
   }  
 }
