@@ -33,16 +33,6 @@ exports.saveTicket = async (data) => {
 
 // new end
 
-exports.getActiveAccessToken = async () => {    
-	var result = await db.findOne("SELECT * FROM WECHAT ORDER BY id DESC LIMIT 1");
-	return result.access_token; 
-}
-
-exports.getJsapiTicket = async () => {
-	var result = await db.findOne("SELECT * FROM WECHAT ORDER BY CREATE_TIME DESC LIMIT 1");
-	return result.jsapi_ticket;
-}
-
 exports.getQRCode = async () => {
 	var result = await db.find("SELECT * FROM T_WECHAT_QRCODE");
 	return result;

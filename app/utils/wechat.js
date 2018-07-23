@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const request = require('request');
 const tools = require('./tools');
-const dao = require('../dao/wechat');
+const Config = require('../proxy').Config;
 const userdao = require('../dao/user');
 const fs = require('fs');
 const qr_image = require('qr-image');  
@@ -10,7 +10,7 @@ const xml = require('./xml');
 const _ = require('lodash');
 
 exports.auth = async (ctx) => {
-    const config = await dao.getConfig();
+    const config = await Config.getConfig();
     let token = config.token;
     let signature = ctx.query.signature;
     let timestamp = ctx.query.timestamp;
@@ -128,9 +128,6 @@ exports.getTicket = function(token) {
     });
 }
 
-exports.getJsApiTicket = () => {
-    return dao.getJsapiTicket();
-}
 exports.getQRCode = () => {
     return dao.getQRCode();
 }

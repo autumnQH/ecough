@@ -6,7 +6,6 @@ const User = require('../proxy').User;
 const Config = require('../proxy').Config;
 const Order = require('../proxy').Order;
 const WXSDK = require('../proxy').WXSDK
-const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 
 exports.home = async (ctx)=> {
@@ -210,7 +209,7 @@ exports.refund = async (ctx) => {
           }
       }
   }else if(order.status == 4 && req.total_fee>0){//退款
-      var config = await dao.getConfig();
+      var config = await Config.getConfig();
       req.appid = config.appid;
       req.mch_id = config.store_mchid;
       req.out_refund_no = req.out_trade_no;//退款号=订单号
