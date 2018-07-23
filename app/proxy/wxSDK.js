@@ -46,20 +46,15 @@ exports.sendTemplateMessage = (token, data) => {
 
 exports.getTemplateId = async () => {
   console.log('getTemplateId')
-  const data = await this.handle('fetchTemplateList')
-  console.log(data,'data-----------')
-  const { template_list } = data
+  const { template_list } = await this.handle('fetchTemplateList')
   console.log(template_list)
-  console.log('template_list---------',template_list)
-  if(data) {
-    if(template_list.length > 0 && template_list[0].title === '购买成功通知') {
-      console.log('template_list[0].template_id -------', template_list[0].template_id, '====')
-      template_list.forEach(item => {
-        if(item.title === '购买成功通知'){
-          return item.template_id
-        }
-      })
-    }
+  if(template_list.length > 0 ) {
+    template_list.forEach(item => {
+      if(item.title === '购买成功通知'){
+        console.log('item.template_id', item.template_id)
+        return item.template_id
+      }
+    })
   }else {
     const { template_id } =  await this.handle('addTemplate')
     console.log('template_id==========', template_id, 'add!!!!!')
