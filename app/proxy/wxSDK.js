@@ -47,7 +47,7 @@ exports.sendTemplateMessage = (token, data) => {
 exports.getTemplateId = async () => {
   console.log('getTemplateId')
   const { template_list } = await this.handle('fetchTemplateList')
-  console.log(template_list)
+  console.log(template_list,'-----',template_list.length)
   if(template_list.length > 0 ) {
     template_list.forEach(item => {
       if(item.title === '购买成功通知'){
@@ -56,7 +56,9 @@ exports.getTemplateId = async () => {
       }
     })
   }else {
-    const { template_id } =  await this.handle('addTemplate')
+    const data = await this.handle('addTemplate')
+    console.log(data)
+    const { template_id } = data 
     console.log('template_id==========', template_id, 'add!!!!!')
     return template_id
   }
