@@ -212,6 +212,8 @@ exports.updateAccessToken = async ()=> {
 exports.getAccessToken = async ()=> {
   console.log('getAccessToken')
 	let data = await wechat.fetchToken();
+  console.log(data,'getAccessToken')
+  console.log((new Date().getTime()))
   if (!this.isValidToken(data, 'access_token')) {
     data = await this.updateAccessToken()
     if(data.errcode) {
