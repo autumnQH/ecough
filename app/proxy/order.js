@@ -1,6 +1,13 @@
 const order = require('../dao/order');
 
 /**
+ * 根据订单状态获取订单
+ */
+exports.getOrder = () => {
+	return order.getOrder()
+}
+
+/**
  * 添加一条订单
  * @param {Object} data 订单数据
  */

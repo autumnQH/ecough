@@ -10,13 +10,12 @@ const USER = require('../utils/user');
 const STORE = require('../utils/store');
 //统一下单-生成预付单-获取package
 exports.create = async(ctx, next) => {
+    const { total, specifications, productId} = ctx.query
+    const { openid } = ctx.session
+    const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     try{
-        const { total, specifications, productId} = ctx.query
-        console.log(total, specifications, productId,'=========')
-        const { openid } = ctx.session
         const config = await Config.getConfig();
         const store = await Store.getStoreById(productId);
-        const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
         const current_money = Store.fetchPrice(store, specifications);//现价
 
         const {flag} = await User.getUserFlagByOpenId(openid)

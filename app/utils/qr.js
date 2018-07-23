@@ -13,9 +13,9 @@ exports.qr = async function(userinfo) {
   });
 }
 
-exports.qr_logo = async function(userinfo, qrurl){
+exports.qr_logo = async function(userinfo, url){
   return new Promise(function(resolve, reject) {
-    var qr = qr_image.imageSync(qrurl.url);
+    var qr = qr_image.imageSync(url);
     var q_size = 120;
     var logo_size = 26;
     var x = 25;

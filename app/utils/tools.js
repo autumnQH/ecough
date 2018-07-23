@@ -175,9 +175,9 @@ exports.getQRCodeImg = function(ticket) {
   
 }
 
-exports.getQrFile = async function(userinfo, qrurl) {
+exports.getQrFile = async function(userinfo, url) {
   var q=  await qr.qr(userinfo);
-  var logo = await qr.qr_logo(userinfo, qrurl);
+  var logo = await qr.qr_logo(userinfo, url);
   return userinfo.openid;
 }
 

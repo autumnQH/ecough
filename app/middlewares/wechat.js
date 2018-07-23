@@ -27,7 +27,7 @@ exports.postHandle = async(ctx, next) => {
     try {
         var openid = msg.FromUserName[0];
         //获取用户信息
-        var userinfo = await WXSDK.handle('fetchUserInfo', openid)
+        var userinfo = await WXSDK.handle('fetchUserInfo', openid)        
         //保存用户信息
         await User.updateUser(userinfo)
         ctx.session = userinfo;
@@ -128,7 +128,6 @@ exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
     const { openid, store_name, total_fee} = ctx.request.body
     const out_trade_no = 'ffn' + (+new Date)
-    console.log(out_trade_no)
     try {
         const order = {
             body: store_name,
@@ -150,24 +149,3 @@ exports.pay = async (ctx)=> {
         ctx.body = {}
     }
 }
-
-
-// exports.pay = async (ctx)=> {
-//     var ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
-//     console.log(ip)
-//     var { openid, store_name, total_fee} = ctx.request.body
-//     var value = {
-//         nonceStr: tools.createRandom(),
-//         timeStamp: tools.createTimestamp(),
-//         out_trade_no: tools.trade()
-//     };
-//     total_fee = total_fee * 100;
-// 	var page = await pay.setPackageData(openid, 1, value, store_name, ip);
-    
-//     var res = await tools.getPackge(page);//发起统一下单
-//     var result = await xml.xmlToJson(res);//解析统一下单返回的xml数据
-
-//     var prepayid = result.xml.prepay_id[0];
-//     var data2 = await pay.setPaySign(prepayid, value);
-//     ctx.body = data2;
-// }

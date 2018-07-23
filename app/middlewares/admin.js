@@ -12,7 +12,7 @@ exports.home = async (ctx)=> {
 	await ctx.redirect('admin/order');
 }
 exports.showOrder = async (ctx)=> {
-  var datas = await Admin.getOrder();
+  var datas = await Order.getOrder();
   datas.forEach(function(data) {
       data.create_time = tools.formatDate(data.create_time);
         switch(data.status){
@@ -50,6 +50,8 @@ exports.showOrder = async (ctx)=> {
   ctx.state.data = datas;
   await ctx.render('admin/order');
 }
+
+//new end
 
 exports.order = async (ctx)=> {
   try{

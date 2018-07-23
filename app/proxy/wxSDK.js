@@ -14,7 +14,72 @@ const api = {
   menu: {
     create: base + 'menu/create?',
     delete: base + 'menu/delete?'
-  }  
+  },
+  qrcode: {
+    create: base + 'qrcode/create?'
+  },
+  customservice: {
+    kfsession: {
+      create: base + 'customservice/kfsession/create?',
+    },
+    getonlinekflist: base + 'customservice/getonlinekflist?'
+  },
+  message: {
+    custom: {
+      send: base + 'message/custom/send?'
+    },
+    template: {
+      send: base + 'message/template/send?'
+    }
+  },
+  template: {
+    add: base + 'template/api_add_template?',
+  }
+}
+
+exports.sendTemplateMessage = (token, data) => {
+  console.log('sendTemplateMessage')
+  const url = `${api.message.template.send}access_token=${token}`
+  return {url: url, method: 'POST', body: data}
+}
+
+/**
+ * 获得模板ID
+ * return  {
+     "errcode":0,
+     "errmsg":"ok",
+     "template_id":"Doclyl5uP7Aciu-qZ7mJNPtWkbkYnWBWVja26EGbNyk"  
+   }
+ */
+exports.addTemplate = (token, data = {template_id_short: 'OPENTM200814444'}) => {
+  console.log('addTemplate')
+  const url = `${api.template.add}access_token=${token}`
+  return {url: url, method: 'POST', body: data}
+}
+
+exports.sendCustomMessage = (token, data) => {
+  console.log('sendCustomMessage')
+  const url = `${api.message.custom.send}access_token=${token}`
+  return {url: url, method: 'POST', body: data}
+}
+
+exports.createKfsession = (token, openid, kf_account) => {
+  console.log('createKfsession')
+  const url = `${api.customservice.kfsession.create}access_token=${token}`
+  const data = {openid, kf_account}
+  return {url: url, method: 'POST', body: data}
+}
+
+exports.getTheFirstOnlineCustomerservice = (token)=> {
+  console.log('getTheFirstOnlineCustomerservice')
+  const url = `${api.customservice.getonlinekflist}access_token=${token}`
+  return {url}
+}
+
+exports.createQRCode = (token, data)=> {
+  console.log('createQRCode')
+  const url = `${api.qrcode.create}access_token=${token}`
+  return {url: url, method: 'POST', body: data}
 }
 
 exports.getSignatureAsync = async (url)=> {
@@ -39,7 +104,7 @@ exports.createMenu = (token, menu)=> {
 
 exports.remarkUser = (token, openid, remark)=> {
   const url = `${api.user.remark}access_token=${token}`
-  const form = JSON.stringify({openid, remark})
+  const form = {openid, remark}
   return {method: 'POST', url: url, body: form}
 }
 
@@ -57,14 +122,14 @@ exports.handle = async (operation, ...args)=> {
 
 exports.request = (options)=> {
 	let opt = {
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    method: 'GET'
+    method: 'GET',
+    json: true
 	}
 	const opts = Object.assign(opt, options)
 	return new Promise((resolve, reject) =>{
     Request(opts, function(err, res, body) {
       if(body){
-        return resolve(JSON.parse(body));
+        return resolve(body);
       }else{
         console.error(err)
         return reject(err);
