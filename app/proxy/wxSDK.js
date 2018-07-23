@@ -45,10 +45,11 @@ exports.sendTemplateMessage = (token, data) => {
 }
 
 exports.getTemplateId = async () => {
+  console.log('getTemplateId')
   const data = await this.handle('fetchTemplateList')
-  console.log(data)
-  const { template_list } = data
-  console.log(template_list)
+  console.log(data,'data-----------')
+  // const { template_list } = data
+  // console.log(template_list)
   if(data) {
     if(template_list.length > 0 && template_list[0].title === '购买成功通知') {
       console.log('template_list[0].template_id -------', template_list[0].template_id, '====')
