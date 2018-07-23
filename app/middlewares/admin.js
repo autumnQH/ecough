@@ -70,7 +70,28 @@ exports.order = async (ctx)=> {
       if(flag == '1'){
         User.updateUserByFlag(openid, out_trade_no); //记录用户购买订单号,关闭首单          
       }
-      await tools.sendTemplateMessage(openid, pay_money, product+ '('+specifications+total+')');//发送模版消息
+      const template = await WXSDK.handle('addTemplate')
+      const json = {
+        touser: openid,
+        template_id: template.template_id || 'BgpTq3S8WtnvWGDWST_lH3l1NaCZZ_PM7I33qIouEhk',
+        url: 'http://fafuna.vipgz1.idcfengye.com/user/my/code',
+        data: {
+          first: {
+            value: '您好，您已购买成功。'
+          },
+          keyword1: {
+            value: product + '(' + specifications + ')'
+          },
+          keyword2: {
+            value: total + '份'
+          },
+          remark: {
+            value: '备注：如有疑问，请致电13912345678联系我们。'
+          }
+        }
+
+      }
+      await WXSDK.handle('sendTemplateMessage', json)      
       ctx.status = 204;	
     //礼物订单
     }else if(pay_money =='0' && total_money == '0'){
