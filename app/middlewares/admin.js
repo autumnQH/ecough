@@ -5,6 +5,7 @@ const Admin = require('../proxy').Admin;
 const User = require('../proxy').User;
 const Config = require('../proxy').Config;
 const Order = require('../proxy').Order;
+const WXSDK = require('../proxy').WXSDK
 const dao = require('../dao/wechat');
 const pay = require('../utils/pay');
 
