@@ -48,21 +48,16 @@ exports.getTemplateId = async () => {
   console.log('getTemplateId')
   const { template_list } = await this.handle('fetchTemplateList')
   console.log(template_list,'-----',template_list.length)
-  if(template_list.length > 0 ) {
-    template_list.forEach(item => {
-      if(item.title === '购买成功通知'){
-        console.log('item.template_id', item.template_id)
-        return item.template_id
-      }else {
-        const data = await this.handle('addTemplate')
-        console.log(data)
-        const { template_id } = data 
-        console.log('template_id==========', template_id, 'add!!!!!')
-        return template_id
-      }
-    })
+  const isTemplateId = isValidTemplateId(template_list)
+  if(isTemplateId) {
+    console.log('isTemplateId', isTemplateId)
+    return isTemplateId
   }
-
+  const data = await this.handle('addTemplate')
+  console.log(data)
+  const { template_id } = data 
+  console.log('template_id==========', template_id, 'add!!!!!')
+  return template_id  
 }
 
 exports.fetchTemplateList = (token) => {
@@ -234,4 +229,15 @@ exports.isValidToken = (data, name)=> {
   } else {
     return false
   }    
+}
+
+function isValidTemplateId(data) {
+  let id = null
+  data.forEach(item => {
+    if(item.title === '购买成功通知') {
+      console.log('购买成功通知', item.template_id)
+      id = item.template_id
+    }
+  })
+  return id
 }
