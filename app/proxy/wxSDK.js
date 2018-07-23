@@ -47,9 +47,11 @@ exports.sendTemplateMessage = (token, data) => {
 exports.getTemplateId = async () => {
   console.log('getTemplateId')
   const data = await this.handle('fetchTemplateList')
+  console.log(data,'data-----------')
+  const { template_list } = data
+  console.log(template_list)
+  console.log('template_list---------',template_list)
   if(data) {
-    const { template_list } = data
-    console.log(template_list)
     if(template_list.length > 0 && template_list[0].title === '购买成功通知') {
       console.log('template_list[0].template_id -------', template_list[0].template_id, '====')
       template_list.forEach(item => {
@@ -157,7 +159,6 @@ exports.request = (options)=> {
 	return new Promise((resolve, reject) =>{
     Request(opts, function(err, res, body) {
       if(body){
-        console.log(body)
         return resolve(body);
       }else{
         console.error(err)
@@ -212,8 +213,6 @@ exports.updateAccessToken = async ()=> {
 exports.getAccessToken = async ()=> {
   console.log('getAccessToken')
 	let data = await wechat.fetchToken();
-  console.log(data,'getAccessToken')
-  console.log((new Date().getTime()))
   if (!this.isValidToken(data, 'access_token')) {
     data = await this.updateAccessToken()
     if(data.errcode) {
