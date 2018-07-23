@@ -53,15 +53,16 @@ exports.getTemplateId = async () => {
       if(item.title === '购买成功通知'){
         console.log('item.template_id', item.template_id)
         return item.template_id
+      }else {
+        const data = await this.handle('addTemplate')
+        console.log(data)
+        const { template_id } = data 
+        console.log('template_id==========', template_id, 'add!!!!!')
+        return template_id
       }
     })
-  }else {
-    const data = await this.handle('addTemplate')
-    console.log(data)
-    const { template_id } = data 
-    console.log('template_id==========', template_id, 'add!!!!!')
-    return template_id
   }
+
 }
 
 exports.fetchTemplateList = (token) => {
