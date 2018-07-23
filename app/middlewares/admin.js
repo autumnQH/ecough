@@ -88,7 +88,7 @@ exports.order = async (ctx)=> {
             value: total 
           },
           remark: {
-            value: '推荐购买，最高可兑换iphoneX哦～'
+            value: '推荐购买，最高可兑换iphoneX哦～',
             color: '#fb3535'
           }
         }
@@ -117,7 +117,7 @@ exports.order = async (ctx)=> {
             value: total 
           },
           remark: {
-            value: '推荐购买，最高可兑换iphoneX哦～'
+            value: '推荐购买，最高可兑换iphoneX哦～',
             color: '#fb3535'
           }
         }
