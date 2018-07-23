@@ -47,7 +47,6 @@ exports.sendTemplateMessage = (token, data) => {
 exports.getTemplateId = async () => {
   console.log('getTemplateId')
   const data = await this.handle('fetchTemplateList')
-  console.log(data,'data-----------')
   // const { template_list } = data
   // console.log(template_list)
   if(data) {
@@ -158,6 +157,7 @@ exports.request = (options)=> {
 	return new Promise((resolve, reject) =>{
     Request(opts, function(err, res, body) {
       if(body){
+        console.log(body)
         return resolve(body);
       }else{
         console.error(err)
