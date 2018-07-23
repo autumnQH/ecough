@@ -34,6 +34,7 @@ const api = {
   },
   template: {
     add: base + 'template/api_add_template?',
+    fetch: base + 'template/get_all_private_template?'
   }
 }
 
@@ -41,6 +42,25 @@ exports.sendTemplateMessage = (token, data) => {
   console.log('sendTemplateMessage')
   const url = `${api.message.template.send}access_token=${token}`
   return {url: url, method: 'POST', body: data}
+}
+
+exports.getTemplateId = async () => {
+  const { template_list } = await this.handle('fetchTemplateList')
+  console.log(template_list)
+  if(template_list.length > 0) {
+    console.log('template_list[0].template_id -------', template_list[0].template_id, '====')
+    return template_list[0].template_id
+  }else {
+    const { template_id } =  await this.handle('addTemplate')
+    console.log('template_id==========', template_id, 'add!!!!!')
+    return template_id
+  }
+}
+
+exports.fetchTemplateList = (token) => {
+  console.log('fetchTemplateList')
+  const url = `${api.template.fetch}access_token=${token}`
+  return {url}
 }
 
 /**

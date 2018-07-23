@@ -71,11 +71,12 @@ exports.order = async (ctx)=> {
       if(flag == '1'){
         User.updateUserByFlag(openid, out_trade_no); //记录用户购买订单号,关闭首单          
       }
-      const template = await WXSDK.handle('addTemplate')
+      const template_id = await WXSDK.getTemplateId()
+      const config = await Config.getConfig()
       const json = {
         touser: openid,
-        template_id: template.template_id || 'BgpTq3S8WtnvWGDWST_lH3l1NaCZZ_PM7I33qIouEhk',
-        url: 'http://fafuna.vipgz1.idcfengye.com/user/my/code',
+        template_id: template_id || 'BgpTq3S8WtnvWGDWST_lH3l1NaCZZ_PM7I33qIouEhk',
+        url: config.server_host + '/user/my/code',
         data: {
           first: {
             value: '您好，您已购买成功。'
@@ -84,10 +85,11 @@ exports.order = async (ctx)=> {
             value: product + '(' + specifications + ')'
           },
           keyword2: {
-            value: total + '份'
+            value: total 
           },
           remark: {
-            value: '备注：如有疑问，请致电13912345678联系我们。'
+            value: '推荐购买，最高可兑换iphoneX哦～'
+            color: '#fb3535'
           }
         }
 
@@ -98,7 +100,30 @@ exports.order = async (ctx)=> {
     }else if(pay_money =='0' && total_money == '0'){
       var gift = await wechat.getGiftForConsumeByNameAndSpecifications(product, specifications);
           User.delUserConsumeByOpenId(openid, gift.consume);
-      await tools.sendTemplateMessage(openid, pay_money, product+ '('+specifications+total+')');//发送模版消息
+      const template_id = await WXSDK.getTemplateId()
+      const config = await Config.getConfig()
+      const json = {
+        touser: openid,
+        template_id: template_id || 'BgpTq3S8WtnvWGDWST_lH3l1NaCZZ_PM7I33qIouEhk',
+        url: config.server_host + '/user/my/code',
+        data: {
+          first: {
+            value: '您好，您已购买成功。'
+          },
+          keyword1: {
+            value: product + '(' + specifications + ')'
+          },
+          keyword2: {
+            value: total 
+          },
+          remark: {
+            value: '推荐购买，最高可兑换iphoneX哦～'
+            color: '#fb3535'
+          }
+        }
+
+      }
+      await WXSDK.handle('sendTemplateMessage', json)      
       ctx.status = 204;
     }
   }catch(e) {
