@@ -220,8 +220,9 @@ exports.refund = async (ctx, next) => {
     }else if(order.status === 4 && total_fee>0){//退款
         var config = await Config.getConfig();
         var refund = await pay.refund({
-          out_trade_no: out_trade_no,
           mch_id: config.store_mchid,
+          store_key: config.store_key,
+          out_trade_no: out_trade_no,
           out_refund_no: out_trade_no,
           refund_fee: Number(total_fee * 100),
           total_fee: Number(total_fee * 100)

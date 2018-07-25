@@ -82,19 +82,18 @@ exports.setWXConfig = async function(jsapi_ticket, url, value) {
 
 //退款
 exports.refund = async function(json) {
-    var config = await dao.getConfig();
     const nonce_str = tools.createRandom();
     const mch_id = json.mch_id;
         json.nonce_str = nonce_str;
 
     var str = tools.raw(json);
-        str += '&key=' + config.store_key;
+        str += '&key=' + json.store_key;
 
     var sign = crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();
 
         json.sign = sign;        
         json = xml.jsonToXml(json);
-        
+
     let options = {
         url: 'https://api.mch.weixin.qq.com/secapi/pay/refund',
         method: 'post',
