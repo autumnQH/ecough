@@ -220,13 +220,14 @@ exports.refund = async (ctx, next) => {
     }else if(order.status === 4 && total_fee>0){//退款
         var config = await Config.getConfig();
         var refund = await pay.refund({
-          out_trade_no: 'ffn1532340072498',
-          appid: 'wxfaa5fc353c6b81d0',
+          out_trade_no,
+          appid: config.appid,
           mch_id: config.store_mchid,
-          out_refund_no: 'ffn1532340072498',
-          refund_fee: 1,
-          total_fee: 1
+          out_refund_no: out_trade_no,
+          refund_fee: parseInt(total_fee),
+          total_fee: parseInt(total_fee)
         });   
+        console.log(refund)
         var xml = refund.xml; 
         if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
             if(xml.result_code[0] === 'SUCCESS'){
