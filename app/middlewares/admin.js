@@ -222,7 +222,6 @@ exports.refund = async (ctx, next) => {
         var refund = await pay.refund({
           appid: config.appid,
           mch_id: config.store_mchid,
-          store_key: config.store_key,
           out_trade_no: out_trade_no,
           out_refund_no: out_trade_no,
           refund_fee: Number(total_fee * 100),
