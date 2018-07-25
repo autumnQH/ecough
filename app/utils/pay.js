@@ -2,6 +2,8 @@ const tools = require('./tools');
 const crypto = require('crypto');
 const xml = require('./xml');
 const dao = require('../dao/wechat');
+const { resolve } = require('path');
+const cert = resolve(__dirname, '../../' ,'config/apiclient_cert.p12')
 const fs = require('fs');
 const request = require('request');
 const _ = require('lodash');
@@ -92,13 +94,13 @@ exports.refund = async function(json) {
 
         json.sign = sign;        
         json = xml.jsonToXml(json);
-
+        console.log(cert,'cert')
     let options = {
         url: 'https://api.mch.weixin.qq.com/secapi/pay/refund',
         method: 'post',
         body: json,
         agentOptions: {
-            pfx: fs.readFileSync(__dirname+ '/apiclient_cert.p12'),
+            pfx: fs.readFileSync(cert),
             passphrase: mch_id
         }
     };
@@ -106,10 +108,8 @@ exports.refund = async function(json) {
     return new Promise(function(resolve, reject) {
         request(options, function(err, res, body) {
             if(body){
-                console.log(body)
                 return resolve(xml.xmlToJson(body));
             }else{
-                console.log(err)
                 return reject(xml.xmlToJson(err));
             }
         });
