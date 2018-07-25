@@ -85,10 +85,10 @@ exports.refund = async function(json) {
     const nonce_str = tools.createRandom();
     const mch_id = json.mch_id;
         json.nonce_str = nonce_str;
-    const partnerKey = json.store_key;
-    delete json.store_key
+        
     var str = tools.raw(json);
         str += '&key=' + json.store_key;
+    delete json.store_key
 
     var sign = crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();
 
