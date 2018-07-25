@@ -1,4 +1,4 @@
-const dao = require('../dao/wechat');
+const Config = require('../proxy').Config;
 const urlencode = require('urlencode');
 const tools = require('../utils/tools');
 
@@ -14,7 +14,7 @@ module.exports = {
 		await next();
 	},
 	checkUser: async(ctx, next)=> {
-		var config = await dao.getConfig();
+		var config = await Config.getConfig();
 		//ctx.session.openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 		if(!ctx.session.openid){
 		  var r_url = config.server_host + ctx.url.split('?').slice(0,1);

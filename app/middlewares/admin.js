@@ -157,10 +157,11 @@ exports.order = async (ctx)=> {
   }
 }
 
-//设置发货
+//设置订单状态
 exports.express = async (ctx)=> {
   const { out_trade_no, status, delivery_track_no, delivery_company } = ctx.request.body
   var order = await Order.getOrderByOutTradeNo(out_trade_no);
+  console.log(out_trade_no, status, delivery_track_no, delivery_company)
   try {
     if(order.status == 2 && status == 3){//第一次发货
       var openid = order.openid;//openid
@@ -190,8 +191,12 @@ exports.express = async (ctx)=> {
         await Order.updateOrderById(order.id, {status, delivery_track_no, delivery_company, out_trade_no})
         await ctx.redirect('back');
       }
-    }//第一次发货end
-	 await ctx.redirect('back');
+    //第一次发货end
+    }else {
+      //交易完成
+      await Order.updateOrderById(order.id, {status, out_trade_no, delivery_track_no})
+      await ctx.redirect('back');
+    }
   }catch (e) {
     console.error(e)
     await ctx.redirect('back');

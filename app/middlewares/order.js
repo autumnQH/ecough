@@ -2,11 +2,7 @@ const Config = require('../proxy').Config;
 const WXSDK = require('../proxy').WXSDK;
 const Store = require('../proxy').Store
 const User = require('../proxy').User
-const xml = require('../utils/xml');
-const dao = require('../dao/wechat');
-const pay = require('../utils/pay');
-const USER = require('../utils/user');
-const STORE = require('../utils/store');
+
 //统一下单-生成预付单-获取package
 exports.create = async(ctx, next) => {
     const { total, specifications, productId} = ctx.query

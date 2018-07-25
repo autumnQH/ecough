@@ -4,7 +4,6 @@ const WXSDK = require('../proxy').WXSDK;
 const Config = require('../proxy').Config;
 const tools = require('../utils/tools');
 const moment = require('moment');
-const dao = require('../dao/admin');
 
 function isOnlinekf(data) {
   if(data.kf_online_list.length === 0) {
@@ -42,45 +41,65 @@ exports.addUserPhone = async (ctx)=> {
     }
 }
 
-// new end
 
 
 exports.showGift = async (ctx)=> {
-	ctx.state.data = await User.showGift();
-	await ctx.render('user/gift');
+  try {
+    ctx.state.data = await User.showGift();
+    await ctx.render('user/gift');
+  }catch(e) {
+    console.error(e)
+    ctx.state.data = []
+    await ctx.render('user/gift');    
+  }
 }
 
 exports.showGiftById = async (ctx)=> {
-	let id = ctx.params.id;
-	let openid = ctx.session.openid;  
-	ctx.state.openid = openid;
-	ctx.state.out_trade_no = tools.trade();
-	ctx.state.data = await User.showGiftById(openid, id);
+  const id = ctx.params.id;
+  const openid = ctx.session.openid;  
+  try {
+    ctx.state.openid = openid;
+    ctx.state.out_trade_no = tools.trade();
+    ctx.state.data = await User.showGiftById(openid, id);
+    await ctx.render('user/gift_info');
+  }catch(e) {
+    ctx.state.openid = openid;
+    ctx.state.out_trade_no = tools.trade();
+    ctx.state.data = await User.showGiftById(openid, id);
+    await ctx.render('user/gift_info');    
+  }
 
-	await ctx.render('user/gift_info');
 }
 
 exports.showUserOrder = async (ctx)=> {
-	await ctx.render('user/order');
+  await ctx.render('user/order');
 }
 
 exports.showUserOrder2 = async (ctx)=> {
-	await ctx.render('user/order2');
+  await ctx.render('user/order2');
 }
 
 exports.getOrderByStatus = async (ctx)=> {
-	let openid = ctx.session.openid;
-	let status = ctx.query.status;
-	let page = ctx.query.page;
-	let size = ctx.query.size;
-	var order = await User.getUserOrderForStatusByStatusAndOpenId(openid, status,page,size);
-	return ctx.body = order;
+  try {
+    const openid = ctx.session.openid;
+    const {status, page, size} = ctx.query;
+    ctx.body = await User.getUserOrderForStatusByStatusAndOpenId(openid, status, page, size);
+  }catch (e) {
+    console.error(e) 
+    ctx.body = {}
+  }
 }
 
-exports.getOrderInfoById =async (ctx)=> {
-	let order_id = ctx.query.id;
-	ctx.state.data = await Order.getOneOrderById(order_id);
-	return ctx.render('user/order_info');
+exports.getOrderInfoById = async (ctx)=> {
+  const order_id = ctx.query.id;
+  try {
+    ctx.state.data = await Order.getOneOrderById(order_id);
+    await ctx.render('user/order_info');
+  }catch (e) {
+    console.error(e) 
+    ctx.state.data = {}
+    await ctx.render('user/order_info');
+  }
 }
 
 exports.showCode = async (ctx)=> {
@@ -90,7 +109,7 @@ exports.showCode = async (ctx)=> {
     const config = await Config.getConfig()
     data.appid = config.appid
     ctx.state.config = data; 
-    await ctx.render('user/code_qr'); 	
+    await ctx.render('user/code_qr');   
   }catch(e) {
     console.error(e)
     ctx.state.config = {}; 
@@ -128,38 +147,76 @@ exports.getMyQR_Code = async (ctx)=> {
 }
 
 exports.showPartner = async (ctx)=> {
-	let openid = ctx.session.openid
-  ctx.state.data = await User.getUserByEnentKey(openid);
-  ctx.state.data2 = await User.getUserTotalConsume(openid);
-  await ctx.render('user/partner');	
+	const openid = ctx.session.openid
+  try {
+    ctx.state.data = await User.getUserByEnentKey(openid);
+    ctx.state.data2 = await User.getUserTotalConsume(openid);
+    await ctx.render('user/partner');	
+  }catch (e) {
+    ctx.state.data = []
+    ctx.state.data2 = {}
+    await ctx.render('user/partner'); 
+  }
 }
 
 exports.showService = async (ctx)=> {
   let openid = ctx.session.openid;
-  ctx.state.data =  await Order.getOrderForTradeByOpenId(openid);
-  ctx.state.openid = openid;
-  await ctx.render('user/service');
+  try {
+    ctx.state.data =  await Order.getOrderForTradeByOpenId(openid);
+    ctx.state.openid = openid;
+    await ctx.render('user/service');
+  }catch (e) {
+    console.error(e)
+    ctx.state.data =  []
+    ctx.state.openid = openid;
+    await ctx.render('user/service');    
+  }
 }
 
 exports.addService = async (ctx)=> {
     let data = ctx.request.body;
-    data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-    User.setService(data);
-    return ctx.status = 204;
+    try {
+      data.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+      User.setService(data);
+      ctx.status = 204;
+    }catch(e) {
+      console.error(e)
+      ctx.status = 204;
+    }
 }
 
 exports.showFAQ = async (ctx)=> {
+  const openid = ctx.session.openid;
+  try {
     ctx.state.data =  await User.getFAQ();
-    ctx.state.openid = ctx.session.openid;
+    ctx.state.openid = openid
     await ctx.render('user/FAQ');
+    
+  }catch (e) {
+    console.error(e) 
+    ctx.state.data = []
+    ctx.state.openid = openid
+    await ctx.render('user/FAQ');    
+  }
 }
 
+
 exports.showFAQById = async (ctx)=> {
-    var id = ctx.params.id;
+  const id = ctx.params.id;
+  const openid = ctx.session.openid;
+  try {
     ctx.state.data =  await User.getFAQById(id);
-    ctx.state.openid = ctx.session.openid;
+    ctx.state.openid = openid
     await ctx.render('user/FAQ_info');     
+  }catch(e) {
+    console.error(e)
+    ctx.state.data =  {}
+    ctx.state.openid = openid
+    await ctx.render('user/FAQ_info');     
+  }
 }
+
+
 
 exports.contactCustomService = async (ctx)=> {
     const openid = ctx.session.openid;
@@ -189,7 +246,6 @@ exports.contactCustomService = async (ctx)=> {
       }
     }
 }
-
 
 exports.refundOrder = async (ctx) => {
   const req = ctx.request.body;

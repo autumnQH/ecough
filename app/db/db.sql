@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS USER (
 ) DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 
-CREATE TABLE IF NOT EXISTS T_WECHAT_ORDER (
+CREATE TABLE IF NOT EXISTS ORDER (
   id int NOT NULL AUTO_INCREMENT,
   openid varchar(128) NOT NULL COMMENT 'openid',
   name varchar(32) NOT NULL COMMENT '姓名',
@@ -95,20 +95,6 @@ CREATE TABLE IF NOT EXISTS USER_SERVICE (
   PRIMARY KEY (id),
   INDEX openid (openid)
 )DEFAULT CHARSET=utf8 COMMENT='用户售后服务' ;
-
-CREATE TABLE IF NOT EXISTS USER_VOUCHER (
-  id int(11) NOT NULL AUTO_INCREMENT,
-  openid varchar(128) NOT NULL COMMENT 'openid',
-  voucher_type varchar(36) DEFAULT NULL COMMENT '代金券类别',
-  voucher_denomination int(10) DEFAULT NULL COMMENT '代金券面额',
-  create_time datetime DEFAULT NULL COMMENT '创建时间',
-  end_time datetime DEFAULT NULL COMMENT '到期时间',
-  status int(2) DEFAULT 2 COMMENT '2-未使用 3-使用中',
-  order_id varchar(32) DEFAULT NULL COMMENT '订单ID',
-  PRIMARY KEY (id),
-  Index openid (openid)
-) DEFAULT CHARSET=utf8 COMMENT='用户代金券';
-
 
 CREATE TABLE IF NOT EXISTS CONFIG (
   id int NOT NULL AUTO_INCREMENT,

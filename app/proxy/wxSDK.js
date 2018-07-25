@@ -39,13 +39,11 @@ const api = {
 }
 
 exports.sendTemplateMessage = (token, data) => {
-  console.log('sendTemplateMessage')
   const url = `${api.message.template.send}access_token=${token}`
   return {url: url, method: 'POST', body: data}
 }
 
 exports.getTemplateId = async () => {
-  console.log('getTemplateId')
   const { template_list } = await this.handle('fetchTemplateList')
   const isTemplateId = isValidTemplateId(template_list)
   if(isTemplateId) {
@@ -56,7 +54,6 @@ exports.getTemplateId = async () => {
 }
 
 exports.fetchTemplateList = (token) => {
-  console.log('fetchTemplateList')
   const url = `${api.template.fetch}access_token=${token}`
   return {url}
 }
@@ -70,53 +67,43 @@ exports.fetchTemplateList = (token) => {
    }
  */
 exports.addTemplate = (token, data = {template_id_short: 'OPENTM200814444'}) => {
-  console.log('addTemplate')
   const url = `${api.template.add}access_token=${token}`
   return {url: url, method: 'POST', body: data}
 }
 
 exports.sendCustomMessage = (token, data) => {
-  console.log('sendCustomMessage')
   const url = `${api.message.custom.send}access_token=${token}`
   return {url: url, method: 'POST', body: data}
 }
 
 exports.createKfsession = (token, openid, kf_account) => {
-  console.log('createKfsession')
   const url = `${api.customservice.kfsession.create}access_token=${token}`
   const data = {openid, kf_account}
   return {url: url, method: 'POST', body: data}
 }
 
 exports.getTheFirstOnlineCustomerservice = (token)=> {
-  console.log('getTheFirstOnlineCustomerservice')
   const url = `${api.customservice.getonlinekflist}access_token=${token}`
   return {url}
 }
 
 exports.createQRCode = (token, data)=> {
-  console.log('createQRCode')
   const url = `${api.qrcode.create}access_token=${token}`
   return {url: url, method: 'POST', body: data}
 }
 
 exports.getSignatureAsync = async (url)=> {
-  console.log('getSignatureAsync')
   const data = await this.getTicket()
   return signature(data.ticket, url)
 }
 
 exports.deleteMenu = (token)=> {
-  console.log('deleteMenu')
   const url = `${api.menu.delete}access_token=${token}`
-
   return {url}
 }
 
 exports.createMenu = (token, menu)=> {
-  console.log('createMenu')
   const url = `${api.menu.create}access_token=${token}`
-
   return {method: 'POST', url: url, body: menu}
 }
 
@@ -157,7 +144,6 @@ exports.request = (options)=> {
 }
 
 exports.updateTicket = async (token)=> {
-  console.log('updateTicket')
   const url = `${api.ticket}access_token=${token}&type=jsapi`
   const data = await this.request({url})
   const now = (new Date().getTime())
@@ -168,7 +154,6 @@ exports.updateTicket = async (token)=> {
 }
 
 exports.getTicket = async ()=> {
-  console.log('getTicket')
   let data = await wechat.fetchTicket();
   if (!this.isValidToken(data, 'ticket')) {
     const token = await this.getAccessToken()
@@ -185,7 +170,6 @@ exports.getTicket = async ()=> {
 }
 
 exports.updateAccessToken = async ()=> {
-  console.log('updateAccessToken')
 	const config = await Config.getConfig()
   const url = api.accessToken + '&appid=' + config.appid + '&secret=' + config.appSecret
 
@@ -199,7 +183,6 @@ exports.updateAccessToken = async ()=> {
 }
 
 exports.getAccessToken = async ()=> {
-  console.log('getAccessToken')
 	let data = await wechat.fetchToken();
   if (!this.isValidToken(data, 'access_token')) {
     data = await this.updateAccessToken()

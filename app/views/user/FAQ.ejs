@@ -54,18 +54,19 @@
 <script>
   $(function() {
     $.ajax({
-      url: '/wx/sdk',
+      url: '/wx/signature',
       type: 'get',
       data:{
           url: encodeURIComponent(location.href.split('#')[0])
       }      
     }).done(function(msg) {
+      var data = msg.data
       wx.config({
           debug: false,
-          appId: msg.appid,
-          timestamp: msg.timestamp,
-          nonceStr: msg.nonceStr,
-          signature: msg.signature,
+          appId: data.appid,
+          timestamp: data.timestamp,
+          nonceStr: data.noncestr,
+          signature: data.signature,
           jsApiList: ['openAddress']
 
       });//wx/config end
