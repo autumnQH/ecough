@@ -2,7 +2,6 @@ const User = require('../proxy').User;
 const Order = require('../proxy').Order;
 const WXSDK = require('../proxy').WXSDK;
 const Config = require('../proxy').Config;
-const pay = require('../utils/pay');
 const tools = require('../utils/tools');
 const moment = require('moment');
 const dao = require('../dao/admin');
@@ -200,7 +199,7 @@ exports.refundOrder = async (ctx) => {
   try{
     const order = await Order.getOneOrderById(id);
     if(order.status == 2 && req.total_fee == 0){//礼物退货
-      const status = await Order.updateOrderStatusById(order.id, 0);
+      const status = await Order.updateOrderById(order.id, {status: 0});
       if(status == 1){
           ctx.body = {
               msg: "SUCCESS"
@@ -212,7 +211,7 @@ exports.refundOrder = async (ctx) => {
           }
       }
     }else if(order.status == 2 && req.total_fee > 0) {   // 产品退货 
-      const status = await Order.updateOrderStatusById(order.id, 4);
+      const status = await Order.updateOrderById(order.id, {status: 4});
       ctx.body = {
         msg: "SUCCESS"
       }

@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS STORE (
   PRIMARY KEY (product_id)
 )DEFAULT CHARSET=utf8  COMMENT='产品表';
 
-INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色,黑色', sku_info = '{"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0};{"specifications":"12*12米","price":1200,"old_price":1500,"stock_num":100}', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
+INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色;黑色', sku_info = '{"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0};{"specifications":"12*12米","price":1200,"old_price":1500,"stock_num":100}', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
 
 CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
   id int NOT NULL AUTO_INCREMENT,
@@ -122,18 +122,6 @@ CREATE TABLE IF NOT EXISTS USER_VOUCHER (
   Index openid (openid)
 ) DEFAULT CHARSET=utf8 COMMENT='用户代金券';
 
-
-CREATE TABLE IF NOT EXISTS STORE_ORDER (
-  id int NOT NULL AUTO_INCREMENT ,
-  openid varchar(128) NOT NULL COMMENT 'openid',
-  order_id varchar(255) NOT NULL COMMENT '订单id',
-  order_status varchar(255) NOT NULL COMMENT '订单状态',
-  product_id varchar(255) NOT NULL COMMENT '商品id',
-  sku_info varchar(255) NOT NULL COMMENT '其他',
-  create_time datetime DEFAULT NULL COMMENT '',
-  PRIMARY KEY (id),
-  INDEX openid (openid)
-)DEFAULT CHARSET=utf8 COMMENT='微信小店';
 
 CREATE TABLE IF NOT EXISTS CONFIG (
   id int NOT NULL AUTO_INCREMENT,

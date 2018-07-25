@@ -7,6 +7,10 @@ exports.getOrder = () => {
 	return order.getOrder()
 }
 
+exports.getRefundList = () => {
+	return order.getRefundList()
+}
+
 /**
  * 添加一条订单
  * @param {Object} data 订单数据
@@ -32,10 +36,18 @@ exports.getOrderForTradeByOpenId = (openid)=> {
 }
 
 /**
- * 根据订单ID修改订单状态
+ * 根据订单ID修改订单
  * @params { Int } id 订单ID
- * @params { Number } status 订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消 4-申请退款 )
+ * @params { Object } data 订单数据 
  */
-exports.updateOrderStatusById = (id, status) => {
-	return order.updateOrderStatusById(id, status)
+exports.updateOrderById = (id, data) => {
+	return order.updateOrderById(id, data)
+}
+
+/**
+ * 根据订单号获取用户订单
+ * @param { String } out_trade_no 订单号
+ */
+exports.getOrderByOutTradeNo = (out_trade_no)=> {
+	return order.getOrderByOutTradeNo(out_trade_no)
 }

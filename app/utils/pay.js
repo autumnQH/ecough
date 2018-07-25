@@ -106,8 +106,10 @@ exports.refund = async function(json) {
     return new Promise(function(resolve, reject) {
         request(options, function(err, res, body) {
             if(body){
+                console.log(body)
                 return resolve(xml.xmlToJson(body));
             }else{
+                console.log(err)
                 return reject(xml.xmlToJson(err));
             }
         });

@@ -47,16 +47,11 @@ exports.sendTemplateMessage = (token, data) => {
 exports.getTemplateId = async () => {
   console.log('getTemplateId')
   const { template_list } = await this.handle('fetchTemplateList')
-  console.log(template_list,'-----',template_list.length)
   const isTemplateId = isValidTemplateId(template_list)
   if(isTemplateId) {
-    console.log('isTemplateId', isTemplateId)
     return isTemplateId
   }
-  const data = await this.handle('addTemplate')
-  console.log(data)
-  const { template_id } = data 
-  console.log('template_id==========', template_id, 'add!!!!!')
+  const { template_id } = await this.handle('addTemplate') 
   return template_id  
 }
 
@@ -235,7 +230,6 @@ function isValidTemplateId(data) {
   let id = null
   data.forEach(item => {
     if(item.title === '购买成功通知') {
-      console.log('购买成功通知', item.template_id)
       id = item.template_id
     }
   })

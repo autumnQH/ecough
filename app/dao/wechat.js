@@ -70,12 +70,6 @@ exports.getOrder = async () => {
 	return result;
 }
 
-//设置微信小店
-exports.setStoreOrder = async (data) => {
-	var result = db.add("STORE_ORDER", data);
-	return result;
-}
-
 //根据订单号获取
 exports.getOutTradeNo = async (out_trade_no) => {
 	var result = db.findOne("SELECT id,openid,pay_money,status,product,specifications FROM T_WECHAT_ORDER WHERE status = 2 AND out_trade_no=" +  out_trade_no );
@@ -140,16 +134,7 @@ exports.delFAQ = (id) => {
 	return result;
 }
 
-exports.refundVoucherByOutTradeNo = (order_id)=> {
-	var result = db.update("USER_VOUCHER", {status: 2, order_id: null}, {order_id: order_id});
-	return result
-}
 exports.refundUserByOutTradeNo = (out_trade_no) =>{
 	var result = db.update("T_WECHAT_USER", {flag: '1'}, {flag: out_trade_no});
 	return result;
 }
-
-exports.getGiftForConsumeByNameAndSpecifications = (name, specifications)=> {
-	return db.findOne("SELECT consume FROM GIFT WHERE name = '"+ name+"' AND specifications = '"+ specifications+"'");
-}
-

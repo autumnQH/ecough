@@ -1,4 +1,3 @@
-const wechat = require('../utils/wechat');
 const tools = require('../utils/tools');
 const moment = require('moment');
 const Admin = require('../proxy').Admin;
@@ -6,52 +5,78 @@ const User = require('../proxy').User;
 const Config = require('../proxy').Config;
 const Order = require('../proxy').Order;
 const WXSDK = require('../proxy').WXSDK
+const Gift = require('../proxy').Gift;
+const Store = require('../proxy').Store
 const pay = require('../utils/pay');
 
 exports.home = async (ctx)=> {
 	await ctx.redirect('admin/order');
 }
 exports.showOrder = async (ctx)=> {
-  var datas = await Order.getOrder();
-  datas.forEach(function(data) {
-      data.create_time = tools.formatDate(data.create_time);
-        switch(data.status){
-          case 0 :
-          data.status = '交易取消';
-          break;
-          case 2:
-          data.status = '待发货';
-          break;
-          case 3:
-          data.status = '已发货';
-          break;
-          case 4:
-          data.status = '申请退款';
-          break;          
-          case 5:
-          data.status = '交易完成';
-          break;
-          case 8:
-          data.status = '交易维权';
-          break;
-        }
-        switch(data.delivery_company){
-          case 'shentong':
-          data.delivery_company = '申通';
-          break;
-          case 'huitongkuaidi':
-          data.delivery_company = '百世';
-          break;
-          case 'yuantong':
-          data.delivery_company = '圆通';
-          break;
-        } 
-  });
-  ctx.state.data = datas;
-  await ctx.render('admin/order');
+  try {
+    var datas = await Order.getOrder();
+    datas.forEach(function(data) {
+        data.create_time = tools.formatDate(data.create_time);
+          switch(data.status){
+            case 0 :
+            data.status = '交易取消';
+            break;
+            case 2:
+            data.status = '待发货';
+            break;
+            case 3:
+            data.status = '已发货';
+            break;
+            case 4:
+            data.status = '申请退款';
+            break;          
+            case 5:
+            data.status = '交易完成';
+            break;
+            case 8:
+            data.status = '交易维权';
+            break;
+          }
+          switch(data.delivery_company){
+            case 'shentong':
+            data.delivery_company = '申通';
+            break;
+            case 'huitongkuaidi':
+            data.delivery_company = '百世';
+            break;
+            case 'yuantong':
+            data.delivery_company = '圆通';
+            break;
+          } 
+    });
+    ctx.state.data = datas;
+    await ctx.render('admin/order'); 
+  }catch (e) {
+    console.error(e)
+    ctx.state.data = [];
+    await ctx.render('admin/order'); 
+  }
 }
 
-//new end
+exports.refundList = async (ctx)=> {
+  try {
+    var datas = await Order.getRefundList();
+    datas.forEach(function(data) {
+        data.create_time = tools.formatDate(data.create_time);
+          switch(data.status){
+            case 4:
+            data.status = '申请退款';
+            break;          
+          }
+    });
+    ctx.state.data = datas;
+    await ctx.render('admin/refundList');
+  }catch (e) {
+    console.error(e)
+    ctx.state.data = []
+    await ctx.render('admin/refundList');
+  }
+}
 
 exports.order = async (ctx)=> {
   try{
@@ -97,8 +122,8 @@ exports.order = async (ctx)=> {
       ctx.status = 204;	
     //礼物订单
     }else if(pay_money =='0' && total_money == '0'){
-      var gift = await wechat.getGiftForConsumeByNameAndSpecifications(product, specifications);
-          User.delUserConsumeByOpenId(openid, gift.consume);
+      const gift = await Gift.getGiftForConsumeByNameAndSpecifications(product, specifications);
+      await User.delUserConsumeByOpenId(openid, gift.consume);
       const template_id = await WXSDK.getTemplateId()
       const config = await Config.getConfig()
       const json = {
@@ -133,122 +158,113 @@ exports.order = async (ctx)=> {
 
 //设置发货
 exports.express = async (ctx)=> {
-  var req = ctx.request.body;
-  var out_trade_no = req.out_trade_no;
-  var order = await Admin.getOrderByOutTradeNo(out_trade_no);
-  if(order.status == 2 && req.status == 3){//第一次发货
-    var openid = order.openid;//openid
-    var specifications = order.specifications;//规格
-    var pay_money = order.pay_money;//支付金额
-    var total = Number(order.total.replace(/[\u4e00-\u9fa5]+/g,""));//数量,去除中文。件
-
-    var userinfo = await User.getUserByOpenId(openid);//获取用户信息
-
-    var order_count = userinfo.order_count;//下单件数
-        order_count += total;
-    if(order.eventKey){
-      User.addUserConsumeByEventKey(order.eventKey, total);
-      User.addUserOrderCountByOpenId(openid);
-    }
-
-    //减库存
-    //最烂代码没有之一
-    var store = await Admin.getStore();
-      store = tools.StoreDataStringToObject(store);
-
-      store[0].sku_info.map(function(val, index, arr) {
-        
-        switch(val.specifications){
-          case specifications:          
-          val.repertory -= total;
-          
+  const { out_trade_no, status, delivery_track_no, delivery_company } = ctx.request.body
+  var order = await Order.getOrderByOutTradeNo(out_trade_no);
+  try {
+    if(order.status == 2 && status == 3){//第一次发货
+      var openid = order.openid;//openid
+      var specifications = order.specifications;//规格
+      var pay_money = order.pay_money;//支付金额
+      var total = Number(order.total.replace(/[\u4e00-\u9fa5]+/g,""));//数量,去除中文。件
+      if(pay_money) {//支付金额小于0是礼物订单
+        //推广人获取推广件数
+        if(order.eventKey){
+          User.addUserConsumeByEventKey(order.eventKey, total);
+          User.addUserOrderCountByOpenId(openid);
         }
-        return val;
-      }); 
-      var sku_info = tools.StoreDataObjectToString(store[0].sku_info);
-      let s  = {
-        product_id: store[0].product_id,
-        sku_info: sku_info
-      }
 
-    await Admin.updateStore(s);
-  }//第一次发货end
-  if(order.status!=0){
-	 await Admin.updateOrderExpress(req);
+        //减少商品库存
+        const store = await Store.getStoreById('100001')
+        const { sku_info } = store
+        sku_info.map(item => {
+          switch(item.specifications) {
+            case specifications:
+            item.stock_num -= total
+          }
+        })
+        await Store.updateStoreById(store)
+        await Order.updateOrderById(order.id, {status, delivery_track_no, delivery_company, out_trade_no})
+        await ctx.redirect('back');
+      }else {
+        await Order.updateOrderById(order.id, {status, delivery_track_no, delivery_company, out_trade_no})
+        await ctx.redirect('back');
+      }
+    }//第一次发货end
+	 await ctx.redirect('back');
+  }catch (e) {
+    console.error(e)
+    await ctx.redirect('back');
   }
-	await ctx.redirect('back');
 }
 
-exports.refundList = async (ctx)=> {
-  var datas = await Admin.getRefundList();
-  datas.forEach(function(data) {
-      data.create_time = tools.formatDate(data.create_time);
-        switch(data.status){
-          case 4:
-          data.status = '申请退款';
-          break;          
+//new end
+
+exports.refund = async (ctx, next) => {
+  const { out_trade_no, total_fee} = ctx.request.body
+  try {
+    var order = await Order.getOrderByOutTradeNo(out_trade_no);
+    if(order.status === 4 && total_fee == 0){//礼物退货
+        var status = await Order.updateOrderById(order.id, {status: 0});//更新订单状态0-交易取消
+        if(status == 1){
+            return ctx.body = {
+                msg: "SUCCESS",
+                code: '订单取消成功'
+            }
+        }else{
+            return ctx.body = {
+                msg: "ERROR",
+                code: "服务器繁忙，请稍后再试"
+            }
         }
-  });
-  ctx.state.data = datas;
-  await ctx.render('admin/refundList');
-}
-exports.refund = async (ctx) => {
-  var req = ctx.request.body;
-  var out_trade_no = req.out_trade_no;
-  var order = await Admin.getOrderByOutTradeNo(out_trade_no);
-  if(order.status == 4 && req.total_fee == 0){//礼物退货
-      var status = await wechat.refundGift(req.out_trade_no);//更新订单状态0-交易取消
-      if(status == 1){
-          return ctx.body = {
-              msg: "SUCCESS"
-          }
-      }else{
-          return ctx.body = {
-              msg: "ERROR",
-              code: "500:网络繁忙!"
-          }
-      }
-  }else if(order.status == 4 && req.total_fee>0){//退款
-      var config = await Config.getConfig();
-      req.appid = config.appid;
-      req.mch_id = config.store_mchid;
-      req.out_refund_no = req.out_trade_no;//退款号=订单号
-      req.refund_fee = parseInt(req.total_fee* 100);//退款金额=支付金额
-      req.total_fee = parseInt(req.total_fee* 100);
-      var refund = await pay.refund(req);    
-      var xml = refund.xml; 
-      if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
-          if(xml.result_code[0] === 'SUCCESS'){
-              // await wechat.delOrderByOutTradeNo(req.out_trade_no);//删除订单
-              await wechat.refundVoucherByOutTradeNo(req.out_trade_no);//退款代金券
-              await wechat.refundUserByOutTradeNo(req.out_trade_no);//退款首单
-              await wechat.updateOrderStatus(req.out_trade_no);//更新订单状态0-交易取消
-              return ctx.body = {
-                  msg: xml.result_code[0]
-              }
-          }else{        
-              return ctx.body = {
-                  msg: xml.result_code[0],
-                  code:xml.err_code +':'+ xml.err_code_des[0]
-              }
-          }
-      }
-      
-  }else if(order.status == 3) {
-      return ctx.body = {
-          msg: 'ERROR',
-          code: '该订单已经发货'
-      }
-  }else if(order.status == 0) {
-      return ctx.body = {
-          msg: 'ERROR',
-          code: '该订单已经取消'
-      }
-  }else{
-      return ctx.body = {
-          msg:'ERROR',
-          code: '未知错误!'
-      }
+    }else if(order.status === 4 && total_fee>0){//退款
+        var config = await Config.getConfig();
+        var refund = await pay.refund({
+          out_trade_no,
+          appid: config.appid,
+          mch_id: config.store_mchid,
+          out_refund_no: out_trade_no,
+          refund_fee: parseInt(total_fee* 100),
+          total_fee: parseInt(total_fee* 100)
+        });    
+        console.log(refund)
+        var xml = refund.xml; 
+        // if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
+        //     if(xml.result_code[0] === 'SUCCESS'){
+        //         await wechat.refundUserByOutTradeNo(out_trade_no);//退款首单
+        //         await wechat.updateOrderStatus(out_trade_no);//更新订单状态0-交易取消
+        //         return ctx.body = {
+        //             msg: xml.result_code[0]
+        //         }
+        //     }else{        
+        //         return ctx.body = {
+        //             msg: xml.result_code[0],
+        //             code:xml.err_code +':'+ xml.err_code_des[0]
+        //         }
+        //     }
+        // }
+        
+    }else if(order.status == 3) {
+        return ctx.body = {
+            msg: 'ERROR',
+            code: '该订单已经发货'
+        }
+    }else if(order.status == 0) {
+        return ctx.body = {
+            msg: 'ERROR',
+            code: '该订单已经取消'
+        }
+    }else{
+        return ctx.body = {
+            msg:'ERROR',
+            code: '未知错误!'
+        }
+    }  
+  }catch (e) {
+    console.error(e)
+    ctx.body = {
+      msg: 'ERROR',
+      code: '服务器繁忙，请稍后再试'
+    }
   }
 }
 exports.showService = async (ctx)=> {

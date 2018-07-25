@@ -1,13 +1,13 @@
 const crypto = require('crypto');
 const request = require('request');
 const tools = require('./tools');
-const Config = require('../proxy').Config;
 const userdao = require('../dao/user');
 const fs = require('fs');
 const qr_image = require('qr-image');  
 const images = require('images');
 const xml = require('./xml');
 const _ = require('lodash');
+const Config = require('../proxy').Config;
 
 exports.auth = async (ctx) => {
     const config = await Config.getConfig();
@@ -158,10 +158,6 @@ exports.setUser = (data) => {
 
 exports.getOrder = () => {
     return dao.getOrder();
-}
-
-exports.setStoreOrder = (data) => {
-    return dao.setStoreOrder(data);
 }
 
 exports.delOrderByOutTradeNo = (out_trade_no) => {

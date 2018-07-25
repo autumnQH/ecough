@@ -1,8 +1,13 @@
 var db = require("../utils/mysql");
+//订单状态(2-待发货, 3-已发货, 5-已完成, 8-维权中 0-取消 4-申请退款 )
 
 //获取状态非4的订单
 exports.getOrder = () => {
 	return db.find("SELECT * FROM T_WECHAT_ORDER WHERE status != 4 ORDER BY CREATE_TIME DESC")
+}
+//获取状态是4的订单
+exports.getRefundList = ()=> {
+	return db.find("SELECT * FROM T_WECHAT_ORDER WHERE status = 4 ORDER BY CREATE_TIME DESC")
 }
 
 //添加订单
@@ -17,7 +22,13 @@ exports.getOneOrderById = (id)=> {
 exports.getOrderForTradeByOpenId = (openid)=> {
 	return db.find("SELECT out_trade_no FROM T_WECHAT_ORDER WHERE ?", {openid});
 }
-//修改订单状态
-exports.updateOrderStatusById = (id, status)=> {
-	return db.update("T_WECHAT_ORDER", {status}, {id});
+//修改订单
+exports.updateOrderById = (id, data)=> {
+	return db.update("T_WECHAT_ORDER", data, {id});
 }
+
+//根据订单号获取用户订单
+exports.getOrderByOutTradeNo = (out_trade_no)=> {
+	return db.findOne("SELECT * FROM T_WECHAT_ORDER WHERE ? ", {out_trade_no: out_trade_no});
+}
+

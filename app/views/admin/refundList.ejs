@@ -153,6 +153,7 @@ $(function() {
       }).done(function(res) {
         $('#myModal').modal('hide');    
         alert(res.code)
+        window.location.reload()
       })
     })
 });
