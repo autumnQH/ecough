@@ -94,7 +94,7 @@ exports.refund = async function(json) {
 
         json.sign = sign;        
         json = xml.jsonToXml(json);
-        console.log(cert,'cert')
+        
     let options = {
         url: 'https://api.mch.weixin.qq.com/secapi/pay/refund',
         method: 'post',
