@@ -224,8 +224,8 @@ exports.refund = async (ctx, next) => {
           store_key: config.store_key,
           mch_id: config.store_mchid,
           out_refund_no: out_trade_no,
-          refund_fee: parseInt(total_fee),
-          total_fee: parseInt(total_fee)
+          refund_fee: Number(total_fee * 100),
+          total_fee: Number(total_fee * 100)
         }
         var refund = await pay.refund(json);   
         var xml = refund.xml; 
