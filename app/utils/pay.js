@@ -5,7 +5,8 @@ const dao = require('../dao/wechat');
 const fs = require('fs');
 const request = require('request');
 const _ = require('lodash');
-
+const { resolve } = require('path');
+const cert = resolve(__dirname, '../../' ,'config/apiclient_cert.p12')
 //统一下单
 exports.setPackageData = async function (openid, pay_money, value,store_name, ip) {
     const config = await dao.getConfig();	
@@ -97,7 +98,7 @@ exports.refund = async function(json) {
         method: 'post',
         body: json,
         agentOptions: {
-            pfx: fs.readFileSync(__dirname+ '/apiclient_cert.p12'),
+            pfx: fs.readFileSync(cert),
             passphrase: json.mch_id
         }
     };
