@@ -8,7 +8,6 @@ const WXSDK = require('../proxy').WXSDK
 const Gift = require('../proxy').Gift;
 const Store = require('../proxy').Store
 const pay = require('../utils/pay');
-const Pay = require('../proxy').Pay;
 
 exports.home = async (ctx)=> {
 	await ctx.redirect('admin/order');
@@ -219,15 +218,16 @@ exports.refund = async (ctx, next) => {
         }
     }else if(order.status === 4 && total_fee>0){//退款
         var config = await Config.getConfig();
-        var refund = await pay.refund({
-          out_trade_no,
+        const json = {
+          out_trade_no: out_trade_no,
           appid: config.appid,
+          store_key: config.store_key,
           mch_id: config.store_mchid,
           out_refund_no: out_trade_no,
           refund_fee: parseInt(total_fee),
           total_fee: parseInt(total_fee)
-        });   
-        console.log(refund)
+        }
+        var refund = await pay.refund(json);   
         var xml = refund.xml; 
         if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
             if(xml.result_code[0] === 'SUCCESS'){
@@ -264,7 +264,7 @@ exports.refund = async (ctx, next) => {
     console.error(e)
     ctx.body = {
       msg: 'ERROR',
-      code: '服务器繁忙，请稍后再试'
+      code: '请检查你的证书和对应参数'
     }
   }
 }

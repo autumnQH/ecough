@@ -81,12 +81,13 @@ exports.setWXConfig = async function(jsapi_ticket, url, value) {
 
 //退款
 exports.refund = async function(json) {
-    var config = await dao.getConfig();
     const nonce_str = tools.createRandom();
     json.nonce_str = nonce_str;
-
+    const mch_id = json.mch_id
+    const store_key = json.store_key
+    delete json.store_key
     var str = tools.raw(json);
-        str += '&key=' + config.store_key;
+        str += '&key=' + store_key;
 
     var sign = crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();
 
@@ -99,15 +100,17 @@ exports.refund = async function(json) {
         body: json,
         agentOptions: {
             pfx: fs.readFileSync(cert),
-            passphrase: json.mch_id
+            passphrase: mch_id
         }
     };
 
     return new Promise(function(resolve, reject) {
         request(options, function(err, res, body) {
             if(body){
+                console.log(body)
                 return resolve(xml.xmlToJson(body));
             }else{
+                console.log(err)
                 return reject(xml.xmlToJson(err));
             }
         });
