@@ -4,7 +4,6 @@ const Store = require('../proxy').Store
 const User = require('../proxy').User
 const xml = require('../utils/xml');
 const dao = require('../dao/wechat');
-const tools = require('../utils/tools');
 const pay = require('../utils/pay');
 const USER = require('../utils/user');
 const STORE = require('../utils/store');

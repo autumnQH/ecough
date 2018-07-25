@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS STORE (
   centent TEXT DEFAULT NULL COMMENT '网页内容',
   name varchar(72) DEFAULT NULL COMMENT '产品名称',
   sku_description varchar(255) DEFAULT NULL COMMENT '产品描述',
-  sku_attr TEXT(255) DEFAULT NULL COMMENT '产品属性(key,key2,key3)',
   sku_info TEXT(255) DEFAULT NULL COMMENT '多规格({"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0})',
   icon_url varchar(255) DEFAULT NULL COMMENT 'icon图片地址',
   icon_url_opt TEXT DEFAULT NULL COMMENT '其他图片',
@@ -25,18 +24,6 @@ CREATE TABLE IF NOT EXISTS STORE (
 
 INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色;黑色', sku_info = '{"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0};{"specifications":"12*12米","price":1200,"old_price":1500,"stock_num":100}', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
 
-CREATE TABLE IF NOT EXISTS T_WECHAT_QRCODE (
-  id int NOT NULL AUTO_INCREMENT,
-  name varchar(36) DEFAULT NULL COMMENT 'name',
-  expire_seconds int(16) DEFAULT NULL COMMENT '该二维码有效时间，以秒为单位.最大不超过2592000（即30天)',
-  scene_str varchar(125) DEFAULT NULL COMMENT '场景值 string',
-  scene_id int(32) DEFAULT NULL COMMENT '场景值 id参数只支持1--100000',
-  action_name varchar(36) DEFAULT NULL COMMENT '二维码类型 QR_SCENE为临时的整型参数值，QR_STR_SCENE为临时的字符串参数值，QR_LIMIT_SCENE为永久的整型参数值，QR_LIMIT_STR_SCENE为永久的字符串参数值',
-  ticket varchar(255) NOT NULL COMMENT '获取的二维码ticket，凭借此ticket可以在有效时间内换取二维码',
-  url varchar(255) NOT NULL COMMENT '二维码图片解析后的地址',
-  create_time datetime  DEFAULT NULL COMMENT '',
-  PRIMARY KEY (id)
-)DEFAULT CHARSET=utf8  COMMENT='生成带参数二维码';
 
 CREATE TABLE IF NOT EXISTS USER (
   id int(11) NOT NULL AUTO_INCREMENT,

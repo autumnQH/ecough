@@ -99,7 +99,6 @@ exports.showCode = async (ctx)=> {
 }
 
 exports.getMyQR_Code = async (ctx)=> {
-	// let token = await WXSDK.getAccessToken();
   const json = {
       "expire_seconds": 3 * 60 *60 *24, 
       "action_name": "QR_STR_SCENE", 
@@ -109,8 +108,7 @@ exports.getMyQR_Code = async (ctx)=> {
           }
       }
   }
- //  var qrurl =  await tools.getQRCode(token.access_token, data);
-
+ 
   const userinfo =  ctx.session;    
   try{
     const data = await WXSDK.handle('createQRCode', json)
@@ -131,8 +129,8 @@ exports.getMyQR_Code = async (ctx)=> {
 
 exports.showPartner = async (ctx)=> {
 	let openid = ctx.session.openid
-	ctx.state.data = await User.getUserByEnentKey(openid);
-	ctx.state.data2 = await User.getUserTotalConsume(openid);
+  ctx.state.data = await User.getUserByEnentKey(openid);
+  ctx.state.data2 = await User.getUserTotalConsume(openid);
   await ctx.render('user/partner');	
 }
 

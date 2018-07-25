@@ -7,7 +7,6 @@ const store = require('../dao/store');
 exports.getStoreById = async (product_id)=> {
   const result = await store.getStoreById(product_id)
   // 格式化商品信息字段
-  result.sku_attr = result.sku_attr.split(';');
   result.sku_info = result.sku_info.split(';').map(item => {
     return JSON.parse(item)
   })
@@ -19,7 +18,6 @@ exports.getStoreById = async (product_id)=> {
  * @param {Object} data 商品数据
  */
 exports.updateStoreById = (data) => {
-  data.sku_attr = data.sku_attr.join(';')
   data.sku_info = data.sku_info.map(item => {
     return JSON.stringify(item)
   })

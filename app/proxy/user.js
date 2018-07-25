@@ -1,7 +1,7 @@
 const user = require('../dao/user');
 const order = require('../dao/order');
 const service = require('../dao/service');
-const FAQ = require('../dao/FAQ');
+// const FAQ = require('../dao/FAQ');
 const isArray = arr => Array.isArray(arr)? arr : [arr]
 
 /**
@@ -172,15 +172,15 @@ exports.setService = (data)=> {
 	return service.setService(data);
 }
 
-//获取常见问题
-exports.getFAQ = ()=> {
-	return FAQ.getFAQ();
-}
+// //获取常见问题
+// exports.getFAQ = ()=> {
+// 	return FAQ.getFAQ();
+// }
 
-/**
- * 根据id获取一条常见问题
- * @param {Int} id ID
- */
-exports.getFAQById = (id)=> {
-	return FAQ.getFAQById(id);
-}
+// *
+//  * 根据id获取一条常见问题
+//  * @param {Int} id ID
+ 
+// exports.getFAQById = (id)=> {
+// 	return FAQ.getFAQById(id);
+// }

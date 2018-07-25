@@ -138,7 +138,7 @@
       var title = $('#title').val();
       $.ajax({
         url: '/admin/FAQ/<%= data.id %>',
-        type: 'post',
+        type: 'put',
         data: {
           title: title,
           centent: centent
@@ -168,7 +168,7 @@
     var title = $('#title').val();    
     $.ajax({
       url: '/admin/FAQ/create',
-      type: 'put',
+      type: 'post',
       data: {
         title: title,
         centent: centent

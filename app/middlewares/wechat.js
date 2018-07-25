@@ -1,6 +1,5 @@
 const User = require('../proxy').User;
 const WXSDK = require('../proxy').WXSDK;
-const tools = require('../utils/tools');
 const pay = require('../utils/pay');
 const xml = require('../utils/xml');
 const wechat = require('../utils/wechat');

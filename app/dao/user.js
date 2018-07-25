@@ -60,7 +60,7 @@ exports.getUserService = ()=> {
 
 //获取用户场景值
 exports.getUserByEnentKey = (eventKey)=> {
-	var result = db.find("SELECT ifnull(SUM(total),0) as order_count, (SELECT A.headimgurl from USER A where A.openid = O.openid) as headimgurl, (select B.nick from USER B where B.openid = O.openid) as nick FROM T_WECHAT_ORDER O where O.status in(3,5) AND eventKey = '"+ eventKey+"' GROUP BY O.openid;");
+	var result = db.find("SELECT ifnull(SUM(total),0) as order_count, (SELECT A.headimgurl from USER A where A.openid = O.openid) as headimgurl, (select B.nickname from USER B where B.openid = O.openid) as nickname FROM T_WECHAT_ORDER O where O.status in(3,5) AND eventKey = '"+ eventKey+"' GROUP BY O.openid;");
 	return result;
 }
 //查询已经推广人数购买产品的数量

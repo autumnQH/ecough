@@ -1,12 +1,13 @@
 const tools = require('../utils/tools');
 const moment = require('moment');
-const Admin = require('../proxy').Admin;
 const User = require('../proxy').User;
 const Config = require('../proxy').Config;
 const Order = require('../proxy').Order;
 const WXSDK = require('../proxy').WXSDK
 const Gift = require('../proxy').Gift;
 const Store = require('../proxy').Store
+const UserService = require('../proxy').UserService;
+const FAQ = require('../proxy').FAQ
 const pay = require('../utils/pay');
 
 exports.home = async (ctx)=> {
@@ -197,8 +198,6 @@ exports.express = async (ctx)=> {
   }
 }
 
-//new end
-
 exports.refund = async (ctx, next) => {
   const { out_trade_no, total_fee} = ctx.request.body
   try {
@@ -268,83 +267,156 @@ exports.refund = async (ctx, next) => {
     }
   }
 }
+
+
 exports.showService = async (ctx)=> {
-  var data = await Admin.getService();
-  data.forEach(function(val) {
-    val.create_time = tools.formatDate(val.create_time);
-  });
-  ctx.state.data = data;
-	await ctx.render('admin/service');
+  try {
+    let data = await UserService.getService();
+    data.forEach(function(val) {
+      val.create_time = tools.formatDate(val.create_time);
+    });
+    ctx.state.data = data;
+  	await ctx.render('admin/service');
+  }catch(e) {
+    console.error(e)
+    ctx.state.data = [];
+    await ctx.render('admin/service');    
+  }
 }
 
 exports.showFAQ = async (ctx)=> {
-	ctx.state.data = await Admin.getFAQ();
-	await ctx.render('admin/FAQ');
+  try {
+  	ctx.state.data = await FAQ.getFAQ();
+  	await ctx.render('admin/FAQ');
+  }catch(e) {
+    console.error(e)
+    ctx.state.data = []
+    await ctx.render('admin/FAQ')
+  }
 }
 
 exports.showAddFAQ= async (ctx)=> {
-	ctx.state.data = null;
-	await ctx.render('admin/FAQEdit');
+  try {
+    ctx.state.data = null;
+    await ctx.render('admin/FAQEdit');
+  }catch(e) {
+    console.error(e)
+    ctx.state.data = null;
+    await ctx.render('admin/FAQEdit')
+  }
 }
 
 exports.addFAQ= async (ctx)=> {
-	var req = ctx.request.body;
-	await Admin.addFAQ(req);
-	ctx.status = 204;
+  try {
+    const {centent, title} = ctx.request.body;
+    await FAQ.addFAQ({centent, title});
+    ctx.status = 204;
+  }catch(e) {
+    console.error(e)
+    ctx.status = 500;    
+  }
 }
 
 exports.showEditFAQ = async (ctx)=> {
-	var id = ctx.params.id;
-	ctx.state.data = await Admin.getFAQById(id);
-	await ctx.render('admin/FAQEdit');
+  try {
+    const id = ctx.params.id;
+    ctx.state.data = await FAQ.getFAQById(id);
+    await ctx.render('admin/FAQEdit');
+  }catch(e) {
+    console.error(e)
+    ctx.state.data = {}
+    await ctx.refund('admin/FAQEdit')
+  }
 }
 
 exports.updateFAQ = async (ctx)=> {
-	var id = ctx.params.id;
-	var req = ctx.request.body;
-	await Admin.updateFAQ(req, id);
-	ctx.status = 204;
+  try {
+    const id = ctx.params.id;
+    const {centent, title} = ctx.request.body;
+    await FAQ.updateFAQ({centent, title}, id);
+    ctx.status = 204;
+  }catch (e) {
+    console.error(e)
+    ctx.statue = 500
+  }
 }
 
 exports.delFAQ = async (ctx)=> {
-	var id = ctx.params.id;
-	await Admin.delFAQ(id);
-	ctx.status = 204;
+  try {
+  	const id = ctx.params.id;
+  	await FAQ.delFAQ(id)
+  	ctx.status = 204
+  }catch(e) {
+    console.error(e)
+    ctx.status = 500
+  }
 }
+
 
 exports.showStore = async (ctx)=> {
-	var data = await Admin.getStore();
-  ctx.state.data = tools.StoreDataStringToObject(data);
-	await ctx.render('admin/product');
+  try {
+  	var data = await Store.getStoreById('100001');
+    ctx.state.data = [data]
+  	await ctx.render('admin/product');
+  }catch(e) {
+    console.log(e)
+    ctx.state.data = []
+    await ctx.render('admin/product');
+  }
 }
-
 exports.updateStore = async (ctx)=> {
-	var data = ctx.request.body;
-	data.sku_info = tools.StoreDataArrayToString(data);
-  await Admin.updateStore(data);
-  return ctx.redirect('back');
+  const { product_id, name, specifications, price, old_price, stock_num } = ctx.request.body;
+  try {
+    let arr = []
+    for(let i = 0; i < price.length; i++) {
+      arr.push({
+        specifications: specifications[i],
+        price: price[i],
+        old_price: old_price[i],
+        stock_num: stock_num[i]
+      })
+    }
+    await Store.updateStoreById({
+      product_id,
+      name,
+      sku_info: arr
+    });
+    return ctx.redirect('back');
+  }catch(e) {
+    return ctx.redirect('back');
+  }
 }
 
 exports.showConfig = async (ctx)=> {
-	ctx.state.config = await Admin.getConfig();
-	await ctx.render('admin/config');
+  try {
+  	ctx.state.config = await Config.getConfig();
+  	await ctx.render('admin/config');
+  }catch(e) {
+    console.error(e)
+    ctx.state.config = {}
+    await ctx.render('admin/config');
+  }
 }
 
 exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
-  data = await Admin.getConfig();
-  
-  if(data.id) {
-	  await Admin.updateConfig(req);
-  }else {
-    await Admin.saveConfig(req)
+  try {
+    await Config.saveConfig(req)
+  	return ctx.redirect('back');
+  }catch(e) {
+    console.error(e)
+    return ctx.redirect('back');
   }
-	return ctx.redirect('back');
 }
 
 exports.showGift = async (ctx) => {
-  ctx.state.data = await Admin.getGift();
-  await ctx.render('admin/gift');
+  try {
+    ctx.state.data = await Gift.getGift();
+    await ctx.render('admin/gift');
+  }catch(e) {
+    ctx.state.data = []
+    await ctx.render('admin/gift');
+  }
 }
 
 exports.showAddGift = async (ctx) => {
@@ -353,28 +425,49 @@ exports.showAddGift = async (ctx) => {
 }
 
 exports.addGift = async (ctx) => {
-  var req = ctx.request.body;
-  req.create_time = moment().format('YYYY-MM-DD HH:mm:ss');
-  await Admin.addGift(req);
-  ctx.status = 204;
+  const {title, name, specifications, centent, img_url, icon_url, consume} = ctx.request.body;
+  const create_time = moment().format('YYYY-MM-DD HH:mm:ss');
+  try {
+    await Gift.addGift({title, name, specifications, centent, img_url, icon_url, consume, create_time});
+    ctx.status = 204;
+  }catch(e) {
+    console.error(e)
+    ctx.statue = 500
+  }
 }
 
 exports.showEditGift = async (ctx)=> {
-  var id = ctx.params.id;
-  ctx.state.data = await Admin.getGiftById(id);
-  await ctx.render('admin/giftEdit');
+  const id = ctx.params.id;
+  try {
+    ctx.state.data = await Gift.getGiftById(id);
+    await ctx.render('admin/giftEdit');
+  }catch(e) {
+    console.error(e)
+    ctx.state.data = {}
+    await ctx.render('admin/giftEdit');
+  }
 }
 
 exports.updateGift = async (ctx)=> {
-  var id = ctx.params.id;
-  var req = ctx.request.body;
-  await Admin.updateGift(req, id);
-  ctx.status = 204;  
+  const id = ctx.params.id;
+  const {title, name, specifications, centent, img_url, icon_url, consume} = ctx.request.body;
+  try {
+    await Gift.updateGift({title, name, specifications, centent, img_url, icon_url, consume}, id);
+    ctx.status = 204;  
+  }catch(e) {
+    console.error(e)
+    ctx.status = 500
+  }
 }
 
 exports.delGiftById = async (ctx)=> {
-  var id = ctx.params.id;
-  await Admin.delGiftById(id);
-  ctx.status = 204;  
-}
+  try {
+    var id = ctx.params.id;
+    await Gift.delGiftById(id);
+    ctx.status = 204;  
+  }catch(e) {
+    console.erro(e)
+    ctx.status = 500
+  }
 
+}

@@ -70,19 +70,19 @@
   <div class="form-group">
     <label for="specifications" class="col-sm-1 control-label">规格</label>
     <div class="col-sm-1">
-      <input type="text" class="form-control" name="specifications" value="<%= data[i].sku_info[j].specifications %>">
+      <input type="text" class="form-control" name="specifications" value="<%= data[i].sku_info[j].specifications %>" required>
     </div>
     <label for="price" class="col-sm-1 control-label">现价(元)</label>
     <div class="col-sm-1">
-      <input type="text" class="form-control" name="price" value="<%= data[i].sku_info[j].price %>">
+      <input type="text" class="form-control" name="price" value="<%= data[i].sku_info[j].price %>" required>
     </div>    
-    <label for="ori_price" class="col-sm-1 control-label">原价(元)</label>
+    <label for="old_price" class="col-sm-1 control-label">原价(元)</label>
     <div class="col-sm-1">
-      <input type="text" class="form-control" name="ori_price" value="<%= data[i].sku_info[j].ori_price %>">
+      <input type="text" class="form-control" name="old_price" value="<%= data[i].sku_info[j].old_price %>" required>
     </div> 
-    <label for="repertory" class="col-sm-1 control-label">库存</label>
+    <label for="stock_num" class="col-sm-1 control-label">库存</label>
     <div class="col-sm-1">
-      <input type="text" class="form-control" name="repertory" value="<%= data[i].sku_info[j].repertory %>">
+      <input type="text" class="form-control" name="stock_num" value="<%= data[i].sku_info[j].stock_num %>" required>
     </div>  
 <!--     <label for="qr" class="col-sm-1 control-label">条形码</label>
     <div class="col-sm-1">
