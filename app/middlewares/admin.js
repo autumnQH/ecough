@@ -226,7 +226,9 @@ exports.refund = async (ctx, next) => {
           refund_fee: Number(total_fee * 100),
           total_fee: Number(total_fee * 100)
         });   
+        console.log(refund)
         var xml = refund.xml; 
+        console.log(xml)
         if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
             if(xml.result_code[0] === 'SUCCESS'){
                 await wechat.refundUserByOutTradeNo(out_trade_no);//退款首单
