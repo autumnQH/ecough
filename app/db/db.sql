@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS STORE (
 
 INSERT INTO STORE SET product_id = 100001, name = '防雾霾窗贴', title = '防雾霾窗贴', sku_attr = '白色;黑色', sku_info = '{"specifications":"10*10米","price":1000,"old_price":1200,"stock_num":0};{"specifications":"12*12米","price":1200,"old_price":1500,"stock_num":100}', icon_url = '/images/fangwumaichuangtie_share.jpeg'; 
 
-
 CREATE TABLE IF NOT EXISTS USER (
   id int(11) NOT NULL AUTO_INCREMENT,
   subscribe int(1) NOT NULL COMMENT '用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息',

@@ -98,22 +98,13 @@
 ##### 2.2 进入项目并安装依赖的包
 `` cd ecough && npm i ``
 
-##### 3.1 下载中控服务器代码
-`` git clone https://github.com/autumnQH/wt.git ``
-##### 3.2 下载中控服务器代码
-`` cd wt && npm i ``
-
 ##### 4.获取云服务器 IP地址， 获取公网IP
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.43.14.png)
 
 ##### 5.登录微信公众号获取微信AppId,appSecret
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.13.08.png)
 
-##### 6.修改相关配置，没说明的就不用修改
-###### 6.1 打开`` wt``文件夹下``config.js``文件，相关配置修改成自己的.
-![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.19.07.png)
-
-###### 6.2 打开`` ecough/config/``文件夹下``config.js ``文件，相关配置修改成自己的
+###### 6.2 打开`` ecough/config/``文件夹下``production.js ``文件，相关配置修改成自己的
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.21.39.png)
 
 #### 第二十四步：登录微信公众号后台，修改微信公众后台配置（重要）
@@ -125,16 +116,14 @@
 
 ##### 3.下载MP_verify_0Ula6xjDfEiNpXFD.txt文件并放到``ecoug/app/public``目录下
 
-##### 4.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/app/utils/`目录下
+##### 4.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/config/utils`目录下
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.54.22.png)
 
 ##### 5.设置微信支付平台授权目录
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-10%20%E4%B8%8B%E5%8D%881.35.08.png)
 
-##### 6 中控服务器项目并启动
-`` cd wt  && pm2 start app.js -n middle``
-##### 7 项目启动
-`` cd ecough && pm2 start app.js -n app ``
+##### 6 项目启动
+`` cd ecough && pm2 reload ecosystem.config.js --env production ``
 
 #### 第二十五步：获取阿里云短信服务accessKeyId,secretAccessKey,短信签名，短信模版
 登录阿里云网站https://www.aliyun.com 进入控制台,选择accesskey
@@ -152,7 +141,6 @@
 
 根据前面步骤获取的微信公众号ID，微信支付密钥，阿里云短信服务填写
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%887.52.57.png)
-
 
 ##### 填写第服务器地址: `你的域名` + `/wx`。如``www.ecough.cn/wx``
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.48.52.png)
