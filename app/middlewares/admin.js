@@ -220,17 +220,14 @@ exports.refund = async (ctx, next) => {
     }else if(order.status === 4 && total_fee>0){//退款
         var config = await Config.getConfig();
         var refund = await pay.refund({
-          appid: config.appid,
+          out_trade_no: 'ffn1532340072498',
+          appid: 'wxfaa5fc353c6b81d0',
           mch_id: config.store_mchid,
-          store_key: config.store_key,
-          out_trade_no: out_trade_no,
-          out_refund_no: out_trade_no,
-          refund_fee: Number(total_fee * 100),
-          total_fee: Number(total_fee * 100)
+          out_refund_no: 'ffn1532340072498',
+          refund_fee: 1,
+          total_fee: 1
         });   
-        console.log(refund)
         var xml = refund.xml; 
-        console.log(xml)
         if(xml.return_code[0] === 'SUCCESS' && xml.return_msg[0] === 'OK'){     
             if(xml.result_code[0] === 'SUCCESS'){
                 await wechat.refundUserByOutTradeNo(out_trade_no);//退款首单

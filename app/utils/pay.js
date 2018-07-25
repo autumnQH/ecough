@@ -2,8 +2,6 @@ const tools = require('./tools');
 const crypto = require('crypto');
 const xml = require('./xml');
 const dao = require('../dao/wechat');
-const { resolve } = require('path');
-const cert = resolve(__dirname, '../../' ,'config/apiclient_cert.p12')
 const fs = require('fs');
 const request = require('request');
 const _ = require('lodash');
@@ -82,13 +80,12 @@ exports.setWXConfig = async function(jsapi_ticket, url, value) {
 
 //退款
 exports.refund = async function(json) {
+    var config = await dao.getConfig();
     const nonce_str = tools.createRandom();
-    const mch_id = json.mch_id;
-        json.nonce_str = nonce_str;
-        
+    json.nonce_str = nonce_str;
+
     var str = tools.raw(json);
-        str += '&key=' + json.store_key;
-    delete json.store_key
+        str += '&key=' + config.store_key;
 
     var sign = crypto.createHash('md5').update(str,'utf8').digest('hex').toUpperCase();
 
@@ -100,8 +97,8 @@ exports.refund = async function(json) {
         method: 'post',
         body: json,
         agentOptions: {
-            pfx: fs.readFileSync(cert),
-            passphrase: mch_id
+            pfx: fs.readFileSync(__dirname+ '/apiclient_cert.p12'),
+            passphrase: json.mch_id
         }
     };
 
