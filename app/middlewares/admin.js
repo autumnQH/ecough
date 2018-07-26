@@ -405,6 +405,7 @@ exports.showConfig = async (ctx)=> {
 
 exports.updateConfig = async (ctx)=> {
 	var req = ctx.request.body;
+  console.log(req,'======')
   try {
     await Config.saveConfig(req)
   	return ctx.redirect('back');
