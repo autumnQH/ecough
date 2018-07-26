@@ -14,11 +14,8 @@ module.exports = {
 		await next();
 	},
 	checkUser: async(ctx, next)=> {
-		console.log('??????/')
 		var config = await Config.getConfig();
-		//ctx.session.openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 		if(!ctx.session.openid){
-			console.log('openid')
 		  var r_url = config.server_host + ctx.url.split('?').slice(0,1);
 		  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ config.appid + 
 		      '&redirect_uri=' + urlencode(r_url) + '&response_type=code&scope=snsapi_userinfo&state=111#wechat_redirect';	
@@ -33,7 +30,6 @@ module.exports = {
       		//拉取用户信息
         	let userinfo = JSON.parse(await tools.getUserInfo(user.access_token, user.openid));
               ctx.session = userinfo;
-              console.log(ctx.session.openid,'=========')
          	return await next();
       	}
 		  }		
