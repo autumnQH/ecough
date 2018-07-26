@@ -126,5 +126,5 @@ exports.addUserOrderCountByOpenId = (openid)=> {
 }
 
 exports.getUserOrderForStatusByStatusAndOpenId = (openid, status, page, size)=> {
-	return db.queryPage("SELECT * FROM ORDER WHERE ? AND ?",{openid, status}, page, size);
+	return db.queryPage("SELECT * FROM ORDER WHERE ? AND ?",[{openid}, {status}], page, size);
 }
