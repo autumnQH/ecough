@@ -6,6 +6,11 @@ exports.getConfig = () => {
 }
 
 //更新config
-exports.saveConfig = (data)=> {
-	return db.update("CONFIG", data, {id: 1});
+exports.saveConfig = async (data)=> {
+	const result = await this.getConfig()
+	if(result.id) {
+		return db.update("CONFIG", data, {id: 1});
+	}else {
+		return db.add("CONFIG", data)
+	}
 }
