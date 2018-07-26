@@ -1,5 +1,5 @@
 const moment = require('moment');
-const dao = require('../dao/wechat');
+const Config = require('../proxy').Config
 const request = require('request');
 const fs = require('fs');
 var qr_image = require('qr-image');  
@@ -51,7 +51,7 @@ exports.trade = function() {
 
 //网页授权获取access_token
 exports.getOauth2Token = async function (code) {
-    const config = await dao.getConfig();
+    const config = await Config.getConfig();
     let options = {
         method: 'get',
         url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='+ config.appid +'&secret='+ config.appSecret +'&code='+ code +'&grant_type=authorization_code',

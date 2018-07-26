@@ -33,6 +33,7 @@ module.exports = {
       		//拉取用户信息
         	let userinfo = JSON.parse(await tools.getUserInfo(user.access_token, user.openid));
               ctx.session = userinfo;
+              console.log(ctx.session.openid,'=========')
          	return await next();
       	}
 		  }		
