@@ -395,7 +395,6 @@ exports.updateStore = async (ctx)=> {
 exports.showConfig = async (ctx)=> {
   try {
     const data = await Config.getConfig();
-    console.log(data)
     ctx.state.config = data
   	await ctx.render('admin/config');
   }catch(e) {
@@ -406,9 +405,8 @@ exports.showConfig = async (ctx)=> {
 }
 
 exports.updateConfig = async (ctx)=> {
-	var req = ctx.request.body;
-  console.log(req,'======')
   try {
+    var req = ctx.request.body;
     await Config.saveConfig(req)
   	return ctx.redirect('back');
   }catch(e) {
