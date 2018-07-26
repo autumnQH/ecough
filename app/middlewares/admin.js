@@ -161,7 +161,6 @@ exports.order = async (ctx)=> {
 exports.express = async (ctx)=> {
   const { out_trade_no, status, delivery_track_no, delivery_company } = ctx.request.body
   var order = await Order.getOrderByOutTradeNo(out_trade_no);
-  console.log(out_trade_no, status, delivery_track_no, delivery_company)
   try {
     if(order.status == 2 && status == 3){//第一次发货
       var openid = order.openid;//openid
@@ -364,7 +363,7 @@ exports.showStore = async (ctx)=> {
     ctx.state.data = [data]
   	await ctx.render('admin/product');
   }catch(e) {
-    console.log(e)
+    console.error(e)
     ctx.state.data = []
     await ctx.render('admin/product');
   }

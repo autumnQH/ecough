@@ -1,5 +1,5 @@
 const xml = require('../utils/xml');
-const dao = require('../dao/wechat');
+const Notify = require('../proxy').Notify;
 
 //收款通知
 exports.index = async function(ctx, next) {
@@ -25,7 +25,7 @@ exports.index = async function(ctx, next) {
             transaction_id: msg.transaction_id[0] //微信支付订单号
         }
         //console.log(data,'数据');
-        dao.setNOTIFY(data);
+        Notify.saveNotify(data);
         return ctx.body =  xml.jsonToXml({
             return_code: msg.result_code[0],
             return_msg: msg.return_code[0]

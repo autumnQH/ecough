@@ -7,3 +7,4 @@ exports.Pay = require('./wechat-pay');
 exports.Gift = require('./gift');
 exports.UserService = require('./UserService')
 exports.FAQ = require('./FAQ')
+exports.Notify = require('./notify')

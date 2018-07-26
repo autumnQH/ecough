@@ -165,7 +165,6 @@ exports.getTicket = async ()=> {
     delete data.errmsg
     await wechat.saveTicket(data)
   }
-  console.log('!!!!')
   return data
 }
 
