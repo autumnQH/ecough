@@ -125,7 +125,8 @@ exports.signature = async (ctx)=> {
 
 exports.pay = async (ctx)=> {
     const ip = ctx.ip.match(/\d+.\d+.\d+.\d+/)[0];
-    const { openid, store_name, total_fee} = ctx.request.body
+    const {store_name, total_fee} = ctx.request.body
+    const openid = ctx.session.openid
     const out_trade_no = Date.now()
     try {
         const order = {
