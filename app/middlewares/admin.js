@@ -394,7 +394,9 @@ exports.updateStore = async (ctx)=> {
 
 exports.showConfig = async (ctx)=> {
   try {
-  	ctx.state.config = await Config.getConfig();
+    const data = await Config.getConfig();
+    console.log(data)
+    ctx.state.config = data
   	await ctx.render('admin/config');
   }catch(e) {
     console.error(e)
