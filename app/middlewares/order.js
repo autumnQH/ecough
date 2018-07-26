@@ -3,7 +3,6 @@ const WXSDK = require('../proxy').WXSDK;
 const Store = require('../proxy').Store
 const User = require('../proxy').User
 
-//统一下单-生成预付单-获取package
 exports.create = async(ctx, next) => {
     const { total, specifications, productId} = ctx.query
     const { openid } = ctx.session
@@ -22,6 +21,7 @@ exports.create = async(ctx, next) => {
         const pay_money = total * current_money - derate_money ;
 
         const url = config.server_host + ctx.url;
+        //统一下单-生成预付单-获取package
         let data = await WXSDK.getSignatureAsync(url)
         data.appid = config.appid
         await ctx.render('order', {

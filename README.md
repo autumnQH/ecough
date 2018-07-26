@@ -116,7 +116,7 @@
 
 ##### 3.下载MP_verify_0Ula6xjDfEiNpXFD.txt文件并放到``ecoug/app/public``目录下
 
-##### 4.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/config/utils`目录下
+##### 4.登录微信支付商户后台, 获取证书，密钥，商户号。并下载证书放到 `ecough/config`目录下
 ![image](http://p8p8yzlxl.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-06-21%20%E4%B8%8B%E5%8D%886.54.22.png)
 
 ##### 5.设置微信支付平台授权目录
