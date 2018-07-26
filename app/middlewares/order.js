@@ -11,10 +11,7 @@ exports.create = async(ctx, next) => {
         const config = await Config.getConfig();
         const store = await Store.getStoreById(productId);
         const current_money = Store.fetchPrice(store, specifications);//现价
-
-        const result = await User.getUserFlagByOpenId(openid)
-        console.log(result,'flag------')
-        const {flag} = result
+        const {flag} = await User.getUserFlagByOpenId(openid)
         let derate_money = 0;//首单减免减免
         if(flag === '1') {// 第一次购买
             derate_money = config.derate_money

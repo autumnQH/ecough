@@ -3,7 +3,7 @@
  * Created on 2017-07-31
  */
 const SMSClient = require('@alicloud/sms-sdk');
-const dao = require('../dao/wechat');
+const Config = require('../proxy').Config;
 
 // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
 
@@ -37,7 +37,7 @@ const queueName = 'Alicom-Queue-1092397003988387-';
 // });
 
 exports.send = async (data) => {
-    const config = await dao.getConfig();
+    const config = await Config.getConfig();
     const accessKeyId = config.sms_accessKeyId;
     const secretAccessKey = config.sms_secretAccessKey;
     let smsClient = new SMSClient({accessKeyId, secretAccessKey}); 
@@ -59,7 +59,7 @@ exports.send = async (data) => {
 
 
 exports.query = async ()=> {
-    const config = await dao.getConfig();
+    const config = await Config.getConfig();
     const accessKeyId = config.sms_accessKeyId;
     const secretAccessKey = config.sms_secretAccessKey;
     let smsClient = new SMSClient({accessKeyId, secretAccessKey});
