@@ -30,19 +30,19 @@ exports.removeUserForEventKeyByOpenid = (openid)=> {
 }
 //获取用户订单
 exports.getUserOrder = (openid) => {
-	var result = db.find("SELECT * FROM ORDER WHERE openid='" + openid + "' ORDER BY CREATE_TIME DESC");
+	var result = db.find("SELECT * FROM ORDERS WHERE openid='" + openid + "' ORDER BY CREATE_TIME DESC");
 	return result;
 }
 
 //根据条件查询
 exports.queryUserOrder = (data) =>{
-	var result = db.find("SELECT * FROM ORDER WHERE openid = '"+data.openid+"' and create_time >= '"+data.date+"' ORDER BY CREATE_TIME DESC");
+	var result = db.find("SELECT * FROM ORDERS WHERE openid = '"+data.openid+"' and create_time >= '"+data.date+"' ORDER BY CREATE_TIME DESC");
 	return result;
 }
 
 //获取用户订单号
 exports.getUserOrderNumber = (openid) =>{
-	var result = db.find("SELECT out_trade_no FROM ORDER WHERE openid='" + openid +"'");
+	var result = db.find("SELECT out_trade_no FROM ORDERS WHERE openid='" + openid +"'");
 	return result;
 }
 
@@ -60,12 +60,12 @@ exports.getUserService = ()=> {
 
 //获取用户场景值
 exports.getUserByEnentKey = (eventKey)=> {
-	var result = db.find("SELECT ifnull(SUM(total),0) as order_count, (SELECT A.headimgurl from USER A where A.openid = O.openid) as headimgurl, (select B.nickname from USER B where B.openid = O.openid) as nickname FROM ORDER O where O.status in(3,5) AND eventKey = '"+ eventKey+"' GROUP BY O.openid;");
+	var result = db.find("SELECT ifnull(SUM(total),0) as order_count, (SELECT A.headimgurl from USER A where A.openid = O.openid) as headimgurl, (select B.nickname from USER B where B.openid = O.openid) as nickname FROM ORDERS O where O.status in(3,5) AND eventKey = '"+ eventKey+"' GROUP BY O.openid;");
 	return result;
 }
 //查询已经推广人数购买产品的数量
 exports.getUserTotalConsume = (eventKey)=> {
-	return db.findOne("SELECT total_consume, consume, (select count(DISTINCT openid) from ORDER where eventKey ='"+ eventKey+"' AND status IN(3,5)) as count, (select ifnull(SUM(total),0) from ORDER where eventKey = '"+ eventKey+"' AND status IN(3,5)) as order_count FROM USER  WHERE openid = '"+ eventKey+"'");
+	return db.findOne("SELECT total_consume, consume, (select count(DISTINCT openid) from ORDER where eventKey ='"+ eventKey+"' AND status IN(3,5)) as count, (select ifnull(SUM(total),0) from ORDERS where eventKey = '"+ eventKey+"' AND status IN(3,5)) as order_count FROM USER  WHERE openid = '"+ eventKey+"'");
 } 
 
 //获取用户积分
@@ -125,6 +125,6 @@ exports.addUserOrderCountByOpenId = (openid)=> {
 	return db.find("UPDATE USER SET order_count = order_count+1 WHERE openid = '"+openid+"'");
 }
 
-exports.getUserOrderForStatusByStatusAndOpenId = (openid, status,page, size)=> {
-	return db.queryPage("SELECT * FROM ORDER WHERE status = "+ status +" AND openid = '"+openid+"'",null, page,size);
+exports.getUserOrderForStatusByStatusAndOpenId = (openid, status, page, size)=> {
+	return db.queryPage("SELECT * FROM ORDER WHERE ? AND ?",{openid, status}, page, size);
 }

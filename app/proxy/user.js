@@ -122,7 +122,7 @@ exports.addUserOrderCountByOpenId = (openid)=> {
  * @param {Int} page 
  * @param {Int} size 
  */
-exports.getUserOrderForStatusByStatusAndOpenId = (openid, status,page,size)=> {
+exports.getUserOrderForStatusByStatusAndOpenId = (openid, status, page, size)=> {
 	return user.getUserOrderForStatusByStatusAndOpenId(openid, status, page, size);
 } 
 
