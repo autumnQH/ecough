@@ -65,7 +65,7 @@ exports.getUserByEnentKey = (eventKey)=> {
 }
 //查询已经推广人数购买产品的数量
 exports.getUserTotalConsume = (eventKey)=> {
-	return db.findOne("SELECT total_consume, consume, (select count(DISTINCT openid) from ORDER where eventKey ='"+ eventKey+"' AND status IN(3,5)) as count, (select ifnull(SUM(total),0) from ORDERS where eventKey = '"+ eventKey+"' AND status IN(3,5)) as order_count FROM USER  WHERE openid = '"+ eventKey+"'");
+	return db.findOne("SELECT total_consume, consume, (select count(DISTINCT openid) from ORDERS where eventKey ='"+ eventKey+"' AND status IN(3,5)) as count, (select ifnull(SUM(total),0) from ORDERS where eventKey = '"+ eventKey+"' AND status IN(3,5)) as order_count FROM USER  WHERE openid = '"+ eventKey+"'");
 } 
 
 //获取用户积分
@@ -126,5 +126,5 @@ exports.addUserOrderCountByOpenId = (openid)=> {
 }
 
 exports.getUserOrderForStatusByStatusAndOpenId = (openid, status, page, size)=> {
-	return db.queryPage("SELECT * FROM ORDER WHERE ? AND ?",[{openid}, {status}], page, size);
+	return db.queryPage("SELECT * FROM ORDERS WHERE ? AND ?",[{openid}, {status}], page, size);
 }
