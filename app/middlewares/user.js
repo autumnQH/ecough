@@ -6,7 +6,7 @@ const tools = require('../utils/tools');
 const moment = require('moment');
 
 function isOnlinekf(data) {
-  if(data.kf_online_list.length === 0) {
+  if(!data.kf_online_list || data['kf_online_list'].length === 0) {
     return null
   }else {
     data.forEach(item => {
