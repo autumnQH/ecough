@@ -14,6 +14,7 @@ module.exports = {
 		await next();
 	},
 	checkUser: async(ctx, next)=> {
+		console.log('??????/')
 		var config = await Config.getConfig();
 		//ctx.session.openid = 'o5Yi9wOfXWopOcMYiujWBZmwBH0Q';
 		if(!ctx.session.openid){
