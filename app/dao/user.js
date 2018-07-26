@@ -74,10 +74,6 @@ exports.getUserForIntegralByOpenId = (openid)=> {
 	return result
 }
 
-// //设置用户代金券使用中
-// exports.updateUserVoucherById = (id, order_id)=>{
-// 	var result = db.update("USER_VOUCHER", {status: 3, order_id: order_id }, {id: id});
-// }
 
 exports.delUserForIntegralByOpendId = (value, openid)=> {
 	var result  = db.update("USER", value, openid);
@@ -89,16 +85,8 @@ exports.addUserForIntegralByOpendId = (value, openid)=> {
   return result;
 }
 
-exports.getUserVoucherByOpenId = (openid)=> {
-	var result = db.find("SELECT * FROM USER_VOUCHER WHERE ? AND status = 2 ORDER BY CREATE_TIME DESC", {openid: openid});
-	return result;
-}
-exports.setUserVoucher = (data)=> {
-	var result = db.add("USER_VOUCHER", data);
-	return result;
-}
 exports.getUserFlagByOpenId = (openid)=> {
-	var result = db.findOne("SELECT flag FROM USER WHERE openid = '"+openid + "'");
+	var result = db.findOne("SELECT flag FROM USER WHERE ?", {openid});
 	return result;
 }
 

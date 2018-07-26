@@ -10,7 +10,7 @@ const isArray = arr => Array.isArray(arr)? arr : [arr]
  * @return {flag} flag 1表示没有购买，否则是对应的订单号
  */
 exports.getUserFlagByOpenId = (openid)=> {
-	return user.getUserFlagByOpenId
+	return user.getUserFlagByOpenId(openid)
 }
 
 /**
@@ -74,28 +74,6 @@ exports.setUserForPhone = (data)=> {
 // 	return user.addUserForIntegralByOpendId({integral: integral, order_count: order_count}, {openid: openid});
 // }
 
-/**
- * 增加用户代金券
- * @param {Object} data 数据包
- */
-// exports.addUserVoucherByOpenId = (data)=> {
-// 	return user.setUserVoucher(data);
-// }
-/**
- * 获取用户代金券
- * @param {String} openid 用户标示
- */
-// exports.getUserVoucherByOpenId = (openid)=> {
-// 	return user.getUserVoucherByOpenId(openid);
-// }
-/**
- * 设置用户代金券状态
- * @param {Int} id ID
- * @param {String} order_id 订单ID
- */
-// exports.updateUserVoucherById = (id, order_id)=> {
-// 	return user.updateUserVoucherById(id, order_id);
-// }
 
 //显示礼物列表
 exports.showGift = ()=> {
