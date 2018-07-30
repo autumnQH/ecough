@@ -1,15 +1,26 @@
+const crypto = require('crypto');
+const moment = require('moment');
 const User = require('../proxy').User;
 const WXSDK = require('../proxy').WXSDK;
-const pay = require('../utils/pay');
-const xml = require('../utils/xml');
 const wechat = require('../utils/wechat');
-const moment = require('moment');
 const Config = require('../proxy').Config;
 const Pay = require('../proxy').Pay;
 
 exports.checkToken = async (ctx, next) => {
-    let result = await wechat.auth(ctx);
-    if (result) {
+    const {token} = await Config.getConfig();
+    const {signature, timestamp, nonce} = ctx.query
+
+    // 字典排序
+    const arr = [token, timestamp, nonce].sort()
+    const tmpStr = arr.join('');
+    
+    // 排序完成之后,需要进行sha1加密, 这里我们使用node.js 自带的crypto模块
+    const resStr = crypto.createHash('sha1').update(tmpStr).digest('hex');
+    console.log(signature, 'resStr: ', resStr);
+
+    // 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信,
+    // 如果匹配,返回echoster , 不匹配则返回error
+    if (resStr === signature) {
         ctx.body = ctx.query.echostr
     } else {
         return false;
