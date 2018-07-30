@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const moment = require('moment');
 const User = require('../proxy').User;
 const WXSDK = require('../proxy').WXSDK;
-const wechat = require('../utils/wechat');
+const wechat = require('../utils/wechat-lib');
 const Config = require('../proxy').Config;
 const Pay = require('../proxy').Pay;
 
@@ -16,7 +16,7 @@ exports.checkToken = async (ctx, next) => {
     
     // 排序完成之后,需要进行sha1加密, 这里我们使用node.js 自带的crypto模块
     const resStr = crypto.createHash('sha1').update(tmpStr).digest('hex');
-    console.log(signature, 'resStr: ', resStr);
+    // console.log(signature, 'resStr: ', resStr);
 
     // 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信,
     // 如果匹配,返回echoster , 不匹配则返回error

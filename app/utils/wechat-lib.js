@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const xml = require('./xml');
 
 function createNonceStr() {
 	return Math.random().toString(36).substr(3, 16)
@@ -39,4 +40,28 @@ exports.signature = (jsapi_ticket, url)=> {
 	const signature = signIt(noncestr, timestamp, jsapi_ticket, url)
 
 	return {noncestr, timestamp, signature}
+}
+
+exports.getTextMessage = (msg, content) => {
+
+        return xml.jsonToXml({
+            xml: {
+                ToUserName: msg.FromUserName,
+                FromUserName: msg.ToUserName,
+                CreateTime: Date.now(),
+                MsgType: msg.MsgType,
+                Content: content
+            }
+        })
+}
+ 
+exports.transfer2CustomerService = (msg) => {
+    return xml.jsonToXml({
+        xml: {
+            ToUserName: msg.FromUserName,
+            FromUserName: msg.ToUserName,
+            CreateTime: Date.now(),
+            MsgType: 'transfer_customer_service'            
+        }
+    });
 }
