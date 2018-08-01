@@ -1,5 +1,4 @@
 const WXSDK = require('../proxy').WXSDK;
-const wechat = require('../utils/wechat.js');
 
 var createMenu = async (menu) => {
 	try{

@@ -1,6 +1,3 @@
-const xml = require('../utils/xml');
-const tools = require('../utils/tools');
-const urlencode = require('urlencode');
 const Store = require('../proxy').Store
 const Config = require('../proxy').Config;
 
